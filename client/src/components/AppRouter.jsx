@@ -1,7 +1,7 @@
 import React from 'react'
 import { Route, Routes } from 'react-router-dom';
 import Layout from './Layout';
-import Home from '../pages/Home';
+import Home from '../pages/Home/Home';
 import Flights from '../pages/Flights';
 import FlightsCategory from '../pages/FlightsCategory';
 import Flight from '../pages/Flight';
