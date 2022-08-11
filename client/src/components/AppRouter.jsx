@@ -14,6 +14,7 @@ const AppRouter = () => {
                 <Route path='flights' element={<Flights />} />
                 <Route path='flightsCategory' element={<FlightsCategory />} />
                 <Route path='flight' element={<Flight />} />
+                <Route path='*' element={<div>error</div>}/>
             </Route>
         </Routes>
     )
