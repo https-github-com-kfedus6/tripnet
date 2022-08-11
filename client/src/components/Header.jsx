@@ -21,8 +21,8 @@ const Header = () => {
         <div className='header__main'> 
             <Logo/>
             <div className='header__components'>
-                    <ul>
-                        <li><NavLink to="/">{t('header.first_link')}</NavLink></li>
+                <ul>
+                    <li><NavLink to="/">{t('header.first_link')}</NavLink></li>
                     <li><NavLink to="/flights">{t('header.second_link')}</NavLink></li>
                     <li><NavLink to="/flightsCategory">{t('header.third_link')}</NavLink></li>
                     <li><NavLink to="/flight">{t('header.fourth_link')}</NavLink></li>
@@ -36,8 +36,6 @@ const Header = () => {
                 </select>
             </div>
            <Burger/>
-            
-
         </div>
     )
 }
