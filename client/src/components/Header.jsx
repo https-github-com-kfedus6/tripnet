@@ -18,8 +18,8 @@ const Header = () => {
         return 'UA'
     }
     return (
-        <div className='header__main'> 
-            <Logo/>
+        <div className='header__main'>
+            <Logo />
             <div className='header__components'>
                 <ul>
                     <li><NavLink to="/">{t('header.first_link')}</NavLink></li>
@@ -35,7 +35,7 @@ const Header = () => {
                     <option className='option' value='RU'>RU</option>
                 </select>
             </div>
-           <Burger/>
+            <Burger />
         </div>
     )
 }

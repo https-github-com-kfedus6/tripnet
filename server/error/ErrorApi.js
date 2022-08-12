@@ -25,6 +25,11 @@ class ErrorApi extends Error {
         console.log(message)
         return new ErrorApi(200, { status: 403 })
     }
+
+    static notFound(message) {
+        console.log(message)
+        return new ErrorApi(200, { message: 404 })
+    }
 }
 
 module.exports = ErrorApi
