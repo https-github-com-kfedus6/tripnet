@@ -16,7 +16,7 @@ body{
         cursor: pointer;
     }
     .header__main{
-        background-color: rgb(84, 241, 64);
+        background-color: #00d200;
         display: flex;
         align-items: center;
         flex-direction: row;
@@ -47,7 +47,7 @@ body{
     .header__main{
         display: flex;
         justify-content: space-between;
-        background-color: rgb(84, 241, 64);
+        background-color: #00d200;
     }
     .header__components ul{
         display: none;

@@ -9,11 +9,12 @@ class FlightsController {
             if (!price || !startPosition || !finishPosition || !startDate || !finishDate || !startTime || !finishDate) {
                 return res.status(404).json({ status: 404, error: "invalid form" })
             } else {
+                console.log(startDate)
                 const flight = await Flight.create({
                     price: price,
                     startPosition: startPosition,
                     finishPosition: finishPosition,
-                    startDate: startDate,
+                    startData: startDate,
                     finishDate: finishDate,
                     startTime: startTime,
                     finishTime: finishTime

@@ -2,7 +2,7 @@ import React from 'react'
 import { Route, Routes } from 'react-router-dom';
 import Layout from './Layout';
 import Home from '../pages/Home/Home';
-import Flights from '../pages/Flights';
+import Flights from '../pages/Flights/Flights'
 import FlightsCategory from '../pages/FlightsCategory';
 import Flight from '../pages/Flight';
 
@@ -14,7 +14,7 @@ const AppRouter = () => {
                 <Route path='flights' element={<Flights />} />
                 <Route path='flightsCategory' element={<FlightsCategory />} />
                 <Route path='flight' element={<Flight />} />
-                <Route path='*' element={<div>error</div>}/>
+                <Route path='*' element={<div>error</div>} />
             </Route>
         </Routes>
     )

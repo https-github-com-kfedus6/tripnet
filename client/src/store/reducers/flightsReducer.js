@@ -1,6 +1,7 @@
 export const flightActionTypes = {
     FETCH_POST_FLIGHT: 'FETCH_POST_FLIGHT',
     FETCH_GET_FLIGHT: 'FETCH_POST_FLIGHT',
+    FETCH_ERROR_FLIGHT: 'FETCH_ERROR_FLIGHT',
 }
 
 const initialState = {

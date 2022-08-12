@@ -1,0 +1,99 @@
+.flights-block {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.items-flight {
+    width: 60%;
+    margin-top: 10px;
+    border: 1px solid silver;
+    border-radius: 5px;
+}
+
+.item-flight {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    height: 110px;
+    border-bottom: 1px solid silver;
+    padding: 5px 10px;
+}
+
+.item-time {
+    display: flex;
+    justify-content: space-between;
+    width: 90%;
+    font-size: 24px;
+}
+
+.item-date {
+    display: flex;
+    justify-content: space-between;
+    width: 90%;
+    font-size: 15px;
+    color: slategray;
+}
+
+.item-position {
+    display: flex;
+    justify-content: space-between;
+    width: 90%;
+    font-size: 21px;
+}
+
+.btn-buy {
+    display: flex;
+    justify-content: center;
+}
+
+.btn-buy button {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    width: 150px;
+    height: 35px;
+    font-size: 18px;
+    border-radius: 15px;
+    border: 1px solid #00d200;
+    background-color:#00d200;
+    color: white;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+.btn-buy button span {
+    margin-left: 20px;
+}
+
+.btn-buy button:hover {
+    background-color: #00c000;
+}
+
+@media (max-width: 992px) {
+    .items-flight {
+        width: 70%;
+    }
+}
+
+@media (max-width: 768px) {
+    .items-flight {
+        width: 80%;
+    }
+}
+
+@media (max-width: 576px) {
+    .items-flight {
+        width: 90%;
+    }
+
+    .item-time{
+        font-size: 22px
+    }
+
+    .item-position {
+        font-size: 18px;
+    }
+}
