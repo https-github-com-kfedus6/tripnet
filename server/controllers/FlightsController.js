@@ -29,8 +29,23 @@ class FlightsController {
     }
 
     async getSortFlights(req, res) {
-        const flights = await Flight.findAll()
+        let { startPosition, finishPosition, startDate, limit, page } = req.query
+
+        if (limit === undefined) {
+            limit = 6
+        }
+
+        if (page === undefined) {
+            page = 1
+        }
+
+        let offset = page * limit - limit
+        let flights
+
+        flights = await Flight.findAndCountAll({ limit: Number(limit), offset: Number(offset) })
+
         return res.json(flights)
+
     }
 }
 

@@ -8,7 +8,7 @@ const Flights = () => {
 
     const { fetchGetFlights } = useAction()
 
-    const { flights, error } = useTypedSelector(state => state.flights)
+    const { flights } = useTypedSelector(state => state.flights)
 
     useEffect(() => {
         fetchGetFlights()
