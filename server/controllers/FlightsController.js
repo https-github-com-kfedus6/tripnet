@@ -45,7 +45,6 @@ class FlightsController {
         flights = await Flight.findAndCountAll({ limit: Number(limit), offset: Number(offset) })
 
         return res.json(flights)
-
     }
 }
 

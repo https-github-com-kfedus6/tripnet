@@ -1,22 +1,34 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import FlightsList from '../../components/FlightsList';
 import { useAction } from '../../hooks/useAction';
-import { useTypedSelector } from '../../hooks/useTypedSelector';
 import '../Flights/flights.css';
 
 const Flights = () => {
+    const [startPosition, setStartPosition] = useState('')
+    const [finishPosition, setFinishPosition] = useState('')
+    const [startDate, setStartDate] = useState('')
 
     const { fetchGetFlights } = useAction()
-
-    const { flights } = useTypedSelector(state => state.flights)
 
     useEffect(() => {
         fetchGetFlights()
     }, [])
 
+    const sortFlights = (event) => {
+        event.preventDefault()
+        fetchGetFlights({
+            startPosition: startPosition,
+            finishPosition: finishPosition,
+            startDate: startDate
+        })
+    }
+
     return (
         <FlightsList
-            flights={flights}
+            sortFlights={sortFlights}
+            setStartDate={setStartDate}
+            setStartPosition={setStartPosition}
+            setFinishPosition={setFinishPosition}
         />
     )
 }
