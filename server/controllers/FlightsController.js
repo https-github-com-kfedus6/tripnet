@@ -6,22 +6,17 @@ class FlightsController {
         try {
             const { price, startPosition, finishPosition, startDate, finishDate, startTime, finishTime } = req.body
 
-            if (!price || !startPosition || !finishPosition || !startDate || !finishDate || !startTime || !finishDate) {
-                return res.status(404).json({ status: 404, error: "invalid form" })
-            } else {
-                console.log(startDate)
-                const flight = await Flight.create({
-                    price: price,
-                    startPosition: startPosition,
-                    finishPosition: finishPosition,
-                    startData: startDate,
-                    finishDate: finishDate,
-                    startTime: startTime,
-                    finishTime: finishTime
-                })
+            const flight = await Flight.create({
+                price: price,
+                startPosition: startPosition,
+                finishPosition: finishPosition,
+                startData: startDate,
+                finishDate: finishDate,
+                startTime: startTime,
+                finishTime: finishTime
+            })
 
-                return res.json(flight)
-            }
+            return res.json(flight)
 
         } catch (err) {
             return res.status(500).json({ status: 500, error: "internal server error" })
@@ -32,7 +27,7 @@ class FlightsController {
         let { startPosition, finishPosition, startDate, limit, page } = req.query
 
         if (limit === undefined) {
-            limit = 6
+            limit = 3
         }
 
         if (page === undefined) {
@@ -42,7 +37,17 @@ class FlightsController {
         let offset = page * limit - limit
         let flights
 
-        flights = await Flight.findAndCountAll({ limit: Number(limit), offset: Number(offset) })
+        if (!startPosition && !finishPosition && !startDate) {
+            flights = await Flight.findAndCountAll({ limit: Number(limit), offset: Number(offset) })
+        } else if (startPosition && !finishPosition && !startDate) {
+            flights = await Flight.findAndCountAll({ where: { startPosition: startPosition } }, { limit: Number(limit), offset: Number(offset) })
+        } else if (startPosition && finishPosition && !startDate) {
+            flights = await Flight.findAndCountAll({ where: { startPosition: startPosition, finishPosition: finishPosition } }, { limit: Number(limit), offset: Number(offset) })
+        } else if (startPosition && finishPosition && startDate) {
+            flights = await Flight.findAndCountAll({ where: { startPosition: startPosition, finishPosition: finishPosition, startData: startDate } }, { limit: Number(limit), offset: Number(offset) })
+        } else if (startDate && !startPosition && !finishPosition) {
+            flights = await Flight.findAndCountAll({ where: { startData: startDate } }, { limit: Number(limit), offset: Number(offset) })
+        }
 
         return res.json(flights)
     }
