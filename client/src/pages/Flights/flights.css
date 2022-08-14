@@ -5,29 +5,56 @@
     flex-direction:column;
 }
 
-.form-radio {
+.form-btn {
     display: flex;
+    margin-top: 20px;
 }
 
-.form-radio div {
+.form-btn div {
     display: flex;
+    flex-direction: column;
 }
 
-.form-radio div h3 {
-    color: rgb(77, 77, 77);
-}
-
-.form-radio div input {
-    width: 20px;
+.form-btn div button {
+    width: 200px;
+    height: 35px;
+    font-size: 17px;
+    border: 1px solid silver;
+    border-radius: 10px;
     cursor: pointer;
+    margin-right: 10px;
+}
+
+.form-btn div button:hover {
+    border: 1px solid #00c000;
+    background-color: #00c000;
+    color: #fff;
+}
+
+.first-active {
+    border: 1px solid #00c000;
+    background-color: #00c000;
+    color: #fff;
+}
+
+.btn-start {
+    background-color: #fff;
+    color: #000;
+    border: 1px solid silver;
 }
 
 .start {
     color: rgb(77, 77, 77);
     font-size:20px;
+    margin-top: 10px;
+    margin-bottom: 5px;
 }
 
 .form-inputs {
+    display: flex;
+}
+
+.form-inputs-finish {
     display: flex;
 }
 
@@ -35,6 +62,7 @@
     display: flex;
     flex-direction: column;
     width: 22%;
+    margin-right:5px;
 }
 
 .form-start input {
@@ -46,10 +74,19 @@
     color: rgb(77, 77, 77);
 }
 
+.form-start input:hover {
+    background-color: rgb(233, 233, 233);
+}
+
+.form-start-date input:hover {
+    background-color: rgb(233, 233, 233);
+}
+
 .form-start-date {
     display: flex;
     flex-direction: column;
     width: 18%;
+    margin-right: 5px;
 }
 
 .form-start-date input {
@@ -59,13 +96,34 @@
     font-size: 16px;
     padding: 5px 10px;
     color: rgb(77, 77, 77);
+    cursor: pointer;
 }
 
 .form-search {
     display: flex;
-    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 15%;
 }
 
+.form-search-none {
+    display: none;
+}
+
+.form-search button {
+    height: 35px;
+    background-color: #00d200;
+    color: #fff;
+    border: 1px solid #00d200;
+    border-radius: 10px;
+    font-size: 17px;
+    cursor: pointer;
+}
+
+.form-search button:hover {
+    background-color: #00c000;
+    transition: all 0.3s ease;
+}
 
 .flights-block {
     display: flex;
@@ -76,9 +134,7 @@
 
 .items-flight {
     width: 60%;
-    margin-top: 10px;
-    border: 1px solid silver;
-    border-radius: 5px;
+    margin-top: 20px;
 }
 
 .item-flight {
@@ -87,8 +143,10 @@
     justify-content: space-between;
     align-items: center;
     height: 110px;
-    border-bottom: 1px solid silver;
     padding: 5px 10px;
+    border: 1px solid silver;
+    border-radius: 5px;
+    margin-top: 5px;
 }
 
 .item-time {
@@ -172,6 +230,10 @@
 .page-more button:hover {
     background-color: #00c000;
     transition: all 0.3s ease;
+}
+
+.page-wrapper-none {
+    display: none;
 }
 
 .page-wrapper {

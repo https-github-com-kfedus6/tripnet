@@ -1,13 +1,12 @@
 import React from 'react'
 
 const Pagination = ({ flights, pagesArray, moreFlights, changePage, limit, page }) => {
-
     return (
         <div className='pages'>
             <div className={flights.count <= limit ? 'page-none' : 'page-more'}>
                 <button onClick={moreFlights}>Подивитися ще</button>
             </div>
-            <div className='page-wrapper'>
+            <div className={pagesArray.length === 1 ? 'page-wrapper-none' : 'page-wrapper'}>
                 {pagesArray.map(p => {
                     return (
                         <button

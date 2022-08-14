@@ -1,7 +1,7 @@
 import React from 'react';
 import { FaShoppingCart } from 'react-icons/fa';
 
-const FlightsItem = ({ item }) => {
+const FlightsItem = ({ item, currency }) => {
 
     return (
         <div className='item-flight'>
