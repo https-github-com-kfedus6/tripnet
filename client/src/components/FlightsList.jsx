@@ -1,8 +1,10 @@
 import React from 'react'
+import { useState } from 'react'
 import FlightsFormSort from './FlightsFormSort'
 import FlightsItem from './FlightsItem'
 
-const FlightsList = ({ currency, flights, setStartDate, setStartPosition, setFinishPosition, sortFlights }) => {
+const FlightsList = ({ flights, setStartDate, setStartPosition, setFinishPosition, sortFlights }) => {
+    const [check, setCheck] = useState(false)
 
     if (flights.length === 0) {
         return (
@@ -21,7 +23,7 @@ const FlightsList = ({ currency, flights, setStartDate, setStartPosition, setFin
                     <div className='items-flight'>
                         {flights.map(item => {
                             return (
-                                <FlightsItem key={item.id} item={item} currency={currency} />
+                                <FlightsItem key={item.id} item={item} />
                             )
                         })}
                     </div>
