@@ -8,7 +8,7 @@ export const fetchGetFlights = (data) => async (dispatch) => {
                 ...data
             }
         })
-        dispatch({ type: flightActionTypes.FETCH_GET_FLIGHT, payload: response.data.rows })
+        dispatch({ type: flightActionTypes.FETCH_GET_FLIGHT, payload: response.data })
     } catch (err) {
         console.log(err.message)
     }

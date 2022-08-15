@@ -20,7 +20,7 @@ const FlightsList = ({ flights, setStartDate, setStartPosition, setFinishPositio
                 />
                 <div className='flights-block'>
                     <div className='items-flight'>
-                        {flights.map(item => {
+                        {flights.rows.map(item => {
                             return (
                                 <FlightsItem key={item.id} item={item} flights={flights} />
                             )
