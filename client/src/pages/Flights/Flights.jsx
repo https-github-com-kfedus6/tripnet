@@ -14,9 +14,9 @@ const Flights = () => {
     const [limit, setLimit] = useState(3)
     const [page, setPage] = useState(1)
 
-    const { fetchGetFlights, fetchGetCurrency } = useAction()
+    const { fetchGetFlights } = useAction()
 
-    const { flights, currency } = useTypedSelector(state => state.flights)
+    const { flights } = useTypedSelector(state => state.flights)
 
     useEffect(() => {
         fetchGetFlights({
@@ -26,7 +26,6 @@ const Flights = () => {
             limit: limit,
             page: page
         })
-        fetchGetCurrency()
     }, [limit, page])
 
     useEffect(() => {
@@ -55,7 +54,6 @@ const Flights = () => {
     return (
         <div className='flights'>
             <FlightsList
-                currency={currency}
                 flights={flights}
                 sortFlights={sortFlights}
                 setStartDate={setStartDate}

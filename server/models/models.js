@@ -41,6 +41,7 @@ const Flight = sequelize.define("flight", {
     finishDate: { type: DataTypes.STRING },
     startTime: { type: DataTypes.STRING },
     finishTime: { type: DataTypes.STRING },
+    timeFlight: { type: DataTypes.STRING },
     description: { type: DataTypes.STRING }
 });
 

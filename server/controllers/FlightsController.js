@@ -4,7 +4,7 @@ const ErrorApi = require('../error/ErrorApi')
 class FlightsController {
     async postFlights(req, res) {
         try {
-            const { price, startPosition, finishPosition, startDate, finishDate, startTime, finishTime } = req.body
+            const { price, startPosition, finishPosition, startDate, finishDate, startTime, finishTime, timeFlight, countFreePlace } = req.body
 
             const flight = await Flight.create({
                 price: price,
@@ -13,7 +13,9 @@ class FlightsController {
                 startData: startDate,
                 finishDate: finishDate,
                 startTime: startTime,
-                finishTime: finishTime
+                finishTime: finishTime,
+                timeFlight: timeFlight,
+                countFreePlace: countFreePlace
             })
 
             return res.json(flight)

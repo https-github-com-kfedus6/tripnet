@@ -1,8 +1,12 @@
-.flights-sort-form {
-    display: flex;
+.form-flights-container {
+    display: flex;  
     justify-content: center;
-    align-content: center;
+    align-items: center;
     flex-direction:column;
+}
+
+.flights-sort-form {
+    width: 85%;
 }
 
 .form-btn {
@@ -10,12 +14,7 @@
     margin-top: 20px;
 }
 
-.form-btn div {
-    display: flex;
-    flex-direction: column;
-}
-
-.form-btn div button {
+.first-btn button {
     width: 200px;
     height: 35px;
     font-size: 17px;
@@ -25,47 +24,64 @@
     margin-right: 10px;
 }
 
-.form-btn div button:hover {
+.first-btn button:hover {
     border: 1px solid #00c000;
     background-color: #00c000;
     color: #fff;
 }
 
-.first-active {
+.second-btn button {
+    width: 200px;
+    height: 35px;
+    font-size: 17px;
+    border: 1px solid silver;
+    border-radius: 10px;
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+.second-btn button:hover {
     border: 1px solid #00c000;
     background-color: #00c000;
     color: #fff;
 }
 
-.btn-start {
+.travel-active {
+    border: 1px solid #00c000;
+    background-color: #00c000;
+    color: #fff;
+}
+
+.travel {
     background-color: #fff;
     color: #000;
     border: 1px solid silver;
 }
 
-.start {
+.form-flights {
+    display: flex;
+    margin-top: 20px;
+}
+
+.form-block-position {
+    display: flex;
+    width: 100%;
+}
+
+.form-position {
+    display: flex;
+    flex-direction: column;
+    margin-right:5px;
+    width: 50%;
+}
+
+.form-position span {
     color: rgb(77, 77, 77);
-    font-size:20px;
-    margin-top: 10px;
+    font-size:19px;
     margin-bottom: 5px;
 }
 
-.form-inputs {
-    display: flex;
-}
-
-.form-inputs-finish {
-    display: flex;
-}
-
-.form-start {
-    display: flex;
-    flex-direction: column;
-    width: 22%;
-    margin-right:5px;
-}
-
-.form-start input {
+.form-position input {
     height: 25px;
     border: 1px solid silver;
     border-radius: 10px;
@@ -74,22 +90,37 @@
     color: rgb(77, 77, 77);
 }
 
-.form-start input:hover {
-    background-color: rgb(233, 233, 233);
+.form-position input:hover {
+    background-color:rgb(252, 252, 252);
 }
 
-.form-start-date input:hover {
-    background-color: rgb(233, 233, 233);
+.form-date input:hover {
+    background-color: rgb(252, 252, 252);
 }
 
-.form-start-date {
+.form-block-date {
+    display: flex;
+    width: 100%;
+}
+
+.form-date {
     display: flex;
     flex-direction: column;
-    width: 18%;
     margin-right: 5px;
+    width: 100%;
 }
 
-.form-start-date input {
+.form-date-none {
+    display: none;
+}
+
+.form-date span {
+    color: rgb(77, 77, 77);
+    font-size:19px;
+    margin-bottom: 5px;
+}
+
+.form-date input {
     height: 25px;
     border: 1px solid silver;
     border-radius: 10px;
@@ -99,15 +130,76 @@
     cursor: pointer;
 }
 
-.form-search {
+.dropdown {
     display: flex;
     justify-content: center;
-    flex-direction: column;
-    width: 15%;
+    align-items: flex-end;
+    width:100%;
+    position: relative;
 }
 
-.form-search-none {
-    display: none;
+.dropdown:hover .dropdown-list {
+    opacity: 1;
+    visibility: visible;
+    background-color: rgb(255, 255, 255);
+}
+
+.dropdown-select {
+    height: 25px;
+    padding: 5px 10px;
+    margin-right: 5px;
+    border: 1px solid silver;
+    border-radius: 10px;
+    background-color: #fff;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 17px;
+    cursor: pointer;
+}
+
+.dropdown-list{
+    width: 300px;
+    height: 150px;
+    border-radius: 10px;
+    border: 1px solid silver;
+    background-color: #fff;
+    position: absolute;
+    top:110%;
+    left: -30%;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.2s linear, visibility 0.2s linear;
+}
+
+.dropdown-list-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 10px;
+    font-size: 18px;
+}
+
+.dropdown-list-item div {
+    display: flex;
+    flex-direction: column;
+    margin-top: 5px;
+}
+
+.dropdown-list-item div input {
+    width:50px;
+}
+
+.dropdown-list-item:nth-child(1) {
+    border-bottom: 1px solid silver;
+}
+
+.form-search {
+    display: flex;
+    justify-content: flex-end;
+    flex-direction: column;
+    width: 100%;
 }
 
 .form-search button {
@@ -137,12 +229,16 @@
     margin-top: 20px;
 }
 
+.item-block {
+    width: 70%;
+}
+
 .item-flight {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    height: 110px;
+    height: 140px;
     padding: 5px 10px;
     border: 1px solid silver;
     border-radius: 5px;
@@ -156,12 +252,16 @@
     font-size: 24px;
 }
 
+.item-time span:nth-child(2) {
+    color: rgb(128, 128, 128);
+}
+
 .item-date {
     display: flex;
     justify-content: space-between;
     width: 90%;
     font-size: 15px;
-    color: slategray;
+    color: rgb(128, 128, 128);
 }
 
 .item-position {
@@ -173,14 +273,22 @@
 
 .btn-buy {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+}
+
+.free-place {
+    margin-bottom: 5px;
+}
+
+.free-place span {
+    color: #c64300;
 }
 
 .btn-buy button {
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    width: 150px;
+    width: 180px;
     height: 35px;
     font-size: 18px;
     border-radius: 15px;
@@ -273,27 +381,49 @@
 
 @media (max-width: 992px) {
     .items-flight {
-        width: 70%;
+        width: 99%;
     }
 
     .page-more {
         width: 70%;
+    }
+
+    .flights-sort-form {
+        width: 99%;
+    }
+
+    .form-flights {
+        flex-direction: column;
+    }
+
+    .form-position {
+        width: 50%;
+    }
+
+    .form-date,
+    .form-people,
+    .form-search {
+        width: 100%;
     }
 }
 
 @media (max-width: 768px) {
     .items-flight {
-        width: 80%;
+        width: 99%;
     }
 
     .page-more {
         width: 80%;
     }
+
+    .form-flights {
+        flex-direction: column;
+        }
 }
 
 @media (max-width: 576px) {
     .items-flight {
-        width: 90%;
+        width: 99%;
     }
 
     .page-more {
@@ -312,5 +442,39 @@
         height: 40px;
         font-size: 17px;
         border-radius: 20px;
+    }
+
+    .form-block-position {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .form-block-position div {
+        margin-bottom: 5px;
+    }
+
+    .form-position {
+        width: 99%;
+    }
+
+    .form-block-date {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .form-block-date div {
+        margin-bottom: 5px;
+    }
+
+    .form-date,
+    .form-people,
+    .form-search {
+        width: 99%;
+    }
+
+    .form-btn {
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
 }
