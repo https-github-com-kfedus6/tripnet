@@ -12,7 +12,7 @@ body{
 @media screen and (min-width: 720px) {
 
     .logo img{
-        width: 40%;
+        width: 30%;
         cursor: pointer;
     }
     .header__main{
@@ -24,13 +24,17 @@ body{
         
     }
     .header__components ul{
-        display: flex;
+        display: inline-block;
         flex-direction: row;
     }
 
     .header__components ul li{
-        display: inline-block;
+        display: inline-block;      
         margin-right: 20px;
+    }
+    .header__components ul li a{
+        text-decoration: none;
+        color: black;
     }
 
     .header__burger{
@@ -49,7 +53,7 @@ body{
         justify-content: space-between;
         background-color: #00d200;
     }
-    .header__components ul{
+    .header__components{
         display: none;
         flex-direction: row;
     }
@@ -81,17 +85,18 @@ body{
     }
     .logo img{
         height: auto;
-        width: 100%;
+        width: 50%;
     }
 }
 .burger__menu{
     display: flex;
+    flex-direction: column;
     position: fixed;
     height: 100%;
     width: 70%;
     top: 55px;
     left: 100%;
-    background-color: black;
+    background-color: #00d200;
     z-index: 50;
     transition: 1s;
 }
@@ -101,7 +106,7 @@ body{
     height: 100%;
     width: 70%;
     top: 55px;
-    background-color: rgb(20, 91, 29);
+    background-color: #e5dcdc;
     z-index: 50;
     transition: 1s;
     left: 30%;
@@ -114,4 +119,22 @@ body{
     display: inline-block;
     margin-top: 25%;
     font-size: 200%;
+}
+.burger__menu ul li a{
+    text-decoration: none;
+    color: black;
+}
+.active{
+    border-bottom: 4px solid white;
+}
+.home__main{
+    display: flex;
+    justify-content: center;
+}
+.params__flight{
+    display: flex;
+}
+.direction{
+    display: flex;
+    flex-direction: row;
 }

@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
 import FlightsList from '../../components/FlightsList';
 import Pagination from '../../components/UI/pagination/Pagination';
 import { useAction } from '../../hooks/useAction';
-import { useTypedSelector } from '../../hooks/useTypedSelector';
 import { getPageCount, getPagesArray } from '../../utils/page';
 import '../Flights/flights.css';
 
@@ -16,7 +16,7 @@ const Flights = () => {
 
     const { fetchGetFlights } = useAction()
 
-    const { flights } = useTypedSelector(state => state.flights)
+    const { flights } = useSelector(state => state.flights)
 
     useEffect(() => {
         fetchGetFlights({

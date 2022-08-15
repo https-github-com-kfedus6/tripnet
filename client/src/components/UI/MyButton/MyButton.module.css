@@ -1,0 +1,9 @@
+.MyButtonStandart {
+    background-color: #00d200;
+    width:15vw;
+    height: 4vw;
+    border-radius: 5px;
+    font-size: 3vw;
+    font-weight: 600;
+    text-align: center;
+  }

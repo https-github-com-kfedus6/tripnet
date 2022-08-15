@@ -1,10 +1,10 @@
 import React from 'react';
-import { useTypedSelector } from '../../hooks/useTypedSelector';
+import ParamsFlight from './ParamsFlight/ParamsFlight';
 
 const Home = () => {
     return (
-        <div>
-            Home
+        <div className="home__main">
+            <ParamsFlight/>
         </div>
     )
 }

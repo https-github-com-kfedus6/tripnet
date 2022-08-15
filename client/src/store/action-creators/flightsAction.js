@@ -8,8 +8,13 @@ export const fetchGetFlights = (data) => async (dispatch) => {
                 ...data
             }
         })
-        dispatch({ type: flightActionTypes.FETCH_GET_FLIGHT, payload: response.data })
+        dispatch({ type: flightActionTypes.FETCH_GET_FLIGHT, payload: response.data.rows });
+        
     } catch (err) {
-        console.log(err.message)
+        console.log(err.message);
     }
+}
+
+export const setLanguage=(language)=>(dispatch)=>{
+    
 }
