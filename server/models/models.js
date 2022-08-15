@@ -5,6 +5,7 @@ const User = sequelize.define("user", {
     id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
     nick: { type: DataTypes.INTEGER, unique: true },
     email: { type: DataTypes.STRING },
+    telephone: { type: DataTypes.STRING },
     isAdmin: { type: DataTypes.STRING, defaultValue: false },
     image: { type: DataTypes.STRING }
 });

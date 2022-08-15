@@ -3,7 +3,12 @@
         "first_link": "Головна",
         "second_link": "Всі рейси",
         "third_link": "Категорія рейсів",
-        "fourth_link": "Рейс",
+        "fourth_link": "про нас",
         "registering": "реєстрація"
+    },
+    "home":{
+        "search":"найти",
+        "whence":"звідки",
+        "whitherto":"куди"
     }
 }

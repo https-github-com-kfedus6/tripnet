@@ -7,31 +7,53 @@ body{
     margin: 0 auto;
     padding: 0;
 }
+.logo{
+    display: flex;
+}
+
+
+
 
 @media screen and (min-width: 720px) {
-
     .logo img{
-        width: 40%;
+        width: 10vw;
         cursor: pointer;
     }
+
     .header__main{
         background-color: #00d200;
         display: flex;
         align-items: center;
         flex-direction: row;
         justify-content: space-around;
-        
+        width: 100%;
+    }
+    .header__components{
+        display: flex;
+        width: 250%;
+        flex-direction: row;
+        justify-content: space-around;
+        align-items: center;
     }
     .header__components ul{
-        display: flex;
+        display: inline-block;
         flex-direction: row;
     }
 
     .header__components ul li{
         display: inline-block;
-        margin-right: 20px;
+        margin-right: 15px;      
     }
-
+    .header__components ul li a{
+        display: flex;
+        flex-direction: row;
+        font-size: 115%;
+        text-decoration: none;
+        color: black;
+    }
+    .register{
+        font-size: 150%;
+    }
     .header__burger{
         display: none;
     }
@@ -43,12 +65,16 @@ body{
 }
 
 @media screen and (max-width: 768px) {
+    .logo img{
+        width: 20vw;
+        cursor: pointer;
+    }
     .header__main{
         display: flex;
         justify-content: space-between;
         background-color: #00d200;
     }
-    .header__components ul{
+    .header__components{
         display: none;
         flex-direction: row;
     }
@@ -73,24 +99,16 @@ body{
     .header__registering{
         display: none;
     }
-    .logo{
-        display: flex;
-        width: 150px;
-        cursor: pointer;
-    }
-    .logo img{
-        height: auto;
-        width: 100%;
-    }
 }
 .burger__menu{
     display: flex;
+    flex-direction: column;
     position: fixed;
     height: 100%;
-    width: 70%;
+    width: 80%;
     top: 55px;
     left: 100%;
-    background-color: black;
+    background-color: #00d200;
     z-index: 50;
     transition: 1s;
 }
@@ -98,12 +116,12 @@ body{
     display: flex;
     position: fixed;
     height: 100%;
-    width: 70%;
+    width: 80%;
     top: 55px;
-    background-color: rgb(20, 91, 29);
+    background-color: #e5dcdc;
     z-index: 50;
     transition: 1s;
-    left: 30%;
+    left: 20%;
 }
 .burger__menu ul{
     display: flex;
@@ -111,6 +129,28 @@ body{
 }
 .burger__menu ul li{
     display: inline-block;
-    margin-top: 25%;
-    font-size: 200%;
+    margin-bottom: 25%;
+    font-size: 150%;
+}
+.burger__menu ul li a{
+    text-decoration: none;
+    color: black;
+}
+.active{
+    border-bottom: 4px solid white;
+}
+.home__main{
+    display: flex;
+    justify-content: center;
+}
+.params__flight{
+    display: flex;
+}
+.direction{
+    display: flex;
+    flex-direction: row;
+}
+.register a{
+    text-decoration: none;
+    color: black;
 }
