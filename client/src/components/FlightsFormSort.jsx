@@ -66,7 +66,7 @@ const FlightsFormSort = ({ setStartDate, setStartPosition, setFinishPosition, so
                                         <span>0-14 років</span>
                                     </div>
                                     <div>
-                                        <input type="number" />
+                                        <span>-</span>
                                     </div>
                                 </div>
                             </div>
