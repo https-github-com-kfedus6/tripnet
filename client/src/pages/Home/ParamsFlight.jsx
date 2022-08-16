@@ -5,7 +5,7 @@ const ParamsFlight = () => {
   const { t, i18n }=useTranslation();
   return (
     <div className='params__flight'>
-      
+      dsd
     </div>
   )
 }

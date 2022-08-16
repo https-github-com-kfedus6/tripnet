@@ -6,9 +6,25 @@
         "fourth_link": "про нас",
         "registering": "реєстрація"
     },
-    "home":{
+    "flight":{
+        "one_way_trip":"подорож в один бік",
+        "return_trip":"зворотна подорож",
         "search":"найти",
         "whence":"звідки",
-        "whitherto":"куди"
+        "whitherto":"куди",
+        "departure":"відправлення",
+        "return":"повернення",
+        "passengers":"пасажири",
+        "adults":"дорослі",
+        "older_15_years":"cтарше 15 років",
+        "younger_14_years":"молодші 14 років"
+    },
+    "authorize":{
+        "authorize":"авторизація",
+        "register":"зареєструватися",
+        "log":"увійти",
+        "or":"або",
+        "password":"пароль",
+        "number_phone":"номер телефона"
     }
 }

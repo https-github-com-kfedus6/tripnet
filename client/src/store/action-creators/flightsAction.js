@@ -13,3 +13,4 @@ export const fetchGetFlights = (data) => async (dispatch) => {
         console.log(err.message)
     }
 }
+

@@ -9,7 +9,7 @@ module.exports = async (req, resp, next) => {
         }
         const result = await jwt.verify(token, process.env.SECRET_KEY);
         if (result == undefined) {
-            return resp.status(400).json({ status: 400, message: "token is not true" });
+            return resp.status(200).json({ status: 400, message: "token is not true" });
         }
         req.user = result
         next()

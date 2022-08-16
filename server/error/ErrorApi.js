@@ -8,27 +8,27 @@ class ErrorApi extends Error {
 
     static badRequest(message) {
         console.log(message)
-        return new ErrorApi(200, { status: 400 });
+        return new ErrorApi(200, { status: 400,message });
     }
 
     static internal(message) {
         console.log(message)
-        return new ErrorApi(200, { status: 500 });
+        return new ErrorApi(200, { status: 500,message });
     }
 
     static noAuth(message) {
         console.log(message)
-        return new ErrorApi(200, { status: 401 });
+        return new ErrorApi(200, { status: 401,mes:"you are not an admin" });
     }
 
     static forbidden(message) {
         console.log(message)
-        return new ErrorApi(200, { status: 403 })
+        return new ErrorApi(200, { status: 403,message })
     }
 
     static notFound(message) {
         console.log(message)
-        return new ErrorApi(200, { message: 404 })
+        return new ErrorApi(200, { status: 404,message })
     }
 }
 

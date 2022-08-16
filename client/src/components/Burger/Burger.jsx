@@ -6,7 +6,7 @@ import { useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import SetLanguage from '../SetLanguage';
 
-const Burger = () => {
+const Burger = ({setIsShowRegister}) => {
   const { t, i18n } = useTranslation()
   const [isBurgerClick,setIsBurgerClick]=useState(false);
   const {is_auth,user}=useSelector(state=>state.user)
@@ -16,8 +16,12 @@ const Burger = () => {
         <SetLanguage/>
         <ul onClick={()=>{setIsBurgerClick(false)}}>  
           <li>
-            {is_auth?<NavLink to={"/user/"+user.nick}>{user.nick}</NavLink>:
-            <NavLink to="/regisering">{t("header.registering")}</NavLink>}
+            {is_auth?
+              <NavLink to={"/user/"+user.nick}>{user.nick}</NavLink>
+              :
+              <div onClick={()=>setIsShowRegister(true)}>
+                {t("header.registering")}
+              </div>}
           </li>
           <li><NavLink to="/">{t('header.first_link')}</NavLink></li>
           <li><NavLink to="/flights">{t('header.second_link')}</NavLink></li>

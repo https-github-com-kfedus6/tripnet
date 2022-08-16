@@ -6,9 +6,27 @@
         "fourth_link": "о нас",
         "registering": "регистрация"
     },
-    "home":{
-        "search":"найти",
-        "whence":"откуда",
-        "whitherto":"куда"
+    "flight":{
+       "one_way_trip":"одностороннее путешествие",
+       "return_trip":"обратное путешествие",
+       "search":"найти",
+       "whence":"откуда",
+       "whitherto":"куда",
+       "departure":"отправление",
+       "return":"возвращение",
+       "passengers":"пассажиры",
+       "adults":"взрослые",
+       "older_15_years":"cтарше 15 лет",
+       "younger_14_years":"младше 14 лет"
+    },
+    "authorize":{
+        "authorize":"авторизация",
+        "register":"Зарегистрироваться",
+        "log":"войти",
+        "or":"или",
+        "password":"пароль",
+        "number_phone":"номер телефону"
     }
+    
+
 }
