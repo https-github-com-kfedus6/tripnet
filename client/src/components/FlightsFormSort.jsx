@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { AiOutlineCaretDown } from 'react-icons/ai';
 
-const FlightsFormSort = ({ setStartDate, setStartPosition, setFinishPosition, sortFlights }) => {
+const FlightsFormSort = ({ setStartDate, setStartPosition, setFinishPosition, sortFlights, sumOld, setSumOld, sumYoung, setSumYoung }) => {
     const [check, setCheck] = useState(false)
 
     const firstCheck = (event) => {
@@ -54,19 +54,25 @@ const FlightsFormSort = ({ setStartDate, setStartPosition, setFinishPosition, so
                                 <div className='dropdown-list-item'>
                                     <div>
                                         <strong>Дорослі</strong>
+                                        <br />
                                         <span>Cтарше 15 років</span>
                                     </div>
-                                    <div>
-                                        <input type="number" />
+                                    <div className='count-place'>
+                                        <div className='minus' onClick={() => setSumOld(sumOld - 1)}>-</div>
+                                        <div className='sum' value={sumOld}>{sumOld}</div>
+                                        <div className='plus' onClick={() => setSumOld(sumOld + 1)}>+</div>
                                     </div>
                                 </div>
                                 <div className='dropdown-list-item'>
                                     <div>
                                         <strong>Діти</strong>
+                                        <br />
                                         <span>0-14 років</span>
                                     </div>
-                                    <div>
-                                        <span>-</span>
+                                    <div className='count-place'>
+                                        <div className='minus' onClick={() => setSumYoung(sumYoung - 1)}>-</div>
+                                        <div className='sum' value={sumYoung}>{sumYoung}</div>
+                                        <div className='plus' onClick={() => setSumYoung(sumYoung + 1)}>+</div>
                                     </div>
                                 </div>
                             </div>

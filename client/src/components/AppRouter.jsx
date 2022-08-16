@@ -6,6 +6,7 @@ import Flights from '../pages/Flights/Flights.jsx'
 import FlightsCategory from '../pages/FlightsCategory';
 import Flight from '../pages/Flight';
 import AboutUs from '../pages/AboutUs/AboutUs';
+import FormBuy from '../components/FormBuy';
 
 const AppRouter = () => {
     return (
@@ -14,8 +15,9 @@ const AppRouter = () => {
                 <Route index element={<Home />} />
                 <Route path='flights' element={<Flights />} />
                 <Route path='flightsCategory' element={<FlightsCategory />} />
-                <Route path='flight' element={<Flight />} />
-                <Route path='aboutUs' element={<AboutUs/>}/>
+                <Route path='flight/:id' element={<Flight />} />
+                <Route path='formBuy' element={<FormBuy />} />
+                <Route path='aboutUs' element={<AboutUs />} />
                 <Route path='*' element={<div>error</div>} />
             </Route>
         </Routes>

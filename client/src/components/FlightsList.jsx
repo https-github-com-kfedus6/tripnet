@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import FlightsFormSort from './FlightsFormSort'
 import FlightsItem from './FlightsItem'
 
-const FlightsList = ({ flights, setStartDate, setStartPosition, setFinishPosition, sortFlights }) => {
+const FlightsList = ({ flights, setStartDate, setStartPosition, setFinishPosition, sortFlights, sumOld, setSumOld, sumYoung, setSumYoung }) => {
     const [check, setCheck] = useState(false)
 
     if (flights.length === 0) {
@@ -17,6 +17,10 @@ const FlightsList = ({ flights, setStartDate, setStartPosition, setFinishPositio
                     setStartPosition={setStartPosition}
                     setFinishPosition={setFinishPosition}
                     sortFlights={sortFlights}
+                    sumOld={sumOld}
+                    setSumOld={setSumOld}
+                    sumYoung={sumYoung}
+                    setSumYoung={setSumYoung}
                 />
                 <div className='flights-block'>
                     <div className='items-flight'>

@@ -1,7 +1,10 @@
 import React from 'react';
 import { FaShoppingCart } from 'react-icons/fa';
+import { useNavigate } from 'react-router-dom';
 
 const FlightsItem = ({ item }) => {
+    const navigate = useNavigate()
+
     return (
         <div className='item-flight'>
             <div className='item-time'>
@@ -22,10 +25,10 @@ const FlightsItem = ({ item }) => {
                     <span>Залишилось всього {item.countFreePlace} місце!</span>
                 </div>
                 <div>
-                    <button><div><FaShoppingCart /></div><span>{item.price}.00 UAH</span></button>
+                    <button onClick={() => navigate('/formBuy')}><div><FaShoppingCart /></div><span>{item.price}.00 UAH</span></button>
                 </div>
             </div>
-        </div>
+        </div >
     )
 }
 

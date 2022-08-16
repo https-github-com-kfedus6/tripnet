@@ -11,8 +11,11 @@ const Flights = () => {
     const [finishPosition, setFinishPosition] = useState('')
     const [startDate, setStartDate] = useState('')
     const [totalCount, setTotalCount] = useState()
-    const [limit, setLimit] = useState(3)
+    const [limit, setLimit] = useState(10)
     const [page, setPage] = useState(1)
+
+    const [sumYoung, setSumYoung] = useState(0)
+    const [sumOld, setSumOld] = useState(0)
 
     const { fetchGetFlights } = useAction()
 
@@ -23,6 +26,7 @@ const Flights = () => {
             startPosition: startPosition,
             finishPosition: finishPosition,
             startDate: startDate,
+            countFreePlace: sumYoung + sumOld,
             limit: limit,
             page: page
         })
@@ -39,7 +43,7 @@ const Flights = () => {
     }
 
     const moreFlights = () => {
-        setLimit(limit + 3)
+        setLimit(limit + 10)
     }
 
     const sortFlights = (event) => {
@@ -47,7 +51,10 @@ const Flights = () => {
         fetchGetFlights({
             startPosition: startPosition,
             finishPosition: finishPosition,
-            startDate: startDate
+            startDate: startDate,
+            countFreePlace: sumYoung + sumOld,
+            limit: limit,
+            page: page
         })
     }
 
@@ -59,6 +66,10 @@ const Flights = () => {
                 setStartDate={setStartDate}
                 setStartPosition={setStartPosition}
                 setFinishPosition={setFinishPosition}
+                sumOld={sumOld}
+                setSumOld={setSumOld}
+                sumYoung={sumYoung}
+                setSumYoung={setSumYoung}
             />
             <Pagination
                 flights={flights}
