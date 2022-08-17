@@ -25,6 +25,17 @@
         "log":"увійти",
         "or":"або",
         "password":"пароль",
-        "number_phone":"номер телефона"
+        "number_phone":"номер телефона",
+        "name":"імя",
+        "email_is_busy":"почта зайнята",
+        "invalid_name":"некоректне ім'я",
+        "mail_must_be_genuine":"почта повинна бути справжня",
+        "invalid_telephone":"не коректний номер телефону, стадартний вигляд: +380544462842 або 0885540581",
+        "passwords_do_not_match":"паролі не співпадають",
+        "password_must_be_longer_than_8_characters":"пароль повинен бути більше 8 символів",
+        "invalid_pass":"не коректний пароль",
+        "you_have_successfully_registered":"ви успішно зареєструвалися",
+        "email_or_password_is_invalid":"не вірний пароль або почта",
+        "invalid_email":"не вірна почта"
     }
 }

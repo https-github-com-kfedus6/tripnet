@@ -8,7 +8,7 @@ class ErrorApi extends Error {
 
     static badRequest(message) {
         console.log(message)
-        return new ErrorApi(200, { status: 400,message });
+        return new ErrorApi(200, { status: 400,message:message });
     }
 
     static internal(message) {

@@ -9,15 +9,15 @@ import SetLanguage from '../SetLanguage';
 const Burger = ({setIsShowRegister}) => {
   const { t, i18n } = useTranslation()
   const [isBurgerClick,setIsBurgerClick]=useState(false);
-  const {is_auth,user}=useSelector(state=>state.user)
+  const {is_login,user}=useSelector(state=>state.user)
   return (
     <>
       <div className={isBurgerClick?"burger__menu active":"burger__menu"}>  
         <SetLanguage/>
         <ul onClick={()=>{setIsBurgerClick(false)}}>  
           <li>
-            {is_auth?
-              <NavLink to={"/user/"+user.nick}>{user.nick}</NavLink>
+            {is_login?
+              <NavLink to={"/user/"+user.name}>{user.name}</NavLink>
               :
               <div onClick={()=>setIsShowRegister(true)}>
                 {t("header.registering")}

@@ -1,1 +1,38 @@
-//Action
+import { $authHost, $host } from "../../http"
+import { userActionTypes } from "../reducers/userReducer";
+import jwtDecode from "jwt-decode"
+
+export const Register=(name,email,telephone,password)=>async(dispatch)=>{
+    try{
+        const res=await $host.post('api/user/add',{name,email,telephone,password});
+        if(res.data.status==200){
+            const user=await jwtDecode(res.data.token);
+            localStorage.setItem("token",res.data.token);
+            dispatch({type:userActionTypes.AUTHORIZE_USER_SUCCESSFUL,payload:user});
+        }
+        else dispatch({type:userActionTypes.REGISTER_USER_ERROR,payload:res.data.status});
+    }catch(err){
+        dispatch({type:userActionTypes.REGISTER_USER,action:500});
+    }
+}
+
+export const Authorize=(email,password)=>async(dispatch)=>{
+    const res=await $host.post("api/user/authorize",{email,password});
+    if(res.status==200){
+        const user=await jwtDecode(res.data.token);
+        localStorage.setItem("token",res.data.token);
+        dispatch({type:userActionTypes.AUTHORIZE_USER_SUCCESSFUL,payload:user});
+    }else dispatch({type:userActionTypes.REGISTER_USER_ERROR,payload:res.data.status});
+}
+
+export const IsAuthorize=()=>async(dispatch)=>{
+    let token=localStorage.getItem("token");
+    if(token!=null){
+        const res=await $host.post("api/user/isAuthorize",{token});
+        if(res.data.status==200){
+            let user=await jwtDecode(res.data.token);
+            localStorage.setItem("token",res.data.token);
+            dispatch({type:userActionTypes.AUTHORIZE_USER_SUCCESSFUL,payload:user});
+        }
+    }
+}

@@ -10,7 +10,7 @@ import Authorize from '../pages/Authorize/Authorize';
 
 const Header = () => {
     const { t, i18n } = useTranslation()
-    const {is_auth,user}=useSelector(state=>state.user)
+    const {is_login,user}=useSelector(state=>state.user)
     const [isShow,setIsShow]=useState(false)
     return (
         <div className='header__main'>
@@ -22,7 +22,7 @@ const Header = () => {
                     <li><NavLink to="/flightsCategory">{t('header.third_link')}</NavLink></li>
                     <li><NavLink to="/aboutUs">{t('header.fourth_link')}</NavLink></li>
                 </ul>
-                    {is_auth?<div className='user__nick'><NavLink to={"/user/"+user.nick}>{user.nick}</NavLink></div>:
+                    {is_login?<div className='user__nick'><NavLink to={"/user/"+user.name}>{user.name}</NavLink></div>:
                     <div onClick={()=>{setIsShow(!isShow)}} className="register">
                         {t("header.registering")}
                     </div>}

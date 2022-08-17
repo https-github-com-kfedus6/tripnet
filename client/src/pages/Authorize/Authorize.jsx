@@ -22,7 +22,7 @@ const Authorize = ({isShow,setIsShow}) => {
             {t("authorize.log")}
           </div>
         </div>
-        {isRegister?<Register/>:<Log/>}
+        {isRegister?<Register close={setIsShow}/>:<Log close={setIsShow}/>}
       </div>
     </div>
   )

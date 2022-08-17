@@ -7,8 +7,14 @@ import FlightsCategory from '../pages/FlightsCategory';
 import Flight from '../pages/Flight';
 import AboutUs from '../pages/AboutUs/AboutUs';
 import FormBuy from '../components/FormBuy';
+import { useEffect } from 'react';
+import { useAction } from '../hooks/useAction';
 
 const AppRouter = () => {
+    const {IsAuthorize}=useAction();
+    useEffect(()=>{
+        IsAuthorize();
+    },[])
     return (
         <Routes>
             <Route path='/' element={<Layout />}>
