@@ -11,10 +11,10 @@ import { useEffect } from 'react';
 import { useAction } from '../hooks/useAction';
 
 const AppRouter = () => {
-    const {IsAuthorize}=useAction();
-    useEffect(()=>{
+    const { IsAuthorize } = useAction();
+    useEffect(() => {
         IsAuthorize();
-    },[])
+    }, [])
     return (
         <Routes>
             <Route path='/' element={<Layout />}>
@@ -22,7 +22,7 @@ const AppRouter = () => {
                 <Route path='flights' element={<Flights />} />
                 <Route path='flightsCategory' element={<FlightsCategory />} />
                 <Route path='flight/:id' element={<Flight />} />
-                <Route path='formBuy' element={<FormBuy />} />
+                <Route path='formBuy/:countOld/:countYoung' element={<FormBuy />} />
                 <Route path='aboutUs' element={<AboutUs />} />
                 <Route path='*' element={<div>error</div>} />
             </Route>

@@ -263,7 +263,7 @@
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    height: 140px;
+    height: 150px;
     padding: 5px 10px;
     border: 1px solid silver;
     border-radius: 5px;
@@ -302,12 +302,32 @@
 }
 
 .btn-buy {
+    width: 100%;
     display: flex;
-    flex-direction: column;
+    justify-content: space-around;
+}
+
+.btn-buy div:nth-child(1) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.btn-buy div:nth-child(1) a{
+    color: #000;
+    text-decoration: none;
+    font-size: 17px;
+}
+
+.btn-buy div:nth-child(1) a:hover {
+    color: #00c000;
+    text-decoration: underline;
 }
 
 .free-place {
-    margin-bottom: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .free-place span {
@@ -316,7 +336,7 @@
 
 .btn-buy button {
     display: flex;
-    justify-content: flex-start;
+    justify-content: center;
     align-items: center;
     width: 180px;
     height: 35px;
@@ -408,6 +428,149 @@
     font-weight: bold;
 }
 
+.container-forms {
+    background-color: rgb(245, 245, 245);
+}
+
+.form-buy {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.form-btn-back {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    margin-top: 20px;
+}
+
+.form-block-ticket {
+    width: 70%;
+    border: 1px solid silver;
+    margin-top: 10px;
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 10px 10px;
+}
+
+.number-block {
+    display: flex;
+}
+
+.number-block div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 30px;
+    height: 30px;
+    background-color: #00c000;
+    font-size: 30px;
+    color: #fff;
+    border-radius: 10px;
+}
+
+.number-block span:nth-child(2) {
+    font-size: 28px;
+    margin-left: 10px;
+} 
+
+.item-old {
+    margin-top: 20px;
+}
+
+.title-item {
+    font-size: 22px;
+    margin-bottom: 5px;
+}
+
+.item-inputs {
+    display: flex;
+    margin-bottom: 10px;
+}
+
+.item-input-name {
+    display:flex;
+    flex-direction: column;
+    margin-right: 10px;
+    width: 50%;
+}
+
+.item-input-name span {
+    color: rgb(77, 77, 77);
+    font-size: 21px;
+    margin-bottom: 4px;
+}
+
+.item-input-name input {
+    height: 30px;
+    border-radius: 10px;
+    border: 1px solid silver;
+    padding: 2px 6px;
+}
+
+.item-input-surename {
+    display:flex;
+    flex-direction: column;
+    width: 50%;
+}
+
+.item-input-surename span {
+    color: rgb(77, 77, 77);
+    font-size: 21px;
+    margin-bottom: 4px;
+}
+
+.item-input-surename input {
+    height: 30px;
+    border-radius: 10px;
+    border: 1px solid silver;
+    padding: 2px 6px;
+}
+
+.margin {
+    margin-top: 20px;
+}
+
+.item-young {
+    margin-bottom: 10px;
+}
+
+.item-input-born div:nth-child(1) span {
+    color: rgb(77, 77, 77);
+    font-size: 20px;
+}
+
+.item-input-born div:nth-child(1) {
+    margin-bottom:4px;
+}
+
+.item-input-date-month-year input:nth-child(1) {
+    width: 15%;
+    height: 25px;
+    padding: 5px 10px;
+    border: 1px solid silver;
+    border-right: none;
+    border-top-left-radius:10px;
+    border-bottom-left-radius:10px;
+}
+
+.item-input-date-month-year input:nth-child(2) {
+    width: 15%;
+    height: 25px;
+    padding: 5px 10px;
+    border: 1px solid silver;
+    border-right: none;
+}
+
+.item-input-date-month-year input:nth-child(3) {
+    width: 20%;
+    height: 25px;
+    padding: 5px 10px;
+    border: 1px solid silver;
+    border-top-right-radius:10px;
+    border-bottom-right-radius:10px;
+}
 
 @media (max-width: 992px) {
     .items-flight {
@@ -441,6 +604,10 @@
         top:110%;
         left: 0;
     }
+
+    .form-block-ticket {
+        width: 90%;
+    }
 }
 
 @media (max-width: 768px) {
@@ -460,6 +627,29 @@
         position: absolute;
         top:110%;
         left: -10%;
+    }
+
+    .btn-buy {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .btn-buy div{
+        margin-top: 5px;
+    }
+
+    .item-flight {
+        height: auto;
+    }
+
+    .btn-buy div:nth-child(3) button {
+        width: 200px;
+    }
+
+    .btn-buy div:nth-child(3) button div{
+        margin-bottom: 5px;
     }
 }
 

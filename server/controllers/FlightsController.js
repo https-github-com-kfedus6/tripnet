@@ -40,7 +40,7 @@ class FlightsController {
         let arrFlights = { count: 0, rows: [] }
 
         if (!startPosition && !finishPosition && !startDate) {
-            console.log('1')
+
 
             const flight = await Flight.findAndCountAll({ limit: Number(limit), offset: Number(offset) })
             if (flight !== null) {
@@ -53,7 +53,7 @@ class FlightsController {
             }
 
         } else if (startPosition && !finishPosition && !startDate) {
-            console.log('2')
+
             const flight = await Flight.findAndCountAll({ where: { startPosition: startPosition } }, { limit: Number(limit), offset: Number(offset) })
             if (flight !== null) {
                 for (let item of flight.rows) {
@@ -65,7 +65,7 @@ class FlightsController {
             }
 
         } else if (startPosition && finishPosition && !startDate) {
-            console.log('3')
+
             const flight = await Flight.findAndCountAll({ where: { startPosition: startPosition, finishPosition: finishPosition } }, { limit: Number(limit), offset: Number(offset) })
             if (flight !== null) {
                 for (let item of flight.rows) {
@@ -77,7 +77,7 @@ class FlightsController {
             }
 
         } else if (startPosition && finishPosition && startDate) {
-            console.log('4')
+
             const flight = await Flight.findAndCountAll({ where: { startPosition: startPosition, finishPosition: finishPosition, startData: startDate } }, { limit: Number(limit), offset: Number(offset) })
             if (flight !== null) {
                 for (let item of flight.rows) {
@@ -89,7 +89,6 @@ class FlightsController {
             }
 
         } else if (startDate && !startPosition && !finishPosition) {
-            console.log('5')
 
             const flight = await Flight.findAndCountAll({ where: { startData: startDate } }, { limit: Number(limit), offset: Number(offset) })
             if (flight !== null) {
@@ -102,7 +101,6 @@ class FlightsController {
             }
 
         } else if (startDate && startPosition && !finishPosition) {
-            console.log('6')
 
             const flight = await Flight.findAndCountAll({ where: { startData: startDate, startPosition: startPosition } }, { limit: Number(limit), offset: Number(offset) })
             if (flight !== null) {
