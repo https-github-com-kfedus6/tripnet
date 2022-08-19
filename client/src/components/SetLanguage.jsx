@@ -1,13 +1,16 @@
 import React from 'react'
 import { useTranslation } from 'react-i18next'
+import { useAction } from '../hooks/useAction'
 
 const SetLanguage = () => {
     const { t, i18n } = useTranslation()
     const changeLanguage = (event) => {
+        setLanguage(event.target.value);
         i18n.changeLanguage(event.target.value)
     }
+    const {setLanguage}=useAction();
     const language = () => {
-        const languageLetters = localStorage.getItem('i18nextLng')
+        const languageLetters = localStorage.getItem('i18nextLng');
         if (languageLetters) {
             return languageLetters
         }

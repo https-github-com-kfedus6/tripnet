@@ -42,6 +42,7 @@ const Log = ({close}) => {
     }
   },[reply]);
   return (
+    <form>
     <div className="register__main">
       <div className='email'>
         email
@@ -52,9 +53,10 @@ const Log = ({close}) => {
         <input onChange={(e)=>setPassword(e.target.value)} type="password" placeholder={t("authorize.password")}/>
       </div>
       <div className="btn__authorize">
-        <button onClick={()=>{log()}}>{t("authorize.log")}</button>
+        <button onClick={(e)=>{e.preventDefault();log();return false;}}>{t("authorize.log")}</button>
       </div>
     </div>
+    </form>
   )
 }
 

@@ -357,6 +357,9 @@ body{
     width: 150px;
     height: 50px;
 }
+.novetly__description{
+    height: 100%;
+}
 @media screen and (min-width: 1024px) {
     .authorize__name{
         font-size: 40px;
@@ -419,4 +422,47 @@ body{
         align-items: center;
         height: 60px;
     }
+}
+.list__FAQ__main{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    margin: 0 auto;
+}
+.FAQ__main{
+    display: flex;
+    margin: 25px auto;
+    flex-direction: column;
+    justify-content: center;
+    background-color:#888;
+}
+.FAQ__description{
+    overflow: auto;
+    background-color:#e5dcdc;
+    height: 35px;
+}
+.FAQ__main{
+    width: 80%;
+}
+@media screen and (min-width:1024px) {
+    .FAQ__main{
+        width: 80%;
+    }
+    .FAQ__name{
+        font-size: 35px;
+    }
+
+}
+.admin__panel__main{
+    width: 100%;
+}
+.about__us__edit__main{
+    width: 100%;
+}
+.name__menu{
+    width: 100%;
+    background-color: #aaa;
+    min-height: 30px;
+    align-items: center;
+    font-size:large;
 }
