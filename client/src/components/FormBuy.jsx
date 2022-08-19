@@ -1,14 +1,25 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useMemo } from 'react';
 import { useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
+import { IoIosArrowBack } from 'react-icons/io'
+import { useAction } from '../hooks/useAction';
+import { useSelector } from 'react-redux';
 
 const FormBuy = () => {
-    const { countOld, countYoung } = useParams()
+    const { id, countOld, countYoung } = useParams()
     const navigate = useNavigate()
 
     const [ticketOld, setTicketOld] = useState()
     const [ticketYoung, setTicketYoung] = useState()
+    const [sum, setSum] = useState(0)
+
+    const { fetchGetFlight } = useAction()
+    const { flight } = useSelector(state => state.flights)
+
+    useEffect(() => {
+        fetchGetFlight(id)
+    }, [])
 
     useMemo(() => {
         if (countOld !== '0') {
@@ -27,14 +38,25 @@ const FormBuy = () => {
             setTicketYoung(result)
         }
 
+        let allCount = +countOld + +countYoung
+
+        if (allCount === 0) {
+            setSum(flight.price)
+        } else {
+            setSum(flight.price * allCount)
+        }
+
     }, [countOld, countYoung])
 
     return (
         <div className="container-forms">
-            <form className='form-buy'>
-                <div className='form-btn-back'>
+            <div className='form-btn-back'>
+                <div>
+                    <IoIosArrowBack />
                     <button onClick={(e) => { e.preventDefault(); navigate(-1) }}>Назад</button>
                 </div>
+            </div>
+            <form className='form-buy'>
                 <div className='form-block-ticket'>
                     <div className='number-block'>
                         <div>
@@ -109,27 +131,60 @@ const FormBuy = () => {
                     }
                 </div>
             </form >
-            <form>
-                <div>
+            <form className='form-buy'>
+                <div className='form-block-contact'>
                     <div className='number-block'>
                         <div>
                             <span>2</span>
                         </div>
                         <span>Контакти</span>
                     </div>
-                </div>
-            </form>
-            <form>
-                <div>
+                    <div className='from-block-input-number-email'>
+                        <div className='item-input-name'>
+                            <span>Адреса ел. пошти</span>
+                            <input type="email" />
+                        </div>
+                        <div className='item-input-name'>
+                            <span>Номер телефону (необов'язково)</span>
+                            <input type="tel" />
+                        </div>
+                    </div>
+                </div >
+            </form >
+            <form className='form-buy'>
+                <div className='form-block-bank'>
                     <div className='number-block'>
                         <div>
                             <span>3</span>
                         </div>
                         <span>Оплата</span>
                     </div>
+                    <div className='input-card'>
+                        <span>Номер картки</span>
+                        <input type="text" placeholder='1234 5678 9012 3456' minLength='16' maxLength='16' />
+                    </div>
+                    <div className='input-month-year-cvc'>
+                        <div>
+                            <span>Термін дії</span>
+                            <input type="text" placeholder='MM/YY' minLength='4' maxLength='4' />
+                        </div>
+                        <div>
+                            <span>CVC</span>
+                            <input type="text" placeholder='3 digits' minLength='3' maxLength='3' />
+                        </div>
+                    </div>
+                    <div className='input-persone-card'>
+                        <span>Власник картки</span>
+                        <input type="text" />
+                    </div>
+                    <hr />
+                    <div className='buy-ticket'>
+                        <span>Усього (вкл. ПДВ) {sum}.00 UAH</span>
+                        <button>Оплатити</button>
+                    </div>
                 </div>
             </form>
-        </div>
+        </div >
 
     )
 }

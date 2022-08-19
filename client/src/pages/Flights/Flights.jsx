@@ -15,7 +15,7 @@ const Flights = () => {
     const [page, setPage] = useState(1)
 
     const [sumYoung, setSumYoung] = useState(0)
-    const [sumOld, setSumOld] = useState(0)
+    const [sumOld, setSumOld] = useState(1)
 
     const { fetchGetFlights } = useAction()
 

@@ -115,6 +115,18 @@ class FlightsController {
 
         return res.json(arrFlights)
     }
+
+    async getFlight(req, res) {
+        try {
+            const { id } = req.params
+
+            const flight = await Flight.findOne({ where: { id } })
+
+            return res.json(flight)
+        } catch (err) {
+            return res.status(500).json({ status: 500, error: "internal server error" })
+        }
+    }
 }
 
 const flightsController = new FlightsController();

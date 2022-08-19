@@ -250,7 +250,7 @@
 }
 
 .items-flight {
-    width: 60%;
+    width: 70%;
     margin-top: 20px;
 }
 
@@ -304,7 +304,7 @@
 .btn-buy {
     width: 100%;
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
 }
 
 .btn-buy div:nth-child(1) {
@@ -432,17 +432,32 @@
     background-color: rgb(245, 245, 245);
 }
 
+.form-btn-back {
+    display: flex;
+    justify-content: center;
+    padding-top: 20px;
+}
+
+.form-btn-back div {
+    width: 72%;
+}
+
+.form-btn-back div button {
+    border: none;
+    background-color: rgb(245, 245, 245);
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.form-btn-back div button:hover {
+    background-color: rgb(201, 201, 201);
+    border-radius: 10px;
+}
+
 .form-buy {
     display: flex;
     flex-direction: column;
     align-items: center;
-}
-
-.form-btn-back {
-    display: flex;
-    justify-content: flex-start;
-    align-items: flex-start;
-    margin-top: 20px;
 }
 
 .form-block-ticket {
@@ -492,7 +507,7 @@
 .item-input-name {
     display:flex;
     flex-direction: column;
-    margin-right: 10px;
+    margin-right: 2px;
     width: 50%;
 }
 
@@ -507,6 +522,7 @@
     border-radius: 10px;
     border: 1px solid silver;
     padding: 2px 6px;
+    font-size: 17px;
 }
 
 .item-input-surename {
@@ -526,6 +542,7 @@
     border-radius: 10px;
     border: 1px solid silver;
     padding: 2px 6px;
+    font-size: 17px;
 }
 
 .margin {
@@ -553,6 +570,7 @@
     border-right: none;
     border-top-left-radius:10px;
     border-bottom-left-radius:10px;
+    font-size: 17px;
 }
 
 .item-input-date-month-year input:nth-child(2) {
@@ -561,6 +579,7 @@
     padding: 5px 10px;
     border: 1px solid silver;
     border-right: none;
+    font-size: 17px;
 }
 
 .item-input-date-month-year input:nth-child(3) {
@@ -570,6 +589,148 @@
     border: 1px solid silver;
     border-top-right-radius:10px;
     border-bottom-right-radius:10px;
+    font-size: 17px;
+}
+
+.from-block-input-number-email {
+    display: flex;
+}
+
+.form-block-contact {
+    width: 70%;
+    border: 1px solid silver;
+    margin-top: 10px;
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 10px 10px;
+}
+
+.form-block-bank {
+    width: 70%;
+    border: 1px solid silver;
+    margin-top: 10px;
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 10px 10px;
+}
+
+.input-card {
+    margin-top: 10px;
+    display:flex;
+    flex-direction: column;
+    margin-right: 10px;
+    width: 50%;
+}
+
+.input-card span {
+    color: rgb(77, 77, 77);
+    font-size: 21px;
+    margin-bottom: 4px;
+}
+
+.input-card input {
+    height: 30px;
+    border-radius: 10px;
+    border: 1px solid silver;
+    padding: 2px 6px;
+    font-size: 17px;
+}
+
+.input-month-year-cvc {
+    display: flex;
+}
+
+.input-month-year-cvc div {
+    margin-top: 10px;
+}
+
+.input-month-year-cvc div:nth-child(1) {
+    display: flex;
+    flex-direction: column;
+    margin-right: 4px;
+    width: 25%;
+}
+
+.input-month-year-cvc div:nth-child(1) span {
+    color: rgb(77, 77, 77);
+    font-size: 21px;
+    margin-bottom: 4px;
+}
+
+.input-month-year-cvc div:nth-child(1) input {
+    height: 30px;
+    border-radius: 10px;
+    border: 1px solid silver;
+    padding: 2px 6px;
+    font-size: 17px;
+}
+
+.input-month-year-cvc div:nth-child(2) {
+    display: flex;
+    flex-direction: column;
+    width: 25%;
+}
+
+.input-month-year-cvc div:nth-child(2) span {
+    color: rgb(77, 77, 77);
+    font-size: 21px;
+    margin-bottom: 4px;
+}
+
+.input-month-year-cvc div:nth-child(2) input {
+    height: 30px;
+    border-radius: 10px;
+    border: 1px solid silver;
+    padding: 2px 6px;
+    font-size: 17px;
+}
+
+.input-persone-card {
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+    width: 50%;
+}
+
+.input-persone-card span {
+    color: rgb(77, 77, 77);
+    font-size: 21px;
+    margin-bottom: 4px;
+}
+
+.input-persone-card input {
+    height: 30px;
+    border-radius: 10px;
+    border: 1px solid silver;
+    padding: 2px 6px;
+    font-size: 17px;
+}
+
+.buy-ticket {
+    display: flex;
+    justify-content: space-between;
+}
+
+.buy-ticket span {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 21px;
+}
+
+.buy-ticket button {
+    width: 30%;
+    height: 35px;
+    font-size: 18px;
+    border-radius: 10px;
+    border: #00d200;
+    cursor: pointer;
+    background-color: #00d200;
+    color: #fff;
+}
+
+.buy-ticket button:hover {
+    background-color: #00c000;
 }
 
 @media (max-width: 992px) {
@@ -605,9 +766,16 @@
         left: 0;
     }
 
-    .form-block-ticket {
+    .form-block-ticket,
+    .form-block-contact,
+    .form-block-bank {
         width: 90%;
     }
+
+    .form-btn-back div {
+        width: 92%;
+    }
+
 }
 
 @media (max-width: 768px) {
@@ -650,6 +818,33 @@
 
     .btn-buy div:nth-child(3) button div{
         margin-bottom: 5px;
+    }
+
+    .from-block-input-number-email {
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .from-block-input-number-email div {
+        width: 100%;
+        margin-top: 10px;
+    }
+
+    .input-month-year-cvc div:nth-child(1),
+    .input-month-year-cvc div:nth-child(2) {
+        width: 50%;
+    }
+
+    .input-card {
+        width: 100%;
+    }
+
+    .input-persone-card {
+        width: 100%;
+    }
+
+    .buy-ticket button {
+        width: 50%;
     }
 }
 
@@ -715,5 +910,15 @@
         top:110%;
         left: 0;
         width: 100%;
+    }
+
+    .buy-ticket {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .buy-ticket button {
+        width: 100%;
+        margin-top: 10px;
     }
 }

@@ -14,6 +14,22 @@ const FlightsFormSort = ({ setStartDate, setStartPosition, setFinishPosition, so
         setCheck(true)
     }
 
+    const countOldResult = () => {
+        if (sumOld === 1) {
+            setSumOld(1)
+        } else {
+            setSumOld(sumOld - 1)
+        }
+    }
+
+    const countYoungResult = () => {
+        if (sumYoung === 0) {
+            setSumYoung(0)
+        } else {
+            setSumYoung(sumYoung - 1)
+        }
+    }
+
     return (
         <form className='form-flights-container'>
             <div className='flights-sort-form'>
@@ -58,7 +74,7 @@ const FlightsFormSort = ({ setStartDate, setStartPosition, setFinishPosition, so
                                         <span>Cтарше 15 років</span>
                                     </div>
                                     <div className='count-place'>
-                                        <div className='minus' onClick={() => setSumOld(sumOld - 1)}>-</div>
+                                        <div className='minus' onClick={() => countOldResult()}>-</div>
                                         <div className='sum' value={sumOld}>{sumOld}</div>
                                         <div className='plus' onClick={() => setSumOld(sumOld + 1)}>+</div>
                                     </div>
@@ -70,7 +86,7 @@ const FlightsFormSort = ({ setStartDate, setStartPosition, setFinishPosition, so
                                         <span>0-14 років</span>
                                     </div>
                                     <div className='count-place'>
-                                        <div className='minus' onClick={() => setSumYoung(sumYoung - 1)}>-</div>
+                                        <div className='minus' onClick={() => countYoungResult()}>-</div>
                                         <div className='sum' value={sumYoung}>{sumYoung}</div>
                                         <div className='plus' onClick={() => setSumYoung(sumYoung + 1)}>+</div>
                                     </div>
