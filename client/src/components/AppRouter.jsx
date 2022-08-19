@@ -4,7 +4,7 @@ import Layout from './Layout';
 import Home from '../pages/Home/Home';
 import Flights from '../pages/Flights/Flights.jsx'
 import FlightsCategory from '../pages/FlightsCategory';
-import Flight from '../pages/Flight';
+import Flight from '../pages/Flight/Flight';
 import AboutUs from '../pages/AboutUs/AboutUs';
 import FormBuy from '../components/FormBuy';
 import { useEffect } from 'react';
@@ -22,7 +22,7 @@ const AppRouter = () => {
                 <Route path='flights' element={<Flights />} />
                 <Route path='flightsCategory' element={<FlightsCategory />} />
                 <Route path='flight/:id' element={<Flight />} />
-                <Route path='formBuy/:countOld/:countYoung' element={<FormBuy />} />
+                <Route path='formBuy/:id/:countOld/:countYoung' element={<FormBuy />} />
                 <Route path='aboutUs' element={<AboutUs />} />
                 <Route path='*' element={<div>error</div>} />
             </Route>
