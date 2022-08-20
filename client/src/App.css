@@ -1,11 +1,14 @@
+html,body{
+    height: 100%;
+}
 body{
     margin: 0 auto;
-    padding: 0;
+    display: flex;
+    flex-direction: column;
 }
 
-.main{
-    margin: 0 auto;
-    padding: 0;
+main{
+    margin: 0 0 0;
 }
 .logo{
     display: flex;
@@ -465,4 +468,57 @@ body{
     min-height: 30px;
     align-items: center;
     font-size:large;
+}
+.about__us__main{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}   
+
+@media screen and (min-width:1440px) {
+    .about__us__main div{
+        width: 20%;
+    }
+}
+@media screen and (min-width:1024px) {
+    .about__us__main div{
+        width: 40%;
+    }
+}
+@media screen and (min-width: 768px) {
+    .about__us__main div{
+        width: 60%;
+    }
+}
+
+@media screen and (min-width: 425px) {
+    .about__us__main div{
+        width: 80%;
+    }
+}
+.footer__main{
+    flex-shrink: 0;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    background-color: #00d200;
+    justify-content:space-around;
+}
+.footer__main div{
+    display: flex;
+    flex-direction: column;
+}
+.footer__main div div.main{
+    display: flex;
+    text-align: center;
+    color: blue;
+    font-size: larger;
+    cursor: pointer;
+}
+.footer__blog__article{
+    cursor: pointer;
+}
+.blog__edit__set__photo{
+    margin-top: 20px;
+    
 }

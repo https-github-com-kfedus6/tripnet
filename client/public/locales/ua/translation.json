@@ -4,6 +4,7 @@
         "second_link": "Всі рейси",
         "third_link": "Категорія рейсів",
         "fourth_link": "про нас",
+        "five_link":"блог",
         "registering": "реєстрація"
     },
     "flight":{
@@ -37,5 +38,11 @@
         "you_have_successfully_registered":"ви успішно зареєструвалися",
         "email_or_password_is_invalid":"не вірний пароль або почта",
         "invalid_email":"не вірна почта"
+    },
+    "footer":{
+        "phone":"телефон",
+        "opening_hours":"години роботи",
+        "address":"адрес",
+        "name":"імя"
     }
 }

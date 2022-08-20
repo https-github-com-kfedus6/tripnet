@@ -4,6 +4,8 @@ import * as ActionCreatorsNovetly from "./novetlyAction";
 import * as ActionCreatorsAboutUs from "./aboutUsAction";
 import * as ActionCreatorsFAQ from "./FAQAction";
 import * as ActionCreatorsLanguage from "./languageAction";
+import * as ActionCreatorsInfoCompany from "./infoCompanyAction";
+import * as ActionCreatorsBlog from "./blogAction";
 
 export default {
     ...ActionCreatorsUser,
@@ -11,5 +13,7 @@ export default {
     ...ActionCreatorsNovetly,
     ...ActionCreatorsAboutUs,
     ...ActionCreatorsFAQ,
-    ...ActionCreatorsLanguage
+    ...ActionCreatorsLanguage,
+    ...ActionCreatorsInfoCompany,
+    ...ActionCreatorsBlog
 };

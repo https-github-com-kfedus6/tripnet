@@ -12,6 +12,8 @@ import { useAction } from '../hooks/useAction';
 import TinyMCE from './TinyMCE/TinyMCE';
 import AdminMain from '../pages/Admin/AdminMain';
 import { useSelector } from 'react-redux';
+import { ListBlog } from '../pages/Blog/ListBlog';
+import Blog from '../pages/Blog/Blog';
 
 const AppRouter = () => {
     const { IsAuthorize } = useAction();
@@ -31,6 +33,8 @@ const AppRouter = () => {
                 <Route path='formBuy/:id/:countOld/:countYoung' element={<FormBuy />} />
                 <Route path='aboutUs' element={<AboutUs />} />
                 <Route path='tinyMCE' element={<TinyMCE/>}/>
+                <Route path='blog' element={<ListBlog/>}/>
+                <Route path='blog/:id' element={<Blog/>}/>
                 {is_login? <Route path="user/:id"/>:<></>}
                 {is_admin? <Route path='admin' element={<AdminMain/>}/>:<></>}
                 <Route path='*' element={<div>error</div>} />

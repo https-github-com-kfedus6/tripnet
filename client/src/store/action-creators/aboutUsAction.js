@@ -19,6 +19,7 @@ export const SetAboutUs=(ua,ru)=>async(dispatch)=>{
         const resp=await $host.put("api/aboutUs/update",{ua,ru});
         if(resp.data.status==200){
             alert("успішно виконано");
+            GetAboutUs()(dispatch);
         }else alert("error");
 
     }catch(err){

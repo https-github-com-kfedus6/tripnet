@@ -21,6 +21,7 @@ const Header = () => {
                     <li><NavLink to="/flights">{t('header.second_link')}</NavLink></li>
                     <li><NavLink to="/flightsCategory">{t('header.third_link')}</NavLink></li>
                     <li><NavLink to="/aboutUs">{t('header.fourth_link')}</NavLink></li>
+                    <li><NavLink to='/blog'>{t("header.five_link")}</NavLink></li>
                 </ul>
                     {is_admin?<div className='user__nick'><NavLink to="/admin">admin panel</NavLink></div>:<></>}
                     {is_login?<div className='user__nick'><NavLink to={"/user/"+user.name}>{user.name}</NavLink></div>:

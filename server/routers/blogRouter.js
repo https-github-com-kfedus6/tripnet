@@ -1,0 +1,11 @@
+const BlogController = require("../controllers/BlogController");
+const IsAdminMiddleWare = require("../middleware/IsAdminMiddleWare");
+
+const rout=require("express")();
+
+rout.get("/getAll",BlogController.GetAll);
+rout.get("/getNovetly",BlogController.getNovetly);
+rout.get("/getDescription",BlogController.GetWithDescription);
+rout.post("/add",IsAdminMiddleWare,BlogController.Add);
+
+module.exports=rout;

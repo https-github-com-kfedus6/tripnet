@@ -13,9 +13,12 @@ const AboutUs = () => {
   },[]);
   function createMarkup(text) { return {__html: text}; };
   return ( 
-    aboutUs!=undefined?<div dangerouslySetInnerHTML=
-    {createMarkup(aboutUs.description[language])}></div>:<></>
+    <div className="about__us__main">
+      {aboutUs!=undefined?<div className='about__us__value' dangerouslySetInnerHTML=
+      {createMarkup(aboutUs.description[language])}></div>:<></>}
+    </div>
   )
 }
 
 export default AboutUs
+

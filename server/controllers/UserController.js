@@ -13,7 +13,7 @@ class UserController{
             if(isEmailTrue!=null) return resp.json({status:411,message:"email is busy"});
             const cryptPass=await bcrypt.hash(password,3);
             console.log(cryptPass);
-            const res=await User.create({name:name,email:email,telephone:telephone,password:cryptPass,isAdmin:true});
+            const res=await User.create({name:name,email:email,telephone:telephone,password:cryptPass,isAdmin:false});
             const token=await jwt.sign({id:res.id,email:res.email,name:res.name,isAdmin:res.isAdmin},process.env.SECRET_KEY,{expiresIn:"1y"});
             return resp.json({status:200,token});
         }catch(err){

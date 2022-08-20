@@ -5,6 +5,8 @@ import { novetlyReducer } from "./noveltyReducer"
 import { aboutUsReducer } from "./aboutUsReducer";
 import { FAQReducer } from './FAQReducer';
 import { languageyReducer } from './languageReducer';
+import { infoCompanyReducer } from './infoCompanyReducer';
+import { blogReducer } from './blogReducer';
 
 export const rootReducers = combineReducers({
     user: userReducer,
@@ -12,5 +14,7 @@ export const rootReducers = combineReducers({
     novetly: novetlyReducer,
     aboutUs: aboutUsReducer,
     FAQ: FAQReducer,
-    language: languageyReducer
+    language: languageyReducer,
+    infoCompany: infoCompanyReducer,
+    blog: blogReducer
 });

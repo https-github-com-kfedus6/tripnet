@@ -16,7 +16,7 @@ const InfoCompany = sequelize.define("infoCompany", {
     openingHours: { type: DataTypes.STRING },
     name: { type: DataTypes.STRING },
     address: { type: DataTypes.STRING },
-    description: { type: DataTypes.STRING }
+    description: { type: DataTypes.TEXT }
 });
 
 const Responce = sequelize.define('responce', {
@@ -49,16 +49,23 @@ const Flight = sequelize.define("flight", {
     startTime: { type: DataTypes.STRING },
     finishTime: { type: DataTypes.STRING },
     timeFlight: { type: DataTypes.STRING },
-    description: { type: DataTypes.STRING }
+    description: { type: DataTypes.TEXT }
 });
 
 const Novetly=sequelize.define("novetly",{
     id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
     image: { type: DataTypes.STRING },
     description: { type: DataTypes.STRING }    
-})
+});
+
+const Blog=sequelize.define('blog',{
+    id:{ type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
+    image: {type:DataTypes.STRING},
+    description:{type:DataTypes.TEXT},
+    name:{type:DataTypes.STRING}
+});
 
 User.hasMany(Responce, { as: "responce" });
 Responce.belongsTo(User);
 
-module.exports = { User, Flight, SortingFlight, InfoCompany, Responce, Novetly, FAQ };
+module.exports = { User, Flight, SortingFlight, InfoCompany, Responce, Novetly, FAQ, Blog };
