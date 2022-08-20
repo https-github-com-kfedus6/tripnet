@@ -29,7 +29,7 @@ class FlightsController {
         let { startPosition, finishPosition, startDate, countFreePlace, limit, page } = req.query
 
         if (limit === undefined) {
-            limit = 10
+            limit = 3
         }
 
         if (page === undefined) {
