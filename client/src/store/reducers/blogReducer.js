@@ -21,6 +21,7 @@ export const blogReducer=(state=initialState,action)=>{
             return {...state,blogNovetly:action.payload};
         }
         case blogActionTypes.FETCH_GET_DESCRIPTION:{
+            console.log(action);
             return {...state,selectBlog:action.payload};
         }
         default: return state;

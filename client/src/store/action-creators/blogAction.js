@@ -23,11 +23,12 @@ export const GetBlogAll=(page,limit)=>async(dispatch)=>{
     }
 }
 
-export const GetBlogDescription=(count)=>async(dispatch)=>{
+export const GetBlogDescription=(id)=>async(dispatch)=>{
     try{
-        const resp=await $host.get("api/blog/getDescription",{count});
+        const resp=await $host.get("api/blog/getDescription?id="+parseInt(id));
+        console.log(resp);
         if(resp.data.status==200){
-            dispatch({type:blogActionTypes.FETCH_GET_DESCRIPTION,payload:resp.status.res});
+            dispatch({type:blogActionTypes.FETCH_GET_DESCRIPTION,payload:resp.data.res});
         }
     }catch(err){
         console.log(err);

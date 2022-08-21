@@ -34,8 +34,11 @@ class BlogController{
     }
     static GetWithDescription=async(req,resp,next)=>{
         try{
+            console.log(req.query);
             const {id}=req.query;
-            const res=await Blog.findOne({where:{id}});
+            let res=await Blog.findOne({where:{id}});
+            res.description=res.description.split("//");
+            res.name=res.name.split("//");
             return resp.json({status:200,res});
         }catch(err){
             return next(ErrorApi.badRequest(err));
