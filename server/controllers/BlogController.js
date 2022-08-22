@@ -10,11 +10,11 @@ class BlogController{
             page=page||1;
             limit=limit||10;
             const offset=page*limit-limit;
-            let res=await Blog.findAll({attributes:['id','name','image'],limit:parseInt(limit),offset:parseInt(offset)});
-            for(let i=0;i<res.length;i++){
-                res[i].name=await res[i].name.split("//");
+            let res=await Blog.findAndCountAll({attributes:['id','name','image'],limit:parseInt(limit),offset:parseInt(offset)});
+            for(let i=0;i<res.rows.length;i++){
+                res.rows[i].name=await res.rows[i].name.split("//");
             }
-            return resp.json({status:200,page,limit,res});
+            return resp.json({status:200,page,limit,res:res.rows,count:res.count});
         }catch(err){
             return next(ErrorApi.badRequest(err));
         }
@@ -34,9 +34,11 @@ class BlogController{
     }
     static GetWithDescription=async(req,resp,next)=>{
         try{
-            console.log(req.query);
             const {id}=req.query;
             let res=await Blog.findOne({where:{id}});
+            if(res==null){
+                return resp.json({status:200,res:null});
+            }
             res.description=res.description.split("//");
             res.name=res.name.split("//");
             return resp.json({status:200,res});

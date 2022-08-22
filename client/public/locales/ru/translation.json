@@ -27,6 +27,10 @@
         "or":"или",
         "password":"пароль",
         "number_phone":"номер телефону"
+    },
+    "home":{
+        "benefits_company":"преимущества компании",
+        "we_will_comfortably_deliver_to_such_countries":"с комфортом доставим в такие страны"
     }
     
 

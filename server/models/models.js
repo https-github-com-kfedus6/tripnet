@@ -33,7 +33,7 @@ const SortingFlight = sequelize.define("sotringFlight", {
 const FAQ=sequelize.define('FAQ',{
     id:{type:DataTypes.INTEGER,primaryKey:true,autoIncrement:true},
     name:{type:DataTypes.STRING},
-    description:{type:DataTypes.STRING}
+    description:{type:DataTypes.TEXT}
 })
 
 const Flight = sequelize.define("flight", {

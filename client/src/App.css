@@ -15,8 +15,6 @@ main{
 }
 
 
-
-
 @media screen and (min-width: 720px) {
     .logo img{
         width: 10vw;
@@ -260,7 +258,7 @@ main{
     }
 }
 .novetly__main{
-    margin-top: 50px;
+    margin-top: 10px;
 }
 @media screen and (max-width: 425px){
     .list__novetly{
@@ -437,14 +435,17 @@ main{
     margin: 25px auto;
     flex-direction: column;
     justify-content: center;
-    background-color:#888;
 }
 .FAQ__description{
     overflow: auto;
     background-color:#e5dcdc;
     height: 35px;
 }
+.FAQ__name{
+    text-align: center;
+}
 .FAQ__main{
+    margin-top: 40px;
     width: 80%;
 }
 @media screen and (min-width:1024px) {
@@ -496,17 +497,39 @@ main{
         width: 80%;
     }
 }
-.footer__main{
-    flex-shrink: 0;
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    background-color: #00d200;
-    justify-content:space-around;
+@media screen and (min-width:764px) {
+    .footer__main{
+        flex-shrink: 0;
+        width: 100%;
+        display: flex;
+        background-color: #00d200;
+        justify-content:space-around;
+        flex-direction: row;
+    }
+    .footer__main details{
+        display: none;
+    }   
+    
+    .footer__main.footer__list{
+        display: flex;
+        flex-direction: column;
+    }
 }
-.footer__main div{
-    display: flex;
-    flex-direction: column;
+@media screen and (max-width:764px) {
+    
+    .footer__main details{
+        display: flex;
+        width: 100%;
+        background-color: #00d200;
+        align-items: center;
+        margin-top: 5px;
+    }   
+    .footer__main details summary{
+        height: 30px;
+    }
+    .footer__list{
+        display: none;   
+    }
 }
 .footer__main div div.main{
     display: flex;
@@ -520,5 +543,33 @@ main{
 }
 .blog__edit__set__photo{
     margin-top: 20px;
-    
+}
+.home__benefits__img{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    margin-bottom: 30px;
+}
+@media screen and (max-width:768px) {
+    .home__benefits__img img{
+        width: 80%;
+    }
+}
+@media screen and (min-width:768px){
+    .home__benefits__img img{
+        width: 60%;
+    }
+}
+@media screen and (max-width:500px){
+    .home__benefits__img img{
+        width: 100%;
+    }
+}
+.flight__edit{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.flight__edit input{
+    width: 130px;
 }

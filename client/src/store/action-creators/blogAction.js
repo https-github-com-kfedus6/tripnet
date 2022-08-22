@@ -16,7 +16,7 @@ export const GetBlogAll=(page,limit)=>async(dispatch)=>{
     try{
         const resp=await $host.get("api/blog/getAll",{page,limit});
         if(resp.data.status==200){
-            dispatch({type:blogActionTypes.FETCH_GET_ALL_BLOG,payload:{page,limit,listBlog:resp.data.res}})
+            dispatch({type:blogActionTypes.FETCH_GET_ALL_BLOG,payload:{page,limit,listBlog:resp.data.res,count:resp.data.count}})
         }
     }catch(err){
         console.log(err);
@@ -26,7 +26,6 @@ export const GetBlogAll=(page,limit)=>async(dispatch)=>{
 export const GetBlogDescription=(id)=>async(dispatch)=>{
     try{
         const resp=await $host.get("api/blog/getDescription?id="+parseInt(id));
-        console.log(resp);
         if(resp.data.status==200){
             dispatch({type:blogActionTypes.FETCH_GET_DESCRIPTION,payload:resp.data.res});
         }

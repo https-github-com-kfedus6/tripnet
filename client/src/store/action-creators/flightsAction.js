@@ -1,4 +1,4 @@
-import { $host } from '../../http/index'
+import { $authHost, $host } from '../../http/index'
 import { flightActionTypes } from "../reducers/flightsReducer";
 
 export const fetchGetFlights = (data) => async (dispatch) => {
@@ -23,3 +23,27 @@ export const fetchGetFlight = (id) => async (dispatch) => {
     }
 }
 
+export const AddFlight=(image,name,price,startPosition,finishPosition,startDate,finishDate,
+    startTime,finishTime,timeFlight,countFreePlace)=>async(dispatch)=>{
+    try{
+        let formData=new FormData();
+        await formData.append("image",image);
+        await formData.append("name",name);
+        await formData.append("price",price);
+        await formData.append("startPosition",startPosition);
+        await formData.append("finishPosition",finishPosition);
+        await formData.append("startDate",startDate);
+        await formData.append("finishDate",finishDate)
+        await formData.append("startTime",startTime);
+        await formData.append("finishTime",finishTime);
+        await formData.append("timeFlight",timeFlight);
+        await formData.append("countFreePlace",countFreePlace);
+        const resp=await $authHost.post("api/flights/",formData);
+        if(resp.data.status==200){
+            alert("успішно додано");
+        }else alert("error");
+    }catch(err){
+        alert("error");
+        console.log("error");
+    }
+}

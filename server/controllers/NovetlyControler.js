@@ -7,7 +7,10 @@ const path=require("path");
 class NovetlyController{
     static Get=async(req,resp,next)=>{
         try{
-            const res=await Novetly.findAll();
+            let res=await Novetly.findAll();
+            for(let i=0;i<res.length;i++){
+                res[i].description=res[i].description.split("//");
+            }
             resp.json({res});
         }catch(err){
             return next(ErrorApi.badRequest(err));
@@ -20,7 +23,7 @@ class NovetlyController{
             const nameImg = uuid.v4() + ".jpg";
             image.mv(path.resolve(__dirname,'..','static',nameImg))
             const res=await Novetly.create({image:nameImg,description})
-            resp.json(res);
+            resp.json({staus:200,res});
         }catch(err){
             return next(ErrorApi.badRequest(err));
         }

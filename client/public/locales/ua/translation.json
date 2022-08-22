@@ -43,6 +43,11 @@
         "phone":"телефон",
         "opening_hours":"години роботи",
         "address":"адрес",
-        "name":"імя"
+        "name":"імя",
+        "FAQ":"часто задавані питання"
+    },
+    "home":{
+        "benefits_company":"переваги компанії",
+        "we_will_comfortably_deliver_to_such_countries":"з комфортом доставимо в такі країни"
     }
 }

@@ -5,8 +5,7 @@ import { useSelector } from 'react-redux'
 import { useAction } from '../../hooks/useAction';
 
 export const ListBlog = () => {
-    const [page,setPage]=useState(1);
-    const {listBlog,limit}=useSelector(state=>state.blog);
+    const {listBlog,limit,count,page}=useSelector(state=>state.blog);
     const {GetBlogAll}=useAction();
     const {language}=useSelector(state=>state.language);
     

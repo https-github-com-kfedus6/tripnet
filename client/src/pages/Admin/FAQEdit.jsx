@@ -3,21 +3,16 @@ import React from 'react'
 import { useState } from 'react';
 import { useAction } from '../../hooks/useAction';
 
-const BlogEdit = () => {
-    const [image,setImage]=useState(undefined);
+const FAQEdit = () => {
     const [nameUa,setNameUa]=useState("");
     const [nameRu,setNameRu]=useState("");
     const [ua,setUa]=useState("");
     const [ru,setRu]=useState("");
-    const {AddBlog}=useAction();
-    return (
-    <div className="blog__edit__main">
-        <details>
-            <summary className='name__menu'>добавити блог</summary>
-            виберіть фотографію для статі
-            <div className='blog__edit__set__photo'>
-                <input type="file" id="visitorphoto" name="visitorPhoto" accept="image/*" capture onChange={e=>setImage(e.target.files?.[0])}/>
-            </div>
+    const {AddFAQ}=useAction();
+  return ( 
+    <details>
+        <summary className='name__menu'>добавити FAQ</summary>
+        
             <h1>
                 українська версія
             </h1>
@@ -32,10 +27,9 @@ const BlogEdit = () => {
               apiKey="t6okxmezjfhajn8bk23u3dkejv0oc9c1qhs7gmmh9qskcfdp"
               onEditorChange={(newText)=>setRu(newText)}
             />
-            <button onClick={()=>AddBlog(ua,ru,image,[nameUa,nameRu].join("//"))}>add</button>
-        </details>
-    </div>
+        <button onClick={()=>AddFAQ(ua,ru,nameUa,nameRu)}>add</button>
+    </details>
   )
 }
 
-export default BlogEdit
+export default FAQEdit

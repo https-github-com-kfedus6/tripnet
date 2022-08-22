@@ -14,6 +14,8 @@ import AdminMain from '../pages/Admin/AdminMain';
 import { useSelector } from 'react-redux';
 import { ListBlog } from '../pages/Blog/ListBlog';
 import Blog from '../pages/Blog/Blog';
+import FAQList from '../pages/FAQ/FAQList';
+import FAQ from '../pages/FAQ/FAQ';
 
 const AppRouter = () => {
     const { IsAuthorize } = useAction();
@@ -31,6 +33,8 @@ const AppRouter = () => {
                 <Route path='flightsCategory' element={<FlightsCategory />} />
                 <Route path='flight/:id' element={<Flight />} />
                 <Route path='formBuy/:id/:countOld/:countYoung' element={<FormBuy />} />
+                <Route path='FAQ' element={<FAQList/>}/>
+                <Route path='FAQ/:id' element={<FAQ/>}/>
                 <Route path='aboutUs' element={<AboutUs />} />
                 <Route path='tinyMCE' element={<TinyMCE/>}/>
                 <Route path='blog' element={<ListBlog/>}/>

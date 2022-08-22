@@ -1,27 +1,49 @@
 const { Flight } = require('../models/models');
-const ErrorApi = require('../error/ErrorApi')
+const ErrorApi = require('../error/ErrorApi');
+const uuid=require("uuid");
+const path=require("path");
 
 class FlightsController {
-    async postFlights(req, res) {
+    async postFlights(req, res,next) {
         try {
             const { price, startPosition, finishPosition, startDate, finishDate, startTime, finishTime, timeFlight, countFreePlace } = req.body
+            let {image}=req.files;
+            let flight;
+            if(image){
+                const nameImg=uuid.v4()+".jpg";
+                image.mv(path.resolve(__dirname,'..','static',nameImg));
+            
+                flight = await Flight.create({
+                    price: price,
+                    image:nameImg,
+                    startPosition: startPosition,
+                    finishPosition: finishPosition,
+                    startData: startDate,
+                    finishDate: finishDate,
+                    startTime: startTime,
+                    finishTime: finishTime,
+                    timeFlight: timeFlight,
+                    countFreePlace: countFreePlace
+                })
+            }
+            else{
+                flight = await Flight.create({
+                    price: price,
+                    startPosition: startPosition,
+                    finishPosition: finishPosition,
+                    startData: startDate,
+                    finishDate: finishDate,
+                    startTime: startTime,
+                    finishTime: finishTime,
+                    timeFlight: timeFlight,
+                    countFreePlace: countFreePlace
+                })
+            }
 
-            const flight = await Flight.create({
-                price: price,
-                startPosition: startPosition,
-                finishPosition: finishPosition,
-                startData: startDate,
-                finishDate: finishDate,
-                startTime: startTime,
-                finishTime: finishTime,
-                timeFlight: timeFlight,
-                countFreePlace: countFreePlace
-            })
-
-            return res.json(flight)
+            return res.json({flight,status:200});
 
         } catch (err) {
-            return res.status(500).json({ status: 500, error: "internal server error" })
+            return next(ErrorApi.badRequest(err));
         }
     }
 
