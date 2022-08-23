@@ -476,6 +476,18 @@ main{
     width: 100%;
 }   
 
+.layout {
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.layout footer {
+    margin-top: auto;
+    z-index: 100;
+}
+
 @media screen and (min-width:1440px) {
     .about__us__main div{
         width: 20%;
@@ -528,7 +540,7 @@ main{
         height: 30px;
     }
     .footer__list{
-        display: none;   
+        display: none;
     }
 }
 .footer__main div div.main{

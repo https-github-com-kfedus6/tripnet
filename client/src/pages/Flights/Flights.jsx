@@ -17,7 +17,7 @@ const Flights = () => {
     const [sumYoung, setSumYoung] = useState(0)
     const [sumOld, setSumOld] = useState(1)
 
-    const { fetchGetFlights } = useAction()
+    const { fetchGetFlights, fetchDeleteFlight } = useAction()
 
     const { flights } = useSelector(state => state.flights)
 
@@ -43,7 +43,7 @@ const Flights = () => {
     }
 
     const moreFlights = () => {
-        setLimit(limit + 10)
+        setLimit(limit + 3)
     }
 
     const sortFlights = (event) => {
@@ -58,6 +58,10 @@ const Flights = () => {
         })
     }
 
+    const deleteFlight = (id) => {
+        fetchDeleteFlight(id)
+    }
+
     return (
         <div className='flights'>
             <FlightsList
@@ -70,6 +74,9 @@ const Flights = () => {
                 setSumOld={setSumOld}
                 sumYoung={sumYoung}
                 setSumYoung={setSumYoung}
+                deleteFlight={deleteFlight}
+                limit={limit}
+                page={page}
             />
             <Pagination
                 flights={flights}

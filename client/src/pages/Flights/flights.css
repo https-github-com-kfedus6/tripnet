@@ -358,6 +358,58 @@
     transition: all 0.3s ease;
 }
 
+.item-time span input {
+    width: 40%;
+    height: 25px;
+    border-radius: 5px;
+    border: 1px solid silver;
+}
+
+.item-date span input {
+    width: 50%;
+    height: 25px;
+    border-radius: 5px;
+    border: 1px solid silver;
+}
+
+
+.item-position span input {
+    width: 100%;
+    height: 25px;
+    border-radius: 5px;
+    border: 1px solid silver;
+}
+
+.free-place span input {
+    width: 10%;
+    height: 25px;
+    border-radius: 5px;
+    border: 1px solid silver;
+}
+
+.btn-buy div:nth-child(3) input {
+    width: 50%;
+    height: 25px;
+    border-radius: 5px;
+    border: 1px solid silver;
+}
+
+.change-flight {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 1px;
+}
+
+.change-flight button {
+    margin-left: 2px;
+    border-radius: 10px;
+    width: 120px;
+    cursor: pointer;
+    border: 1px solid silver;
+    font-size: 14px;
+}
+
 .pages {
     display: flex;
     justify-content: center;
@@ -372,7 +424,7 @@
 
 .page-none {
     display: none;
-}
+}   
 
 .page-more button {
     width: 100%;
@@ -731,6 +783,15 @@
 
 .buy-ticket button:hover {
     background-color: #00c000;
+}
+
+.admin-delete-flight button {
+    margin-left: 2px;
+    border-radius: 10px;
+    width: 100px;
+    cursor: pointer;
+    border: 1px solid silver;
+    font-size: 14px;
 }
 
 @media (max-width: 992px) {
