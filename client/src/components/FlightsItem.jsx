@@ -1,12 +1,13 @@
-import React from 'react';
-import { useMemo } from 'react';
-import { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { FaShoppingCart } from 'react-icons/fa';
 import { useSelector } from 'react-redux';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { useAction } from '../hooks/useAction';
+import { useTranslation } from 'react-i18next';
 
 const FlightsItem = ({ item, sumOld, sumYoung, deleteFlight, limit, page }) => {
+    const { t } = useTranslation()
+
     const navigate = useNavigate()
 
     const [newStartPosition, setNewStartPosition] = useState('')
@@ -23,9 +24,9 @@ const FlightsItem = ({ item, sumOld, sumYoung, deleteFlight, limit, page }) => {
     const [check, setCheck] = useState(false)
 
     const { user } = useSelector(state => state)
-    const { fetchDeleteFlight, fetchUpdateFlight } = useAction()
+    const { fetchUpdateFlight } = useAction()
 
-    useMemo(() => {
+    useEffect(() => {
         let sum = +sumOld + +sumYoung
 
         if (sumOld === 1) {
@@ -81,25 +82,25 @@ const FlightsItem = ({ item, sumOld, sumYoung, deleteFlight, limit, page }) => {
                         </div>
                         <div className='btn-buy'>
                             <div>
-                                <NavLink to={`/flight/${item.id}`}>Дізнатися більше про рейс!</NavLink>
+                                <NavLink to={`/flight/${item.id}`}>{t('flight.info_flight')}!</NavLink>
                             </div>
                             <div className='free-place'>
-                                <span>Залишилось всього <input type='text' placeholder={item.countFreePlace} onChange={(e) => setNewCaountFreePlace(e.target.value)}></input> місце!</span>
+                                <span>{t('flight.free_place')} <input type='text' placeholder={item.countFreePlace} onChange={(e) => setNewCaountFreePlace(e.target.value)}></input> {t('flight.place')}!</span>
                             </div>
                             <div>
                                 <input type='text' placeholder={sum + '.00'} onChange={(e) => setNewPrice(e.target.value)}></input>
                             </div>
                         </div>
                         <div className='change-flight'>
-                            <button onClick={() => changeFlight(item.id)}>Оновити</button>
-                            <button onClick={() => setCheck(false)}>Не оновлювати</button>
+                            <button onClick={() => changeFlight(item.id)}>{t('flight.update')}</button>
+                            <button onClick={() => setCheck(false)}>{t('flight.no_update')}</button>
                         </div>
                     </>
                     :
                     <>
                         <div className='admin-delete-flight'>
-                            <button onClick={() => setCheck(true)}>Змінити</button>
-                            <button onClick={() => deleteFlight(item.id)}>Видалити</button>
+                            <button onClick={() => setCheck(true)}>{t('flight.change')}</button>
+                            <button onClick={() => deleteFlight(item.id)}>{t('flight.delete')}</button>
                         </div>
                         <div className='item-time'>
                             <span>{item.startTime}</span>
@@ -116,10 +117,10 @@ const FlightsItem = ({ item, sumOld, sumYoung, deleteFlight, limit, page }) => {
                         </div>
                         <div className='btn-buy'>
                             <div>
-                                <NavLink to={`/flight/${item.id}`}>Дізнатися більше про рейс!</NavLink>
+                                <NavLink to={`/flight/${item.id}`}>{t('flight.info_flight')}!</NavLink>
                             </div>
                             <div className='free-place'>
-                                <span>Залишилось всього {item.countFreePlace} місце!</span>
+                                <span>{t('flight.free_place')} {item.countFreePlace} {t('flight.place')}!</span>
                             </div>
                             <div>
                                 <button onClick={() => navigate(`/formBuy/${item.id}/${sumOld}/${sumYoung}`)}><div><FaShoppingCart /></div><span>{sum}.00 UAH</span></button>
@@ -147,10 +148,10 @@ const FlightsItem = ({ item, sumOld, sumYoung, deleteFlight, limit, page }) => {
                 </div>
                 <div className='btn-buy'>
                     <div>
-                        <NavLink to={`/flight/${item.id}`}>Дізнатися більше про рейс!</NavLink>
+                        <NavLink to={`/flight/${item.id}`}>{t('flight.info_flight')}!</NavLink>
                     </div>
                     <div className='free-place'>
-                        <span>Залишилось всього {item.countFreePlace} місце!</span>
+                        <span>{t('flight.free_place')} {item.countFreePlace} {t('flight.place')}!</span>
                     </div>
                     <div>
                         <button onClick={() => navigate(`/formBuy/${item.id}/${sumOld}/${sumYoung}`)}><div><FaShoppingCart /></div><span>{sum}.00 UAH</span></button>

@@ -5,10 +5,13 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { IoIosArrowBack } from 'react-icons/io'
 import { useAction } from '../hooks/useAction';
 import { useSelector } from 'react-redux';
+import { useTranslation } from 'react-i18next';
 
 const FormBuy = () => {
     const { id, countOld, countYoung } = useParams()
     const navigate = useNavigate()
+
+    const { t } = useTranslation()
 
     const [ticketOld, setTicketOld] = useState()
     const [ticketYoung, setTicketYoung] = useState()
@@ -62,22 +65,22 @@ const FormBuy = () => {
                         <div>
                             <span>1</span>
                         </div>
-                        <span>Пасажири</span>
+                        <span>{t('formBuy.passengers')}</span>
                     </div>
                     {ticketOld !== undefined ?
                         ticketOld.map(item => {
                             return (
                                 <div key={item} className="item-old">
                                     <div className='title-item'>
-                                        <span>{item}. Дорослий</span>
+                                        <span>{item}. {t('formBuy.adult')}</span>
                                     </div>
                                     <div className='item-inputs'>
                                         <div className='item-input-name'>
-                                            <span>Ім'я</span>
+                                            <span>{t('formBuy.name')}</span>
                                             <input type="text" />
                                         </div>
                                         <div className='item-input-surename'>
-                                            <span>Прізвище</span>
+                                            <span>{t('formBuy.surename')}</span>
                                             <input type="text" />
                                         </div>
                                     </div>
@@ -87,11 +90,11 @@ const FormBuy = () => {
                         :
                         <div className='item-inputs margin'>
                             <div className='item-input-name'>
-                                <span>Ім'я</span>
+                                <span>{t('formBuy.name')}</span>
                                 <input type="text" />
                             </div>
                             <div className='item-input-surename'>
-                                <span>Прізвище</span>
+                                <span>{t('formBuy.surename')}</span>
                                 <input type="text" />
                             </div>
                         </div>
@@ -101,26 +104,26 @@ const FormBuy = () => {
                             return (
                                 <div key={item} className='item-young'>
                                     <div className='title-item'>
-                                        <span>{item}. Дитина</span>
+                                        <span>{item}. {t('formBuy.child')}</span>
                                     </div>
                                     <div className='item-inputs'>
                                         <div className='item-input-name'>
-                                            <span>Ім'я</span>
+                                            <span>{t('formBuy.name')}</span>
                                             <input type="text" />
                                         </div>
                                         <div className='item-input-name'>
-                                            <span>Прізвище</span>
+                                            <span>{t('formBuy.surename')}</span>
                                             <input type="text" />
                                         </div>
                                     </div>
                                     <div className='item-input-born'>
                                         <div>
-                                            <span>Дата народження</span>
+                                            <span>{t('formBuy.date_born')}</span>
                                         </div>
                                         <div className='item-input-date-month-year'>
                                             <input type="text" placeholder='ДД' name='date' minLength='1' maxLength='2' required />
                                             <input type="text" placeholder='MM' name='month' minLength='1' maxLength='2' required />
-                                            <input type="text" placeholder='PPPP' name='year' minLength='4' maxLength='4' required />
+                                            <input type="text" placeholder={t('formBuy.year')} name='year' minLength='4' maxLength='4' required />
                                         </div>
                                     </div>
                                 </div>
@@ -137,15 +140,15 @@ const FormBuy = () => {
                         <div>
                             <span>2</span>
                         </div>
-                        <span>Контакти</span>
+                        <span>{t('formBuy.contacts')}</span>
                     </div>
                     <div className='from-block-input-number-email'>
                         <div className='item-input-name'>
-                            <span>Адреса ел. пошти</span>
+                            <span>{t('formBuy.email')}</span>
                             <input type="email" />
                         </div>
                         <div className='item-input-name'>
-                            <span>Номер телефону (необов'язково)</span>
+                            <span>{t('formBuy.phone')}</span>
                             <input type="tel" />
                         </div>
                     </div>
@@ -157,15 +160,15 @@ const FormBuy = () => {
                         <div>
                             <span>3</span>
                         </div>
-                        <span>Оплата</span>
+                        <span>{t('formBuy.payment')}</span>
                     </div>
                     <div className='input-card'>
-                        <span>Номер картки</span>
+                        <span>{t('formBuy.card')}</span>
                         <input type="text" placeholder='1234 5678 9012 3456' minLength='16' maxLength='16' />
                     </div>
                     <div className='input-month-year-cvc'>
                         <div>
-                            <span>Термін дії</span>
+                            <span>{t('formBuy.MM_YY')}</span>
                             <input type="text" placeholder='MM/YY' minLength='4' maxLength='4' />
                         </div>
                         <div>
@@ -174,13 +177,13 @@ const FormBuy = () => {
                         </div>
                     </div>
                     <div className='input-persone-card'>
-                        <span>Власник картки</span>
+                        <span>{t('formBuy.persone_card')}</span>
                         <input type="text" />
                     </div>
                     <hr />
                     <div className='buy-ticket'>
-                        <span>Усього (вкл. ПДВ) {sum}.00 UAH</span>
-                        <button>Оплатити</button>
+                        <span>{t('formBuy.price')} {sum}.00 UAH</span>
+                        <button>{t('formBuy.button_buy')}</button>
                     </div>
                 </div>
             </form>

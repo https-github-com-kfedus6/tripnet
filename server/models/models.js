@@ -6,7 +6,7 @@ const User = sequelize.define("user", {
     name: { type: DataTypes.STRING },
     email: { type: DataTypes.STRING },
     telephone: { type: DataTypes.STRING },
-    password: { type:DataTypes.STRING },
+    password: { type: DataTypes.STRING },
     isAdmin: { type: DataTypes.STRING, defaultValue: false }
 });
 
@@ -30,10 +30,10 @@ const SortingFlight = sequelize.define("sotringFlight", {
     name: { type: DataTypes.STRING }
 });
 
-const FAQ=sequelize.define('FAQ',{
-    id:{type:DataTypes.INTEGER,primaryKey:true,autoIncrement:true},
-    name:{type:DataTypes.STRING},
-    description:{type:DataTypes.TEXT}
+const FAQ = sequelize.define('FAQ', {
+    id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
+    name: { type: DataTypes.STRING },
+    description: { type: DataTypes.TEXT }
 })
 
 const Flight = sequelize.define("flight", {
@@ -52,17 +52,17 @@ const Flight = sequelize.define("flight", {
     description: { type: DataTypes.TEXT }
 });
 
-const Novetly=sequelize.define("novetly",{
+const Novetly = sequelize.define("novetly", {
     id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
     image: { type: DataTypes.STRING },
-    description: { type: DataTypes.STRING }    
+    description: { type: DataTypes.STRING }
 });
 
-const Blog=sequelize.define('blog',{
-    id:{ type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
-    image: {type:DataTypes.STRING},
-    description:{type:DataTypes.TEXT},
-    name:{type:DataTypes.STRING}
+const Blog = sequelize.define('blog', {
+    id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
+    image: { type: DataTypes.STRING },
+    description: { type: DataTypes.TEXT },
+    name: { type: DataTypes.STRING }
 });
 
 User.hasMany(Responce, { as: "responce" });

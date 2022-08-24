@@ -1,7 +1,10 @@
 import React, { useState } from 'react';
 import { AiOutlineCaretDown } from 'react-icons/ai';
+import { useTranslation } from 'react-i18next';
 
 const FlightsFormSort = ({ setStartDate, setStartPosition, setFinishPosition, sortFlights, sumOld, setSumOld, sumYoung, setSumYoung }) => {
+    const { t } = useTranslation()
+
     const [check, setCheck] = useState(false)
 
     const firstCheck = (event) => {
@@ -35,43 +38,43 @@ const FlightsFormSort = ({ setStartDate, setStartPosition, setFinishPosition, so
             <div className='flights-sort-form'>
                 <div className='form-btn'>
                     <div className='first-btn'>
-                        <button className={check === false ? 'travel-active' : 'travel'} onClick={firstCheck}>Подорож в один бік</button>
+                        <button className={check === false ? 'travel-active' : 'travel'} onClick={firstCheck}>{t('flight.one_way_trip')}</button>
                     </div>
                     <div className='second-btn'>
-                        <button className={check === true ? 'travel-active' : 'travel'} onClick={secondCheck}>Зворотна подорож</button>
+                        <button className={check === true ? 'travel-active' : 'travel'} onClick={secondCheck}>{t('flight.return_trip')}</button>
                     </div>
                 </div>
                 <div className='form-flights'>
                     <div className='form-block-position'>
                         <div className='form-position'>
-                            <span>Звідки</span>
-                            <input type="text" placeholder='Звідки' onChange={(e) => setStartPosition(e.target.value)} />
+                            <span>{t('flight.whence')}</span>
+                            <input type="text" placeholder={t('flight.whence')} onChange={(e) => setStartPosition(e.target.value)} />
                         </div>
                         <div className='form-position'>
-                            <span>Куди</span>
-                            <input type="text" placeholder='Куда' onChange={(e) => setFinishPosition(e.target.value)} />
+                            <span>{t('flight.whitherto')}</span>
+                            <input type="text" placeholder={t('flight.whitherto')} onChange={(e) => setFinishPosition(e.target.value)} />
                         </div>
                     </div>
                     <div className='form-block-date'>
                         <div className='form-date'>
-                            <span>Відправлення</span>
+                            <span>{t('flight.departure')}</span>
                             <input type="date" onChange={(e) => setStartDate(e.target.value)} />
                         </div>
                         <div className={check === true ? 'form-date' : 'form-date-none'}>
-                            <span >Повернення</span>
+                            <span>{t('flight.return')}</span>
                             <input type="date" onChange={(e) => setStartDate(e.target.value)} />
                         </div>
                         <div className='dropdown'>
                             <div className='dropdown-select'>
-                                <span className='select' >Пасажири</span>
+                                <span className='select'>{t('flight.passengers')}</span>
                                 <i className='down-icon icon'><AiOutlineCaretDown /></i>
                             </div>
                             <div className='dropdown-list'>
                                 <div className='dropdown-list-item'>
                                     <div>
-                                        <strong>Дорослі</strong>
+                                        <strong>{t('flight.adults')}</strong>
                                         <br />
-                                        <span>Cтарше 15 років</span>
+                                        <span>{t('flight.older_15_years')}</span>
                                     </div>
                                     <div className='count-place'>
                                         <div className='minus' onClick={() => countOldResult()}>-</div>
@@ -81,9 +84,9 @@ const FlightsFormSort = ({ setStartDate, setStartPosition, setFinishPosition, so
                                 </div>
                                 <div className='dropdown-list-item'>
                                     <div>
-                                        <strong>Діти</strong>
+                                        <strong>{t('flight.children')}</strong>
                                         <br />
-                                        <span>0-14 років</span>
+                                        <span>{t('flight.younger_14_years')}</span>
                                     </div>
                                     <div className='count-place'>
                                         <div className='minus' onClick={() => countYoungResult()}>-</div>
@@ -94,7 +97,7 @@ const FlightsFormSort = ({ setStartDate, setStartPosition, setFinishPosition, so
                             </div>
                         </div>
                         <div className='form-search'>
-                            <button onClick={sortFlights}>Пошук</button>
+                            <button onClick={sortFlights}>{t('flight.search')}</button>
                         </div>
                     </div>
                 </div>

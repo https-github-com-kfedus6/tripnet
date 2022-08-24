@@ -4,34 +4,59 @@
         "second_link": "Все рейсы",
         "third_link": "Категория рейсов",
         "fourth_link": "о нас",
-        "five_link":"блог",
+        "five_link": "блог",
         "registering": "регистрация"
     },
-    "flight":{
-       "one_way_trip":"одностороннее путешествие",
-       "return_trip":"обратное путешествие",
-       "search":"найти",
-       "whence":"откуда",
-       "whitherto":"куда",
-       "departure":"отправление",
-       "return":"возвращение",
-       "passengers":"пассажиры",
-       "adults":"взрослые",
-       "older_15_years":"cтарше 15 лет",
-       "younger_14_years":"младше 14 лет"
+    "flight": {
+        "one_way_trip": "Одностороннее путешествие",
+        "return_trip": "Обратное путешествие",
+        "search": "Найти",
+        "whence": "Откуда",
+        "whitherto": "Куда",
+        "departure": "Отправление",
+        "return": "Возвращение",
+        "passengers": "Пассажиры",
+        "adults": "Взрослые",
+        "children": "Дети",
+        "older_15_years": "Старше 15 лет",
+        "younger_14_years": "Младше 14 лет",
+        "change": "Изменить",
+        "delete": "Удалить",
+        "info_flight": "Узнать больше о рейсе",
+        "free_place": "Осталось всего",
+        "place": "места",
+        "update": "Обновить",
+        "no_update": "Не обновлять",
+        "pagination": "Посмотреть еще"
     },
-    "authorize":{
-        "authorize":"авторизация",
-        "register":"Зарегистрироваться",
-        "log":"войти",
-        "or":"или",
-        "password":"пароль",
-        "number_phone":"номер телефону"
+    "authorize": {
+        "authorize": "авторизация",
+        "register": "Зарегистрироваться",
+        "log": "войти",
+        "or": "или",
+        "password": "пароль",
+        "number_phone": "номер телефону"
     },
-    "home":{
-        "benefits_company":"преимущества компании",
-        "we_will_comfortably_deliver_to_such_countries":"с комфортом доставим в такие страны"
+    "home": {
+        "benefits_company": "преимущества компании",
+        "we_will_comfortably_deliver_to_such_countries": "с комфортом доставим в такие страны"
+    },
+    "formBuy": {
+        "back": "Назад",
+        "passengers": "Пассажиры",
+        "adult": "Взрослый",
+        "child": "Ребенок",
+        "year": "ГГГГ",
+        "name": "Имя",
+        "surename": "Фамилия",
+        "contacts": "Контакты",
+        "email": "Адрес эл.почты",
+        "phone": "Телефоный номер (не обезательно)",
+        "payment": "Оплата",
+        "card": "Номер карты",
+        "MM_YY": "Срок действия",
+        "persone_card": "Владелец карты",
+        "price": "Усього (вкл. НДС)",
+        "button_buy": "Оплатить"
     }
-    
-
 }

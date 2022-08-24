@@ -1,33 +1,33 @@
 const { UUID } = require("sequelize");
 const ErrorApi = require("../error/ErrorApi");
 const { Novetly } = require("../models/models");
-const uuid=require("uuid");
-const path=require("path");
+const uuid = require("uuid");
+const path = require("path");
 
-class NovetlyController{
-    static Get=async(req,resp,next)=>{
-        try{
-            let res=await Novetly.findAll();
-            for(let i=0;i<res.length;i++){
-                res[i].description=res[i].description.split("//");
+class NovetlyController {
+    static Get = async (req, resp, next) => {
+        try {
+            let res = await Novetly.findAll();
+            for (let i = 0; i < res.length; i++) {
+                res[i].description = res[i].description.split("//");
             }
-            resp.json({res});
-        }catch(err){
+            resp.json({ res });
+        } catch (err) {
             return next(ErrorApi.badRequest(err));
         }
     }
-    static Add=async(req,resp,next)=>{
-        try{
-            const {description}=req.body;
-            const {image}=req.files;
+    static Add = async (req, resp, next) => {
+        try {
+            const { description } = req.body;
+            const { image } = req.files;
             const nameImg = uuid.v4() + ".jpg";
-            image.mv(path.resolve(__dirname,'..','static',nameImg))
-            const res=await Novetly.create({image:nameImg,description})
-            resp.json({staus:200,res});
-        }catch(err){
+            image.mv(path.resolve(__dirname, '..', 'static', nameImg))
+            const res = await Novetly.create({ image: nameImg, description })
+            resp.json({ staus: 200, res });
+        } catch (err) {
             return next(ErrorApi.badRequest(err));
         }
     }
 }
 
-module.exports=NovetlyController;
+module.exports = NovetlyController;

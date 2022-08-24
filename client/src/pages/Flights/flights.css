@@ -22,7 +22,7 @@
 }
 
 .first-btn button {
-    width: 200px;
+    width: 250px;
     height: 35px;
     font-size: 17px;
     border: 1px solid silver;
@@ -38,7 +38,7 @@
 }
 
 .second-btn button {
-    width: 200px;
+    width: 250px;
     height: 35px;
     font-size: 17px;
     border: 1px solid silver;
@@ -962,8 +962,11 @@
 
     .form-btn {
         display: flex;
-        justify-content: center;
-        align-items: center;
+        flex-direction: column;
+    }
+
+    .form-btn div {
+        margin-bottom: 10px;
     }
     
     .dropdown-list {

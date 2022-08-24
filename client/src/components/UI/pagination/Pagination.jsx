@@ -1,13 +1,15 @@
 import React from 'react'
+import { useTranslation } from 'react-i18next'
 
 const Pagination = ({ flights, pagesArray, moreFlights, changePage, limit, page }) => {
+    const { t } = useTranslation()
 
     return (
         <div className='pages'>
-            <div className={flights.count <= limit ? 'page-none' : 'page-more'}>
-                <button onClick={moreFlights}>Подивитися ще</button>
+            <div className={flights.count <= limit || page === pagesArray.length ? 'page-none' : 'page-more'}>
+                <button onClick={moreFlights}>{t('flight.pagination')}</button>
             </div>
-            <div className={pagesArray.length === 1 ? 'page-wrapper-none' : 'page-wrapper'}>
+            <div className={pagesArray.length === 1 || flights.rows.length === flights.count ? 'page-wrapper-none' : 'page-wrapper'}>
                 {pagesArray.map(p => {
                     return (
                         <button
