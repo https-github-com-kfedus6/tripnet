@@ -11,7 +11,7 @@ const Home = () => {
         <div className="home__main">
             <FlightsFormSort/>
             <ListNovetly/>
-            <h3 style={{"text-align":"center"}}>{t("home.benefits_company")}</h3>
+            <h3>{t("home.benefits_company")}</h3>
             <div className="home__benefits__img">
                 <img src={process.env.REACT_APP_API_URL+"homeBenefits"+language+".png"}/>
             </div>

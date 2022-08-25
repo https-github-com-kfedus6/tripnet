@@ -6,7 +6,13 @@ const path = require("path");
 class FlightsController {
     async postFlights(req, res, next) {
         try {
-            const { price, startPosition, finishPosition, startDate, finishDate, startTime, finishTime, timeFlight, countFreePlace } = req.body
+            const { price, startPositionUA, startPositionRU, finishPositionUA, finishPositionRU,
+                startDate, finishDate, startTime, finishTime, timeFlight, countFreePlace,
+                descriptionUA,descriptionRU, nameUA,nameRU } = req.body
+            const startPosition=[startPositionUA,startPositionRU].join("//");
+            const finishPosition=[finishPositionUA,finishPositionRU].join("//");
+            const description=[descriptionUA,descriptionRU].join("//");
+            const name=[nameUA,nameRU].join("//");
             let { image } = req.files;
             let flight;
             if (image) {
@@ -23,7 +29,9 @@ class FlightsController {
                     startTime: startTime,
                     finishTime: finishTime,
                     timeFlight: timeFlight,
-                    countFreePlace: countFreePlace
+                    countFreePlace: countFreePlace,
+                    description: description,
+                    name:name
                 })
             }
             else {
@@ -36,118 +44,129 @@ class FlightsController {
                     startTime: startTime,
                     finishTime: finishTime,
                     timeFlight: timeFlight,
-                    countFreePlace: countFreePlace
+                    countFreePlace: countFreePlace,
+                    description: description,
+                    name:name
                 })
             }
 
-            return res.json({ flight, status: 200 });
+            return res.json({ res:flight, status: 200 });
 
         } catch (err) {
             return next(ErrorApi.badRequest(err));
         }
     }
 
-    async getSortFlights(req, res) {
-        let { startPosition, finishPosition, startDate, countFreePlace, limit, page } = req.query
+    async getSortFlights(req, res, next) {
+        try{
+            let { startPosition, finishPosition, startDate, countFreePlace, limit, page } = req.query
 
-        if (limit === undefined) {
-            limit = 3
+            if (limit === undefined) {
+                limit = 3
+            }
+
+            if (page === undefined) {
+                page = 1
+            }
+
+            let offset = page * limit - limit
+            let arrFlights = { count: 0, rows: [] }
+
+            if (!startPosition && !finishPosition && !startDate) {
+
+                const flight = await Flight.findAndCountAll({ limit: Number(limit), offset: Number(offset) })
+
+                if (flight !== null) {
+                    for (let item of flight.rows) {
+                        if (item.countFreePlace >= countFreePlace) {
+                            arrFlights.rows.push(item)
+                        }
+                    }
+                    arrFlights.count = flight.count
+                }
+
+            } else if (startPosition && !finishPosition && !startDate) {
+
+                const flight = await Flight.findAndCountAll({ where: { startPosition: startPosition } }, { limit: Number(limit), offset: Number(offset) })
+
+                if (flight !== null) {
+                    for (let item of flight.rows) {
+                        if (item.countFreePlace >= countFreePlace) {
+                            arrFlights.rows.push(item)
+                        }
+                    }
+                    arrFlights.count = flight.count
+                }
+
+            } else if (startPosition && finishPosition && !startDate) {
+
+                const flight = await Flight.findAndCountAll({ where: { startPosition: startPosition, finishPosition: finishPosition } }, { limit: Number(limit), offset: Number(offset) })
+                if (flight !== null) {
+                    for (let item of flight.rows) {
+                        if (item.countFreePlace >= countFreePlace) {
+                            arrFlights.rows.push(item)
+                        }
+                    }
+                    arrFlights.count = flight.count
+                }
+
+            } else if (startPosition && finishPosition && startDate) {
+
+                const flight = await Flight.findAndCountAll({ where: { startPosition: startPosition, finishPosition: finishPosition, startData: startDate } }, { limit: Number(limit), offset: Number(offset) })
+                if (flight !== null) {
+                    for (let item of flight.rows) {
+                        if (item.countFreePlace >= countFreePlace) {
+                            arrFlights.rows.push(item)
+                        }
+                    }
+                    arrFlights.count = flight.count
+                }
+
+            } else if (startDate && !startPosition && !finishPosition) {
+
+                const flight = await Flight.findAndCountAll({ where: { startData: startDate } }, { limit: Number(limit), offset: Number(offset) })
+                if (flight !== null) {
+                    for (let item of flight.rows) {
+                        if (item.countFreePlace >= countFreePlace) {
+                            arrFlights.rows.push(item)
+                        }
+                    }
+                    arrFlights.count = flight.count
+                }
+
+            } else if (startDate && startPosition && !finishPosition) {
+
+                const flight = await Flight.findAndCountAll({ where: { startData: startDate, startPosition: startPosition } }, { limit: Number(limit), offset: Number(offset) })
+                if (flight !== null) {
+                    for (let item of flight.rows) {
+                        if (item.countFreePlace >= countFreePlace) {
+                            arrFlights.rows.push(item)
+                        }
+                    }
+                    arrFlights.count = flight.count
+                }
+            }
+            for(let i=0;i<arrFlights.rows.length;i++){
+                arrFlights.rows[i].startPosition=arrFlights.rows[i].startPosition.split("//");
+                arrFlights.rows[i].finishPosition=arrFlights.rows[i].finishPosition.split("//");
+                arrFlights.rows[i].description=arrFlights.rows[i].description.split("//")
+            }
+            return res.json({status:200,res:arrFlights})
+        }catch(err){
+            return next(ErrorApi.badRequest(err));
         }
-
-        if (page === undefined) {
-            page = 1
-        }
-
-        let offset = page * limit - limit
-        let arrFlights = { count: 0, rows: [] }
-
-        if (!startPosition && !finishPosition && !startDate) {
-
-            const flight = await Flight.findAndCountAll({ limit: Number(limit), offset: Number(offset) })
-
-            if (flight !== null) {
-                for (let item of flight.rows) {
-                    if (item.countFreePlace >= countFreePlace) {
-                        arrFlights.rows.push(item)
-                    }
-                }
-                arrFlights.count = flight.count
-            }
-
-        } else if (startPosition && !finishPosition && !startDate) {
-
-            const flight = await Flight.findAndCountAll({ where: { startPosition: startPosition } }, { limit: Number(limit), offset: Number(offset) })
-
-            if (flight !== null) {
-                for (let item of flight.rows) {
-                    if (item.countFreePlace >= countFreePlace) {
-                        arrFlights.rows.push(item)
-                    }
-                }
-                arrFlights.count = flight.count
-            }
-
-        } else if (startPosition && finishPosition && !startDate) {
-
-            const flight = await Flight.findAndCountAll({ where: { startPosition: startPosition, finishPosition: finishPosition } }, { limit: Number(limit), offset: Number(offset) })
-            if (flight !== null) {
-                for (let item of flight.rows) {
-                    if (item.countFreePlace >= countFreePlace) {
-                        arrFlights.rows.push(item)
-                    }
-                }
-                arrFlights.count = flight.count
-            }
-
-        } else if (startPosition && finishPosition && startDate) {
-
-            const flight = await Flight.findAndCountAll({ where: { startPosition: startPosition, finishPosition: finishPosition, startData: startDate } }, { limit: Number(limit), offset: Number(offset) })
-            if (flight !== null) {
-                for (let item of flight.rows) {
-                    if (item.countFreePlace >= countFreePlace) {
-                        arrFlights.rows.push(item)
-                    }
-                }
-                arrFlights.count = flight.count
-            }
-
-        } else if (startDate && !startPosition && !finishPosition) {
-
-            const flight = await Flight.findAndCountAll({ where: { startData: startDate } }, { limit: Number(limit), offset: Number(offset) })
-            if (flight !== null) {
-                for (let item of flight.rows) {
-                    if (item.countFreePlace >= countFreePlace) {
-                        arrFlights.rows.push(item)
-                    }
-                }
-                arrFlights.count = flight.count
-            }
-
-        } else if (startDate && startPosition && !finishPosition) {
-
-            const flight = await Flight.findAndCountAll({ where: { startData: startDate, startPosition: startPosition } }, { limit: Number(limit), offset: Number(offset) })
-            if (flight !== null) {
-                for (let item of flight.rows) {
-                    if (item.countFreePlace >= countFreePlace) {
-                        arrFlights.rows.push(item)
-                    }
-                }
-                arrFlights.count = flight.count
-            }
-        }
-
-        return res.json(arrFlights)
     }
 
     async getFlight(req, res) {
         try {
             const { id } = req.params
-
-            const flight = await Flight.findOne({ where: { id } })
-
-            return res.json(flight)
+            let flight = await Flight.findOne({ where: { id } })
+            flight.startPosition=flight.startPosition.split("//");
+            flight.finishPosition=flight.finishPosition.split("//");
+            flight.description=flight.description.split("//");
+            return res.json({status:200,res:flight});
         } catch (err) {
-            return res.status(500).json({ status: 500, error: "internal server error" })
+            return next(ErrorApi.badRequest(err));
         }
     }
 
@@ -159,9 +178,9 @@ class FlightsController {
 
             await Flight.destroy({ where: { id } })
 
-            return res.json(flight)
+            return res.json({status:200,res:flight})
         } catch (err) {
-            return res.status(500).json({ status: 500, error: "internal server error" })
+            return next(ErrorApi.badRequest(err));
         }
     }
 
@@ -265,10 +284,10 @@ class FlightsController {
 
             const flight = await Flight.findAndCountAll({ limit: Number(limit), offset: Number(offset) })
 
-            return res.json(flight)
+            return res.json({status:200,res:flight})
 
         } catch (err) {
-            return res.status(500).json({ status: 500, error: "internal server error" })
+            return next(ErrorApi.badRequest(err));
         }
     }
 }

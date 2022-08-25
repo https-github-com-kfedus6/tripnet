@@ -3,7 +3,7 @@ import FlightsFormSort from './FlightsFormSort'
 import FlightsItem from './FlightsItem'
 
 const FlightsList = ({ flights, setStartDate, setStartPosition, setFinishPosition, sortFlights, sumOld, setSumOld, sumYoung, setSumYoung, deleteFlight, limit, page }) => {
-
+    console.log(flights);
     if (flights.length === 0) {
         return (
             <div>loading...</div>
