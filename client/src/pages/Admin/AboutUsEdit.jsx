@@ -6,45 +6,45 @@ import { useSelector } from 'react-redux';
 import { useAction } from '../../hooks/useAction';
 
 const AboutUsEdit = () => {
-  const {aboutUs}=useSelector(state=>state.aboutUs);
-  const [ua,setUa]=useState(undefined);
-  const [ru,setRu]=useState(undefined);
-  useEffect(()=>{
-    if(aboutUs==undefined){
-      GetAboutUs();
-    }
-  },[])
-  useEffect(()=>{
-    if(aboutUs!=undefined){
-      setUa(aboutUs.description[0]);
-      setRu(aboutUs.description[1]);
-    }
-  },[aboutUs])
-  const { GetAboutUs,SetAboutUs }=useAction();
-  return (
-    <div className='about__us__edit__main'>
-        <details>
-          <summary className='name__menu'>{t("header.fourth_link")}</summary>
-          {ua==undefined||ru==undefined?<div>...loading</div>:
-            <><h1>українська версія</h1>
-            
-            <Editor value={ua}
-              apiKey="t6okxmezjfhajn8bk23u3dkejv0oc9c1qhs7gmmh9qskcfdp"
-              onEditorChange={(newText)=>setUa(newText)}
-            />
-            
-            <h1>російська версія</h1>
-            
-            <Editor value={ru}
-              apiKey="t6okxmezjfhajn8bk23u3dkejv0oc9c1qhs7gmmh9qskcfdp"
-              onEditorChange={(newText)=>setRu(newText)}
-            />
+    const { aboutUs } = useSelector(state => state.aboutUs);
+    const [ua, setUa] = useState(undefined);
+    const [ru, setRu] = useState(undefined);
+    useEffect(() => {
+        if (aboutUs == undefined) {
+            GetAboutUs();
+        }
+    }, [])
+    useEffect(() => {
+        if (aboutUs != undefined) {
+            setUa(aboutUs.description[0]);
+            setRu(aboutUs.description[1]);
+        }
+    }, [aboutUs])
+    const { GetAboutUs, SetAboutUs } = useAction();
+    return (
+        <div className='about__us__edit__main'>
+            <details>
+                <summary className='name__menu'>{t("header.fourth_link")}</summary>
+                {ua == undefined || ru == undefined ? <div>...loading</div> :
+                    <><h1>українська версія</h1>
 
-            <button onClick={()=>SetAboutUs(ua,ru)}>save</button></>}
-        </details>
-      
-    </div>
-  )
+                        <Editor value={ua}
+                            apiKey="t6okxmezjfhajn8bk23u3dkejv0oc9c1qhs7gmmh9qskcfdp"
+                            onEditorChange={(newText) => setUa(newText)}
+                        />
+
+                        <h1>російська версія</h1>
+
+                        <Editor value={ru}
+                            apiKey="t6okxmezjfhajn8bk23u3dkejv0oc9c1qhs7gmmh9qskcfdp"
+                            onEditorChange={(newText) => setRu(newText)}
+                        />
+
+                        <button onClick={() => SetAboutUs(ua, ru)}>save</button></>}
+            </details>
+
+        </div>
+    )
 }
 
 export default AboutUsEdit

@@ -1,0 +1,143 @@
+.container-flight {
+    display: flex;
+    justify-content: center;
+}
+
+.block-flight {
+    width: 70%;
+}
+
+.block-position-price {
+    display: flex;
+    align-items: center;
+}
+
+.block-position-price div {
+    margin-right: 23%;
+}
+
+.block-position-price div:nth-child(1) {
+    display: flex;
+    align-items: center;
+}
+
+.block-position-price div:nth-child(1) h1:nth-child(1) {
+    margin-right: 15%;
+}
+
+.block-position-price div:nth-child(1) span {
+    font-size: 30px;
+    margin-right: 15%;
+    display: flex;
+}
+
+.block-position-price div:nth-child(2) {
+    width: 180px;
+    height: 40px;
+    background-color:#00d200;
+    border-radius: 10px;
+}
+
+.block-position-price div:nth-child(2) span {
+    font-size: 25px;
+    display: flex;
+    justify-content: center;
+    margin-top: 6px;
+} 
+
+.items-comfort {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.item-comfort {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+.item-comfort img {
+    width: 80%;
+}
+
+.item-comfort span {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 17px;
+    margin-top: 10px;
+}
+
+.flight-description p {
+    font-size: 17px;
+}
+
+@media (max-width:992px) {
+    
+    .block-flight {
+        width: 90%;
+    }
+
+    .block-position-price {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .block-position-price div {
+        margin-right: 0;
+    }
+}
+
+@media (max-width:768px) {
+    
+    .block-flight {
+        width: 98%;
+    }
+   
+    .block-position-price div:nth-child(2) {
+        width: 180px;
+        height: 40px;
+        background-color:#00d200;
+        border-radius: 10px;
+    }
+
+    .block-position-price div:nth-child(2) span {
+        font-size: 25px;
+        display: flex;
+        justify-content: center;
+        margin-top: 6px;
+    } 
+
+    .item-comfort img {
+        width: 80px;
+        height: 80px;
+    }
+
+    .items-comfort {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        flex-wrap: wrap;
+    }
+
+    .items-comfort div {
+        margin-right: 10px;
+        margin-bottom: 10px;
+    }
+}
+
+@media (max-width: 576px) {
+    .item-comfort img {
+        width: 70px;
+        height: 70px;
+    }
+    
+    .block-position-price {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+}

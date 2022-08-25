@@ -65,7 +65,13 @@ const Blog = sequelize.define('blog', {
     name: { type: DataTypes.STRING }
 });
 
+const FlightComfort = sequelize.define('flightComfort', {
+    id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
+    image: { type: DataTypes.STRING },
+    title: { type: DataTypes.STRING }
+})
+
 User.hasMany(Responce, { as: "responce" });
 Responce.belongsTo(User);
 
-module.exports = { User, Flight, SortingFlight, InfoCompany, Responce, Novetly, FAQ, Blog };
+module.exports = { User, Flight, SortingFlight, InfoCompany, Responce, Novetly, FAQ, Blog, FlightComfort };

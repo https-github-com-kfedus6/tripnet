@@ -3,7 +3,7 @@ export const LanguageActionTypes = {
 }
 
 const initialState = {//0-ua; 1-ru
-    language:localStorage.getItem("i18nextLng")==undefined?0:localStorage.getItem("i18nextLng")=="UA"?0:1
+    language: localStorage.getItem("i18nextLng") == undefined ? 0 : localStorage.getItem("i18nextLng") == "UA" ? 0 : 1
 }
 
 export const languageyReducer = (state = initialState, action) => {

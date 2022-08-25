@@ -7,6 +7,7 @@ import { FAQReducer } from './FAQReducer';
 import { languageyReducer } from './languageReducer';
 import { infoCompanyReducer } from './infoCompanyReducer';
 import { blogReducer } from './blogReducer';
+import { flightComfortReducer } from './flightComfortReducer';
 
 export const rootReducers = combineReducers({
     user: userReducer,
@@ -16,5 +17,6 @@ export const rootReducers = combineReducers({
     FAQ: FAQReducer,
     language: languageyReducer,
     infoCompany: infoCompanyReducer,
-    blog: blogReducer
+    blog: blogReducer,
+    comfort: flightComfortReducer
 });
