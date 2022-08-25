@@ -8,7 +8,7 @@ export const fetchGetFlights = (data) => async (dispatch) => {
                 ...data
             }
         })
-        dispatch({ type: flightActionTypes.FETCH_GET_FLIGHTS, payload: response.data })
+        dispatch({ type: flightActionTypes.FETCH_GET_FLIGHTS, payload: response.data.res })
     } catch (err) {
         console.log(err.message)
     }
@@ -17,7 +17,7 @@ export const fetchGetFlights = (data) => async (dispatch) => {
 export const fetchGetFlight = (id) => async (dispatch) => {
     try {
         const response = await $host.get(`/api/flights/${id}`)
-        dispatch({ type: flightActionTypes.FETCH_GET_FLIGHT, payload: response.data })
+        dispatch({ type: flightActionTypes.FETCH_GET_FLIGHT, payload: response.data.res })
     } catch (err) {
         console.log(err.message)
     }
@@ -26,7 +26,7 @@ export const fetchGetFlight = (id) => async (dispatch) => {
 export const fetchDeleteFlight = (id) => async (dispatch) => {
     try {
         const response = await $authHost.delete(`/api/flights/${id}`)
-        dispatch({ type: flightActionTypes.FETCH_DELETE_FLIGHT, payload: response.data })
+        dispatch({ type: flightActionTypes.FETCH_DELETE_FLIGHT, payload: response.data.res })
     } catch (err) {
         console.log(err.message)
     }
@@ -35,21 +35,25 @@ export const fetchDeleteFlight = (id) => async (dispatch) => {
 export const fetchUpdateFlight = (formData) => async (dispatch) => {
     try {
         const response = await $authHost.put('/api/flights/', formData)
-        dispatch({ type: flightActionTypes.FETCH_UPDATE_FLIGHT, payload: response.data })
+        dispatch({ type: flightActionTypes.FETCH_UPDATE_FLIGHT, payload: response.data.res })
     } catch (err) {
         console.log(err.message)
     }
 }
 
-export const AddFlight = (image, name, price, startPosition, finishPosition, startDate, finishDate,
-    startTime, finishTime, timeFlight, countFreePlace) => async (dispatch) => {
+export const AddFlight = (image, nameUA, nameRU, price, startPositionUA, startPositionRU,
+    finishPositionUA, finishPositionRU, startDate, finishDate, startTime, finishTime, timeFlight,
+    countFreePlace) => async (dispatch) => {
         try {
             let formData = new FormData();
             await formData.append("image", image);
-            await formData.append("name", name);
+            await formData.append("nameUA", nameUA);
+            await formData.append("nameRU", nameRU);
             await formData.append("price", price);
-            await formData.append("startPosition", startPosition);
-            await formData.append("finishPosition", finishPosition);
+            await formData.append("startPositionUA", startPositionUA);
+            await formData.append("startPositionRU", startPositionRU);
+            await formData.append("finishPositionUA", finishPositionUA);
+            await formData.append("finishPositionRU", finishPositionRU);
             await formData.append("startDate", startDate);
             await formData.append("finishDate", finishDate)
             await formData.append("startTime", startTime);

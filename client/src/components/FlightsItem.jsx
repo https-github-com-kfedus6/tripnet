@@ -26,6 +26,8 @@ const FlightsItem = ({ item, sumOld, sumYoung, deleteFlight, limit, page }) => {
     const { user } = useSelector(state => state)
     const { fetchUpdateFlight } = useAction()
 
+    const {language}=useSelector(state=>state.language);
+    
     useEffect(() => {
         let sum = +sumOld + +sumYoung
 
@@ -112,8 +114,8 @@ const FlightsItem = ({ item, sumOld, sumYoung, deleteFlight, limit, page }) => {
                             <span>{item.finishDate}</span>
                         </div>
                         <div className='item-position'>
-                            <span>{item.startPosition}</span>
-                            <span>{item.finishPosition}</span>
+                            <span>{item.startPosition[language]}</span>
+                            <span>{item.finishPosition[language]}</span>
                         </div>
                         <div className='btn-buy'>
                             <div>
@@ -143,8 +145,8 @@ const FlightsItem = ({ item, sumOld, sumYoung, deleteFlight, limit, page }) => {
                     <span>{item.finishDate}</span>
                 </div>
                 <div className='item-position'>
-                    <span>{item.startPosition}</span>
-                    <span>{item.finishPosition}</span>
+                    <span>{item.startPosition[language]}</span>
+                    <span>{item.finishPosition[language]}</span>
                 </div>
                 <div className='btn-buy'>
                     <div>
