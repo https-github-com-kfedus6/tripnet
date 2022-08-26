@@ -25,11 +25,10 @@ const Header = () => {
                     <li><NavLink to='/blog'>{t("header.five_link")}</NavLink></li>
                 </ul>
                 {is_admin ? <div className='user__nick'><NavLink to="/admin">admin panel</NavLink></div> : <></>}
-                {is_login ? <div className='user__nick'><NavLink to={"/user/" + user.name}>{user.name}</NavLink></div> :
+                {is_login ? <div><NavLink to='/account'><FaUserCircle /></NavLink></div>:
                     <div onClick={() => { setIsShow(!isShow) }} className="register">
                         {t("header.registering")}
                     </div>}
-                <div><NavLink to='/account'><FaUserCircle /></NavLink></div>
                 <SetLanguage />
             </div>
             <Burger setIsShowRegister={setIsShow} />

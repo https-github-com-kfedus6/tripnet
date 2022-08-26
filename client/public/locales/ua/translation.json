@@ -40,13 +40,13 @@
         "email_is_busy": "почта зайнята",
         "invalid_name": "некоректне ім'я",
         "mail_must_be_genuine": "почта повинна бути справжня",
-        "invalid_telephone": "не коректний номер телефону, стадартний вигляд: +380544462842 або 0885540581",
+        "invalid_telephone": "некоректний номер телефону, стадартний вигляд: +380544462842 або 0885540581",
         "passwords_do_not_match": "паролі не співпадають",
         "password_must_be_longer_than_8_characters": "пароль повинен бути більше 8 символів",
-        "invalid_pass": "не коректний пароль",
+        "invalid_pass": "некоректний пароль",
         "you_have_successfully_registered": "ви успішно зареєструвалися",
         "email_or_password_is_invalid": "не вірний пароль або почта",
-        "invalid_email": "не вірна почта"
+        "invalid_email": "невірна почта"
     },
     "footer": {
         "phone": "телефон",
@@ -78,5 +78,15 @@
         "persone_card": "Власник карти",
         "price": "Всього (вкл. ПДВ)",
         "button_buy": "Сплатити"
+    },
+    "account":{
+        "hello":"Привіт!",
+        "name":"ім'я",
+        "old_password":"старий пароль",
+        "new_password":"новий пароль",
+        "change_password":"поміняти пароль",
+        "exit":"вийти",
+        "password_changed":"пароль поміняний"
+
     }
 }
