@@ -304,6 +304,9 @@ main{
     background-color: rgba(0, 0, 0, 0.9);
 }
 
+
+
+
 .close{
     color:#aaa;
     font-size: 50px;
@@ -581,4 +584,120 @@ main{
 }
 .flight__edit input{
     width: 130px;
+}
+
+.home__benefits__company__name{
+    display: flex;
+    justify-content: center;
+}
+
+.list__responce__main{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+@media screen and (min-width:1024px) {
+    .responce__main{
+        width: 60%;
+    }
+}
+@media screen and (max-width:1024px) {
+    .responce__main{
+        width: 70%;
+    }
+}
+@media screen and (max-width:768px) {
+    .responce__main{
+        width: 80%;
+    }
+}
+@media screen and (max-width:425px) {
+    .responce__main{
+        width: 100%;
+    }
+}
+.responce__main{
+    display: flex;
+    background-color: bisque;
+    justify-content: center;
+}
+.home__list__blog__main{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    align-items: center;
+    flex-direction: column;
+}
+.home__blog__main img{
+    width: 100%;
+}
+@media screen and (min-width:1024px) {
+    
+    .home__blog__main{
+        cursor: pointer;
+        display: flex;
+        margin: 10px;
+        width: 250px;
+        flex-direction: column;
+        border-width: 2px;
+        border-color: aqua;
+        border-style: solid;
+        background-color: aqua;
+    }   
+    .home__list__blog{
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        align-items: center;
+        flex-direction: row;
+        width: 60%;
+    }
+}
+@media screen and (max-width:1024px) {
+    .home__blog__main{
+        cursor: pointer;
+        display: flex;
+        margin: 10px;
+        width: 150px;
+        flex-direction: column;
+        border-width: 2px;
+        border-color: aqua;
+        border-style: solid;
+        background-color: aqua;
+    }   
+    .home__list__blog{
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        align-items: center;
+        flex-direction: row;
+        width: 80%;
+    }
+}
+@media screen and (max-width:550px) {
+    .home__blog__main{
+        cursor: pointer;
+        display: flex;
+        margin: 10px;
+        width: 150px;
+        flex-direction: column;
+        border-width: 2px;
+        border-color: aqua;
+        border-style: solid;
+        background-color: aqua;
+    }   
+    .home__list__blog{
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        align-items: center;
+        flex-direction: row;
+        width: 100%;
+    }
+}
+.home__blog__description{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
 }

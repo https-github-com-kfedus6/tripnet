@@ -9,6 +9,7 @@ const FAQRouter = require("./FAQRouter");
 const infoCompanyRouter = require("./infoCompanyRouter");
 const blogRouter = require("./blogRouter");
 const flightComfortRouter = require("./flightComfortRouter");
+const responceRouter=require("./responceRouter");
 
 router.use("/flights", flightsRouter)
 router.use("/novetly", novetlyRouter);
@@ -18,5 +19,6 @@ router.use("/FAQ", FAQRouter);
 router.use("/infoCompany", infoCompanyRouter);
 router.use("/blog", blogRouter);
 router.use("/flightComfort", flightComfortRouter)
+router.use("/responce",responceRouter);
 
 module.exports = router;

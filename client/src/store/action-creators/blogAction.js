@@ -53,3 +53,18 @@ export const AddBlog=(descriptionUa,descriptionRu,image,name)=>async(dispatch)=>
     console.log(err);
     }
 }
+
+export const DelBlog=(id)=>async(dispatch)=>{
+    try{
+        const resp=await $authHost.delete("api/blog/del",{data:{id}});
+        if(resp.data.status==200){
+            alert("успішно видалено");
+        }else {
+            alert("error")
+            console.log(resp);
+        }
+    }catch(err){
+        alert("error");
+        console.log(err);
+    }
+}

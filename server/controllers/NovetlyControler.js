@@ -11,7 +11,7 @@ class NovetlyController {
             for (let i = 0; i < res.length; i++) {
                 res[i].description = res[i].description.split("//");
             }
-            resp.json({ res });
+            resp.json({status:200, res });
         } catch (err) {
             return next(ErrorApi.badRequest(err));
         }

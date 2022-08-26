@@ -7,5 +7,6 @@ rout.get("/getAll",BlogController.GetAll);
 rout.get("/getNovetly",BlogController.getNovetly);
 rout.get("/getDescription",BlogController.GetWithDescription);
 rout.post("/add",IsAdminMiddleWare,BlogController.Add);
+rout.delete("/del",IsAdminMiddleWare,BlogController.Del);
 
 module.exports=rout;
