@@ -2,6 +2,7 @@ html,body{
     height: 100%;
 }
 body{
+    font-family: "Poppins", sans-serif;
     margin: 0 auto;
     display: flex;
     flex-direction: column;
@@ -700,4 +701,12 @@ main{
     flex-direction: column;
     justify-content: center;
     height: 100%;
+}
+
+.icon-account {
+    font-size: 26px;
+}
+
+.icon-account a {
+    color: black;
 }

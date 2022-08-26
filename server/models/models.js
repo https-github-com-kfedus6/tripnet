@@ -22,8 +22,12 @@ const InfoCompany = sequelize.define("infoCompany", {
 const Responce = sequelize.define('responce', {
     id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
     description: { type: DataTypes.STRING },
+<<<<<<< HEAD
     responceId: { type: DataTypes.INTEGER, defaultValue: null, allowNull: true },
+    nameAuthor: { type: DataTypes.STRING }
+=======
     nameAuthor: { type:DataTypes.STRING }
+>>>>>>> c3e55bbcbf1d83d574843ba242f7779e2f72f974
 });
 
 const SortingFlight = sequelize.define("sotringFlight", {
@@ -72,5 +76,28 @@ const FlightComfort = sequelize.define('flightComfort', {
     title: { type: DataTypes.STRING }
 })
 
+const ScheduleBus = sequelize.define('scheduleBus', {
+    id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
+    scheduleWith: { type: DataTypes.STRING },
+    scheduleTo: { type: DataTypes.STRING },
+    monday: { type: DataTypes.STRING },
+    tuesday: { type: DataTypes.STRING },
+    wednesday: { type: DataTypes.STRING },
+    thursday: { type: DataTypes.STRING },
+    friday: { type: DataTypes.STRING },
+    suturday: { type: DataTypes.STRING },
+    sunday: { type: DataTypes.STRING },
+    statusOne: { type: DataTypes.BOOLEAN, defaultValue: false },
+    statusTwo: { type: DataTypes.BOOLEAN, defaultValue: false },
+    statusThree: { type: DataTypes.BOOLEAN, defaultValue: false },
+    statusFour: { type: DataTypes.BOOLEAN, defaultValue: false },
+    statusFive: { type: DataTypes.BOOLEAN, defaultValue: false },
+    statusSix: { type: DataTypes.BOOLEAN, defaultValue: false },
+    statusSeven: { type: DataTypes.BOOLEAN, defaultValue: false }
+})
 
-module.exports = { User, Flight, SortingFlight, InfoCompany, Responce, Novetly, FAQ, Blog, FlightComfort };
+ScheduleBus.hasMany(Flight)
+Flight.belongsTo(ScheduleBus)
+
+
+module.exports = { User, Flight, SortingFlight, InfoCompany, Responce, Novetly, FAQ, Blog, FlightComfort, ScheduleBus };

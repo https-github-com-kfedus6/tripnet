@@ -3,9 +3,9 @@
         "first_link": "Главная",
         "second_link": "Все рейсы",
         "third_link": "Категория рейсов",
-        "fourth_link": "о нас",
-        "five_link": "блог",
-        "registering": "регистрация"
+        "fourth_link": "О нас",
+        "five_link": "Блог",
+        "registering": "Регистрация"
     },
     "flight": {
         "one_way_trip": "Одностороннее путешествие",
@@ -30,17 +30,29 @@
         "pagination": "Посмотреть еще"
     },
     "authorize": {
+        "name": "имя",
+        "email_is_busy": "почта занята",
+        "invalid_name": "некоректне ім'я",
+        "mail_must_be_genuine": "почта повинна бути справжня",
+        "invalid_telephone": "некорректный номер телефона, стандартный вид: +380544462842 или 0885540581",
+        "passwords_do_not_match": "пароли не совпадают",
+        "password_must_be_longer_than_8_characters": "пароль должен быть больше 8 символов",
+        "invalid_pass": "некорректный пароль",
+        "you_have_successfully_registered": "вы успешно зарегистрировались",
+        "email_or_password_is_invalid": "неверный пароль или почта",
+        "invalid_email": "неверная почта",
         "authorize": "авторизация",
         "register": "Зарегистрироваться",
         "log": "войти",
         "or": "или",
         "password": "пароль",
         "number_phone": "номер телефону"
+        
     },
     "home": {
         "benefits_company": "преимущества компании",
         "we_will_comfortably_deliver_to_such_countries": "с комфортом доставим в такие страны",
-        "responce":"отзывы"
+        "responce": "отзывы"
     },
     "formBuy": {
         "back": "Назад",
@@ -59,5 +71,14 @@
         "persone_card": "Владелец карты",
         "price": "Усього (вкл. НДС)",
         "button_buy": "Оплатить"
+    },
+    "account":{
+        "hello":"Привет!",
+        "name":"Имя",
+        "old_password":"cтарый пароль",
+        "new_password":"новый пароль",
+        "change_password":"поменять пароль",
+        "exit":"выйти",
+        "password_changed":"пароль изменен"
     }
 }

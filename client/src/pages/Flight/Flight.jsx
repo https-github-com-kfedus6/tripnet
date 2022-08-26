@@ -9,14 +9,20 @@ import '../Flight/flight.css';
 const Flight = () => {
     const { id } = useParams()
 
-    const { flight } = useSelector(state => state.flights)
+    const { flight, flights } = useSelector(state => state.flights)
+    const { schedule } = useSelector(state => state.scheduleBus)
     const { flightComfort } = useSelector(state => state.comfort)
 
-    const { fetchGetFlight, fetchGetFlightComfort } = useAction()
+    const { fetchGetFlight, fetchGetFlightComfort, fetchGetFlights, fetchGetScheduleBus } = useAction()
 
     useEffect(() => {
         fetchGetFlight(id)
         fetchGetFlightComfort()
+        fetchGetFlights({
+            startPosition: flight.startPosition,
+            finishPosition: flight.finishPosition
+        })
+        fetchGetScheduleBus(id)
     }, [])
 
     return (
@@ -24,6 +30,7 @@ const Flight = () => {
             <FlightComfortList
                 flight={flight}
                 flightComfort={flightComfort}
+                schedule={schedule}
             />
         </div>
     )

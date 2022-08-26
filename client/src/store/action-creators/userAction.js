@@ -1,6 +1,7 @@
 import { $authHost, $host } from "../../http"
 import { userActionTypes } from "../reducers/userReducer";
 import jwtDecode from "jwt-decode"
+import { t } from 'i18next'
 
 export const Register = (name, email, telephone, password) => async (dispatch) => {
     try {
@@ -18,11 +19,12 @@ export const Register = (name, email, telephone, password) => async (dispatch) =
 
 export const Authorize = (email, password) => async (dispatch) => {
     const res = await $host.post("api/user/authorize", { email, password });
-    if (res.status == 200) {
+    if (res.data.status == 200) {
         const user = await jwtDecode(res.data.token);
         localStorage.setItem("token", res.data.token);
         dispatch({ type: userActionTypes.AUTHORIZE_USER_SUCCESSFUL, payload: user });
-    } else dispatch({ type: userActionTypes.REGISTER_USER_ERROR, payload: res.data.status });
+    } else if(res.data.status)dispatch({ type: userActionTypes.REGISTER_USER_ERROR, payload: res.data.status });
+    else dispatch({ type: userActionTypes.REGISTER_USER_ERROR, payload: 400 });
 }
 
 export const IsAuthorize = () => async (dispatch) => {
@@ -33,6 +35,22 @@ export const IsAuthorize = () => async (dispatch) => {
             let user = await jwtDecode(res.data.token);
             localStorage.setItem("token", res.data.token);
             dispatch({ type: userActionTypes.AUTHORIZE_USER_SUCCESSFUL, payload: user });
+        }  
+    }else dispatch({type:userActionTypes.NO_AUTHORIZE});
+}
+
+export const ChangePassword=(oldPassword,newPassword,id)=>async(dispatch)=>{
+    try{
+        const res=await $authHost.post("api/user/changePassword",{oldPassword,newPassword,id});
+        if(res.data.status==200){
+            dispatch({ type: userActionTypes.REGISTER_USER_ERROR, payload: 200 });
+            alert(t("account.password_changed"))
+        }else{
+            console.log(res.data)
+            alert(t("authorize.invalid_pass"))
         }
+    }catch(err){
+        alert("error");
+        console.log(err);
     }
 }

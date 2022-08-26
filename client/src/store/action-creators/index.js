@@ -8,6 +8,7 @@ import * as ActionCreatorsInfoCompany from "./infoCompanyAction";
 import * as ActionCreatorsBlog from "./blogAction";
 import * as ActionCreatorsFlightComfort from './flightComfortAction';
 import * as ActionCreatorsResponce from './responceAction';
+import * as ActionCreatorsScheduleBus from './scheduleBusAction';
 
 export default {
     ...ActionCreatorsUser,
@@ -19,5 +20,6 @@ export default {
     ...ActionCreatorsInfoCompany,
     ...ActionCreatorsBlog,
     ...ActionCreatorsFlightComfort,
-    ...ActionCreatorsResponce
+    ...ActionCreatorsResponce,
+    ...ActionCreatorsScheduleBus
 };

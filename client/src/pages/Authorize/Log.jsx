@@ -25,6 +25,7 @@ const Log = ({close}) => {
       alert(t("authorize.invalid_pass"));
       return;
     }
+    setIsLog(true);
     Authorize(email,password);
   }
   useEffect(()=>{
@@ -37,7 +38,7 @@ const Log = ({close}) => {
       break;
       case 415:alert(t("authorize.invalid_email"));
       break;
-      case 416:alert(t("athorize.invalid_pass"));
+      case 416:alert(t("authorize.invalid_pass"));
       default: alert("error");
     }
   },[reply]);

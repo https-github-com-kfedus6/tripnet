@@ -9,6 +9,7 @@ import { infoCompanyReducer } from './infoCompanyReducer';
 import { blogReducer } from './blogReducer';
 import { flightComfortReducer } from './flightComfortReducer';
 import { responceReducer } from "./responceReducer";
+import { scheduleBusReducer } from "./scheduleBusReducer";
 
 export const rootReducers = combineReducers({
     user: userReducer,
@@ -20,5 +21,6 @@ export const rootReducers = combineReducers({
     infoCompany: infoCompanyReducer,
     blog: blogReducer,
     comfort: flightComfortReducer,
-    responce: responceReducer
+    responce: responceReducer,
+    scheduleBus: scheduleBusReducer
 });
