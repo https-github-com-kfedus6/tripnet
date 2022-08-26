@@ -39,7 +39,8 @@
     },
     "home": {
         "benefits_company": "преимущества компании",
-        "we_will_comfortably_deliver_to_such_countries": "с комфортом доставим в такие страны"
+        "we_will_comfortably_deliver_to_such_countries": "с комфортом доставим в такие страны",
+        "responce":"отзывы"
     },
     "formBuy": {
         "back": "Назад",

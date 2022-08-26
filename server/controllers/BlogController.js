@@ -60,6 +60,15 @@ class BlogController {
             return next(ErrorApi.badRequest(err));
         }
     }
+    static Del=async(req,resp,next)=>{
+        try{
+            const {id}=req.body;
+            const res=await Blog.destroy({where:{id:parseInt(id)}});
+            return resp.json({status:200,res});
+        }catch(err){
+            return next(ErrorApi.badRequest(err));
+        }
+    }
 }
 
 module.exports = BlogController;
