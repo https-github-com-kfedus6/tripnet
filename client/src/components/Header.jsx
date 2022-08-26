@@ -7,11 +7,12 @@ import SetLanguage from './SetLanguage';
 import { useSelector } from 'react-redux';
 import { useState } from 'react';
 import Authorize from '../pages/Authorize/Authorize';
+import { FaUserCircle } from 'react-icons/fa'
 
 const Header = () => {
     const { t, i18n } = useTranslation()
-    const {is_admin,is_login,user}=useSelector(state=>state.user)
-    const [isShow,setIsShow]=useState(false)
+    const { is_admin, is_login, user } = useSelector(state => state.user)
+    const [isShow, setIsShow] = useState(false)
     return (
         <div className='header__main'>
             <Logo />
@@ -23,16 +24,17 @@ const Header = () => {
                     <li><NavLink to="/aboutUs">{t('header.fourth_link')}</NavLink></li>
                     <li><NavLink to='/blog'>{t("header.five_link")}</NavLink></li>
                 </ul>
-                    {is_admin?<div className='user__nick'><NavLink to="/admin">admin panel</NavLink></div>:<></>}
-                    {is_login?<div className='user__nick'><NavLink to={"/user/"+user.name}>{user.name}</NavLink></div>:
-                    <div onClick={()=>{setIsShow(!isShow)}} className="register">
+                {is_admin ? <div className='user__nick'><NavLink to="/admin">admin panel</NavLink></div> : <></>}
+                {is_login ? <div className='user__nick'><NavLink to={"/user/" + user.name}>{user.name}</NavLink></div> :
+                    <div onClick={() => { setIsShow(!isShow) }} className="register">
                         {t("header.registering")}
                     </div>}
-                <SetLanguage/>
+                <div><NavLink to='/account'><FaUserCircle /></NavLink></div>
+                <SetLanguage />
             </div>
             <Burger setIsShowRegister={setIsShow} />
-            <Authorize isShow={isShow} setIsShow={setIsShow}/>
-        </div>
+            <Authorize isShow={isShow} setIsShow={setIsShow} />
+        </div >
     )
 }
 

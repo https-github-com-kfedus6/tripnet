@@ -16,15 +16,16 @@ import { ListBlog } from '../pages/Blog/ListBlog';
 import Blog from '../pages/Blog/Blog';
 import FAQList from '../pages/FAQ/FAQList';
 import FAQ from '../pages/FAQ/FAQ';
+import Account from '../pages/Account/Account';
 
 const AppRouter = () => {
     const { IsAuthorize } = useAction();
-    const {is_login,is_admin}=useSelector(state=>state.user);
-    
+    const { is_login, is_admin } = useSelector(state => state.user);
+
     useEffect(() => {
-        IsAuthorize();    
-    },[]);
-    
+        IsAuthorize();
+    }, []);
+
     return (
         <Routes>
             <Route path='/' element={<Layout />}>
@@ -33,14 +34,15 @@ const AppRouter = () => {
                 <Route path='flightsCategory' element={<FlightsCategory />} />
                 <Route path='flight/:id' element={<Flight />} />
                 <Route path='formBuy/:id/:countOld/:countYoung' element={<FormBuy />} />
-                <Route path='FAQ' element={<FAQList/>}/>
-                <Route path='FAQ/:id' element={<FAQ/>}/>
+                <Route path='FAQ' element={<FAQList />} />
+                <Route path='FAQ/:id' element={<FAQ />} />
                 <Route path='aboutUs' element={<AboutUs />} />
-                <Route path='tinyMCE' element={<TinyMCE/>}/>
-                <Route path='blog' element={<ListBlog/>}/>
-                <Route path='blog/:id' element={<Blog/>}/>
-                {is_login? <Route path="user/:id"/>:<></>}
-                {is_admin? <Route path='admin' element={<AdminMain/>}/>:<></>}
+                <Route path='tinyMCE' element={<TinyMCE />} />
+                <Route path='blog' element={<ListBlog />} />
+                <Route path='blog/:id' element={<Blog />} />
+                {is_login ? <Route path="user/:id" /> : <></>}
+                {is_admin ? <Route path='admin' element={<AdminMain />} /> : <></>}
+                <Route path='account' element={<Account />} />
                 <Route path='*' element={<div>error</div>} />
             </Route>
         </Routes>
