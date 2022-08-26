@@ -22,12 +22,8 @@ const InfoCompany = sequelize.define("infoCompany", {
 const Responce = sequelize.define('responce', {
     id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
     description: { type: DataTypes.STRING },
-<<<<<<< HEAD
     responceId: { type: DataTypes.INTEGER, defaultValue: null, allowNull: true },
     nameAuthor: { type: DataTypes.STRING }
-=======
-    nameAuthor: { type:DataTypes.STRING }
->>>>>>> c3e55bbcbf1d83d574843ba242f7779e2f72f974
 });
 
 const SortingFlight = sequelize.define("sotringFlight", {
