@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next'
 
 const Pagination = ({ flights, pagesArray, moreFlights, changePage, limit, page }) => {
     const { t } = useTranslation()
-
+    console.log(flights,pagesArray,moreFlights,changePage,limit,page);
     return (
         <div className='pages'>
             <div className={flights.count <= limit || page === pagesArray.length ? 'page-none' : 'page-more'}>

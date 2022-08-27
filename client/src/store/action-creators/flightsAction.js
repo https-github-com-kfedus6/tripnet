@@ -3,11 +3,13 @@ import { flightActionTypes } from "../reducers/flightsReducer";
 
 export const fetchGetFlights = (data) => async (dispatch) => {
     try {
+        console.log(data)
         const response = await $host.get('api/flights/', {
             params: {
                 ...data
             }
-        })
+        });
+        console.log(response);
         dispatch({ type: flightActionTypes.FETCH_GET_FLIGHTS, payload: response.data.res })
     } catch (err) {
         console.log(err.message)

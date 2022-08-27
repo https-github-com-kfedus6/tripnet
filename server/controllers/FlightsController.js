@@ -60,7 +60,7 @@ class FlightsController {
     async getSortFlights(req, res, next) {
         try {
             let { startPosition, finishPosition, startDate, countFreePlace, limit, page } = req.query
-
+            console.log(req.query);
             if (limit === undefined) {
                 limit = 3
             }
@@ -151,6 +151,7 @@ class FlightsController {
                 arrFlights.rows[i].finishPosition = arrFlights.rows[i].finishPosition.split("//");
                 arrFlights.rows[i].description = arrFlights.rows[i].description.split("//")
             }
+            console.log(arrFlights);
             return res.json({ status: 200, res: arrFlights })
         } catch (err) {
             return next(ErrorApi.badRequest(err));
