@@ -6,7 +6,7 @@
 }
 
 .block-user {
-    width:70%;
+    width: 70%;
 }
 
 .block-user-icon {
@@ -79,6 +79,7 @@
 .block-user-btn button {
     background-color: #00b300;
 }
+
 .block-user-input input{
     margin-top: 25px;
     display: flex;

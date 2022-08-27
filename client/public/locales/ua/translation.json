@@ -3,9 +3,9 @@
         "first_link": "Головна",
         "second_link": "Всі рейси",
         "third_link": "Категорія рейсів",
-        "fourth_link": "про нас",
-        "five_link": "блог",
-        "registering": "реєстрація"
+        "fourth_link": "Про нас",
+        "five_link": "Блог",
+        "registering": "Реєстрація"
     },
     "flight": {
         "one_way_trip": "Подорож в один бік",
@@ -58,7 +58,7 @@
     "home": {
         "benefits_company": "переваги компанії",
         "we_will_comfortably_deliver_to_such_countries": "з комфортом доставимо в такі країни",
-        "responce":"відгуки"
+        "responce": "відгуки"
     },
     "formBuy": {
         "back": "Назад",
