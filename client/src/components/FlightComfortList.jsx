@@ -1,14 +1,16 @@
 import React from 'react'
 import { ImArrowRight2 } from 'react-icons/im'
+import { useSelector } from 'react-redux'
 
 const FlightComfortList = ({ flight, flightComfort }) => {
+    const {language}=useSelector(state=>state.language);
     return (
         <div className='block-flight'>
             <div className='block-position-price'>
                 <div>
-                    <h1>{flight.startPosition}</h1>
+                    <h1>{flight.startPosition[language]}</h1>
                     <span><ImArrowRight2 /></span>
-                    <h1>{flight.finishPosition}</h1>
+                    <h1>{flight.finishPosition[language]}</h1>
                 </div>
                 <div>
                     <span>{flight.price}.00 UAH</span>
@@ -30,7 +32,7 @@ const FlightComfortList = ({ flight, flightComfort }) => {
                 </div>
             </div>
             <div className='flight-description'>
-                <h2>Інформація про рейс {flight.startPosition} - {flight.finishPosition}:</h2>
+                <h2>Інформація про рейс {flight.startPosition[language]} - {flight.finishPosition[language]}:</h2>
                 <p>{flight.description}</p>
             </div>
         </div>

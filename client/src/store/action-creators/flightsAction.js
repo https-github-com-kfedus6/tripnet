@@ -16,7 +16,7 @@ export const fetchGetFlights = (data) => async (dispatch) => {
 
 export const fetchGetFlight = (id) => async (dispatch) => {
     try {
-        const response = await $host.get(`/api/flights/${id}`)
+        const response = await $host.get(`api/flights/${id}`)
         dispatch({ type: flightActionTypes.FETCH_GET_FLIGHT, payload: response.data.res })
     } catch (err) {
         console.log(err.message)

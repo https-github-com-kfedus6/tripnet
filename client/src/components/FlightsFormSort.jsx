@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { AiOutlineCaretDown } from 'react-icons/ai';
 import { useTranslation } from 'react-i18next';
 
-const FlightsFormSort = ({ setStartDate, setStartPosition, setFinishPosition, sortFlights, sumOld, setSumOld, sumYoung, setSumYoung }) => {
+const FlightsFormSort = ({ setStartDate, setStartPosition, setFinishPosition, sortFlights, sumOld, setSumOld, sumYoung, setSumYoung}) => {
     const { t } = useTranslation()
 
     const [check, setCheck] = useState(false)

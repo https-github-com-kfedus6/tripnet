@@ -17,15 +17,18 @@ const Blog = () => {
     }
   },[id]);
   function createMarkup(text) { return {__html: text}; };
+  console.log(selectBlog);
   return (
     (selectBlog==undefined||selectBlog==null||selectBlog.id!=id)?<div>loading...</div>:
-    <>
-      <img width={"30%"} src={process.env.REACT_APP_API_URL+selectBlog.image}/>
-      <h1>{selectBlog.name[language]}</h1>
-      <div dangerouslySetInnerHTML={createMarkup(selectBlog.description[language])} className="blog__main">
-        
+    <div className='blog__main__'>
+      <div className='blog__main_'>
+        <img width={"30%"} src={process.env.REACT_APP_API_URL+selectBlog.image}/>
+        <h1>{selectBlog.name[language]}</h1>
+        <div dangerouslySetInnerHTML={createMarkup(selectBlog.description[language])} className="blog__main">
+          
+        </div>
       </div>
-    </>
+    </div>
   )
 }
 

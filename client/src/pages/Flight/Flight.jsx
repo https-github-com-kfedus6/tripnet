@@ -4,7 +4,7 @@ import { useParams } from 'react-router-dom';
 import { useAction } from '../../hooks/useAction';
 import FlightComfortList from '../../components/FlightComfortList';
 
-import '../Flight/flight.css';
+import './flight.css';
 
 const Flight = () => {
     const { id } = useParams()
@@ -18,8 +18,9 @@ const Flight = () => {
         fetchGetFlight(id)
         fetchGetFlightComfort()
     }, [])
-
+    console.log(flight);
     return (
+        flight.length==0?<></>:
         <div className='container-flight'>
             <FlightComfortList
                 flight={flight}
