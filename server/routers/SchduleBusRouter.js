@@ -5,6 +5,6 @@ const scheduleBusController = require('../controllers/ScheduleBusController');
 
 router.post('/', scheduleBusController.postSchedule)
 router.get('/:id', scheduleBusController.getSchedule)
-router.put('/:id')
+router.put('/', scheduleBusController.putSchedule)
 
 module.exports = router

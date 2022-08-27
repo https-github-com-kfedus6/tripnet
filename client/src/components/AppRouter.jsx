@@ -41,7 +41,7 @@ const AppRouter = () => {
                 <Route path='blog' element={<ListBlog />} />
                 <Route path='blog/:id' element={<Blog />} />
                 {is_admin ? <Route path='admin' element={<AdminMain />} /> : <></>}
-                {is_login?<Route path='account' element={<Account />} />:<></>}
+                {is_login ? <Route path='account' element={<Account />} /> : <></>}
                 <Route path='*' element={<div>error</div>} />
             </Route>
         </Routes>

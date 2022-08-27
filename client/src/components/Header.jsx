@@ -29,7 +29,7 @@ const Header = () => {
                     <div onClick={() => { setIsShow(!isShow) }} className="register">
                         {t("header.registering")}
                     </div>}
-                <div className='icon-account'><NavLink to='/account'><FaUserCircle /></NavLink></div>
+                {is_login ? <div className='icon-account'><NavLink to='/account'><FaUserCircle /></NavLink></div> : <></>}
                 <SetLanguage />
             </div>
             <Burger setIsShowRegister={setIsShow} />

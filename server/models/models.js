@@ -82,18 +82,18 @@ const ScheduleBus = sequelize.define('scheduleBus', {
     thursday: { type: DataTypes.STRING },
     friday: { type: DataTypes.STRING },
     suturday: { type: DataTypes.STRING },
-    sunday: { type: DataTypes.STRING },
-    statusOne: { type: DataTypes.BOOLEAN, defaultValue: false },
-    statusTwo: { type: DataTypes.BOOLEAN, defaultValue: false },
-    statusThree: { type: DataTypes.BOOLEAN, defaultValue: false },
-    statusFour: { type: DataTypes.BOOLEAN, defaultValue: false },
-    statusFive: { type: DataTypes.BOOLEAN, defaultValue: false },
-    statusSix: { type: DataTypes.BOOLEAN, defaultValue: false },
-    statusSeven: { type: DataTypes.BOOLEAN, defaultValue: false }
+    sunday: { type: DataTypes.STRING }
 })
 
-ScheduleBus.hasMany(Flight)
-Flight.belongsTo(ScheduleBus)
+const ScheduleBusStatus = sequelize.define('scheduleBusStatus', {
+    id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
+    status: { type: DataTypes.BOOLEAN, defaultValue: false },
+})
 
+Flight.hasMany(ScheduleBus)
+ScheduleBus.belongsTo(Flight)
 
-module.exports = { User, Flight, SortingFlight, InfoCompany, Responce, Novetly, FAQ, Blog, FlightComfort, ScheduleBus };
+ScheduleBus.hasMany(ScheduleBusStatus)
+ScheduleBusStatus.belongsTo(ScheduleBus)
+
+module.exports = { User, Flight, SortingFlight, InfoCompany, Responce, Novetly, FAQ, Blog, FlightComfort, ScheduleBus, ScheduleBusStatus };
