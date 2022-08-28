@@ -6,30 +6,33 @@ import { useEffect } from 'react';
 
 const Responce = () => {
   const {GetResponceNovetly}=useAction()
-  const {responce}=useSelector(state=>state.responce);
+  const {novetlyResponce}=useSelector(state=>state.responce);
 
   useEffect(()=>{
     GetResponceNovetly();
   },[])
   
+  console.log(novetlyResponce);
   return (
-    responce==undefined?<div>loading...</div>:
+    novetlyResponce==undefined?<div>loading...</div>:
     <div className="list__responce__main">
-      {responce.map((x,idx)=><>
         <div className="responce__main">
-            <h2 className='responce__name'>
-                {t("home.responce")}
-            </h2>
-            <div className="responce__name__author">
-
+          <div className='responce__name'>
+            {t("home.responce")}
+          </div> 
+          <div className='responce__name__author__and__description'>
+      
+              <h5 className="responce__name__author">
+                {novetlyResponce[0].nameAuthor}
+              </h5>
+              <div className='responce__description'>
+                {novetlyResponce[0].description}
+              </div>
             </div>
-            <div className='responce__description'>
-
-            </div>
+        
         </div>
-
         <div className='responce__pagination'></div>
-      </>)}
+      
 
     </div>
   )

@@ -1,6 +1,15 @@
 import { $authHost, $host } from '../../http/index'
 import { scheduleBusActionTypes } from "../reducers/scheduleBusReducer";
 
+export const fetchPostScheduleBus = (data) => async (dispatch) => {
+    try {
+        const response = await $authHost.post('api/scheduleBus/', data)
+        dispatch({ type: scheduleBusActionTypes.FETCH_POST_SCHEDULE, payload: response.data })
+    } catch (err) {
+        console.log(err)
+    }
+}
+
 export const fetchGetScheduleBus = (id) => async (dispatch) => {
     try {
         const response = await $host.get(`api/scheduleBus/${id}`)
@@ -14,6 +23,15 @@ export const fetchPutScheduleBus = (id, scheduleWith, scheduleTo) => async (disp
     try {
         const response = await $authHost.put('api/scheduleBus/', { id, scheduleWith, scheduleTo })
         dispatch({ type: scheduleBusActionTypes.FETCH_PUT_SCHEDULE, payload: response.data })
+    } catch (err) {
+        console.log(err)
+    }
+}
+
+export const fetchPostScheduleBusStatus = (data) => async (dispatch) => {
+    try {
+        const response = await $authHost.post('api/scheduleBusStatus/', data)
+        dispatch({ type: scheduleBusActionTypes.FETCH_POST_SCHEDULE_STATUS, payload: response.data })
     } catch (err) {
         console.log(err)
     }

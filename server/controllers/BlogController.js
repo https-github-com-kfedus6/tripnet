@@ -37,10 +37,10 @@ class BlogController {
             const { id } = req.query;
             let res = await Blog.findOne({ where: { id } });
             if (res == null) {
-                return resp.json({ status: 200, res: null });
+                return resp.json({ status: 415, res: null });
             }
-            res.description = res.description.split("//");
             res.name = res.name.split("//");
+            res.description=res.description.split("//");
             return resp.json({ status: 200, res });
         } catch (err) {
             return next(ErrorApi.badRequest(err));

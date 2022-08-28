@@ -30,8 +30,8 @@ const AppRouter = () => {
         <Routes>
             <Route path='/' element={<Layout />}>
                 <Route index element={<Home />} />
-                <Route path='flights' element={<Flights />} />
-                <Route path='flightsCategory' element={<FlightsCategory />} />
+                <Route path='flights' element={<Flights isShowFilter={false} />} />
+                <Route path='flightsCategory' element={<Flights isShowFilter={true}/>} />
                 <Route path='flight/:id' element={<Flight />} />
                 <Route path='formBuy/:id/:countOld/:countYoung' element={<FormBuy />} />
                 <Route path='FAQ' element={<FAQList />} />

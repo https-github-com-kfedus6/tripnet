@@ -93,7 +93,7 @@ const ScheduleBusStatus = sequelize.define('scheduleBusStatus', {
 Flight.hasMany(ScheduleBus)
 ScheduleBus.belongsTo(Flight)
 
-ScheduleBus.hasMany(ScheduleBusStatus)
-ScheduleBusStatus.belongsTo(ScheduleBus)
+Flight.hasMany(ScheduleBusStatus)
+ScheduleBusStatus.belongsTo(Flight)
 
 module.exports = { User, Flight, SortingFlight, InfoCompany, Responce, Novetly, FAQ, Blog, FlightComfort, ScheduleBus, ScheduleBusStatus };

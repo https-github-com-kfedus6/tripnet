@@ -1,6 +1,7 @@
 import React from 'react';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import { FaUserCircle } from 'react-icons/fa';
 import { GiHamburgerMenu } from "react-icons/gi";
 import { useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
@@ -14,16 +15,13 @@ const Burger = ({setIsShowRegister}) => {
     <>
       <div className={isBurgerClick?"burger__menu active":"burger__menu"}>  
         <SetLanguage/>
+              
         <ul onClick={()=>{setIsBurgerClick(false)}}>  
-          <li>
-            {is_login?
-              <NavLink to={"/account"}>{user.name}</NavLink>
-              :
-              <div onClick={()=>setIsShowRegister(true)}>
+          <li>{is_admin ? <div className='user__nick'><NavLink to="/admin">admin panel</NavLink></div> : <></>}</li>
+          <li>{is_login ? <div><NavLink to='/account'><FaUserCircle /></NavLink></div> :
+            <div onClick={() => { setIsShowRegister(true) }} className="register">
                 {t("header.registering")}
-              </div>}
-          </li>
-          <li>{is_admin?<NavLink to={"/admin"}>admin panel</NavLink>:<></>}</li>
+            </div>}</li>
           <li><NavLink to="/">{t('header.first_link')}</NavLink></li>
           <li><NavLink to="/flights">{t('header.second_link')}</NavLink></li>
           <li><NavLink to="/flightsCategory">{t('header.third_link')}</NavLink></li>

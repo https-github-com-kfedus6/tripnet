@@ -2,9 +2,9 @@ import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { useAction } from '../../hooks/useAction';
-import FlightComfortList from '../../components/FlightComfortList';
+import FlightList from '../../components/FlightList';
 
-import '../Flight/flight.css';
+import './flight.css';
 
 const Flight = () => {
     const { id } = useParams()
@@ -17,12 +17,20 @@ const Flight = () => {
     const {
         fetchGetFlight, fetchGetFlightComfort, fetchGetFlights,
         fetchPutScheduleBus, fetchGetScheduleBus, fetchGetScheduleBusStatus,
-        fetchPutScheduleBusStatus
+        fetchPutScheduleBusStatus, fetchPostScheduleBus, fetchPostScheduleBusStatus
     } = useAction()
 
+    const [stateStatus, setStateStatus] = useState(false)
     const [arrSchedule, setArrSchedule] = useState('')
     const [scheduleWith, setScheduleWith] = useState('')
     const [scheduleTo, setScheduleTo] = useState('')
+    const [mon, setMon] = useState('')
+    const [tuesd, setTuesd] = useState('')
+    const [wend, setWend] = useState('')
+    const [thu, setThu] = useState('')
+    const [fri, setFri] = useState('')
+    const [sat, setSat] = useState('')
+    const [sund, setSund] = useState('')
 
     useEffect(() => {
         fetchGetFlight(id)
@@ -51,7 +59,29 @@ const Flight = () => {
     }
 
     const changeSchedule = () => {
-        fetchPutScheduleBus(schedule.id, scheduleWith, scheduleTo)
+        fetchPutScheduleBus(id, scheduleWith, scheduleTo)
+    }
+
+    const createSchedule = () => {
+        fetchPostScheduleBus({
+            scheduleWith: scheduleWith,
+            scheduleTo: scheduleTo,
+            monday: mon,
+            tuesday: tuesd,
+            wednesday: wend,
+            thursday: thu,
+            friday: fri,
+            suturday: sat,
+            sunday: sund,
+            flightId: id
+        })
+    }
+
+    const createStatus = () => {
+        fetchPostScheduleBusStatus({
+            flightId: id,
+            status: stateStatus
+        })
     }
 
     if (!Array.isArray(arrSchedule)) {
@@ -61,7 +91,7 @@ const Flight = () => {
     } else {
         return (
             <div className='container-flight'>
-                <FlightComfortList
+                <FlightList
                     flight={flight}
                     flightComfort={flightComfort}
                     schedule={schedule}
@@ -72,6 +102,15 @@ const Flight = () => {
                     setScheduleWith={setScheduleWith}
                     setScheduleTo={setScheduleTo}
                     changeSchedule={changeSchedule}
+                    setMon={setMon}
+                    setTuesd={setTuesd}
+                    setWend={setWend}
+                    setThu={setThu}
+                    setFri={setFri}
+                    setSat={setSat}
+                    setSund={setSund}
+                    createSchedule={createSchedule}
+                    createStatus={createStatus}
                 />
             </div>
         )
