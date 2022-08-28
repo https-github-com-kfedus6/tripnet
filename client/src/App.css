@@ -639,16 +639,38 @@ main{
     flex-wrap: wrap;
     width: 100%;
     margin: auto;
+    background-color: rgb(189, 186, 186);
 }
+@media screen and (min-width:600px) {
 
-.home__blog__main{
-    display: flex;
-    flex-direction: column;
-    width: 29%;
-    margin: 10px auto;
+    .home__blog__main{
+        display: flex;
+        flex-direction: column;
+        width: 29%;
+        margin: 10px auto;
+        background-color: white;
+        border-radius: 15px;
+    }
+}
+@media screen and (max-width:600px) {
+    .home__blog__main{
+        display: flex;
+        flex-direction: column;
+        width: 48%;
+        margin: 10px auto;
+        background-color: white;
+        border-radius: 15px;
+    }
+}
+.home__blog__main img{
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
 }
 
 .home__blog__description{
     display: flex;
     justify-content: center;
+    font-size: larger;
+    justify-content: center;
+    text-align: center;
 }
