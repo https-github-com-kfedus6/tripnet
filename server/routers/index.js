@@ -11,6 +11,7 @@ const blogRouter = require("./blogRouter");
 const flightComfortRouter = require("./flightComfortRouter");
 const responceRouter = require("./responceRouter");
 const ScheduleBusRouter = require('./SchduleBusRouter');
+const ScheduleBusStatusRouter = require('./ScheduleBusStatusRouter')
 
 router.use("/flights", flightsRouter)
 router.use("/novetly", novetlyRouter);
@@ -22,5 +23,6 @@ router.use("/blog", blogRouter);
 router.use("/flightComfort", flightComfortRouter)
 router.use("/responce", responceRouter);
 router.use('/scheduleBus', ScheduleBusRouter);
+router.use('/scheduleBusStatus', ScheduleBusStatusRouter);
 
 module.exports = router;

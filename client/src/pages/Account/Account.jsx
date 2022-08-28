@@ -7,6 +7,7 @@ import { useNavigate } from 'react-router-dom'
 import { useAction } from '../../hooks/useAction'
 import '../Account/account.css'
 
+
 const Account = () => {
     const { is_admin, is_login, user, reply } = useSelector(state => state.user);
 
@@ -71,6 +72,7 @@ const Account = () => {
                     <input type={"password"} onChange={e => setOldPassword(e.target.value)} value={oldPassword} placeholder={t("account.old_password")} />
                     <input type={"password"} onChange={e => setNewPassword(e.target.value)} value={newPassword} placeholder={t("account.new_password")} />
                     <input type={"password"} onChange={e => setNewPassword2(e.target.value)} value={newPassword2} placeholder={t("account.new_password")} />
+                   
                     <button onClick={change_password}>{t("account.change_password")}</button>
                 </div>
                 <div className='block-user-btn'>

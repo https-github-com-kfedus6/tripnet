@@ -1,20 +1,12 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { ImArrowRight2 } from 'react-icons/im'
 import { useSelector } from 'react-redux'
 
 import { FaBus } from 'react-icons/fa'
-import { IoClose } from 'react-icons/io5'
 import { BsArrowRight } from 'react-icons/bs'
+import { GrClose } from 'react-icons/gr'
 
-
-const FlightComfortList = ({ flight, flightComfort, schedule }) => {
-    const [statusBus, setStatusBus] = useState()
-    const {language}=useSelector(state=>state.language);
-    const changeStatus = (e) => {
-        setStatusBus(e)
-        console.log(statusBus)
-    }
-
+const FlightComfortList = ({ flight, flightComfort, schedule, arrSchedule, status, changeStatus, is_admin, setScheduleWith, setScheduleTo, changeSchedule }) => {
 
     return (
         <div className='block-flight'>
@@ -35,7 +27,7 @@ const FlightComfortList = ({ flight, flightComfort, schedule }) => {
                 <div className='items-comfort'>
                     {flightComfort.map(item => {
                         return (
-                            <div key={item.id} className='item-comfort'>
+                            <div key={item.id + item.title} className='item-comfort'>
                                 <img src={process.env.REACT_APP_API_URL + item.image} alt="comfort" />
                                 <span>{item.title}</span>
                             </div>
@@ -46,30 +38,62 @@ const FlightComfortList = ({ flight, flightComfort, schedule }) => {
             <div className='block-schedule'>
                 <div className='schedule-with-to'>
                     <span>Розклад автобусів {flight.startPosition} - {flight.finishPosition}</span>
-                    <span>Розклад дійсний з <strong>{schedule.scheduleWith}</strong> до <strong>{schedule.scheduleTo}</strong>.</span>
+                    {is_admin
+                        ?
+                        <span>Розклад дійсний з
+                            <input type="text" placeholder={schedule.scheduleWith}
+                                onChange={(e) => setScheduleWith(e.target.value)} />
+                            до
+                            <input type="text" placeholder={schedule.scheduleTo}
+                                onChange={(e) => setScheduleTo(e.target.value)}
+                            />
+                            <button onClick={changeSchedule}>Обновити</button>
+                        </span>
+                        :
+                        <span>Розклад дійсний з <strong>{schedule.scheduleWith}</strong> до <strong>{schedule.scheduleTo}</strong>.</span>
+                    }
                 </div>
-                <div className='schedule-dates'>
-                    <div className='schedule-word-time'>Час</div>
-                    <div className='schedule-date'><strong>{schedule.monday}</strong></div>
-                    <div className='schedule-date'><strong>{schedule.tuesday}</strong></div>
-                    <div className='schedule-date'><strong>{schedule.wednesday}</strong></div>
-                    <div className='schedule-date'><strong>{schedule.thursday}</strong></div>
-                    <div className='schedule-date'><strong>{schedule.friday}</strong></div>
-                    <div className='schedule-date'><strong>{schedule.suturday}</strong></div>
-                    <div className='schedule-date'><strong>{schedule.sunday}</strong></div>
-                </div>
-                <div className='schedule-time-status'>
-                    <div className='bus-time'>
-                        <div>{flight.timeFlight}</div>
-                        <div><strong>{flight.startTime} <BsArrowRight /> {flight.finishTime}</strong></div>
-                    </div>
-                    <div className='schedule-status'><button value={schedule.statusOne}><FaBus /></button></div>
-                    <div className='schedule-status'><button value={schedule.statusTwo} ><FaBus /></button></div>
-                    <div className='schedule-status'><button value={schedule.statusTree}><FaBus /></button></div>
-                    <div className='schedule-status'><button value={schedule.statusFour}><IoClose /></button></div>
-                    <div className='schedule-status'><button value={schedule.statusFive}><IoClose /></button></div>
-                    <div className='schedule-status'><button value={schedule.statusSix}><FaBus /></button></div>
-                    <div className='schedule-status'><button value={schedule.statusSeven}><FaBus /></button></div>
+                <div>
+                    {arrSchedule.map(item => {
+                        return (
+                            <table key={item.id + item.monday} className='table-date'>
+                                <thead>
+                                    <tr>
+                                        <th>Час</th>
+                                        <th>{item.monday}</th>
+                                        <th>{item.tuesday}</th>
+                                        <th>{item.wednesday}</th>
+                                        <th>{item.thursday}</th>
+                                        <th>{item.friday}</th>
+                                        <th>{item.suturday}</th>
+                                        <th>{item.sunday}</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <td>
+                                        <small>{flight.timeFlight}</small>
+                                        <br />
+                                        <div className='time-schedule'>
+                                            <strong>{flight.startTime}</strong>
+                                            <BsArrowRight />
+                                            <strong>{flight.finishTime}</strong>
+                                        </div>
+                                    </td>
+                                    {status.map(s => {
+                                        if (is_admin) {
+                                            return (
+                                                <td key={s.id + "status"} className={s.status === true ? 'status-cursor' : 'status-cursor table-active'} onClick={() => changeStatus(s.id, s.status)}>{s.status ? <FaBus /> : <GrClose />}</td>
+                                            )
+                                        } else {
+                                            return (
+                                                <td key={s.id + "status"} className={s.status === true ? '' : 'table-active'}>{s.status ? <FaBus /> : <GrClose />}</td>
+                                            )
+                                        }
+                                    })}
+                                </tbody>
+                            </table>
+                        )
+                    })}
                 </div>
             </div>
             <div className='flight-description'>
