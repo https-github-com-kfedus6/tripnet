@@ -26,11 +26,6 @@ const Responce = sequelize.define('responce', {
     nameAuthor: { type: DataTypes.STRING }
 });
 
-const SortingFlight = sequelize.define("sotringFlight", {
-    id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
-    name: { type: DataTypes.STRING }
-});
-
 const FAQ = sequelize.define('FAQ', {
     id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
     name: { type: DataTypes.STRING },
@@ -66,12 +61,6 @@ const Blog = sequelize.define('blog', {
     name: { type: DataTypes.STRING }
 });
 
-const FlightComfort = sequelize.define('flightComfort', {
-    id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
-    image: { type: DataTypes.STRING },
-    title: { type: DataTypes.STRING }
-})
-
 const ScheduleBus = sequelize.define('scheduleBus', {
     id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
     scheduleWith: { type: DataTypes.STRING },
@@ -90,10 +79,22 @@ const ScheduleBusStatus = sequelize.define('scheduleBusStatus', {
     status: { type: DataTypes.BOOLEAN, defaultValue: false },
 })
 
-Flight.hasMany(ScheduleBus)
-ScheduleBus.belongsTo(Flight)
+const ParamsFlight=sequelize.define('paramsFlight',{
+    id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
+    isWifi:{type:DataTypes.BOOLEAN, allowNull:false},
+    isWC:{type:DataTypes.BOOLEAN,allowNull:false},
+    is220V:{type:DataTypes.BOOLEAN,allowNull:false},
+    isMultimedia:{type:DataTypes.BOOLEAN,allowNull:false},
+    isAirConditioning:{type:DataTypes.BOOLEAN,allowNull:false}
+})
 
-ScheduleBus.hasMany(ScheduleBusStatus)
+Flight.hasMany(ParamsFlight,{as:'params'});
+ParamsFlight.belongsTo(Flight);
+
+Flight.hasMany(ScheduleBus,{as:"schefule"});
+ScheduleBus.belongsTo(Flight);
+
+ScheduleBus.hasMany(ScheduleBusStatus,{as:'status'});
 ScheduleBusStatus.belongsTo(ScheduleBus)
 
-module.exports = { User, Flight, SortingFlight, InfoCompany, Responce, Novetly, FAQ, Blog, FlightComfort, ScheduleBus, ScheduleBusStatus };
+module.exports = { User, Flight, InfoCompany, Responce, Novetly, FAQ, Blog, ScheduleBus, ScheduleBusStatus, ParamsFlight };

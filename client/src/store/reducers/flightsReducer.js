@@ -9,7 +9,8 @@ export const flightActionTypes = {
 
 const initialState = {
     flights: { count: 0, rows: [] },
-    flight: []
+    flight: [],
+    status: []
 }
 
 export const flightsReducer = (state = initialState, action,) => {
@@ -18,7 +19,7 @@ export const flightsReducer = (state = initialState, action,) => {
             return { ...state, flights: action.payload }
         }
         case flightActionTypes.FETCH_GET_FLIGHT: {
-            return { ...state, flight: action.payload }
+            return { ...state, flight: action.payload.flight, status:action.payload.status };
         }
         case flightActionTypes.FETCH_DELETE_FLIGHT: {
             return { ...state, flights: state.flights.rows.filter(f => f.id !== action.payload.id) }

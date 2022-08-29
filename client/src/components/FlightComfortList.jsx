@@ -8,6 +8,8 @@ import { GrClose } from 'react-icons/gr'
 
 const FlightComfortList = ({ flight, flightComfort, schedule, arrSchedule, status, changeStatus, is_admin, setScheduleWith, setScheduleTo, changeSchedule }) => {
 
+    const {language}=useSelector(state=>state.language)
+
     return (
         <div className='block-flight'>
             <div className='block-position-price'>

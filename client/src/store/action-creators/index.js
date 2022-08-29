@@ -6,9 +6,7 @@ import * as ActionCreatorsFAQ from "./FAQAction";
 import * as ActionCreatorsLanguage from "./languageAction";
 import * as ActionCreatorsInfoCompany from "./infoCompanyAction";
 import * as ActionCreatorsBlog from "./blogAction";
-import * as ActionCreatorsFlightComfort from './flightComfortAction';
 import * as ActionCreatorsResponce from './responceAction';
-import * as ActionCreatorsScheduleBus from './scheduleBusAction';
 
 export default {
     ...ActionCreatorsUser,
@@ -19,7 +17,5 @@ export default {
     ...ActionCreatorsLanguage,
     ...ActionCreatorsInfoCompany,
     ...ActionCreatorsBlog,
-    ...ActionCreatorsFlightComfort,
     ...ActionCreatorsResponce,
-    ...ActionCreatorsScheduleBus
 };

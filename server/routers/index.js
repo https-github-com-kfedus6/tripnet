@@ -8,9 +8,7 @@ const aboutUsRouter = require("./aboutUsRouter");
 const FAQRouter = require("./FAQRouter");
 const infoCompanyRouter = require("./infoCompanyRouter");
 const blogRouter = require("./blogRouter");
-const flightComfortRouter = require("./flightComfortRouter");
 const responceRouter = require("./responceRouter");
-const ScheduleBusRouter = require('./SchduleBusRouter');
 const ScheduleBusStatusRouter = require('./ScheduleBusStatusRouter')
 
 router.use("/flights", flightsRouter)
@@ -20,9 +18,7 @@ router.use("/aboutUs", aboutUsRouter);
 router.use("/FAQ", FAQRouter);
 router.use("/infoCompany", infoCompanyRouter);
 router.use("/blog", blogRouter);
-router.use("/flightComfort", flightComfortRouter)
 router.use("/responce", responceRouter);
-router.use('/scheduleBus', ScheduleBusRouter);
 router.use('/scheduleBusStatus', ScheduleBusStatusRouter);
 
 module.exports = router;
