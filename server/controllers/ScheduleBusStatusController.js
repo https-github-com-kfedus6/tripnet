@@ -15,7 +15,6 @@ class ScheduleBusStatusController {
             return next(ErrorApi.badRequest(err));
         }
     }
-
     async getStatus(req, res, next) {
         try {
             const { id } = req.params

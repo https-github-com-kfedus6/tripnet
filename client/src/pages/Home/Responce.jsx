@@ -23,10 +23,10 @@ const Responce = () => {
                     <div className='responce__name__author__and__description'>
 
                         <h5 className="responce__name__author">
-                            {novetlyResponce[0].nameAuthor}
+                            {/*  {novetlyResponce[0].nameAuthor} */}
                         </h5>
                         <div className='responce__description'>
-                            {novetlyResponce[0].description}
+                            {/* {novetlyResponce[0].description} */}
                         </div>
                     </div>
 
