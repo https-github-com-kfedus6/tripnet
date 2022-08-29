@@ -20,12 +20,18 @@ const FlightsEdit = () => {
     const [timeFlightRU,setTimeFlightRU]=useState("");
     const [descriptionUa,setDescriptionUa]=useState("");
     const [descriptionRu,setDescriptionRu]=useState("");
-    
+    const [isWifi, setIsWifi]=useState(false);
+    const [isWC, setIsWC]=useState(false);
+    const [is220V, setIs200V]=useState(false);
+    const [isMultimedia,setIsMultimedia]=useState(false);
+    const [isAirConditioning,setIsAirConditioning]=useState(false);
+
+
     return (
     <details>
         <summary className='name__menu'>добавити рейс</summary>
         <div className='flight__edit'>
-            <p>фотографії рейсу(не обовязково)</p>
+            <p>фотографія рейсу(не обовязково)</p>
             <div className='blog__edit__set__photo'>
                 <input type="file" id="visitorphoto" name="visitorPhoto" accept="image/*" capture onChange={e=>setImage(e.target.files?.[0])}/>
             </div>
@@ -53,6 +59,11 @@ const FlightsEdit = () => {
             <input value={timeFlightUA} onChange={e=>setTimeFlightUA(e.target.value)}/>
             <p>тривалість рейсу рос</p>
             <input value={timeFlightRU} onChange={e=>setTimeFlightRU(e.target.value)}/>
+            <p>wifi:<input onChange={()=>setIsWifi(!isWifi)} type={"checkbox"}/></p>
+            <p>туалет:<input onChange={()=>setIsWC(!isWC)} type={"checkbox"}/></p>
+            <p>розетка:<input onChange={()=>setIs200V(!is220V)} type={"checkbox"}/></p>
+            <p>мультимедія:<input onChange={()=>setIsMultimedia(!isMultimedia)} type={"checkbox"}/></p>
+            <p>кондиціонер:<input onChange={()=>setIsAirConditioning(!isAirConditioning)} type={"checkbox"}/></p>
             <p>опис укр</p>
             <Editor value={descriptionUa}
               apiKey="t6okxmezjfhajn8bk23u3dkejv0oc9c1qhs7gmmh9qskcfdp"
@@ -63,10 +74,10 @@ const FlightsEdit = () => {
               apiKey="t6okxmezjfhajn8bk23u3dkejv0oc9c1qhs7gmmh9qskcfdp"
               onEditorChange={(newText)=>setDescriptionRu(newText)}
             />
-            <button onClick={()=>AddFlight()}>add</button>
+            <button onClick={()=>AddFlight(price,startPositionUA,startPositionRU,finishPositionUA,finishPositionRU,startDate,finishDate,startTime,finishTime,timeFlightUA,timeFlightRU,countFreePlace,descriptionUa,descriptionRu,isWifi,isWC,is220V,isMultimedia,isAirConditioning,image)}>add</button>
         </div>
     </details>
   )
 }
 
-export default FlightsEdit
+export default FlightsEdit;

@@ -17,6 +17,7 @@ export const AddNovetly=(ua,ru,image)=>async()=>{
         await formData.append("description",description);
         await formData.append("image",image);
         const resp=await $authHost.post("api/novetly/",formData);
+        console.log(resp);
         if(resp.data.status==200){
             alert("успішно додано");
         }else alert("error")

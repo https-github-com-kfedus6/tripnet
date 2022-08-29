@@ -7,14 +7,13 @@ class FlightsController {
     async postFlights(req, res, next) {
         try {
             const { price, startPositionUA, startPositionRU, finishPositionUA, finishPositionRU,
-                startDate, finishDate, startTime, finishTime, timeFlight, countFreePlace,
-                descriptionUA, descriptionRU, nameUA, nameRU, isWifi, isWC, is220V, isMultimedia,
-                isAirConditioning } = req.body
-
+                startDate, finishDate, startTime, finishTime, timeFlightUA, timeFlightRU, countFreePlace,
+                descriptionUA, descriptionRU, isWifi, isWC, is220V, isMultimedia,
+                isAirConditioning } = req.body;
+            const timeFlight=[timeFlightUA,timeFlightRU].join("//");
             const startPosition = [startPositionUA, startPositionRU].join("//");
             const finishPosition = [finishPositionUA, finishPositionRU].join("//");
             const description = [descriptionUA, descriptionRU].join("//");
-            const name = [nameUA, nameRU].join("//");
             let { image } = req.files;
             let flight;
             if (image) {
@@ -33,7 +32,6 @@ class FlightsController {
                     timeFlight: timeFlight,
                     countFreePlace: countFreePlace,
                     description: description,
-                    name: name
                 })
             }
             else {
@@ -48,9 +46,11 @@ class FlightsController {
                     timeFlight: timeFlight,
                     countFreePlace: countFreePlace,
                     description: description,
-                    name: name
                 })
             }
+            console.log(isWifi,isWC,is220V,isMultimedia,isAirConditioning,flight.id);
+            const params = await ParamsFlight.create({ isWifi:isWifi,isWC:isWC,is220V:is220V,
+                isMultimedia:isMultimedia,isAirConditioning:isAirConditioning, flightId: flight.id });
             const scheduleBus = await ScheduleBus.create({
                 scheduleWith: "12.08.2022", scheduleTo: "25.08.2022", monday: "Пн",
                 tuesday: "Вт", wednesday: "Ср", thursday: "Чт", friday: "Пт", suturday: "Cб", sunday: "Нд//Вс", flightId: flight.id
@@ -59,8 +59,6 @@ class FlightsController {
             for (let i = 0; i < 7; i++) {
                 const scheduleBusStatus = await ScheduleBusStatus.create({ scheduleBusId: scheduleBus.id })
             }
-
-            const params = await ParamsFlight.create({ isWifi, is220V, isAirConditioning, isMultimedia, isWC, flightId: flight.id });
 
 
             return res.json({ res: flight, status: 200 });
