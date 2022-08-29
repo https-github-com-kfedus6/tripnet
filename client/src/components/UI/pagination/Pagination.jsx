@@ -6,7 +6,7 @@ const Pagination = ({ flights, pagesArray, moreFlights, changePage, limit, page 
     console.log(flights,pagesArray,moreFlights,changePage,limit,page);
     return (
         <div className='pages'>
-            <div className={flights.count <= limit || page === pagesArray.length ? 'page-none' : 'page-more'}>
+            <div className={page === pagesArray.length ? 'page-none' : 'page-more'}>
                 <button onClick={moreFlights}>{t('flight.pagination')}</button>
             </div>
             <div className={pagesArray.length === 1 || flights.rows.length === flights.count ? 'page-wrapper-none' : 'page-wrapper'}>

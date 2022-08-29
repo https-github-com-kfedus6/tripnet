@@ -96,5 +96,7 @@ ScheduleBus.belongsTo(Flight);
 
 ScheduleBus.hasMany(ScheduleBusStatus,{as:'status'});
 ScheduleBusStatus.belongsTo(ScheduleBus)
+Flight.hasMany(ScheduleBusStatus)
+ScheduleBusStatus.belongsTo(Flight)
 
 module.exports = { User, Flight, InfoCompany, Responce, Novetly, FAQ, Blog, ScheduleBus, ScheduleBusStatus, ParamsFlight };

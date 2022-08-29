@@ -4,10 +4,13 @@ const ErrorApi = require('../error/ErrorApi')
 class ScheduleBusStatusController {
     async postStatus(req, res, next) {
         try {
-            const { status, scheduleBusId } = req.body
-            const scheduleStatus = await ScheduleBusStatus.create({ status: status, scheduleBusId: scheduleBusId })
+            const { status, flightId } = req.body
 
-            return res.json(scheduleStatus)
+            for (let i = 0; i <= 7; i++) {
+                const scheduleStatus = await ScheduleBusStatus.create({ status: status, flightId: flightId })
+                res.json(scheduleStatus)
+            }
+
         } catch (err) {
             return next(ErrorApi.badRequest(err));
         }
@@ -17,7 +20,7 @@ class ScheduleBusStatusController {
         try {
             const { id } = req.params
 
-            const scheduleStatus = await ScheduleBusStatus.findAll({ where: { scheduleBusId: id } })
+            const scheduleStatus = await ScheduleBusStatus.findAll({ where: { flightId: id } })
 
             return res.json(scheduleStatus)
         } catch (err) {
@@ -28,11 +31,10 @@ class ScheduleBusStatusController {
     async pusStatus(req, res, next) {
         try {
             const { id, status } = req.body
-            console.log(id, status)
 
             await ScheduleBusStatus.update({ status: status }, { where: { id: id } })
 
-            const newScheduleStatus = await ScheduleBusStatus.findAll()
+            const newScheduleStatus = await ScheduleBusStatus.findAll({ where: { flightId: id } })
 
             return res.json(newScheduleStatus)
         } catch (err) {

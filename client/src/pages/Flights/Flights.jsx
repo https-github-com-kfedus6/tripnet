@@ -4,9 +4,15 @@ import FlightsList from '../../components/FlightsList';
 import Pagination from '../../components/UI/pagination/Pagination';
 import { useAction } from '../../hooks/useAction';
 import { getPageCount, getPagesArray } from '../../utils/page';
+
+
+import '../Flights/flights.css';
+
 import './flights.css';
 
-const Flights = ({isShowFilter}) => {
+
+const Flights = ({ isShowFilter }) => {
+
     const [startPosition, setStartPosition] = useState('')
     const [finishPosition, setFinishPosition] = useState('')
     const [startDate, setStartDate] = useState('')
@@ -61,7 +67,10 @@ const Flights = ({isShowFilter}) => {
     const deleteFlight = (id) => {
         fetchDeleteFlight(id)
     }
-    console.log(flights,pagesArray,page,limit,changePage,moreFlights);
+    console.log(flights, pagesArray, page, limit, changePage, moreFlights);
+
+    console.log(flights, pagesArray, page, limit, changePage, moreFlights);
+
     return (
         <div className='flights'>
             <FlightsList
