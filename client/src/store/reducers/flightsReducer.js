@@ -4,7 +4,9 @@ export const flightActionTypes = {
     FETCH_GET_FLIGHT: 'FETCH_GET_FLIGHT',
     FETCH_UPDATE_FLIGHT: 'FETCH_UPDATE_FLIGHT',
     FETCH_DELETE_FLIGHT: 'FETCH_GET_FLIGHT',
-    FETCH_ERROR_FLIGHT: 'FETCH_ERROR_FLIGHT'
+    FETCH_ERROR_FLIGHT: 'FETCH_ERROR_FLIGHT',
+    FETCH_PUT_FLIGHT_STATUS: 'FETCH_PUT_FLIGHT_STATUS',
+    FETCH_PUT_FLIGHT_SCHEDULE_BUS: 'FETCH_PUT_FLIGHT_SCHEDULE_BUS'
 }
 
 const initialState = {
@@ -26,6 +28,9 @@ export const flightsReducer = (state = initialState, action,) => {
         }
         case flightActionTypes.FETCH_UPDATE_FLIGHT: {
             return { ...state, flights: action.payload }
+        }
+        case flightActionTypes.FETCH_PUT_FLIGHT_STATUS: {
+            return { ...state, status: action.payload }
         }
         default: {
             return state

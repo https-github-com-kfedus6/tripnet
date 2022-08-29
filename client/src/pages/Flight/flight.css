@@ -4,7 +4,7 @@
 }
 
 .block-flight {
-    width: 70%;
+    width: 75%;
 }
 
 .block-position-price {
@@ -13,7 +13,7 @@
 }
 
 .block-position-price div {
-    margin-right: 23%;
+    margin-right: 18%;
 }
 
 .block-position-price div:nth-child(1) {
@@ -22,19 +22,19 @@
 }
 
 .block-position-price div:nth-child(1) h1:nth-child(1) {
-    margin-right: 15%;
+    margin-right: 10%;
 }
 
 .block-position-price div:nth-child(1) span {
     font-size: 30px;
-    margin-right: 15%;
+    margin-right: 10%;
     display: flex;
 }
 
 .block-position-price div:nth-child(2) {
     width: 180px;
     height: 40px;
-    background-color:#00d200;
+    background-color: #00d200;
     border-radius: 10px;
 }
 
@@ -43,31 +43,58 @@
     display: flex;
     justify-content: center;
     margin-top: 6px;
-} 
+}
+
+.block-comfort {
+    display: flex;
+}
+
+.flight-image img {
+    width: 100%;
+    border-radius: 5px;
+}
 
 .items-comfort {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    width: 30%;
+    margin-left: 20px;
 }
 
-.item-comfort {
+.item-comfort div {
     display: flex;
-    justify-content: center;
-    flex-direction: column;
     align-items: center;
+    margin-top: 5px;
 }
 
-.item-comfort img {
-    width: 60%;
+.item-comfort div img {
+    width: 25%;
 }
 
-.item-comfort span {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 15px;
-    margin-top: 10px;
+.item-comfort div span {
+    margin-left: 5px;
+}
+
+.image-status img, .image-status span {
+    display: none;
+}
+
+.flight-maps h2 {
+    font-weight: 400;
+}
+
+.flight-maps iframe{
+    width: 75%;
+    height: 400px;
+    border-radius: 5px;
+    border: none;
+}
+
+.flight-description {
+    width: 80%;
+}
+
+.flight-description h2 {
+    font-weight: 400;
+    font-size: 20px;
 }
 
 .flight-description p {
@@ -87,7 +114,6 @@
 
 .schedule-with-to span:nth-child(1) {
     font-size: 20px;
-    
 }
 
 .schedule-with-to span:nth-child(2) {
@@ -110,7 +136,7 @@
     border-spacing: 0;
 }
 
-.table-date thead tr th, 
+.table-date thead tr th,
 .table-date tbody td {
     text-align: center;
 }
@@ -121,10 +147,10 @@
 }
 
 .table-date tbody tr td,
-.table-date tbody tr th, 
-.table-date tfoot tr td, 
-.table-date tfoot tr th, 
-.table-date thead tr td, 
+.table-date tbody tr th,
+.table-date tfoot tr td,
+.table-date tfoot tr th,
+.table-date thead tr td,
 .table-date thead tr th {
     padding: 8px;
 }
@@ -134,32 +160,36 @@
     font-size: 15px;
 }
 
-.status-cursor {
+.create-date {
+    width: 80px;
+    border: 1px solid silver;
+    border-radius: 5px;
+    padding: 5px 5px;
+}
+
+.change-date {
+    margin-left: 5px;
+    border: 1px solid silver;
+    border-radius: 5px;
+    padding: 5px 5px;
     cursor: pointer;
 }
 
-.status-cursor:hover {
-    background-color: #e7e7e7;
+.status-btn  button{
+    cursor: pointer;
+    background: transparent;
+    border: none;
 }
 
-.table-active {
-    background-color:#f5f5f5;
+.status-btn:hover {
+    background-color: rgb(235, 235, 235);
 }
 
-.create-day {
-    width:50px;
-    border-radius:5px;
-    border:1px solid silver;
+.status-active {
+    background-color: rgb(235, 235, 235);
 }
 
-.create-date {
-    width: 100px;
-    border-radius:5px;
-    border:1px solid silver;
-}
-
-@media (max-width:992px) {
-    
+@media (max-width: 992px) {
     .block-flight {
         width: 90%;
     }
@@ -172,18 +202,48 @@
     .block-position-price div {
         margin-right: 0;
     }
+
+    .item-comfort div img {
+        width: 28%;
+    }
+
+    .block-comfort {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .item-comfort {
+        display: flex;
+    }
+    
+    .item-comfort div {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .items-comfort {
+        width: 80%;
+        margin-left: 0;
+    }
+
+    .item-comfort div img {
+        width:50%;
+    }
+    
+    .flight-maps iframe {
+        width: 90%;
+    }
 }
 
-@media (max-width:768px) {
-    
+@media (max-width: 768px) {
     .block-flight {
         width: 98%;
     }
-   
+
     .block-position-price div:nth-child(2) {
         width: 180px;
         height: 40px;
-        background-color:#00d200;
+        background-color: #00d200;
         border-radius: 10px;
     }
 
@@ -192,28 +252,43 @@
         display: flex;
         justify-content: center;
         margin-top: 6px;
-    } 
-
-    .item-comfort img {
-        width: 80px;
-        height: 80px;
     }
 
-    .items-comfort {
-        display: flex;
-        justify-content: flex-start;
-        align-items: center;
-        flex-wrap: wrap;
-    }
-
-    .items-comfort div {
-        margin-right: 10px;
-        margin-bottom: 10px;
-    }   
-    
     .table-date {
         width: 90%;
     }
+
+    .flight-description {
+        width: 99%;
+    }
+    
+    .block-comfort {
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .item-comfort {
+        display: flex;
+    }
+    
+    .item-comfort div {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .items-comfort {
+        width: 99%;
+        margin-left: 0;
+    }
+
+    .item-comfort div img {
+        width:50%;
+    }
+    
+    .flight-maps iframe {
+        width: 99%;
+    }
+
 }
 
 @media (max-width: 576px) {
@@ -221,7 +296,7 @@
         width: 70px;
         height: 70px;
     }
-    
+
     .block-position-price {
         display: flex;
         flex-direction: column;
@@ -231,4 +306,17 @@
     .table-date {
         width: 98%;
     }
+      
+    .flight-maps iframe {
+        width: 99%;
+        height: 300px;
+    }
+   
+    .block-position-price div {
+        margin-bottom:10px;
+    }
+    .item-comfort div {
+        width: 100%;
+    }
+    
 }

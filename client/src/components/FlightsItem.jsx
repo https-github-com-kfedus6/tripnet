@@ -4,6 +4,8 @@ import { useSelector } from 'react-redux';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { useAction } from '../hooks/useAction';
 import { useTranslation } from 'react-i18next';
+import Stack from '@mui/material/Stack';
+import Button from '@mui/material/Button';
 
 const FlightsItem = ({ item, sumOld, sumYoung, deleteFlight, limit, page }) => {
     const { t } = useTranslation()
@@ -26,8 +28,8 @@ const FlightsItem = ({ item, sumOld, sumYoung, deleteFlight, limit, page }) => {
     const { user } = useSelector(state => state)
     const { fetchUpdateFlight } = useAction()
 
-    const {language}=useSelector(state=>state.language);
-    
+    const { language } = useSelector(state => state.language);
+
     useEffect(() => {
         let sum = +sumOld + +sumYoung
 
@@ -125,7 +127,11 @@ const FlightsItem = ({ item, sumOld, sumYoung, deleteFlight, limit, page }) => {
                                 <span>{t('flight.free_place')} {item.countFreePlace} {t('flight.place')}!</span>
                             </div>
                             <div>
-                                <button onClick={() => navigate(`/formBuy/${item.id}/${sumOld}/${sumYoung}`)}><div><FaShoppingCart /></div><span>{sum}.00 UAH</span></button>
+                                <Stack direction="row" spacing={2}>
+                                    <Button variant="contained" color="success" onClick={() => navigate(`/formBuy/${item.id}/${sumOld}/${sumYoung}`)}>
+                                        <div><FaShoppingCart /></div><span>{sum}.00 UAH</span>
+                                    </Button>
+                                </Stack>
                             </div>
                         </div>
                     </>
@@ -156,7 +162,11 @@ const FlightsItem = ({ item, sumOld, sumYoung, deleteFlight, limit, page }) => {
                         <span>{t('flight.free_place')} {item.countFreePlace} {t('flight.place')}!</span>
                     </div>
                     <div>
-                        <button onClick={() => navigate(`/formBuy/${item.id}/${sumOld}/${sumYoung}`)}><div><FaShoppingCart /></div><span>{sum}.00 UAH</span></button>
+                        <Stack direction="row" spacing={2}>
+                            <Button variant="contained" color="success" onClick={() => navigate(`/formBuy/${item.id}/${sumOld}/${sumYoung}`)}>
+                                <div><FaShoppingCart /></div><span>{sum}.00 UAH</span>
+                            </Button>
+                        </Stack>
                     </div>
                 </div>
             </div >

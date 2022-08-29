@@ -2,17 +2,17 @@ import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { useAction } from '../../hooks/useAction';
-/* import FlightList from '../../components/FlightList'; */
+import FlightList from '../../components/FlightList';
 
 import './flight.css';
 
 const Flight = () => {
     const { id } = useParams()
 
-    const { flight } = useSelector(state => state.flights)
+    const { flight, status } = useSelector(state => state.flights)
     const { is_admin } = useSelector(state => state.user)
 
-    const { fetchGetFlight, fetchGetFlights, } = useAction()
+    const { fetchGetFlight, fetchGetFlights, fetchPutFlightStatus, fetchPutFlightBusDate } = useAction()
 
     const [scheduleWith, setScheduleWith] = useState('')
     const [scheduleTo, setScheduleTo] = useState('')
@@ -25,23 +25,38 @@ const Flight = () => {
         })
     }, [])
 
-    const changeSchedule = () => {
-        fetchPutScheduleBus(id, scheduleWith, scheduleTo)
+    const changeStatus = (sheduleBusId, id, status) => {
+        if (status === true) {
+            status = false
+        } else {
+            status = true
+        }
+        fetchPutFlightStatus(sheduleBusId, id, status)
     }
 
+    const changeSchedule = (id) => {
+        fetchPutFlightBusDate(id, scheduleWith, scheduleTo)
+    }
 
-    return (
-        <div className='container-flight'>
-            {/*  <FlightList
-                flight={flight}
-                changeStatus={changeStatus}
-                is_admin={is_admin}
-                setScheduleWith={setScheduleWith}
-                setScheduleTo={setScheduleTo}
-                changeSchedule={changeSchedule}
-            /> */}
-        </div>
-    )
+    if (!Array.isArray(flight)) {
+        return (
+            <div className='container-flight'>
+                <FlightList
+                    flight={flight}
+                    is_admin={is_admin}
+                    setScheduleTo={setScheduleTo}
+                    setScheduleWith={setScheduleWith}
+                    status={status}
+                    changeStatus={changeStatus}
+                    changeSchedule={changeSchedule}
+                />
+            </div>
+        )
+    } else {
+        return (
+            <></>
+        )
+    }
 }
 
 

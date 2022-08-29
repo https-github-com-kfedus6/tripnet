@@ -1,39 +1,41 @@
-html,body{
+html,
+body {
     height: 100%;
 }
-body{
+body {
     font-family: "Poppins", sans-serif;
     margin: 0 auto;
     display: flex;
     flex-direction: column;
 }
 
-main{
+main {
     margin: 0 0 0;
 }
-.logo{
+.logo {
     display: flex;
 }
 
-.home__main{
+.home__main {
     display: flex;
     flex-direction: column;
     width: 100%;
     justify-content: center;
 }
 
-@media screen and (min-width:1024px) {
-    .header__components ul li{
+
+@media screen and (min-width: 1024px) {
+    .header__components ul li {
         font-size: 20px;
         margin: 15px;
     }
-    .header__components div{
+    .header__components div {
         font-size: 25px;
     }
-    .option-lang{
+    .option-lang {
         font-size: 25px;
     }
-    .home__content{
+    .home__content {
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -42,12 +44,13 @@ main{
 }
 
 @media screen and (min-width: 720px) {
-    .logo img{
+    .logo img {
         width: 10vw;
         cursor: pointer;
     }
 
-    .header__main{
+    .header__main {
+        /* #32CD32   #5DA130  #3CAA3C #4CBB17*/
         background-color: #00d200;
         display: flex;
         align-items: center;
@@ -55,79 +58,78 @@ main{
         justify-content: space-around;
         width: 100%;
     }
-    .header__components{
+    .header__components {
         display: flex;
         width: 250%;
         flex-direction: row;
         justify-content: space-around;
         align-items: center;
     }
-    .header__components ul{
+    .header__components ul {
         display: inline-block;
         flex-direction: row;
     }
 
-    .header__components ul li{
+    .header__components ul li {
         display: inline-block;
-        margin-right: 15px;      
+        margin-right: 15px;
     }
-    .header__components ul li a{
+    .header__components ul li a {
         display: flex;
         flex-direction: row;
         font-size: 115%;
         text-decoration: none;
         color: black;
     }
-    .register{
+    .register {
         font-size: 150%;
     }
-    .header__burger{
+    .header__burger {
         display: none;
     }
 
-    .header__registering{
+    .header__registering {
         display: inline-block;
     }
-
 }
 
 @media screen and (max-width: 800px) {
-    .logo img{
+    .logo img {
         width: 20vw;
         cursor: pointer;
     }
-    .header__main{
+    .header__main {
         display: flex;
         justify-content: space-between;
         background-color: #00d200;
     }
-    .header__components{
+    .header__components {
         display: none;
         flex-direction: row;
     }
 
-    .header__components ul li{
+    .header__components ul li {
         display: none;
         margin-right: 20px;
     }
 
-    .header__language{
+    .header__language {
         display: none;
     }
 
-    .header__burger{
+    .header__burger {
         display: flex;
         align-items: center;
         cursor: pointer;
     }
-    .header__burger div{
+    .header__burger div {
         width: 20%;
     }
-    .header__registering{
+    .header__registering {
         display: none;
     }
-}
-.burger__menu{
+} 
+.burger__menu {
     display: flex;
     flex-direction: column;
     position: fixed;
@@ -139,7 +141,7 @@ main{
     z-index: 50;
     transition: 1s;
 }
-.burger__menu.active{
+.burger__menu.active {
     display: flex;
     position: fixed;
     height: 100%;
@@ -150,49 +152,47 @@ main{
     transition: 1s;
     left: 20%;
 }
-.burger__menu ul{
+.burger__menu ul {
     display: flex;
     flex-direction: column;
 }
-.burger__menu ul li{
+.burger__menu ul li {
     display: inline-block;
     margin-bottom: 25%;
     font-size: 150%;
 }
-.burger__menu ul li a{
+.burger__menu ul li a {
     text-decoration: none;
     color: black;
 }
-.active{
+.active {
     border-bottom: 4px solid white;
 }
-.params__flight{
+.params__flight {
     display: flex;
 }
-.direction{
+.direction {
     display: flex;
     flex-direction: row;
 }
-.register{
+.register {
     cursor: pointer;
     text-decoration: none;
     color: black;
 }
-.user__nick a{
+.user__nick a {
     text-decoration: none;
     color: black;
 }
 
-
-
-.novetly__img img{
+.novetly__img img {
     width: 100%;
 }
-.authorize__main{
+.authorize__main {
     display: none;
 }
-.authorize__main.active{
-    display:flex;
+.authorize__main.active {
+    display: flex;
     position: fixed;
     z-index: 2;
     left: 0;
@@ -203,11 +203,8 @@ main{
     background-color: rgba(0, 0, 0, 0.9);
 }
 
-
-
-
-.close{
-    color:#aaa;
+.close {
+    color: #aaa;
     font-size: 50px;
     align-items: center;
     text-align: center;
@@ -215,7 +212,7 @@ main{
     cursor: pointer;
     color: red;
 }
-.authorize__header{
+.authorize__header {
     display: flex;
     width: 100%;
     justify-content: space-between;
@@ -223,34 +220,34 @@ main{
     align-items: center;
     border-bottom: 2px solid #888;
 }
-.register__or__log div{
+.register__or__log div {
     color: blue;
     cursor: pointer;
     margin-left: 10px;
     margin-right: 10px;
 }
-.register__or__log div.active{
+.register__or__log div.active {
     color: black;
-    cursor:auto;
+    cursor: auto;
 }
-.register__main{
+.register__main {
     display: flex;
     flex-direction: column;
-}   
-.register__main div{
+}
+.register__main div {
     width: 100%;
     height: 70px;
 }
-.register__main input{
+.register__main input {
     width: 100%;
     height: 35px;
 }
-.btn__authorize{
+.btn__authorize {
     display: flex;
     justify-content: right;
     align-items: center;
 }
-.btn__authorize button{
+.btn__authorize button {
     background-color: #00d200;
     color: white;
     border-radius: 30px;
@@ -258,19 +255,19 @@ main{
     height: 50px;
 }
 @media screen and (min-width: 1024px) {
-    .authorize__name{
+    .authorize__name {
         font-size: 40px;
     }
-    .modal__content{
-        display:flex;
-        flex-direction: column;    
+    .modal__content {
+        display: flex;
+        flex-direction: column;
         background-color: #fefefe;
         margin: auto;
         padding: 20px;
         border: 1px solid #888;
         width: 30%;
     }
-    .register__or__log{
+    .register__or__log {
         display: flex;
         flex-direction: row;
         font-size: 20px;
@@ -279,31 +276,30 @@ main{
     }
 }
 @media screen and (max-width: 1024px) {
-    .authorize__name{
+    .authorize__name {
         font-size: 30px;
     }
-    .modal__content{
-        display:flex;
-        flex-direction: column;    
+    .modal__content {
+        display: flex;
+        flex-direction: column;
         background-color: #fefefe;
         margin: auto;
         padding: 20px;
         border: 1px solid #888;
         width: 45%;
     }
-    .register__or__log{
+    .register__or__log {
         display: flex;
         flex-direction: row;
         font-size: 20px;
         align-items: center;
         height: 60px;
     }
-
 }
 @media screen and (max-width: 768px) {
-    .modal__content{
-        display:flex;
-        flex-direction: column;    
+    .modal__content {
+        display: flex;
+        flex-direction: column;
         background-color: #fefefe;
         margin: auto;
         padding: 20px;
@@ -311,8 +307,8 @@ main{
         width: 70%;
     }
 }
-@media screen and (max-width:425px) {
-    .register__or__log{
+@media screen and (max-width: 425px) {
+    .register__or__log {
         display: flex;
         flex-direction: row;
         font-size: 15px;
@@ -320,57 +316,56 @@ main{
         height: 60px;
     }
 }
-.list__FAQ__main{
+.list__FAQ__main {
     display: flex;
     justify-content: center;
     flex-direction: column;
     margin: 0 auto;
 }
-.FAQ__main{
+.FAQ__main {
     display: flex;
     margin: 25px auto;
     flex-direction: column;
     justify-content: center;
 }
-.FAQ__description{
+.FAQ__description {
     overflow: auto;
-    background-color:#e5dcdc;
+    background-color: #e5dcdc;
     height: 35px;
 }
-.FAQ__name{
+.FAQ__name {
     text-align: center;
 }
-.FAQ__main{
+.FAQ__main {
     margin-top: 40px;
     width: 80%;
 }
-@media screen and (min-width:1024px) {
-    .FAQ__main{
+@media screen and (min-width: 1024px) {
+    .FAQ__main {
         width: 80%;
     }
-    .FAQ__name{
+    .FAQ__name {
         font-size: 35px;
     }
-
 }
-.admin__panel__main{
+.admin__panel__main {
     width: 100%;
 }
-.about__us__edit__main{
+.about__us__edit__main {
     width: 100%;
 }
-.name__menu{
+.name__menu {
     width: 100%;
     background-color: #aaa;
     min-height: 30px;
     align-items: center;
-    font-size:large;
+    font-size: large;
 }
-.about__us__main{
+.about__us__main {
     display: flex;
     justify-content: center;
     width: 100%;
-}   
+}
 
 .layout {
     overflow: hidden;
@@ -384,97 +379,142 @@ main{
     z-index: 100;
 }
 
-@media screen and (min-width:1440px) {
-    .about__us__main div{
+@media screen and (min-width: 1440px) {
+    .about__us__main div {
         width: 20%;
     }
 }
-@media screen and (min-width:1024px) {
-    .about__us__main div{
+@media screen and (min-width: 1024px) {
+    .about__us__main div {
         width: 40%;
     }
 }
 @media screen and (min-width: 768px) {
-    .about__us__main div{
+    .about__us__main div {
         width: 60%;
     }
 }
 
 @media screen and (min-width: 425px) {
-    .about__us__main div{
+    .about__us__main div {
         width: 80%;
     }
 }
-@media screen and (min-width:764px) {
-    .footer__main{
+@media screen and (min-width: 764px) {
+    .footer__main {
         flex-shrink: 0;
         width: 100%;
         display: flex;
         background-color: #00d200;
-        justify-content:space-around;
+        justify-content: space-around;
         flex-direction: row;
     }
-    .footer__main details{
+    .footer__main details {
         display: none;
-    }   
-    
-    .footer__main.footer__list{
+    }
+
+    .footer__main.footer__list {
         display: flex;
         flex-direction: column;
     }
 }
-@media screen and (max-width:764px) {
-    
-    .footer__main details{
+@media screen and (max-width: 764px) {
+    .footer__main details {
         display: flex;
         width: 100%;
         background-color: #00d200;
         align-items: center;
         margin-top: 5px;
-    }   
-    .footer__main details summary{
+    }
+    .footer__main details summary {
         height: 30px;
     }
-    .footer__list{
+    .footer__list {
         display: none;
     }
 }
-.footer__main div div.main{
+.footer__main div div.main {
     display: flex;
     text-align: center;
     color: blue;
     font-size: larger;
     cursor: pointer;
 }
-.footer__blog__article{
+.footer__blog__article {
     cursor: pointer;
 }
-.blog__edit__set__photo{
+.blog__edit__set__photo {
     margin-top: 20px;
 }
 
-.flight__edit{
+.flight__edit {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
 }
-.flight__edit input{
+.flight__edit input {
     width: 130px;
 }
 
-.blog__main__{
+.list__responce__main {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+@media screen and (min-width: 1024px) {
+    .responce__main {
+        width: 60%;
+    }
+}
+@media screen and (max-width: 1024px) {
+    .responce__main {
+        width: 70%;
+    }
+}
+@media screen and (max-width: 768px) {
+    .responce__main {
+        width: 80%;
+    }
+}
+@media screen and (max-width: 425px) {
+    .responce__main {
+        width: 100%;
+    }
+}
+.responce__main {
+    display: flex;
+    background-color: bisque;
+    justify-content: center;
+}
+.responce__main {
+    display: flex;
+    flex-direction: column;
+}
+.responce__name__author__and__description {
+    display: flex;
+    flex-direction: column;
+}
+.responce__name__author {
+    margin-top: 10px;
+    font-size: 20px;
+    font-weight: 200;
+}
+.responce__description {
+    margin-top: 5px;
+}
+.blog__main__ {
     width: 100%;
     display: flex;
     justify-content: center;
     flex-direction: column;
 }
-.blog__main_{
+.blog__main_ {
     display: flex;
     width: 60%;
     justify-content: center;
     flex-direction: column;
 }
-.blog__main{
+.blog__main {
     display: flex;
     width: 100%;
     justify-content: center;
@@ -489,19 +529,19 @@ main{
     color: black;
 }
 
-.home__main{
+.home__main {
     display: flex;
     width: 100%;
     flex-direction: column;
 }
 
-.list__novetly{
+.list__novetly {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
 }
 
-.novetly__main{
+.novetly__main {
     display: flex;
     flex-direction: column;
     margin: 10px auto;
@@ -509,8 +549,8 @@ main{
     border-radius: 15px;
 }
 
-@media screen and (min-width:1024px) {
-    .home__content{
+@media screen and (min-width: 1024px) {
+    .home__content {
         display: flex;
         flex-direction: column;
         width: 60%;
@@ -518,8 +558,8 @@ main{
     }
 }
 
-@media screen and (max-width:1024px) {
-    .home__content{
+@media screen and (max-width: 1024px) {
+    .home__content {
         display: flex;
         flex-direction: column;
         width: 80%;
@@ -527,8 +567,8 @@ main{
     }
 }
 
-@media screen and (max-width:600px) {
-    .home__content{
+@media screen and (max-width: 600px) {
+    .home__content {
         display: flex;
         flex-direction: column;
         width: 100%;
@@ -536,58 +576,58 @@ main{
     }
 }
 
-.home__benefits__img{
+.home__benefits__img {
     width: 100%;
 }
 
-.home__benefits__img img{ 
+.home__benefits__img img {
     width: 100%;
     border-radius: 15px;
 }
-.novetly__main{
+.novetly__main {
     justify-content: center;
 }
-@media screen and (min-width:600px){
-    .novetly__main{
+@media screen and (min-width: 600px) {
+    .novetly__main {
         width: 28%;
     }
 }
-@media screen and (max-width:600px) {
-    .novetly__main{
-        width:45%;
+@media screen and (max-width: 600px) {
+    .novetly__main {
+        width: 45%;
     }
 }
 
-.novetly__img img{
+.novetly__img img {
     border-top-left-radius: 15px;
     border-top-right-radius: 15px;
 }
 
-.novetly__description{
+.novetly__description {
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size:large;
+    font-size: large;
 }
 
-.home__list__blog__main{
+.home__list__blog__main {
     display: flex;
     flex-direction: column;
     width: 100%;
     justify-content: center;
 }
 
-.home__benefits__company__name{
+.home__benefits__company__name {
     display: flex;
     justify-content: center;
 }
 
-.home__benefits__company__name{
+.home__benefits__company__name {
     display: flex;
     justify-content: center;
 }
 
-.home__list__blog{
+.home__list__blog {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -595,9 +635,8 @@ main{
     margin: auto;
     background-color: rgb(189, 186, 186);
 }
-@media screen and (min-width:600px) {
-
-    .home__blog__main{
+@media screen and (min-width: 600px) {
+    .home__blog__main {
         display: flex;
         flex-direction: column;
         width: 29%;
@@ -606,8 +645,8 @@ main{
         border-radius: 15px;
     }
 }
-@media screen and (max-width:600px) {
-    .home__blog__main{
+@media screen and (max-width: 600px) {
+    .home__blog__main {
         display: flex;
         flex-direction: column;
         width: 48%;
@@ -616,12 +655,12 @@ main{
         border-radius: 15px;
     }
 }
-.home__blog__main img{
+.home__blog__main img {
     border-top-left-radius: 15px;
     border-top-right-radius: 15px;
 }
 
-.home__blog__description{
+.home__blog__description {
     display: flex;
     justify-content: center;
     font-size: larger;

@@ -57,7 +57,7 @@ class FlightsController {
             });
 
             for (let i = 0; i < 7; i++) {
-                const scheduleBusStatus = await ScheduleBusStatus.create({ scheduleBusId: scheduleBus.id })
+                const scheduleBusStatus = await ScheduleBusStatus.create({ scheduleBusId: scheduleBus.id, flightId: flight.id })
             }
 
 
@@ -189,6 +189,12 @@ class FlightsController {
             const { id } = req.params
 
             const flight = await Flight.findOne({ where: { id } })
+
+            await ParamsFlight.destroy({ where: { flightId: id } })
+
+            await ScheduleBus.destroy({ where: { flightId: id } })
+
+            await ScheduleBusStatus.destroy({ where: { flightId: id } })
 
             await Flight.destroy({ where: { id } })
 
