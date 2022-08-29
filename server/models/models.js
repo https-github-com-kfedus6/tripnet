@@ -79,23 +79,24 @@ const ScheduleBusStatus = sequelize.define('scheduleBusStatus', {
     status: { type: DataTypes.BOOLEAN, defaultValue: false },
 })
 
-const ParamsFlight=sequelize.define('paramsFlight',{
+const ParamsFlight = sequelize.define('paramsFlight', {
     id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
-    isWifi:{type:DataTypes.BOOLEAN, allowNull:false},
-    isWC:{type:DataTypes.BOOLEAN,allowNull:false},
-    is220V:{type:DataTypes.BOOLEAN,allowNull:false},
-    isMultimedia:{type:DataTypes.BOOLEAN,allowNull:false},
-    isAirConditioning:{type:DataTypes.BOOLEAN,allowNull:false}
+    isWifi: { type: DataTypes.BOOLEAN, allowNull: false },
+    isWC: { type: DataTypes.BOOLEAN, allowNull: false },
+    is220V: { type: DataTypes.BOOLEAN, allowNull: false },
+    isMultimedia: { type: DataTypes.BOOLEAN, allowNull: false },
+    isAirConditioning: { type: DataTypes.BOOLEAN, allowNull: false }
 })
 
-Flight.hasMany(ParamsFlight,{as:'params'});
+Flight.hasMany(ParamsFlight, { as: 'params' });
 ParamsFlight.belongsTo(Flight);
 
-Flight.hasMany(ScheduleBus,{as:"schefule"});
+Flight.hasMany(ScheduleBus, { as: "schefule" });
 ScheduleBus.belongsTo(Flight);
 
-ScheduleBus.hasMany(ScheduleBusStatus,{as:'status'});
+ScheduleBus.hasMany(ScheduleBusStatus, { as: 'status' });
 ScheduleBusStatus.belongsTo(ScheduleBus)
+
 Flight.hasMany(ScheduleBusStatus)
 ScheduleBusStatus.belongsTo(Flight)
 

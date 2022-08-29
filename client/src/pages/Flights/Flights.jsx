@@ -5,11 +5,7 @@ import Pagination from '../../components/UI/pagination/Pagination';
 import { useAction } from '../../hooks/useAction';
 import { getPageCount, getPagesArray } from '../../utils/page';
 
-
-import '../Flights/flights.css';
-
 import './flights.css';
-
 
 const Flights = ({ isShowFilter }) => {
 
@@ -67,9 +63,10 @@ const Flights = ({ isShowFilter }) => {
     const deleteFlight = (id) => {
         fetchDeleteFlight(id)
     }
-    console.log(flights, pagesArray, page, limit, changePage, moreFlights);
 
-    console.log(flights, pagesArray, page, limit, changePage, moreFlights);
+    /*   console.log(flights, pagesArray, page, limit, changePage, moreFlights);
+  
+      console.log(flights, pagesArray, page, limit, changePage, moreFlights); */
 
     return (
         <div className='flights'>
