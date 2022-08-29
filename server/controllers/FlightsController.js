@@ -6,14 +6,15 @@ const path = require("path");
 class FlightsController {
     async postFlights(req, res, next) {
         try {
+            console.log(req.body);
             const { price, startPositionUA, startPositionRU, finishPositionUA, finishPositionRU,
                 startDate, finishDate, startTime, finishTime, timeFlightUA, timeFlightRU, countFreePlace,
                 descriptionUA, descriptionRU, isWifi, isWC, is220V, isMultimedia,
-                isAirConditioning } = req.body;
+                isAirConditioning,map} = req.body;
             const timeFlight=[timeFlightUA,timeFlightRU].join("//");
             const startPosition = [startPositionUA, startPositionRU].join("//");
             const finishPosition = [finishPositionUA, finishPositionRU].join("//");
-            const description = [descriptionUA, descriptionRU].join("//");
+            const description = [descriptionUA, descriptionRU].join("/*/");
             let { image } = req.files;
             let flight;
             if (image) {
@@ -32,6 +33,7 @@ class FlightsController {
                     timeFlight: timeFlight,
                     countFreePlace: countFreePlace,
                     description: description,
+                    map:map
                 })
             }
             else {
@@ -46,6 +48,7 @@ class FlightsController {
                     timeFlight: timeFlight,
                     countFreePlace: countFreePlace,
                     description: description,
+                    map: map
                 })
             }
             console.log(isWifi,isWC,is220V,isMultimedia,isAirConditioning,flight.id);
@@ -175,7 +178,7 @@ class FlightsController {
             let flight = await Flight.findOne({ where: { id: parseInt(id) }, include: [{ as: 'params', model: ParamsFlight }, { as: 'schefule', model: ScheduleBus }] });
             flight.startPosition = flight.startPosition.split("//");
             flight.finishPosition = flight.finishPosition.split("//");
-            flight.description = flight.description.split("//");
+            flight.description = flight.description.split("/*/");
             flight.schefule[0].sunday = flight.schefule[0].sunday.split("//");
             let status = await ScheduleBusStatus.findAll({ where: { scheduleBusId: flight.schefule[0].id } });
             return res.json({ status: 200, res: { flight, status } });

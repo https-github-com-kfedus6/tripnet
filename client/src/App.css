@@ -12,9 +12,6 @@ body {
 main {
     margin: 0 0 0;
 }
-.logo {
-    display: flex;
-}
 
 .home__main {
     display: flex;
@@ -44,11 +41,6 @@ main {
 }
 
 @media screen and (min-width: 720px) {
-    .logo img {
-        width: 10vw;
-        cursor: pointer;
-    }
-
     .header__main {
         /* #32CD32   #5DA130  #3CAA3C #4CBB17*/
         background-color: #00d200;
@@ -94,10 +86,6 @@ main {
 }
 
 @media screen and (max-width: 800px) {
-    .logo img {
-        width: 20vw;
-        cursor: pointer;
-    }
     .header__main {
         display: flex;
         justify-content: space-between;
@@ -671,42 +659,76 @@ main {
     display: flex;
     justify-content: center;
     text-align: c;
-}#app { height: 100% }
-html,
-body {
-  position: relative;
-  height: 100%;
 }
 
-
-.swiper {
-  width: 100%;
-  height: 100%;
+.list__responce__home__main{
+    position: relative;
+    height: 100%;
+  }
+  
+.list__responce__home__main {
+    margin-top: 130px;
+    background: #eee;
+    font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    color: #000;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .swiper {
+    width: 100%;
+    height: 100%;
+  }
+  .responce__home__main{
+    width: 100%;
+    height: 100%;
+  }
+  .my_Swiper{
+    display: flex;
+    flex-direction: row;
+  }
+  .swiper-slide {
+    text-align: center;
+    font-size: 18px;
+    background: #fff;
+  
+    /* Center slide text vertically */
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+  }
+  
+  .swiper-slide img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+.blog__main_{
+    margin: auto;
+    display: flex;
+    justify-content: center;
+}
+.blog__main_{
+    display: flex;
+    justify-content: center;
+    margin:auto;
+}
+.logo{
+    display: flex;
+    width: 40%;
 }
 
-.swiper-slide {
-  text-align: center;
-  font-size: 18px;
-  background: #fff;
-
-  /* Center slide text vertically */
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: -webkit-flex;
-  display: flex;
-  -webkit-box-pack: center;
-  -ms-flex-pack: center;
-  -webkit-justify-content: center;
-  justify-content: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  -webkit-align-items: center;
-  align-items: center;
-}
-
-.swiper-slide img {
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+.logo img{
+    width: 100%;
 }

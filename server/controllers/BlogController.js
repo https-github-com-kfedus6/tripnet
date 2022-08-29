@@ -40,7 +40,7 @@ class BlogController {
                 return resp.json({ status: 415, res: null });
             }
             res.name = res.name.split("//");
-            res.description=res.description.split("//");
+            res.description=res.description.split("/*/");
             return resp.json({ status: 200, res });
         } catch (err) {
             return next(ErrorApi.badRequest(err));
@@ -50,7 +50,7 @@ class BlogController {
         try {
             console.log(req.body)
             const { name, descriptionUa, descriptionRu } = req.body;
-            const description = [descriptionUa, descriptionRu].join("//");
+            const description = [descriptionUa, descriptionRu].join("/*/");
             const { image } = req.files;
             const nameImg = uuid.v4() + ".jpg";
             image.mv(path.resolve(__dirname, '..', 'static', nameImg));

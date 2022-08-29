@@ -41,14 +41,13 @@ export const fetchUpdateFlight = (formData) => async (dispatch) => {
     }
 }
 
-export const AddFlight = (image, nameUA, nameRU, price, startPositionUA, startPositionRU,
-    finishPositionUA, finishPositionRU, startDate, finishDate, startTime, finishTime, timeFlight,
-    countFreePlace) => async (dispatch) => {
+export const AddFlight = (image, price, startPositionUA, startPositionRU,finishPositionUA,
+    finishPositionRU, startDate, finishDate, startTime, finishTime, timeFlightUA,timeFlightRU,
+    countFreePlace,isWifi,isWC,is220V,isMultimedia,isAirConditioning,descriptionUA,descriptionRU,
+    map) => async (dispatch) => {
         try {
             let formData = new FormData();
-            await formData.append("image", image);
-            await formData.append("nameUA", nameUA);
-            await formData.append("nameRU", nameRU);
+            if(image)await formData.append("image", image);
             await formData.append("price", price);
             await formData.append("startPositionUA", startPositionUA);
             await formData.append("startPositionRU", startPositionRU);
@@ -58,12 +57,24 @@ export const AddFlight = (image, nameUA, nameRU, price, startPositionUA, startPo
             await formData.append("finishDate", finishDate)
             await formData.append("startTime", startTime);
             await formData.append("finishTime", finishTime);
-            await formData.append("timeFlight", timeFlight);
+            await formData.append("timeFlightUA", timeFlightUA);
+            await formData.append("timeFlightRU", timeFlightRU);
             await formData.append("countFreePlace", countFreePlace);
+            await formData.append("isWifi",isWifi);
+            await formData.append("isWC",isWC);
+            await formData.append("is220V",is220V);
+            await formData.append("isMultimedia",isMultimedia);
+            await formData.append("isAirConditioning",isAirConditioning);
+            await formData.append("descriptionUA",descriptionUA);
+            await formData.append("descriptionRU",descriptionRU);
+            await formData.append("map",map);
             const resp = await $authHost.post("api/flights/", formData);
             if (resp.data.status == 200) {
                 alert("успішно додано");
-            } else alert("error");
+            } else {
+                alert("error");
+                console.log(resp);
+            }
         } catch (err) {
             alert("error");
             console.log("error");

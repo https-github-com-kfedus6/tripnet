@@ -13,7 +13,7 @@ const Flights = ({ isShowFilter }) => {
     const [finishPosition, setFinishPosition] = useState('')
     const [startDate, setStartDate] = useState('')
     const [totalCount, setTotalCount] = useState()
-    const [limit, setLimit] = useState(3)
+    const [limit, setLimit] = useState(5)
     const [page, setPage] = useState(1)
 
     const [sumYoung, setSumYoung] = useState(0)

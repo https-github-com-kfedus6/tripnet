@@ -36,14 +36,6 @@ const FlightsFormSort = ({ setStartDate, setStartPosition, setFinishPosition, so
     return (
         <form className='form-flights-container'>
             <div className='flights-sort-form'>
-                <div className='form-btn'>
-                    <div className='first-btn'>
-                        <button className={check === false ? 'travel-active' : 'travel'} onClick={firstCheck}>{t('flight.one_way_trip')}</button>
-                    </div>
-                    <div className='second-btn'>
-                        <button className={check === true ? 'travel-active' : 'travel'} onClick={secondCheck}>{t('flight.return_trip')}</button>
-                    </div>
-                </div>
                 <div className='form-flights'>
                     <div className='form-block-position'>
                         <div className='form-position'>
@@ -60,10 +52,7 @@ const FlightsFormSort = ({ setStartDate, setStartPosition, setFinishPosition, so
                             <span>{t('flight.departure')}</span>
                             <input type="date" onChange={(e) => setStartDate(e.target.value)} />
                         </div>
-                        <div className={check === true ? 'form-date' : 'form-date-none'}>
-                            <span>{t('flight.return')}</span>
-                            <input type="date" onChange={(e) => setStartDate(e.target.value)} />
-                        </div>
+                        
                         <div className='dropdown'>
                             <div className='dropdown-select'>
                                 <span className='select'>{t('flight.passengers')}</span>

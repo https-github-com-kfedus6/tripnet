@@ -2,13 +2,14 @@ import React from 'react'
 import { FaBus } from 'react-icons/fa'
 import { BsArrowRight } from 'react-icons/bs'
 import { GrClose } from 'react-icons/gr'
+import { useSelector } from 'react-redux'
 
 const FlightScheduleBusList = ({ flight, is_admin, setScheduleTo, setScheduleWith, status, changeStatus, changeSchedule }) => {
-
+    const {language}=useSelector(state=>state.language);
     return (
         <div className='block-schedule'>
             <div className='schedule-with-to'>
-                <span>Розклад автобусів {flight.startPosition} - {flight.finishPosition}</span>
+                <span>Розклад автобусів {flight.startPosition[language]} - {flight.finishPosition[language]}</span>
                 {flight.schefule.map(item => {
                     if (is_admin) {
                         return (
@@ -46,12 +47,12 @@ const FlightScheduleBusList = ({ flight, is_admin, setScheduleTo, setScheduleWit
                                     <th>{day.thursday}</th>
                                     <th>{day.friday}</th>
                                     <th>{day.suturday}</th>
-                                    <th>{day.sunday}</th>
+                                    <th>{day.sunday[language]}</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <td>
-                                    <small>{flight.timeFlight}</small>
+                                    <small>{flight.timeFlight.split("//")[language]}</small>
                                     <br />
                                     <strong>{flight.startTime}</strong>
                                     <BsArrowRight />

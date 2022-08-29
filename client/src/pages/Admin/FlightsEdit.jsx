@@ -25,6 +25,7 @@ const FlightsEdit = () => {
     const [is220V, setIs200V]=useState(false);
     const [isMultimedia,setIsMultimedia]=useState(false);
     const [isAirConditioning,setIsAirConditioning]=useState(false);
+    const [map,setMap]=useState("");
 
 
     return (
@@ -74,7 +75,12 @@ const FlightsEdit = () => {
               apiKey="t6okxmezjfhajn8bk23u3dkejv0oc9c1qhs7gmmh9qskcfdp"
               onEditorChange={(newText)=>setDescriptionRu(newText)}
             />
-            <button onClick={()=>AddFlight(price,startPositionUA,startPositionRU,finishPositionUA,finishPositionRU,startDate,finishDate,startTime,finishTime,timeFlightUA,timeFlightRU,countFreePlace,descriptionUa,descriptionRu,isWifi,isWC,is220V,isMultimedia,isAirConditioning,image)}>add</button>
+            <p>карта</p>
+            <input value={map} onChange={e=>setMap(e.target.value)}/>
+            <button onClick={()=>AddFlight(image,price,startPositionUA,startPositionRU,finishPositionUA
+              ,finishPositionRU,startDate,finishDate,startTime,finishTime,timeFlightUA,timeFlightRU,
+              countFreePlace,isWifi,isWC,is220V,isMultimedia,isAirConditioning,
+              descriptionUa,descriptionRu,map)}>add</button>
         </div>
     </details>
   )

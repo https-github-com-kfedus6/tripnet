@@ -12,6 +12,7 @@ const FlightsItem = ({ item, sumOld, sumYoung, deleteFlight, limit, page }) => {
 
     const navigate = useNavigate()
 
+
     const [newStartPosition, setNewStartPosition] = useState('')
     const [newFinishPosition, setNewFinishPosition] = useState('')
     const [newStartDate, setNewStartDate] = useState('')
@@ -81,8 +82,8 @@ const FlightsItem = ({ item, sumOld, sumYoung, deleteFlight, limit, page }) => {
                             <span><input type='text' placeholder={item.finishDate} onChange={(e) => setNewFinishDate(e.target.value)}></input></span>
                         </div>
                         <div className='item-position'>
-                            <span><input type='text' placeholder={item.startPosition} onChange={(e) => setNewStartPosition(e.target.value)}></input></span>
-                            <span><input type='text' placeholder={item.finishPosition} onChange={(e) => setNewFinishPosition(e.target.value)}></input></span>
+                            <span><input type='text' placeholder={item.startPosition[language]} onChange={(e) => setNewStartPosition(e.target.value)}></input></span>
+                            <span><input type='text' placeholder={item.finishPosition[language]} onChange={(e) => setNewFinishPosition(e.target.value)}></input></span>
                         </div>
                         <div className='btn-buy'>
                             <div>
