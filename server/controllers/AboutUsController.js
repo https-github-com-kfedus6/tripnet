@@ -4,7 +4,7 @@ const { InfoCompany } = require("../models/models");
 class AboutUsControllers {
     static Get = async (req, resp, next) => {
         try {
-            const res = await InfoCompany.findAll();
+            let res = await InfoCompany.findAll();
             return resp.json({ status: 200, res: res[0] });
         } catch (err) {
             return next(ErrorApi.badRequest(err));

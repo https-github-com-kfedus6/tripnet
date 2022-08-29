@@ -3,55 +3,77 @@ import { FaBus } from 'react-icons/fa'
 import { BsArrowRight } from 'react-icons/bs'
 import { GrClose } from 'react-icons/gr'
 
-const FlightScheduleBusList = () => {
+const FlightScheduleBusList = ({ flight, is_admin, setScheduleTo, setScheduleWith, status, changeStatus, changeSchedule }) => {
 
     return (
-        {/* <div className='block-schedule'>
+        <div className='block-schedule'>
             <div className='schedule-with-to'>
                 <span>Розклад автобусів {flight.startPosition} - {flight.finishPosition}</span>
-                {is_admin
-                    ?
-                    <span>Розклад дійсний з
-                        <input type="text" placeholder=""
-                          onChange={(e) => setScheduleWith(e.target.value)}  
-                        />
-                        до
-                        <input type="text" placeholder=""
-                         onChange={(e) => setScheduleTo(e.target.value)} 
-                        />
-                        <button onClick={changeSchedule}>Обновити</button>
-                    </span>
-                    :
-                    <span>Розклад дійсний з <strong>""</strong> до <strong>""</strong>.</span>
+                {flight.schefule.map(item => {
+                    if (is_admin) {
+                        return (
+                            <span>Розклад дійсний з
+                                <input type="text" placeholder={item.scheduleWith}
+                                    className='create-date'
+                                    onChange={(e) => setScheduleWith(e.target.value)}
+                                />
+                                до
+                                <input type="text" placeholder={item.scheduleTo}
+                                    className='create-date'
+                                    onChange={(e) => setScheduleTo(e.target.value)}
+                                />
+                                <button className='change-date' onClick={() => changeSchedule(item.id)}>Обновити</button>
+                            </span>
+                        )
+                    } else {
+                        return (
+                            <span>Розклад дійсний з <strong>{item.scheduleWith}</strong> до <strong>{item.scheduleTo}</strong>.</span>
+                        )
+                    }
+                })
                 }
             </div>
             <div>
-                <table className='table-date'>
-                    <thead>
-                        <tr>
-                            <th>Час</th>
-                            <th></th>
-                            <th></th>
-                            <th></th>
-                            <th></th>
-                            <th></th>
-                            <th></th>
-                            <th></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <td>
-                            <small>{flight.timeFlight}</small>
-                            <br />
-                            <strong>{flight.startTime}</strong>
-                            <BsArrowRight />
-                            <strong>{flight.finishTime}</strong>
-                        </td>
-                        <td><FaBus /> <GrClose /></td>
-                    </tbody>
-                </table>
+                {flight.schefule.map(day => {
+                    return (
+                        <table table className='table-date' >
+                            <thead>
+                                <tr>
+                                    <th>Час</th>
+                                    <th>{day.monday}</th>
+                                    <th>{day.tuesday}</th>
+                                    <th>{day.wednesday}</th>
+                                    <th>{day.thursday}</th>
+                                    <th>{day.friday}</th>
+                                    <th>{day.suturday}</th>
+                                    <th>{day.sunday}</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <td>
+                                    <small>{flight.timeFlight}</small>
+                                    <br />
+                                    <strong>{flight.startTime}</strong>
+                                    <BsArrowRight />
+                                    <strong>{flight.finishTime}</strong>
+                                </td>
+                                {status.map(s => {
+                                    if (is_admin) {
+                                        return (
+                                            <td key={s.id} className='status-btn'><button onClick={() => changeStatus(day.id, s.id, s.status)}>{s.status ? <FaBus /> : <GrClose />}</button></td>
+                                        )
+                                    } else {
+                                        return (
+                                            <td key={s.id} className={s.status ? '' : 'status-active'}>{s.status ? <FaBus /> : <GrClose />} </td>
+                                        )
+                                    }
+                                })}
+                            </tbody>
+                        </table>
+                    )
+                })}
             </div>
-        </div > */}
+        </div >
     )
 }
 

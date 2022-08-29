@@ -23,7 +23,7 @@ class NovetlyController {
             const nameImg = uuid.v4() + ".jpg";
             image.mv(path.resolve(__dirname, '..', 'static', nameImg))
             const res = await Novetly.create({ image: nameImg, description })
-            resp.json({ staus: 200, res });
+            resp.json({ status: 200, res });
         } catch (err) {
             return next(ErrorApi.badRequest(err));
         }

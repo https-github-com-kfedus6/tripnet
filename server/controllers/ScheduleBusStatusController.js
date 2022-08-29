@@ -1,20 +1,7 @@
-const { ScheduleBusStatus } = require('../models/models')
+const { ScheduleBus, ScheduleBusStatus } = require('../models/models')
 const ErrorApi = require('../error/ErrorApi')
 
 class ScheduleBusStatusController {
-    async postStatus(req, res, next) {
-        try {
-            const { status, flightId } = req.body
-
-            for (let i = 0; i <= 7; i++) {
-                const scheduleStatus = await ScheduleBusStatus.create({ status: status, flightId: flightId })
-                res.json(scheduleStatus)
-            }
-
-        } catch (err) {
-            return next(ErrorApi.badRequest(err));
-        }
-    }
     async getStatus(req, res, next) {
         try {
             const { id } = req.params
@@ -29,13 +16,25 @@ class ScheduleBusStatusController {
 
     async pusStatus(req, res, next) {
         try {
-            const { id, status } = req.body
+            const { sheduleBusId, id, status } = req.body
 
             await ScheduleBusStatus.update({ status: status }, { where: { id: id } })
 
-            const newScheduleStatus = await ScheduleBusStatus.findAll({ where: { flightId: id } })
+            const newScheduleStatus = await ScheduleBusStatus.findAll({ where: { schedulebusId: sheduleBusId } })
 
             return res.json(newScheduleStatus)
+        } catch (err) {
+            return next(ErrorApi.badRequest(err));
+        }
+    }
+
+    async pusScheduleBusDate(req, res, next) {
+        try {
+            const { id, scheduleWith, scheduleTo } = req.body
+
+            const scheduleBus = await ScheduleBus.update({ scheduleWith: scheduleWith, scheduleTo: scheduleTo }, { where: { id: id } })
+
+            return res.json(scheduleBus)
         } catch (err) {
             return next(ErrorApi.badRequest(err));
         }

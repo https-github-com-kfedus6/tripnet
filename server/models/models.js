@@ -35,7 +35,6 @@ const FAQ = sequelize.define('FAQ', {
 const Flight = sequelize.define("flight", {
     id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
     image: { type: DataTypes.STRING },
-    name: { type: DataTypes.STRING },
     price: { type: DataTypes.STRING },
     startPosition: { type: DataTypes.STRING },
     finishPosition: { type: DataTypes.STRING },
