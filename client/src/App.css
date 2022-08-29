@@ -462,52 +462,6 @@ main{
     width: 130px;
 }
 
-.list__responce__main{
-    display: flex;
-    justify-content: center;
-    width: 100%;
-}
-@media screen and (min-width:1024px) {
-    .responce__main{
-        width: 60%;
-    }
-}
-@media screen and (max-width:1024px) {
-    .responce__main{
-        width: 70%;
-    }
-}
-@media screen and (max-width:768px) {
-    .responce__main{
-        width: 80%;
-    }
-}
-@media screen and (max-width:425px) {
-    .responce__main{
-        width: 100%;
-    }
-}
-.responce__main{
-    display: flex;
-    background-color: bisque;
-    justify-content: center;
-}
-.responce__main{
-    display: flex;
-    flex-direction: column;
-}
-.responce__name__author__and__description{
-    display: flex;
-    flex-direction: column;
-}
-.responce__name__author{
-    margin-top: 10px;
-    font-size: 20px;
-    font-weight: 200;
-}
-.responce__description{
-    margin-top: 5px;
-}
 .blog__main__{
     width: 100%;
     display: flex;
@@ -673,4 +627,47 @@ main{
     font-size: larger;
     justify-content: center;
     text-align: center;
+}
+.novetly__description{
+    display: flex;
+    justify-content: center;
+    text-align: c;
+}#app { height: 100% }
+html,
+body {
+  position: relative;
+  height: 100%;
+}
+
+
+.swiper {
+  width: 100%;
+  height: 100%;
+}
+
+.swiper-slide {
+  text-align: center;
+  font-size: 18px;
+  background: #fff;
+
+  /* Center slide text vertically */
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+}
+
+.swiper-slide img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
