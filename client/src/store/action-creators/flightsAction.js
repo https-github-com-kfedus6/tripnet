@@ -45,10 +45,10 @@ export const fetchUpdateFlight = (formData) => async (dispatch) => {
 
 export const AddFlight = (image, nameUA, nameRU, price, startPositionUA, startPositionRU,
     finishPositionUA, finishPositionRU, startDate, finishDate, startTime, finishTime, timeFlight,
-    countFreePlace) => async (dispatch) => {
+    countFreePlace,descriptionUA,descriptionRU) => async (dispatch) => {
         try {
             let formData = new FormData();
-            await formData.append("image", image);
+            if(image)await formData.append("image", image);
             await formData.append("nameUA", nameUA);
             await formData.append("nameRU", nameRU);
             await formData.append("price", price);
@@ -62,6 +62,8 @@ export const AddFlight = (image, nameUA, nameRU, price, startPositionUA, startPo
             await formData.append("finishTime", finishTime);
             await formData.append("timeFlight", timeFlight);
             await formData.append("countFreePlace", countFreePlace);
+            await formData.append("descriptionUA",descriptionUA);
+            await formData.append("descriptionRU",descriptionRU);
             const resp = await $authHost.post("api/flights/", formData);
             if (resp.data.status == 200) {
                 alert("успішно додано");

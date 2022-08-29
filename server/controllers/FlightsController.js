@@ -14,7 +14,7 @@ class FlightsController {
             const finishPosition = [finishPositionUA, finishPositionRU].join("//");
             const description = [descriptionUA, descriptionRU].join("//");
             const name = [nameUA, nameRU].join("//");
-            const paramsFligh=await Params
+            //const paramsFligh=await Params
             let { image } = req.files;
             let flight;
             if (image) {

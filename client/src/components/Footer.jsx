@@ -39,7 +39,7 @@ const Footer = () => {
                             {t("footer.phone")}:{infoCompany.telephone}
                         </div>
                         <div>
-                            {t("footer.address")}:{infoCompany.address}
+                            {t("footer.address")}:{infoCompany.address[language]}
                         </div>
                         <div>
                             {t("footer.opening_hours")}:{infoCompany.openingHours}
@@ -61,7 +61,7 @@ const Footer = () => {
                             {t("footer.phone")}:{infoCompany.telephone}
                         </div>
                         <div>
-                            {t("footer.address")}:{infoCompany.address}
+                            {t("footer.address")}:{infoCompany.address[language]}
                         </div>
                         <div>
                             {t("footer.opening_hours")}:{infoCompany.openingHours}
