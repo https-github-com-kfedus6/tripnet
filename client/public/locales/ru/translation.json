@@ -75,10 +75,10 @@
     "account": {
         "hello": "Привет!",
         "name": "Имя",
-        "old_password": "cтарый пароль",
-        "new_password": "новый пароль",
-        "change_password": "поменять пароль",
-        "exit": "выйти",
-        "password_changed": "пароль изменен"
+        "old_password": "Старый пароль",
+        "new_password": "Новый пароль",
+        "change_password": "Поменять пароль",
+        "exit": "Выйти",
+        "password_changed": "Пароль изменен"
     }
 }

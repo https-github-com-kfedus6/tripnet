@@ -81,11 +81,11 @@
     },
     "account": {
         "hello": "Привіт!",
-        "name": "ім'я",
-        "old_password": "старий пароль",
-        "new_password": "новий пароль",
-        "change_password": "поміняти пароль",
-        "exit": "вийти",
-        "password_changed": "пароль поміняний"
+        "name": "Ім'я",
+        "old_password": "Старий пароль",
+        "new_password": "Новий пароль",
+        "change_password": "Поміняти пароль",
+        "exit": "Вийти",
+        "password_changed": "Пароль поміняний"
     }
 }

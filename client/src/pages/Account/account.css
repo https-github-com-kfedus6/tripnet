@@ -2,11 +2,11 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 50px;
+    margin-top: 20px;
 }
 
 .block-user {
-    width: 70%;
+    width: 40%;
 }
 
 .block-user-icon {
@@ -22,7 +22,7 @@
 
 .block-user-icon span:nth-child(1) {
     font-size: 75px;
-    color: #00d200;
+    color: rgb(241, 81, 2);
 }
 
 .block-user-icon span:nth-child(2) {
@@ -61,33 +61,39 @@
 
 .block-user-btn {
     display: flex;
+    justify-content: center;
+    align-items: center;
     flex-direction: column;
     margin-top: 15px;
 }
 
 .block-user-btn button {
-    margin-top: 10px;
-    background-color: #00d200;
-    color: #fff;
-    border-radius: 10px;
-    border: 1px solid #00d200;
-    height: 35px;
+    border-radius: 5px;
+    width: 50%;
+    background-color: rgb(245, 73, 4);
+    border: 1px solid rgb(243, 71, 2);
     font-size: 18px;
+    height: 40px;
     cursor: pointer;
 }
 
-.block-user-btn button {
-    background-color: #00b300;
+.block-user-btn button:hover {
+    background-color: rgb(216, 61, 0);
 }
 
-.block-user-input input{
-    margin-top: 25px;
+.block-user-input {
+    padding-top: 20px;
+}
+
+.block-user-input div {
+    padding-bottom: 5px;
     display: flex;
     flex-direction: row;
     width: 100%;
 }
+
 .block-user-input button{
-    margin-top: 30px;
+    margin-top: 10px;
     width: 100%;
     justify-content: center;
     background: transparent;
@@ -96,6 +102,24 @@
     cursor: pointer;
 }
 .block-user-input button:hover{
-    color:  #00b300;
+   color: rgb(216, 61, 0);
     text-decoration: underline;
+}
+
+@media (max-width:992px) {
+    .block-user {
+        width: 50%;
+    }
+}
+
+@media (max-width:768px) {
+    .block-user {
+        width: 70%;
+    }
+}
+
+@media (max-width:578px) {
+    .block-user {
+        width: 90%;
+    }
 }
