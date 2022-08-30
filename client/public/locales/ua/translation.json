@@ -8,8 +8,6 @@
         "registering": "Реєстрація"
     },
     "flight": {
-        "one_way_trip": "Подорож в один бік",
-        "return_trip": "Зворотна подорож",
         "search": "Пошук",
         "whence": "Звідки",
         "whitherto": "Куди",
@@ -30,13 +28,15 @@
         "pagination": "Подивитися ще"
     },
     "authorize": {
-        "authorize": "авторизація",
-        "register": "зареєструватися",
-        "log": "увійти",
+        "authorize": "Aвторизація",
+        "register": "Зареєструватися",
+        "log": "Увійти",
         "or": "або",
-        "password": "пароль",
-        "number_phone": "номер телефона",
-        "name": "імя",
+        "password": "Пароль",
+        "return_password": "Повторити пароль",
+        "number_phone": "Номер телефона",
+        "name": "Ім'я",
+        "email": "Емейл",
         "email_is_busy": "почта зайнята",
         "invalid_name": "некоректне ім'я",
         "mail_must_be_genuine": "почта повинна бути справжня",
@@ -79,14 +79,13 @@
         "price": "Всього (вкл. ПДВ)",
         "button_buy": "Сплатити"
     },
-    "account":{
-        "hello":"Привіт!",
-        "name":"ім'я",
-        "old_password":"старий пароль",
-        "new_password":"новий пароль",
-        "change_password":"поміняти пароль",
-        "exit":"вийти",
-        "password_changed":"пароль поміняний"
-
+    "account": {
+        "hello": "Привіт!",
+        "name": "ім'я",
+        "old_password": "старий пароль",
+        "new_password": "новий пароль",
+        "change_password": "поміняти пароль",
+        "exit": "вийти",
+        "password_changed": "пароль поміняний"
     }
 }

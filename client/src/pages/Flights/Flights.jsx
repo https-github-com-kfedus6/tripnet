@@ -64,10 +64,6 @@ const Flights = ({ isShowFilter }) => {
         fetchDeleteFlight(id)
     }
 
-    /*   console.log(flights, pagesArray, page, limit, changePage, moreFlights);
-  
-      console.log(flights, pagesArray, page, limit, changePage, moreFlights); */
-
     return (
         <div className='flights'>
             <FlightsList

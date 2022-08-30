@@ -30,7 +30,8 @@
         "pagination": "Посмотреть еще"
     },
     "authorize": {
-        "name": "имя",
+        "name": "Имя",
+        "return_password": "Повторить пароль",
         "email_is_busy": "почта занята",
         "invalid_name": "некоректне ім'я",
         "mail_must_be_genuine": "почта повинна бути справжня",
@@ -41,13 +42,12 @@
         "you_have_successfully_registered": "вы успешно зарегистрировались",
         "email_or_password_is_invalid": "неверный пароль или почта",
         "invalid_email": "неверная почта",
-        "authorize": "авторизация",
+        "authorize": "Авторизация",
         "register": "Зарегистрироваться",
-        "log": "войти",
+        "log": "Войти",
         "or": "или",
-        "password": "пароль",
-        "number_phone": "номер телефону"
-        
+        "password": "Пароль",
+        "number_phone": "Номер телефону"
     },
     "home": {
         "benefits_company": "преимущества компании",
@@ -72,13 +72,13 @@
         "price": "Усього (вкл. НДС)",
         "button_buy": "Оплатить"
     },
-    "account":{
-        "hello":"Привет!",
-        "name":"Имя",
-        "old_password":"cтарый пароль",
-        "new_password":"новый пароль",
-        "change_password":"поменять пароль",
-        "exit":"выйти",
-        "password_changed":"пароль изменен"
+    "account": {
+        "hello": "Привет!",
+        "name": "Имя",
+        "old_password": "cтарый пароль",
+        "new_password": "новый пароль",
+        "change_password": "поменять пароль",
+        "exit": "выйти",
+        "password_changed": "пароль изменен"
     }
 }

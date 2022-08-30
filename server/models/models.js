@@ -45,7 +45,7 @@ const Flight = sequelize.define("flight", {
     finishTime: { type: DataTypes.STRING },
     timeFlight: { type: DataTypes.STRING },
     description: { type: DataTypes.TEXT },
-    map: {type: DataTypes.TEXT}
+    map: { type: DataTypes.TEXT }
 });
 
 const Novetly = sequelize.define("novetly", {
