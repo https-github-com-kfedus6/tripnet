@@ -109,7 +109,7 @@ const FlightsItem = ({ item, sumOld, sumYoung, deleteFlight, limit, page }) => {
                         </div>
                         <div className='item-time'>
                             <span>{item.startTime}</span>
-                            <span>{item.timeFlight}.</span>
+                            <span>{item.timeFlight.split("//")[language]}.</span>
                             <span>{item.finishTime}</span>
                         </div>
                         <div className='item-date'>
@@ -144,7 +144,7 @@ const FlightsItem = ({ item, sumOld, sumYoung, deleteFlight, limit, page }) => {
             <div className='item-flight'>
                 <div className='item-time'>
                     <span>{item.startTime}</span>
-                    <span>{item.timeFlight}.</span>
+                    <span>{item.timeFlight.split("//")[language]}.</span>
                     <span>{item.finishTime}</span>
                 </div>
                 <div className='item-date'>
