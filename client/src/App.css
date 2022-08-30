@@ -490,24 +490,6 @@ main {
 .responce__description {
     margin-top: 5px;
 }
-.blog__main__ {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-}
-.blog__main_ {
-    display: flex;
-    width: 60%;
-    justify-content: center;
-    flex-direction: column;
-}
-.blog__main {
-    display: flex;
-    width: 100%;
-    justify-content: center;
-    flex-direction: column;
-}
 
 .icon-account {
     font-size: 26px;
@@ -714,13 +696,13 @@ main {
     height: 100%;
     object-fit: cover;
   }
-.blog__main_{
+.blog__main__{
     margin: auto;
-    display: flex;
-    justify-content: center;
 }
+
 .blog__main_{
     display: flex;
+    flex-direction: column;
     justify-content: center;
     margin:auto;
 }
@@ -731,4 +713,28 @@ main {
 
 .logo img{
     width: 100%;
+}
+
+.blog__main_ img{
+    width: 100%;
+    height: auto;
+}
+
+@media screen and (min-width:1024px) {
+    .blog__main_{
+        width: 60%;
+    }
+    
+}
+
+@media screen and (max-width:1024px){
+    .blog__main_{
+        width: 80%;
+    }
+}
+
+@media screen and (max-width:768px){
+    .blog__main{
+        width: 100%;
+    }
 }

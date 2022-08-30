@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux'
 import { useAction } from "../../hooks/useAction";
 import { useEffect } from 'react';
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation } from "swiper";
+import { Pagination, Navigation } from "swiper";
 
 const Responce = () => {
     const { GetResponceNovetly } = useAction()
@@ -13,20 +13,32 @@ const Responce = () => {
     useEffect(() => {
         GetResponceNovetly();
     }, [])
+    /*
+    return(
+      <>
 
+      </>
+    )
     console.log(novetlyResponce);
+    */
     return (
         novetlyResponce == undefined ? <div>loading...</div> :
         <>
           <h3 className='home__benefits__company__name'>{t("home.responce")}</h3>
           <div className='list__responce__home__main'>
-            <Swiper navigation={true} modules={[Navigation]} className="mySwiper">
-              <SwiperSlide className='responce__home__main'>Slide 1gdfg9idfgidfuogidfujgoidfjugdfdfgpodfidpfig\d
-              fgdf[gidfg[dfigdfgdfg]]gfdglorem
-              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nostrum doloremque in itaque fugiat quisquam excepturi consectetur velit distinctio! Delectus illum porro necessitatibus odit repudiandae modi iusto perspiciatis fuga veritatis dolorum.
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatem beatae porro qui libero consequuntur suscipit nobis voluptate cum harum. Porro expedita, ullam velit doloribus aliquid eos similique laudantium pariatur eaque?
-              lorem*60
-              </SwiperSlide>
+          <>
+            <Swiper
+              slidesPerView={1}
+              spaceBetween={30}
+              loop={true}
+              pagination={{
+                clickable: true,
+              }}
+              navigation={true}
+              modules={[Pagination, Navigation]}
+              className="mySwiper"
+            >
+              <SwiperSlide>Slide 1</SwiperSlide>
               <SwiperSlide>Slide 2</SwiperSlide>
               <SwiperSlide>Slide 3</SwiperSlide>
               <SwiperSlide>Slide 4</SwiperSlide>
@@ -36,6 +48,7 @@ const Responce = () => {
               <SwiperSlide>Slide 8</SwiperSlide>
               <SwiperSlide>Slide 9</SwiperSlide>
             </Swiper>
+          </>
           </div>
         </>
     )

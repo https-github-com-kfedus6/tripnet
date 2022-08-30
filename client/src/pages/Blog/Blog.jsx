@@ -22,7 +22,7 @@ const Blog = () => {
     (selectBlog==undefined||selectBlog==null||selectBlog.id!=id)?<div>loading...</div>:
     <div className='blog__main__'>
       <div className='blog__main_'>
-        <img width={"30%"} src={process.env.REACT_APP_API_URL+selectBlog.image}/>
+        <img src={process.env.REACT_APP_API_URL+selectBlog.image}/>
         <h1>{selectBlog.name[language]}</h1>
         <div dangerouslySetInnerHTML={createMarkup(selectBlog.description[language])} className="blog__main">
           
