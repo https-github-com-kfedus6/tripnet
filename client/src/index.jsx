@@ -5,6 +5,8 @@ import { store } from './store'
 import { Provider } from 'react-redux';
 import './utils/i18next';
 
+import 'swiper/css/bundle'
+
 import './App.css';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));

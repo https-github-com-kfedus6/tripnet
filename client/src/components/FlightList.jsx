@@ -4,9 +4,12 @@ import { useSelector } from 'react-redux'
 import FlightScheduleBusList from './FlightScheduleBusList'
 
 const FlightList = ({ flight, is_admin, setScheduleTo, setScheduleWith, status, changeStatus, changeSchedule }) => {
-    const {language}=useSelector(state=>state.language);
-    function createMarkup(text) { return {__html: text}; };
+    const { language } = useSelector(state => state.language);
+
+    function createMarkup(text) { return { __html: text }; };
+
     console.log(flight.description[language]);
+
     return (
         <div className='block-flight'>
             <div className='block-position-price'>
@@ -65,8 +68,9 @@ const FlightList = ({ flight, is_admin, setScheduleTo, setScheduleWith, status, 
                 <h2>Карта маршута</h2>
                 <iframe src={flight.map} loading="lazy"></iframe>
             </div>
-            <div dangerouslySetInnerHTML={createMarkup(flight.description[language])} className='flight-description'>
-
+            <div className='flight-description'>
+                <h2>Інформація про рейс {flight.startPosition[language]} - {flight.finishPosition[language]}:</h2>
+                <p dangerouslySetInnerHTML={createMarkup(flight.description[language])}></p>
             </div>
         </div >
     )
