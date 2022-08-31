@@ -8,8 +8,6 @@ const FlightList = ({ flight, is_admin, setScheduleTo, setScheduleWith, status, 
 
     function createMarkup(text) { return { __html: text }; };
 
-    console.log(flight.description[language]);
-
     return (
         <div className='block-flight'>
             <div className='block-position-price'>

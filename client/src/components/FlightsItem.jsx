@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { FaShoppingCart } from 'react-icons/fa';
+import { FaShoppingCart, FaUser } from 'react-icons/fa';
 import { useSelector } from 'react-redux';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { useAction } from '../hooks/useAction';
@@ -7,11 +7,11 @@ import { useTranslation } from 'react-i18next';
 import Stack from '@mui/material/Stack';
 import Button from '@mui/material/Button';
 
-const FlightsItem = ({ item, sumOld, sumYoung, deleteFlight, limit, page }) => {
+
+const FlightsItem = ({ item, sumOld, sumYoung, deleteFlight, limit, page, openModal }) => {
     const { t } = useTranslation()
 
     const navigate = useNavigate()
-
 
     const [newStartPosition, setNewStartPosition] = useState('')
     const [newFinishPosition, setNewFinishPosition] = useState('')
@@ -90,7 +90,7 @@ const FlightsItem = ({ item, sumOld, sumYoung, deleteFlight, limit, page }) => {
                                 <NavLink to={`/flight/${item.id}`}>{t('flight.info_flight')}!</NavLink>
                             </div>
                             <div className='free-place'>
-                                <span>{t('flight.free_place')} <input type='text' placeholder={item.countFreePlace} onChange={(e) => setNewCaountFreePlace(e.target.value)}></input> {t('flight.place')}!</span>
+                                <span><FaUser /> <input type='text' placeholder={item.countFreePlace} onChange={(e) => setNewCaountFreePlace(e.target.value)}></input>{t('flight.free_place')}</span>
                             </div>
                             <div>
                                 <input type='text' placeholder={sum + '.00'} onChange={(e) => setNewPrice(e.target.value)}></input>
@@ -125,11 +125,11 @@ const FlightsItem = ({ item, sumOld, sumYoung, deleteFlight, limit, page }) => {
                                 <NavLink to={`/flight/${item.id}`}>{t('flight.info_flight')}!</NavLink>
                             </div>
                             <div className='free-place'>
-                                <span>{t('flight.free_place')} {item.countFreePlace} {t('flight.place')}!</span>
+                                <span><FaUser /> {item.countFreePlace} {t('flight.free_place')}</span>
                             </div>
                             <div>
                                 <Stack direction="row" spacing={2}>
-                                    <Button variant="contained" color="success" onClick={() => navigate(`/formBuy/${item.id}/${sumOld}/${sumYoung}`)}>
+                                    <Button variant="contained" color="success" onClick={() => openModal(item.id)}>
                                         <div><FaShoppingCart /></div><span>{sum}.00 UAH</span>
                                     </Button>
                                 </Stack>
@@ -160,11 +160,11 @@ const FlightsItem = ({ item, sumOld, sumYoung, deleteFlight, limit, page }) => {
                         <NavLink to={`/flight/${item.id}`}>{t('flight.info_flight')}!</NavLink>
                     </div>
                     <div className='free-place'>
-                        <span>{t('flight.free_place')} {item.countFreePlace} {t('flight.place')}!</span>
+                        <span><FaUser /> {item.countFreePlace} {t('flight.free_place')}</span>
                     </div>
                     <div>
                         <Stack direction="row" spacing={2}>
-                            <Button variant="contained" color="success" onClick={() => navigate(`/formBuy/${item.id}/${sumOld}/${sumYoung}`)}>
+                            <Button variant="contained" color="success" onClick={() => openModal(item.id)}>
                                 <div><FaShoppingCart /></div><span>{sum}.00 UAH</span>
                             </Button>
                         </Stack>

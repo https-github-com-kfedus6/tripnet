@@ -6,7 +6,6 @@ import Flights from '../pages/Flights/Flights.jsx'
 import FlightsCategory from '../pages/FlightsCategory';
 import Flight from '../pages/Flight/Flight';
 import AboutUs from '../pages/AboutUs/AboutUs';
-import FormBuy from '../components/FormBuy';
 import { useEffect } from 'react';
 import { useAction } from '../hooks/useAction';
 import TinyMCE from './TinyMCE/TinyMCE';
@@ -31,9 +30,8 @@ const AppRouter = () => {
             <Route path='/' element={<Layout />}>
                 <Route index element={<Home />} />
                 <Route path='flights' element={<Flights isShowFilter={false} />} />
-                <Route path='flightsCategory' element={<Flights isShowFilter={true}/>} />
+                <Route path='flightsCategory' element={<Flights isShowFilter={true} />} />
                 <Route path='flight/:id' element={<Flight />} />
-                <Route path='formBuy/:id/:countOld/:countYoung' element={<FormBuy />} />
                 <Route path='FAQ' element={<FAQList />} />
                 <Route path='FAQ/:id' element={<FAQ />} />
                 <Route path='aboutUs' element={<AboutUs />} />

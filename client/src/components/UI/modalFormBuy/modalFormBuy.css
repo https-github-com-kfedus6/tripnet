@@ -1,0 +1,96 @@
+.modal-form-buy {
+    position: fixed;
+    top:0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0,0,0, 0.7);
+    display: none;
+    z-index: 101;
+}
+
+.modal-form-buy.act {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content-form-buy {
+    padding: 10px;
+    background-color: #fff;
+    border-radius: 16px;
+    width: 40%;
+    height: 450px;
+    box-shadow: 0px 0px 10px rgba(0,0,0, 0.9);
+}
+
+.title-modal {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.title-modal h2 {
+    font-size: 26px;
+}
+
+.modal-logo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.modal-logo img {
+    width: 35%;
+}
+
+.block-modal-input {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 20px;
+}
+
+.input-modal {
+    width: 80%;
+}
+
+.block-modal-btn {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.block-modal-btn button {
+    border-radius: 5px;
+    width: 50%;
+    background-color: rgb(245, 73, 4);
+    border: 1px solid rgb(243, 71, 2);
+    font-size: 18px;
+    height: 50px;
+    cursor: pointer;
+}
+
+.block-modal-btn button:hover {
+    background-color: rgb(216, 61, 0);
+}
+
+@media (max-width: 992px) {
+    .modal-content-form-buy {
+        width: 60%;
+    }
+}
+
+@media (max-width: 768px) {
+    .modal-content-form-buy {
+        width: 80%;
+    }
+}
+
+@media (max-width: 576px) {
+    .modal-content-form-buy {
+        width: 90%;
+    }
+}

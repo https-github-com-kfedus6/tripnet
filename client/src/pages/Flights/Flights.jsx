@@ -4,10 +4,14 @@ import FlightsList from '../../components/FlightsList';
 import Pagination from '../../components/UI/pagination/Pagination';
 import { useAction } from '../../hooks/useAction';
 import { getPageCount, getPagesArray } from '../../utils/page';
+import ModalFormBuy from '../../components/UI/modalFormBuy/ModalFormBuy';
 
 import './flights.css';
 
 const Flights = ({ isShowFilter }) => {
+    const [visibleBuy, setVisiblyBuy] = useState(false)
+    const [name, setName] = useState('')
+    const [phone, setPhone] = useState('')
 
     const [startPosition, setStartPosition] = useState('')
     const [finishPosition, setFinishPosition] = useState('')
@@ -35,7 +39,7 @@ const Flights = ({ isShowFilter }) => {
     }, [limit, page])
 
     useEffect(() => {
-        setTotalCount(getPageCount(flights.count,limit))
+        setTotalCount(getPageCount(flights.count, limit))
     }, [flights])
 
     let pagesArray = getPagesArray(totalCount)
@@ -64,6 +68,18 @@ const Flights = ({ isShowFilter }) => {
         fetchDeleteFlight(id)
     }
 
+    const reserveTicket = () => {
+        setVisiblyBuy(false)
+        console.log(name, phone)
+        setName('')
+        setPhone('')
+    }
+
+    const openModal = (id) => {
+        setVisiblyBuy(true)
+        console.log(id)
+    }
+
     return (
         <div className='flights'>
             <FlightsList
@@ -80,6 +96,7 @@ const Flights = ({ isShowFilter }) => {
                 limit={limit}
                 page={page}
                 isFilterTrue={isShowFilter}
+                openModal={openModal}
             />
             <Pagination
                 flights={flights}
@@ -88,6 +105,15 @@ const Flights = ({ isShowFilter }) => {
                 limit={limit}
                 changePage={changePage}
                 moreFlights={moreFlights}
+            />
+            <ModalFormBuy
+                visibleBuy={visibleBuy}
+                setVisiblyBuy={setVisiblyBuy}
+                name={name}
+                setName={setName}
+                phone={phone}
+                setPhone={setPhone}
+                reserveTicket={reserveTicket}
             />
         </div>
     )

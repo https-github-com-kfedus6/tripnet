@@ -3,7 +3,6 @@ import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import FlightsFormSort from '../../components/FlightsFormSort';
-import BlogTest from './BlogTest';
 import HomeListBlog from './HomeListBlog';
 import ListNovetly from './ListNovetly';
 import Responce from './Responce';
@@ -42,7 +41,6 @@ const Home = () => {
                 </div>
                 <Responce />
                 <HomeListBlog />
-                <BlogTest />
             </div>
         </div>
     )

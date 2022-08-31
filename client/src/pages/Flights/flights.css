@@ -6,7 +6,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-direction:column;
+    flex-direction: column;
     background-color: #fff;
     box-shadow: 0 5px 10px 0 rgb(199, 199, 199);
     padding: 10px 0;
@@ -35,6 +35,7 @@
     border: 1px solid #00c000;
     background-color: #00c000;
     color: #fff;
+    transition: all ease 0.3s;
 }
 
 .second-btn button {
@@ -51,6 +52,7 @@
     border: 1px solid #00c000;
     background-color: #00c000;
     color: #fff;
+    transition: all ease 0.3s;
 }
 
 .travel-active {
@@ -78,13 +80,13 @@
 .form-position {
     display: flex;
     flex-direction: column;
-    margin-right:5px;
+    margin-right: 5px;
     width: 50%;
 }
 
 .form-position span {
     color: rgb(77, 77, 77);
-    font-size:19px;
+    font-size: 19px;
     margin-bottom: 5px;
 }
 
@@ -98,11 +100,13 @@
 }
 
 .form-position input:hover {
-    background-color:rgb(252, 252, 252);
+    background-color: rgb(252, 252, 252);
+    transition: all ease 0.3s;
 }
 
 .form-date input:hover {
     background-color: rgb(252, 252, 252);
+    transition: all ease 0.3s;
 }
 
 .form-block-date {
@@ -123,7 +127,7 @@
 
 .form-date span {
     color: rgb(77, 77, 77);
-    font-size:19px;
+    font-size: 19px;
     margin-bottom: 5px;
 }
 
@@ -141,7 +145,7 @@
     display: flex;
     justify-content: center;
     align-items: flex-end;
-    width:100%;
+    width: 100%;
     position: relative;
 }
 
@@ -166,7 +170,7 @@
     cursor: pointer;
 }
 
-.dropdown-list{
+.dropdown-list {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
@@ -176,7 +180,7 @@
     border: 1px solid silver;
     background-color: #fff;
     position: absolute;
-    top:110%;
+    top: 110%;
     left: -30%;
     opacity: 0;
     visibility: hidden;
@@ -197,7 +201,7 @@
 }
 
 .dropdown-list-item div input {
-    width:50px;
+    width: 50px;
 }
 
 .count-place {
@@ -239,7 +243,7 @@
 
 .form-search button:hover {
     background-color: #00c000;
-    transition: all 0.3s ease;
+    transition: all ease 0.3s;
 }
 
 .flights-block {
@@ -267,12 +271,14 @@
     padding: 5px 10px;
     border: 1px solid silver;
     border-radius: 5px;
-    margin-top: 5px;
+    margin-top: 15px;
     background-color: #fff;
 }
 
 .item-flight:hover {
     background-color: rgb(245, 245, 245);
+    box-shadow: 2px 2px 10px rgba(0,0,0,0.3);
+    transition: all ease 0.3s;
 }
 
 .item-time {
@@ -313,7 +319,7 @@
     align-items: center;
 }
 
-.btn-buy div:nth-child(1) a{
+.btn-buy div:nth-child(1) a {
     color: #000;
     text-decoration: none;
     font-size: 17px;
@@ -322,6 +328,7 @@
 .btn-buy div:nth-child(1) a:hover {
     color: #00c000;
     text-decoration: underline;
+    transition: all ease 0.3s;
 }
 
 .free-place {
@@ -331,7 +338,7 @@
 }
 
 .free-place span {
-    color: #c64300;
+    color: #db4900;
 }
 
 .btn-buy button {
@@ -343,7 +350,7 @@
     font-size: 18px;
     border-radius: 15px;
     border: 1px solid #00d200;
-    background-color:#00d200;
+    background-color: #00d200;
     color: white;
     padding: 5px 10px;
     cursor: pointer;
@@ -359,7 +366,7 @@
 }
 
 .item-time span input {
-    width: 40%;
+    width: 60%;
     height: 25px;
     border-radius: 5px;
     border: 1px solid silver;
@@ -371,7 +378,6 @@
     border-radius: 5px;
     border: 1px solid silver;
 }
-
 
 .item-position span input {
     width: 100%;
@@ -424,7 +430,7 @@
 
 .page-none {
     display: none;
-}   
+}
 
 .page-more button {
     width: 100%;
@@ -432,7 +438,7 @@
     font-size: 16px;
     border-radius: 5px;
     border: 1px solid #00d200;
-    background-color:#00d200;
+    background-color: #00d200;
     color: white;
     cursor: pointer;
 }
@@ -453,7 +459,7 @@
 
 .page-wrapper a {
     text-decoration: none;
-    color:#000;
+    color: #000;
 }
 
 .page {
@@ -478,311 +484,7 @@
 .page:hover {
     border: 2px solid #00c000;
     font-weight: bold;
-}
-
-.container-forms {
-    background-color: rgb(245, 245, 245);
-}
-
-.form-btn-back {
-    display: flex;
-    justify-content: center;
-    padding-top: 20px;
-}
-
-.form-btn-back div {
-    width: 72%;
-}
-
-.form-btn-back div button {
-    border: none;
-    background-color: rgb(245, 245, 245);
-    font-size: 20px;
-    cursor: pointer;
-}
-
-.form-btn-back div button:hover {
-    background-color: rgb(201, 201, 201);
-    border-radius: 10px;
-}
-
-.form-buy {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.form-block-ticket {
-    width: 70%;
-    border: 1px solid silver;
-    margin-top: 10px;
-    background-color: #fff;
-    border-radius: 10px;
-    padding: 10px 10px;
-}
-
-.number-block {
-    display: flex;
-}
-
-.number-block div {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 30px;
-    height: 30px;
-    background-color: #00c000;
-    font-size: 30px;
-    color: #fff;
-    border-radius: 10px;
-}
-
-.number-block span:nth-child(2) {
-    font-size: 28px;
-    margin-left: 10px;
-} 
-
-.item-old {
-    margin-top: 20px;
-}
-
-.title-item {
-    font-size: 22px;
-    margin-bottom: 5px;
-}
-
-.item-inputs {
-    display: flex;
-    margin-bottom: 10px;
-}
-
-.item-input-name {
-    display:flex;
-    flex-direction: column;
-    margin-right: 2px;
-    width: 50%;
-}
-
-.item-input-name span {
-    color: rgb(77, 77, 77);
-    font-size: 21px;
-    margin-bottom: 4px;
-}
-
-.item-input-name input {
-    height: 30px;
-    border-radius: 10px;
-    border: 1px solid silver;
-    padding: 2px 6px;
-    font-size: 17px;
-}
-
-.item-input-surename {
-    display:flex;
-    flex-direction: column;
-    width: 50%;
-}
-
-.item-input-surename span {
-    color: rgb(77, 77, 77);
-    font-size: 21px;
-    margin-bottom: 4px;
-}
-
-.item-input-surename input {
-    height: 30px;
-    border-radius: 10px;
-    border: 1px solid silver;
-    padding: 2px 6px;
-    font-size: 17px;
-}
-
-.margin {
-    margin-top: 20px;
-}
-
-.item-young {
-    margin-bottom: 10px;
-}
-
-.item-input-born div:nth-child(1) span {
-    color: rgb(77, 77, 77);
-    font-size: 20px;
-}
-
-.item-input-born div:nth-child(1) {
-    margin-bottom:4px;
-}
-
-.item-input-date-month-year input:nth-child(1) {
-    width: 15%;
-    height: 25px;
-    padding: 5px 10px;
-    border: 1px solid silver;
-    border-right: none;
-    border-top-left-radius:10px;
-    border-bottom-left-radius:10px;
-    font-size: 17px;
-}
-
-.item-input-date-month-year input:nth-child(2) {
-    width: 15%;
-    height: 25px;
-    padding: 5px 10px;
-    border: 1px solid silver;
-    border-right: none;
-    font-size: 17px;
-}
-
-.item-input-date-month-year input:nth-child(3) {
-    width: 20%;
-    height: 25px;
-    padding: 5px 10px;
-    border: 1px solid silver;
-    border-top-right-radius:10px;
-    border-bottom-right-radius:10px;
-    font-size: 17px;
-}
-
-.from-block-input-number-email {
-    display: flex;
-}
-
-.form-block-contact {
-    width: 70%;
-    border: 1px solid silver;
-    margin-top: 10px;
-    background-color: #fff;
-    border-radius: 10px;
-    padding: 10px 10px;
-}
-
-.form-block-bank {
-    width: 70%;
-    border: 1px solid silver;
-    margin-top: 10px;
-    background-color: #fff;
-    border-radius: 10px;
-    padding: 10px 10px;
-}
-
-.input-card {
-    margin-top: 10px;
-    display:flex;
-    flex-direction: column;
-    margin-right: 10px;
-    width: 50%;
-}
-
-.input-card span {
-    color: rgb(77, 77, 77);
-    font-size: 21px;
-    margin-bottom: 4px;
-}
-
-.input-card input {
-    height: 30px;
-    border-radius: 10px;
-    border: 1px solid silver;
-    padding: 2px 6px;
-    font-size: 17px;
-}
-
-.input-month-year-cvc {
-    display: flex;
-}
-
-.input-month-year-cvc div {
-    margin-top: 10px;
-}
-
-.input-month-year-cvc div:nth-child(1) {
-    display: flex;
-    flex-direction: column;
-    margin-right: 4px;
-    width: 25%;
-}
-
-.input-month-year-cvc div:nth-child(1) span {
-    color: rgb(77, 77, 77);
-    font-size: 21px;
-    margin-bottom: 4px;
-}
-
-.input-month-year-cvc div:nth-child(1) input {
-    height: 30px;
-    border-radius: 10px;
-    border: 1px solid silver;
-    padding: 2px 6px;
-    font-size: 17px;
-}
-
-.input-month-year-cvc div:nth-child(2) {
-    display: flex;
-    flex-direction: column;
-    width: 25%;
-}
-
-.input-month-year-cvc div:nth-child(2) span {
-    color: rgb(77, 77, 77);
-    font-size: 21px;
-    margin-bottom: 4px;
-}
-
-.input-month-year-cvc div:nth-child(2) input {
-    height: 30px;
-    border-radius: 10px;
-    border: 1px solid silver;
-    padding: 2px 6px;
-    font-size: 17px;
-}
-
-.input-persone-card {
-    display: flex;
-    flex-direction: column;
-    margin-top: 10px;
-    width: 50%;
-}
-
-.input-persone-card span {
-    color: rgb(77, 77, 77);
-    font-size: 21px;
-    margin-bottom: 4px;
-}
-
-.input-persone-card input {
-    height: 30px;
-    border-radius: 10px;
-    border: 1px solid silver;
-    padding: 2px 6px;
-    font-size: 17px;
-}
-
-.buy-ticket {
-    display: flex;
-    justify-content: space-between;
-}
-
-.buy-ticket span {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 21px;
-}
-
-.buy-ticket button {
-    width: 30%;
-    height: 35px;
-    font-size: 18px;
-    border-radius: 10px;
-    border: #00d200;
-    cursor: pointer;
-    background-color: #00d200;
-    color: #fff;
-}
-
-.buy-ticket button:hover {
-    background-color: #00c000;
+    transition: all ease 0.3s;
 }
 
 .admin-delete-flight button {
@@ -823,7 +525,7 @@
 
     .dropdown-list {
         position: absolute;
-        top:110%;
+        top: 110%;
         left: 0;
     }
 
@@ -836,7 +538,6 @@
     .form-btn-back div {
         width: 92%;
     }
-
 }
 
 @media (max-width: 768px) {
@@ -850,11 +551,11 @@
 
     .form-flights {
         flex-direction: column;
-        }
+    }
 
     .dropdown-list {
         position: absolute;
-        top:110%;
+        top: 110%;
         left: -10%;
     }
 
@@ -865,7 +566,7 @@
         align-items: center;
     }
 
-    .btn-buy div{
+    .btn-buy div {
         margin-top: 5px;
     }
 
@@ -877,7 +578,7 @@
         width: 200px;
     }
 
-    .btn-buy div:nth-child(3) button div{
+    .btn-buy div:nth-child(3) button div {
         margin-bottom: 5px;
     }
 
@@ -885,7 +586,7 @@
         display: flex;
         flex-direction: column;
     }
-    
+
     .from-block-input-number-email div {
         width: 100%;
         margin-top: 10px;
@@ -918,8 +619,8 @@
         width: 90%;
     }
 
-    .item-time{
-        font-size: 22px
+    .item-time {
+        font-size: 22px;
     }
 
     .item-position {
@@ -968,10 +669,10 @@
     .form-btn div {
         margin-bottom: 10px;
     }
-    
+
     .dropdown-list {
         position: absolute;
-        top:110%;
+        top: 110%;
         left: 0;
         width: 100%;
     }
