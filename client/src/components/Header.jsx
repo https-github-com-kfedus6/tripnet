@@ -19,17 +19,16 @@ const Header = () => {
             <div className='header__components'>
                 <ul>
                     <li><NavLink to="/">{t('header.first_link')}</NavLink></li>
-                    <li><NavLink to="/flights">{t('header.second_link')}</NavLink></li>
                     <li><NavLink to="/flightsCategory">{t('header.third_link')}</NavLink></li>
                     <li><NavLink to="/aboutUs">{t('header.fourth_link')}</NavLink></li>
                     <li><NavLink to='/blog'>{t("header.five_link")}</NavLink></li>
+                    <li>{is_login ? <div><NavLink to='/account'></NavLink></div> :
+                    <div onClick={() => { setIsShow(!isShow) }} className="register">
+                        <FaUserCircle />
+                    </div>}</li>
+                    <li><SetLanguage /></li>
                 </ul>
                 {is_admin ? <div className='user__nick'><NavLink to="/admin">admin panel</NavLink></div> : <></>}
-                {is_login ? <div><NavLink to='/account'><FaUserCircle /></NavLink></div> :
-                    <div onClick={() => { setIsShow(!isShow) }} className="register">
-                        {t("header.registering")}
-                    </div>}
-                <SetLanguage />
             </div>
             <Burger setIsShowRegister={setIsShow} />
             <Authorize isShow={isShow} setIsShow={setIsShow} />

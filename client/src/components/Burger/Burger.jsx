@@ -27,8 +27,6 @@ const Burger = ({setIsShowRegister}) => {
           <li><NavLink to="/flightsCategory">{t('header.third_link')}</NavLink></li>
           <li><NavLink to="/aboutUs">{t('header.fourth_link')}</NavLink></li>
         </ul>
-        <div className="register">
-            </div>
       </div>
       <div onClick={()=>{setIsBurgerClick(!isBurgerClick)}} className={"header__burger"}>
         <GiHamburgerMenu fontSize={"50px"}/>

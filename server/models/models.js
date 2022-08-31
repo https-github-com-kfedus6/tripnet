@@ -21,8 +21,7 @@ const InfoCompany = sequelize.define("infoCompany", {
 
 const Responce = sequelize.define('responce', {
     id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
-    description: { type: DataTypes.STRING },
-    responceId: { type: DataTypes.INTEGER, defaultValue: null, allowNull: true },
+    description: { type: DataTypes.TEXT },
     nameAuthor: { type: DataTypes.STRING }
 });
 

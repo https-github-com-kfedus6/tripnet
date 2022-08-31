@@ -9,9 +9,11 @@ import './flights.css';
 
 const Flights = ({ isShowFilter }) => {
 
-    const [startPosition, setStartPosition] = useState('')
-    const [finishPosition, setFinishPosition] = useState('')
-    const [startDate, setStartDate] = useState('')
+    const {startPositionInitial,finishPositionInitial,dateInitial}=useSelector(state=>state.flightsSearchWithHomeReducer)
+
+    const [startPosition, setStartPosition] = useState(startPositionInitial)
+    const [finishPosition, setFinishPosition] = useState(finishPositionInitial)
+    const [startDate, setStartDate] = useState(dateInitial)
     const [totalCount, setTotalCount] = useState()
     const [limit, setLimit] = useState(5)
     const [page, setPage] = useState(1)
@@ -23,6 +25,7 @@ const Flights = ({ isShowFilter }) => {
 
     const { flights } = useSelector(state => state.flights)
 
+   
     useEffect(() => {
         fetchGetFlights({
             startPosition: startPosition,

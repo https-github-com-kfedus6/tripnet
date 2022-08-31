@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import FlightsFormSort from '../../components/FlightsFormSort';
-import BlogTest from './BlogTest';
+import { useAction } from '../../hooks/useAction';
 import HomeListBlog from './HomeListBlog';
 import ListNovetly from './ListNovetly';
 import Responce from './Responce';
@@ -15,9 +15,13 @@ const Home = () => {
     const [startDate, setStartDate] = useState('');
     const [limit, setLimit] = useState(3);
     const [page, setPage] = useState(1);
+    const {SetFlightParams}=useAction();
 
     const navigate = useNavigate();
-
+    const search=()=>{
+        SetFlightParams(startPosition,finishPosition,startDate);
+        navigate("/flightsCategory");
+    }
     const [sumYoung, setSumYoung] = useState(0)
     const [sumOld, setSumOld] = useState(1)
     return (
@@ -26,7 +30,7 @@ const Home = () => {
                 setStartDate={setStartDate}
                 setStartPosition={setStartPosition}
                 setFinishPosition={setFinishPosition}
-                sortFlights={() => { navigate("/flights") }}
+                sortFlights={search}
                 sumOld={sumOld}
                 setSumOld={setSumOld}
                 sumYoung={sumYoung}
@@ -42,7 +46,6 @@ const Home = () => {
                 </div>
                 <Responce />
                 <HomeListBlog />
-                <BlogTest />
             </div>
         </div>
     )

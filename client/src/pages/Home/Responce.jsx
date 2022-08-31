@@ -13,40 +13,22 @@ const Responce = () => {
     useEffect(() => {
         GetResponceNovetly();
     }, [])
-    /*
-    return(
-      <>
-
-      </>
-    )
     console.log(novetlyResponce);
-    */
     return (
-        novetlyResponce == undefined ? <div>loading...</div> :
+        novetlyResponce == undefined ? <div>loading...</div> :novetlyResponce.length==0?<></>:
         <>
           <h3 className='home__benefits__company__name'>{t("home.responce")}</h3>
           <div className='list__responce__home__main'>
           <>
-            <Swiper
-              slidesPerView={1}
-              spaceBetween={30}
-              loop={true}
-              pagination={{
-                clickable: true,
-              }}
-              navigation={true}
-              modules={[Pagination, Navigation]}
-              className="mySwiper"
-            >
-              <SwiperSlide>Slide 1</SwiperSlide>
-              <SwiperSlide>Slide 2</SwiperSlide>
-              <SwiperSlide>Slide 3</SwiperSlide>
-              <SwiperSlide>Slide 4</SwiperSlide>
-              <SwiperSlide>Slide 5</SwiperSlide>
-              <SwiperSlide>Slide 6</SwiperSlide>
-              <SwiperSlide>Slide 7</SwiperSlide>
-              <SwiperSlide>Slide 8</SwiperSlide>
-              <SwiperSlide>Slide 9</SwiperSlide>
+          <Swiper navigation={false} modules={[Pagination]} pagination={true} className="my-swiper">
+            {novetlyResponce.map(x=>
+              <SwiperSlide className='responce__home__main' key={x.id}>
+                {x.nameAuthor}<br/><br/>
+                {x.description}
+                <br/>
+                <br/>
+              </SwiperSlide>)}
+
             </Swiper>
           </>
           </div>
