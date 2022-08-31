@@ -1,7 +1,7 @@
 const InfoCompanyController = require("../controllers/InfoCompanyController");
 
-const rout=require("express")();
+const rout = require("express")();
 
-rout.get("/get",InfoCompanyController.Get);
+rout.get("/get", InfoCompanyController.Get);
 
-module.exports=rout;
+module.exports = rout;

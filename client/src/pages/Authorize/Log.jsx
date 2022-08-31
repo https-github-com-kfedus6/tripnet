@@ -52,7 +52,6 @@ const Log = ({ close }) => {
                         id="demo-helper-text-misaligned-no-helper"
                         label={t("authorize.email")}
                     />
-                    {/* <input onChange={(e) => setEmail(e.target.value)} placeholder='email' /> */}
                 </div>
                 <div className='password'>
                     <TextField
@@ -62,7 +61,6 @@ const Log = ({ close }) => {
                         type="password"
                         autoComplete="current-password"
                     />
-                    {/*   <input onChange={(e) => setPassword(e.target.value)} type="password" placeholder={t("authorize.password")} /> */}
                 </div>
                 <div className="btn__authorize">
                     <button onClick={(e) => { e.preventDefault(); log(); return false; }}>{t("authorize.log")}</button>

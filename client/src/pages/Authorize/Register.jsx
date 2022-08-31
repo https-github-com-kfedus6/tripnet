@@ -70,29 +70,24 @@ const Register = ({ close }) => {
                     className='input-material'
                     onChange={(e) => setName(e.target.value)}
                     id="demo-helper-text-misaligned-no-helper"
-                    label={t("authorize.name")}
+                    label={t("authorize.name")} margin="normal"
                 />
-                {/* <input onChange={(e) => setName(e.target.value)} placeholder={t("authorize.name")} /> */}
             </div>
             <div className='email'>
                 <TextField
                     onChange={(e) => setEmail(e.target.value)}
                     id="demo-helper-text-misaligned-no-helper"
                     label={t("authorize.email")}
+                    margin="normal"
                 />
-                {/*  <input onChange={(e) => setEmail(e.target.value)} placeholder='email' /> */}
             </div>
             <div className='number__phone'>
                 <TextField
                     onChange={(e) => setNumberPhone(e.target.value)}
-                    id="outlined-number"
+                    id="outlined-basic"
                     label={t("authorize.number_phone")}
-                    type="number"
-                    InputLabelProps={{
-                        shrink: true,
-                    }}
+                    margin="normal"
                 />
-                {/*  <input onChange={(e) => setNumberPhone(e.target.value)} placeholder={t("authorize.number_phone")} /> */}
             </div>
             <div className='password'>
                 <TextField
@@ -101,8 +96,8 @@ const Register = ({ close }) => {
                     label={t("authorize.password")}
                     type="password"
                     autoComplete="current-password"
+                    margin="normal"
                 />
-                {/*  <input onChange={(e) => setPassword(e.target.value)} type="password" placeholder={t("authorize.password")} /> */}
             </div>
             <div className='password'>
                 <TextField
@@ -111,8 +106,8 @@ const Register = ({ close }) => {
                     label={t("authorize.return_password")}
                     type="password"
                     autoComplete="current-password"
+                    margin="normal"
                 />
-                {/*  <input onChange={(e) => setPassword(e.target.value)} type="password" placeholder={t("authorize.password")} /> */}
             </div>
             <div className="btn__authorize">
                 <button onClick={(e) => { e.stopPropagation(); register() }}>{t("authorize.register")}</button>

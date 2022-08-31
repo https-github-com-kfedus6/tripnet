@@ -20,6 +20,7 @@ const Footer = () => {
         GetBlogNovetly(5);
         if (FAQNovetly == undefined) GetFAQNovetly(5)
     }, [])
+
     return (
         infoCompany == undefined ? <div>...loading</div> :
             <div className='footer__main'>

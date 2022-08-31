@@ -13,8 +13,6 @@ const Authorize = ({ isShow, setIsShow }) => {
                     <div>
                         <img src={process.env.REACT_APP_API_URL + "logo.png"} alt="logo" />
                     </div>
-                    {/*  <h1 className='authorize__name'>{t("authorize.authorize")}</h1>
-                    <span onClick={() => setIsShow(false)} className='close'>&times;</span> */}
                 </div>
                 <div className='register__or__log'>
                     <div onClick={() => setIsRegister(true)} className={isRegister ? "active" : ""}>

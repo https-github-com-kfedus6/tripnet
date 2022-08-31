@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { AiOutlineCaretDown } from 'react-icons/ai';
 import { useTranslation } from 'react-i18next';
 
-const FlightsFormSort = ({ setStartDate, setStartPosition, setFinishPosition, sortFlights, sumOld, setSumOld, sumYoung, setSumYoung}) => {
+const FlightsFormSort = ({ setStartDate, setStartPosition, setFinishPosition, sortFlights, sumOld, setSumOld, sumYoung, setSumYoung }) => {
     const { t } = useTranslation()
 
     const [check, setCheck] = useState(false)
@@ -52,7 +52,7 @@ const FlightsFormSort = ({ setStartDate, setStartPosition, setFinishPosition, so
                             <span>{t('flight.departure')}</span>
                             <input type="date" onChange={(e) => setStartDate(e.target.value)} />
                         </div>
-                        
+
                         <div className='dropdown'>
                             <div className='dropdown-select'>
                                 <span className='select'>{t('flight.passengers')}</span>
