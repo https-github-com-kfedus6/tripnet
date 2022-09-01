@@ -2,7 +2,7 @@ import React from 'react'
 import FlightsFormSort from './FlightsFormSort'
 import FlightsItem from './FlightsItem'
 
-const FlightsList = ({ flights, setStartDate, setStartPosition, setFinishPosition, sortFlights, sumOld, setSumOld, sumYoung, setSumYoung, deleteFlight, limit, page, isFilterTrue, openModal }) => {
+const FlightsList = ({finishPosition,startPosition,startDate,flights, setStartDate, setStartPosition, setFinishPosition, sortFlights, sumOld, setSumOld, sumYoung, setSumYoung, deleteFlight, limit, page, isFilterTrue, openModal }) => {
 
     if (flights == undefined || flights.length === 0) {
         return (
@@ -23,6 +23,9 @@ const FlightsList = ({ flights, setStartDate, setStartPosition, setFinishPositio
                     deleteFlight={deleteFlight}
                     limit={limit}
                     page={page}
+                    startPosition={startPosition}
+                    finishPosition={finishPosition}
+                    startDate={startDate}
                 /> : <></>}
                 <div className='flights-block'>
                     <div className='items-flight'>

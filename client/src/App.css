@@ -358,30 +358,34 @@ main {
     flex-direction: column;
     margin: 0 auto;
 }
-.FAQ__main {
-    display: flex;
-    margin: 25px auto;
-    flex-direction: column;
-    justify-content: center;
-}
-.FAQ__description {
-    overflow: auto;
-    background-color: #e5dcdc;
-    height: 35px;
-}
 .FAQ__name {
     text-align: center;
 }
-.FAQ__main {
-    margin-top: 40px;
-    width: 80%;
-}
 @media screen and (min-width: 1024px) {
     .FAQ__main {
-        width: 80%;
+        margin: auto;
+        width: 60%;
     }
     .FAQ__name {
         font-size: 35px;
+    }
+}
+@media screen and (max-width: 1024px) and (min-width:769px){
+    .FAQ__main {
+        margin: auto;
+        width: 80%;
+    }
+    .FAQ__name {
+        font-size: 30px;
+    }
+}
+@media screen and (max-width: 768px) {
+    .FAQ__main {
+        margin: auto;
+        width: 98%;
+    }
+    .FAQ__name {
+        font-size: 25px;
     }
 }
 .admin__panel__main {

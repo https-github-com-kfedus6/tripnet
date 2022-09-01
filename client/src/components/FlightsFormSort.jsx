@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { AiOutlineCaretDown } from 'react-icons/ai';
 import { useTranslation } from 'react-i18next';
 
-const FlightsFormSort = ({ setStartDate, setStartPosition, setFinishPosition, sortFlights, sumOld, setSumOld, sumYoung, setSumYoung }) => {
+const FlightsFormSort = ({ startDate,startPosition,finishPosition,setStartDate, setStartPosition, setFinishPosition, sortFlights, sumOld, setSumOld, sumYoung, setSumYoung }) => {
     const { t } = useTranslation()
 
     const [check, setCheck] = useState(false)
@@ -40,17 +40,17 @@ const FlightsFormSort = ({ setStartDate, setStartPosition, setFinishPosition, so
                     <div className='form-block-position'>
                         <div className='form-position'>
                             <span>{t('flight.whence')}</span>
-                            <input type="text" placeholder={t('flight.whence')} onChange={(e) => setStartPosition(e.target.value)} />
+                            <input type="text" value={startPosition} placeholder={t('flight.whence')} onChange={(e) => setStartPosition(e.target.value)} />
                         </div>
                         <div className='form-position'>
                             <span>{t('flight.whitherto')}</span>
-                            <input type="text" placeholder={t('flight.whitherto')} onChange={(e) => setFinishPosition(e.target.value)} />
+                            <input type="text" value={finishPosition} placeholder={t('flight.whitherto')} onChange={(e) => setFinishPosition(e.target.value)} />
                         </div>
                     </div>
                     <div className='form-block-date'>
                         <div className='form-date'>
                             <span>{t('flight.departure')}</span>
-                            <input type="date" onChange={(e) => setStartDate(e.target.value)} />
+                            <input type="date" value={startDate} onChange={(e) => setStartDate(e.target.value)} />
                         </div>
 
                         <div className='dropdown'>

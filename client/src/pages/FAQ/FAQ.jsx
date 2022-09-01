@@ -24,10 +24,10 @@ const FAQ = () => {
     function createMarkup(text) { return { __html: text }; };
     return (
         (selectFAQ == undefined || selectFAQ == null || selectFAQ.id != id) ? <div>loading...</div> :
-            <>
+            <div className='FAQ__main'>
                 <h1 className='FAQ__name'>{selectFAQ.name[language]}</h1>
-                <div dangerouslySetInnerHTML={createMarkup(selectFAQ.description[language])} className="FAQ__main" />
-            </>
+                <div dangerouslySetInnerHTML={createMarkup(selectFAQ.description[language])} className="FAQ__description" />
+            </div>
     )
 }
 
