@@ -3,7 +3,7 @@ body {
     height: 100%;
 }
 body {
-    font-family: 'Montserrat', sans-serif;
+    font-family: "Montserrat", sans-serif;
     margin: 0 auto;
     display: flex;
     flex-direction: column;
@@ -22,10 +22,10 @@ main {
 
 .active {
     border-bottom: 4px solid rgb(12, 127, 108);
-  }
+}
 
 @media screen and (min-width: 1024px) {
-    .logo{
+    .logo {
         width: 20%;
     }
     .header__main {
@@ -42,7 +42,7 @@ main {
         width: 100%;
         display: flex;
         flex-direction: row;
-        justify-content:flex-end;
+        justify-content: flex-end;
         align-items: center;
     }
     .header__components ul {
@@ -52,7 +52,7 @@ main {
         display: flex;
         flex-direction: row;
     }
-    .header__components ul li div{
+    .header__components ul li div {
         font-size: 35px;
     }
 
@@ -74,15 +74,13 @@ main {
     .header__registering {
         display: inline-block;
     }
-
 }
-.logo img{
+.logo img {
     width: 100%;
 }
 
-
-@media screen and (max-width: 1024px) and (min-width:769px) {
-    .logo{
+@media screen and (max-width: 1024px) and (min-width: 769px) {
+    .logo {
         width: 20%;
     }
     .header__main {
@@ -99,7 +97,7 @@ main {
         width: 100%;
         display: flex;
         flex-direction: row;
-        justify-content:flex-end;
+        justify-content: flex-end;
         align-items: center;
     }
     .header__components ul {
@@ -109,7 +107,7 @@ main {
         display: flex;
         flex-direction: row;
     }
-    .header__components ul li div{
+    .header__components ul li div {
         font-size: 35px;
     }
 
@@ -134,8 +132,7 @@ main {
 }
 
 @media screen and (max-width: 768px) {
-    
-    .logo{
+    .logo {
         width: 20%;
     }
     .header__main {
@@ -144,7 +141,6 @@ main {
         width: 98%;
         margin: auto;
         /*background-color: #00d200;*/
-        
     }
     .header__components {
         display: none;
@@ -171,7 +167,7 @@ main {
     .header__registering {
         display: none;
     }
-} 
+}
 .burger__menu {
     display: flex;
     flex-direction: column;
@@ -245,7 +241,7 @@ main {
 }
 
 .authorize__header div img {
-    width:70%;
+    width: 70%;
 }
 
 .authorize__header div {
@@ -258,7 +254,7 @@ main {
     width: 100%;
 }
 
-.btn__authorize  {
+.btn__authorize {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -646,29 +642,29 @@ main {
     justify-content: center;
     text-align: center;
 }
-.novetly__description{
+.novetly__description {
     display: flex;
     justify-content: center;
     text-align: c;
 }
 
-  .swiper {
+.swiper {
     width: 100%;
     height: 100%;
-  }
-  .responce__home__main{
+}
+.responce__home__main {
     width: 100%;
     height: 100%;
-  }
-  .my_Swiper{
+}
+.my_Swiper {
     display: flex;
     flex-direction: row;
-  }
-  .swiper-slide {
+}
+.swiper-slide {
     text-align: center;
     font-size: 18px;
     background: #fff;
-  
+
     /* Center slide text vertically */
     display: -webkit-box;
     display: -ms-flexbox;
@@ -682,113 +678,126 @@ main {
     -ms-flex-align: center;
     -webkit-align-items: center;
     align-items: center;
-  }
-  
-  .swiper-slide img {
+}
+
+.swiper-slide img {
     display: block;
     width: 100%;
     height: 100%;
     object-fit: cover;
-  }
-.blog__main__{
+}
+.blog__main__ {
     margin: auto;
 }
 
-.blog__main_{
+.blog__main_ {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    margin:auto;
+    margin: auto;
 }
 
-.blog__main_ img{
+.blog__main_ img {
     width: 100%;
     height: auto;
 }
 
-@media screen and (min-width:1024px) {
-    .blog__main_{
+@media screen and (min-width: 1024px) {
+    .blog__main_ {
         width: 60%;
     }
-    
 }
 
-@media screen and (max-width:1024px){
-    .blog__main_{
+@media screen and (max-width: 1024px) {
+    .blog__main_ {
         width: 80%;
     }
 }
 
-@media screen and (max-width:768px){
-    .blog__main_{
+@media screen and (max-width: 768px) {
+    .blog__main_ {
         width: 98%;
     }
 }
 
-.responce__home__main{
+.responce__home__main {
     width: 60%;
 }
 
-
-.footer__main div.main{
-    color:blue;
-    cursor: pointer;
-
-}
-.footer__blog div{
+.footer__main div.main {
+    color: blue;
     cursor: pointer;
 }
-.footer__FAQ div{
+.footer__blog div {
     cursor: pointer;
 }
-@media screen and (min-width:1024px) {
-    .footer__main details{
+.footer__FAQ div {
+    cursor: pointer;
+}
+@media screen and (min-width: 1024px) {
+    .footer__main details {
         display: none;
     }
-    .footer__main{
+    .footer__main {
         display: flex;
         flex-direction: row;
         margin: auto;
         width: 60%;
-        justify-content:space-between;
+        justify-content: space-between;
         margin-top: 50px;
         border-top-width: 5px;
         border-color: #888;
     }
 }
-@media screen and (max-width:1024px) and (min-width: 768px) {
-    .footer__main details{
+@media screen and (max-width: 1024px) and (min-width: 768px) {
+    .footer__main details {
         display: none;
     }
-    .footer__main{
+    .footer__main {
         display: flex;
         flex-direction: row;
         margin: auto;
         width: 80%;
-        justify-content:space-between;
+        justify-content: space-between;
         margin-top: 50px;
         border-top-width: 5px;
         border-color: #888;
     }
 }
-@media screen and (max-width:768px) {
-    .footer__list{
+@media screen and (max-width: 768px) {
+    .footer__list {
         display: none;
     }
-    .footer__main{
+    .footer__main {
         display: flex;
         flex-direction: column;
         margin: auto;
         width: 98%;
-        justify-content:space-between;
+        justify-content: space-between;
         margin-top: 50px;
         border-top-width: 5px;
         border-color: #888;
     }
-    .footer__main details{
+    .footer__main details {
         margin-bottom: 25px;
     }
 }
-.blog__main__{
 
+.css-jedpe8-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input.css-jedpe8-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input.css-jedpe8-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input {
+    display: flex;
+    align-items: center;
+}
+
+.icon-lang {
+    width: 24px;
+    height: 24px;
+    margin-right: 6px;
+}
+
+.title-lang {
+    font-size: 17px;
+}
+
+.header__components ul li div {
+    font-size: 0px;
 }
