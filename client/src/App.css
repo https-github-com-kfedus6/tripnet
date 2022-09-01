@@ -36,7 +36,6 @@ main {
         flex-direction: row;
         width: 60%;
         margin: auto;
-        margin-bottom: 30px;
     }
     .header__components {
         width: 100%;
@@ -64,7 +63,7 @@ main {
         display: flex;
         flex-direction: row;
         text-decoration: none;
-        font-size: 20px;
+        font-size: 15px;
         color: black;
     }
     .header__burger {
@@ -108,7 +107,7 @@ main {
         flex-direction: row;
     }
     .header__components ul li div {
-        font-size: 35px;
+        color: black;
     }
 
     .header__components ul li {
@@ -119,7 +118,7 @@ main {
         display: flex;
         flex-direction: row;
         text-decoration: none;
-        font-size: 20px;
+        font-size: 15px;
         color: black;
     }
     .header__burger {
@@ -133,7 +132,7 @@ main {
 
 @media screen and (max-width: 768px) {
     .logo {
-        width: 20%;
+        width: 40%;
     }
     .header__main {
         display: flex;
@@ -359,30 +358,34 @@ main {
     flex-direction: column;
     margin: 0 auto;
 }
-.FAQ__main {
-    display: flex;
-    margin: 25px auto;
-    flex-direction: column;
-    justify-content: center;
-}
-.FAQ__description {
-    overflow: auto;
-    background-color: #e5dcdc;
-    height: 35px;
-}
 .FAQ__name {
     text-align: center;
 }
-.FAQ__main {
-    margin-top: 40px;
-    width: 80%;
-}
 @media screen and (min-width: 1024px) {
     .FAQ__main {
-        width: 80%;
+        margin: auto;
+        width: 60%;
     }
     .FAQ__name {
         font-size: 35px;
+    }
+}
+@media screen and (max-width: 1024px) and (min-width:769px){
+    .FAQ__main {
+        margin: auto;
+        width: 80%;
+    }
+    .FAQ__name {
+        font-size: 30px;
+    }
+}
+@media screen and (max-width: 768px) {
+    .FAQ__main {
+        margin: auto;
+        width: 98%;
+    }
+    .FAQ__name {
+        font-size: 25px;
     }
 }
 .admin__panel__main {
@@ -783,6 +786,7 @@ main {
     }
 }
 
+
 .css-jedpe8-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input.css-jedpe8-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input.css-jedpe8-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input {
     display: flex;
     align-items: center;
@@ -800,4 +804,13 @@ main {
 
 .header__components ul li div {
     font-size: 0px;
+}
+.register__or__log div{
+    margin-left: 5px;
+}
+.register__main.log__main div.password{
+    margin-top: 20px;
+}
+.register__mainlog__main div.btn__authorize{
+    margin-top: 20px;
 }

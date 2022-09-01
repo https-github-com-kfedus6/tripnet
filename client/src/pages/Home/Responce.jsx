@@ -13,7 +13,7 @@ const Responce = () => {
     useEffect(() => {
         GetResponceNovetly();
     }, [])
-    console.log(novetlyResponce);
+    
     return (
         novetlyResponce == undefined ? <div>loading...</div> :novetlyResponce.length==0?<></>:
         <>

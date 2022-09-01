@@ -37,7 +37,10 @@ const Home = () => {
                 setSumYoung={setSumYoung}
                 deleteFlight={() => { }}
                 limit={limit}
-                page={page} />
+                page={page}
+                startDate={startDate}
+                startPosition={startPosition}
+                finishPosition={finishPosition} />
             <div className='home__content'>
                 <ListNovetly />
                 <h3 className='home__benefits__company__name'>{t("home.benefits_company")}</h3>

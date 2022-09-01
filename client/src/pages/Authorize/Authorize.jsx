@@ -15,10 +15,10 @@ const Authorize = ({ isShow, setIsShow }) => {
                     </div>
                 </div>
                 <div className='register__or__log'>
-                    <div onClick={() => setIsRegister(true)} className={isRegister ? "active" : ""}>
-                        <span className={!isRegister ? 'active-span' : ''} >{t("authorize.register")} </span> {t("authorize.or")}
+                    <div onClick={() => setIsRegister(true)} className={isRegister ? "active1" : ""}>
+                        <span className={!isRegister ? 'active-span' : ''} >{t("authorize.register")} </span> {t("authorize.or") }
                     </div>
-                    <div onClick={() => setIsRegister(false)} className={!isRegister ? "active" : ""}>
+                    <div onClick={() => setIsRegister(false)} className={!isRegister ? "active1" : ""}>
                         <span className={isRegister ? 'active-span' : ''}>{t("authorize.log")}</span>
                     </div>
                 </div>

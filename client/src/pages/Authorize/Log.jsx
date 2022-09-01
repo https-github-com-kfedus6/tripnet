@@ -45,7 +45,7 @@ const Log = ({ close }) => {
     }, [reply]);
     return (
         <form>
-            <div className="register__main">
+            <div className="log__main register__main">
                 <div className='email'>
                     <TextField
                         onChange={(e) => setEmail(e.target.value)}

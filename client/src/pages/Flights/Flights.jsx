@@ -100,6 +100,9 @@ const Flights = ({ isShowFilter }) => {
                 page={page}
                 isFilterTrue={isShowFilter}
                 openModal={openModal}
+                startPosition={startPosition}
+                startDate={startDate}
+                finishPosition={finishPosition}
             />
             <Pagination
                 flights={flights}
