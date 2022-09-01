@@ -808,9 +808,9 @@ main {
 .register__or__log div{
     margin-left: 5px;
 }
-.register__main div.password{
+.register__main.log__main div.password{
     margin-top: 20px;
 }
-.register__main div.btn__authorize{
+.register__mainlog__main div.btn__authorize{
     margin-top: 20px;
 }
