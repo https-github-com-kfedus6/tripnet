@@ -7,7 +7,7 @@ import SetLanguage from './SetLanguage';
 import { useSelector } from 'react-redux';
 import { useState } from 'react';
 import Authorize from '../pages/Authorize/Authorize';
-import { FaUserCircle } from 'react-icons/fa'
+import { FaUserCircle, FaUserEdit } from 'react-icons/fa'
 
 const Header = () => {
     const { t, i18n } = useTranslation()
@@ -22,13 +22,17 @@ const Header = () => {
                     <li><NavLink to="/flightsCategory">{t('header.third_link')}</NavLink></li>
                     <li><NavLink to="/aboutUs">{t('header.fourth_link')}</NavLink></li>
                     <li><NavLink to='/blog'>{t("header.five_link")}</NavLink></li>
-                    <li>{is_login ? <div><NavLink to='/account'></NavLink></div> :
-                        <div onClick={() => { setIsShow(!isShow) }} className="register">
-                            <FaUserCircle />
-                        </div>}</li>
+                    <li>{is_login ? <div><NavLink to='/account'><FaUserCircle /></NavLink></div> :
+                        <div onClick={()=>setIsShow(true)}><a to="/"><FaUserCircle /></a></div>}</li>
+                    <li>{is_admin ? 
+                        <div className='user__nick'>
+                            <NavLink to="/admin"><FaUserEdit/></NavLink>
+                        </div> : <></>}
+                    
+                    </li>
                     <li><SetLanguage /></li>
+
                 </ul>
-                {is_admin ? <div className='user__nick'><NavLink to="/admin">admin panel</NavLink></div> : <></>}
             </div>
             <Burger setIsShowRegister={setIsShow} />
             <Authorize isShow={isShow} setIsShow={setIsShow} />
