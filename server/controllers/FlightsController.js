@@ -6,7 +6,6 @@ const path = require("path");
 class FlightsController {
     async postFlights(req, res, next) {
         try {
-            console.log(req.body);
             const { price, startPositionUA, startPositionRU, finishPositionUA, finishPositionRU,
                 startDate, finishDate, startTime, finishTime, timeFlightUA, timeFlightRU, countFreePlace,
                 descriptionUA, descriptionRU, isWifi, isWC, is220V, isMultimedia,
@@ -51,7 +50,6 @@ class FlightsController {
                     map: map
                 })
             }
-            console.log(isWifi, isWC, is220V, isMultimedia, isAirConditioning, flight.id);
             const params = await ParamsFlight.create({
                 isWifi: isWifi, isWC: isWC, is220V: is220V,
                 isMultimedia: isMultimedia, isAirConditioning: isAirConditioning, flightId: flight.id

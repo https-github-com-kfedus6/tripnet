@@ -3,7 +3,6 @@ import { Route, Routes } from 'react-router-dom';
 import Layout from './Layout';
 import Home from '../pages/Home/Home';
 import Flights from '../pages/Flights/Flights.jsx'
-import FlightsCategory from '../pages/FlightsCategory';
 import Flight from '../pages/Flight/Flight';
 import AboutUs from '../pages/AboutUs/AboutUs';
 import { useEffect } from 'react';
@@ -13,7 +12,6 @@ import AdminMain from '../pages/Admin/AdminMain';
 import { useSelector } from 'react-redux';
 import { ListBlog } from '../pages/Blog/ListBlog';
 import Blog from '../pages/Blog/Blog';
-import FAQList from '../pages/FAQ/FAQList';
 import FAQ from '../pages/FAQ/FAQ';
 import Account from '../pages/Account/Account';
 
@@ -32,8 +30,7 @@ const AppRouter = () => {
                 <Route path='flights' element={<Flights isShowFilter={false} />} />
                 <Route path='flightsCategory' element={<Flights isShowFilter={true} />} />
                 <Route path='flight/:id' element={<Flight />} />
-                <Route path='FAQ' element={<FAQList />} />
-                <Route path='FAQ/:id' element={<FAQ />} />
+                <Route path='FAQ' element={<FAQ />} />
                 <Route path='aboutUs' element={<AboutUs />} />
                 <Route path='tinyMCE' element={<TinyMCE />} />
                 <Route path='blog' element={<ListBlog />} />

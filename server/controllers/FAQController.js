@@ -8,9 +8,10 @@ class FAQController {
             page = page || 1;
             limit = limit || 10;
             const offset = page * limit - limit;
-            let res = await FAQ.findAndCountAll({ attributes: ['id', 'name'], limit: parseInt(limit), offset: parseInt(offset) });
+            let res = await FAQ.findAndCountAll({ limit: parseInt(limit), offset: parseInt(offset) });
             for (let i = 0; i < res.rows.length; i++) {
                 res.rows[i].name = await res.rows[i].name.split("//");
+                res.rows[i].description = await res.rows[i].description.split("//");
             }
             return resp.json({ status: 200, page, limit, res: res.rows, count: res.count });
 
@@ -52,6 +53,20 @@ class FAQController {
             res.name = res.name.split("//");
             res.description = res.description.split("//");
             resp.json({ status: 200, res });
+        } catch (err) {
+            return next(ErrorApi.badRequest(err));
+        }
+    }
+    static deleteFaq = async (req, resp, next) => {
+        try {
+            const { id } = req.params;
+            await FAQ.destroy({ where: { id } });
+            let res = await FAQ.findAll()
+            for (let i = 0; i < res.length; i++) {
+                res.rows[i].name = await res.rows[i].name.split("//");
+                res.rows[i].description = await res.rows[i].description.split("//");
+            }
+            return resp.json({ status: 200, res });
         } catch (err) {
             return next(ErrorApi.badRequest(err));
         }

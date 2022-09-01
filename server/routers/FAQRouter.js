@@ -7,5 +7,6 @@ rout.post("/add", IsAdminMiddleWare, FAQController.Add);
 rout.get("/get", FAQController.Get);
 rout.get("/getNovetly", FAQController.GetNovetly);
 rout.get("/getSelect", FAQController.GetSelect);
+rout.delete("/:id", IsAdminMiddleWare, FAQController.deleteFaq);
 
 module.exports = rout;

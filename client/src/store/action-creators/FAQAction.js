@@ -33,6 +33,18 @@ export const GetFAQSelect = (id) => async (dispatch) => {
     }
 }
 
+export const deleteFAQ = (id) => async (dispatch) => {
+    try {
+        const resp = await $authHost.delete(`api/FAQ/${id}`);
+        if (resp.data.status == 200) {
+            dispatch({ type: FAQActionTypes.DELETE_SELECT_FAQ, payload: resp.data.res });
+        } else console.log(resp);
+    } catch (err) {
+        console.log(err);
+    }
+}
+
+
 export const AddFAQ = (desriptionUa, desriptionRu, nameUa, nameRu) => async (dispatch) => {
     try {
         const description = [desriptionUa, desriptionRu].join("//");
