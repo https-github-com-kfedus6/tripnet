@@ -5,13 +5,13 @@ import { useAction } from '../../hooks/useAction';
 import '../FAQ/faq.css'
 
 const HomeFAQ = () => {
-    const { FAQList, page, limit } = useSelector(state => state.FAQ);
+    const { FAQNovetly } = useSelector(state => state.FAQ);
     const { is_admin } = useSelector(state => state.user);
-    const { GetFAQ, deleteFAQ } = useAction();
+    const { GetFAQNovetly, deleteFAQ } = useAction();
 
     useEffect(() => {
-        GetFAQ(page, limit);
-    }, [page])
+        GetFAQNovetly(5);
+    }, [])
 
     const { language } = useSelector(state => state.language);
 
@@ -27,9 +27,10 @@ const HomeFAQ = () => {
     }
 
     const deleteFaq = (id) => {
-        deleteFAQ(id)
+        deleteFAQ(id);
+        GetFAQNovetly(5);
     }
-    if (FAQList === undefined) {
+    if (FAQNovetly === undefined) {
         return (
             <div>loading</div>
         )
@@ -40,7 +41,7 @@ const HomeFAQ = () => {
                 <h2>Питання та відповіді</h2>
             </div>
             <div className="accordion">
-                {FAQList.map((item, i) => {
+                {FAQNovetly.map((item, i) => {
                     return (
                         <div key={item.id} className="accordion-item">
                             <button onClick={() => toggle(i)} className={isActive === i ? "accordion-button" : ''} aria-expanded={isActive === i ? "true" : "false"}><span className="accordion-title">{item.name[language]}?</span><span className='icon' aria-hidden="true">{isActive === i ? <AiOutlineMinus /> : <AiOutlinePlus />}</span></button>

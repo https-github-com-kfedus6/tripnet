@@ -32,10 +32,11 @@ class FAQController {
         try {
             let { limit } = req.query;
             limit = limit || 5;
-            let res = await FAQ.findAll({ attributes: ['id', 'name'], limit: parseInt(limit), order: [['id', 'DESC']] })
+            let res = await FAQ.findAll({limit: parseInt(limit), order: [['id', 'DESC']] })
 
             for (let i = 0; i < res.length; i++) {
                 res[i].name = res[i].name.split("//");
+                res[i].description=res[i].description.split("//");
             }
 
             return resp.json({ status: 200, res });
