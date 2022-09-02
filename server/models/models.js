@@ -7,7 +7,7 @@ const User = sequelize.define("user", {
     email: { type: DataTypes.STRING },
     telephone: { type: DataTypes.STRING },
     password: { type: DataTypes.STRING },
-    isAdmin: { type: DataTypes.STRING, defaultValue: false }
+    isAdmin: { type: DataTypes.BOOLEAN, defaultValue: false }
 });
 
 const InfoCompany = sequelize.define("infoCompany", {

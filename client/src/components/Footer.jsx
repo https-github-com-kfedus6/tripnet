@@ -102,7 +102,7 @@ const Footer = () => {
                             {t("footer.FAQ")}
                         </div>
                         {FAQNovetly == undefined ? <div>loading...</div> :
-                            FAQNovetly.map(x => <div onClick={() => navigate("/FAQ/" + x.id)} key={x.id}>{x.name[language]}</div>)}
+                            FAQNovetly.map(x => <div onClick={() => navigate("/FAQ/")} key={x.id}>{x.name[language]}</div>)}
                     </div>
                 </div>
             </div>
