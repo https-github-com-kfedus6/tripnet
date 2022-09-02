@@ -16,8 +16,9 @@ const Blog = () => {
       GetBlogDescription(id);
     }
   },[id]);
+  
   function createMarkup(text) { return {__html: text}; };
-  console.log(selectBlog);
+
   return (
     (selectBlog==undefined||selectBlog==null||selectBlog.id!=id)?<div>loading...</div>:
     <div className='blog__main__'>
