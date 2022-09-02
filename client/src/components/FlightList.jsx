@@ -7,7 +7,7 @@ const FlightList = ({ flight, is_admin, setScheduleTo, setScheduleWith, status, 
     const { language } = useSelector(state => state.language);
 
     function createMarkup(text) { return { __html: text }; };
-
+    
     return (
         <div className='block-flight'>
             <div className='block-position-price'>
@@ -21,9 +21,10 @@ const FlightList = ({ flight, is_admin, setScheduleTo, setScheduleWith, status, 
                 </div>
             </div>
             <div className='block-comfort'>
+                {flight.image==""?<></>:
                 <div className='flight-image'>
                     <img src={process.env.REACT_APP_API_URL + flight.image} alt={flight.finishPosition} />
-                </div>
+                </div>}
                 <div className='items-comfort'>
                     {flight.params.map(img => {
                         return (

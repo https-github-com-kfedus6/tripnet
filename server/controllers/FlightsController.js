@@ -15,9 +15,10 @@ class FlightsController {
             const startPosition = [startPositionUA, startPositionRU].join("//");
             const finishPosition = [finishPositionUA, finishPositionRU].join("//");
             const description = [descriptionUA, descriptionRU].join("/*/");
-            let { image } = req.files;
+            let image=req.files;
             let flight;
-            if (image) {
+            if (image!=null) {
+                console.log(1)
                 const nameImg = uuid.v4() + ".jpg";
                 image.mv(path.resolve(__dirname, '..', 'static', nameImg));
 
@@ -26,7 +27,7 @@ class FlightsController {
                     image: nameImg,
                     startPosition: startPosition,
                     finishPosition: finishPosition,
-                    startData: startDate,
+                    startDate: startDate,
                     finishDate: finishDate,
                     startTime: startTime,
                     finishTime: finishTime,
@@ -37,11 +38,12 @@ class FlightsController {
                 })
             }
             else {
+                console.log(2);
                 flight = await Flight.create({
                     price: price,
                     startPosition: startPosition,
                     finishPosition: finishPosition,
-                    startData: startDate,
+                    startDate: startDate,
                     finishDate: finishDate,
                     startTime: startTime,
                     finishTime: finishTime,
@@ -128,7 +130,7 @@ class FlightsController {
             } else if (startPosition && finishPosition && startDate) {
                 const regStartPosition=`(^${startPosition})|(\/\/${startPosition}$)`;
                 const regFinishPosition=`(^${finishPosition})|(\/\/${finishPosition}$)`;
-                const flight = await Flight.findAndCountAll({ where: { startPosition: {[Op.regexp]:regStartPosition}, finishPosition: {[Op.regexp]:regFinishPosition}, startData: startDate } }, { limit: Number(limit), offset: Number(offset) })
+                const flight = await Flight.findAndCountAll({ where: { startPosition: {[Op.regexp]:regStartPosition}, finishPosition: {[Op.regexp]:regFinishPosition}, startDate: startDate } }, { limit: Number(limit), offset: Number(offset) })
                 if (flight !== null) {
                     for (let item of flight.rows) {
                         if (item.countFreePlace >= countFreePlace) {
@@ -140,7 +142,7 @@ class FlightsController {
 
             } else if (startDate && !startPosition && !finishPosition) {
                 
-                const flight = await Flight.findAndCountAll({ where: { startData: startDate } }, { limit: Number(limit), offset: Number(offset) })
+                const flight = await Flight.findAndCountAll({ where: { startDate: startDate } }, { limit: Number(limit), offset: Number(offset) })
                 if (flight !== null) {
                     for (let item of flight.rows) {
                         if (item.countFreePlace >= countFreePlace) {
@@ -152,8 +154,8 @@ class FlightsController {
 
             } else if (startDate && startPosition && !finishPosition) {
                 const regStartPosition=`(^${startPosition})|(\/\/${startPosition}$)`;
-               
-                const flight = await Flight.findAndCountAll({ where: { startData: startDate, startPosition: {[Op.regexp]:regStartPosition}, finishPosition: {[Op.regexp]:regFinishPosition}, } }, { limit: Number(limit), offset: Number(offset) })
+                const regFinishPosition=`(^${finishPosition})|(\/\/${finishPosition}$)`;
+                const flight = await Flight.findAndCountAll({ where: { startDate: startDate, startPosition: {[Op.regexp]:regStartPosition}, finishPosition: {[Op.regexp]:regFinishPosition}, } }, { limit: Number(limit), offset: Number(offset) })
                 if (flight !== null) {
                     for (let item of flight.rows) {
                         if (item.countFreePlace >= countFreePlace) {
@@ -212,105 +214,19 @@ class FlightsController {
 
     async updateFlight(req, res, next) {
         try {
-            let { page, limit, id, price, startPosition, finishPosition, startDate, finishDate, startTime, finishTime, timeFlight, countFreePlace } = req.body
-
-            if (startPosition && finishPosition && !startDate && !finishDate && !startTime && !finishTime && !timeFlight && !countFreePlace && !price) {
-
-                await Flight.update({
-                    startPosition: startPosition,
-                    finishPosition: finishPosition
-                }, { where: { id: id } })
-
-            } else if (!startPosition && !finishPosition && startDate && finishDate && !startTime && !finishTime && !timeFlight && !countFreePlace && !price) {
-
-                await Flight.update({
-                    startData: startDate,
-                    finishDate: finishDate
-                }, { where: { id: id } })
-
-            } else if (!startPosition && !finishPosition && !startDate && !finishDate && startTime && finishTime && timeFlight && !countFreePlace && !price) {
-
-                await Flight.update({
-                    startTime: startTime,
-                    finishTime: finishTime,
-                    timeFlight: timeFlight
-                }, { where: { id: id } })
-
-            } else if (!startPosition && !finishPosition && !startDate && !finishDate && !startTime && !finishTime && !timeFlight && countFreePlace && !price) {
-
-                await Flight.update({
-                    countFreePlace: countFreePlace
-                }, { where: { id: id } })
-
-            } else if (!startPosition && !finishPosition && !startDate && !finishDate && !startTime && !finishTime && !timeFlight && !countFreePlace && price) {
-
-                await Flight.update({
-                    price: price
-                }, { where: { id: id } })
-
-            } else if (startPosition && finishPosition && startDate && finishDate && !startTime && !finishTime && !timeFlight && !countFreePlace && !price) {
-
-                await Flight.update({
-                    startPosition: startPosition,
-                    finishPosition: finishPosition,
-                    startData: startDate,
-                    finishDate: finishDate
-                }, { where: { id: id } })
-
-            } else if (startPosition && finishPosition && startDate && finishDate && startTime && finishTime && timeFlight && !countFreePlace && !price) {
-
-                await Flight.update({
-                    startPosition: startPosition,
-                    finishPosition: finishPosition,
-                    startData: startDate,
-                    finishDate: finishDate,
-                    startTime: startTime,
-                    finishTime: finishTime,
-                    timeFlight: timeFlight
-                }, { where: { id: id } })
-
-            } else if (startPosition && finishPosition && startDate && finishDate && startTime && finishTime && timeFlight && countFreePlace && !price) {
-
-                await Flight.update({
-                    startPosition: startPosition,
-                    finishPosition: finishPosition,
-                    startData: startDate,
-                    finishDate: finishDate,
-                    startTime: startTime,
-                    finishTime: finishTime,
-                    timeFlight: timeFlight,
-                    countFreePlace: countFreePlace
-                }, { where: { id: id } })
-
-            } else if (startPosition && finishPosition && startDate && finishDate && startTime && finishTime && timeFlight && countFreePlace && price) {
-
-                await Flight.update({
-                    startPosition: startPosition,
-                    finishPosition: finishPosition,
-                    startData: startDate,
-                    finishDate: finishDate,
-                    startTime: startTime,
-                    finishTime: finishTime,
-                    timeFlight: timeFlight,
-                    countFreePlace: countFreePlace,
-                    price: price
-                }, { where: { id: id } })
-
-            }
-
-            if (limit === undefined) {
-                limit = 3
-            }
-
-            if (page === undefined) {
-                page = 1
-            }
-
-            let offset = page * limit - limit
-
-            const flight = await Flight.findAndCountAll({ limit: Number(limit), offset: Number(offset) })
-
-            return res.json({ status: 200, res: flight })
+            let { id, price, startPosition, finishPosition, startDate, finishDate, startTime, finishTime, timeFlight, countFreePlace } = req.body
+            await Flight.update({
+                startPosition: startPosition,
+                finishPosition: finishPosition,
+                startDate: startDate,
+                finishDate: finishDate,
+                startTime: startTime,
+                finishTime: finishTime,
+                timeFlight: timeFlight,
+                countFreePlace: countFreePlace,
+                price: price
+            }, { where: { id: id } })
+            return res.json({ status: 200})
 
         } catch (err) {
             return next(ErrorApi.badRequest(err));

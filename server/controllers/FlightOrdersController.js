@@ -23,12 +23,18 @@ class FlightOrdersController {
         try {
             const { status, id } = req.body;
             console.log(status, id)
-            const response = await FlightOrder.update({ status: status }, { where: { id } });
+            await FlightOrder.update({ status: status }, { where: { id } });
+            const response = await FlightOrder.findOne({where:{id}});
             if (status) {
+                console.log(5);
                 const flight = await Flight.findOne({ where: { id: response.flightId } });
-                const countFreePlace = flight.countFreePlace - response[0].countTicket;
+                console.log(1);
+                const countFreePlace = flight.countFreePlace - response.countTicket;
+                console.log(3)
                 await Flight.update({ countFreePlace }, { where: { id: flight.id } });
+                console.log(4);
             }
+            console.log(2)
             const res = await FlightOrder.findAll()
             return resp.json({ status: 200, res });
         } catch (err) {
@@ -41,7 +47,7 @@ class FlightOrdersController {
             console.log("ID", id)
             console.log('HELLO')
             await FlightOrder.destroy({ where: { id: id } })
-            const res = FlightOrder.findAll()
+            const res = await FlightOrder.findAll()
             return resp.json({ status: 200, res });
         } catch (err) {
             return next(ErrorApi.badRequest(err));

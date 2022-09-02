@@ -11,7 +11,7 @@ const Flights = ({ isShowFilter }) => {
     const [visibleBuy, setVisiblyBuy] = useState(false)
     const [name, setName] = useState('')
     const [phone, setPhone] = useState('')
-    const [countTicket, setCountTicket] = useState('')
+    const [countTicket, setCountTicket] = useState(1)
     const [flightId, setFlightId] = useState('')
 
     const { startPositionInitial, finishPositionInitial, dateInitial } = useSelector(state => state.flightsSearchWithHomeReducer)
@@ -88,7 +88,6 @@ const Flights = ({ isShowFilter }) => {
         setVisiblyBuy(true)
         setFlightId(id)
     }
-
     return (
         <div className='flights'>
             <FlightsList
@@ -128,6 +127,7 @@ const Flights = ({ isShowFilter }) => {
                 reserveTicket={reserveTicket}
                 countTicket={countTicket}
                 setCountTicket={setCountTicket}
+                maxTicket={flights?.rows.find(x=>x.id==flightId)?.countFreePlace}
             />
         </div>
     )

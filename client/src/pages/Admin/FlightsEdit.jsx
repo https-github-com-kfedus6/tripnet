@@ -5,7 +5,7 @@ import { useAction } from '../../hooks/useAction';
 
 const FlightsEdit = () => {
     const {AddFlight}=useAction();
-    const [image,setImage]=useState();
+    const [image,setImage]=useState(undefined);
     const [startDate,setStartDate]=useState("дд.мм.рррр");
     const [finishDate,setFinishDate]=useState("дд.мм.рррр");
     const [price,setPrice]=useState("");

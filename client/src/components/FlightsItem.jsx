@@ -47,21 +47,21 @@ const FlightsItem = ({ item, sumOld, sumYoung, deleteFlight, limit, page, openMo
         }
 
     }, [sumOld, sumYoung])
-
+    
     const changeFlight = (id) => {
-        let formData = new FormData()
-        formData.append('id', id)
-        formData.append('price', newPrice)
-        formData.append('startPosition', newStartPosition)
-        formData.append('finishPosition', newFinishPosition)
-        formData.append('startDate', newStartDate)
-        formData.append('finishDate', newFinishDate)
-        formData.append('startTime', newStartTime)
-        formData.append('finishTime', newFinishTime)
-        formData.append('timeFlight', newTimeFlight)
-        formData.append('countFreePlace', newCountFreePlace)
-        formData.append('limit', limit)
-        formData.append('page', page)
+        let formData = new FormData();
+        formData.append('id', id);
+        formData.append('price', newPrice==""?item.price:newPrice);
+        formData.append('startPosition', newStartPosition==""?item.startPosition.join("//"):newStartPosition);
+        formData.append('finishPosition', newFinishPosition==""?item.finishPosition.join("//"):newFinishPosition);
+        formData.append('startDate', newStartDate==""?item.startDate:newStartDate);
+        formData.append('finishDate', newFinishDate==""?item.finishDate:newFinishDate);
+        formData.append('startTime', newStartTime==""?item.startTime:newStartTime);
+        formData.append('finishTime', newFinishTime==""?item.finishTime:newFinishTime);
+        formData.append('timeFlight', newTimeFlight==""?item.timeFlight:newTimeFlight);
+        formData.append('countFreePlace', newCountFreePlace==""?item.countFreePlace:newCountFreePlace);
+        formData.append('limit', limit);
+        formData.append('page', page);
         fetchUpdateFlight(formData)
         setCheck(false)
     }
@@ -78,12 +78,12 @@ const FlightsItem = ({ item, sumOld, sumYoung, deleteFlight, limit, page, openMo
                             <span><input type='text' placeholder={item.finishTime} onChange={(e) => setNewFinishTime(e.target.value)}></input></span>
                         </div>
                         <div className='item-date'>
-                            <span><input type='text' placeholder={item.startData} onChange={(e) => setNewStartDate(e.target.value)}></input></span>
+                            <span><input type='text' placeholder={item.startDate} onChange={(e) => setNewStartDate(e.target.value)}></input></span>
                             <span><input type='text' placeholder={item.finishDate} onChange={(e) => setNewFinishDate(e.target.value)}></input></span>
                         </div>
                         <div className='item-position'>
-                            <span><input type='text' placeholder={item.startPosition[language]} onChange={(e) => setNewStartPosition(e.target.value)}></input></span>
-                            <span><input type='text' placeholder={item.finishPosition[language]} onChange={(e) => setNewFinishPosition(e.target.value)}></input></span>
+                            <span><input type='text' placeholder={item.startPosition.join("//")} onChange={(e) => setNewStartPosition(e.target.value)}></input></span>
+                            <span><input type='text' placeholder={item.finishPosition.join("//")} onChange={(e) => setNewFinishPosition(e.target.value)}></input></span>
                         </div>
                         <div className='btn-buy'>
                             <div>
@@ -113,7 +113,7 @@ const FlightsItem = ({ item, sumOld, sumYoung, deleteFlight, limit, page, openMo
                             <span>{item.finishTime}</span>
                         </div>
                         <div className='item-date'>
-                            <span>{item.startData}</span>
+                            <span>{item.startDate}</span>
                             <span>{item.finishDate}</span>
                         </div>
                         <div className='item-position'>
@@ -148,7 +148,7 @@ const FlightsItem = ({ item, sumOld, sumYoung, deleteFlight, limit, page, openMo
                     <span>{item.finishTime}</span>
                 </div>
                 <div className='item-date'>
-                    <span>{item.startData}</span>
+                    <span>{item.startDate}</span>
                     <span>{item.finishDate}</span>
                 </div>
                 <div className='item-position'>

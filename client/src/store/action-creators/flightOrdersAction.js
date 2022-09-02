@@ -21,9 +21,11 @@ export const getFlightOrder = () => async (dispatch) => {
 
 export const putFlightOrder = (status, id) => async (dispatch) => {
     try {
-        const response = await $authHost.put('api/flightOrder/setStatus', { status, id })
-        dispatch({ type: flightOrdersActionTypes.FETCH_PUT_ORDER, payload: response.data.res })
-    } catch (err) {
+        const response = await $authHost.put('api/flightOrder/setStatus', { status, id });
+        if(response.data.status==200){
+            dispatch({ type: flightOrdersActionTypes.FETCH_PUT_ORDER, payload: response.data.res })
+        }else console.log(response)
+        } catch (err) {
         console.log(err.message)
     }
 }

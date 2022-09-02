@@ -8,13 +8,14 @@ const Pagination = ({ flights, pagesArray, moreFlights, changePage, limit, page 
 
     return (
         <div className='pages'>
+            {flights.rows.length!=0&&flights.rows.length!=flights.count?
             <div className={page === pagesArray.length ? 'page-none' : 'page-more'}>
                 <Stack direction="row" spacing={2}>
                     <Button variant="contained" color="success" onClick={moreFlights}>
                         {t('flight.pagination')}
                     </Button>
                 </Stack>
-            </div>
+            </div>:<></>}
             <div className={pagesArray.length === 1 || flights.rows.length === flights.count ? 'page-wrapper-none' : 'page-wrapper'}>
                 {pagesArray.map(p => {
                     return (

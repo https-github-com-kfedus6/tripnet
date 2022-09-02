@@ -17,7 +17,6 @@ const FlightOrders = () => {
     const { flightOrders } = useSelector(state => state.order)
     const { flight } = useSelector(state => state.flights)
     const { getFlightOrder, putFlightOrder, deleteFlightOrder, fetchGetFlight } = useAction()
-
     useEffect(() => {
         getFlightOrder()
     }, [])
@@ -100,6 +99,7 @@ const FlightOrders = () => {
                                                 </div>
                                                 <div className='order-flight-ticket'>
                                                     <span><b>{t('order.ticket')}:</b> {item.countTicket}</span>
+                                                    <span><b>{t('order.ticket_remained')}:</b>{flight.countFreePlace}</span>
                                                     <span><b>{t('order.price')}:</b> {flight.price}.00 UAH</span>
                                                     <span><b>{t('order.allPrice')}:</b> {+flight.price * +item.countTicket}.00 UAH</span>
                                                 </div>

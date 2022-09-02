@@ -1,15 +1,31 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import TextField from '@mui/material/TextField';
+import FilledInput from "@mui/material/FilledInput"
 import IconButton from '@mui/material/IconButton';
 import Stack from '@mui/material/Stack';
 import CloseOutlinedIcon from '@mui/icons-material/CloseOutlined';
 import { useTranslation } from 'react-i18next';
 
 import './modalFormBuy.css';
+import { useSelector } from 'react-redux';
 
-const ModalFormBuy = ({ visibleBuy, name, setName, phone, setPhone, reserveTicket, setVisiblyBuy, countTicket, setCountTicket }) => {
-
+const ModalFormBuy = ({ visibleBuy, name, setName, phone, setPhone, reserveTicket, setVisiblyBuy, countTicket, setCountTicket, maxTicket }) => {
     const { t } = useTranslation()
+    const SetCountTicket=(e)=>{
+        if(isNaN(parseInt(e.target.value))&&e.target.value!="")return;
+        if((parseInt(e.target.value)<=0||parseInt(e.target.value)>maxTicket)&&e.target.value!="")return;
+        setCountTicket(e.target.value)
+    }
+    const {user,telephone}=useSelector(state=>state.user);
+    useEffect(()=>{
+        //if(user?.name)
+    },[user])
+    useEffect(()=>{
+        if(telephone!=0){
+            setPhone(telephone);
+        }
+    },[telephone])
+    console.log(user);
 
     if (visibleBuy === false) {
         return (
@@ -44,9 +60,12 @@ const ModalFormBuy = ({ visibleBuy, name, setName, phone, setPhone, reserveTicke
                                 label={t('modalbuy.phone')}
                                 value={phone} onChange={(e) => setPhone(e.target.value)} />
                             <TextField
+                                type={"number"}
+                                minRows={1}
                                 className='input-modal'
                                 label={t('modalbuy.ticket')}
-                                value={countTicket} onChange={(e) => setCountTicket(e.target.value)} />
+                                value={countTicket} 
+                                onChange={SetCountTicket}/>
                         </div>
                         <div className='block-modal-btn'>
                             <button onClick={reserveTicket}>{t('modalbuy.btn-buy')}</button>

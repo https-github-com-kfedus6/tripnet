@@ -38,7 +38,7 @@ const Flight = sequelize.define("flight", {
     startPosition: { type: DataTypes.STRING },
     finishPosition: { type: DataTypes.STRING },
     countFreePlace: { type: DataTypes.INTEGER },
-    startData: { type: DataTypes.STRING },
+    startDate: { type: DataTypes.STRING },
     finishDate: { type: DataTypes.STRING },
     startTime: { type: DataTypes.STRING },
     finishTime: { type: DataTypes.STRING },

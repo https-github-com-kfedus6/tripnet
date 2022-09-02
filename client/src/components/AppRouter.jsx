@@ -36,7 +36,7 @@ const AppRouter = () => {
                 <Route path='tinyMCE' element={<TinyMCE />} />
                 <Route path='blog' element={<ListBlog />} />
                 <Route path='blog/:id' element={<Blog />} />
-                <Route path='order' element={<FlightOrders />} />
+                {is_admin ? <Route path='order' element={<FlightOrders />} /> : <></>}
                 {is_admin ? <Route path='admin' element={<AdminMain />} /> : <></>}
                 {is_login ? <Route path='account' element={<Account />} /> : <></>}
                 <Route path='*' element={<div>error</div>} />
