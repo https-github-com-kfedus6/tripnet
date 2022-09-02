@@ -5,11 +5,16 @@ import { IoClose } from 'react-icons/io5';
 import { AiFillDelete } from 'react-icons/ai';
 import { BsCheckLg } from 'react-icons/bs';
 import { useTranslation } from 'react-i18next';
+import Pagination from '@mui/material/Pagination';
+import Stack from '@mui/material/Stack';
 
 import '../FlightOrders/flightOrders.css';
 
 const FlightOrders = () => {
     const [isActive, setIsActive] = useState(null)
+    const [limit, setLimit] = useState(2)
+    const [page, setPage] = useState(1)
+    const [totalCount, setTotalCount] = useState()
 
     const { t } = useTranslation()
 
@@ -18,8 +23,12 @@ const FlightOrders = () => {
     const { flight } = useSelector(state => state.flights)
     const { getFlightOrder, putFlightOrder, deleteFlightOrder, fetchGetFlight } = useAction()
     useEffect(() => {
-        getFlightOrder()
-    }, [])
+        getFlightOrder({ page: page, limit: limit })
+    }, [page, limit])
+
+    useEffect(() => {
+        setTotalCount(Math.ceil(+flightOrders.count / +limit))
+    }, [flightOrders])
 
     const toggle = (i, id) => {
         if (isActive == i) {
@@ -43,7 +52,13 @@ const FlightOrders = () => {
         deleteFlightOrder(id)
     }
 
-    if (flightOrders === null || Array.isArray(flightOrders) === false) {
+    const handleChange = (event, value) => {
+        setPage(value)
+    }
+
+    console.log(flightOrders)
+
+    if (Array.isArray(flightOrders)) {
         return <></>
     } else {
         return (
@@ -53,7 +68,7 @@ const FlightOrders = () => {
                         <h2>{t('order.title')}</h2>
                     </div>
                     <div className="accordion-orders">
-                        {flightOrders.map((item, i) => {
+                        {flightOrders.rows.map((item, i) => {
                             let date = item.createdAt.split('-')
                             let dateDay = date[2]
                             dateDay = dateDay.slice(0, 2)
@@ -121,6 +136,9 @@ const FlightOrders = () => {
                         })}
                     </div>
                 </div>
+                <Stack spacing={2}>
+                    <Pagination count={totalCount} page={page} onChange={handleChange} />
+                </Stack>
             </div >
         )
     }

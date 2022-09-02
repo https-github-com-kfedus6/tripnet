@@ -13,7 +13,18 @@ class FlightOrdersController {
     }
     static getOrders = async (req, resp, next) => {
         try {
-            const res = await FlightOrder.findAll();
+            let { page, limit } = req.query
+            if (page === undefined) {
+                page = 1
+            }
+            if (limit === undefined) {
+                limit = 2
+            }
+
+            const offset = page * limit - limit
+
+            const res = await FlightOrder.findAndCountAll({ limit: Number(limit), offset: Number(offset) });
+
             return resp.json({ status: 200, res });
         } catch (err) {
             return next(ErrorApi.badRequest(err));
