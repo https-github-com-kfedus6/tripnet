@@ -14,6 +14,7 @@ class FlightOrdersController {
     static getOrders = async (req, resp, next) => {
         try {
             const res = await FlightOrder.findAll();
+
             return resp.json({ status: 200, res });
         } catch (err) {
             return next(ErrorApi.badRequest(err));

@@ -5,11 +5,16 @@ import { IoClose } from 'react-icons/io5';
 import { AiFillDelete } from 'react-icons/ai';
 import { BsCheckLg } from 'react-icons/bs';
 import { useTranslation } from 'react-i18next';
+import Pagination from '@mui/material/Pagination';
+import Stack from '@mui/material/Stack';
 
 import '../FlightOrders/flightOrders.css';
 
 const FlightOrders = () => {
     const [isActive, setIsActive] = useState(null)
+    const [limit, setLimit] = useState(3)
+    const [page, setPage] = useState(1)
+
 
     const { t } = useTranslation()
 
@@ -44,7 +49,13 @@ const FlightOrders = () => {
         deleteFlightOrder(id)
     }
 
-    if (flightOrders === null || Array.isArray(flightOrders) === false) {
+    const handleChange = (event, value) => {
+        setPage(value)
+    }
+
+    console.log(flightOrders)
+
+    if (!Array.isArray(flightOrders)) {
         return <></>
     } else {
         return (
@@ -121,6 +132,9 @@ const FlightOrders = () => {
                         })}
                     </div>
                 </div>
+                <Stack spacing={2}>
+                    <Pagination count={10} page={page} onChange={handleChange} />
+                </Stack>
             </div >
         )
     }

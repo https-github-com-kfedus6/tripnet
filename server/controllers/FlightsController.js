@@ -100,8 +100,8 @@ class FlightsController {
                 }
 
             } else if (startPosition && !finishPosition && !startDate) {
-                const regStartPosition=`(^${startPosition})|(\/\/${startPosition}$)`;
-                const flight = await Flight.findAndCountAll({ where: { startPosition: {[Op.regexp]:regStartPosition} } }, { limit: Number(limit), offset: Number(offset) })
+                const regStartPosition = `(^${startPosition})|(\/\/${startPosition}$)`;
+                const flight = await Flight.findAndCountAll({ where: { startPosition: { [Op.regexp]: regStartPosition } } }, { limit: Number(limit), offset: Number(offset) })
 
                 if (flight !== null) {
                     for (let item of flight.rows) {
@@ -113,9 +113,9 @@ class FlightsController {
                 }
 
             } else if (startPosition && finishPosition && !startDate) {
-                const regStartPosition=`(^${startPosition})|(\/\/${startPosition}$)`;
-                const regFinishPosition=`(^${finishPosition})|(\/\/${finishPosition}$)`;
-                const flight = await Flight.findAndCountAll({ where: { startPosition: {[Op.regexp]:regStartPosition}, finishPosition: {[Op.regexp]:regFinishPosition}, } }, { limit: Number(limit), offset: Number(offset) })
+                const regStartPosition = `(^${startPosition})|(\/\/${startPosition}$)`;
+                const regFinishPosition = `(^${finishPosition})|(\/\/${finishPosition}$)`;
+                const flight = await Flight.findAndCountAll({ where: { startPosition: { [Op.regexp]: regStartPosition }, finishPosition: { [Op.regexp]: regFinishPosition }, } }, { limit: Number(limit), offset: Number(offset) })
                 if (flight !== null) {
                     for (let item of flight.rows) {
                         if (item.countFreePlace >= countFreePlace) {
@@ -126,9 +126,9 @@ class FlightsController {
                 }
 
             } else if (startPosition && finishPosition && startDate) {
-                const regStartPosition=`(^${startPosition})|(\/\/${startPosition}$)`;
-                const regFinishPosition=`(^${finishPosition})|(\/\/${finishPosition}$)`;
-                const flight = await Flight.findAndCountAll({ where: { startPosition: {[Op.regexp]:regStartPosition}, finishPosition: {[Op.regexp]:regFinishPosition}, startData: startDate } }, { limit: Number(limit), offset: Number(offset) })
+                const regStartPosition = `(^${startPosition})|(\/\/${startPosition}$)`;
+                const regFinishPosition = `(^${finishPosition})|(\/\/${finishPosition}$)`;
+                const flight = await Flight.findAndCountAll({ where: { startPosition: { [Op.regexp]: regStartPosition }, finishPosition: { [Op.regexp]: regFinishPosition }, startData: startDate } }, { limit: Number(limit), offset: Number(offset) })
                 if (flight !== null) {
                     for (let item of flight.rows) {
                         if (item.countFreePlace >= countFreePlace) {
@@ -139,7 +139,7 @@ class FlightsController {
                 }
 
             } else if (startDate && !startPosition && !finishPosition) {
-                
+
                 const flight = await Flight.findAndCountAll({ where: { startData: startDate } }, { limit: Number(limit), offset: Number(offset) })
                 if (flight !== null) {
                     for (let item of flight.rows) {
@@ -151,9 +151,9 @@ class FlightsController {
                 }
 
             } else if (startDate && startPosition && !finishPosition) {
-                const regStartPosition=`(^${startPosition})|(\/\/${startPosition}$)`;
-               
-                const flight = await Flight.findAndCountAll({ where: { startData: startDate, startPosition: {[Op.regexp]:regStartPosition}, finishPosition: {[Op.regexp]:regFinishPosition}, } }, { limit: Number(limit), offset: Number(offset) })
+                const regStartPosition = `(^${startPosition})|(\/\/${startPosition}$)`;
+
+                const flight = await Flight.findAndCountAll({ where: { startData: startDate, startPosition: { [Op.regexp]: regStartPosition }, finishPosition: { [Op.regexp]: regFinishPosition }, } }, { limit: Number(limit), offset: Number(offset) })
                 if (flight !== null) {
                     for (let item of flight.rows) {
                         if (item.countFreePlace >= countFreePlace) {
