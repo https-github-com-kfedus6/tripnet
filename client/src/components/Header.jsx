@@ -23,12 +23,13 @@ const Header = () => {
                     <li><NavLink to="/aboutUs">{t('header.fourth_link')}</NavLink></li>
                     <li><NavLink to='/blog'>{t("header.five_link")}</NavLink></li>
                     <li>{is_login ? <div><NavLink to='/account'><FaUserCircle /></NavLink></div> :
-                        <div onClick={()=>setIsShow(true)}><a to="/"><FaUserCircle /></a></div>}</li>
-                    <li>{is_admin ? 
+                        <div onClick={() => setIsShow(true)}><a to="/"><FaUserCircle /></a></div>}
+                    </li>
+                    <li>{is_admin ?
                         <div className='user__nick'>
-                            <NavLink to="/admin"><FaUserEdit/></NavLink>
+                            <NavLink to="/admin"><FaUserEdit /></NavLink>
                         </div> : <></>}
-                    
+
                     </li>
                     <li><SetLanguage /></li>
 

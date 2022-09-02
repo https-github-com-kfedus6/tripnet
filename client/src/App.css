@@ -57,6 +57,7 @@ main {
 
     .header__components ul li {
         display: inline-block;
+        cursor: pointer;
     }
 
     .header__components ul li a {
@@ -416,7 +417,6 @@ main {
 
 .layout footer {
     margin-top: auto;
-    z-index: 100;
 }
 
 @media screen and (min-width: 1024px) {
@@ -684,7 +684,6 @@ main {
         margin-bottom: 25px;
     }
 }
-
 
 .css-jedpe8-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input.css-jedpe8-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input.css-jedpe8-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input {
     display: flex;

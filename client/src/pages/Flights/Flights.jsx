@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
+import { useAction } from '../../hooks/useAction';
 import FlightsList from '../../components/FlightsList';
 import Pagination from '../../components/UI/pagination/Pagination';
-import { useAction } from '../../hooks/useAction';
 import { getPageCount, getPagesArray } from '../../utils/page';
 import ModalFormBuy from '../../components/UI/modalFormBuy/ModalFormBuy';
 import './flights.css';
@@ -11,8 +11,10 @@ const Flights = ({ isShowFilter }) => {
     const [visibleBuy, setVisiblyBuy] = useState(false)
     const [name, setName] = useState('')
     const [phone, setPhone] = useState('')
+    const [countTicket, setCountTicket] = useState('')
+    const [flightId, setFlightId] = useState('')
 
-    const {startPositionInitial,finishPositionInitial,dateInitial}=useSelector(state=>state.flightsSearchWithHomeReducer)
+    const { startPositionInitial, finishPositionInitial, dateInitial } = useSelector(state => state.flightsSearchWithHomeReducer)
 
     const [startPosition, setStartPosition] = useState(startPositionInitial)
     const [finishPosition, setFinishPosition] = useState(finishPositionInitial)
@@ -24,11 +26,10 @@ const Flights = ({ isShowFilter }) => {
     const [sumYoung, setSumYoung] = useState(0)
     const [sumOld, setSumOld] = useState(1)
 
-    const { fetchGetFlights, fetchDeleteFlight } = useAction()
+    const { fetchGetFlights, fetchDeleteFlight, postFlightOrder } = useAction()
 
     const { flights } = useSelector(state => state.flights)
 
-   
     useEffect(() => {
         fetchGetFlights({
             startPosition: startPosition,
@@ -72,14 +73,20 @@ const Flights = ({ isShowFilter }) => {
 
     const reserveTicket = () => {
         setVisiblyBuy(false)
-        console.log(name, phone)
+        postFlightOrder({
+            flightId: flightId,
+            authorName: name,
+            countTicket: countTicket,
+            phone: phone
+        })
         setName('')
         setPhone('')
+        setCountTicket('')
     }
 
     const openModal = (id) => {
         setVisiblyBuy(true)
-        console.log(id)
+        setFlightId(id)
     }
 
     return (
@@ -119,6 +126,8 @@ const Flights = ({ isShowFilter }) => {
                 phone={phone}
                 setPhone={setPhone}
                 reserveTicket={reserveTicket}
+                countTicket={countTicket}
+                setCountTicket={setCountTicket}
             />
         </div>
     )
