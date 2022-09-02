@@ -38,6 +38,8 @@ class FlightOrdersController {
     static deleteOrder = async (req, resp, next) => {
         try {
             const { id } = req.params
+            console.log("ID", id)
+            console.log('HELLO')
             await FlightOrder.destroy({ where: { id: id } })
             const res = FlightOrder.findAll()
             return resp.json({ status: 200, res });

@@ -30,7 +30,7 @@ export const putFlightOrder = (status, id) => async (dispatch) => {
 
 export const deleteFlightOrder = (id) => async (dispatch) => {
     try {
-        const response = await $authHost.delete(`api/flightOrder/deleteOrder${id}`)
+        const response = await $authHost.delete(`api/flightOrder/${id}`)
         dispatch({ type: flightOrdersActionTypes.FETCH_DELETE_ORDER, payload: response.data.res })
     } catch (err) {
         console.log(err.message)

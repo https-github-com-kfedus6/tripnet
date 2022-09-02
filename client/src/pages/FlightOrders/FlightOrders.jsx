@@ -4,11 +4,14 @@ import { useAction } from '../../hooks/useAction';
 import { IoClose } from 'react-icons/io5';
 import { AiFillDelete } from 'react-icons/ai';
 import { BsCheckLg } from 'react-icons/bs';
+import { useTranslation } from 'react-i18next';
 
 import '../FlightOrders/flightOrders.css';
 
 const FlightOrders = () => {
     const [isActive, setIsActive] = useState(null)
+
+    const { t } = useTranslation()
 
     const { language } = useSelector(state => state.language);
     const { flightOrders } = useSelector(state => state.order)
@@ -37,6 +40,10 @@ const FlightOrders = () => {
         putFlightOrder(status, id)
     }
 
+    const deleteOrder = (id) => {
+        deleteFlightOrder(id)
+    }
+
     if (flightOrders === null || Array.isArray(flightOrders) === false) {
         return <></>
     } else {
@@ -44,28 +51,31 @@ const FlightOrders = () => {
             <div className='order-container'>
                 <div className="container-orders">
                     <div className='accordion-title-order'>
-                        <h2>Orders</h2>
+                        <h2>{t('order.title')}</h2>
                     </div>
                     <div className="accordion-orders">
                         {flightOrders.map((item, i) => {
+                            let date = item.createdAt.split('-')
+                            let dateDay = date[2]
+                            dateDay = dateDay.slice(0, 2)
+                            let time = date[2].slice(3, 8)
+
                             let status = item.status
                             if (status === null) {
-                                status = 'Воброці'
-                            } else if (status === false) {
-                                status = <IoClose />
-                            } else if (status === true) {
-                                status = <BsCheckLg />
+                                status = t('order.status')
                             }
                             return (
                                 <div key={item.id} className="accordion-item-order">
                                     <div className='accordion-header-order'>
                                         <button className='accordion-order-btn' onClick={() => toggle(i, item.flightId)} aria-expanded={isActive === i ? "true" : "false"}>
-                                            <span className="accordion-title-order">12:12:20202</span>
+                                            <span className="accordion-title-order">{dateDay}.{date[1]}.{date[0]} {time}</span>
                                             <span className="accordion-title-order">{item.authorName}</span>
                                             <span className="accordion-title-order">{item.phone}</span>
                                         </button>
-                                        <div className='ss'>
-                                            <span className='icon-order' aria-hidden="true">{status}</span>
+                                        <div>
+                                            <span className='icon-order' aria-hidden="true">
+                                                {item.status === null ? status : item.status === false ? <span className='order-iconc-close'><IoClose /></span> : <span className='order-iconc-check'><BsCheckLg /></span>}
+                                            </span>
                                         </div>
                                     </div>
                                     <div className={isActive === i ? 'accordion-content-order show' : 'accordion-content-order'}>
@@ -89,14 +99,18 @@ const FlightOrders = () => {
                                                     </div>
                                                 </div>
                                                 <div className='order-flight-ticket'>
-                                                    <span><b>Кількість біетів:</b> {item.countTicket}</span>
-                                                    <span><b>Ціна за рейс:</b> {flight.price}.00 UAH</span>
-                                                    <span><b>Загальна сума:</b> {+flight.price * +item.countTicket}.00 UAH</span>
+                                                    <span><b>{t('order.ticket')}:</b> {item.countTicket}</span>
+                                                    <span><b>{t('order.price')}:</b> {flight.price}.00 UAH</span>
+                                                    <span><b>{t('order.allPrice')}:</b> {+flight.price * +item.countTicket}.00 UAH</span>
                                                 </div>
                                                 <div className='order-status-btn'>
-                                                    <button onClick={() => changeStatusOrderTrue(item.id)}>Прийняти</button>
-                                                    <button onClick={() => changeStatusOrderFalse(item.id)}>Відхилити</button>
-                                                    <button><AiFillDelete /></button>
+                                                    <div>
+                                                        <button onClick={() => changeStatusOrderTrue(item.id)}>{t('order.check')}</button>
+                                                        <button onClick={() => changeStatusOrderFalse(item.id)}>{t('order.close')}</button>
+                                                    </div>
+                                                    <div>
+                                                        <button onClick={() => deleteOrder(item.id)}><AiFillDelete /></button>
+                                                    </div>
                                                 </div>
                                             </>
                                         }

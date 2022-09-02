@@ -6,6 +6,6 @@ const rout = require("express")();
 rout.post("/add", IsAdminMiddleWare, flightOrdersController.Add);
 rout.get("/getOrders", IsAdminMiddleWare, flightOrdersController.getOrders);
 rout.put("/setStatus", IsAdminMiddleWare, flightOrdersController.SetStatus);
-rout.delete("/deleteOrder/:id", IsAdminMiddleWare, flightOrdersController.deleteOrder);
+rout.delete("/:id", IsAdminMiddleWare, flightOrdersController.deleteOrder);
 
 module.exports = rout;

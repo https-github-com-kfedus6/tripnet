@@ -6,6 +6,12 @@
     display: flex;
 }
   
+.accordion-header-order {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
 .accordion-orders {
     display: flex;
     flex-direction: column-reverse;
@@ -18,20 +24,12 @@
     margin-top: 10px;
 }
 
-/* .icon-order {
-    display: inline-block;
-    position: absolute;
-    top: 18px;
-    right: 0;
-    width: 22px;
-    height: 22px;
-}
- */
 .accordion-order-btn {
     position: relative;
-    display: block;
+    display: flex;
+    justify-content: space-between;
     text-align: left;
-    width: 100%;
+    width: 75%;
     padding: 1em 0;
     color: #7288a2;
     font-size: 1.15rem;
@@ -39,6 +37,7 @@
     border: none;
     background: none;
     outline: none;
+    cursor:pointer;
 }
 
 .accordion-content-order.show {
@@ -65,7 +64,7 @@
 }
 
 .order-flight-pdt {
-    width: 50%;
+    width: 75%;
 }
 
 .order-flight-pdt div {
@@ -89,10 +88,21 @@
     justify-content: space-between;
 }
 
-.order-status-btn button:nth-child(1),
-.order-status-btn button:nth-child(2) {
+.order-status-btn div:nth-child(1) {
+    display: flex;
+    justify-content: space-between;
+    width: 75%;
+    align-items: center;
+}
+
+.order-status-btn div:nth-child(2) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.order-status-btn div:nth-child(1) button {
     border-radius: 5px;
-    width: 20%;
     background-color: rgb(245, 73, 4);
     border: 1px solid rgb(243, 71, 2);
     font-size: 18px;
@@ -100,27 +110,29 @@
     cursor: pointer;
 }
 
-.order-status-btn button:nth-child(1):hover,
-.order-status-btn button:nth-child(2):hover {
+.order-status-btn div:nth-child(1) button:hover {
     background-color: rgb(216, 61, 0);
 }
 
-.order-status-btn button:nth-child(3) {
+.order-status-btn div:nth-child(2) button {
     background: none;
     border: none;
-    font-size: 25px;
-    color: #7288a2;
+    font-size: 28px;
     cursor: pointer;
 }
 
-.order-status-btn button:nth-child(3):hover {
-    color: rgb(216, 61, 0);
+.order-status-btn div:nth-child(2) button:hover {
+    color: red;
 }
 
-.accordion-header-order {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+.order-iconc-close {
+    font-size: 25px;
+    color: red;
+}
+
+.order-iconc-check {
+    font-size: 20px;
+    color: green;
 }
 
 @media (min-width:1024px) {
@@ -142,4 +154,21 @@
         margin: auto;
         width: 98%;
     }
+}
+
+@media (max-width:576px) {
+    .container-orders {
+        margin: auto;
+        width: 98%;
+    }
+
+    .accordion-order-btn {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .accordion-order-btn span { 
+        margin-bottom: 5px;
+    }
+
 }
