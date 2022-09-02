@@ -14,6 +14,7 @@ import { ListBlog } from '../pages/Blog/ListBlog';
 import Blog from '../pages/Blog/Blog';
 import FAQ from '../pages/FAQ/FAQ';
 import Account from '../pages/Account/Account';
+import FlightOrders from '../pages/FlightOrders/FlightOrders';
 
 const AppRouter = () => {
     const { IsAuthorize } = useAction();
@@ -35,6 +36,7 @@ const AppRouter = () => {
                 <Route path='tinyMCE' element={<TinyMCE />} />
                 <Route path='blog' element={<ListBlog />} />
                 <Route path='blog/:id' element={<Blog />} />
+                <Route path='order' element={<FlightOrders />} />
                 {is_admin ? <Route path='admin' element={<AdminMain />} /> : <></>}
                 {is_login ? <Route path='account' element={<Account />} /> : <></>}
                 <Route path='*' element={<div>error</div>} />

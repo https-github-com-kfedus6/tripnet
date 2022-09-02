@@ -1,0 +1,145 @@
+.order-container {
+    margin: 0;
+    padding: 0;
+    font-family: 'Hind', sans-serif;
+    color: #000;
+    display: flex;
+}
+  
+.accordion-orders {
+    display: flex;
+    flex-direction: column-reverse;
+}
+
+.accordion-item-order {
+    padding: 5px 10px;
+    border: 1px solid silver;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+
+/* .icon-order {
+    display: inline-block;
+    position: absolute;
+    top: 18px;
+    right: 0;
+    width: 22px;
+    height: 22px;
+}
+ */
+.accordion-order-btn {
+    position: relative;
+    display: block;
+    text-align: left;
+    width: 100%;
+    padding: 1em 0;
+    color: #7288a2;
+    font-size: 1.15rem;
+    font-weight: 400;
+    border: none;
+    background: none;
+    outline: none;
+}
+
+.accordion-content-order.show {
+      opacity: 1;
+      max-height: 9999px;
+      transition: all 500ms linear;
+      will-change: opacity, max-height;
+      transition: all 0.7s cubic-bezier(0,1,0,1);
+}
+
+.accordion-content-order {
+      opacity: 0;
+      max-height: 0;
+      overflow: hidden;
+      transition: opacity 500ms linear, max-height 500ms linear;
+      will-change: opacity, max-height;
+      transition: all 0.7s cubic-bezier(0,1,0,1);
+} 
+  
+.accordion-content-order p {
+      font-size: 1rem;
+      font-weight: 300;
+      margin: 2em 0;
+}
+
+.order-flight-pdt {
+    width: 50%;
+}
+
+.order-flight-pdt div {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+
+.order-flight-ticket {
+    display: flex;
+    flex-direction: column;
+}
+
+.order-flight-ticket span {
+    margin-top: 10px;
+}
+
+.order-status-btn {
+    margin-top: 25px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.order-status-btn button:nth-child(1),
+.order-status-btn button:nth-child(2) {
+    border-radius: 5px;
+    width: 20%;
+    background-color: rgb(245, 73, 4);
+    border: 1px solid rgb(243, 71, 2);
+    font-size: 18px;
+    height: 40px;
+    cursor: pointer;
+}
+
+.order-status-btn button:nth-child(1):hover,
+.order-status-btn button:nth-child(2):hover {
+    background-color: rgb(216, 61, 0);
+}
+
+.order-status-btn button:nth-child(3) {
+    background: none;
+    border: none;
+    font-size: 25px;
+    color: #7288a2;
+    cursor: pointer;
+}
+
+.order-status-btn button:nth-child(3):hover {
+    color: rgb(216, 61, 0);
+}
+
+.accordion-header-order {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+@media (min-width:1024px) {
+    .container-orders {
+        margin: auto;
+        width: 60%;
+    }
+}
+
+@media (max-width:1024px) {
+    .container-orders{
+        margin: auto;
+        width: 80%;
+    }
+}
+
+@media (max-width:768px) {
+    .container-orders {
+        margin: auto;
+        width: 98%;
+    }
+}

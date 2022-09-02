@@ -66,7 +66,7 @@ const FlightsItem = ({ item, sumOld, sumYoung, deleteFlight, limit, page, openMo
         setCheck(false)
     }
 
-    if (user.is_admin === '1') {
+    if (user.is_admin) {
         return (
             <div className='item-flight'>
                 {check === true

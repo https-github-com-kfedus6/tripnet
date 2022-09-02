@@ -8,6 +8,7 @@ import * as ActionCreatorsInfoCompany from "./infoCompanyAction";
 import * as ActionCreatorsBlog from "./blogAction";
 import * as ActionCreatorsResponce from './responceAction';
 import * as ActionflightsSearchWithHome from "./flightsSearchWithHomeAction"
+import * as ActionCreatorsFlightOrders from './flightOrdersAction';
 
 export default {
     ...ActionCreatorsUser,
@@ -19,5 +20,6 @@ export default {
     ...ActionCreatorsInfoCompany,
     ...ActionCreatorsBlog,
     ...ActionCreatorsResponce,
-    ...ActionflightsSearchWithHome
+    ...ActionflightsSearchWithHome,
+    ...ActionCreatorsFlightOrders
 };

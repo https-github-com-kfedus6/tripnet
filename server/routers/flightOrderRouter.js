@@ -1,9 +1,11 @@
-const FlightOrderController = require("../controllers/FlightsOrder");
 const IsAdminMiddleWare = require("../middleware/IsAdminMiddleWare");
+const flightOrdersController = require('../controllers/FlightOrdersController')
 
-const rout=require("express")();
+const rout = require("express")();
 
-rout.post("/add",IsAdminMiddleWare,FlightOrderController.Add);
-rout.post("/setStatus",IsAdminMiddleWare,FlightOrderController.SetStatus);
+rout.post("/add", IsAdminMiddleWare, flightOrdersController.Add);
+rout.get("/getOrders", IsAdminMiddleWare, flightOrdersController.getOrders);
+rout.put("/setStatus", IsAdminMiddleWare, flightOrdersController.SetStatus);
+rout.delete("/deleteOrder/:id", IsAdminMiddleWare, flightOrdersController.deleteOrder);
 
-module.exports=rout;
+module.exports = rout;

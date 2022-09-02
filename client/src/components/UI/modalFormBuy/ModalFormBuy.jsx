@@ -7,7 +7,7 @@ import { useTranslation } from 'react-i18next';
 
 import './modalFormBuy.css';
 
-const ModalFormBuy = ({ visibleBuy, name, setName, phone, setPhone, reserveTicket, setVisiblyBuy }) => {
+const ModalFormBuy = ({ visibleBuy, name, setName, phone, setPhone, reserveTicket, setVisiblyBuy, countTicket, setCountTicket }) => {
 
     const { t } = useTranslation()
 
@@ -35,16 +35,18 @@ const ModalFormBuy = ({ visibleBuy, name, setName, phone, setPhone, reserveTicke
                         <div className='block-modal-input'>
                             <TextField
                                 className='input-modal'
-                                margin="bense"
                                 id="demo-helper-text-misaligned-no-helper"
                                 label={t('modalbuy.name')}
                                 value={name} onChange={(e) => setName(e.target.value)} />
                             <TextField
                                 className='input-modal'
-                                margin="normal"
                                 id="demo-helper-text-misaligned-no-helper"
                                 label={t('modalbuy.phone')}
                                 value={phone} onChange={(e) => setPhone(e.target.value)} />
+                            <TextField
+                                className='input-modal'
+                                label={t('modalbuy.ticket')}
+                                value={countTicket} onChange={(e) => setCountTicket(e.target.value)} />
                         </div>
                         <div className='block-modal-btn'>
                             <button onClick={reserveTicket}>{t('modalbuy.btn-buy')}</button>

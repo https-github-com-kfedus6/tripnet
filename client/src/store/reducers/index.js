@@ -8,7 +8,8 @@ import { languageyReducer } from './languageReducer';
 import { infoCompanyReducer } from './infoCompanyReducer';
 import { blogReducer } from './blogReducer';
 import { responceReducer } from "./responceReducer";
-import {flightsSearchWithHomeReducer} from "./flightSearchWithHomeReducer"
+import { flightsSearchWithHomeReducer } from "./flightSearchWithHomeReducer";
+import { flightOrdersReducer } from './flightOrdersReducer';
 
 export const rootReducers = combineReducers({
     user: userReducer,
@@ -20,6 +21,6 @@ export const rootReducers = combineReducers({
     infoCompany: infoCompanyReducer,
     blog: blogReducer,
     responce: responceReducer,
-    flightsSearchWithHomeReducer: flightsSearchWithHomeReducer
-
+    flightsSearchWithHomeReducer: flightsSearchWithHomeReducer,
+    order: flightOrdersReducer
 });
