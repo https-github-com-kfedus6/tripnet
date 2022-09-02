@@ -14,6 +14,17 @@ export const ListBlog = () => {
     },[page]);
   return (
     listBlog==undefined?<>loading...</>:
-    <div>{listBlog.map(x=><div key={x.id}>{x.name[language]}</div>)}</div>
+    <div className='list__blog__main'>
+      {listBlog.map(x=>
+        <div className='mini__blog__main' key={x.id}>
+          <div className='mini__blog__img'>
+            <img src={process.env.REACT_APP_API_URL+x.image}/>
+          </div>
+          <div className='mini__blog__name'>
+            {x.name[language]}
+          </div>
+        </div>)}
+        
+    </div>
   )
 }
