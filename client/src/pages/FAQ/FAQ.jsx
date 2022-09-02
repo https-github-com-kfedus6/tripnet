@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux'
 import { useAction } from '../../hooks/useAction'
 import { AiOutlinePlus, AiOutlineMinus, AiFillDelete } from 'react-icons/ai'
 import './faq.css';
+import { t } from 'i18next';
 
 const FAQ = () => {
     const { FAQList, page, limit } = useSelector(state => state.FAQ);
@@ -40,7 +41,7 @@ const FAQ = () => {
             <div className='faq-container'>
                 <div className="container">
                     <div className='accordion-title'>
-                        <h2>Питання та відповіді</h2>
+                        <h2>{t("FAQ.questions_and_answers")}</h2>
                     </div>
                     <div className="accordion">
                         {FAQList.map((item, i) => {

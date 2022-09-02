@@ -26,3 +26,16 @@ export const AddNovetly=(ua,ru,image)=>async()=>{
         console.log(err);
     }
 }
+
+export const DelNovetly=(id)=>async()=>{
+    try{
+        const resp=await $authHost.delete("api/novetly/"+id);
+        if(resp.data.status=200){
+            console.log("видалено")
+        }else{
+            console.log(resp);
+        }
+    }catch(err){
+        console.log(err);
+    }
+}

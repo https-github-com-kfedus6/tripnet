@@ -65,7 +65,7 @@ const Footer = () => {
                             {t("footer.address")}:{infoCompany.address[language]}
                         </div>
                         <div>
-                            {t("footer.opening_hours")}:{infoCompany.openingHours}
+                            {t("footer.opening_hours")}:{infoCompany.openingHours[language]}
                         </div>
                     </div>
                 </div>
@@ -93,7 +93,7 @@ const Footer = () => {
                             {t("footer.FAQ")}
                         </div>
                         {FAQNovetly == undefined ? <div>loading...</div> :
-                            FAQNovetly.map(x => <div onClick={() => navigate("/FAQ/" + x.id)} key={x.id}>{x.name[language]}</div>)}
+                            FAQNovetly.map(x => <div onClick={() => navigate("/FAQ/")} key={x.id}>{x.name[language]}</div>)}
                     </div>
                 </details>
                 <div className="footer__list">

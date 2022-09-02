@@ -28,6 +28,15 @@ class NovetlyController {
             return next(ErrorApi.badRequest(err));
         }
     }
+    static Del=async(req,resp,next)=>{
+        try{
+            const {id}=req.params;
+            const res=await Novetly.destroy({where:{id}});
+            return resp.json({status:200,res});
+        }catch(err){
+            return next(ErrorApi.badRequest(err));
+        }
+    }
 }
 
 module.exports = NovetlyController;

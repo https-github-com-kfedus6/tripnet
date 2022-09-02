@@ -5,7 +5,6 @@ import Pagination from '../../components/UI/pagination/Pagination';
 import { useAction } from '../../hooks/useAction';
 import { getPageCount, getPagesArray } from '../../utils/page';
 import ModalFormBuy from '../../components/UI/modalFormBuy/ModalFormBuy';
-
 import './flights.css';
 
 const Flights = ({ isShowFilter }) => {

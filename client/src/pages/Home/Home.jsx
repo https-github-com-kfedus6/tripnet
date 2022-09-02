@@ -4,6 +4,7 @@ import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import FlightsFormSort from '../../components/FlightsFormSort';
 import { useAction } from '../../hooks/useAction';
+import HomeFAQ from './HomeFAQ';
 import HomeListBlog from './HomeListBlog';
 import ListNovetly from './ListNovetly';
 import Responce from './Responce';
@@ -47,6 +48,7 @@ const Home = () => {
                 <div className="home__benefits__img">
                     <img src={process.env.REACT_APP_API_URL + "homeBenefits" + language + ".png"} />
                 </div>
+                <HomeFAQ/>
                 <Responce />
                 <HomeListBlog />
             </div>

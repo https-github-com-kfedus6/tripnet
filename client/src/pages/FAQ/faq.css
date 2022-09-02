@@ -7,12 +7,6 @@
   display: flex;
 }
 
-.container {
-  margin: 0 auto;
-  padding: 1rem;
-  width: 60%;
-}
-
 .accordion-item {
     border-bottom: 1px solid #e5e5e5;
 } 
@@ -52,7 +46,7 @@
 }
 
 .accordion-title {
-    padding: 1em 1.5em 1em 0;
+    text-align: center;
 }
 
 .icon {
@@ -92,14 +86,23 @@
 }
 
 
-@media (max-width:992px) {
+@media (min-width:1024px) {
     .container {
+        margin: auto;
+        width: 60%;
+    }
+}
+
+@media (max-width:1024px) {
+    .container{
+        margin: auto;
         width: 80%;
     }
 }
 
-@media (max-width:576px) {
+@media (max-width:768px) {
     .container {
-        width: 95%;
+        margin: auto;
+        width: 98%;
     }
 }

@@ -12,7 +12,8 @@ export const flightActionTypes = {
 const initialState = {
     flights: { count: 0, rows: [] },
     flight: [],
-    status: []
+    status: [],
+    page: 1
 }
 
 export const flightsReducer = (state = initialState, action,) => {

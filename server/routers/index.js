@@ -10,6 +10,7 @@ const infoCompanyRouter = require("./infoCompanyRouter");
 const blogRouter = require("./blogRouter");
 const responceRouter = require("./responceRouter");
 const ScheduleBusStatusRouter = require('./ScheduleBusStatusRouter')
+const flightOrderRouter=require("./flightOrderRouter");
 
 router.use("/flights", flightsRouter)
 router.use("/novetly", novetlyRouter);
@@ -20,5 +21,6 @@ router.use("/infoCompany", infoCompanyRouter);
 router.use("/blog", blogRouter);
 router.use("/responce", responceRouter);
 router.use('/scheduleBusStatus', ScheduleBusStatusRouter);
+router.use("/flightOrder",flightOrderRouter);
 
 module.exports = router;

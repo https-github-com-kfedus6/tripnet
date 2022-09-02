@@ -5,5 +5,6 @@ const rout = require("express")();
 
 rout.get("/", NovetlyController.Get);
 rout.post("/", IsAdminMiddleWare, NovetlyController.Add);
+rout.delete("/:id",IsAdminMiddleWare,NovetlyController.Del);
 
 module.exports = rout;
