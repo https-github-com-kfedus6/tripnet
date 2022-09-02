@@ -10,9 +10,14 @@ export const postFlightOrder = (data) => async (dispatch) => {
     }
 }
 
-export const getFlightOrder = () => async (dispatch) => {
+export const getFlightOrder = (data) => async (dispatch) => {
     try {
-        const response = await $authHost.get('api/flightOrder/getOrders')
+        console.log(data)
+        const response = await $authHost.get('api/flightOrder/getOrders', {
+            params: {
+                ...data
+            }
+        })
         dispatch({ type: flightOrdersActionTypes.FETCH_GET_ORDER, payload: response.data.res })
     } catch (err) {
         console.log(err.message)
