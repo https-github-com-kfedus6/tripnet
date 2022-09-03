@@ -7,8 +7,9 @@ import * as ActionCreatorsLanguage from "./languageAction";
 import * as ActionCreatorsInfoCompany from "./infoCompanyAction";
 import * as ActionCreatorsBlog from "./blogAction";
 import * as ActionCreatorsResponce from './responceAction';
-import * as ActionflightsSearchWithHome from "./flightsSearchWithHomeAction"
+import * as ActionCreatorsflightsSearchWithHome from "./flightsSearchWithHomeAction"
 import * as ActionCreatorsFlightOrders from './flightOrdersAction';
+import * as ActionCreatorsMessage from "./messageAction";
 
 export default {
     ...ActionCreatorsUser,
@@ -20,6 +21,7 @@ export default {
     ...ActionCreatorsInfoCompany,
     ...ActionCreatorsBlog,
     ...ActionCreatorsResponce,
-    ...ActionflightsSearchWithHome,
-    ...ActionCreatorsFlightOrders
+    ...ActionCreatorsflightsSearchWithHome,
+    ...ActionCreatorsFlightOrders,
+    ...ActionCreatorsMessage
 };

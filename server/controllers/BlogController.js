@@ -6,11 +6,11 @@ const path = require("path");
 class BlogController {
     static GetAll = async (req, resp, next) => {
         try {
-            let { page, limit } = req.query;
+            let {page,limit}=req.query;
             page = page || 1;
             limit = limit || 10;
-            const offset = page * limit - limit;
-            let res = await Blog.findAndCountAll({ attributes: ['id', 'name', 'image'], limit: parseInt(limit), offset: parseInt(offset) });
+            const offset = page * limit - limit;;
+            let res = await Blog.findAndCountAll({ attributes: ['id', 'name', 'image'], limit: parseInt(limit), offset: parseInt(offset), order: [['id', 'DESC']] });
             for (let i = 0; i < res.rows.length; i++) {
                 res.rows[i].name = await res.rows[i].name.split("//");
             }

@@ -1,5 +1,6 @@
 import { $host } from "../../http";
 import { aboutUsTypes } from "../reducers/aboutUsReducer";
+import { messageActionTypes } from "../reducers/messageReducer";
 
 export const GetAboutUs=()=>async(dispatch)=>{
     try{
@@ -18,9 +19,14 @@ export const SetAboutUs=(ua,ru)=>async(dispatch)=>{
     try{
         const resp=await $host.put("api/aboutUs/update",{ua,ru});
         if(resp.data.status==200){
-            alert("успішно виконано");
+            dispatch({type:messageActionTypes.SET_SHOW_TRUE,payload:"успішно виконано"});
+            setTimeout(()=>dispatch({type:messageActionTypes.SET_SHOW_FALSE}),3000);
             GetAboutUs()(dispatch);
-        }else alert("error");
+        }else {
+            
+            dispatch({type:messageActionTypes.SET_SHOW_TRUE,payload:"error"});
+            setTimeout(()=>dispatch({type:messageActionTypes.SET_SHOW_FALSE}),3000);
+        }
 
     }catch(err){
         console.log(err);

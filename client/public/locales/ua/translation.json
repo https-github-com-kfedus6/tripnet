@@ -24,7 +24,13 @@
         "free_place": "квитків лишилось",
         "update": "Оновити",
         "no_update": "Не оновлювати",
-        "pagination": "Подивитися ще"
+        "pagination": "Подивитися ще",
+        "Multimedia":"Мультимедіа",
+        "air_conditioning":"Кондиціонер",
+        "info_for_flight":"Інформація про рейс",
+        "schedule_valid_with":"Розклад дійсний з ",
+        "bus_schedule":"Розклад автобусів ",
+        "time":"час"
     },
     "authorize": {
         "authorize": "Aвторизація",

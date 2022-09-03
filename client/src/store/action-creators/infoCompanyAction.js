@@ -1,5 +1,6 @@
 import { $authHost, $host } from "../../http"
 import { infoCompanyActionTypes } from "../reducers/infoCompanyReducer";
+import { messageActionTypes } from "../reducers/messageReducer";
 
 export const GetInfoCompany=()=>async(dispatch)=>{
     try{
@@ -17,8 +18,12 @@ export const SetInfoCompany=(name,email,phone,addressUA,addressRU,openingHoursUA
         const resp=await $authHost.put("api/infoCompany/update",{name,email,phone,addressUA,addressRU
         ,openingHoursUA,openingHoursRU});
         if(resp.data.status==200){
-            console.log("успішно виконано");
-        }else console.log("error")
+            dispatch({type:messageActionTypes.SET_SHOW_TRUE,payload:"успішно виконано"});
+            setTimeout(()=>dispatch({type:messageActionTypes.SET_SHOW_FALSE}),3000);
+        }else {
+            dispatch({type:messageActionTypes.SET_SHOW_TRUE,payload:"error"});
+            setTimeout(()=>dispatch({type:messageActionTypes.SET_SHOW_FALSE}),3000);
+        }
     }catch(err){
         console.log(err);
     }

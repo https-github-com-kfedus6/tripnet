@@ -116,7 +116,7 @@ const Flights = ({ isShowFilter }) => {
             />
             {totalCount==undefined?<></>:
                 <div className='pagination'>
-                    <Stack spacing={2}>
+                    <Stack spacing={6}>
                         <Pagination count={totalCount} page={page} onChange={handleChange} />
                     </Stack>
                 </div>}

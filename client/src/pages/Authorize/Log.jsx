@@ -10,20 +10,23 @@ const Log = ({ close }) => {
     const [password, setPassword] = useState("");
     const [isLog, setIsLog] = useState(false);
     const { reply, is_login } = useSelector(state => state.user);
-    const { Authorize } = useAction()
+    const { Authorize, SetShowMessgeFalse, SetShowMessgeTrue } = useAction()
     const log = () => {
         const regEmail = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
         const regPass = /drop|\(|delete|;/;
         if (!regEmail.test(email)) {
-            alert(t("authorize.mail_must_be_genuine"));
+            SetShowMessgeTrue(t("authorize.mail_must_be_genuine"));
+            setTimeout(()=>SetShowMessgeFalse(),3000);
             return;
         }
         if (regPass.test(password)) {
-            alert(t("authorize.invalid_pass"));
+            SetShowMessgeTrue(t("authorize.invalid_pass"));
+            setTimeout(()=>SetShowMessgeFalse(),3000);
             return;
         }
         if (password.length < 8) {
-            alert(t("authorize.invalid_pass"));
+            SetShowMessgeTrue(t("authorize.invalid_pass"));
+            setTimeout(()=>SetShowMessgeFalse(),3000);
             return;
         }
         setIsLog(true);
@@ -37,10 +40,19 @@ const Log = ({ close }) => {
         switch (reply) {
             case 200: close(false);
                 break;
-            case 415: alert(t("authorize.invalid_email"));
+            case 415:{ 
+                SetShowMessgeTrue(t("authorize.invalid_email"));
+                setTimeout(()=>SetShowMessgeFalse(),3000);
+            }
                 break;
-            case 416: alert(t("authorize.invalid_pass"));
-            default: alert("error");
+            default: {
+                SetShowMessgeTrue("error");
+                setTimeout(()=>SetShowMessgeFalse(),3000);
+            }
+            case 416: {
+                SetShowMessgeTrue(t("authorize.invalid_pass"));
+                setTimeout(()=>SetShowMessgeFalse(),3000);
+            }
         }
     }, [reply]);
     return (

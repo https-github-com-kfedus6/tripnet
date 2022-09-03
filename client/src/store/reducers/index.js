@@ -10,6 +10,7 @@ import { blogReducer } from './blogReducer';
 import { responceReducer } from "./responceReducer";
 import { flightsSearchWithHomeReducer } from "./flightSearchWithHomeReducer";
 import { flightOrdersReducer } from './flightOrdersReducer';
+import { messageReducer } from './messageReducer';
 
 export const rootReducers = combineReducers({
     user: userReducer,
@@ -22,5 +23,6 @@ export const rootReducers = combineReducers({
     blog: blogReducer,
     responce: responceReducer,
     flightsSearchWithHomeReducer: flightsSearchWithHomeReducer,
-    order: flightOrdersReducer
+    order: flightOrdersReducer,
+    message: messageReducer
 });

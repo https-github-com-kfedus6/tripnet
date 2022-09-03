@@ -1,3 +1,4 @@
+import { t } from 'i18next'
 import React from 'react'
 import { ImArrowRight2 } from 'react-icons/im'
 import { useSelector } from 'react-redux'
@@ -43,11 +44,11 @@ const FlightList = ({ flight, is_admin, setScheduleTo, setScheduleWith, status, 
                                 </div>
                                 <div className={img.isMultimedia ? '' : 'image-status'}>
                                     <img src={process.env.REACT_APP_API_URL + "IsMultimedia.png"}/>
-                                    <span>Мультімедія</span>
+                                    <span>{t("flight.multimedia")}</span>
                                 </div>
                                 <div className={img.isAirConditioning ? '' : 'image-status'}>
                                     <img src={process.env.REACT_APP_API_URL + "IsAirConditioning.png"}/>
-                                    <span>Кондиціонер</span>
+                                    <span>{t("flight.air_conditioning")}</span>
                                 </div>
                             </div>
                         )
@@ -68,7 +69,7 @@ const FlightList = ({ flight, is_admin, setScheduleTo, setScheduleWith, status, 
                 <iframe src={flight.map} loading="lazy"></iframe>
             </div>
             <div className='flight-description'>
-                <h2>Інформація про рейс {flight.startPosition[language]} - {flight.finishPosition[language]}:</h2>
+                <h2>{t("flight.info_for_flight")} {flight.startPosition[language]} - {flight.finishPosition[language]}:</h2>
                 <p dangerouslySetInnerHTML={createMarkup(flight.description[language])}></p>
             </div>
         </div >

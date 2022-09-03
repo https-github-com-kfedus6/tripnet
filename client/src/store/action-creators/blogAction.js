@@ -1,9 +1,11 @@
 import { $authHost, $host } from "../../http";
 import { blogActionTypes } from "../reducers/blogReducer";
+import { messageActionTypes } from "../reducers/messageReducer";
+
 
 export const GetBlogNovetly=(count)=>async(dispatch)=>{
     try{
-        const resp=await $host.get("api/blog/getNovetly",{count});
+        const resp=await $host.get("api/blog/getNovetly",{params:{count}});
         if(resp.data.status==200){
             dispatch({type:blogActionTypes.FETCH_GET_BLOG_NOVETLY,payload:resp.data.res});
         }
@@ -14,7 +16,7 @@ export const GetBlogNovetly=(count)=>async(dispatch)=>{
 
 export const GetBlogAll=(page,limit)=>async(dispatch)=>{
     try{
-        const resp=await $host.get("api/blog/getAll",{page,limit});
+        const resp=await $host.get("api/blog/getAll",{params:{page,limit}});
         if(resp.data.status==200){
             dispatch({type:blogActionTypes.FETCH_GET_ALL_BLOG,payload:{page,limit,listBlog:resp.data.res,count:resp.data.count}})
         }
@@ -43,14 +45,17 @@ export const AddBlog=(descriptionUa,descriptionRu,image,name)=>async(dispatch)=>
         await formData.append("name",name);
         const resp=await $authHost.post("api/blog/add",formData);
         if(resp.data.status==200){
-            alert("успішно додано");
+            dispatch({type:messageActionTypes.SET_SHOW_TRUE,payload:"успішно додано"});
+            setTimeout(()=>dispatch({type:messageActionTypes.SET_SHOW_FALSE}),3000);
         }else {
-            alert("error");
+            dispatch({type:messageActionTypes.SET_SHOW_TRUE,payload:"error"});
+            setTimeout(()=>dispatch({type:messageActionTypes.SET_SHOW_FALSE}),3000);
             console.log(resp);
         }
     }catch(err){
-    alert("error");
-    console.log(err);
+        dispatch({type:messageActionTypes.SET_SHOW_TRUE,payload:"error"});
+        setTimeout(()=>dispatch({type:messageActionTypes.SET_SHOW_FALSE}),3000);
+        console.log(err);
     }
 }
 
@@ -58,13 +63,16 @@ export const DelBlog=(id)=>async(dispatch)=>{
     try{
         const resp=await $authHost.delete("api/blog/del",{data:{id}});
         if(resp.data.status==200){
-            alert("успішно видалено");
+            dispatch({type:messageActionTypes.SET_SHOW_TRUE,payload:"успішно видалено"});
+            setTimeout(()=>dispatch({type:messageActionTypes.SET_SHOW_FALSE}),3000);
         }else {
-            alert("error")
+            dispatch({type:messageActionTypes.SET_SHOW_TRUE,payload:"error"});
+            setTimeout(()=>dispatch({type:messageActionTypes.SET_SHOW_FALSE}),3000);
             console.log(resp);
         }
     }catch(err){
-        alert("error");
+        dispatch({type:messageActionTypes.SET_SHOW_TRUE,payload:"error"});
+        setTimeout(()=>dispatch({type:messageActionTypes.SET_SHOW_FALSE}),3000);
         console.log(err);
     }
 }

@@ -26,7 +26,13 @@
         "free_place": "билетов осталось",
         "update": "Обновить",
         "no_update": "Не обновлять",
-        "pagination": "Посмотреть еще"
+        "pagination": "Посмотреть еще",
+        "multimedia":"Мультимедиа",
+        "air_conditioning":"Кондиционер",
+        "info_for_flight":"Информация о рейсе",
+        "schedule_valid_with":"Расписание действительно с ",
+        "bus_schedule":"Розклад автобусов ",
+        "time":"время"
     },
     "authorize": {
         "name": "Имя",

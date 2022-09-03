@@ -134,7 +134,7 @@ const FlightOrders = () => {
                     </div>
                     {totalCount==undefined||isNaN(totalCount)?<></>:
                         <div className='pagination'>
-                            <Stack spacing={2}>
+                            <Stack spacing={10}>
                                 <Pagination count={totalCount} page={page} onChange={handleChange} />
                             </Stack>
                         </div>}
