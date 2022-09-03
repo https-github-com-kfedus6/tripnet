@@ -865,15 +865,53 @@ main {
 .header__components ul li:hover{
     transform: scale(1.3);
 }
-.logo{
-    transition: transform .2s;
-}
-.logo:hover{
-    transform: scale(1.3);
+@media screen and (min-width:768px) {
+    .logo{
+        transition: transform .2s;
+    }
+    .logo:hover{
+        transform: scale(1.3);
+    }
 }
 .mini__blog__main{
     transition: transform .2s;
 }
 .mini__blog__main:hover{
     transform: scale(1.2);
+}
+.pagination{
+    display: flex;
+    justify-content: center;
+    margin-top: 15px;
+    margin-bottom: 10px;
+}
+@media screen and (max-width: 1024px) {
+    .list__blog__main{
+        width: 80%;
+        margin: auto;
+    }
+    .mini__blog__name{
+        font-size:30px;
+        text-align: center;
+        width: 100%;
+        margin-top: 15px;
+    }
+    .mini__blog__main{
+        margin-top: 40px;
+    }
+}
+@media screen and (max-width: 1024px) {
+    .list__blog__main{
+        width: 98%;
+        margin: auto;
+    }
+    .mini__blog__name{
+        font-size:larger;
+        text-align: center;
+        width: 100%;
+        margin-top: 10px;
+    }
+    .mini__blog__main{
+        margin-top: 30px;
+    }
 }

@@ -21,7 +21,7 @@ const FlightList = ({ flight, is_admin, setScheduleTo, setScheduleWith, status, 
                 </div>
             </div>
             <div className='block-comfort'>
-                {flight.image==""?<></>:
+                {flight.image==null?<></>:
                 <div className='flight-image'>
                     <img src={process.env.REACT_APP_API_URL + flight.image} alt={flight.finishPosition} />
                 </div>}
@@ -30,23 +30,23 @@ const FlightList = ({ flight, is_admin, setScheduleTo, setScheduleWith, status, 
                         return (
                             <div key={img.id} className='item-comfort'>
                                 <div className={img.isWifi ? '' : 'image-status'}>
-                                    <img src={process.env.REACT_APP_API_URL + "isWiFi.png"} alt={img.isWifi} />
+                                    <img src={process.env.REACT_APP_API_URL + "isWiFi.png"} />
                                     <span>Wi-Fi</span>
                                 </div>
                                 <div className={img.isWC ? '' : 'image-status'}>
-                                    <img src={process.env.REACT_APP_API_URL + "isWC.png"} alt={img.isWC} />
+                                    <img src={process.env.REACT_APP_API_URL + "isWC.png"}/>
                                     <span>wc</span>
                                 </div>
                                 <div className={img.is220V ? '' : 'image-status'}>
-                                    <img src={process.env.REACT_APP_API_URL + "is220v.png"} alt={img.is220V} />
+                                    <img src={process.env.REACT_APP_API_URL + "is220v.png"} />
                                     <span>220v</span>
                                 </div>
                                 <div className={img.isMultimedia ? '' : 'image-status'}>
-                                    <img src={process.env.REACT_APP_API_URL + "IsMultimedia.png"} alt={img.isMultimedia} />
+                                    <img src={process.env.REACT_APP_API_URL + "IsMultimedia.png"}/>
                                     <span>Мультімедія</span>
                                 </div>
                                 <div className={img.isAirConditioning ? '' : 'image-status'}>
-                                    <img src={process.env.REACT_APP_API_URL + "IsAirConditioning.png"} alt={img.isAirConditioning} />
+                                    <img src={process.env.REACT_APP_API_URL + "IsAirConditioning.png"}/>
                                     <span>Кондиціонер</span>
                                 </div>
                             </div>

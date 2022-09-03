@@ -41,7 +41,7 @@ const FlightScheduleBusList = ({ flight, is_admin, setScheduleTo, setScheduleWit
                 {flight.schefule.map(day => {
                     return (
                         <div key={day.id}>
-                            <table table className='table-date' >
+                            <table className='table-date' >
                                 <thead>
                                     <tr>
                                         <th>Час</th>
@@ -55,24 +55,26 @@ const FlightScheduleBusList = ({ flight, is_admin, setScheduleTo, setScheduleWit
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <td>
-                                        <small>{flight.timeFlight.split("//")[language]}</small>
-                                        <br />
-                                        <strong>{flight.startTime}</strong>
-                                        <BsArrowRight />
-                                        <strong>{flight.finishTime}</strong>
-                                    </td>
-                                    {status.map(s => {
-                                        if (is_admin) {
-                                            return (
-                                                <td key={s.id} className='status-btn'><button onClick={() => changeStatus(day.id, s.id, s.status)}>{s.status ? <FaBus /> : <GrClose />}</button></td>
-                                            )
-                                        } else {
-                                            return (
-                                                <td key={s.id} className={s.status ? '' : 'status-active'}>{s.status ? <FaBus /> : <GrClose />} </td>
-                                            )
-                                        }
-                                    })}
+                                    <tr>
+                                        <td>    
+                                            <small>{flight.timeFlight.split("//")[language]}</small>
+                                            <br />
+                                            <strong>{flight.startTime}</strong>
+                                            <BsArrowRight />
+                                            <strong>{flight.finishTime}</strong>
+                                        </td>
+                                        {status.map(s => {
+                                            if (is_admin) {
+                                                return (
+                                                    <td key={s.id} className='status-btn'><button onClick={() => changeStatus(day.id, s.id, s.status)}>{s.status ? <FaBus /> : <GrClose />}</button></td>
+                                                )
+                                            } else {
+                                                return (
+                                                    <td key={s.id} className={s.status ? '' : 'status-active'}>{s.status ? <FaBus /> : <GrClose />} </td>
+                                                )
+                                            }
+                                        })}
+                                    </tr>
                                 </tbody>
                             </table>
                         </div>

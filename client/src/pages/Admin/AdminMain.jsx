@@ -6,6 +6,7 @@ import FlightsEdit from './FlightsEdit'
 import InfoCompanyEdit from './InfoCompanyEdit'
 import NovetlyEdit from './NovetlyEdit'
 import OrderNavigate from './OrderNavigate'
+import ResponceEdit from './ResponceEdit'
 
 const AdminMain = () => {
     return (
@@ -16,6 +17,7 @@ const AdminMain = () => {
             <FAQEdit />
             <NovetlyEdit />
             <FlightsEdit />
+            <ResponceEdit/>
             <OrderNavigate />
         </div>
     )

@@ -1,10 +1,12 @@
 const UserController = require("../controllers/UserController");
+const AuthMiddleWare=require("../middleware/AuthMiddleWare");
 
 const rout=require("express")();
 
 rout.post("/add",UserController.Add);
 rout.post("/authorize",UserController.Authorize);
 rout.post("/isAuthorize",UserController.IsAuthorize);
-rout.post("/changePassword",UserController.ChangePassword);
+rout.post("/changePassword",AuthMiddleWare,UserController.ChangePassword);
+rout.get("/getPhone",AuthMiddleWare,UserController.GetPhone);
 
 module.exports=rout;

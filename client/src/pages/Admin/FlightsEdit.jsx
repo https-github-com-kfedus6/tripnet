@@ -75,7 +75,7 @@ const FlightsEdit = () => {
               apiKey="t6okxmezjfhajn8bk23u3dkejv0oc9c1qhs7gmmh9qskcfdp"
               onEditorChange={(newText)=>setDescriptionRu(newText)}
             />
-            <p>карта</p>
+            <p>силка на карту</p>
             <input value={map} onChange={e=>setMap(e.target.value)}/>
             <button onClick={()=>AddFlight(image,price,startPositionUA,startPositionRU,finishPositionUA
               ,finishPositionRU,startDate,finishDate,startTime,finishTime,timeFlightUA,timeFlightRU,

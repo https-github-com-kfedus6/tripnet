@@ -11,6 +11,14 @@ class ResponceController {
             return next(ErrorApi.badRequest(err));
         }
     }
+    static Add=async(req,resp,next)=>{
+        try{
+            const {authorName,description}=req.body;
+            const res=await Responce.create({nameAuthor:authorName,description})
+        }catch(err){
+            return next(ErrorApi.badRequest(err));
+        }
+    }
 }
 
 module.exports = ResponceController;

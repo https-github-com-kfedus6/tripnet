@@ -54,3 +54,14 @@ export const ChangePassword=(oldPassword,newPassword,id)=>async(dispatch)=>{
         console.log(err);
     }
 }
+
+export const GetPhone=()=>async(dispatch)=>{
+    try{
+        const resp=await $authHost.get("api/user/getPhone");
+        if(resp.data?.status==200){
+            dispatch({type:userActionTypes.GET_PHONE,payload:resp.data.res});
+        }else console.log(resp);
+    }catch(err){
+        console.log(err);
+    }
+}

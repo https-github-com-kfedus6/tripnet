@@ -8,6 +8,7 @@ import { useTranslation } from 'react-i18next';
 
 import './modalFormBuy.css';
 import { useSelector } from 'react-redux';
+import { useAction } from '../../../hooks/useAction';
 
 const ModalFormBuy = ({ visibleBuy, name, setName, phone, setPhone, reserveTicket, setVisiblyBuy, countTicket, setCountTicket, maxTicket }) => {
     const { t } = useTranslation()
@@ -16,16 +17,21 @@ const ModalFormBuy = ({ visibleBuy, name, setName, phone, setPhone, reserveTicke
         if((parseInt(e.target.value)<=0||parseInt(e.target.value)>maxTicket)&&e.target.value!="")return;
         setCountTicket(e.target.value)
     }
+    const {GetPhone}=useAction();
+    useEffect(()=>{
+        GetPhone();
+    },[])
     const {user,telephone}=useSelector(state=>state.user);
     useEffect(()=>{
-        //if(user?.name)
+        if(user?.name){
+            setName(user.name);
+        }
     },[user])
     useEffect(()=>{
         if(telephone!=0){
             setPhone(telephone);
         }
     },[telephone])
-    console.log(user);
 
     if (visibleBuy === false) {
         return (

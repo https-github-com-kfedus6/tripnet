@@ -18,7 +18,7 @@ class ErrorApi extends Error {
 
     static noAuth(message) {
         console.log(message)
-        return new ErrorApi(200, { status: 401,mes:"you are not an admin" });
+        return new ErrorApi(200, { status: 401,mes:"you are not authorize or you are not admin" });
     }
 
     static forbidden(message) {

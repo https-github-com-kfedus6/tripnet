@@ -7,17 +7,16 @@ import { BsCheckLg } from 'react-icons/bs';
 import { useTranslation } from 'react-i18next';
 import Pagination from '@mui/material/Pagination';
 import Stack from '@mui/material/Stack';
-
 import '../FlightOrders/flightOrders.css';
+import { getPageCount } from '../../utils/page';
 
 const FlightOrders = () => {
     const [isActive, setIsActive] = useState(null)
     const [limit, setLimit] = useState(2)
     const [page, setPage] = useState(1)
-    const [totalCount, setTotalCount] = useState()
+    const [totalCount, setTotalCount] = useState(undefined)
 
     const { t } = useTranslation()
-
     const { language } = useSelector(state => state.language);
     const { flightOrders } = useSelector(state => state.order)
     const { flight } = useSelector(state => state.flights)
@@ -27,7 +26,7 @@ const FlightOrders = () => {
     }, [page, limit])
 
     useEffect(() => {
-        setTotalCount(Math.ceil(+flightOrders.count / +limit))
+        setTotalCount(getPageCount(flightOrders.count,limit))
     }, [flightOrders])
 
     const toggle = (i, id) => {
@@ -55,8 +54,6 @@ const FlightOrders = () => {
     const handleChange = (event, value) => {
         setPage(value)
     }
-
-    console.log(flightOrders)
 
     if (Array.isArray(flightOrders)) {
         return <></>
@@ -135,10 +132,14 @@ const FlightOrders = () => {
                             )
                         })}
                     </div>
+                    {totalCount==undefined||isNaN(totalCount)?<></>:
+                        <div className='pagination'>
+                            <Stack spacing={2}>
+                                <Pagination count={totalCount} page={page} onChange={handleChange} />
+                            </Stack>
+                        </div>}
                 </div>
-                <Stack spacing={2}>
-                    <Pagination count={totalCount} page={page} onChange={handleChange} />
-                </Stack>
+                
             </div >
         )
     }

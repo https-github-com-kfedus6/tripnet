@@ -14,17 +14,16 @@ const Home = () => {
     const [startPosition, setStartPosition] = useState('');
     const [finishPosition, setFinishPosition] = useState('');
     const [startDate, setStartDate] = useState('');
-    const [limit, setLimit] = useState(3);
-    const [page, setPage] = useState(1);
+    const [sumYoung, setSumYoung] = useState(0);
+    const [sumOld, setSumOld] = useState(1);
+
     const {SetFlightParams}=useAction();
 
     const navigate = useNavigate();
     const search=()=>{
-        SetFlightParams(startPosition,finishPosition,startDate);
+        SetFlightParams(startPosition,finishPosition,startDate,sumOld,sumYoung);
         navigate("/flightsCategory");
     }
-    const [sumYoung, setSumYoung] = useState(0)
-    const [sumOld, setSumOld] = useState(1)
     return (
         <div className="home__main">
             <FlightsFormSort
@@ -37,8 +36,6 @@ const Home = () => {
                 sumYoung={sumYoung}
                 setSumYoung={setSumYoung}
                 deleteFlight={() => { }}
-                limit={limit}
-                page={page}
                 startDate={startDate}
                 startPosition={startPosition}
                 finishPosition={finishPosition} />

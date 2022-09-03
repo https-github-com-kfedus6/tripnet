@@ -17,7 +17,6 @@ const InfoCompanyEdit = () => {
     const [openingHoursRU,setOpeningHoursRU]=useState("");
     useEffect(()=>{
         if(infoCompany!=undefined){
-            console.log(infoCompany);
             setName(infoCompany.name);
             setEmail(infoCompany.email);
             setAddressUA(infoCompany.address[0]);

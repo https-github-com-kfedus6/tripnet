@@ -2,10 +2,11 @@ import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useAction } from '../../hooks/useAction';
 import FlightsList from '../../components/FlightsList';
-import Pagination from '../../components/UI/pagination/Pagination';
 import { getPageCount, getPagesArray } from '../../utils/page';
 import ModalFormBuy from '../../components/UI/modalFormBuy/ModalFormBuy';
 import './flights.css';
+import Stack from '@mui/material/Stack';
+import Pagination from '@mui/material/Pagination';
 
 const Flights = ({ isShowFilter }) => {
     const [visibleBuy, setVisiblyBuy] = useState(false)
@@ -14,17 +15,17 @@ const Flights = ({ isShowFilter }) => {
     const [countTicket, setCountTicket] = useState(1)
     const [flightId, setFlightId] = useState('')
 
-    const { startPositionInitial, finishPositionInitial, dateInitial } = useSelector(state => state.flightsSearchWithHomeReducer)
+    const { startPositionInitial, finishPositionInitial, dateInitial, sumOldInitial, sumYoungInitial } = useSelector(state => state.flightsSearchWithHomeReducer)
 
     const [startPosition, setStartPosition] = useState(startPositionInitial)
     const [finishPosition, setFinishPosition] = useState(finishPositionInitial)
     const [startDate, setStartDate] = useState(dateInitial)
-    const [totalCount, setTotalCount] = useState()
+    const [totalCount, setTotalCount] = useState(undefined)
     const [limit, setLimit] = useState(5)
     const [page, setPage] = useState(1)
 
-    const [sumYoung, setSumYoung] = useState(0)
-    const [sumOld, setSumOld] = useState(1)
+    const [sumYoung, setSumYoung] = useState(sumYoungInitial)
+    const [sumOld, setSumOld] = useState(sumOldInitial)
 
     const { fetchGetFlights, fetchDeleteFlight, postFlightOrder } = useAction()
 
@@ -56,19 +57,23 @@ const Flights = ({ isShowFilter }) => {
     }
 
     const sortFlights = (event) => {
-        event.preventDefault()
+        event.preventDefault();
+        setPage(1);
         fetchGetFlights({
             startPosition: startPosition,
             finishPosition: finishPosition,
             startDate: startDate,
             countFreePlace: sumYoung + sumOld,
             limit: limit,
-            page: page
+            page: 1
         })
     }
 
     const deleteFlight = (id) => {
         fetchDeleteFlight(id)
+    }
+    const handleChange = (event, value) => {
+        setPage(value)
     }
 
     const reserveTicket = () => {
@@ -109,14 +114,12 @@ const Flights = ({ isShowFilter }) => {
                 startDate={startDate}
                 finishPosition={finishPosition}
             />
-            <Pagination
-                flights={flights}
-                pagesArray={pagesArray}
-                page={page}
-                limit={limit}
-                changePage={changePage}
-                moreFlights={moreFlights}
-            />
+            {totalCount==undefined?<></>:
+                <div className='pagination'>
+                    <Stack spacing={2}>
+                        <Pagination count={totalCount} page={page} onChange={handleChange} />
+                    </Stack>
+                </div>}
             <ModalFormBuy
                 visibleBuy={visibleBuy}
                 setVisiblyBuy={setVisiblyBuy}

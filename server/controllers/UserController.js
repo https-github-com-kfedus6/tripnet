@@ -60,12 +60,19 @@ class UserController{
             const user=await User.findOne({where:{id}});
             if(await bcrypt.compareSync(oldPassword,user.password)){
                 const cryptNewPassword=await bcrypt.hash(newPassword,3);
-                console.log(cryptNewPassword);
                 const res= await User.update({password:cryptNewPassword},{where:{id}});
-                console.log(res);
                 resp.json({status:200});
             }else return resp.json({status:415,message:"password is not true"});
             resp.json({user})
+        }catch(err){
+            return next(ErrorApi.badRequest(err));
+        }
+    }
+    static GetPhone=async(req,resp,next)=>{
+        try{
+            const {id}=req.user;
+            const res=await User.findOne({attributes:['telephone'],where:{id}});
+            return resp.json({status:200,res:res.dataValues.telephone});
         }catch(err){
             return next(ErrorApi.badRequest(err));
         }
