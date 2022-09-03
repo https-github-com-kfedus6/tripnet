@@ -35,10 +35,10 @@ export const fetchDeleteFlight = (id) => async (dispatch) => {
 export const fetchUpdateFlight = (formData) => async (dispatch) => {
     try {
         const response = await $authHost.put('/api/flights/', formData)
-        if(response.data.status==200){
-            
+        if (response.data.status == 200) {
+
             alert("успішно виконано");
-        }else console.log(response);
+        } else console.log(response);
     } catch (err) {
         console.log(err.message)
     }
@@ -50,7 +50,7 @@ export const AddFlight = (image, price, startPositionUA, startPositionRU, finish
     map) => async (dispatch) => {
         try {
             let formData = new FormData();
-            if (image!=undefined) await formData.append("image", image);
+            if (image != undefined) await formData.append("image", image);
             await formData.append("price", price);
             await formData.append("startPositionUA", startPositionUA);
             await formData.append("startPositionRU", startPositionRU);
@@ -72,7 +72,7 @@ export const AddFlight = (image, price, startPositionUA, startPositionRU, finish
             await formData.append("descriptionRU", descriptionRU);
             await formData.append("map", map);
             const resp = await $authHost.post("api/flights/", formData);
-            
+
             if (resp.data.status == 200) {
                 alert("успішно додано");
             } else {
