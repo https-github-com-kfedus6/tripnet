@@ -21,12 +21,13 @@ const FlightOrders = () => {
     const { flightOrders } = useSelector(state => state.order)
     const { flight } = useSelector(state => state.flights)
     const { getFlightOrder, putFlightOrder, deleteFlightOrder, fetchGetFlight } = useAction()
+
     useEffect(() => {
         getFlightOrder({ page: page, limit: limit })
     }, [page, limit])
 
     useEffect(() => {
-        setTotalCount(getPageCount(flightOrders.count,limit))
+        setTotalCount(getPageCount(flightOrders.count, limit))
     }, [flightOrders])
 
     const toggle = (i, id) => {
@@ -135,14 +136,14 @@ const FlightOrders = () => {
                             )
                         })}
                     </div>
-                    {totalCount==undefined||isNaN(totalCount)?<></>:
+                    {totalCount == undefined || isNaN(totalCount) ? <></> :
                         <div className='pagination'>
                             <Stack spacing={10}>
                                 <Pagination count={totalCount} page={page} onChange={handleChange} />
                             </Stack>
                         </div>}
                 </div>
-                
+
             </div >
         )
     }

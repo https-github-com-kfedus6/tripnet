@@ -33,7 +33,6 @@ const Account = () => {
         }
         setIsChangePass(true);
         ChangePassword(oldPassword, newPassword, user.id);
-
     }
 
     useEffect(() => {
