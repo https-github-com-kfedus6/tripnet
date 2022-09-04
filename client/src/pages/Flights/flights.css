@@ -99,6 +99,10 @@
     color: rgb(77, 77, 77);
 }
 
+.form-flights{
+    align-items: center;
+}
+
 .form-position input:hover {
     background-color: rgb(252, 252, 252);
     transition: all ease 0.3s;

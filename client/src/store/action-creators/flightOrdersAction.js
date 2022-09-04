@@ -1,4 +1,4 @@
-import { $authHost } from "../../http/index";
+import { $authHost, $host } from "../../http/index";
 import { flightOrdersActionTypes } from "../reducers/flightOrdersReducer";
 import { messageActionTypes } from "../reducers/messageReducer";
 

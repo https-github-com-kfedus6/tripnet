@@ -131,3 +131,15 @@ export const fetchPutFlightBusDate = (id, scheduleWith, scheduleTo) => async (di
         console.log(err.message)
     }
 }
+
+export const SearchCity=(value,language,isStartPosition)=>async(dispatch)=>{
+    try{
+        const resp=await $host.get("api/flights/search",{params:{value,language,isStartPosition}});
+        if(resp.data.status==200){
+            dispatch({type:(isStartPosition?flightActionTypes.FETCH_SEARCH_START_POSTION:
+                flightActionTypes.FETCH_SEARCH_FINISH_POSTION),payload:resp.data.res});
+        }
+    }catch(err){
+        console.log(err);
+    }
+}

@@ -2,6 +2,9 @@ import React, { useState } from 'react';
 import { AiOutlineCaretDown } from 'react-icons/ai';
 import { useTranslation } from 'react-i18next';
 import { Autocomplete, Button, Input, TextField, Tooltip } from '@mui/material';
+import { useEffect } from 'react';
+import { useAction } from '../hooks/useAction';
+import { useSelector } from 'react-redux';
 
 const FlightsFormSort = ({ startDate,startPosition,finishPosition,setStartDate, setStartPosition, setFinishPosition, sortFlights, sumOld, setSumOld, sumYoung, setSumYoung }) => {
     const { t } = useTranslation()
@@ -34,6 +37,25 @@ const FlightsFormSort = ({ startDate,startPosition,finishPosition,setStartDate, 
         }
     }
 
+    const defaultProps = {
+        options: [{title:"fdf"}],
+        getOptionLabel: (option) => option.title,
+    };
+
+    const {SearchCity}=useAction()
+
+    const {language}=useSelector(state=>state.language);
+
+    const {searchStartPostion,searchFinishPosition}=useSelector(state=>state.flights)
+
+    useEffect(()=>{
+        SearchCity(startPosition,language,true);
+    },[startPosition])
+
+    useEffect(()=>{
+        SearchCity(finishPosition,language,false);
+    },[finishPosition])
+
     return (
         <form className='form-flights-container'>
             <div className='flights-sort-form'>
@@ -42,15 +64,26 @@ const FlightsFormSort = ({ startDate,startPosition,finishPosition,setStartDate, 
                         <div className='form-position'>
                             <span>{t('flight.whence')}</span>
                             <Autocomplete
-                                id="combo-box-demo"
-                                options={[{label:"fdf", year: 1968},{label:"fdf", year: 1968}]}
-                                renderInput={(params) => <TextField {...params} label="Movie" />}
-                                />
-                            <input type="text" className='toolip' value={startPosition} placeholder={t('flight.whence')} onChange={(e) => setStartPosition(e.target.value)} />
+                                id="звідки"
+                                disableCloseOnSelect
+                                options={searchStartPostion}
+                                getOptionLabel={(option) => option.title}
+                                renderInput={(params) => (
+                                <TextField {...params} onChange={(e)=>setStartPosition(e.target.value)} value={startPosition} variant="standard" />
+                                )}
+                            />
                         </div>
                         <div className='form-position'>
                             <span className='toolip'>{t('flight.whitherto')}</span>
-                            <input type="text" value={finishPosition} placeholder={t('flight.whitherto')} onChange={(e) => setFinishPosition(e.target.value)} />
+                            <Autocomplete
+                                id="куди"
+                                disableCloseOnSelect
+                                options={searchFinishPosition}
+                                getOptionLabel={(option) => option.title}
+                                renderInput={(params) => (
+                                <TextField {...params} onChange={(e)=>setFinishPosition(e.target.value)} value={finishPosition} variant="standard" />
+                                )}
+                            />
                         </div>
                     </div>
                     <div className='form-block-date'>

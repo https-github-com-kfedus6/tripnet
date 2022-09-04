@@ -172,6 +172,43 @@ class FlightsController {
         }
     }
 
+    async search(req,resp,next){
+        try{
+            let {language, value, isStartPosition}=req.query;
+            isStartPosition=isStartPosition=='true'?true:false;
+            const reg = `${value}`;
+            let noSortArray;
+            if(isStartPosition){
+                noSortArray=await Flight.findAll({attributes:['startPosition'],where:{startPosition:{[Op.regexp]:reg}}});
+            }else{
+                noSortArray=await Flight.findAll({attributes:['finishPosition'],where:{finishPosition:{[Op.regexp]:reg}}});
+            }
+            for(let i=0; i<noSortArray.length;i++){
+                if(isStartPosition)noSortArray[i].startPosition=noSortArray[i].startPosition.split("//")[language];
+                else noSortArray[i].finishPosition=noSortArray[i].finishPosition.split("//")[language];
+            }
+            let res=[];
+            const isElemUnique=(idx,array)=>{
+                for(let i=0;i<idx;i++){
+                    if(isStartPosition&&array[i].startPosition===array[idx].startPosition)return false
+                    if(!isStartPosition&&array[i].finishPosition===array[idx].finishPosition)return false
+                }
+                return true;
+            }
+            for(let i=0;i<noSortArray.length;i++){
+                if(isElemUnique(i,noSortArray)){
+                    if(isStartPosition){
+                        res.push({title:noSortArray[i].startPosition});
+                    }else res.push({title:noSortArray[i].finishPosition});
+                }
+            }
+            if(res.length>10)res.splice(10,res.length);
+            return resp.json({status:200,res});
+        }catch(err){
+            return next(ErrorApi.badRequest(err));
+        }
+    }
+
     async updateFlight(req, res, next) {
         try {
             let { id, price, startPosition, finishPosition, startDate, finishDate, startTime, finishTime, timeFlight, countFreePlace } = req.body
@@ -192,6 +229,7 @@ class FlightsController {
             return next(ErrorApi.badRequest(err));
         }
     }
+
 }
 
 const flightsController = new FlightsController();
