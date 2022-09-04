@@ -2,6 +2,7 @@ import { $authHost, $host } from "../../http"
 import { userActionTypes } from "../reducers/userReducer";
 import jwtDecode from "jwt-decode"
 import { t } from 'i18next'
+import { messageActionTypes } from "../reducers/messageReducer";
 
 export const Register = (name, email, telephone, password) => async (dispatch) => {
     try {
@@ -44,10 +45,11 @@ export const ChangePassword=(oldPassword,newPassword,id)=>async(dispatch)=>{
         const res=await $authHost.post("api/user/changePassword",{oldPassword,newPassword,id});
         if(res.data.status==200){
             dispatch({ type: userActionTypes.REGISTER_USER_ERROR, payload: 200 });
-            alert(t("account.password_changed"))
+            dispatch({type:messageActionTypes.SET_SHOW_TRUE,payload:t("account.password_changed")});
+            setTimeout(()=>dispatch({type:messageActionTypes.SET_SHOW_FALSE}),3000);
         }else{
-            console.log(res.data)
-            alert(t("authorize.invalid_pass"))
+            dispatch({type:messageActionTypes.SET_SHOW_TRUE,payload:t("authorize.invalid_pass")});
+            setTimeout(()=>dispatch({type:messageActionTypes.SET_SHOW_FALSE}),3000);
         }
     }catch(err){
         alert("error");

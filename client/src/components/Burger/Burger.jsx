@@ -14,19 +14,18 @@ const Burger = ({setIsShowRegister}) => {
   return (
     <>
       <div className={isBurgerClick?"burger__menu active":"burger__menu"}>  
-        <SetLanguage/>
               
-        <ul onClick={()=>{setIsBurgerClick(false)}}>  
-          <li>{is_admin ? <div className='user__nick'><NavLink to="/admin">admin panel</NavLink></div> : <></>}</li>
-          <li>{is_login ? <div><NavLink to='/account'><FaUserCircle /></NavLink></div> :
+        <div onClick={()=>{setIsBurgerClick(false)}}>  
+          {is_admin ? <div className='user__nick'><NavLink to="/admin">admin panel</NavLink></div> : <></>}
+          {is_login ? <div><NavLink to='/account'><FaUserCircle /></NavLink></div> :
             <div onClick={() => { setIsShowRegister(true) }} className="register">
                 {t("header.registering")}
-            </div>}</li>
-          <li><NavLink to="/">{t('header.first_link')}</NavLink></li>
-          <li><NavLink to="/flights">{t('header.second_link')}</NavLink></li>
-          <li><NavLink to="/flightsCategory">{t('header.third_link')}</NavLink></li>
-          <li><NavLink to="/aboutUs">{t('header.fourth_link')}</NavLink></li>
-        </ul>
+            </div>}
+          <div><NavLink to="/">{t('header.first_link')}</NavLink></div>
+          <div><NavLink to="/flightsCategory">{t('header.third_link')}</NavLink></div>
+          <div><NavLink to="/aboutUs">{t('header.fourth_link')}</NavLink></div>
+          <div className='burger__set__language'><SetLanguage/></div>
+        </div>
       </div>
       <div onClick={()=>{setIsBurgerClick(!isBurgerClick)}} className={"header__burger"}>
         <GiHamburgerMenu fontSize={"50px"}/>

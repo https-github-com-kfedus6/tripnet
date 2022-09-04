@@ -6,11 +6,10 @@ import { useEffect } from 'react';
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination, Navigation } from "swiper";
 import { FaUserCircle } from 'react-icons/fa';
-
 const Responce = () => {
-    const { GetResponceNovetly } = useAction()
+    const { GetResponceNovetly, DelResponce} = useAction()
     const { novetlyResponce } = useSelector(state => state.responce);
-
+    const { is_admin }=useSelector(state=>state.user); 
     useEffect(() => {
         GetResponceNovetly();
     }, [])
@@ -21,9 +20,16 @@ const Responce = () => {
           <h3 className='home__benefits__company__name'>{t("home.responce")}</h3>
           <div className='list__responce__home__main'>
           <>
-          <Swiper navigation={false} modules={[Pagination]} pagination={true} className="my-swiper">
+          <Swiper
+            pagination={{
+              dynamicBullets: true,
+            }}
+            modules={[Pagination]}
+            className="my-swiper">
+
             {novetlyResponce.map(x=>
               <SwiperSlide key={x.id}>
+              <>
                 <div className='responce__home__main'>
                   <div className='responce__home__user__icon'><FaUserCircle/></div>
                   <div className='responce__home__author__with__description'>
@@ -37,7 +43,8 @@ const Responce = () => {
                     </div>
                   </div>
                 </div>
-                
+                {is_admin ?<button onClick={()=>DelResponce(x.id)}>del</button>:<></>}
+              </>  
               </SwiperSlide>)}
 
             </Swiper>

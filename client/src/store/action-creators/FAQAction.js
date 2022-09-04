@@ -1,5 +1,6 @@
 import { $authHost, $host } from "../../http";
 import { FAQActionTypes } from "../reducers/FAQReducer";
+import { messageActionTypes } from "../reducers/messageReducer";
 
 export const GetFAQ = (page, limit) => async (dispatch) => {
     try {
@@ -37,8 +38,14 @@ export const deleteFAQ = (id) => async (dispatch) => {
     try {
         const resp = await $authHost.delete(`api/FAQ/${id}`);
         if (resp.data.status == 200) {
+            dispatch({type:messageActionTypes.SET_SHOW_TRUE,payload:"успішно виконано"});
+            setTimeout(()=>dispatch({type:messageActionTypes.SET_SHOW_FALSE}),3000);
             dispatch({ type: FAQActionTypes.DELETE_SELECT_FAQ, payload: resp.data.res });
-        } else console.log(resp);
+        } else {
+            dispatch({type:messageActionTypes.SET_SHOW_TRUE,payload:"error"});
+            setTimeout(()=>dispatch({type:messageActionTypes.SET_SHOW_FALSE}),3000);
+            console.log(resp);
+        }
     } catch (err) {
         console.log(err);
     }
@@ -51,10 +58,15 @@ export const AddFAQ = (desriptionUa, desriptionRu, nameUa, nameRu) => async (dis
         const name = [nameUa, nameRu].join("//");
         const resp = await $authHost.post("api/FAQ/add", { name, description });
         if (resp.status == 200) {
-            alert("успішно додано");
-        } else alert("error");
+            dispatch({type:messageActionTypes.SET_SHOW_TRUE,payload:"успішно виконано"});
+            setTimeout(()=>dispatch({type:messageActionTypes.SET_SHOW_FALSE}),3000);
+        } else {
+            dispatch({type:messageActionTypes.SET_SHOW_TRUE,payload:"error"});
+            setTimeout(()=>dispatch({type:messageActionTypes.SET_SHOW_FALSE}),3000);
+        }
     } catch (err) {
-        alert("error")
+        dispatch({type:messageActionTypes.SET_SHOW_TRUE,payload:"error"});
+        setTimeout(()=>dispatch({type:messageActionTypes.SET_SHOW_FALSE}),3000);
         console.log(err);
     }
 }

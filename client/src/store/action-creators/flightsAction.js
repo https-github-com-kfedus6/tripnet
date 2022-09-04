@@ -1,5 +1,6 @@
 import { $authHost, $host } from '../../http/index'
 import { flightActionTypes } from "../reducers/flightsReducer";
+import { messageActionTypes } from '../reducers/messageReducer';
 
 export const fetchGetFlights = (data) => async (dispatch) => {
     try {
@@ -25,8 +26,15 @@ export const fetchGetFlight = (id) => async (dispatch) => {
 
 export const fetchDeleteFlight = (id) => async (dispatch) => {
     try {
-        const response = await $authHost.delete(`/api/flights/${id}`)
-        dispatch({ type: flightActionTypes.FETCH_DELETE_FLIGHT, payload: response.data.res })
+        const response = await $authHost.delete(`/api/flights/${id}`);
+        if(response.data.status==200){
+            dispatch({type:messageActionTypes.SET_SHOW_TRUE,payload:"успішно виконано"});
+            setTimeout(()=>dispatch({type:messageActionTypes.SET_SHOW_FALSE}),3000);
+            dispatch({ type: flightActionTypes.FETCH_DELETE_FLIGHT, payload: response.data.res })
+        }else{
+            dispatch({type:messageActionTypes.SET_SHOW_TRUE,payload:"error"});
+            setTimeout(()=>dispatch({type:messageActionTypes.SET_SHOW_FALSE}),3000);
+        }
     } catch (err) {
         console.log(err.message)
     }
@@ -36,10 +44,18 @@ export const fetchUpdateFlight = (formData) => async (dispatch) => {
     try {
         const response = await $authHost.put('/api/flights/', formData)
         if (response.data.status == 200) {
-
             alert("успішно виконано");
         } else console.log(response);
     } catch (err) {
+        if(response.data.status==200){
+            dispatch({type:messageActionTypes.SET_SHOW_TRUE,payload:"успішно виконано"});
+            setTimeout(()=>dispatch({type:messageActionTypes.SET_SHOW_FALSE}),3000);
+        }else {
+            console.log(response);
+            dispatch({type:messageActionTypes.SET_SHOW_TRUE,payload:"error"});
+            setTimeout(()=>dispatch({type:messageActionTypes.SET_SHOW_FALSE}),3000);
+        }
+    }catch (err) {
         console.log(err.message)
     }
 }
@@ -74,9 +90,11 @@ export const AddFlight = (image, price, startPositionUA, startPositionRU, finish
             const resp = await $authHost.post("api/flights/", formData);
 
             if (resp.data.status == 200) {
-                alert("успішно додано");
+                dispatch({type:messageActionTypes.SET_SHOW_TRUE,payload:"успішно виконано"});
+                setTimeout(()=>dispatch({type:messageActionTypes.SET_SHOW_FALSE}),3000);
             } else {
-                alert("error");
+                dispatch({type:messageActionTypes.SET_SHOW_TRUE,payload:"error"});
+                setTimeout(()=>dispatch({type:messageActionTypes.SET_SHOW_FALSE}),3000);
                 console.log(resp);
             }
         } catch (err) {
@@ -88,7 +106,15 @@ export const AddFlight = (image, price, startPositionUA, startPositionRU, finish
 export const fetchPutFlightStatus = (sheduleBusId, id, status) => async (dispatch) => {
     try {
         const response = await $authHost.put('api/scheduleBusStatus/status', { sheduleBusId, id, status })
-        dispatch({ type: flightActionTypes.FETCH_PUT_FLIGHT_STATUS, payload: response.data })
+        console.log(response);
+        if(response.data.status==200){
+            dispatch({type:messageActionTypes.SET_SHOW_TRUE,payload:"успішно виконано"});
+            setTimeout(()=>dispatch({type:messageActionTypes.SET_SHOW_FALSE}),3000);
+            dispatch({ type: flightActionTypes.FETCH_PUT_FLIGHT_STATUS, payload: response.data.res })
+        }else {
+            dispatch({type:messageActionTypes.SET_SHOW_TRUE,payload:"error"});
+            setTimeout(()=>dispatch({type:messageActionTypes.SET_SHOW_FALSE}),3000);
+        }
     } catch (err) {
         console.log(err.message)
     }
@@ -97,7 +123,14 @@ export const fetchPutFlightStatus = (sheduleBusId, id, status) => async (dispatc
 export const fetchPutFlightBusDate = (id, scheduleWith, scheduleTo) => async (dispatch) => {
     try {
         const response = await $authHost.put('api/scheduleBusStatus/', { id, scheduleWith, scheduleTo })
-        dispatch({ type: flightActionTypes.FETCH_PUT_FLIGHT_SCHEDULE_BUS, payload: response.data })
+        if(response.data.status==200){
+            dispatch({ type: flightActionTypes.FETCH_PUT_FLIGHT_SCHEDULE_BUS, payload: response.data.res })
+            dispatch({type:messageActionTypes.SET_SHOW_TRUE,payload:"успішно виконано"});
+            setTimeout(()=>dispatch({type:messageActionTypes.SET_SHOW_FALSE}),3000);
+        }else{
+            dispatch({type:messageActionTypes.SET_SHOW_TRUE,payload:"error"});
+            setTimeout(()=>dispatch({type:messageActionTypes.SET_SHOW_FALSE}),3000);
+        }
     } catch (err) {
         console.log(err.message)
     }

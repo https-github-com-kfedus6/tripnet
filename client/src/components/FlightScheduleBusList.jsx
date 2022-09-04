@@ -3,6 +3,7 @@ import { FaBus } from 'react-icons/fa'
 import { BsArrowRight } from 'react-icons/bs'
 import { GrClose } from 'react-icons/gr'
 import { useSelector } from 'react-redux'
+import { t } from 'i18next'
 
 const FlightScheduleBusList = ({ flight, is_admin, setScheduleTo, setScheduleWith, status, changeStatus, changeSchedule }) => {
     const { language } = useSelector(state => state.language);
@@ -10,12 +11,12 @@ const FlightScheduleBusList = ({ flight, is_admin, setScheduleTo, setScheduleWit
     return (
         <div className='block-schedule'>
             <div className='schedule-with-to'>
-                <span>Розклад автобусів {flight.startPosition[language]} - {flight.finishPosition[language]}</span>
+                <span>{t("")}{flight.startPosition[language]} - {flight.finishPosition[language]}</span>
                 {flight.schefule.map(item => {
                     if (is_admin) {
                         return (
                             <div key={item.id}>
-                                <span>Розклад дійсний з
+                                <span>{t("flight.schedule_valid_with")}
                                     <input type="text" placeholder={item.scheduleWith}
                                         className='create-date'
                                         onChange={(e) => setScheduleWith(e.target.value)}
@@ -31,7 +32,7 @@ const FlightScheduleBusList = ({ flight, is_admin, setScheduleTo, setScheduleWit
                         )
                     } else {
                         return (
-                            <div key={item.id}><span>Розклад дійсний з <strong>{item.scheduleWith}</strong> до <strong>{item.scheduleTo}</strong>.</span></div>
+                            <div key={item.id}><span>{t("flight.schedule_valid_with")}<strong>{item.scheduleWith}</strong> до <strong>{item.scheduleTo}</strong>.</span></div>
                         )
                     }
                 })
@@ -44,7 +45,7 @@ const FlightScheduleBusList = ({ flight, is_admin, setScheduleTo, setScheduleWit
                             <table className='table-date' >
                                 <thead>
                                     <tr>
-                                        <th>Час</th>
+                                        <th>{t("flight.time")}</th>
                                         <th>{day.monday}</th>
                                         <th>{day.tuesday}</th>
                                         <th>{day.wednesday}</th>

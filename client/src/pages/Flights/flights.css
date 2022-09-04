@@ -104,6 +104,11 @@
     transition: all ease 0.3s;
 }
 
+.user-select{
+    background-color: red;
+    height: 400px;
+}
+
 .form-date input:hover {
     background-color: rgb(252, 252, 252);
     transition: all ease 0.3s;

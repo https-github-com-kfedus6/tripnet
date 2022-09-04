@@ -90,10 +90,10 @@ const FlightsItem = ({ item, sumOld, sumYoung, deleteFlight, limit, page, openMo
                                 <NavLink to={`/flight/${item.id}`}>{t('flight.info_flight')}!</NavLink>
                             </div>
                             <div className='free-place'>
-                                <span><FaUser /> <input type='text' placeholder={item.countFreePlace} onChange={(e) => setNewCaountFreePlace(e.target.value)}></input>{t('flight.free_place')}</span>
+                                <span><FaUser /> <input type='number' placeholder={item.countFreePlace} onChange={(e) => setNewCaountFreePlace(e.target.value)}></input>{t('flight.free_place')}</span>
                             </div>
                             <div>
-                                <input type='text' placeholder={sum + '.00'} onChange={(e) => setNewPrice(e.target.value)}></input>
+                                <input type='number' placeholder={sum} onChange={(e) => setNewPrice(e.target.value)}></input>
                             </div>
                         </div>
                         <div className='change-flight'>
@@ -130,7 +130,7 @@ const FlightsItem = ({ item, sumOld, sumYoung, deleteFlight, limit, page, openMo
                             <div>
                                 <Stack direction="row" spacing={2}>
                                     <Button variant="contained" color="success" onClick={() => openModal(item.id)}>
-                                        <div><FaShoppingCart /></div><span>{sum}.00 UAH</span>
+                                        <div><FaShoppingCart /></div><span>{sum} UAH</span>
                                     </Button>
                                 </Stack>
                             </div>
@@ -165,7 +165,7 @@ const FlightsItem = ({ item, sumOld, sumYoung, deleteFlight, limit, page, openMo
                     <div>
                         <Stack direction="row" spacing={2}>
                             <Button variant="contained" color="success" onClick={() => openModal(item.id)}>
-                                <div><FaShoppingCart /></div><span>{sum}.00 UAH</span>
+                                <div><FaShoppingCart /></div><span>{sum} UAH</span>
                             </Button>
                         </Stack>
                     </div>
