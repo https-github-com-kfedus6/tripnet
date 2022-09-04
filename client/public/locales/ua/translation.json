@@ -30,7 +30,11 @@
         "info_for_flight":"Інформація про рейс",
         "schedule_valid_with":"Розклад дійсний з ",
         "bus_schedule":"Розклад автобусів ",
-        "time":"час"
+        "time":"час"},
+    "error":{
+        "title":"Вибачте, нам не вдалося знайти сторінку, яку ви шукали.",
+        "error_code_404":"Код помилки: 404",
+        "here_are_some_useful_links":"Ось кілька корисних посилань:"
     },
     "authorize": {
         "authorize": "Aвторизація",

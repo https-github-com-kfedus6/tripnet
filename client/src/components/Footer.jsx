@@ -31,19 +31,19 @@ const Footer = () => {
                             {t("header.fourth_link")}
                         </div>
                         <div >
-                            {t("footer.name")}:{infoCompany.name}
+                            {t("footer.name")}: {infoCompany.name}
                         </div>
                         <div>
-                            email:{infoCompany.email}
+                            email:   {infoCompany.email}
                         </div>
                         <div>
-                            {t("footer.phone")}:{infoCompany.telephone}
+                            {t("footer.phone")}:   {infoCompany.telephone}
                         </div>
                         <div>
-                            {t("footer.address")}:{infoCompany.address[language]}
+                            {t("footer.address")}:   {infoCompany.address[language]}
                         </div>
                         <div>
-                            {t("footer.opening_hours")}:{infoCompany.openingHours}
+                            {t("footer.opening_hours")}:   {infoCompany.openingHours}
                         </div>
                     </div>
                 </details>

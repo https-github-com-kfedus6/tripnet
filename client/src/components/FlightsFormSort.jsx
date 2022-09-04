@@ -58,7 +58,6 @@ const FlightsFormSort = ({ startDate,startPosition,finishPosition,setStartDate, 
         SearchCity(finishPosition,language,false);
     },[finishPosition])
 
-    console.log(startPosition)
 
     return (
         <Stack spacing={1}>
@@ -79,7 +78,7 @@ const FlightsFormSort = ({ startDate,startPosition,finishPosition,setStartDate, 
                                 <TextField
                                     onChange={(e)=>{console.log(e.target.value);setStartPosition(e.target.value)}}
                                     {...params}
-                                    label="Search input"
+                                    label="звідки"
                                     InputProps={{
                                     ...params.InputProps,
                                     type: 'search',
@@ -100,7 +99,7 @@ const FlightsFormSort = ({ startDate,startPosition,finishPosition,setStartDate, 
                                 <TextField
                                     onChange={(e)=>setFinishPosition(e.target.value)}
                                     {...params}
-                                    label="Search input"
+                                    label="куди"
                                     InputProps={{
                                     ...params.InputProps,
                                     type: 'search',
