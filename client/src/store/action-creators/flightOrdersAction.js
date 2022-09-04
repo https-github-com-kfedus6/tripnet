@@ -32,9 +32,10 @@ export const getFlightOrder = (data) => async (dispatch) => {
     }
 }
 
-export const putFlightOrder = (status, id) => async (dispatch) => {
+export const putFlightOrder = (status, id, page, limit, countTicket) => async (dispatch) => {
     try {
-        const response = await $authHost.put('api/flightOrder/setStatus', { status, id });
+        const response = await $authHost.put('api/flightOrder/setStatus', { status, id, page, limit, countTicket });
+        console.log(response);
         if(response.data.status==200){
             dispatch({type:messageActionTypes.SET_SHOW_TRUE,payload:"успішно виконано"});
             setTimeout(()=>dispatch({type:messageActionTypes.SET_SHOW_FALSE}),3000);

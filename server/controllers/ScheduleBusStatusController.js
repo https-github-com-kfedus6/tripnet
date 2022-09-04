@@ -8,7 +8,7 @@ class ScheduleBusStatusController {
 
             const scheduleStatus = await ScheduleBusStatus.findAll({ where: { flightId: id } })
 
-            return res.json(scheduleStatus)
+            return res.json({status:200,res:scheduleStatus})
         } catch (err) {
             return next(ErrorApi.badRequest(err));
         }
@@ -22,7 +22,7 @@ class ScheduleBusStatusController {
 
             const newScheduleStatus = await ScheduleBusStatus.findAll({ where: { schedulebusId: sheduleBusId } })
 
-            return res.json(newScheduleStatus)
+            return res.json({status:200,res:newScheduleStatus})
         } catch (err) {
             return next(ErrorApi.badRequest(err));
         }
@@ -34,7 +34,7 @@ class ScheduleBusStatusController {
 
             const scheduleBus = await ScheduleBus.update({ scheduleWith: scheduleWith, scheduleTo: scheduleTo }, { where: { id: id } })
 
-            return res.json(scheduleBus)
+            return res.json({status:200,res:scheduleBus})
         } catch (err) {
             return next(ErrorApi.badRequest(err));
         }

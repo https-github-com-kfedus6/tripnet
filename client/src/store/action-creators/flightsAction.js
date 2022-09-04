@@ -48,7 +48,7 @@ export const fetchUpdateFlight = (formData) => async (dispatch) => {
             setTimeout(()=>dispatch({type:messageActionTypes.SET_SHOW_FALSE}),3000);
         }else {
             console.log(response);
-            dispatch({type:messageActionTypes.SET_SHOW_TRUE,payload:"успішно error"});
+            dispatch({type:messageActionTypes.SET_SHOW_TRUE,payload:"error"});
             setTimeout(()=>dispatch({type:messageActionTypes.SET_SHOW_FALSE}),3000);
         }
     }catch (err) {
@@ -102,10 +102,11 @@ export const AddFlight = (image, price, startPositionUA, startPositionRU, finish
 export const fetchPutFlightStatus = (sheduleBusId, id, status) => async (dispatch) => {
     try {
         const response = await $authHost.put('api/scheduleBusStatus/status', { sheduleBusId, id, status })
+        console.log(response);
         if(response.data.status==200){
             dispatch({type:messageActionTypes.SET_SHOW_TRUE,payload:"успішно виконано"});
             setTimeout(()=>dispatch({type:messageActionTypes.SET_SHOW_FALSE}),3000);
-            dispatch({ type: flightActionTypes.FETCH_PUT_FLIGHT_STATUS, payload: response.data })
+            dispatch({ type: flightActionTypes.FETCH_PUT_FLIGHT_STATUS, payload: response.data.res })
         }else {
             dispatch({type:messageActionTypes.SET_SHOW_TRUE,payload:"error"});
             setTimeout(()=>dispatch({type:messageActionTypes.SET_SHOW_FALSE}),3000);
@@ -119,7 +120,7 @@ export const fetchPutFlightBusDate = (id, scheduleWith, scheduleTo) => async (di
     try {
         const response = await $authHost.put('api/scheduleBusStatus/', { id, scheduleWith, scheduleTo })
         if(response.data.status==200){
-            dispatch({ type: flightActionTypes.FETCH_PUT_FLIGHT_SCHEDULE_BUS, payload: response.data })
+            dispatch({ type: flightActionTypes.FETCH_PUT_FLIGHT_SCHEDULE_BUS, payload: response.data.res })
             dispatch({type:messageActionTypes.SET_SHOW_TRUE,payload:"успішно виконано"});
             setTimeout(()=>dispatch({type:messageActionTypes.SET_SHOW_FALSE}),3000);
         }else{

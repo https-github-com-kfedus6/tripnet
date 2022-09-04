@@ -22,7 +22,6 @@ const Burger = ({setIsShowRegister}) => {
                 {t("header.registering")}
             </div>}
           <div><NavLink to="/">{t('header.first_link')}</NavLink></div>
-          <div><NavLink to="/flights">{t('header.second_link')}</NavLink></div>
           <div><NavLink to="/flightsCategory">{t('header.third_link')}</NavLink></div>
           <div><NavLink to="/aboutUs">{t('header.fourth_link')}</NavLink></div>
           <div className='burger__set__language'><SetLanguage/></div>

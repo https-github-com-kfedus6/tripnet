@@ -12,7 +12,7 @@ import { getPageCount } from '../../utils/page';
 
 const FlightOrders = () => {
     const [isActive, setIsActive] = useState(null)
-    const [limit, setLimit] = useState(2)
+    const [limit, setLimit] = useState(5)
     const [page, setPage] = useState(1)
     const [totalCount, setTotalCount] = useState(undefined)
 
@@ -31,20 +31,22 @@ const FlightOrders = () => {
 
     const toggle = (i, id) => {
         if (isActive == i) {
-            return setIsActive(null)
+            return setIsActive(null);
         }
-        setIsActive(i)
-        fetchGetFlight(id)
+        setIsActive(i);
+        fetchGetFlight(id);
     }
+
+    const [countTicket,setCountTicket]=useState(1);
 
     const changeStatusOrderTrue = (id) => {
         let status = true
-        putFlightOrder(status, id)
+        putFlightOrder(status, id, page, limit, countTicket)
     }
 
     const changeStatusOrderFalse = (id) => {
         let status = false
-        putFlightOrder(status, id)
+        putFlightOrder(status, id, page, limit, countTicket)
     }
 
     const deleteOrder = (id) => {
@@ -75,10 +77,11 @@ const FlightOrders = () => {
                             if (status === null) {
                                 status = t('order.status')
                             }
+                            
                             return (
                                 <div key={item.id} className="accordion-item-order">
                                     <div className='accordion-header-order'>
-                                        <button className='accordion-order-btn' onClick={() => toggle(i, item.flightId)} aria-expanded={isActive === i ? "true" : "false"}>
+                                        <button className='accordion-order-btn' onClick={() =>{toggle(i, item.flightId);setCountTicket(item.countTicket)}} aria-expanded={isActive === i ? "true" : "false"}>
                                             <span className="accordion-title-order">{dateDay}.{date[1]}.{date[0]} {time}</span>
                                             <span className="accordion-title-order">{item.authorName}</span>
                                             <span className="accordion-title-order">{item.phone}</span>
@@ -110,15 +113,15 @@ const FlightOrders = () => {
                                                     </div>
                                                 </div>
                                                 <div className='order-flight-ticket'>
-                                                    <span><b>{t('order.ticket')}:</b> {item.countTicket}</span>
+                                                    <span><b>{t('order.ticket')}:</b> <input value={countTicket} onChange={(e)=>setCountTicket(e.target.value)} type={"number"}/></span>
                                                     <span><b>{t('order.ticket_remained')}:</b>{flight.countFreePlace}</span>
                                                     <span><b>{t('order.price')}:</b> {flight.price}.00 UAH</span>
                                                     <span><b>{t('order.allPrice')}:</b> {+flight.price * +item.countTicket}.00 UAH</span>
                                                 </div>
                                                 <div className='order-status-btn'>
                                                     <div>
-                                                        <button onClick={() => changeStatusOrderTrue(item.id)}>{t('order.check')}</button>
-                                                        <button onClick={() => changeStatusOrderFalse(item.id)}>{t('order.close')}</button>
+                                                        <button onClick={() =>{if(item.status==null||item.status==false)changeStatusOrderTrue(item.id)}}>{t('order.check')}</button>
+                                                        <button onClick={() =>{if(item.status==null||item.status==true)changeStatusOrderFalse(item.id)}}>{t('order.close')}</button>
                                                     </div>
                                                     <div>
                                                         <button onClick={() => deleteOrder(item.id)}><AiFillDelete /></button>

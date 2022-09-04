@@ -32,21 +32,24 @@ class FlightOrdersController {
     }
     static SetStatus = async (req, resp, next) => {
         try {
-            const { status, id } = req.body;
-            console.log(status, id)
-            await FlightOrder.update({ status: status }, { where: { id } });
+            let { status, id, page, limit, countTicket } = req.body;
+            page=page|1;
+            limit=limit|5;
+            await FlightOrder.update({ status: status, countTicket }, { where: { id } });
             const response = await FlightOrder.findOne({where:{id}});
             if (status) {
-                console.log(5);
                 const flight = await Flight.findOne({ where: { id: response.flightId } });
-                console.log(1);
-                const countFreePlace = flight.countFreePlace - response.countTicket;
-                console.log(3)
+                const countFreePlace = flight.countFreePlace - countTicket;
                 await Flight.update({ countFreePlace }, { where: { id: flight.id } });
-                console.log(4);
+            }else{
+                const flight = await Flight.findOne({ where: { id: response.flightId } });
+                const countFreePlace = parseInt(flight.countFreePlace) + parseInt(countTicket);
+                await Flight.update({ countFreePlace }, { where: { id: flight.id } });
             }
-            console.log(2)
-            const res = await FlightOrder.findAll()
+            const offset = page * limit - limit
+
+            const res = await FlightOrder.findAndCountAll({ limit: Number(limit), offset: Number(offset) });
+
             return resp.json({ status: 200, res });
         } catch (err) {
             return next(ErrorApi.badRequest(err));
