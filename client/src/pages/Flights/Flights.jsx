@@ -43,7 +43,7 @@ const Flights = ({ isShowFilter }) => {
     }, [limit, page])
 
     useEffect(() => {
-        setTotalCount(getPageCount(flights.count, limit))
+        if(flights!=undefined)setTotalCount(getPageCount(flights.count, limit))
     }, [flights])
 
     let pagesArray = getPagesArray(totalCount)

@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import { AiOutlineCaretDown } from 'react-icons/ai';
 import { useTranslation } from 'react-i18next';
-import { Autocomplete, Button, Input, TextField, Tooltip } from '@mui/material';
+import Stack from '@mui/material/Stack';
+import Autocomplete from '@mui/material/Autocomplete';
+import TextField from '@mui/material/TextField';
 import { useEffect } from 'react';
 import { useAction } from '../hooks/useAction';
 import { useSelector } from 'react-redux';
@@ -51,38 +53,59 @@ const FlightsFormSort = ({ startDate,startPosition,finishPosition,setStartDate, 
     useEffect(()=>{
         SearchCity(startPosition,language,true);
     },[startPosition])
-
+    
     useEffect(()=>{
         SearchCity(finishPosition,language,false);
     },[finishPosition])
 
+    console.log(startPosition)
+
     return (
-        <form className='form-flights-container'>
+        <Stack spacing={1}>
+        <div className='form-flights-container'>
             <div className='flights-sort-form'>
                 <div className='form-flights'>
                     <div className='form-block-position'>
                         <div className='form-position'>
                             <span>{t('flight.whence')}</span>
                             <Autocomplete
-                                id="звідки"
-                                disableCloseOnSelect
-                                options={searchStartPostion}
-                                getOptionLabel={(option) => option.title}
+                                freeSolo
+                                id="free-solo-2-demo"
+                                disableClearable
+                                value={startPosition}
+                                onChange={(value,newValue)=>{console.log(newValue);setStartPosition(newValue)}}
+                                options={searchStartPostion.map((option) => option.title)}
                                 renderInput={(params) => (
-                                <TextField {...params} onChange={(e)=>setStartPosition(e.target.value)} value={startPosition} variant="standard" />
-                                )}
+                                <TextField
+                                    onChange={(e)=>{console.log(e.target.value);setStartPosition(e.target.value)}}
+                                    {...params}
+                                    label="Search input"
+                                    InputProps={{
+                                    ...params.InputProps,
+                                    type: 'search',
+                                    }}
+                                />)}
                             />
                         </div>
                         <div className='form-position'>
                             <span className='toolip'>{t('flight.whitherto')}</span>
                             <Autocomplete
-                                id="куди"
-                                disableCloseOnSelect
-                                options={searchFinishPosition}
-                                getOptionLabel={(option) => option.title}
+                                freeSolo
+                                id="free-solo-2-demo"
+                                disableClearable
+                                value={finishPosition}
+                                onChange={(e,newValue)=>setFinishPosition(newValue)}
+                                options={searchFinishPosition.map((option) => option.title)}
                                 renderInput={(params) => (
-                                <TextField {...params} onChange={(e)=>setFinishPosition(e.target.value)} value={finishPosition} variant="standard" />
-                                )}
+                                <TextField
+                                    onChange={(e)=>setFinishPosition(e.target.value)}
+                                    {...params}
+                                    label="Search input"
+                                    InputProps={{
+                                    ...params.InputProps,
+                                    type: 'search',
+                                    }}
+                                />)}
                             />
                         </div>
                     </div>
@@ -130,7 +153,8 @@ const FlightsFormSort = ({ startDate,startPosition,finishPosition,setStartDate, 
                     </div>
                 </div>
             </div>
-        </form >
+        </div >
+        </Stack>
     )
 }
 

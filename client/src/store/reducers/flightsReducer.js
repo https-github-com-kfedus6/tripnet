@@ -20,7 +20,7 @@ const initialState = {
     searchFinishPosition:[]
 }
 
-export const flightsReducer = (state = initialState, action,) => {
+export const flightsReducer = (state = initialState, action) => {
     switch (action.type) {
         case flightActionTypes.FETCH_GET_FLIGHTS: {
             return { ...state, flights: action.payload }
