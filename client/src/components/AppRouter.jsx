@@ -15,6 +15,7 @@ import Blog from '../pages/Blog/Blog';
 import FAQ from '../pages/FAQ/FAQ';
 import Account from '../pages/Account/Account';
 import FlightOrders from '../pages/FlightOrders/FlightOrders';
+import Error from '../pages/Error/Error'
 
 const AppRouter = () => {
     const { IsAuthorize } = useAction();
@@ -39,7 +40,7 @@ const AppRouter = () => {
                 {is_admin ? <Route path='order' element={<FlightOrders />} /> : <></>}
                 {is_admin ? <Route path='admin' element={<AdminMain />} /> : <></>}
                 {is_login ? <Route path='account' element={<Account />} /> : <></>}
-                <Route path='*' element={<div>error</div>} />
+                <Route path='*' element={<Error />} />
             </Route>
         </Routes>
     )
