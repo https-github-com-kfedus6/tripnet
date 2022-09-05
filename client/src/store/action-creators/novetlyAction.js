@@ -5,7 +5,9 @@ import { novetlyActionTypes } from "../reducers/noveltyReducer";
 export const GetNovetly=()=>async(dispatch)=>{
     try{
         const resp=await $host.get('api/novetly/');
-        dispatch({type:novetlyActionTypes.FETCH_GET_NOVETLY,payload:resp.data.res});
+        if(resp.data.status==200){
+            dispatch({type:novetlyActionTypes.FETCH_GET_NOVETLY,payload:resp.data.res});
+        }
     }catch(err){
         console.log(err);
     }
