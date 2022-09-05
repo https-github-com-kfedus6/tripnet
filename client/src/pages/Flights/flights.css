@@ -13,7 +13,7 @@
 }
 
 .flights-sort-form {
-    width: 85%;
+    width: 60%;
 }
 
 .form-btn {
@@ -69,12 +69,14 @@
 
 .form-flights {
     display: flex;
+    flex-direction: column;
     margin-top: 20px;
 }
 
 .form-block-position {
     display: flex;
     width: 100%;
+    margin-bottom: 5px;
 }
 
 .form-position {
@@ -88,15 +90,6 @@
     color: rgb(77, 77, 77);
     font-size: 19px;
     margin-bottom: 5px;
-}
-
-.form-position input {
-    height: 25px;
-    border: 1px solid silver;
-    border-radius: 10px;
-    font-size: 16px;
-    padding: 5px 10px;
-    color: rgb(77, 77, 77);
 }
 
 .form-flights{
@@ -143,7 +136,7 @@
 .form-date input {
     height: 25px;
     border: 1px solid silver;
-    border-radius: 10px;
+    border-radius: 5px;
     font-size: 16px;
     padding: 5px 10px;
     color: rgb(77, 77, 77);
@@ -169,8 +162,9 @@
     padding: 5px 10px;
     margin-right: 5px;
     border: 1px solid silver;
-    border-radius: 10px;
+    border-radius: 5px;
     background-color: #fff;
+    color: rgb(77, 77, 77);
     width: 100%;
     display: flex;
     align-items: center;
@@ -242,16 +236,15 @@
 
 .form-search button {
     height: 35px;
-    background-color: #00d200;
-    color: #fff;
-    border: 1px solid #00d200;
-    border-radius: 10px;
+    background-color: rgb(245, 73, 4);
+    border: 1px solid rgb(245, 73, 4);
+    border-radius: 5px;
     font-size: 17px;
     cursor: pointer;
 }
 
 .form-search button:hover {
-    background-color: #00c000;
+    background-color: rgb(216, 61, 0);
     transition: all ease 0.3s;
 }
 
@@ -505,12 +498,13 @@
     font-size: 14px;
 }
 
+
 @media (max-width: 992px) {
     .items-flight {
         width: 99%;
     }
 
-    .page-more {
+    .page-more {    
         width: 70%;
     }
 
@@ -647,8 +641,8 @@
         flex-direction: column;
     }
 
-    .form-block-position div {
-        margin-bottom: 5px;
+    .form-block-position div:nth-child(1) {
+        margin-bottom: 2px;
     }
 
     .form-position {

@@ -47,7 +47,7 @@ const FAQ = () => {
                         {FAQList.map((item, i) => {
                             return (
                                 <div key={item.id} className="accordion-item">
-                                    <button onClick={() => toggle(i)} className={isActive === i ? "accordion-button" : ''} aria-expanded={isActive === i ? "true" : "false"}><span className="accordion-title">{item.name[language]}?</span><span className='icon' aria-hidden="true">{isActive === i ? <AiOutlineMinus /> : <AiOutlinePlus />}</span></button>
+                                    <button onClick={() => toggle(i)} className={isActive === i ? "accordion-button" : ''} aria-expanded={isActive === i ? "true" : "false"}><span className="accordion-title">{item.name[language]}?</span><span className='icon-accordion' aria-hidden="true">{isActive === i ? <AiOutlineMinus /> : <AiOutlinePlus />}</span></button>
                                     <div className={isActive === i ? 'accordion-content show' : 'accordion-content'}>
                                         {is_admin ? <button onClick={() => deleteFaq(item.id)}><AiFillDelete /></button> : <span></span>}
                                         <p dangerouslySetInnerHTML={createMarkup(item.description[language])} />

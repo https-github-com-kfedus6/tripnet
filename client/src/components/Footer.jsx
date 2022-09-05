@@ -4,6 +4,7 @@ import { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom'
 import { useAction } from '../hooks/useAction';
+import { BsInstagram } from 'react-icons/bs'
 
 const Footer = () => {
     const navigate = useNavigate();
@@ -23,86 +24,30 @@ const Footer = () => {
 
     return (
         infoCompany == undefined ? <div>...loading</div> :
-            <div className='footer__main'>
-                <details>
-                    <summary>{t("header.fourth_link")}</summary>
-                    <div className="footer__about__us">
-                        <div className='footer__about__us__name main' onClick={() => navigate("/aboutUs")}>
-                            {t("header.fourth_link")}
-                        </div>
-                        <div >
-                            {t("footer.name")}: {infoCompany.name}
-                        </div>
-                        <div>
-                            email:   {infoCompany.email}
-                        </div>
-                        <div>
-                            {t("footer.phone")}:   {infoCompany.telephone}
-                        </div>
-                        <div>
-                            {t("footer.address")}:   {infoCompany.address[language]}
-                        </div>
-                        <div>
-                            {t("footer.opening_hours")}:   {infoCompany.openingHours}
-                        </div>
+            <div className='footer-main'>
+                <div className='footer-block'>
+                    <div className='footer-logo'>
+                        <img src={process.env.REACT_APP_API_URL + 'logo.png'} alt="logo" />
+                        <span>Всі права захищені.</span>
                     </div>
-                </details>
-                <div className='footer__list'>
-                    <div className="footer__about__us">
-                        <div className='footer__about__us__name main' onClick={() => navigate("/aboutUs")}>
-                            {t("header.fourth_link")}
-                        </div>
-                        <div >
-                            {t("footer.name")}:{infoCompany.name}
-                        </div>
-                        <div>
-                            email:{infoCompany.email}
-                        </div>
-                        <div>
-                            {t("footer.phone")}:{infoCompany.telephone}
-                        </div>
-                        <div>
-                            {t("footer.address")}:{infoCompany.address[language]}
-                        </div>
-                        <div>
-                            {t("footer.opening_hours")}:{infoCompany.openingHours[language]}
-                        </div>
+                    <div className='footer-link'>
+                        <p onClick={() => navigate('/flightsCategory')}>Категорія рейсів</p>
+                        <p onClick={() => navigate('/blog')}>Блог</p>
+                        <p onClick={() => navigate('/FAQ')}>Питання та відповіді</p>
+                        <p onClick={() => navigate('/aboutUs')}>Про нас</p>
                     </div>
-                </div>
-                <div className="footer__list">
-                    <div className='footer__blog'>
-                        <div onClick={() => navigate("/blog")} className="footer__blog main">
-                            {t("header.five_link")}
-                        </div>
-                        {blogNovetly.map(x => <div className='footer__blog__article' onClick={() => navigate("/blog/" + x.id)} key={x.id}>{x.name[language]}</div>)}
+                    <div className='footer-info'>
+                        <p>{infoCompany.name}</p>
+                        <p>{infoCompany.email}</p>
+                        <p>{infoCompany.telephone}</p>
+                        <p>{infoCompany.address[language]}</p>
+                        <p>{infoCompany.openingHours}</p>
                     </div>
-                </div>
-                <details>
-                    <summary>{t("header.five_link")}</summary>
-                    <div className='footer__blog'>
-                        <div onClick={() => navigate("/blog")} className="footer__blog main">
-                            {t("header.five_link")}
+                    <div className='footer-instagram'>
+                        <p>Ми у соц. мережах</p>
+                        <div>
+                            <a href='https://www.instagram.com/tripnet.com.ua/'><BsInstagram /></a>
                         </div>
-                        {blogNovetly.map(x => <div className='footer__blog__article' onClick={() => navigate("/blog/" + x.id)} key={x.id}>{x.name[language]}</div>)}
-                    </div>
-                </details>
-                <details>
-                    <summary>{t("footer.FAQ")}</summary>
-                    <div className="footer__FAQ">
-                        <div onClick={() => navigate("/FAQ")} className="footer__FAQ main">
-                            {t("footer.FAQ")}
-                        </div>
-                        {FAQNovetly == undefined ? <div>loading...</div> :
-                            FAQNovetly.map(x => <div onClick={() => navigate("/FAQ/")} key={x.id}>{x.name[language]}</div>)}
-                    </div>
-                </details>
-                <div className="footer__list">
-                    <div className="footer__FAQ">
-                        <div onClick={() => navigate("/FAQ")} className="footer__FAQ main">
-                            {t("footer.FAQ")}
-                        </div>
-                        {FAQNovetly == undefined ? <div>loading...</div> :
-                            FAQNovetly.map(x => <div onClick={() => navigate("/FAQ/")} key={x.id}>{x.name[language]}</div>)}
                     </div>
                 </div>
             </div>

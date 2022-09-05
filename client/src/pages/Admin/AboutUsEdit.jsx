@@ -23,26 +23,22 @@ const AboutUsEdit = () => {
     const { GetAboutUs, SetAboutUs } = useAction();
     return (
         <div className='about__us__edit__main'>
-            <details>
-                <summary className='name__menu'>{t("header.fourth_link")}</summary>
-                {ua == undefined || ru == undefined ? <div>...loading</div> :
-                    <><h1>українська версія</h1>
+            {ua == undefined || ru == undefined ? <div>...loading</div> :
+                <><h1>українська версія</h1>
 
-                        <Editor value={ua}
-                            apiKey="t6okxmezjfhajn8bk23u3dkejv0oc9c1qhs7gmmh9qskcfdp"
-                            onEditorChange={(newText) => setUa(newText)}
-                        />
+                    <Editor value={ua}
+                        apiKey="t6okxmezjfhajn8bk23u3dkejv0oc9c1qhs7gmmh9qskcfdp"
+                        onEditorChange={(newText) => setUa(newText)}
+                    />
 
-                        <h1>російська версія</h1>
+                    <h1>російська версія</h1>
 
-                        <Editor value={ru}
-                            apiKey="t6okxmezjfhajn8bk23u3dkejv0oc9c1qhs7gmmh9qskcfdp"
-                            onEditorChange={(newText) => setRu(newText)}
-                        />
+                    <Editor value={ru}
+                        apiKey="t6okxmezjfhajn8bk23u3dkejv0oc9c1qhs7gmmh9qskcfdp"
+                        onEditorChange={(newText) => setRu(newText)}
+                    />
 
-                        <button onClick={() => SetAboutUs(ua, ru)}>save</button></>}
-            </details>
-
+                    <button onClick={() => SetAboutUs(ua, ru)}>save</button></>}
         </div>
     )
 }

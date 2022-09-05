@@ -21,7 +21,7 @@ const SetLanguage = () => {
     }
     return (
         <>
-            <FormControl size="small">
+            <FormControl size="small" >
                 <Select
                     value={language()}
                     onChange={(event) => changeLanguage(event)}

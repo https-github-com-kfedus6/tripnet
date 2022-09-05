@@ -8,7 +8,6 @@ import AboutUs from '../pages/AboutUs/AboutUs';
 import { useEffect } from 'react';
 import { useAction } from '../hooks/useAction';
 import TinyMCE from './TinyMCE/TinyMCE';
-import AdminMain from '../pages/Admin/AdminMain';
 import { useSelector } from 'react-redux';
 import { ListBlog } from '../pages/Blog/ListBlog';
 import Blog from '../pages/Blog/Blog';
@@ -16,6 +15,13 @@ import FAQ from '../pages/FAQ/FAQ';
 import Account from '../pages/Account/Account';
 import FlightOrders from '../pages/FlightOrders/FlightOrders';
 import Error from '../pages/Error/Error'
+import AboutUsEdit from '../pages/Admin/AboutUsEdit';
+import BlogEdit from '../pages/Admin/BlogEdit';
+import FAQEdit from '../pages/Admin/FAQEdit';
+import FlightsEdit from '../pages/Admin/FlightsEdit';
+import InfoCompanyEdit from '../pages/Admin/InfoCompanyEdit';
+import NovetlyEdit from '../pages/Admin/NovetlyEdit';
+import ResponceEdit from '../pages/Admin/ResponceEdit';
 
 const AppRouter = () => {
     const { IsAuthorize } = useAction();
@@ -38,7 +44,13 @@ const AppRouter = () => {
                 <Route path='blog' element={<ListBlog />} />
                 <Route path='blog/:id' element={<Blog />} />
                 {is_admin ? <Route path='order' element={<FlightOrders />} /> : <></>}
-                {is_admin ? <Route path='admin' element={<AdminMain />} /> : <></>}
+                {is_admin ? <Route path='aboutUsEdit' element={<AboutUsEdit />} /> : <></>}
+                {is_admin ? <Route path='blogEdit' element={<BlogEdit />} /> : <></>}
+                {is_admin ? <Route path='faqEdit' element={<FAQEdit />} /> : <></>}
+                {is_admin ? <Route path='flightsEdit' element={<FlightsEdit />} /> : <></>}
+                {is_admin ? <Route path='infoCompanyEdit' element={<InfoCompanyEdit />} /> : <></>}
+                {is_admin ? <Route path='novetlyEdit' element={<NovetlyEdit />} /> : <></>}
+                {is_admin ? <Route path='responseEdit' element={<ResponceEdit />} /> : <></>}
                 {is_login ? <Route path='account' element={<Account />} /> : <></>}
                 <Route path='*' element={<Error />} />
             </Route>

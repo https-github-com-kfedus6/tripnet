@@ -8,7 +8,7 @@ import { useEffect } from 'react';
 import { useAction } from '../hooks/useAction';
 import { useSelector } from 'react-redux';
 
-const FlightsFormSort = ({ startDate,startPosition,finishPosition,setStartDate, setStartPosition, setFinishPosition, sortFlights, sumOld, setSumOld, sumYoung, setSumYoung }) => {
+const FlightsFormSort = ({ startDate, startPosition, finishPosition, setStartDate, setStartPosition, setFinishPosition, sortFlights, sumOld, setSumOld, sumYoung, setSumYoung }) => {
     const { t } = useTranslation()
 
     const [check, setCheck] = useState(false)
@@ -40,119 +40,121 @@ const FlightsFormSort = ({ startDate,startPosition,finishPosition,setStartDate, 
     }
 
     const defaultProps = {
-        options: [{title:"fdf"}],
+        options: [{ title: "fdf" }],
         getOptionLabel: (option) => option.title,
     };
 
-    const {SearchCity}=useAction()
+    const { SearchCity } = useAction()
 
-    const {language}=useSelector(state=>state.language);
+    const { language } = useSelector(state => state.language);
 
-    const {searchStartPostion,searchFinishPosition}=useSelector(state=>state.flights)
+    const { searchStartPostion, searchFinishPosition } = useSelector(state => state.flights)
 
-    useEffect(()=>{
-        SearchCity(startPosition,language,true);
-    },[startPosition])
-    
-    useEffect(()=>{
-        SearchCity(finishPosition,language,false);
-    },[finishPosition])
+    useEffect(() => {
+        SearchCity(startPosition, language, true);
+    }, [startPosition])
+
+    useEffect(() => {
+        SearchCity(finishPosition, language, false);
+    }, [finishPosition])
 
 
     return (
         <Stack spacing={1}>
-        <div className='form-flights-container'>
-            <div className='flights-sort-form'>
-                <div className='form-flights'>
-                    <div className='form-block-position'>
-                        <div className='form-position'>
-                            <span>{t('flight.whence')}</span>
-                            <Autocomplete
-                                freeSolo
-                                id="free-solo-2-demo"
-                                disableClearable
-                                value={startPosition}
-                                onChange={(value,newValue)=>{console.log(newValue);setStartPosition(newValue)}}
-                                options={searchStartPostion.map((option) => option.title)}
-                                renderInput={(params) => (
-                                <TextField
-                                    onChange={(e)=>{console.log(e.target.value);setStartPosition(e.target.value)}}
-                                    {...params}
-                                    label="звідки"
-                                    InputProps={{
-                                    ...params.InputProps,
-                                    type: 'search',
-                                    }}
-                                />)}
-                            />
+            <div className='form-flights-container'>
+                <div className='flights-sort-form'>
+                    <div className='form-flights'>
+                        <div className='form-block-position'>
+                            <div className='form-position'>
+                                {/* <span>{t('flight.whence')}</span> */}
+                                <Autocomplete
+                                    size='small'
+                                    freeSolo
+                                    id="free-solo-2-demo"
+                                    disableClearable
+                                    value={startPosition}
+                                    onChange={(value, newValue) => { console.log(newValue); setStartPosition(newValue) }}
+                                    options={searchStartPostion.map((option) => option.title)}
+                                    renderInput={(params) => (
+                                        <TextField
+                                            onChange={(e) => { console.log(e.target.value); setStartPosition(e.target.value) }}
+                                            {...params}
+                                            label={t('flight.whence')}
+                                            InputProps={{
+                                                ...params.InputProps,
+                                                type: 'search',
+                                            }}
+                                        />)}
+                                />
+                            </div>
+                            <div className='form-position'>
+                                {/* <span className='toolip'>{t('flight.whitherto')}</span> */}
+                                <Autocomplete
+                                    size='small'
+                                    freeSolo
+                                    id="free-solo-2-demo"
+                                    disableClearable
+                                    value={finishPosition}
+                                    onChange={(e, newValue) => setFinishPosition(newValue)}
+                                    options={searchFinishPosition.map((option) => option.title)}
+                                    renderInput={(params) => (
+                                        <TextField
+                                            onChange={(e) => setFinishPosition(e.target.value)}
+                                            {...params}
+                                            label={t('flight.whitherto')}
+                                            InputProps={{
+                                                ...params.InputProps,
+                                                type: 'search',
+                                            }}
+                                        />)}
+                                />
+                            </div>
                         </div>
-                        <div className='form-position'>
-                            <span className='toolip'>{t('flight.whitherto')}</span>
-                            <Autocomplete
-                                freeSolo
-                                id="free-solo-2-demo"
-                                disableClearable
-                                value={finishPosition}
-                                onChange={(e,newValue)=>setFinishPosition(newValue)}
-                                options={searchFinishPosition.map((option) => option.title)}
-                                renderInput={(params) => (
-                                <TextField
-                                    onChange={(e)=>setFinishPosition(e.target.value)}
-                                    {...params}
-                                    label="куди"
-                                    InputProps={{
-                                    ...params.InputProps,
-                                    type: 'search',
-                                    }}
-                                />)}
-                            />
-                        </div>
-                    </div>
-                    <div className='form-block-date'>
-                        <div className='form-date'>
-                            <span>{t('flight.departure')}</span>
-                            <input type="date" value={startDate} onChange={(e) => setStartDate(e.target.value)} />
-                        </div>
+                        <div className='form-block-date'>
+                            <div className='form-date'>
+                                {/* <span>{t('flight.departure')}</span> */}
+                                <input type="date" value={startDate} onChange={(e) => setStartDate(e.target.value)} />
+                            </div>
 
-                        <div className='dropdown'>
-                            <div className='dropdown-select'>
-                                <span className='select'>{t('flight.passengers')}</span>
-                                <i className='down-icon icon'><AiOutlineCaretDown /></i>
-                            </div>
-                            <div className='dropdown-list'>
-                                <div className='dropdown-list-item'>
-                                    <div>
-                                        <strong>{t('flight.adults')}</strong>
-                                        <br />
-                                        <span>{t('flight.older_15_years')}</span>
+                            <div className='dropdown'>
+                                <div className='dropdown-select'>
+                                    <span className='select'>{t('flight.passengers')}</span>
+                                    <i className='down-icon icon'><AiOutlineCaretDown /></i>
+                                </div>
+                                <div className='dropdown-list'>
+                                    <div className='dropdown-list-item'>
+                                        <div>
+                                            <strong>{t('flight.adults')}</strong>
+                                            <br />
+                                            <span>{t('flight.older_15_years')}</span>
+                                        </div>
+                                        <div className='count-place'>
+                                            <div className='minus' onClick={() => countOldResult()}>-</div>
+                                            <div className='sum' value={sumOld}>{sumOld}</div>
+                                            <div className='plus' onClick={() => setSumOld(sumOld + 1)}>+</div>
+                                        </div>
                                     </div>
-                                    <div className='count-place'>
-                                        <div className='minus' onClick={() => countOldResult()}>-</div>
-                                        <div className='sum' value={sumOld}>{sumOld}</div>
-                                        <div className='plus' onClick={() => setSumOld(sumOld + 1)}>+</div>
+                                    <div className='dropdown-list-item'>
+                                        <div>
+                                            <strong>{t('flight.children')}</strong>
+                                            <br />
+                                            <span>{t('flight.younger_14_years')}</span>
+                                        </div>
+                                        <div className='count-place'>
+                                            <div className='minus' onClick={() => countYoungResult()}>-</div>
+                                            <div className='sum' value={sumYoung}>{sumYoung}</div>
+                                            <div className='plus' onClick={() => setSumYoung(sumYoung + 1)}>+</div>
+                                        </div>
                                     </div>
                                 </div>
-                                <div className='dropdown-list-item'>
-                                    <div>
-                                        <strong>{t('flight.children')}</strong>
-                                        <br />
-                                        <span>{t('flight.younger_14_years')}</span>
-                                    </div>
-                                    <div className='count-place'>
-                                        <div className='minus' onClick={() => countYoungResult()}>-</div>
-                                        <div className='sum' value={sumYoung}>{sumYoung}</div>
-                                        <div className='plus' onClick={() => setSumYoung(sumYoung + 1)}>+</div>
-                                    </div>
-                                </div>
                             </div>
-                        </div>
-                        <div className='form-search'>
-                            <button onClick={sortFlights}>{t('flight.search')}</button>
+                            <div className='form-search'>
+                                <button onClick={sortFlights}>{t('flight.search')}</button>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </div >
+            </div >
         </Stack>
     )
 }

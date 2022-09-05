@@ -11,24 +11,24 @@ import '../Account/account.css'
 
 const Account = () => {
     const { is_admin, is_login, user, reply } = useSelector(state => state.user);
-    const {SetShowMessgeFalse,SetShowMessgeTrue}=useAction()
+    const { SetShowMessgeFalse, SetShowMessgeTrue } = useAction()
     const { t } = useTranslation()
 
     const [oldPassword, setOldPassword] = useState("");
     const [newPassword, setNewPassword] = useState("");
     const [newPassword2, setNewPassword2] = useState("");
-    const {IsAuthorize, ChangePassword } = useAction();
+    const { IsAuthorize, ChangePassword } = useAction();
     const [isChangePass, setIsChangePass] = useState("false")
 
     const change_password = () => {
         if (newPassword != newPassword2) {
             SetShowMessgeTrue(t("authorize.passwords_do_not_match"));
-            setTimeout(()=>SetShowMessgeFalse(),3000);
+            setTimeout(() => SetShowMessgeFalse(), 3000);
             return;
         }
         if (newPassword.length < 8) {
             SetShowMessgeTrue(t("authorize.password_must_be_longer_than_8_characters"));
-            setTimeout(()=>SetShowMessgeFalse(),3000);
+            setTimeout(() => SetShowMessgeFalse(), 3000);
             return;
         }
         setIsChangePass(true);
