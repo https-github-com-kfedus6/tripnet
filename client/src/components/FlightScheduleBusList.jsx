@@ -57,7 +57,7 @@ const FlightScheduleBusList = ({ flight, is_admin, setScheduleTo, setScheduleWit
                                 </thead>
                                 <tbody>
                                     <tr>
-                                        <td>    
+                                        <td>
                                             <small>{flight.timeFlight.split("//")[language]}</small>
                                             <br />
                                             <strong>{flight.startTime}</strong>

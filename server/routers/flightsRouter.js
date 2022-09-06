@@ -4,7 +4,7 @@ const IsAdminMiddleWare = require("../middleware/IsAdminMiddleWare");
 
 const flightsController = require('../controllers/FlightsController');
 
-router.get('/search',flightsController.search);
+router.get('/search', flightsController.search);
 router.post('/', IsAdminMiddleWare, flightsController.postFlights);
 router.get('/', flightsController.getSortFlights);
 router.get('/:id', flightsController.getFlight);

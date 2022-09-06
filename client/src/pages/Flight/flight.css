@@ -62,7 +62,7 @@
 .block-position-price div:nth-child(2) {
     width: 180px;
     height: 40px;
-    background-color: #00d200;
+    background-color: rgb(245, 73, 4);
     border-radius: 10px;
 }
 

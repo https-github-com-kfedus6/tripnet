@@ -43,7 +43,7 @@ const Flights = ({ isShowFilter }) => {
     }, [limit, page])
 
     useEffect(() => {
-        if(flights!=undefined)setTotalCount(getPageCount(flights.count, limit))
+        if (flights != undefined) setTotalCount(getPageCount(flights.count, limit))
     }, [flights])
 
     let pagesArray = getPagesArray(totalCount)
@@ -114,7 +114,7 @@ const Flights = ({ isShowFilter }) => {
                 startDate={startDate}
                 finishPosition={finishPosition}
             />
-            {totalCount==undefined?<></>:
+            {totalCount == undefined ? <></> :
                 <div className='pagination'>
                     <Stack spacing={6}>
                         <Pagination count={totalCount} page={page} onChange={handleChange} />
@@ -130,7 +130,7 @@ const Flights = ({ isShowFilter }) => {
                 reserveTicket={reserveTicket}
                 countTicket={countTicket}
                 setCountTicket={setCountTicket}
-                maxTicket={flights?.rows.find(x=>x.id==flightId)?.countFreePlace}
+                maxTicket={flights?.rows.find(x => x.id == flightId)?.countFreePlace}
             />
         </div>
     )

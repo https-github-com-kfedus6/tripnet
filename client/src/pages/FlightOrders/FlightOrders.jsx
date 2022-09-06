@@ -23,9 +23,6 @@ const FlightOrders = () => {
     const { getFlightOrder, putFlightOrder, deleteFlightOrder, fetchGetFlight } = useAction()
 
     useEffect(() => {
-        let id = 1
-        fetchGetFlight(id);
-
         getFlightOrder({ page: page, limit: limit })
     }, [page, limit])
 
@@ -41,14 +38,14 @@ const FlightOrders = () => {
         fetchGetFlight(id);
     }
 
-    console.log(flight)
-
     const [countTicket, setCountTicket] = useState(1);
 
     const changeStatusOrderTrue = (id) => {
         let status = true
         putFlightOrder(status, id, page, limit, countTicket)
     }
+
+    console.log(flight)
 
     const changeStatusOrderFalse = (id) => {
         let status = false
@@ -109,7 +106,7 @@ const FlightOrders = () => {
                                                         <span>{flight.finishPosition[language]}</span>
                                                     </div>
                                                     <div>
-                                                        <span>{flight.startData}</span>
+                                                        <span>{flight.startDate}</span>
                                                         <span>{flight.finishDate}</span>
                                                     </div>
                                                     <div>

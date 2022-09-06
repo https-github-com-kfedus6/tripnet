@@ -33,15 +33,15 @@ class FlightOrdersController {
     static SetStatus = async (req, resp, next) => {
         try {
             let { status, id, page, limit, countTicket } = req.body;
-            page=page|1;
-            limit=limit|5;
+            page = page | 1;
+            limit = limit | 5;
             await FlightOrder.update({ status: status, countTicket }, { where: { id } });
-            const response = await FlightOrder.findOne({where:{id}});
+            const response = await FlightOrder.findOne({ where: { id } });
             if (status) {
                 const flight = await Flight.findOne({ where: { id: response.flightId } });
                 const countFreePlace = flight.countFreePlace - countTicket;
                 await Flight.update({ countFreePlace }, { where: { id: flight.id } });
-            }else{
+            } else {
                 const flight = await Flight.findOne({ where: { id: response.flightId } });
                 const countFreePlace = parseInt(flight.countFreePlace) + parseInt(countTicket);
                 await Flight.update({ countFreePlace }, { where: { id: flight.id } });

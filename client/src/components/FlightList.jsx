@@ -10,18 +10,18 @@ const FlightList = ({ flight, is_admin, setScheduleTo, setScheduleWith, status, 
     const { language } = useSelector(state => state.language);
 
     function createMarkup(text) { return { __html: text }; };
-    
+
     const [startPosition, setStartPosition] = useState(flight.startPosition.join("//"));
     const [finishPosition, setFinishPosition] = useState(flight.finishPosition.join("//"));
     const [startDate, setStartDate] = useState(flight.startDate);
     const [finishDate, setFinishDate] = useState(flight.finishDate);
-    const [countFreePlace,setCountFreePlace]=useState(flight.countFreePlace);
-    const [timeFlight,setTimeFlight]=useState(flight.timeFlight);
-    const [price,setPrice]=useState(flight.price)
-    const [startTime,setStartTime]=useState(flight.startTime);
-    const [finishTime,setFinishTime]=useState(flight.finishTime);
-    
-    const {fetchUpdateFlight}=useAction();
+    const [countFreePlace, setCountFreePlace] = useState(flight.countFreePlace);
+    const [timeFlight, setTimeFlight] = useState(flight.timeFlight);
+    const [price, setPrice] = useState(flight.price)
+    const [startTime, setStartTime] = useState(flight.startTime);
+    const [finishTime, setFinishTime] = useState(flight.finishTime);
+
+    const { fetchUpdateFlight } = useAction();
 
     const changeFlight = () => {
         let formData = new FormData();
@@ -39,7 +39,7 @@ const FlightList = ({ flight, is_admin, setScheduleTo, setScheduleWith, status, 
         formData.append('page', 1);
         fetchUpdateFlight(formData);
     }
-    
+
     return (
         <div className='block-flight'>
             <div className='block-position-price'>
@@ -53,10 +53,10 @@ const FlightList = ({ flight, is_admin, setScheduleTo, setScheduleWith, status, 
                 </div>
             </div>
             <div className='block-comfort'>
-                {flight.image==null?<></>:
-                <div className='flight-image'>
-                    <img src={process.env.REACT_APP_API_URL + flight.image} alt={flight.finishPosition} />
-                </div>}
+                {flight.image == null ? <></> :
+                    <div className='flight-image'>
+                        <img src={process.env.REACT_APP_API_URL + flight.image} alt={flight.finishPosition} />
+                    </div>}
                 <div className='items-comfort'>
                     {flight.params.map(img => {
                         return (
@@ -66,11 +66,11 @@ const FlightList = ({ flight, is_admin, setScheduleTo, setScheduleWith, status, 
                                     <span>Wi-Fi</span>
                                 </div>
                                 <div className={img.isMultimedia ? '' : 'image-status'}>
-                                    <img src={process.env.REACT_APP_API_URL + "IsMultimedia.png"}/>
+                                    <img src={process.env.REACT_APP_API_URL + "IsMultimedia.png"} />
                                     <span>{t("flight.multimedia")}</span>
                                 </div>
                                 <div className={img.isWC ? '' : 'image-status'}>
-                                    <img src={process.env.REACT_APP_API_URL + "isWC.png"}/>
+                                    <img src={process.env.REACT_APP_API_URL + "isWC.png"} />
                                     <span>wc</span>
                                 </div>
                                 <div className={img.is220V ? '' : 'image-status'}>
@@ -78,7 +78,7 @@ const FlightList = ({ flight, is_admin, setScheduleTo, setScheduleWith, status, 
                                     <span>220v</span>
                                 </div>
                                 <div className={img.isAirConditioning ? '' : 'image-status'}>
-                                    <img src={process.env.REACT_APP_API_URL + "IsAirConditioning.png"}/>
+                                    <img src={process.env.REACT_APP_API_URL + "IsAirConditioning.png"} />
                                     <span>{t("flight.air_conditioning")}</span>
                                 </div>
                             </div>
@@ -103,27 +103,6 @@ const FlightList = ({ flight, is_admin, setScheduleTo, setScheduleWith, status, 
                 <h2>{t("flight.info_for_flight")} {flight.startPosition[language]} - {flight.finishPosition[language]}:</h2>
                 <p dangerouslySetInnerHTML={createMarkup(flight.description[language])}></p>
             </div>
-            {is_admin?
-                <div>
-                    <div className='item-time'>
-                        <span><input type='text' value={timeFlight} onChange={(e) => setTimeFlight(e.target.value)}></input></span>
-                        <span><input type="number" value={countFreePlace} onChange={e=>setCountFreePlace(e.target.value)}/></span>
-                    </div>
-                    <div className='item-date'>
-                        <span><input type='text' value={startDate} onChange={(e) => setStartDate(e.target.value)}></input></span>
-                        <span><input type='text' value={finishDate} onChange={(e) => setFinishDate(e.target.value)}></input></span>
-                    </div>
-                    <div className='item-position'>
-                        <span><input type='text' value={startPosition} onChange={(e) => setStartPosition(e.target.value)}></input></span>
-                        <span><input type='text' value={finishPosition} onChange={(e) => setFinishPosition(e.target.value)}></input></span>
-                    </div>
-                    <div className='item-time'>
-                        <span><input type='number' value={price} onChange={(e) => setPrice(e.target.value)}></input></span>
-                        <span><input type="text" value={startTime} onChange={e=>setStartTime(e.target.value)}/></span>
-                        <span><input type="text" value={finishTime} onChange={e=>setFinishTime(e.target.value)}/></span>
-                    </div>
-                    <button onClick={changeFlight}>set</button>
-                </div>:<></>}
         </div >
     )
 }
