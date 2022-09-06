@@ -26,14 +26,14 @@ const FlightsEdit = () => {
     const [isMultimedia, setIsMultimedia] = useState(false);
     const [isAirConditioning, setIsAirConditioning] = useState(false);
     const [map, setMap] = useState("");
-
+    console.log(image)
 
     return (
         <div className='admin-panel-flight'>
             <div className='admin-block-flight'>
                 <p>Фотографія рейсу(не обовязково)</p>
                 <div>
-                    <input type="file" id="visitorphoto" name="visitorPhoto" accept="image/*" capture onChange={e => setImage(e.target.files?.[0])} />
+                    <input type={"file"} id="visitorphoto" name="visitorPhoto" accept="image/*" capture onChange={e => {setImage(e.target.files?.[0]);console.log(e.target)}} />
                 </div>
                 <div>
                     <p>Дата відправлення:</p>

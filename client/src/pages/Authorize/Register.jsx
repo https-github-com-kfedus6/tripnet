@@ -54,7 +54,7 @@ const Register = ({ close }) => {
             setTimeout(()=>SetShowMessgeFalse(),3000);
             return;
         }
-        const regTelephone = /(^\++\d{11}$)|(^\d{9})$/;
+        const regTelephone = /(^\++\d{11}$)|(^\d{10})$/;
         if (!regTelephone.test(numberPhone)) {
             SetShowMessgeTrue(t("authorize.invalid_telephone"));
             setTimeout(()=>SetShowMessgeFalse(),3000);

@@ -17,10 +17,9 @@ class FlightsController {
             const description = [descriptionUA, descriptionRU].join("/*/");
             let image = req.files;
             let flight;
-            if (image != null) {
-                console.log(1)
+            if (image != null&&image!=undefined) {
                 const nameImg = uuid.v4() + ".jpg";
-                image.mv(path.resolve(__dirname, '..', 'static', nameImg));
+                image.image.mv(path.resolve(__dirname, '..', 'static', nameImg));
 
                 flight = await Flight.create({
                     price: price,

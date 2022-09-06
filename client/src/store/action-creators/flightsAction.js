@@ -68,6 +68,7 @@ export const AddFlight = (image, price, startPositionUA, startPositionRU, finish
     map) => async (dispatch) => {
         try {
             let formData = new FormData();
+            console.log(image)
             if (image != undefined) await formData.append("image", image);
             await formData.append("price", price);
             await formData.append("startPositionUA", startPositionUA);
@@ -100,8 +101,8 @@ export const AddFlight = (image, price, startPositionUA, startPositionRU, finish
                 console.log(resp);
             }
         } catch (err) {
-            alert("error");
-            console.log("error");
+            dispatch({ type: messageActionTypes.SET_SHOW_TRUE, payload: "error" });
+            setTimeout(() => dispatch({ type: messageActionTypes.SET_SHOW_FALSE }), 3000);
         }
     }
 

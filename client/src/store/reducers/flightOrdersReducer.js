@@ -6,14 +6,11 @@ export const flightOrdersActionTypes = {
 }
 
 const initialState = {
-    flightOrders: []
+    flightOrders: {rows:[],count:0}
 }
 
 export const flightOrdersReducer = (state = initialState, action) => {
-    switch (action.type) {
-        case flightOrdersActionTypes.FETCH_POST_ORDER: {
-            return { ...state, flightOrders: action.payload }
-        }
+    switch (action.type){
         case flightOrdersActionTypes.FETCH_GET_ORDER: {
             return { ...state, flightOrders: action.payload }
         }

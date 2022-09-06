@@ -52,11 +52,11 @@ const FlightsFormSort = ({ startDate, startPosition, finishPosition, setStartDat
 
     useEffect(() => {
         SearchCity(startPosition, language, true);
-    }, [startPosition])
+    }, [startPosition,language])
 
     useEffect(() => {
         SearchCity(finishPosition, language, false);
-    }, [finishPosition])
+    }, [finishPosition,language])
 
 
     return (
