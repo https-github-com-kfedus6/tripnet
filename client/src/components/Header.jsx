@@ -28,19 +28,19 @@ const Header = () => {
                     <li className="dropdown-header">
                         {is_admin ?
                             <>
-                                <a className="dropdown-toggle-header" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <a className="dropdown-toggle-header" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                     Admin
                                 </a>
-                                <ul className="dropdown-menu-header">
-                                    <li><NavLink className="dropdown-item-header" to="/infoCompanyEdit">Добавити інформацію про компанію</NavLink></li>
-                                    <li><NavLink className="dropdown-item-header" to="/aboutUsEdit">Добавити про нас</NavLink></li>
-                                    <li><NavLink className="dropdown-item-header" to="/blogEdit">Добавити блог</NavLink></li>
-                                    <li><NavLink className="dropdown-item-header" to="/faqEdit">Добавити FAQ</NavLink></li>
-                                    <li><NavLink className="dropdown-item-header" to="/flightsEdit">Добавити рейс</NavLink></li>
-                                    <li><NavLink className="dropdown-item-header" to="/novetlyEdit">Добавити країни на головну сторіку</NavLink></li>
-                                    <li><NavLink className="dropdown-item-header" to="/responseEdit">Добавити відгук</NavLink></li>
-                                    <li><NavLink className="dropdown-item-header" to="/order">Бронювання клієнтів</NavLink></li>
-                                </ul>
+                                <div className="dropdown-menu-header">
+                                    <p><NavLink className="dropdown-item-header" to="/infoCompanyEdit">{t('admin.infoCompany')}</NavLink></p>
+                                    <p><NavLink className="dropdown-item-header" to="/aboutUsEdit">{t('admin.aboutUs')}</NavLink></p>
+                                    <p><NavLink className="dropdown-item-header" to="/blogEdit">{t('admin.blog')}</NavLink></p>
+                                    <p><NavLink className="dropdown-item-header" to="/faqEdit">{t('admin.faq')}</NavLink></p>
+                                    <p><NavLink className="dropdown-item-header" to="/flightsEdit">{t('admin.flight')}</NavLink></p>
+                                    <p><NavLink className="dropdown-item-header" to="/novetlyEdit">{t('admin.novetly')}</NavLink></p>
+                                    <p><NavLink className="dropdown-item-header" to="/responseEdit">{t('admin.response')}</NavLink></p>
+                                    <p><NavLink className="dropdown-item-header" to="/order">{t('admin.order')}</NavLink></p>
+                                </div>
                             </>
                             :
                             <></>

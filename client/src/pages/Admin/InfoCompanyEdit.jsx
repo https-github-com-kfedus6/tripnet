@@ -1,9 +1,8 @@
-import { useSelect } from '@mui/base'
-import React from 'react'
-import { useEffect } from 'react';
-import { useState } from 'react';
+import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux';
 import { useAction } from '../../hooks/useAction';
+
+import '../Admin/admin.css'
 
 const InfoCompanyEdit = () => {
     const { infoCompany } = useSelector(state => state.infoCompany);
@@ -27,24 +26,42 @@ const InfoCompanyEdit = () => {
         }
     }, [infoCompany])
     return (
-        <div>
-            <p>назва</p>
-            <input value={name} onChange={(e) => setName(e.target.value)} />
-            <p>email</p>
-            <input value={email} onChange={(e) => setEmail(e.target.value)} />
-            <p>адреса українською</p>
-            <input value={addressUA} onChange={(e) => setAddressUA(e.target.value)} />
-            <p>адреса російською</p>
-            <input value={addressRU} onChange={(e) => setAddressRU(e.target.value)} />
-            <p>телефон</p>
-            <input value={telephone} onChange={(e) => setTelephone(e.target.value)} />
-            <p>години робити українською</p>
-            <input value={openingHoursUA} onChange={(e) => setOpeningHoursUA(e.target.value)} />
-            <p>години робити російською</p>
-            <input value={openingHoursRU} onChange={(e) => setOpeningHoursRU(e.target.value)} />
-            <br />
-            <button onClick={() => SetInfoCompany(name, email, telephone, addressUA,
-                addressRU, openingHoursUA, openingHoursRU)}>set</button>
+        <div className='admin-panel-info-company'>
+            <div className='admin-panel-block'>
+                <div>
+                    <p>Назва</p>
+                    <input value={name} onChange={(e) => setName(e.target.value)} />
+                </div>
+                <div>
+                    <p>Емейл</p>
+                    <input value={email} onChange={(e) => setEmail(e.target.value)} />
+                </div>
+                <div>
+                    <p>Адреса українською</p>
+                    <input value={addressUA} onChange={(e) => setAddressUA(e.target.value)} />
+                </div>
+                <div>
+                    <p>Адреса російською</p>
+                    <input value={addressRU} onChange={(e) => setAddressRU(e.target.value)} />
+                </div>
+                <div>
+                    <p>Телефон</p>
+                    <input value={telephone} onChange={(e) => setTelephone(e.target.value)} />
+                </div>
+                <div>
+                    <p>Години робити українською</p>
+                    <input value={openingHoursUA} onChange={(e) => setOpeningHoursUA(e.target.value)} />
+                </div>
+                <div>
+                    <p>Години робити російською</p>
+                    <input value={openingHoursRU} onChange={(e) => setOpeningHoursRU(e.target.value)} />
+                </div>
+                <br />
+                <div>
+                    <button onClick={() => SetInfoCompany(name, email, telephone, addressUA,
+                        addressRU, openingHoursUA, openingHoursRU)}>Добавити</button>
+                </div>
+            </div>
         </div>
     )
 }

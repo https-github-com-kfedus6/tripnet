@@ -10,22 +10,33 @@ const FAQEdit = () => {
     const [ru, setRu] = useState("");
     const { AddFAQ } = useAction();
     return (
-        <div>
-            <h1>
-                українська версія
-            </h1>
-            <input onChange={e => setNameUa(e.target.value)} value={nameUa} />
-            <Editor value={ua}
-                apiKey="t6okxmezjfhajn8bk23u3dkejv0oc9c1qhs7gmmh9qskcfdp"
-                onEditorChange={(newText) => setUa(newText)}
-            />
-            <h1>російська версія</h1>
-            <input onChange={e => setNameRu(e.target.value)} value={nameRu} />
-            <Editor value={ru}
-                apiKey="t6okxmezjfhajn8bk23u3dkejv0oc9c1qhs7gmmh9qskcfdp"
-                onEditorChange={(newText) => setRu(newText)}
-            />
-            <button onClick={() => AddFAQ(ua, ru, nameUa, nameRu)}>add</button>
+        <div className='admin-panel-faq'>
+            <div className='admin-block-faq'>
+                <h1>
+                    Українська версія
+                </h1>
+                <div className='admin-faq-input'>
+                    <p>Назва</p>
+                    <input onChange={e => setNameUa(e.target.value)} value={nameUa} />
+                </div>
+                <br />
+                <Editor value={ua}
+                    apiKey="t6okxmezjfhajn8bk23u3dkejv0oc9c1qhs7gmmh9qskcfdp"
+                    onEditorChange={(newText) => setUa(newText)}
+                />
+                <h1>Російська версія</h1>
+                <div className='admin-faq-input'>
+                    <p>Назва</p>
+                    <input onChange={e => setNameRu(e.target.value)} value={nameRu} />
+                </div>
+                <br />
+                <Editor value={ru}
+                    apiKey="t6okxmezjfhajn8bk23u3dkejv0oc9c1qhs7gmmh9qskcfdp"
+                    onEditorChange={(newText) => setRu(newText)}
+                />
+                <br />
+                <button onClick={() => AddFAQ(ua, ru, nameUa, nameRu)}>Добавити</button>
+            </div>
         </div>
     )
 }

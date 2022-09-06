@@ -29,57 +29,86 @@ const FlightsEdit = () => {
 
 
     return (
-        <div>
-            <div className='flight__edit'>
-                <p>фотографія рейсу(не обовязково)</p>
-                <div className='blog__edit__set__photo'>
+        <div className='admin-panel-flight'>
+            <div className='admin-block-flight'>
+                <p>Фотографія рейсу(не обовязково)</p>
+                <div>
                     <input type="file" id="visitorphoto" name="visitorPhoto" accept="image/*" capture onChange={e => setImage(e.target.files?.[0])} />
                 </div>
-                <p>дата відправлення:</p>
-                <input type={"date"} value={startDate} onChange={(e) => setStartDate(e.target.value)} />
-                <p>дата прибуття:</p>
-                <input type={"date"} value={finishDate} onChange={(e) => setFinishDate(e.target.value)} />
-                <p>ціна квитка в грн</p>
-                <input value={price} type={"number"} onChange={e => setPrice(e.target.value)} />
-                <p>місто виїзду укр:</p>
-                <input value={startPositionUA} onChange={e => SetStartPositionUA(e.target.value)} />
-                <p>місто приїзду укр:</p>
-                <input value={finishPositionUA} onChange={(e) => SetFinishPositionUA(e.target.value)} />
-                <p>місто виїзду рос:</p>
-                <input value={startPositionRU} onChange={e => SetStartPositionRU(e.target.value)} />
-                <p>місто приїзду рос:</p>
-                <input value={finishPositionRU} onChange={(e) => SetFinishPositionRU(e.target.value)} />
-                <p>година виїзду:</p>
-                <input type={"time"} value={startTime} onChange={(e) => setStartTime(e.target.value)} />
-                <p>година приїзду</p>
-                <input type={"time"} value={finishTime} onChange={(e) => setFinishTime(e.target.value)} />
-                <p>кількість вільних місць:</p>
-                <input type={"number"} min={1} onChange={e => setCountFreePlace(e.target.value)} value={countFreePlace} />
-                <p>тривалість рейсу укр</p>
-                <input value={timeFlightUA} onChange={e => setTimeFlightUA(e.target.value)} />
-                <p>тривалість рейсу рос</p>
-                <input value={timeFlightRU} onChange={e => setTimeFlightRU(e.target.value)} />
-                <p>wifi:<input onChange={() => setIsWifi(!isWifi)} type={"checkbox"} /></p>
-                <p>туалет:<input onChange={() => setIsWC(!isWC)} type={"checkbox"} /></p>
-                <p>розетка:<input onChange={() => setIs200V(!is220V)} type={"checkbox"} /></p>
-                <p>мультимедія:<input onChange={() => setIsMultimedia(!isMultimedia)} type={"checkbox"} /></p>
-                <p>кондиціонер:<input onChange={() => setIsAirConditioning(!isAirConditioning)} type={"checkbox"} /></p>
-                <p>опис укр</p>
+                <div>
+                    <p>Дата відправлення:</p>
+                    <input type={"date"} value={startDate} onChange={(e) => setStartDate(e.target.value)} />
+                </div>
+                <div>
+                    <p>Дата прибуття:</p>
+                    <input type={"date"} value={finishDate} onChange={(e) => setFinishDate(e.target.value)} />
+                </div>
+                <div>
+                    <p>Ціна квитка в грн</p>
+                    <input value={price} type={"number"} onChange={e => setPrice(e.target.value)} />
+                </div>
+                <div>
+                    <p>Місто виїзду укр:</p>
+                    <input value={startPositionUA} onChange={e => SetStartPositionUA(e.target.value)} />
+                </div>
+                <div>
+                    <p>Місто приїзду укр:</p>
+                    <input value={finishPositionUA} onChange={(e) => SetFinishPositionUA(e.target.value)} />
+                </div>
+                <div>
+                    <p>Місто виїзду рос:</p>
+                    <input value={startPositionRU} onChange={e => SetStartPositionRU(e.target.value)} />
+                </div>
+                <div>
+                    <p>Місто приїзду рос:</p>
+                    <input value={finishPositionRU} onChange={(e) => SetFinishPositionRU(e.target.value)} />
+                </div>
+                <div>
+                    <p>Година виїзду:</p>
+                    <input type={"time"} value={startTime} onChange={(e) => setStartTime(e.target.value)} />
+                </div>
+                <div>
+                    <p>Година приїзду</p>
+                    <input type={"time"} value={finishTime} onChange={(e) => setFinishTime(e.target.value)} />
+                </div>
+                <div>
+                    <p>Кількість вільних місць:</p>
+                    <input type={"number"} min={1} onChange={e => setCountFreePlace(e.target.value)} value={countFreePlace} />
+                </div>
+                <div>
+                    <p>Тривалість рейсу укр</p>
+                    <input value={timeFlightUA} onChange={e => setTimeFlightUA(e.target.value)} />
+                </div>
+                <div>
+                    <p>Тривалість рейсу рос</p>
+                    <input value={timeFlightRU} onChange={e => setTimeFlightRU(e.target.value)} />
+                </div>
+                <p>Wi-Fi:<input onChange={() => setIsWifi(!isWifi)} type={"checkbox"} /></p>
+                <p>Туалет:<input onChange={() => setIsWC(!isWC)} type={"checkbox"} /></p>
+                <p>Розетка:<input onChange={() => setIs200V(!is220V)} type={"checkbox"} /></p>
+                <p>Мультимедія:<input onChange={() => setIsMultimedia(!isMultimedia)} type={"checkbox"} /></p>
+                <p>Кондиціонер:<input onChange={() => setIsAirConditioning(!isAirConditioning)} type={"checkbox"} /></p>
+                <p>Опис українською</p>
                 <Editor value={descriptionUa}
                     apiKey="t6okxmezjfhajn8bk23u3dkejv0oc9c1qhs7gmmh9qskcfdp"
                     onEditorChange={(newText) => setDescriptionUa(newText)}
                 />
-                <p>опис рос</p>
+                <p>Опис россійською</p>
                 <Editor value={descriptionRu}
                     apiKey="t6okxmezjfhajn8bk23u3dkejv0oc9c1qhs7gmmh9qskcfdp"
                     onEditorChange={(newText) => setDescriptionRu(newText)}
                 />
-                <p>силка на карту</p>
-                <input value={map} onChange={e => setMap(e.target.value)} />
-                <button onClick={() => AddFlight(image, price, startPositionUA, startPositionRU, finishPositionUA
-                    , finishPositionRU, startDate, finishDate, startTime, finishTime, timeFlightUA, timeFlightRU,
-                    countFreePlace, isWifi, isWC, is220V, isMultimedia, isAirConditioning,
-                    descriptionUa, descriptionRu, map)}>add</button>
+                <div>
+                    <p>Силка на карту</p>
+                    <input value={map} onChange={e => setMap(e.target.value)} />
+                </div>
+                <br />
+                <div>
+                    <button onClick={() => AddFlight(image, price, startPositionUA, startPositionRU, finishPositionUA
+                        , finishPositionRU, startDate, finishDate, startTime, finishTime, timeFlightUA, timeFlightRU,
+                        countFreePlace, isWifi, isWC, is220V, isMultimedia, isAirConditioning,
+                        descriptionUa, descriptionRu, map)}>Добавити</button>
+                </div>
             </div>
         </div>
     )

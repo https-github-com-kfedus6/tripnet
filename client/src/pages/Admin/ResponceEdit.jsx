@@ -7,12 +7,15 @@ const ResponceEdit = () => {
     const [description, setDescription] = useState("");
     const { AddResponce } = useAction();
     return (
-        <div>
-            <p>імя автор письма</p>
-            <input value={nameAuthor} onChange={(e) => setNameAuthor(e.target.value)} />
-            <p>опис</p>
-            <textarea value={description} onChange={(e) => setDescription(e.target.value)}></textarea>
-            <button onClick={() => AddResponce(nameAuthor, description)}>add</button>
+        <div className='admin-panel-response'>
+            <div className='admin-block-response'>
+                <p>Імя автор письма</p>
+                <input value={nameAuthor} onChange={(e) => setNameAuthor(e.target.value)} />
+                <p>Опис</p>
+                <textarea value={description} onChange={(e) => setDescription(e.target.value)}></textarea>
+                <br />
+                <button onClick={() => AddResponce(nameAuthor, description)}>Добавити</button>
+            </div>
         </div>
     )
 }

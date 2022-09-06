@@ -157,7 +157,6 @@ class FlightsController {
             flight.description = flight.description.split("/*/");
             flight.schefule[0].sunday = flight.schefule[0].sunday.split("//");
             let status = await ScheduleBusStatus.findAll({ where: { scheduleBusId: flight.schefule[0].id } });
-            console.log(flight)
             return res.json({ status: 200, res: { flight, status } });
         } catch (err) {
             return next(ErrorApi.badRequest(err));

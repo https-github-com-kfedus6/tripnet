@@ -23,6 +23,9 @@ const FlightOrders = () => {
     const { getFlightOrder, putFlightOrder, deleteFlightOrder, fetchGetFlight } = useAction()
 
     useEffect(() => {
+        let id = 1
+        fetchGetFlight(id);
+
         getFlightOrder({ page: page, limit: limit })
     }, [page, limit])
 
@@ -38,7 +41,9 @@ const FlightOrders = () => {
         fetchGetFlight(id);
     }
 
-    const [countTicket,setCountTicket]=useState(1);
+    console.log(flight)
+
+    const [countTicket, setCountTicket] = useState(1);
 
     const changeStatusOrderTrue = (id) => {
         let status = true
@@ -78,11 +83,10 @@ const FlightOrders = () => {
                             if (status === null) {
                                 status = t('order.status')
                             }
-                            
                             return (
                                 <div key={item.id} className="accordion-item-order">
                                     <div className='accordion-header-order'>
-                                        <button className='accordion-order-btn' onClick={() =>{toggle(i, item.flightId);setCountTicket(item.countTicket)}} aria-expanded={isActive === i ? "true" : "false"}>
+                                        <button className='accordion-order-btn' onClick={() => { toggle(i, item.flightId); setCountTicket(item.countTicket) }} aria-expanded={isActive === i ? "true" : "false"}>
                                             <span className="accordion-title-order">{dateDay}.{date[1]}.{date[0]} {time}</span>
                                             <span className="accordion-title-order">{item.authorName}</span>
                                             <span className="accordion-title-order">{item.phone}</span>
@@ -114,15 +118,15 @@ const FlightOrders = () => {
                                                     </div>
                                                 </div>
                                                 <div className='order-flight-ticket'>
-                                                    <span><b>{t('order.ticket')}:</b> <input value={countTicket} onChange={(e)=>setCountTicket(e.target.value)} type={"number"}/></span>
+                                                    <span><b>{t('order.ticket')}:</b> <input value={countTicket} onChange={(e) => setCountTicket(e.target.value)} type={"number"} /></span>
                                                     <span><b>{t('order.ticket_remained')}:</b>{flight.countFreePlace}</span>
                                                     <span><b>{t('order.price')}:</b> {flight.price}.00 UAH</span>
                                                     <span><b>{t('order.allPrice')}:</b> {+flight.price * +item.countTicket}.00 UAH</span>
                                                 </div>
                                                 <div className='order-status-btn'>
                                                     <div>
-                                                        <button onClick={() =>{if(item.status==null||item.status==false)changeStatusOrderTrue(item.id)}}>{t('order.check')}</button>
-                                                        <button onClick={() =>{if(item.status==null||item.status==true)changeStatusOrderFalse(item.id)}}>{t('order.close')}</button>
+                                                        <button onClick={() => { if (item.status == null || item.status == false) changeStatusOrderTrue(item.id) }}>{t('order.check')}</button>
+                                                        <button onClick={() => { if (item.status == null || item.status == true) changeStatusOrderFalse(item.id) }}>{t('order.close')}</button>
                                                     </div>
                                                     <div>
                                                         <button onClick={() => deleteOrder(item.id)}><AiFillDelete /></button>

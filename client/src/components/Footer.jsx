@@ -1,25 +1,21 @@
-import { t } from 'i18next'
-import React from 'react'
-import { useEffect } from 'react';
+import React, { useEffect } from 'react'
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom'
 import { useAction } from '../hooks/useAction';
 import { BsInstagram } from 'react-icons/bs'
+import { useTranslation } from 'react-i18next';
 
 const Footer = () => {
+    const { t } = useTranslation()
     const navigate = useNavigate();
     const { infoCompany } = useSelector(state => state.infoCompany);
-    const { blogNovetly } = useSelector(state => state.blog);
     const { language } = useSelector(state => state.language);
-    const { GetInfoCompany, GetBlogNovetly, GetFAQNovetly } = useAction();
-    const { FAQNovetly } = useSelector(state => state.FAQ);
+    const { GetInfoCompany } = useAction();
 
     useEffect(() => {
         if (infoCompany == undefined) {
             GetInfoCompany();
         }
-        GetBlogNovetly(5);
-        if (FAQNovetly == undefined) GetFAQNovetly(5)
     }, [])
 
     return (
@@ -28,13 +24,13 @@ const Footer = () => {
                 <div className='footer-block'>
                     <div className='footer-logo'>
                         <img src={process.env.REACT_APP_API_URL + 'logo.png'} alt="logo" />
-                        <span>Всі права захищені.</span>
+                        <span>{t('footer.protected')}.</span>
                     </div>
                     <div className='footer-link'>
-                        <p onClick={() => navigate('/flightsCategory')}>Категорія рейсів</p>
-                        <p onClick={() => navigate('/blog')}>Блог</p>
-                        <p onClick={() => navigate('/FAQ')}>Питання та відповіді</p>
-                        <p onClick={() => navigate('/aboutUs')}>Про нас</p>
+                        <p onClick={() => navigate('/flightsCategory')}>{t('header.third_link')}</p>
+                        <p onClick={() => navigate('/blog')}>{t("header.five_link")}</p>
+                        <p onClick={() => navigate('/FAQ')}>{t("FAQ.questions_and_answers")}</p>
+                        <p onClick={() => navigate('/aboutUs')}>{t('header.fourth_link')}</p>
                     </div>
                     <div className='footer-info'>
                         <p>{infoCompany.name}</p>
@@ -44,7 +40,7 @@ const Footer = () => {
                         <p>{infoCompany.openingHours}</p>
                     </div>
                     <div className='footer-instagram'>
-                        <p>Ми у соц. мережах</p>
+                        <p>{t('footer.social')}</p>
                         <div>
                             <a href='https://www.instagram.com/tripnet.com.ua/'><BsInstagram /></a>
                         </div>

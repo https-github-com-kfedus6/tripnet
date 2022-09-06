@@ -33,13 +33,16 @@ main {
     display: flex;
     flex-direction: column;
     border-radius: 10px;
+    width: 300px;
     border: 1px solid silver;
     background-color: #fff;
     position: absolute;
+    top: 25px;
     opacity: 0;
     visibility: hidden;
     transition: opacity 0.2s linear, visibility 0.2s linear;
     z-index: 100;
+    padding: 5px 10px;
 }
 
 .dropdown-menu-header a {
@@ -51,7 +54,6 @@ main {
     visibility: visible;
     background-color: rgb(255, 255, 255);
 }
-
 
 @media screen and (min-width: 1024px) {
     .logo {
