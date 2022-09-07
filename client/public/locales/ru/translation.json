@@ -78,7 +78,11 @@
         "new_password": "Новый пароль",
         "change_password": "Поменять пароль",
         "exit": "Выйти",
-        "password_changed": "Пароль изменен"
+        "password_changed": "Пароль изменен",
+        "history_order":"История заказов",
+        "in_processing":"В обработке",
+        "count_tiket":"Количество билетов",
+        "price":"Цена"
     },
     "footer": {
         "protected": "Все права защищены",

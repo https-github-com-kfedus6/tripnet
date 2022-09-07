@@ -18,14 +18,12 @@ const Account = () => {
     const { language } = useSelector(state => state.language)
 
     const [isActive, setIsActive] = useState(null)
+    useEffect(()=>{
 
+    },[])
     useEffect(() => {
         getUserHistory();
     }, [])
-
-    useEffect(() => {
-        console.log(userHistoty);
-    }, [userHistoty]);
 
     const { SetShowMessgeFalse, SetShowMessgeTrue, getUserHistory, fetchGetFlight } = useAction()
     const { t } = useTranslation()
@@ -77,7 +75,7 @@ const Account = () => {
         setIsActive(i);
         fetchGetFlight(id);
     }
-
+    console.log(flight)
     return (
         <div className='container-user'>
             <div className='block-user'>
@@ -88,7 +86,7 @@ const Account = () => {
                 </div>
                 <div className='block-user-info'>
                     <div>
-                        <span>Емейл</span>
+                        <span>email</span>
                         <span>{user.email}</span>
                     </div>
                     <div>
@@ -100,7 +98,7 @@ const Account = () => {
                     <div className='block-history'>
                         <details>
                             <summary>
-                                Історія замовлень
+                                {t("account.history_order")}
                             </summary>
                             <div className='account-container'>
                                 <div className="container-account">
@@ -116,10 +114,11 @@ const Account = () => {
                                                             {item.phone}
                                                         </span>
                                                         <span className="accordion-title-account">
-                                                            {item.status === null ? <span className='account-processing'>В обробці</span> : item.status ? <span className='account-check'><BsCheckLg /></span> : <span className='account-close'><IoClose /></span>}
+                                                            {item.status === null ? <span className='account-processing'>{t("account.in_processing")}</span> : item.status ? <span className='account-check'><BsCheckLg /></span> : <span className='account-close'><IoClose /></span>}
                                                         </span>
-                                                    </button>
+                                                    </button>{(Array.isArray(flight))?<></>:
                                                     <div className={isActive === i ? 'accordion-content-account show' : 'accordion-content-account'}>
+                                                    
                                                         <div>
                                                             <span>{flight.startPosition[language]}</span>
                                                             <span>{flight.finishPosition[language]}</span>
@@ -133,10 +132,10 @@ const Account = () => {
                                                             <span>{flight.finishTime}</span>
                                                         </div>
                                                         <div className='account-price-place'>
-                                                            <span><strong>Кількість білетів:</strong> {item.countTicket}</span>
-                                                            <span><strong>Ціна:</strong> {+flight.price * +item.countTicket}</span>
+                                                            <span><strong>{t("account.count_tiket")}:</strong> {item.countTicket}</span>
+                                                            <span><strong>{t("account.price")}:</strong> {+flight.price * +item.countTicket}</span>
                                                         </div>
-                                                    </div>
+                                                    </div>}
                                                 </div>
                                             )
                                         })}

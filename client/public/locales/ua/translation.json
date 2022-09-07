@@ -81,7 +81,11 @@
         "new_password": "Новий пароль",
         "change_password": "Поміняти пароль",
         "exit": "Вийти",
-        "password_changed": "Пароль поміняний"
+        "password_changed": "Пароль поміняний",
+        "history_order":"Історія замовлень",
+        "in_processing":"В обробці",
+        "count_tiket":"Кількість білетів",
+        "price":"Ціна"
     },
     "lang": {
         "uk": "Українська",
