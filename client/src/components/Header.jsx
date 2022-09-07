@@ -55,7 +55,9 @@ const Header = () => {
                     <li className='lang-li'><SetLanguage /></li>
                 </ul>
             </div>
-            <Burger setIsShowRegister={setIsShow} />
+            <div className='header__burger'>
+                <Burger setIsShowRegister={setIsShow} />
+            </div>
             <Authorize isShow={isShow} setIsShow={setIsShow} />
         </div >
     )

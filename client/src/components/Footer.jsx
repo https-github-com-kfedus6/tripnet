@@ -37,7 +37,7 @@ const Footer = () => {
                         <p>{infoCompany.email}</p>
                         <p>{infoCompany.telephone}</p>
                         <p>{infoCompany.address[language]}</p>
-                        <p>{infoCompany.openingHours}</p>
+                        <p>{infoCompany.openingHours[language]}</p>
                     </div>
                     <div className='footer-instagram'>
                         <p>{t('footer.social')}</p>

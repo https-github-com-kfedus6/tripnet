@@ -83,18 +83,17 @@ class FlightsController {
             if (page === undefined) {
                 page = 1
             }
-
+            console.log(req.query);
             let offset = page * limit - limit
             let arrFlights = {};// = { count: 0, rows: [] }
+            console.log("sd1");
             if (!startPosition && !finishPosition && !startDate) {
-
                 arrFlights = await Flight.findAndCountAll({
-                    limit: Number(limit), offset: Number(offset),
-                    where: { countFreePlace: { [Op.gte]: countFreePlace } }
+                    where: { countFreePlace: { [Op.gte]: countFreePlace }},
+                    limit: Number(limit), offset: Number(offset)
                 })
 
             } else if (startPosition && !finishPosition && !startDate) {
-                console.log(3);
                 const regStartPosition = `(^${startPosition})|(\/\/${startPosition}$)`;
                 arrFlights = await Flight.findAndCountAll({ where: { startPosition: { [Op.regexp]: regStartPosition }, countFreePlace: { [Op.gte]: countFreePlace } }, limit: Number(limit), offset: Number(offset), })
                 console.log(arrFlights)
@@ -136,6 +135,7 @@ class FlightsController {
                     limit: Number(limit), offset: Number(offset)
                 })
             }
+            console.log("sd");
             for (let i = 0; i < arrFlights.rows.length; i++) {
                 arrFlights.rows[i].startPosition = arrFlights.rows[i].startPosition.split("//");
                 arrFlights.rows[i].finishPosition = arrFlights.rows[i].finishPosition.split("//");

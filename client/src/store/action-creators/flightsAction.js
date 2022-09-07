@@ -4,13 +4,11 @@ import { messageActionTypes } from '../reducers/messageReducer';
 
 export const fetchGetFlights = (data) => async (dispatch) => {
     try {
-        console.log(data);
         const response = await $host.get('api/flights/', {
             params: {
                 ...data
             }
         });
-        console.log(response);
         if (response.data.status == 200) {
             dispatch({ type: flightActionTypes.FETCH_GET_FLIGHTS, payload: response.data.res })
         } else console.log(response);
@@ -51,6 +49,7 @@ export const fetchUpdateFlight = (formData) => async (dispatch) => {
             alert("успішно виконано");
         } else console.log(response);
     } catch (err) {
+        console.log(err);
         /* if (response.data.status == 200) {
              dispatch({ type: messageActionTypes.SET_SHOW_TRUE, payload: "успішно виконано" });
              setTimeout(() => dispatch({ type: messageActionTypes.SET_SHOW_FALSE }), 3000);
@@ -68,7 +67,6 @@ export const AddFlight = (image, price, startPositionUA, startPositionRU, finish
     map) => async (dispatch) => {
         try {
             let formData = new FormData();
-            console.log(image)
             if (image != undefined) await formData.append("image", image);
             await formData.append("price", price);
             await formData.append("startPositionUA", startPositionUA);
@@ -109,7 +107,6 @@ export const AddFlight = (image, price, startPositionUA, startPositionRU, finish
 export const fetchPutFlightStatus = (sheduleBusId, id, status) => async (dispatch) => {
     try {
         const response = await $authHost.put('api/scheduleBusStatus/status', { sheduleBusId, id, status })
-        console.log(response);
         if (response.data.status == 200) {
             dispatch({ type: messageActionTypes.SET_SHOW_TRUE, payload: "успішно виконано" });
             setTimeout(() => dispatch({ type: messageActionTypes.SET_SHOW_FALSE }), 3000);
@@ -126,7 +123,6 @@ export const fetchPutFlightStatus = (sheduleBusId, id, status) => async (dispatc
 export const fetchPutFlightBusDate = (id, scheduleWith, scheduleTo) => async (dispatch) => {
     try {
         const response = await $authHost.put('api/scheduleBusStatus/', { id, scheduleWith, scheduleTo })
-        console.log(response);
         if (response.data.status == 200) {
             dispatch({ type: flightActionTypes.FETCH_PUT_FLIGHT_SCHEDULE_BUS, payload: response.data.res })
             dispatch({ type: messageActionTypes.SET_SHOW_TRUE, payload: "успішно виконано" });

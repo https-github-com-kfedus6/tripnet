@@ -95,7 +95,7 @@ main {
     .header__burger {
         display: none;
     }
-
+    
     .header__registering {
         display: inline-block;
     }
@@ -176,43 +176,83 @@ main {
 
     .header__burger {
         display: flex;
-        align-items: center;
-        cursor: pointer;
-    }
-    .header__burger div {
-        width: 20%;
     }
     .header__registering {
         display: none;
     }
 }
 .burger__menu {
-    display: flex;
+    display: none;
     flex-direction: column;
-    position: fixed;
     height: 100%;
     width: 80%;
-    top: 55px;
     left: 100%;
     background-color: #fd9400;
     z-index: 50;
-    transition: 1s;
+    transition: 2s;
+    position: fixed;
 }
-.burger__menu.active {
+.burger__menu.actived {
     display: flex;
     position: fixed;
+    flex-direction: column;
     height: 100%;
-    width: 80%;
-    top: 55px;
-    background-color: #e5dcdc;
+    width: 80%; 
+    background-color: white;
     z-index: 50;
-    transition: 1s;
+    transition: 2s;
     left: 20%;
 }
-.burger__menu div {
+.burger__admin__panel{
+    display: flex;
+    align-items: flex-start;
+    justify-content: left;
+}
+.burger__admin__panel div div{
+    margin-top: 10px;
+}
+.burger__admin__panel div div a{
+    color: #000;
+    text-decoration: none;
+    
+}
+.burger__list{
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    margin-top: 20px;
 }
+
+.burger__component a{
+    display: flex;
+    text-decoration: none;
+    color: black;
+    align-items: flex-start;
+    justify-content: flex-start;
+    
+}
+.burger__admin__panel{
+    margin-top: 10px;
+}
+.burger__exit__main{
+    font-size: 60px;
+}
+.burger__menu__list{
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    justify-content: center;
+    align-items: center;
+}
+.burger__component{
+    display: flex;
+    font-size: 16px;
+    height: 50px;
+    align-items: flex-start;
+    justify-content: flex-start;
+
+}
+/*
 .burger__menu div div {
     display: flex;
     font-size: 30px;
@@ -221,16 +261,17 @@ main {
     border-bottom-width: 10px;
     border-bottom-style: solid;
     border-bottom:green;
-}
-.burger__menu div div a {
-    text-decoration: none;
-    color: black;
-}
+}*/
 .burger__set__language{
     height: 10px;
 }
 .params__flight {
     display: flex;
+}
+.burger__exit__main{
+    display: flex;
+    justify-content: right;
+    width: 100%;
 }
 .direction {
     display: flex;
@@ -271,7 +312,6 @@ main {
 
 .authorize__header div {
     display: flex;
-    justify-content: center;
     align-items: center;
 }
 

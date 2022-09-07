@@ -5,6 +5,8 @@ class FlightOrdersController {
     static Add = async (req, resp, next) => {
         try {
             const { flightId, authorName, countTicket, phone } = req.body;
+            let user=req.user;
+            console.log(user)
             const res = await FlightOrder.create({ authorName, countTicket, phone, flightId });
             return resp.json({ status: 200, res });
         } catch (err) {

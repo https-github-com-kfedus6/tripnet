@@ -98,6 +98,9 @@ const FlightOrder = sequelize.define("flightOrder", {
 Flight.hasMany(FlightOrder);
 FlightOrder.belongsTo(Flight);
 
+User.hasMany(FlightOrder,{as:"user"});
+FlightOrder.belongsTo(User);
+
 Flight.hasMany(ParamsFlight, { as: 'params' });
 ParamsFlight.belongsTo(Flight);
 

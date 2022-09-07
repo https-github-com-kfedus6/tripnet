@@ -13,26 +13,49 @@ const Burger = ({setIsShowRegister}) => {
   const {is_login,user, is_admin}=useSelector(state=>state.user)
   return (
     <>
-      <div className={isBurgerClick?"burger__menu active":"burger__menu"}>  
-              
-        <div onClick={()=>{setIsBurgerClick(false)}}>  
-          {is_admin ? <div className='user__nick'><NavLink to="/admin">admin panel</NavLink></div> : <></>}
-          {is_login ? <div><NavLink to='/account'><FaUserCircle /></NavLink></div> :
-            <div onClick={() => { setIsShowRegister(true) }} className="register">
-                {t("header.registering")}
-            </div>}
-          <div><NavLink to="/">{t('header.first_link')}</NavLink></div>
-          <div><NavLink to="/flightsCategory">{t('header.third_link')}</NavLink></div>
-          <div><NavLink to="/aboutUs">{t('header.fourth_link')}</NavLink></div>
-          <div><NavLink to="/blog">блог</NavLink></div>
+      <div className={isBurgerClick?"burger__menu actived":"burger__menu"}>  
+        <div className='burger__menu__list'>
+          <div onClick={() => { setIsBurgerClick(false) }} className='burger__exit__main'>
+            &times;
+          </div> 
+          {is_admin ? 
+        <div className='burger__admin__panel'>
+          <details onClick={e=>{e.stopPropagation();}}>
+            <summary>
+              admin panel
+            </summary>
+            <div>
+              <div><NavLink to="/infoCompanyEdit">{t('admin.infoCompany')}</NavLink></div>
+              <div><NavLink to="/aboutUsEdit">{t('admin.aboutUs')}</NavLink></div>
+              <div><NavLink to="/blogEdit">{t('admin.blog')}</NavLink></div>
+              <div><NavLink to="/faqEdit">{t('admin.faq')}</NavLink></div>
+              <div><NavLink to="/flightsEdit">{t('admin.flight')}</NavLink></div>
+              <div><NavLink to="/novetlyEdit">{t('admin.novetly')}</NavLink></div>
+              <div><NavLink to="/responseEdit">{t('admin.response')}</NavLink></div>
+              <div><NavLink to="/order">{t('admin.order')}</NavLink></div>
+            </div>
+            
+          </details> 
+        </div>: <></>}
+        <div className='burger__list'/>
+
+            {is_login ? <div className='burger__component'><NavLink to='/account'><FaUserCircle /></NavLink></div> :
+              <div className='burger__component'>
+                  {t("header.registering")} 
+              </div>}
+          
+          <div className='burger__component'><NavLink to="/">{t('header.first_link')}</NavLink></div>
+          <div className='burger__component'><NavLink to="/flightsCategory">{t('header.third_link')}</NavLink></div>
+          <div className='burger__component'><NavLink to="/aboutUs">{t('header.fourth_link')}</NavLink></div>
+          <div className='burger__component'><NavLink to="/blog">блог</NavLink></div>
           <div className='burger__set__language'><SetLanguage/></div>
+          </div>
         </div>
-      </div>
-      <div onClick={()=>{setIsBurgerClick(!isBurgerClick)}} className={"header__burger"}>
-        <GiHamburgerMenu fontSize={"50px"}/>
-      </div>
+        <div onClick={()=>{setIsBurgerClick(!isBurgerClick)}}>
+          <GiHamburgerMenu fontSize={"50px"}/>
+        </div>
     </>
   )
 }
 
-export default Burger
+export default Burger;
