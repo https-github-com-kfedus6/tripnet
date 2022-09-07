@@ -63,3 +63,15 @@ export const deleteFlightOrder = (id) => async (dispatch) => {
         console.log(err.message)
     }
 }
+
+export const getUserHistory=()=>async(dispatch)=>{
+    try{
+        const resp=await $authHost.get("api/flightOrder/getUserHistory");
+        console.log(resp);
+        if(resp.data.status==200){
+            dispatch({type:flightOrdersActionTypes.GET_HISTORY_USER,payload:resp.data.res});
+        }
+    }catch(err){
+        console.log(err);
+    }
+}

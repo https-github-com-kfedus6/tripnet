@@ -11,7 +11,14 @@ import '../Account/account.css'
 
 const Account = () => {
     const { is_admin, is_login, user, reply } = useSelector(state => state.user);
-    const { SetShowMessgeFalse, SetShowMessgeTrue } = useAction()
+    const {userHistoty}=useSelector(state=>state.order);
+    useEffect(()=>{
+        getUserHistory();
+    },[])
+    useEffect(()=>{
+        console.log(userHistoty);
+    },[userHistoty]);
+    const { SetShowMessgeFalse, SetShowMessgeTrue, getUserHistory } = useAction()
     const { t } = useTranslation()
 
     const [oldPassword, setOldPassword] = useState("");
