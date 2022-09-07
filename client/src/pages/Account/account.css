@@ -31,7 +31,7 @@
 
 .block-user-icon span:nth-child(3) {
     font-size: 17px;
-    color: #b2b2bf;
+    color: #7288a2;
 }
 
 .block-user-info div {
@@ -41,7 +41,7 @@
 }
 
 .block-user-info div:nth-child(1) span:nth-child(1) {
-    color: #b2b2bf;
+    color: #7288a2;
 }
 
 .block-user-info div:nth-child(1) span:nth-child(2) {
@@ -51,7 +51,7 @@
 
 
 .block-user-info div:nth-child(2) span:nth-child(1) {
-    color: #b2b2bf;
+    color:#7288a2;
 }
 
 .block-user-info div:nth-child(2) span:nth-child(2) {
@@ -105,6 +105,106 @@
    color: rgb(216, 61, 0);
     text-decoration: underline;
 }
+
+.block-history {
+    margin-top: 10px;
+}
+
+.block-history details summary {
+    font-size: 18px;
+}
+
+.block-history details summary:focus {
+    color: #db4900;
+}
+
+.account-container {
+    margin: 0;
+    padding: 0;
+    font-family: 'Hind', sans-serif;
+    color: #000;    
+}
+
+.accordion-item-account button {
+      position: relative;
+      display: flex;
+      justify-content: space-between;
+      text-align: left;
+      width: 100%;
+      padding: 1em 0;
+      color: #7288a2;
+      font-size: 1.15rem;
+      font-weight: 400;
+      border: none;
+      background: none;
+      outline: none;
+}
+  
+.accordion-item-account button:hover {
+    cursor: pointer;
+    color: #db4900;
+}
+  
+.accordion-item-account button:focus {
+    cursor: pointer;
+    color: #db4900;
+}
+  
+.accordion-item-account button::after {
+    cursor: pointer;
+    color: #03b5d2;
+    border: 1px solid #db4900;
+}
+    
+.accordion-item-account button[aria-expanded='true'] {
+    color: #db4900;
+}
+
+.account-close {
+    font-size: 25px;
+    color: red;
+}
+
+.account-check {
+    color: green;
+}
+
+.account-processing {
+    color: black;
+}
+   
+.accordion-content-account.show {
+    opacity: 1;
+    max-height: 9999px;
+    transition: all 500ms linear;
+    will-change: opacity, max-height;
+    transition: all 0.7s cubic-bezier(0,1,0,1);
+}
+  
+.accordion-content-account {
+    opacity: 0;
+    max-height: 0;
+    overflow: hidden;
+    transition: opacity 500ms linear, max-height 500ms linear;
+    will-change: opacity, max-height;
+    transition: all 0.7s cubic-bezier(0,1,0,1);
+}
+
+.accordion-content-account div {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+
+.account-price-place {
+    display: flex;
+    flex-direction: column;
+}
+
+.account-price-place span {
+    margin-top: 5px;
+}
+
 
 @media (max-width:992px) {
     .block-user {

@@ -6,19 +6,28 @@ import { useNavigate } from 'react-router-dom'
 import { useAction } from '../../hooks/useAction'
 import TextField from '@mui/material/TextField';
 import { useTranslation } from 'react-i18next';
+import { BsCheckLg } from 'react-icons/bs';
+import { IoClose } from 'react-icons/io5';
 
 import '../Account/account.css'
 
 const Account = () => {
-    const { is_admin, is_login, user, reply } = useSelector(state => state.user);
-    const {userHistoty}=useSelector(state=>state.order);
-    useEffect(()=>{
+    const { is_admin, is_login, user, reply } = useSelector(state => state.user)
+    const { userHistoty } = useSelector(state => state.order)
+    const { flight } = useSelector(state => state.flights)
+    const { language } = useSelector(state => state.language)
+
+    const [isActive, setIsActive] = useState(null)
+
+    useEffect(() => {
         getUserHistory();
-    },[])
-    useEffect(()=>{
+    }, [])
+
+    useEffect(() => {
         console.log(userHistoty);
-    },[userHistoty]);
-    const { SetShowMessgeFalse, SetShowMessgeTrue, getUserHistory } = useAction()
+    }, [userHistoty]);
+
+    const { SetShowMessgeFalse, SetShowMessgeTrue, getUserHistory, fetchGetFlight } = useAction()
     const { t } = useTranslation()
 
     const [oldPassword, setOldPassword] = useState("");
@@ -61,6 +70,14 @@ const Account = () => {
         navigate("/");
     }
 
+    const toggle = (i, id) => {
+        if (isActive == i) {
+            return setIsActive(null);
+        }
+        setIsActive(i);
+        fetchGetFlight(id);
+    }
+
     return (
         <div className='container-user'>
             <div className='block-user'>
@@ -77,6 +94,56 @@ const Account = () => {
                     <div>
                         <span>{t("account.name")}</span>
                         <span>{user.name}</span>
+                    </div>
+                </div>
+                <div>
+                    <div className='block-history'>
+                        <details>
+                            <summary>
+                                Історія замовлень
+                            </summary>
+                            <div className='account-container'>
+                                <div className="container-account">
+                                    <div className="accordion-account">
+                                        {userHistoty.map((item, i) => {
+                                            return (
+                                                <div key={item.id} className="accordion-item-account">
+                                                    <button onClick={() => toggle(i, item.flightId)} className={isActive === i ? "accordion-button-account" : ''} aria-expanded={isActive === i ? "true" : "false"}>
+                                                        <span className="accordion-title-account">
+                                                            {item.authorName}
+                                                        </span>
+                                                        <span className="accordion-title-account">
+                                                            {item.phone}
+                                                        </span>
+                                                        <span className="accordion-title-account">
+                                                            {item.status === null ? <span className='account-processing'>В обробці</span> : item.status ? <span className='account-check'><BsCheckLg /></span> : <span className='account-close'><IoClose /></span>}
+                                                        </span>
+                                                    </button>
+                                                    <div className={isActive === i ? 'accordion-content-account show' : 'accordion-content-account'}>
+                                                        <div>
+                                                            <span>{flight.startPosition[language]}</span>
+                                                            <span>{flight.finishPosition[language]}</span>
+                                                        </div>
+                                                        <div>
+                                                            <span>{flight.startDate}</span>
+                                                            <span>{flight.finishDate}</span>
+                                                        </div>
+                                                        <div>
+                                                            <span>{flight.startTime}</span>
+                                                            <span>{flight.finishTime}</span>
+                                                        </div>
+                                                        <div className='account-price-place'>
+                                                            <span><strong>Кількість білетів:</strong> {item.countTicket}</span>
+                                                            <span><strong>Ціна:</strong> {+flight.price * +item.countTicket}</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            )
+                                        })}
+                                    </div>
+                                </div>
+                            </div >
+                        </details>
                     </div>
                 </div>
                 <div className='block-user-input'>

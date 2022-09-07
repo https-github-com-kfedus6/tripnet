@@ -45,8 +45,6 @@ const FlightOrders = () => {
         putFlightOrder(status, id, page, limit, countTicket)
     }
 
-    console.log(flight)
-
     const changeStatusOrderFalse = (id) => {
         let status = false
         putFlightOrder(status, id, page, limit, countTicket)
