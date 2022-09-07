@@ -56,6 +56,7 @@ const Flights = ({ isShowFilter }) => {
         setLimit(limit + 3)
     }
 
+    const {is_login,user}=useSelector(state=>state.user);
     const sortFlights = (event) => {
         event.preventDefault();
         setPage(1);
@@ -78,15 +79,23 @@ const Flights = ({ isShowFilter }) => {
 
     const reserveTicket = () => {
         setVisiblyBuy(false)
-        postFlightOrder({
-            flightId: flightId,
-            authorName: name,
-            countTicket: countTicket,
-            phone: phone
-        })
-        setName('')
-        setPhone('')
-        setCountTicket('')
+        if(!is_login){
+            postFlightOrder({
+                flightId: flightId,
+                authorName: name,
+                countTicket: countTicket,
+                phone: phone
+            })
+        }else{
+            postFlightOrder({
+                flightId: flightId,
+                authorName: name,
+                countTicket: countTicket,
+                phone: phone,
+                userId: user.id
+            })
+        }
+        setCountTicket(0)
     }
 
     const openModal = (id) => {
