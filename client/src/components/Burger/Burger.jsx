@@ -14,10 +14,10 @@ const Burger = ({setIsShowRegister}) => {
   return (
     <>
       <div className={isBurgerClick?"burger__menu actived":"burger__menu"}>  
-        <div className='burger__menu__list'>
-          <div onClick={() => { setIsBurgerClick(false) }} className='burger__exit__main'>
+        <div onClick={() => { setIsBurgerClick(false) }} className='burger__exit__main'>
             &times;
           </div> 
+        <div className='burger__menu__list'>
           {is_admin ? 
         <div className='burger__admin__panel'>
           <details onClick={e=>{e.stopPropagation();}}>
@@ -40,7 +40,7 @@ const Burger = ({setIsShowRegister}) => {
         <div className='burger__list'/>
 
             {is_login ? <div className='burger__component'><NavLink to='/account'><FaUserCircle /></NavLink></div> :
-              <div className='burger__component'>
+              <div onClick={()=>setIsShowRegister(true)} className='burger__component'>
                   {t("header.registering")} 
               </div>}
           

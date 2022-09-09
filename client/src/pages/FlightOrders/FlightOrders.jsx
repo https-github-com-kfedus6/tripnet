@@ -51,8 +51,13 @@ const FlightOrders = () => {
     }
 
     const deleteOrder = (id) => {
-        deleteFlightOrder(id)
+        deleteFlightOrder(id);
+        setPage(1);
+        setIsActive(false);
     }
+    useEffect(()=>{
+        console.log(flightOrders);
+    },[flightOrders])
 
     const handleChange = (event, value) => {
         setPage(value)

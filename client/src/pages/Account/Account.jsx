@@ -75,7 +75,7 @@ const Account = () => {
         setIsActive(i);
         fetchGetFlight(id);
     }
-    console.log(flight)
+    
     return (
         <div className='container-user'>
             <div className='block-user'>

@@ -206,13 +206,24 @@ main {
 .burger__admin__panel{
     display: flex;
     align-items: flex-start;
-    justify-content: left;
+    justify-content: flex-start;
+}
+.burger__admin__panel div{
+    flex-direction: column;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
 }
 .burger__admin__panel div div{
     margin-top: 10px;
+    align-items: flex-start;
+    justify-content: flex-start;
+
 }
 .burger__admin__panel div div a{
+    text-align: left;
     color: #000;
+    flex-direction: column;
     text-decoration: none;
     
 }
@@ -225,6 +236,7 @@ main {
 
 .burger__component a{
     display: flex;
+    flex-direction: column;
     text-decoration: none;
     color: black;
     align-items: flex-start;
@@ -240,9 +252,9 @@ main {
 .burger__menu__list{
     display: flex;
     flex-direction: column;
-    width: 80%;
-    justify-content: center;
-    align-items: center;
+    justify-content: flex-start;
+    align-items: flex-start;
+    margin: 0 auto;
 }
 .burger__component{
     display: flex;
@@ -297,7 +309,7 @@ main {
 .authorize__main.active {
     display: flex;
     position: fixed;
-    z-index: 2;
+    z-index: 51;
     left: 0;
     top: 0;
     width: 100%;
@@ -600,13 +612,33 @@ main {
         margin: auto;
     }
 }
-.home__benefits__img {
-    width: 100%;
-}
+@media screen and (min-width: 768px) {
+    
+    .home__benefits__img {
+        width: 100%;
+    }
 
-.home__benefits__img img {
-    width: 100%;
-    border-radius: 15px;
+    .home__benefits__img img {
+        width: 100%;
+        border-radius: 15px;
+    }
+    .home__benefits__img__mini{
+        display: none;
+    }   
+}
+@media screen and (max-width: 768px) {
+    
+    .home__benefits__img__mini {
+        width: 100%;
+    }
+
+    .home__benefits__img__mini img {
+        width: 100%;
+        border-radius: 15px;
+    }
+    .home__benefits__img{
+        display: none;
+    }   
 }
 
 .home__benefits__company__name {
@@ -1162,4 +1194,7 @@ main {
 }
 .layout{
     position: relative;
+}
+.header_register{
+    font-size: 50px;
 }

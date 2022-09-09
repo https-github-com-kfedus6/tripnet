@@ -63,10 +63,8 @@ class FlightOrdersController {
     static deleteOrder = async (req, resp, next) => {
         try {
             const { id } = req.params
-            console.log("ID", id)
-            console.log('HELLO')
             await FlightOrder.destroy({ where: { id: id } })
-            const res = await FlightOrder.findAll()
+            const res = await FlightOrder.findAndCountAll({ limit: Number(5), offset: Number(0) });
             return resp.json({ status: 200, res });
         } catch (err) {
             return next(ErrorApi.badRequest(err));
@@ -77,7 +75,7 @@ class FlightOrdersController {
     try{
         const userId=req.user.id;
         const res=await FlightOrder.findAll({where:{userId}});
-        return resp.json({status:200,res});
+        return resp.json({status:200,res})
     }catch(err){
         return next(ErrorApi.badRequest(err));
     }

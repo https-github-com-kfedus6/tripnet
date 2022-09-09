@@ -27,7 +27,7 @@ const Flights = ({ isShowFilter }) => {
     const [sumYoung, setSumYoung] = useState(sumYoungInitial)
     const [sumOld, setSumOld] = useState(sumOldInitial)
 
-    const { fetchGetFlights, fetchDeleteFlight, postFlightOrder } = useAction()
+    const { fetchGetFlights, fetchDeleteFlight, postFlightOrder, SetFlightParams } = useAction()
 
     const { flights } = useSelector(state => state.flights)
 
@@ -58,8 +58,10 @@ const Flights = ({ isShowFilter }) => {
 
     const {is_login,user}=useSelector(state=>state.user);
     const sortFlights = (event) => {
+
         event.preventDefault();
         setPage(1);
+        SetFlightParams(startPosition,finishPosition,startDate,sumOld,sumYoung);
         fetchGetFlights({
             startPosition: startPosition,
             finishPosition: finishPosition,
@@ -95,7 +97,7 @@ const Flights = ({ isShowFilter }) => {
                 userId: user.id
             })
         }
-        setCountTicket(0)
+        setCountTicket(1)
     }
 
     const openModal = (id) => {

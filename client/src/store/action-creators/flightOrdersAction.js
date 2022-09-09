@@ -51,6 +51,7 @@ export const putFlightOrder = (status, id, page, limit, countTicket) => async (d
 export const deleteFlightOrder = (id) => async (dispatch) => {
     try {
         const response = await $authHost.delete(`api/flightOrder/${id}`)
+        console.log(response);
         if(response.data.status==200){
             dispatch({type:messageActionTypes.SET_SHOW_TRUE,payload:"успішно виконано"});
             setTimeout(()=>dispatch({type:messageActionTypes.SET_SHOW_FALSE}),3000);
@@ -67,7 +68,6 @@ export const deleteFlightOrder = (id) => async (dispatch) => {
 export const getUserHistory=()=>async(dispatch)=>{
     try{
         const resp=await $authHost.get("api/flightOrder/getUserHistory");
-        console.log(resp);
         if(resp.data.status==200){
             dispatch({type:flightOrdersActionTypes.GET_HISTORY_USER,payload:resp.data.res});
         }

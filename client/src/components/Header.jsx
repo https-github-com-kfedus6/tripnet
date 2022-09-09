@@ -22,8 +22,8 @@ const Header = () => {
                     <li><NavLink to="/flightsCategory">{t('header.third_link')}</NavLink></li>
                     <li><NavLink to="/aboutUs">{t('header.fourth_link')}</NavLink></li>
                     <li><NavLink to='/blog'>{t("header.five_link")}</NavLink></li>
-                    <li>{is_login ? <div><NavLink to='/account'><FaUserCircle /></NavLink></div> :
-                        <div onClick={() => setIsShow(true)}><a to="/"><FaUserCircle /></a></div>}
+                    <li>{is_login ? <div className='header_register'><NavLink to='/account'><FaUserCircle width={"20px"}/></NavLink></div> :
+                        <div className='header_register' onClick={() => setIsShow(true)}><a to="/"><FaUserCircle /></a></div>}
                     </li>
                     <li className="dropdown-header">
                         {is_admin ?
