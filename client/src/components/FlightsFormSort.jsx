@@ -12,6 +12,7 @@ const FlightsFormSort = ({ startDate, startPosition, finishPosition, setStartDat
     const { t } = useTranslation()
 
     const [check, setCheck] = useState(false)
+    const [dropdownCheck, setDropdowbCheck] = useState(false)
 
     const firstCheck = (event) => {
         event.preventDefault()
@@ -52,12 +53,14 @@ const FlightsFormSort = ({ startDate, startPosition, finishPosition, setStartDat
 
     useEffect(() => {
         SearchCity(startPosition, language, true);
-    }, [startPosition,language])
+    }, [startPosition, language])
 
     useEffect(() => {
         SearchCity(finishPosition, language, false);
-    }, [finishPosition,language])
+    }, [finishPosition, language])
 
+
+    console.log(dropdownCheck)
 
     return (
         <Stack spacing={1}>
@@ -73,7 +76,7 @@ const FlightsFormSort = ({ startDate, startPosition, finishPosition, setStartDat
                                     id="free-solo-2-demo"
                                     disableClearable
                                     value={startPosition}
-                                    onChange={(value, newValue) =>  setStartPosition(newValue) }
+                                    onChange={(value, newValue) => setStartPosition(newValue)}
                                     options={searchStartPostion.map((option) => option.title)}
                                     renderInput={(params) => (
                                         <TextField
@@ -117,11 +120,11 @@ const FlightsFormSort = ({ startDate, startPosition, finishPosition, setStartDat
                             </div>
 
                             <div className='dropdown'>
-                                <div className='dropdown-select'>
+                                <div onClick={() => setDropdowbCheck(true)} className='dropdown-select'>
                                     <span className='select'>{t('flight.passengers')}</span>
                                     <i className='down-icon icon'><AiOutlineCaretDown /></i>
                                 </div>
-                                <div className='dropdown-list'>
+                                <div className={dropdownCheck ? 'dropdown-list' : 'dropdown-none'}>
                                     <div className='dropdown-list-item'>
                                         <div>
                                             <strong>{t('flight.adults')}</strong>
@@ -145,6 +148,9 @@ const FlightsFormSort = ({ startDate, startPosition, finishPosition, setStartDat
                                             <div className='sum' value={sumYoung}>{sumYoung}</div>
                                             <div className='plus' onClick={() => setSumYoung(sumYoung + 1)}>+</div>
                                         </div>
+                                    </div>
+                                    <div className='dropdown-btn-none'>
+                                        <button onClick={() => setDropdowbCheck(false)} >{t('flight.dropdown_btn')}</button>
                                     </div>
                                 </div>
                             </div>

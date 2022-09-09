@@ -20,6 +20,7 @@
         "children": "Дети",
         "older_15_years": "Старше 15 лет",
         "younger_14_years": "Младше 14 лет",
+        "dropdown_btn": "Выбрать",
         "change": "Изменить",
         "delete": "Удалить",
         "info_flight": "Узнать больше о рейсе",
@@ -79,10 +80,10 @@
         "change_password": "Поменять пароль",
         "exit": "Выйти",
         "password_changed": "Пароль изменен",
-        "history_order":"История заказов",
-        "in_processing":"В обработке",
-        "count_tiket":"Количество билетов",
-        "price":"Цена"
+        "history_order": "История заказов",
+        "in_processing": "В обработке",
+        "count_tiket": "Количество билетов",
+        "price": "Цена"
     },
     "footer": {
         "protected": "Все права защищены",
