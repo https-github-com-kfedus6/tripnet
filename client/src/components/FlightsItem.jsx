@@ -99,7 +99,7 @@ const FlightsItem = ({ item, sumOld, sumYoung, deleteFlight, limit, page, openMo
                         </div>
                         <div className='btn-buy'>
                             <div>
-                                <NavLink to={`/flight/${item.id}`}>{t('flight.info_flight')}!</NavLink>
+                                <NavLink to={`/flight/${item.startPosition[language]}-${item.finishPosition[language]}/${item.id}`}>{t('flight.info_flight')}!</NavLink>
                             </div>
                             <div className='free-place'>
                                 <span><FaUser /> <input type='number' placeholder={item.countFreePlace} onChange={(e) => setNewCaountFreePlace(e.target.value)}></input>{t('flight.free_place')}</span>
@@ -144,7 +144,7 @@ const FlightsItem = ({ item, sumOld, sumYoung, deleteFlight, limit, page, openMo
                         </div>
                         <div className='btn-buy'>
                             <div>
-                                <NavLink to={`/flight/${item.id}`}>{t('flight.info_flight')}!</NavLink>
+                                <NavLink to={`/flight/${item.startPosition[language]}-${item.finishPosition[language]}/${item.id}`}>{t('flight.info_flight')}!</NavLink>
                             </div>
                             <div className='free-place'>
                                 <span><FaUser /> {item.countFreePlace} {t('flight.free_place')}</span>
@@ -190,19 +190,22 @@ const FlightsItem = ({ item, sumOld, sumYoung, deleteFlight, limit, page, openMo
                 <div className='btn-buy'>
                     <div className='btn-flight-info'>
                         <NavLink to={`/flight/${item.id}`}>{t('flight.info_flight')}!</NavLink>
+                        <div>
+                            <NavLink to={`/flight/${item.startPosition[language]}-${item.finishPosition[language]}/${item.id}`}>{t('flight.info_flight')}!</NavLink>
+                        </div>
+                        <div className='free-place'>
+                            <span><FaUser /> {item.countFreePlace} {t('flight.free_place')}</span>
+                        </div>
+                        <div className='btn-buy-modal'>
+                            <Stack direction="row" spacing={2}>
+                                <Button variant="contained" onClick={() => openModal(item.id)}>
+                                    <div><FaShoppingCart /></div><span>{sum} UAH</span>
+                                </Button>
+                            </Stack>
+                        </div>
                     </div>
-                    <div className='free-place'>
-                        <span><FaUser /> {item.countFreePlace} {t('flight.free_place')}</span>
-                    </div>
-                    <div className='btn-buy-modal'>
-                        <Stack direction="row" spacing={2}>
-                            <Button variant="contained" onClick={() => openModal(item.id)}>
-                                <div><FaShoppingCart /></div><span>{sum} UAH</span>
-                            </Button>
-                        </Stack>
-                    </div>
-                </div>
-            </div >
+                </div >
+            </div>
         )
     }
 }

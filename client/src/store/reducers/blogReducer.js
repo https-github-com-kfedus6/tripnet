@@ -7,7 +7,7 @@ export const blogActionTypes={
 const initialState={
     listBlog:undefined,
     page:1,
-    limit:10,
+    limit:12,
     selectBlog:undefined,
     blogNovetly:[],
     countBlog:0

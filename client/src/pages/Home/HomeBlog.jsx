@@ -7,11 +7,20 @@ const HomeBlog = ({blog}) => {
     const navigate=useNavigate();
     const {language}=useSelector(state=>state.language);
     return (
-    <div onClick={()=>{navigate("/blog/"+blog.id)}} className="home__blog__main">
-        <img src={process.env.REACT_APP_API_URL+blog.image}/>
-        <div className="home__blog__description">
+    <div onClick={()=>{navigate("/blog/"+blog.name+"/"+blog.id)}} className="mini__blog__main">
+         <div className='mini__blog__img'>
+            <img src={process.env.REACT_APP_API_URL+blog.image}/>
+        </div>
+        <div className='mini__blog__name'>
             {blog.name[language]}
         </div>
+        <div className="mini__blog__date">
+            {blog.createdAt.slice(0,10)}
+        </div>
+        <div className='mini__blog__description'>
+            {blog.miniDescription[language]}  
+        </div>
+   
     </div>
   )
 }

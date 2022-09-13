@@ -2,7 +2,7 @@
     "header": {
         "first_link": "Главная",
         "second_link": "Все рейсы",
-        "third_link": "Категория рейсов",
+        "third_link": "Рейсы",
         "fourth_link": "О нас",
         "five_link": "Блог",
         "registering": "Регистрация"
@@ -61,9 +61,9 @@
         "number_phone": "Номер телефону"
     },
     "home": {
-        "benefits_company": "преимущества компании",
-        "we_will_comfortably_deliver_to_such_countries": "с комфортом доставим в такие страны",
-        "responce": "отзывы"
+        "benefits_company": "Преимущества компании",
+        "we_will_comfortably_deliver_to_such_countries": "С комфортом доставим в такие страны",
+        "responce": "Отзывы"
     },
     "modalbuy": {
         "title": "Забронировать рейс",

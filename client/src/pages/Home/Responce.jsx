@@ -17,7 +17,7 @@ const Responce = () => {
     return (
         novetlyResponce == undefined ? <div>loading...</div> :novetlyResponce.length==0?<></>:
         <>
-          <h3 className='home__benefits__company__name'>{t("home.responce")}</h3>
+          <p className='home__title'>{t("home.responce")}</p>
           <div className='list__responce__home__main'>
           <>
           <Swiper
@@ -28,8 +28,8 @@ const Responce = () => {
             className="my-swiper">
 
             {novetlyResponce.map(x=>
-              <SwiperSlide key={x.id}>
-              <>
+              <SwiperSlide style={{"display":"flex","justifyContent":"center","alignItems":"center"}} key={x.id}>
+              
                 <div className='responce__home__main'>
                   <div className='responce__home__user__icon'><FaUserCircle/></div>
                   <div className='responce__home__author__with__description'>
@@ -44,7 +44,7 @@ const Responce = () => {
                   </div>
                 </div>
                 {is_admin ?<button onClick={()=>DelResponce(x.id)}>del</button>:<></>}
-              </>  
+                
               </SwiperSlide>)}
 
             </Swiper>

@@ -7,6 +7,7 @@ import { useState } from 'react';
 
 const Blog = () => {
   const {id}=useParams();
+  console.log(id)
   const {selectBlog}=useSelector(state=>state.blog)
   const {GetBlogDescription}=useAction();
   const {language}=useSelector(state=>state.language);

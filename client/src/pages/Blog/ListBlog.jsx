@@ -26,28 +26,39 @@ export const ListBlog = () => {
     useEffect(()=>{
         GetBlogAll(selectPage,limit);
     },[selectPage]);
+    /*let a="fd";
+    a.slice(8)*/
   return (
     listBlog==undefined?<>loading...</>:
     <>
+    <p className='home__title'>Блог</p>
+    <div className='blog__container'>
       <div className='list__blog__main'>
         {listBlog.map(x=>
-          <div onClick={()=>navigate("/blog/"+x.id)} className='mini__blog__main' key={x.id}>
+          <div onClick={()=>navigate("/blog/"+x.name[language]+"/"+x.id)} className='mini__blog__main' key={x.id}>
             <div className='mini__blog__img'>
               <img src={process.env.REACT_APP_API_URL+x.image}/>
             </div>
             <div className='mini__blog__name'>
               {x.name[language]}
             </div>
+            <div className="mini__blog__date">
+              {x.createdAt.slice(0,10)}
+            </div>
+            <div className='mini__blog__description'>
+              {x.miniDescription[language]}  
+            </div>
             {is_admin?<button onClick={(e)=>{e.stopPropagation();DelBlog(x.id);GetBlogAll(setSelectPage,limit)}}>del</button>:<></>}
         </div>)}
       </div>
       {totalCount==undefined?<></>:
         <div className='pagination'>
-            <Stack spacing={10}>
+            <Stack spacing={1}>
                 <Pagination count={totalCount} page={page} onChange={handleChange} />
             </Stack>
         </div>
       }
+    </div>
     </>
   )
 }

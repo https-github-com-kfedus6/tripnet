@@ -17,7 +17,7 @@ const ListNovetly = () => {
     return (
         novetly.lenght==0?<></>:
         <div className='list__novetly__main'>
-            <h3 className='home__benefits__company__name'>{t("home.we_will_comfortably_deliver_to_such_countries")}</h3>
+            <p className='home__title'>{t("home.we_will_comfortably_deliver_to_such_countries")}</p>
             <div className="list__novetly">
                 {novetly.map(x=><Novetly key={x.id} novetly={x}/>)}
             </div>
