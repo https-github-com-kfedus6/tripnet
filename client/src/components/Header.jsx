@@ -24,25 +24,25 @@ const Header = () => {
                     <li><NavLink to='/blog'>{t("header.five_link")}</NavLink></li>
                     <li>
                         <div className='burger__menu__list'>
-                        {is_admin ?
-                            <>
-                                <a className="dropdown-toggle-header" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                    Admin
-                                   </a>
-                                <div className="dropdown-menu-header">
-                                    <p><NavLink className="dropdown-item-header" to="/infoCompanyEdit">{t('admin.infoCompany')}</NavLink></p>
-                                    <p><NavLink className="dropdown-item-header" to="/aboutUsEdit">{t('admin.aboutUs')}</NavLink></p>
-                                    <p><NavLink className="dropdown-item-header" to="/blogEdit">{t('admin.blog')}</NavLink></p>
-                                    <p><NavLink className="dropdown-item-header" to="/faqEdit">{t('admin.faq')}</NavLink></p>
-                                    <p><NavLink className="dropdown-item-header" to="/flightsEdit">{t('admin.flight')}</NavLink></p>
-                                    <p><NavLink className="dropdown-item-header" to="/novetlyEdit">{t('admin.novetly')}</NavLink></p>
-                                    <p><NavLink className="dropdown-item-header" to="/responseEdit">{t('admin.response')}</NavLink></p>
-                                    <p><NavLink className="dropdown-item-header" to="/order">{t('admin.order')}</NavLink></p>
-                                </div>
-                            </>
-                            :
-                            <></>
-                        }</div>
+                            {is_admin ?
+                                <>
+                                    <a className="dropdown-toggle-header" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                        Admin
+                                    </a>
+                                    <div className="dropdown-menu-header">
+                                        <p><NavLink className="dropdown-item-header" to="/infoCompanyEdit">{t('admin.infoCompany')}</NavLink></p>
+                                        <p><NavLink className="dropdown-item-header" to="/aboutUsEdit">{t('admin.aboutUs')}</NavLink></p>
+                                        <p><NavLink className="dropdown-item-header" to="/blogEdit">{t('admin.blog')}</NavLink></p>
+                                        <p><NavLink className="dropdown-item-header" to="/faqEdit">{t('admin.faq')}</NavLink></p>
+                                        <p><NavLink className="dropdown-item-header" to="/flightsEdit">{t('admin.flight')}</NavLink></p>
+                                        <p><NavLink className="dropdown-item-header" to="/novetlyEdit">{t('admin.novetly')}</NavLink></p>
+                                        <p><NavLink className="dropdown-item-header" to="/responseEdit">{t('admin.response')}</NavLink></p>
+                                        <p><NavLink className="dropdown-item-header" to="/order">{t('admin.order')}</NavLink></p>
+                                    </div>
+                                </>
+                                :
+                                <></>
+                            }</div>
                     </li>
                     {/* <li>{is_admin ?
                         <div className='user__nick'>
@@ -52,12 +52,12 @@ const Header = () => {
                     </li> */}
                 </ul>
                 <div className='header__register__with__language'>
-                    <div>{is_login ? <div className='header_register'><NavLink to='/account'><FaUserCircle width={"20px"}/></NavLink></div> :
+                    <div>{is_login ? <div className='header_register'><NavLink to='/account'><FaUserCircle width={"20px"} /></NavLink></div> :
                         <div className='header_register' onClick={() => setIsShow(true)}>
                             <a to="/"><FaUserCircle /></a>
                         </div>}
                     </div>
-                    <div>
+                    <div className='lang-select'>
                         <SetLanguage />
                     </div>
                 </div>
