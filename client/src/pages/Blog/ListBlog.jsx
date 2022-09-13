@@ -2,11 +2,13 @@ import React from 'react'
 import { useState } from 'react';
 import { useEffect } from 'react';
 import { useSelector } from 'react-redux'
-import { useNavigate } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import { useAction } from '../../hooks/useAction';
 import Stack from '@mui/material/Stack';
 import Pagination from '@mui/material/Pagination';
 import { getPageCount } from '../../utils/page';
+import { Breadcrumbs, Typography } from '@mui/material';
+import { t } from 'i18next';
 
 export const ListBlog = () => {
     const {listBlog,limit,countBlog,page}=useSelector(state=>state.blog);
@@ -31,6 +33,14 @@ export const ListBlog = () => {
   return (
     listBlog==undefined?<>loading...</>:
     <>
+      <div className='bread__crumbs__main'>
+        <Breadcrumbs>
+          <NavLink to="/">
+              {t("header.first_link")}
+          </NavLink>
+          <Typography color="text.primary">блог</Typography>
+        </Breadcrumbs>
+      </div>
     <p className='home__title'>Блог</p>
     <div className='blog__container'>
       <div className='list__blog__main'>

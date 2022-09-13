@@ -1332,3 +1332,27 @@ main {
     width: 100%;
     background-color: rgb(241, 237, 237);
 }
+@media screen and (min-width:1024px) {
+    .bread__crumbs__main{
+        display: flex;
+        margin: auto;
+        margin-top: 30px;
+        width: 60%;
+    }   
+}
+@media screen and (max-width:1024px) {
+    .bread__crumbs__main{
+        display: flex;
+        margin: auto;
+        margin-top: 30px;
+        width: 80%;
+    }   
+}
+@media screen and (max-width:768px) {
+    .bread__crumbs__main{
+        display: flex;
+        margin: auto;
+        margin-top: 30px;
+        width: 98%;
+    }   
+}

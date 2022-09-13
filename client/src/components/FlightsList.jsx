@@ -30,12 +30,14 @@ const FlightsList = ({ finishPosition, startPosition, startDate, flights, setSta
                     finishPosition={finishPosition}
                     startDate={startDate}
                 /> : <></>}
-                <Breadcrumbs>
-                    <NavLink to="/">
-                        {t("header.first_link")}
-                    </NavLink>
-                    <Typography color="text.primary">{t("header.third_link")}</Typography>
-                </Breadcrumbs>
+                <div className='bread__crumbs__main'>
+                    <Breadcrumbs>
+                        <NavLink to="/">
+                            {t("header.first_link")}
+                        </NavLink>
+                        <Typography color="text.primary">{t("header.third_link")}</Typography>
+                    </Breadcrumbs>
+                </div>
                 <div className='flights-block'>
                     
                     <div className='items-flight'>

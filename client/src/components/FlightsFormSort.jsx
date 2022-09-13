@@ -60,7 +60,7 @@ const FlightsFormSort = ({ startDate, startPosition, finishPosition, setStartDat
     }, [finishPosition, language])
 
     return (
-        <Stack spacing={1}>
+        <Stack spacing={5}>
             <div className='form-flights-container'>
                 <div className='flights-sort-form'>
                     <div className='form-flights'>
