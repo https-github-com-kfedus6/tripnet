@@ -7,9 +7,11 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    background-color: #fff;
+    background: #0e1419 url('../../../public/baner/bus-baner2.jpg') no-repeat center;
+    background-size: cover;
     box-shadow: 0 5px 10px 0 rgb(199, 199, 199);
     padding: 10px 0;
+    height: 400px;
 }
 
 .flights-sort-form {

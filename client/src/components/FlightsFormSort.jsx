@@ -59,9 +59,6 @@ const FlightsFormSort = ({ startDate, startPosition, finishPosition, setStartDat
         SearchCity(finishPosition, language, false);
     }, [finishPosition, language])
 
-
-    console.log(dropdownCheck)
-
     return (
         <Stack spacing={1}>
             <div className='form-flights-container'>

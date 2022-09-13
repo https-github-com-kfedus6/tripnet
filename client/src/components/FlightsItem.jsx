@@ -143,20 +143,20 @@ const FlightsItem = ({ item, sumOld, sumYoung, deleteFlight, limit, page, openMo
                             </div>
                         </div>
                         <div className='btn-buy'>
-                            <div>
+                            <div className='btn-flight-info'>
                                 <NavLink to={`/flight/${item.startPosition[language]}-${item.finishPosition[language]}/${item.id}`}>{t('flight.info_flight')}!</NavLink>
                             </div>
                             <div className='free-place'>
                                 <span><FaUser /> {item.countFreePlace} {t('flight.free_place')}</span>
                             </div>
-                            <div>
+                            <div className='btn-buy-modal'>
                                 <Stack direction="row" spacing={2}>
-                                    <Button variant="contained" color="success" onClick={() => openModal(item.id)}>
+                                    <Button variant="contained" onClick={() => openModal(item.id)}>
                                         <div><FaShoppingCart /></div><span>{sum} UAH</span>
                                     </Button>
                                 </Stack>
                             </div>
-                        </div>
+                        </div >
                     </>
                 }
             </div >
@@ -188,20 +188,20 @@ const FlightsItem = ({ item, sumOld, sumYoung, deleteFlight, limit, page, openMo
                     </div>
                 </div>
                 <div className='btn-buy'>
-                    <div>
+                    <div className='btn-flight-info'>
                         <NavLink to={`/flight/${item.startPosition[language]}-${item.finishPosition[language]}/${item.id}`}>{t('flight.info_flight')}!</NavLink>
                     </div>
                     <div className='free-place'>
                         <span><FaUser /> {item.countFreePlace} {t('flight.free_place')}</span>
                     </div>
-                    <div>
+                    <div className='btn-buy-modal'>
                         <Stack direction="row" spacing={2}>
-                            <Button variant="contained" color="success" onClick={() => openModal(item.id)}>
+                            <Button variant="contained" onClick={() => openModal(item.id)}>
                                 <div><FaShoppingCart /></div><span>{sum} UAH</span>
                             </Button>
                         </Stack>
                     </div>
-                </div>
+                </div >
             </div>
         )
     }
