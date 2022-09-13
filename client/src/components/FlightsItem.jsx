@@ -87,7 +87,7 @@ const FlightsItem = ({ item, sumOld, sumYoung, deleteFlight, limit, page, openMo
                         </div>
                         <div className='btn-buy'>
                             <div>
-                                <NavLink to={`/flight/${item.id}`}>{t('flight.info_flight')}!</NavLink>
+                                <NavLink to={`/flight/${item.startPosition[language]}-${item.finishPosition[language]}/${item.id}`}>{t('flight.info_flight')}!</NavLink>
                             </div>
                             <div className='free-place'>
                                 <span><FaUser /> <input type='number' placeholder={item.countFreePlace} onChange={(e) => setNewCaountFreePlace(e.target.value)}></input>{t('flight.free_place')}</span>
@@ -122,7 +122,7 @@ const FlightsItem = ({ item, sumOld, sumYoung, deleteFlight, limit, page, openMo
                         </div>
                         <div className='btn-buy'>
                             <div>
-                                <NavLink to={`/flight/${item.id}`}>{t('flight.info_flight')}!</NavLink>
+                                <NavLink to={`/flight/${item.startPosition[language]}-${item.finishPosition[language]}/${item.id}`}>{t('flight.info_flight')}!</NavLink>
                             </div>
                             <div className='free-place'>
                                 <span><FaUser /> {item.countFreePlace} {t('flight.free_place')}</span>
@@ -157,7 +157,7 @@ const FlightsItem = ({ item, sumOld, sumYoung, deleteFlight, limit, page, openMo
                 </div>
                 <div className='btn-buy'>
                     <div>
-                        <NavLink to={`/flight/${item.id}`}>{t('flight.info_flight')}!</NavLink>
+                        <NavLink to={`/flight/${item.startPosition[language]}-${item.finishPosition[language]}/${item.id}`}>{t('flight.info_flight')}!</NavLink>
                     </div>
                     <div className='free-place'>
                         <span><FaUser /> {item.countFreePlace} {t('flight.free_place')}</span>

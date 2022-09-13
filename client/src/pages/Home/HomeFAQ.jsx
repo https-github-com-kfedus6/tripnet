@@ -38,7 +38,7 @@ const HomeFAQ = () => {
         return (
             <>
                 <div className='accordion-title'>
-                    <h2>Питання та відповіді</h2>
+                    <p className='home__title'>Питання та відповіді</p>
                 </div>
                 <div className="accordion">
                     {FAQNovetly.map((item, i) => {

@@ -40,9 +40,7 @@ const FAQ = () => {
         return (
             <div className='faq-container'>
                 <div className="container">
-                    <div className='accordion-title'>
-                        <h2>{t("FAQ.questions_and_answers")}</h2>
-                    </div>
+                    <p className='home__title'>{t("FAQ.questions_and_answers")}</p>
                     <div className="accordion">
                         {FAQList.map((item, i) => {
                             return (

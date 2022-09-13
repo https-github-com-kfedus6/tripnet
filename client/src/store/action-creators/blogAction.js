@@ -36,13 +36,14 @@ export const GetBlogDescription=(id)=>async(dispatch)=>{
     }
 }
 
-export const AddBlog=(descriptionUa,descriptionRu,image,name)=>async(dispatch)=>{
+export const AddBlog=(descriptionUa,descriptionRu,image,name,miniDescription)=>async(dispatch)=>{
     try{
         let formData=new FormData();
         await formData.append("image",image);
         await formData.append("descriptionUa",descriptionUa);
         await formData.append("descriptionRu",descriptionRu);
         await formData.append("name",name);
+        await formData.append("miniDescription",miniDescription);
         const resp=await $authHost.post("api/blog/add",formData);
         if(resp.data.status==200){
             dispatch({type:messageActionTypes.SET_SHOW_TRUE,payload:"успішно додано"});

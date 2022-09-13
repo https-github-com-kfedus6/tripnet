@@ -37,12 +37,12 @@ const AppRouter = () => {
                 <Route index element={<Home />} />
                 {/*<Route path='flights' element={<Flights isShowFilter={false} />} />*/}
                 <Route path='flightsCategory' element={<Flights isShowFilter={true} />} />
-                <Route path='flight/:id' element={<Flight />} />
+                <Route path='flight/:name/:id' element={<Flight />} />
                 <Route path='FAQ' element={<FAQ />} />
                 <Route path='aboutUs' element={<AboutUs />} />
                 <Route path='tinyMCE' element={<TinyMCE />} />
                 <Route path='blog' element={<ListBlog />} />
-                <Route path='blog/:id' element={<Blog />} />
+                <Route path='blog/:name/:id' element={<Blog />} />
                 {is_admin ? <Route path='order' element={<FlightOrders />} /> : <></>}
                 {is_admin ? <Route path='aboutUsEdit' element={<AboutUsEdit />} /> : <></>}
                 {is_admin ? <Route path='blogEdit' element={<BlogEdit />} /> : <></>}

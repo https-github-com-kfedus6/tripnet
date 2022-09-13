@@ -57,6 +57,7 @@ const Blog = sequelize.define('blog', {
     id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
     image: { type: DataTypes.STRING },
     description: { type: DataTypes.TEXT },
+    miniDescription:{ type: DataTypes.TEXT },
     name: { type: DataTypes.STRING }
 });
 

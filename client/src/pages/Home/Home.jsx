@@ -1,5 +1,5 @@
 import { t } from 'i18next';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import FlightsFormSort from '../../components/FlightsFormSort';
@@ -18,7 +18,9 @@ const Home = () => {
     const [sumOld, setSumOld] = useState(1);
 
     const {SetFlightParams}=useAction();
+    useEffect(()=>{
 
+    },[language])
     const navigate = useNavigate();
     const search=()=>{
         SetFlightParams(startPosition,finishPosition,startDate,sumOld,sumYoung);
@@ -41,7 +43,7 @@ const Home = () => {
                 finishPosition={finishPosition} />
             <div className='home__content'>
                 <ListNovetly />
-                <h3 className='home__benefits__company__name'>{t("home.benefits_company")}</h3>
+                <p className='home__title'>{t("home.benefits_company")}</p>
                 <div className="home__benefits__img">
                     <img src={process.env.REACT_APP_API_URL + "homeBenefits" + language + ".png"} />
                 </div>

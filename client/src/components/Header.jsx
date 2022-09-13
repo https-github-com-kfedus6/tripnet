@@ -22,15 +22,13 @@ const Header = () => {
                     <li><NavLink to="/flightsCategory">{t('header.third_link')}</NavLink></li>
                     <li><NavLink to="/aboutUs">{t('header.fourth_link')}</NavLink></li>
                     <li><NavLink to='/blog'>{t("header.five_link")}</NavLink></li>
-                    <li>{is_login ? <div className='header_register'><NavLink to='/account'><FaUserCircle width={"20px"}/></NavLink></div> :
-                        <div className='header_register' onClick={() => setIsShow(true)}><a to="/"><FaUserCircle /></a></div>}
-                    </li>
-                    <li className="dropdown-header">
+                    <li>
+                        <div className='burger__menu__list'>
                         {is_admin ?
                             <>
                                 <a className="dropdown-toggle-header" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                     Admin
-                                </a>
+                                   </a>
                                 <div className="dropdown-menu-header">
                                     <p><NavLink className="dropdown-item-header" to="/infoCompanyEdit">{t('admin.infoCompany')}</NavLink></p>
                                     <p><NavLink className="dropdown-item-header" to="/aboutUsEdit">{t('admin.aboutUs')}</NavLink></p>
@@ -44,7 +42,7 @@ const Header = () => {
                             </>
                             :
                             <></>
-                        }
+                        }</div>
                     </li>
                     {/* <li>{is_admin ?
                         <div className='user__nick'>
@@ -52,8 +50,17 @@ const Header = () => {
                         </div> : <></>}
 
                     </li> */}
-                    <li className='lang-li'><SetLanguage /></li>
                 </ul>
+                <div className='header__register__with__language'>
+                    <div>{is_login ? <div className='header_register'><NavLink to='/account'><FaUserCircle width={"20px"}/></NavLink></div> :
+                        <div className='header_register' onClick={() => setIsShow(true)}>
+                            <a to="/"><FaUserCircle /></a>
+                        </div>}
+                    </div>
+                    <div>
+                        <SetLanguage />
+                    </div>
+                </div>
             </div>
             <div className='header__burger'>
                 <Burger setIsShowRegister={setIsShow} />
