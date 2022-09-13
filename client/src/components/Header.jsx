@@ -1,5 +1,5 @@
 import React from 'react'
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import Logo from './common/Logo';
 import Burger from './Burger/Burger';
@@ -13,6 +13,7 @@ const Header = () => {
     const { t, i18n } = useTranslation()
     const { is_admin, is_login, user } = useSelector(state => state.user)
     const [isShow, setIsShow] = useState(false)
+    const navigate=useNavigate();
     return (
         <div className='header__main'>
             <div className='header__components'>
@@ -22,13 +23,13 @@ const Header = () => {
                     <li><NavLink to="/flightsCategory">{t('header.third_link')}</NavLink></li>
                     <li><NavLink to="/aboutUs">{t('header.fourth_link')}</NavLink></li>
                     <li><NavLink to='/blog'>{t("header.five_link")}</NavLink></li>
-                    <li>
+                    <li className='dropdown-header'>
                         <div className='burger__menu__list'>
                         {is_admin ?
                             <>
                                 <a className="dropdown-toggle-header" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                     Admin
-                                   </a>
+                                </a>
                                 <div className="dropdown-menu-header">
                                     <p><NavLink className="dropdown-item-header" to="/infoCompanyEdit">{t('admin.infoCompany')}</NavLink></p>
                                     <p><NavLink className="dropdown-item-header" to="/aboutUsEdit">{t('admin.aboutUs')}</NavLink></p>
@@ -52,9 +53,9 @@ const Header = () => {
                     </li> */}
                 </ul>
                 <div className='header__register__with__language'>
-                    <div>{is_login ? <div className='header_register'><NavLink to='/account'><FaUserCircle width={"20px"}/></NavLink></div> :
+                    <div>{is_login ? <div className='header_register' onClick={()=>navigate("/account")}><FaUserCircle width={"20px"}/></div> :
                         <div className='header_register' onClick={() => setIsShow(true)}>
-                            <a to="/"><FaUserCircle /></a>
+                            <FaUserCircle />
                         </div>}
                     </div>
                     <div>

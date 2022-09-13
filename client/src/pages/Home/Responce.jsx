@@ -28,7 +28,7 @@ const Responce = () => {
             className="my-swiper">
 
             {novetlyResponce.map(x=>
-              <SwiperSlide style={{"display":"flex","justifyContent":"center","alignItems":"center"}} key={x.id}>
+              <SwiperSlide style={{"minHeight":"200px"}} key={x.id}>
               
                 <div className='responce__home__main'>
                   <div className='responce__home__user__icon'><FaUserCircle/></div>

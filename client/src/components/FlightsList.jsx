@@ -1,4 +1,7 @@
+import { Breadcrumbs, Link, Typography } from '@mui/material'
+import { t } from 'i18next'
 import React from 'react'
+import { NavLink } from 'react-router-dom'
 import FlightsFormSort from './FlightsFormSort'
 import FlightsItem from './FlightsItem'
 
@@ -27,7 +30,14 @@ const FlightsList = ({ finishPosition, startPosition, startDate, flights, setSta
                     finishPosition={finishPosition}
                     startDate={startDate}
                 /> : <></>}
+                <Breadcrumbs>
+                    <NavLink to="/">
+                        {t("header.first_link")}
+                    </NavLink>
+                    <Typography color="text.primary">{t("header.third_link")}</Typography>
+                </Breadcrumbs>
                 <div className='flights-block'>
+                    
                     <div className='items-flight'>
                         {flights.rows.map(item => {
                             return (
