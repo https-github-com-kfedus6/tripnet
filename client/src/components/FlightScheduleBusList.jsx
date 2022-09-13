@@ -11,12 +11,12 @@ const FlightScheduleBusList = ({ flight, is_admin, setScheduleTo, setScheduleWit
     return (
         <div className='block-schedule'>
             <div className='schedule-with-to'>
-                <span>{t("")}{flight.startPosition[language]} - {flight.finishPosition[language]}</span>
+                <span>{t("flight.bus_schedule")} {flight.startPosition[language]} - {flight.finishPosition[language]}</span>
                 {flight.schefule.map(item => {
                     if (is_admin) {
                         return (
                             <div key={item.id}>
-                                <span>{t("flight.schedule_valid_with")}
+                                <p>{t("flight.schedule_valid_with")}
                                     <input type="text" placeholder={item.scheduleWith}
                                         className='create-date'
                                         onChange={(e) => setScheduleWith(e.target.value)}
@@ -27,12 +27,12 @@ const FlightScheduleBusList = ({ flight, is_admin, setScheduleTo, setScheduleWit
                                         onChange={(e) => setScheduleTo(e.target.value)}
                                     />
                                     <button className='change-date' onClick={() => changeSchedule(item.id)}>Обновити</button>
-                                </span>
+                                </p>
                             </div>
                         )
                     } else {
                         return (
-                            <div key={item.id}><span>{t("flight.schedule_valid_with")}<strong>{item.scheduleWith}</strong> до <strong>{item.scheduleTo}</strong>.</span></div>
+                            <div key={item.id}><p>{t("flight.schedule_valid_with")}<strong>{item.scheduleWith}</strong> до <strong>{item.scheduleTo}</strong>.</p></div>
                         )
                     }
                 })

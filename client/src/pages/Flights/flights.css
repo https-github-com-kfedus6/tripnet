@@ -16,57 +16,6 @@
     width: 60%;
 }
 
-.form-btn {
-    display: flex;
-    margin-top: 20px;
-}
-
-.first-btn button {
-    width: 250px;
-    height: 35px;
-    font-size: 17px;
-    border: 1px solid silver;
-    border-radius: 10px;
-    cursor: pointer;
-    margin-right: 10px;
-}
-
-.first-btn button:hover {
-    border: 1px solid #00c000;
-    background-color: #00c000;
-    color: #fff;
-    transition: all ease 0.3s;
-}
-
-.second-btn button {
-    width: 250px;
-    height: 35px;
-    font-size: 17px;
-    border: 1px solid silver;
-    border-radius: 10px;
-    cursor: pointer;
-    margin-right: 10px;
-}
-
-.second-btn button:hover {
-    border: 1px solid #00c000;
-    background-color: #00c000;
-    color: #fff;
-    transition: all ease 0.3s;
-}
-
-.travel-active {
-    border: 1px solid #00c000;
-    background-color: #00c000;
-    color: #fff;
-}
-
-.travel {
-    background-color: #fff;
-    color: #000;
-    border: 1px solid silver;
-}
-
 .form-flights {
     display: flex;
     flex-direction: column;
@@ -149,6 +98,7 @@
     align-items: flex-end;
     width: 100%;
     position: relative;
+    z-index: 1;
 }
 
 .dropdown-list {
@@ -280,14 +230,21 @@
 .item-flight {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
     align-items: center;
-    height: 150px;
-    padding: 5px 10px;
+    height: 160px;
+    padding: 15px 15px;
     border: 1px solid silver;
     border-radius: 5px;
-    margin-top: 15px;
+    margin-top: 20px;
     background-color: #fff;
+}
+
+.item-blocks {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 .item-flight:hover {
@@ -296,15 +253,53 @@
     transition: all ease 0.3s;
 }
 
-.item-time {
-    display: flex;
-    justify-content: space-between;
-    width: 90%;
-    font-size: 24px;
+.item-border {
+    position: relative;
+    bottom: 7px;
+    width: 29%;
+    border-bottom: 1px solid silver;
 }
 
-.item-time span:nth-child(2) {
-    color: rgb(128, 128, 128);
+.item-time {
+    width: 90%;
+    display: flex;
+    justify-content: space-between;
+    font-size: 20px;
+}
+
+.item-start-time {
+    display: flex;
+    font-weight: 600;
+}
+
+.item-start-time span:nth-child(2) {
+    margin-left: 28px;
+    font-size: 25px;
+}
+
+.item-flight-time {
+    display: flex;
+    justify-content: center;
+    width: 138px;
+}
+
+.item-flight-time span:nth-child(1) {
+    margin-right: 10px;
+    font-size: 22px;
+}
+
+.item-flight-time span:nth-child(2) {
+    font-size: 20px;
+}
+
+.item-finish-time {
+    display: flex;
+    font-weight: 600;
+}
+
+.item-finish-time span:nth-child(1) {
+    margin-right: 20px;
+    font-size: 22px;
 }
 
 .item-date {
@@ -319,30 +314,32 @@
     display: flex;
     justify-content: space-between;
     width: 90%;
-    font-size: 21px;
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 12px;
 }
 
 .btn-buy {
-    width: 100%;
+    width: 90%;
     display: flex;
     justify-content: space-between;
+    margin-top: 32px;
 }
 
-.btn-buy div:nth-child(1) {
+.btn-flight-info {
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.btn-buy div:nth-child(1) a {
+.btn-flight-info a {
     color: #000;
     text-decoration: none;
     font-size: 17px;
 }
 
-.btn-buy div:nth-child(1) a:hover {
-    color: #00c000;
-    text-decoration: underline;
+.btn-flight-info a:hover {
+    color: #db4900;
     transition: all ease 0.3s;
 }
 
@@ -356,25 +353,26 @@
     color: #db4900;
 }
 
-.btn-buy button {
+.btn-buy-modal button {
     display: flex;
     justify-content: center;
     align-items: center;
     width: 180px;
-    height: 35px;
+    height:35px;
     font-size: 18px;
-    border-radius: 15px;
+    border-radius:5 px;
     background-color: rgb(245, 73, 4);
     border: 1px solid rgb(245, 73, 4);
     padding: 5px 10px;
     cursor: pointer;
+    color: #000;
 }
 
-.btn-buy button span {
+.btn-buy-modal button span {
     margin-left: 20px;
 }
 
-.btn-buy button:hover {
+.btn-buy-modal button:hover {
     background-color: rgb(216, 61, 0);
     transition: all ease 0.3s;
 }
@@ -622,6 +620,18 @@
 
     .buy-ticket button {
         width: 50%;
+    }
+
+    .item-start-time span:nth-child(2) {
+        display: none;
+    }
+
+    .item-finish-time span:nth-child(1) {
+        display: none;
+    }
+
+    .item-border {
+        display: none;
     }
 }
 

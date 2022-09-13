@@ -18,10 +18,10 @@
         "children": "Діти",
         "older_15_years": "Старше 15 років",
         "younger_14_years": "Молодші 14 років",
-        "dropdown_btn":"Вибрати",
+        "dropdown_btn": "Вибрати",
         "change": "Змінити",
         "delete": "Видалити",
-        "info_flight": "Дізнатися більше про рейс",
+        "info_flight": "Докладніше про рейс",
         "free_place": "квитків лишилось",
         "update": "Оновити",
         "no_update": "Не оновлювати",
@@ -30,8 +30,8 @@
         "air_conditioning": "Кондиціонер",
         "info_for_flight": "Інформація про рейс",
         "schedule_valid_with": "Розклад дійсний з ",
-        "bus_schedule": "Розклад автобусів ",
-        "time": "час"
+        "bus_schedule": "Розклад автобусів",
+        "time": "Час"
     },
     "error": {
         "title": "Вибачте, нам не вдалося знайти сторінку, яку ви шукали.",
@@ -83,10 +83,10 @@
         "change_password": "Поміняти пароль",
         "exit": "Вийти",
         "password_changed": "Пароль поміняний",
-        "history_order":"Історія замовлень",
-        "in_processing":"В обробці",
-        "count_tiket":"Кількість білетів",
-        "price":"Ціна"
+        "history_order": "Історія замовлень",
+        "in_processing": "В обробці",
+        "count_tiket": "Кількість білетів",
+        "price": "Ціна"
     },
     "lang": {
         "uk": "Українська",

@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from 'react';
-import { FaShoppingCart, FaUser } from 'react-icons/fa';
 import { useSelector } from 'react-redux';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { useAction } from '../hooks/useAction';
 import { useTranslation } from 'react-i18next';
 import Stack from '@mui/material/Stack';
 import Button from '@mui/material/Button';
-
+import { FaShoppingCart, FaUser } from 'react-icons/fa';
+import { TbBus } from 'react-icons/tb';
+import { BiTimeFive } from 'react-icons/bi';
+import { GiPositionMarker } from 'react-icons/gi';
 
 const FlightsItem = ({ item, sumOld, sumYoung, deleteFlight, limit, page, openModal }) => {
     const { t } = useTranslation()
@@ -47,19 +49,19 @@ const FlightsItem = ({ item, sumOld, sumYoung, deleteFlight, limit, page, openMo
         }
 
     }, [sumOld, sumYoung])
-    
+
     const changeFlight = (id) => {
         let formData = new FormData();
         formData.append('id', id);
-        formData.append('price', newPrice==""?item.price:newPrice);
-        formData.append('startPosition', newStartPosition==""?item.startPosition.join("//"):newStartPosition);
-        formData.append('finishPosition', newFinishPosition==""?item.finishPosition.join("//"):newFinishPosition);
-        formData.append('startDate', newStartDate==""?item.startDate:newStartDate);
-        formData.append('finishDate', newFinishDate==""?item.finishDate:newFinishDate);
-        formData.append('startTime', newStartTime==""?item.startTime:newStartTime);
-        formData.append('finishTime', newFinishTime==""?item.finishTime:newFinishTime);
-        formData.append('timeFlight', newTimeFlight==""?item.timeFlight:newTimeFlight);
-        formData.append('countFreePlace', newCountFreePlace==""?item.countFreePlace:newCountFreePlace);
+        formData.append('price', newPrice == "" ? item.price : newPrice);
+        formData.append('startPosition', newStartPosition == "" ? item.startPosition.join("//") : newStartPosition);
+        formData.append('finishPosition', newFinishPosition == "" ? item.finishPosition.join("//") : newFinishPosition);
+        formData.append('startDate', newStartDate == "" ? item.startDate : newStartDate);
+        formData.append('finishDate', newFinishDate == "" ? item.finishDate : newFinishDate);
+        formData.append('startTime', newStartTime == "" ? item.startTime : newStartTime);
+        formData.append('finishTime', newFinishTime == "" ? item.finishTime : newFinishTime);
+        formData.append('timeFlight', newTimeFlight == "" ? item.timeFlight : newTimeFlight);
+        formData.append('countFreePlace', newCountFreePlace == "" ? item.countFreePlace : newCountFreePlace);
         formData.append('limit', limit);
         formData.append('page', page);
         fetchUpdateFlight(formData)
@@ -72,18 +74,28 @@ const FlightsItem = ({ item, sumOld, sumYoung, deleteFlight, limit, page, openMo
                 {check === true
                     ?
                     <>
-                        <div className='item-time'>
-                            <span><input type='text' placeholder={item.startTime} onChange={(e) => setNewStartTime(e.target.value)}></input></span>
-                            <span><input type='text' placeholder={item.timeFlight} onChange={(e) => setNewTimeFllight(e.target.value)}></input></span>
-                            <span><input type='text' placeholder={item.finishTime} onChange={(e) => setNewFinishTime(e.target.value)}></input></span>
-                        </div>
-                        <div className='item-date'>
-                            <span><input type='text' placeholder={item.startDate} onChange={(e) => setNewStartDate(e.target.value)}></input></span>
-                            <span><input type='text' placeholder={item.finishDate} onChange={(e) => setNewFinishDate(e.target.value)}></input></span>
-                        </div>
-                        <div className='item-position'>
-                            <span><input type='text' placeholder={item.startPosition.join("//")} onChange={(e) => setNewStartPosition(e.target.value)}></input></span>
-                            <span><input type='text' placeholder={item.finishPosition.join("//")} onChange={(e) => setNewFinishPosition(e.target.value)}></input></span>
+                        <div className='item-blocks'>
+                            <div className='item-position'>
+                                <span><input type='text' placeholder={item.startPosition.join("//")} onChange={(e) => setNewStartPosition(e.target.value)}></input></span>
+                                <span><input type='text' placeholder={item.finishPosition.join("//")} onChange={(e) => setNewFinishPosition(e.target.value)}></input></span>
+                            </div>
+                            <div className='item-time'>
+                                <div className='item-start-time'>
+                                    <span><input type='text' placeholder={item.startTime} onChange={(e) => setNewStartTime(e.target.value)}></input></span>
+                                    <span><TbBus /></span>
+                                </div>
+                                <div className='item-border'></div>
+                                <div className='item-flight-time'><span><BiTimeFive /></span>  <span><input type='text' placeholder={item.timeFlight} onChange={(e) => setNewTimeFllight(e.target.value)}></input></span></div>
+                                <div className='item-border'></div>
+                                <div className='item-finish-time'>
+                                    <span><GiPositionMarker /></span>
+                                    <span><input type='text' placeholder={item.finishTime} onChange={(e) => setNewFinishTime(e.target.value)}></input></span>
+                                </div>
+                            </div>
+                            <div className='item-date'>
+                                <span><input type='text' placeholder={item.startDate} onChange={(e) => setNewStartDate(e.target.value)}></input></span>
+                                <span><input type='text' placeholder={item.finishDate} onChange={(e) => setNewFinishDate(e.target.value)}></input></span>
+                            </div>
                         </div>
                         <div className='btn-buy'>
                             <div>
@@ -107,18 +119,28 @@ const FlightsItem = ({ item, sumOld, sumYoung, deleteFlight, limit, page, openMo
                             <button onClick={() => setCheck(true)}>{t('flight.change')}</button>
                             <button onClick={() => deleteFlight(item.id)}>{t('flight.delete')}</button>
                         </div>
-                        <div className='item-time'>
-                            <span>{item.startTime}</span>
-                            <span>{item.timeFlight.split("//")[language]}.</span>
-                            <span>{item.finishTime}</span>
-                        </div>
-                        <div className='item-date'>
-                            <span>{item.startDate}</span>
-                            <span>{item.finishDate}</span>
-                        </div>
-                        <div className='item-position'>
-                            <span>{item.startPosition[language]}</span>
-                            <span>{item.finishPosition[language]}</span>
+                        <div className='item-blocks'>
+                            <div className='item-position'>
+                                <span>{item.startPosition[language]}</span>
+                                <span>{item.finishPosition[language]}</span>
+                            </div>
+                            <div className='item-time'>
+                                <div className='item-start-time'>
+                                    <span>{item.startTime}</span>
+                                    <span><TbBus /></span>
+                                </div>
+                                <div className='item-border'></div>
+                                <div className='item-flight-time'><span><BiTimeFive /></span> <span>{item.timeFlight.split("//")[language]}.</span></div>
+                                <div className='item-border'></div>
+                                <div className='item-finish-time'>
+                                    <span><GiPositionMarker /></span>
+                                    <span>{item.finishTime}</span>
+                                </div>
+                            </div>
+                            <div className='item-date'>
+                                <span>{item.startDate}</span>
+                                <span>{item.finishDate}</span>
+                            </div>
                         </div>
                         <div className='btn-buy'>
                             <div>
@@ -142,29 +164,39 @@ const FlightsItem = ({ item, sumOld, sumYoung, deleteFlight, limit, page, openMo
     } else {
         return (
             <div className='item-flight'>
-                <div className='item-time'>
-                    <span>{item.startTime}</span>
-                    <span>{item.timeFlight.split("//")[language]}.</span>
-                    <span>{item.finishTime}</span>
-                </div>
-                <div className='item-date'>
-                    <span>{item.startDate}</span>
-                    <span>{item.finishDate}</span>
-                </div>
-                <div className='item-position'>
-                    <span>{item.startPosition[language]}</span>
-                    <span>{item.finishPosition[language]}</span>
+                <div className='item-blocks'>
+                    <div className='item-position'>
+                        <span>{item.startPosition[language]}</span>
+                        <span>{item.finishPosition[language]}</span>
+                    </div>
+                    <div className='item-time'>
+                        <div className='item-start-time'>
+                            <span>{item.startTime}</span>
+                            <span><TbBus /></span>
+                        </div>
+                        <div className='item-border'></div>
+                        <div className='item-flight-time'><span><BiTimeFive /></span> <span>{item.timeFlight.split("//")[language]}.</span></div>
+                        <div className='item-border'></div>
+                        <div className='item-finish-time'>
+                            <span><GiPositionMarker /></span>
+                            <span>{item.finishTime}</span>
+                        </div>
+                    </div>
+                    <div className='item-date'>
+                        <span>{item.startDate}</span>
+                        <span>{item.finishDate}</span>
+                    </div>
                 </div>
                 <div className='btn-buy'>
-                    <div>
+                    <div className='btn-flight-info'>
                         <NavLink to={`/flight/${item.id}`}>{t('flight.info_flight')}!</NavLink>
                     </div>
                     <div className='free-place'>
                         <span><FaUser /> {item.countFreePlace} {t('flight.free_place')}</span>
                     </div>
-                    <div>
+                    <div className='btn-buy-modal'>
                         <Stack direction="row" spacing={2}>
-                            <Button variant="contained" color="success" onClick={() => openModal(item.id)}>
+                            <Button variant="contained" onClick={() => openModal(item.id)}>
                                 <div><FaShoppingCart /></div><span>{sum} UAH</span>
                             </Button>
                         </Stack>

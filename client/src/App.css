@@ -744,13 +744,7 @@ main {
     cursor: pointer;
     font-size: 17px;
 }
-
-.footer-link p:hover {
-    color:rgb(230, 61, 0);
-    transition: all ease 0.3s;
-    font-weight: 600;
-}
-
+    
 .footer-info p {
     font-size: 17px;
 }
