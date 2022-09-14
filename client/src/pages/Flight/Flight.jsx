@@ -73,7 +73,32 @@ const Flight = () => {
                         changeSchedule={changeSchedule}
                     />
                 </div>
-        </>
+                <div>
+                    <div>
+                        {relinkBlocks.startPosition.lenght==0?<></>:<>
+                            з {flight.startPosition[language]}<br/>
+                            {relinkBlocks.startPosition.map(x=>
+                            <>
+                                <NavLink 
+                                to={"/flight/"+flight.startPosition[language]+"-"
+                                    +x.finishPosition.split("//")[language]+"/"+x.id}
+                                    key={x.id}>
+                                        {flight.startPosition[language]}-{x.finishPosition.split("//")[language]}
+                                </NavLink><br/></>)}
+                            </>}
+                        {relinkBlocks.finishPosition.lenght==0?<></>:<>
+                            до {flight.finishPosition[language]}<br/>    
+                            {relinkBlocks.finishPosition.map(x=>
+                                <>
+                                <NavLink to={"/flight/"+x.startPosition.split("//")[language]+"-"+flight.startPosition[language]
+                                    +"/"+x.id}
+                                    key={x.id}>
+                                        {x.startPosition.split("//")[language]}-{flight.finishPosition[language]}
+                                </NavLink><br/></>)}
+                            </>}
+                    </div>
+                </div>
+            </>
         )
     } else {
         return (

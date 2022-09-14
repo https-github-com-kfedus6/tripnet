@@ -89,9 +89,8 @@ class FlightsController {
             console.log("sd1");
             if (!startPosition && !finishPosition && !startDate) {
                 arrFlights = await Flight.findAndCountAll({
-                    where: { countFreePlace: { [Op.gte]: countFreePlace } },
-                    limit: Number(limit), offset: Number(offset)
-                    where: { countFreePlace: { [Op.gte]: countFreePlace } },
+                    where: { countFreePlace: { [Op.gte]: countFreePlace },
+                        countFreePlace: { [Op.gte]: countFreePlace } },
                     limit: Number(limit), offset: Number(offset), order: [['id', 'DESC']]
                 })
 
