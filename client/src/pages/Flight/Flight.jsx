@@ -10,11 +10,12 @@ import './flight.css';
 
 const Flight = () => {
     const { id } = useParams()
-
-    const { flight, status } = useSelector(state => state.flights)
+    
+    const { flight, status, relinkBlocks } = useSelector(state => state.flights)
     const { is_admin } = useSelector(state => state.user)
     const { language }=useSelector(state=>state.language);
-    const { fetchGetFlight, fetchGetFlights, fetchPutFlightStatus, fetchPutFlightBusDate } = useAction()
+    const { fetchGetFlight, fetchGetFlights, fetchPutFlightStatus, fetchPutFlightBusDate, GetRelinkBlocks } = useAction()
+
 
     const [scheduleWith, setScheduleWith] = useState('')
     const [scheduleTo, setScheduleTo] = useState('')
@@ -41,6 +42,10 @@ const Flight = () => {
     const changeSchedule = (id) => {
         fetchPutFlightBusDate(id, scheduleWith, scheduleTo)
     }
+    
+    useEffect(()=>{
+        GetRelinkBlocks(id);
+    },[id])
 
     if (!Array.isArray(flight)) {
         return (

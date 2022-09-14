@@ -10,6 +10,6 @@ router.get('/', flightsController.getSortFlights);
 router.get('/:id', flightsController.getFlight);
 router.delete('/:id', IsAdminMiddleWare, flightsController.deleteFlight);
 router.put('/', IsAdminMiddleWare, flightsController.updateFlight);
-
+router.get("/getRelinkBlocks/:id",flightsController.getRelinkBlocks);
 
 module.exports = router

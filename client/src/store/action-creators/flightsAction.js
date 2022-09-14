@@ -150,3 +150,14 @@ export const SearchCity = (value, language, isStartPosition) => async (dispatch)
         console.log(err);
     }
 }
+
+export const GetRelinkBlocks=(id)=>async(dispatch)=>{
+    try{
+        const resp=await $host.get("api/flights/getRelinkBlocks/"+id);
+        if(resp.data.status==200){
+            dispatch({type:flightActionTypes.FETCH_GET_RELINKBLOCKS,payload:resp.data.res});
+        }
+    }catch(err){
+        console.log(err);
+    }
+}

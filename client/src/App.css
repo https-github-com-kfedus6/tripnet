@@ -1356,3 +1356,18 @@ main {
         width: 98%;
     }   
 }
+@media screen and (min-width: 500px) {
+    .authorize__logo{
+        width: 50%;
+        margin-left: 30%;
+    }    
+}
+@media screen and (max-width: 500px) {
+    .authorize__logo{
+        width: 80%;
+        margin-left: 20%;
+    }    
+}
+.authorize__logo img{
+    width: 100%;
+}

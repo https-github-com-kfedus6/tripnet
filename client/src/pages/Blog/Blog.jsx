@@ -29,7 +29,7 @@ const Blog = () => {
           <NavLink to="/">
               {t("header.first_link")}
           </NavLink>
-          <NavLink to="blog">
+          <NavLink to="/blog">
             блог
           </NavLink>
           <Typography color="text.primary">{selectBlog.name[language]}</Typography>

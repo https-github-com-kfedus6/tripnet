@@ -10,7 +10,7 @@ const Authorize = ({ isShow, setIsShow }) => {
         <div onClick={() => setIsShow(false)} className={isShow ? "authorize__main active" : "authorize__main"}>
             <div onClick={(e) => e.stopPropagation()} className="modal__content">
                 <div className='authorize__header'>
-                    <div>
+                    <div className='authorize__logo'>
                         <img src={process.env.REACT_APP_API_URL + "logo.png"} alt="logo" />
                     </div>
                 </div>
