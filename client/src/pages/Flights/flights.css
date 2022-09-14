@@ -7,10 +7,9 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    background: #0e1419 url('../../../public/baner/bus-baner2.jpg') no-repeat center;
-    background-size: cover;
-    box-shadow: 0 5px 10px 0 rgb(199, 199, 199);
     padding: 10px 0;
+    background: #0e1419 url('../../../public//baner/bus-baner2.jpg') no-repeat center;
+    background-size: cover;
     height: 400px;
 }
 
@@ -22,6 +21,29 @@
     display: flex;
     flex-direction: column;
     margin-top: 20px;
+}
+
+.change-position {
+    position: relative;
+    right: 2px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.change-position div {
+    width: 35px;
+    height: 35px;
+    border-radius: 50px;
+    background-color: #fff;
+    cursor: pointer;
+}
+
+.change-position div span {
+    display: flex;
+    justify-content: center;
+    font-size: 27px;
+    margin-top: 4px;
 }
 
 .form-block-position {

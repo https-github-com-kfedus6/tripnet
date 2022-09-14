@@ -17,13 +17,13 @@ const Home = () => {
     const [sumYoung, setSumYoung] = useState(0);
     const [sumOld, setSumOld] = useState(1);
 
-    const {SetFlightParams}=useAction();
-    useEffect(()=>{
+    const { SetFlightParams } = useAction();
+    useEffect(() => {
 
-    },[language])
+    }, [language])
     const navigate = useNavigate();
-    const search=()=>{
-        SetFlightParams(startPosition,finishPosition,startDate,sumOld,sumYoung);
+    const search = () => {
+        SetFlightParams(startPosition, finishPosition, startDate, sumOld, sumYoung);
         navigate("/flightsCategory");
     }
     return (
@@ -50,11 +50,11 @@ const Home = () => {
                 <div className="home__benefits__img__mini">
                     <img src={process.env.REACT_APP_API_URL + "homeBenefitsmini" + language + ".png"} />
                 </div>
-                <HomeFAQ/>
+                <HomeFAQ />
                 <Responce />
                 <HomeListBlog />
             </div>
-        </div>
+        </div >
     )
 }
 

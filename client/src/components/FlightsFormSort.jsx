@@ -7,8 +7,9 @@ import TextField from '@mui/material/TextField';
 import { useEffect } from 'react';
 import { useAction } from '../hooks/useAction';
 import { useSelector } from 'react-redux';
+import { CgArrowsExchange, CgArrowsExchangeAlt } from 'react-icons/cg';
 
-const FlightsFormSort = ({ startDate, startPosition, finishPosition, setStartDate, setStartPosition, setFinishPosition, sortFlights, sumOld, setSumOld, sumYoung, setSumYoung }) => {
+const FlightsFormSort = ({ startDate, startPosition, finishPosition, setStartDate, setStartPosition, setFinishPosition, sortFlights, sumOld, setSumOld, sumYoung, setSumYoung, setChangePosition, changePosition, changePositionFun }) => {
     const { t } = useTranslation()
 
     const [check, setCheck] = useState(false)
@@ -65,19 +66,18 @@ const FlightsFormSort = ({ startDate, startPosition, finishPosition, setStartDat
                 <div className='flights-sort-form'>
                     <div className='form-flights'>
                         <div className='form-block-position'>
-                            <div className='form-position'>
-                                {/* <span>{t('flight.whence')}</span> */}
+                            <div className='form-position icon-change'>
                                 <Autocomplete
                                     size='small'
                                     freeSolo
                                     id="free-solo-2-demo"
                                     disableClearable
-                                    value={startPosition}
+                                    value={changePosition ? finishPosition : startPosition}
                                     onChange={(value, newValue) => setStartPosition(newValue)}
                                     options={searchStartPostion.map((option) => option.title)}
                                     renderInput={(params) => (
-                                        <TextField
-                                            onChange={(e) => { console.log(e.target.value); setStartPosition(e.target.value) }}
+                                        <TextField sx={{ backgroundColor: '#fff', borderRadius: '5px' }}
+                                            onChange={(e) => { changePosition ? setFinishPosition(e.target.value) : setStartPosition(e.target.value) }}
                                             {...params}
                                             label={t('flight.whence')}
                                             InputProps={{
@@ -87,19 +87,25 @@ const FlightsFormSort = ({ startDate, startPosition, finishPosition, setStartDat
                                         />)}
                                 />
                             </div>
+                            <div className='change-position'>
+                                <div>
+                                    <span onClick={changePositionFun}>
+                                        {changePosition ? <CgArrowsExchangeAlt /> : <CgArrowsExchange />}
+                                    </span>
+                                </div>
+                            </div>
                             <div className='form-position'>
-                                {/* <span className='toolip'>{t('flight.whitherto')}</span> */}
                                 <Autocomplete
                                     size='small'
                                     freeSolo
                                     id="free-solo-2-demo"
                                     disableClearable
-                                    value={finishPosition}
+                                    value={changePosition ? startPosition : finishPosition}
                                     onChange={(e, newValue) => setFinishPosition(newValue)}
                                     options={searchFinishPosition.map((option) => option.title)}
                                     renderInput={(params) => (
-                                        <TextField
-                                            onChange={(e) => setFinishPosition(e.target.value)}
+                                        <TextField sx={{ backgroundColor: '#fff', borderRadius: '5px' }}
+                                            onChange={(e) => { changePosition ? setStartPosition(e.target.value) : setFinishPosition(e.target.value) }}
                                             {...params}
                                             label={t('flight.whitherto')}
                                             InputProps={{
@@ -112,7 +118,6 @@ const FlightsFormSort = ({ startDate, startPosition, finishPosition, setStartDat
                         </div>
                         <div className='form-block-date'>
                             <div className='form-date'>
-                                {/* <span>{t('flight.departure')}</span> */}
                                 <input type="date" value={startDate} onChange={(e) => setStartDate(e.target.value)} />
                             </div>
 

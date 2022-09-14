@@ -17,7 +17,7 @@ class FlightsController {
             const description = [descriptionUA, descriptionRU].join("/*/");
             let image = req.files;
             let flight;
-            if (image != null&&image!=undefined) {
+            if (image != null && image != undefined) {
                 const nameImg = uuid.v4() + ".jpg";
                 image.image.mv(path.resolve(__dirname, '..', 'static', nameImg));
 
@@ -89,7 +89,7 @@ class FlightsController {
             console.log("sd1");
             if (!startPosition && !finishPosition && !startDate) {
                 arrFlights = await Flight.findAndCountAll({
-                    where: { countFreePlace: { [Op.gte]: countFreePlace }},
+                    where: { countFreePlace: { [Op.gte]: countFreePlace } },
                     limit: Number(limit), offset: Number(offset)
                 })
 
@@ -135,7 +135,6 @@ class FlightsController {
                     limit: Number(limit), offset: Number(offset)
                 })
             }
-            console.log("sd");
             for (let i = 0; i < arrFlights.rows.length; i++) {
                 arrFlights.rows[i].startPosition = arrFlights.rows[i].startPosition.split("//");
                 arrFlights.rows[i].finishPosition = arrFlights.rows[i].finishPosition.split("//");

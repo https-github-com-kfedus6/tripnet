@@ -5,7 +5,7 @@ import { NavLink } from 'react-router-dom'
 import FlightsFormSort from './FlightsFormSort'
 import FlightsItem from './FlightsItem'
 
-const FlightsList = ({ finishPosition, startPosition, startDate, flights, setStartDate, setStartPosition, setFinishPosition, sortFlights, sumOld, setSumOld, sumYoung, setSumYoung, deleteFlight, limit, page, isFilterTrue, openModal }) => {
+const FlightsList = ({ finishPosition, startPosition, startDate, flights, setStartDate, setStartPosition, setFinishPosition, sortFlights, sumOld, setSumOld, sumYoung, setSumYoung, deleteFlight, limit, page, isFilterTrue, openModal, changePosition, setChangePosition, changePositionFun }) => {
 
     if (flights == undefined || flights.length === 0) {
         return (
@@ -29,6 +29,9 @@ const FlightsList = ({ finishPosition, startPosition, startDate, flights, setSta
                     startPosition={startPosition}
                     finishPosition={finishPosition}
                     startDate={startDate}
+                    changePosition={changePosition}
+                    setChangePosition={setChangePosition}
+                    changePositionFun={changePositionFun}
                 /> : <></>}
                 <div className='bread__crumbs__main'>
                     <Breadcrumbs>
@@ -39,7 +42,7 @@ const FlightsList = ({ finishPosition, startPosition, startDate, flights, setSta
                     </Breadcrumbs>
                 </div>
                 <div className='flights-block'>
-                    
+
                     <div className='items-flight'>
                         {flights.rows.map(item => {
                             return (

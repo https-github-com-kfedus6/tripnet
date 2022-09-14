@@ -27,6 +27,8 @@ const Flights = ({ isShowFilter }) => {
     const [sumYoung, setSumYoung] = useState(sumYoungInitial)
     const [sumOld, setSumOld] = useState(sumOldInitial)
 
+    const [changePosition, setChangePosition] = useState(false)
+
     const { fetchGetFlights, fetchDeleteFlight, postFlightOrder, SetFlightParams } = useAction()
 
     const { flights } = useSelector(state => state.flights)
@@ -56,20 +58,31 @@ const Flights = ({ isShowFilter }) => {
         setLimit(limit + 3)
     }
 
-    const {is_login,user}=useSelector(state=>state.user);
+    const { is_login, user } = useSelector(state => state.user);
     const sortFlights = (event) => {
 
         event.preventDefault();
         setPage(1);
-        SetFlightParams(startPosition,finishPosition,startDate,sumOld,sumYoung);
-        fetchGetFlights({
-            startPosition: startPosition,
-            finishPosition: finishPosition,
-            startDate: startDate,
-            countFreePlace: sumYoung + sumOld,
-            limit: limit,
-            page: 1
-        })
+        SetFlightParams(startPosition, finishPosition, startDate, sumOld, sumYoung);
+        if (changePosition === true) {
+            fetchGetFlights({
+                startPosition: finishPosition,
+                finishPosition: startPosition,
+                startDate: startDate,
+                countFreePlace: sumYoung + sumOld,
+                limit: limit,
+                page: 1
+            })
+        } else {
+            fetchGetFlights({
+                startPosition: startPosition,
+                finishPosition: finishPosition,
+                startDate: startDate,
+                countFreePlace: sumYoung + sumOld,
+                limit: limit,
+                page: 1
+            })
+        }
     }
 
     const deleteFlight = (id) => {
@@ -81,14 +94,14 @@ const Flights = ({ isShowFilter }) => {
 
     const reserveTicket = () => {
         setVisiblyBuy(false)
-        if(!is_login){
+        if (!is_login) {
             postFlightOrder({
                 flightId: flightId,
                 authorName: name,
                 countTicket: countTicket,
                 phone: phone
             })
-        }else{
+        } else {
             postFlightOrder({
                 flightId: flightId,
                 authorName: name,
@@ -104,6 +117,15 @@ const Flights = ({ isShowFilter }) => {
         setVisiblyBuy(true)
         setFlightId(id)
     }
+
+    const changePositionFun = () => {
+        if (changePosition === true) {
+            setChangePosition(false)
+        } else {
+            setChangePosition(true)
+        }
+    }
+
     return (
         <div className='flights'>
             <FlightsList
@@ -124,6 +146,9 @@ const Flights = ({ isShowFilter }) => {
                 startPosition={startPosition}
                 startDate={startDate}
                 finishPosition={finishPosition}
+                changePosition={changePosition}
+                setChangePosition={setChangePosition}
+                changePositionFun={changePositionFun}
             />
             {totalCount == undefined ? <></> :
                 <div className='pagination'>
