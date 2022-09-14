@@ -8,7 +8,8 @@ export const flightActionTypes = {
     FETCH_PUT_FLIGHT_STATUS: 'FETCH_PUT_FLIGHT_STATUS',
     FETCH_PUT_FLIGHT_SCHEDULE_BUS: 'FETCH_PUT_FLIGHT_SCHEDULE_BUS',
     FETCH_SEARCH_START_POSTION: 'FETCH_SEARCH_START_POSTION',
-    FETCH_SEARCH_FINISH_POSTION: 'FETCH_SEARCH_FINISH_POSTION'
+    FETCH_SEARCH_FINISH_POSTION: 'FETCH_SEARCH_FINISH_POSTION',
+    FETCH_GET_RELINKBLOCKS:"FETCH_GET_RELINKBLOCKS"
 }
 
 const initialState = {
@@ -17,7 +18,8 @@ const initialState = {
     status: [],
     page: 1,
     searchStartPostion:[],
-    searchFinishPosition:[]
+    searchFinishPosition:[],
+    relinkBlocks:undefined
 }
 
 export const flightsReducer = (state = initialState, action) => {
@@ -42,6 +44,9 @@ export const flightsReducer = (state = initialState, action) => {
         }
         case flightActionTypes.FETCH_SEARCH_FINISH_POSTION:{
             return {...state, searchFinishPosition: action.payload};
+        }
+        case flightActionTypes.FETCH_GET_RELINKBLOCKS:{
+            return {...state, relinkBlocks:action.payload};
         }
         default: {
             return state

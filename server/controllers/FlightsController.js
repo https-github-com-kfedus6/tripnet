@@ -90,18 +90,17 @@ class FlightsController {
             if (!startPosition && !finishPosition && !startDate) {
                 arrFlights = await Flight.findAndCountAll({
                     where: { countFreePlace: { [Op.gte]: countFreePlace }},
-                    limit: Number(limit), offset: Number(offset)
+                    limit: Number(limit), offset: Number(offset), order: [['id', 'DESC']]
                 })
 
             } else if (startPosition && !finishPosition && !startDate) {
                 const regStartPosition = `(^${startPosition})|(\/\/${startPosition}$)`;
-                arrFlights = await Flight.findAndCountAll({ where: { startPosition: { [Op.regexp]: regStartPosition }, countFreePlace: { [Op.gte]: countFreePlace } }, limit: Number(limit), offset: Number(offset), })
-                console.log(arrFlights)
+                arrFlights = await Flight.findAndCountAll({ where: { startPosition: { [Op.regexp]: regStartPosition }, countFreePlace: { [Op.gte]: countFreePlace } }, limit: Number(limit), offset: Number(offset), order: [['id', 'DESC']]})
 
             } else if (startPosition && finishPosition && !startDate) {
                 const regStartPosition = `(^${startPosition})|(\/\/${startPosition}$)`;
                 const regFinishPosition = `(^${finishPosition})|(\/\/${finishPosition}$)`;
-                arrFlights = await Flight.findAndCountAll({ where: { startPosition: { [Op.regexp]: regStartPosition }, finishPosition: { [Op.regexp]: regFinishPosition }, countFreePlace: { [Op.gte]: countFreePlace } }, limit: Number(limit), offset: Number(offset) })
+                arrFlights = await Flight.findAndCountAll({ where: { startPosition: { [Op.regexp]: regStartPosition }, finishPosition: { [Op.regexp]: regFinishPosition }, countFreePlace: { [Op.gte]: countFreePlace } }, limit: Number(limit), offset: Number(offset), order: [['id', 'DESC']] })
 
 
             } else if (startPosition && finishPosition && startDate) {
@@ -112,13 +111,13 @@ class FlightsController {
                         startPosition: { [Op.regexp]: regStartPosition }, finishPosition: { [Op.regexp]: regFinishPosition },
                         startDate: startDate, countFreePlace: { [Op.gte]: countFreePlace }
                     },
-                    limit: Number(limit), offset: Number(offset)
+                    limit: Number(limit), offset: Number(offset), order: [['id', 'DESC']]
                 })
 
 
             } else if (startDate && !startPosition && !finishPosition) {
 
-                arrFlights = await Flight.findAndCountAll({ where: { startDate: startDate, countFreePlace: { [Op.gte]: countFreePlace } }, limit: Number(limit), offset: Number(offset) })
+                arrFlights = await Flight.findAndCountAll({ where: { startDate: startDate, countFreePlace: { [Op.gte]: countFreePlace } }, limit: Number(limit), offset: Number(offset), order: [['id', 'DESC']] })
 
 
 
@@ -132,10 +131,9 @@ class FlightsController {
                         finishPosition: { [Op.regexp]: regFinishPosition },
                         countFreePlace: { [Op.gte]: countFreePlace }
                     },
-                    limit: Number(limit), offset: Number(offset)
+                    limit: Number(limit), offset: Number(offset), order: [['id', 'DESC']]
                 })
             }
-            console.log("sd");
             for (let i = 0; i < arrFlights.rows.length; i++) {
                 arrFlights.rows[i].startPosition = arrFlights.rows[i].startPosition.split("//");
                 arrFlights.rows[i].finishPosition = arrFlights.rows[i].finishPosition.split("//");
@@ -156,6 +154,7 @@ class FlightsController {
             flight.description = flight.description.split("/*/");
             flight.schefule[0].sunday = flight.schefule[0].sunday.split("//");
             let status = await ScheduleBusStatus.findAll({ where: { scheduleBusId: flight.schefule[0].id } });
+            
             return res.json({ status: 200, res: { flight, status } });
         } catch (err) {
             return next(ErrorApi.badRequest(err));
@@ -236,6 +235,56 @@ class FlightsController {
             return res.json({ status: 200 })
 
         } catch (err) {
+            return next(ErrorApi.badRequest(err));
+        }
+    }
+
+    async getRelinkBlocks(req,resp,next){
+        try{
+            const getCityForRegular=(value)=>{
+                let res=value.split("//");
+                res = res.join("\\/\\/");
+                console.log(res);
+                return res;
+            }
+            const {id}=req.params;
+            let {startPosition,finishPosition}=await Flight.findOne({attributes:['startPosition','finishPosition'],where:{id}});
+            let resStartPosition=[];
+            let withStartPosition=[finishPosition];
+            for(let i=0;i<8;i++){
+                let regStartPosition="^(?!^(";
+                for(let i=0;i<withStartPosition.length;i++){
+                    if(i==0)regStartPosition+=getCityForRegular(withStartPosition[i]);
+                    else regStartPosition+="|"+getCityForRegular(withStartPosition[i]);
+                }
+                regStartPosition+=")$).+";   
+                let f=await Flight.findOne({where:{startPosition,
+                    finishPosition:{[Op.regexp]:regStartPosition}, 
+                    countFreePlace: { [Op.gte]: 1 }}})
+                if(f!=null){
+                    withStartPosition.push(f.finishPosition);
+                    resStartPosition.push({finishPosition:f.finishPosition,id:f.id});
+                }else break
+            }
+            let resFinishPosition=[];
+            let withFinishPosition=[startPosition];
+            for(let i=0;i<8;i++){
+                let reg="^(?!^(";
+                for(let i=0;i<withFinishPosition.length;i++){
+                    if(i==0)reg+=getCityForRegular(withFinishPosition[i]);
+                    else reg+="|"+getCityForRegular(withFinishPosition[i]);
+                }
+                reg+=")$).+";   
+                let res=await Flight.findOne({where:{finishPosition,
+                    startPosition:{[Op.regexp]:reg}, 
+                    countFreePlace: { [Op.gte]: 1 }}})
+                if(res!=null){
+                    withFinishPosition.push(res.startPosition);
+                    resFinishPosition.push({startPosition:res.startPosition,id:res.id});
+                }else break;
+            }
+            return resp.json({status:200,res:{startPosition:resStartPosition,finishPosition:resFinishPosition}});
+        }catch(err){
             return next(ErrorApi.badRequest(err));
         }
     }
