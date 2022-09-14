@@ -10,18 +10,18 @@ import './flight.css';
 
 const Flight = () => {
     const { id } = useParams()
-    
+
     const { flight, status, relinkBlocks } = useSelector(state => state.flights)
     const { is_admin } = useSelector(state => state.user)
-    const { language }=useSelector(state=>state.language);
+    const { language } = useSelector(state => state.language);
     const { fetchGetFlight, fetchGetFlights, fetchPutFlightStatus, fetchPutFlightBusDate, GetRelinkBlocks } = useAction()
 
 
     const [scheduleWith, setScheduleWith] = useState('')
     const [scheduleTo, setScheduleTo] = useState('')
-    useEffect(()=>{
-        
-    },[language])
+    useEffect(() => {
+
+    }, [language])
     useEffect(() => {
         fetchGetFlight(id)
         fetchGetFlights({
@@ -42,10 +42,10 @@ const Flight = () => {
     const changeSchedule = (id) => {
         fetchPutFlightBusDate(id, scheduleWith, scheduleTo)
     }
-    
-    useEffect(()=>{
+
+    useEffect(() => {
         GetRelinkBlocks(id);
-    },[id])
+    }, [id])
 
     if (!Array.isArray(flight)) {
         return (
@@ -61,7 +61,7 @@ const Flight = () => {
                         <Typography color="text.primary">{flight.startPosition[language]}-{flight.finishPosition[language]}</Typography>
                     </Breadcrumbs>
                 </div>
-                
+
                 <div className='container-flight'>
                     <FlightList
                         flight={flight}
@@ -71,32 +71,8 @@ const Flight = () => {
                         status={status}
                         changeStatus={changeStatus}
                         changeSchedule={changeSchedule}
+                        relinkBlocks={relinkBlocks}
                     />
-                </div>
-                <div>
-                    <div>
-                        {relinkBlocks.startPosition.lenght==0?<></>:<>
-                            з {flight.startPosition[language]}<br/>
-                            {relinkBlocks.startPosition.map(x=>
-                            <>
-                                <NavLink 
-                                to={"/flight/"+flight.startPosition[language]+"-"
-                                    +x.finishPosition.split("//")[language]+"/"+x.id}
-                                    key={x.id}>
-                                        {flight.startPosition[language]}-{x.finishPosition.split("//")[language]}
-                                </NavLink><br/></>)}
-                            </>}
-                        {relinkBlocks.finishPosition.lenght==0?<></>:<>
-                            до {flight.finishPosition[language]}<br/>    
-                            {relinkBlocks.finishPosition.map(x=>
-                                <>
-                                <NavLink to={"/flight/"+x.startPosition.split("//")[language]+"-"+flight.startPosition[language]
-                                    +"/"+x.id}
-                                    key={x.id}>
-                                        {x.startPosition.split("//")[language]}-{flight.finishPosition[language]}
-                                </NavLink><br/></>)}
-                            </>}
-                    </div>
                 </div>
             </>
         )

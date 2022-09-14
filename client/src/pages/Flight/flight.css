@@ -5,7 +5,7 @@
         align-items: center;
         margin: auto;
         width: 60%;
-    }   
+    } 
 }
 @media screen and (max-width: 1024px) {
     
@@ -51,6 +51,15 @@
         justify-content: flex-start;
         align-items: flex-start;
         margin-bottom: 10px;
+    }
+
+    .flight-links-block {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .flight-links-block div {
+        margin-top: 15px;
     }
 }
 
@@ -240,3 +249,34 @@
 .status-active {
     background-color: rgb(235, 235, 235);
 }
+
+.flight-links {
+    margin-top:40px;
+}
+
+.flight-links p {
+    font-size: 22px;
+}
+
+.flight-links-block {
+    display: flex;
+    justify-content: space-between;
+}
+
+.flight-links-block div span {
+    font-size: 18px;
+}
+
+.flight-links-block div div {
+    margin-top: 10px;
+}
+
+.flight-links-block div div a {
+    color: #F58A07;
+    text-decoration: none;
+}
+
+.flight-links-block div div a:hover {
+    text-decoration: underline;
+}
+

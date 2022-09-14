@@ -1,12 +1,13 @@
 import { t } from 'i18next'
-import React from 'react'
-import { useState } from 'react'
+import React, { useState } from 'react'
 import { ImArrowRight2 } from 'react-icons/im'
 import { useSelector } from 'react-redux'
 import { useAction } from '../hooks/useAction'
 import FlightScheduleBusList from './FlightScheduleBusList'
+import { NavLink } from 'react-router-dom';
+import { HiOutlineArrowLongRight } from 'react-icons/hi'
 
-const FlightList = ({ flight, is_admin, setScheduleTo, setScheduleWith, status, changeStatus, changeSchedule }) => {
+const FlightList = ({ flight, is_admin, setScheduleTo, setScheduleWith, status, changeStatus, changeSchedule, relinkBlocks }) => {
     const { language } = useSelector(state => state.language);
 
     function createMarkup(text) { return { __html: text }; };
@@ -102,6 +103,42 @@ const FlightList = ({ flight, is_admin, setScheduleTo, setScheduleWith, status, 
             <div className='flight-description'>
                 <h2>{t("flight.info_for_flight")} {flight.startPosition[language]} - {flight.finishPosition[language]}:</h2>
                 <p dangerouslySetInnerHTML={createMarkup(flight.description[language])}></p>
+            </div>
+            <div className='flight-links'>
+                <p>Популярні рейси</p>
+                <div className='flight-links-block'>
+                    <div>
+                        {relinkBlocks.startPosition.lenght == 0 ? <></> : <>
+                            <span>з {flight.startPosition[language]}</span>
+                            <div>
+                                {relinkBlocks.startPosition.map(x =>
+                                    <div>
+                                        <NavLink
+                                            to={"/flight/" + flight.startPosition[language] + "-"
+                                                + x.finishPosition.split("//")[language] + "/" + x.id}
+                                            key={x.id}>
+                                            {flight.startPosition[language]}-{x.finishPosition.split("//")[language]}
+                                        </NavLink>
+                                    </div>)}
+                            </div>
+                        </>}
+                    </div>
+                    <div>
+                        {relinkBlocks.finishPosition.lenght == 0 ? <></> : <>
+                            <span>до {flight.finishPosition[language]}</span>
+                            <div>
+                                {relinkBlocks.finishPosition.map(x =>
+                                    <div>
+                                        <NavLink to={"/flight/" + x.startPosition.split("//")[language] + "-" + flight.startPosition[language]
+                                            + "/" + x.id}
+                                            key={x.id}>
+                                            {x.startPosition.split("//")[language]}-{flight.finishPosition[language]}
+                                        </NavLink>
+                                    </div>)}
+                            </div>
+                        </>}
+                    </div>
+                </div>
             </div>
         </div >
     )
