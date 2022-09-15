@@ -41,8 +41,6 @@ const FlightsFormSort = ({ startDate, startPosition, finishPosition, setStartDat
         }
     }
 
-    const [pos, setPos] = useState(false);
-
     const { SearchCity } = useAction()
 
     const { language } = useSelector(state => state.language);
@@ -58,12 +56,7 @@ const FlightsFormSort = ({ startDate, startPosition, finishPosition, setStartDat
     }, [finishPosition, language])
 
     const changePos = () => {
-        if (changePosition === true) {
-            setChangePosition(false)
-        } else {
-            setChangePosition(true)
-        }
-        setPos(changePosition);
+        setChangePosition(!changePosition);
         let temp = startPosition;
         setStartPosition(finishPosition);
         setFinishPosition(temp)
@@ -81,12 +74,12 @@ const FlightsFormSort = ({ startDate, startPosition, finishPosition, setStartDat
                                     freeSolo
                                     id="free-solo-2-demo"
                                     disableClearable
-                                    value={changePosition ? finishPosition : startPosition}
+                                    value={startPosition}
                                     onChange={(value, newValue) => setStartPosition(newValue)}
                                     options={searchStartPostion.map((option) => option.title)}
                                     renderInput={(params) => (
                                         <TextField sx={{ backgroundColor: '#fff', borderRadius: '5px' }}
-                                            onChange={(e) => { changePosition ? setFinishPosition(e.target.value) : setStartPosition(e.target.value) }}
+                                            onChange={(e) => {setStartPosition(e.target.value) }}
                                             {...params}
                                             label={t('flight.whence')}
                                             InputProps={{
@@ -109,12 +102,12 @@ const FlightsFormSort = ({ startDate, startPosition, finishPosition, setStartDat
                                     freeSolo
                                     id="free-solo-2-demo"
                                     disableClearable
-                                    value={changePosition ? startPosition : finishPosition}
+                                    value={finishPosition}
                                     onChange={(e, newValue) => setFinishPosition(newValue)}
                                     options={searchFinishPosition.map((option) => option.title)}
                                     renderInput={(params) => (
                                         <TextField sx={{ backgroundColor: '#fff', borderRadius: '5px' }}
-                                            onChange={(e) => { changePosition ? setStartPosition(e.target.value) : setFinishPosition(e.target.value) }}
+                                            onChange={(e) => {setFinishPosition(e.target.value) }}
                                             {...params}
                                             label={t('flight.whitherto')}
                                             InputProps={{

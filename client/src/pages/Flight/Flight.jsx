@@ -28,7 +28,7 @@ const Flight = () => {
             startPosition: flight.startPosition,
             finishPosition: flight.finishPosition
         })
-    }, [])
+    }, [id])
 
     const changeStatus = (sheduleBusId, id, status) => {
         if (status === true) {

@@ -1341,7 +1341,7 @@ main {
         display: flex;
         margin: auto;
         margin-top: 30px;
-        width: 50%;
+        width: 60%;
     }   
 }
 @media screen and (max-width:1024px) {
