@@ -41,6 +41,7 @@ const FlightList = ({ flight, is_admin, setScheduleTo, setScheduleWith, status, 
         fetchUpdateFlight(formData);
     }
 
+
     return (
         <div className='block-flight'>
             <div className='block-position-price'>
@@ -108,11 +109,11 @@ const FlightList = ({ flight, is_admin, setScheduleTo, setScheduleWith, status, 
                 <p>Популярні рейси</p>
                 <div className='flight-links-block'>
                     <div>
-                        {relinkBlocks.startPosition.lenght == 0 ? <></> : <>
+                        {relinkBlocks==undefined || relinkBlocks.startPosition.length == 0 ? <></> : <>
                             <span>з {flight.startPosition[language]}</span>
                             <div>
                                 {relinkBlocks.startPosition.map(x =>
-                                    <div>
+                                    <div key={x.id}>
                                         <NavLink
                                             to={"/flight/" + flight.startPosition[language] + "-"
                                                 + x.finishPosition.split("//")[language] + "/" + x.id}
@@ -124,14 +125,13 @@ const FlightList = ({ flight, is_admin, setScheduleTo, setScheduleWith, status, 
                         </>}
                     </div>
                     <div>
-                        {relinkBlocks.finishPosition.lenght == 0 ? <></> : <>
+                        {relinkBlocks==undefined || relinkBlocks.finishPosition.length == 0 ? <></> : <>
                             <span>до {flight.finishPosition[language]}</span>
                             <div>
                                 {relinkBlocks.finishPosition.map(x =>
-                                    <div>
+                                    <div key={x.id}>
                                         <NavLink to={"/flight/" + x.startPosition.split("//")[language] + "-" + flight.startPosition[language]
-                                            + "/" + x.id}
-                                            key={x.id}>
+                                            + "/" + x.id}>
                                             {x.startPosition.split("//")[language]}-{flight.finishPosition[language]}
                                         </NavLink>
                                     </div>)}

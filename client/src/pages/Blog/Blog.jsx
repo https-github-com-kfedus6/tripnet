@@ -6,13 +6,17 @@ import { useEffect } from 'react';
 import { useState } from 'react';
 import { t } from 'i18next';
 import { Breadcrumbs, Typography } from '@mui/material';
+import HomeBlog from '../Home/HomeBlog';
 
 const Blog = () => {
   const {id}=useParams();
-  const {selectBlog}=useSelector(state=>state.blog)
-  const {GetBlogDescription}=useAction();
+  const {selectBlog,blogNovetly}=useSelector(state=>state.blog)
+  const {GetBlogDescription,GetBlogNovetly}=useAction();
   const {language}=useSelector(state=>state.language);
   const navigate=useNavigate();
+  useEffect(()=>{
+    GetBlogNovetly(6);
+  },[])
   useEffect(()=>{
     if(selectBlog==undefined||selectBlog==null||selectBlog.id!=id){
       GetBlogDescription(id);
@@ -42,6 +46,12 @@ const Blog = () => {
           <h1>{selectBlog.name[language]}</h1>
           <div dangerouslySetInnerHTML={createMarkup(selectBlog.description[language])} className="blog__main">
             
+          </div>
+          
+          <div className='home__blog__container'>
+            <div className="home__list__blog">
+                {blogNovetly.map(x=><HomeBlog key={x.id} blog={x}/>)}
+            </div>
           </div>
         </div>
       </div>

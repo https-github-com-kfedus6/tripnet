@@ -41,10 +41,8 @@ const FlightsFormSort = ({ startDate, startPosition, finishPosition, setStartDat
         }
     }
 
-    const defaultProps = {
-        options: [{ title: "fdf" }],
-        getOptionLabel: (option) => option.title,
-    };
+    const [pos,setPos]=useState(false);
+
 
     const { SearchCity } = useAction()
 
@@ -59,6 +57,13 @@ const FlightsFormSort = ({ startDate, startPosition, finishPosition, setStartDat
     useEffect(() => {
         SearchCity(finishPosition, language, false);
     }, [finishPosition, language])
+
+    const changePos=()=>{
+        setPos(changePosition);
+        let temp=startPosition;
+        setStartPosition(finishPosition);
+        setFinishPosition(temp)
+    }
 
     return (
         <Stack spacing={5}>
@@ -89,8 +94,8 @@ const FlightsFormSort = ({ startDate, startPosition, finishPosition, setStartDat
                             </div>
                             <div className='change-position'>
                                 <div>
-                                    <span onClick={changePositionFun}>
-                                        {changePosition ? <CgArrowsExchangeAlt /> : <CgArrowsExchange />}
+                                    <span onClick={changePos}>
+                                        {pos ? <CgArrowsExchangeAlt /> : <CgArrowsExchange />}
                                     </span>
                                 </div>
                             </div>
