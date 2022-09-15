@@ -76,14 +76,11 @@ const Blog = () => {
       GetBlogDescription(id);
     }
   },[id]);
-  
   console.log(process.env.REACT_APP_THIS_URL+"blog/"+name+"/")
   function createMarkup(text) { return {__html: text}; };
   return (
     (selectBlog==undefined||selectBlog==null||selectBlog.id!=id)?<div>loading...</div>:
     <>
-      {
-  console.log(process.env.REACT_APP_THIS_URL+"blog/"+name+"/"+selectBlog.id)}
       <div className='bread__crumbs__main'>
         <Breadcrumbs>
           <NavLink to="/">
@@ -107,22 +104,22 @@ const Blog = () => {
           <br/>
           <br/>
           <div className='blog__social__networks'>
-            <FacebookShareButton url={process.env.THIS_URL+"blog/"+name+"/"+selectBlog.id}>
+            <FacebookShareButton url={process.env.REACT_APP_THIS_URL+"blog/"+name+"/"+selectBlog.id}>
               <FacebookIcon size={50}/>
-            </FacebookShareButton>
-            <FacebookMessengerShareButton>
+            </FacebookShareButton >
+            <FacebookMessengerShareButton url={process.env.REACT_APP_THIS_URL+"blog/"+name+"/"+selectBlog.id}>
               <FacebookMessengerIcon size={50}/>
             </FacebookMessengerShareButton>
-            <TwitterShareButton>
+            <TwitterShareButton url={process.env.REACT_APP_THIS_URL+"blog/"+name+"/"+selectBlog.id}>
               <TwitterIcon size={50}/>
             </TwitterShareButton>
-            <TelegramShareButton size={50}>
+            <TelegramShareButton url={process.env.REACT_APP_THIS_URL+"blog/"+name+"/"+selectBlog.id}>
               <TelegramIcon size={50}/>
             </TelegramShareButton>
-            <WhatsappShareButton>
+            <WhatsappShareButton url={process.env.REACT_APP_THIS_URL+"blog/"+name+"/"+selectBlog.id}>
               <WhatsappIcon size={50}/>
             </WhatsappShareButton>
-            <ViberShareButton>
+            <ViberShareButton url={process.env.REACT_APP_THIS_URL+"blog/"+name+"/"+selectBlog.id}>
               <ViberIcon size={50}/>
             </ViberShareButton>
           </div>
