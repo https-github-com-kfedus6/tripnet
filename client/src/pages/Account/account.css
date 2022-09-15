@@ -22,7 +22,7 @@
 
 .block-user-icon span:nth-child(1) {
     font-size: 75px;
-    color: rgb(241, 81, 2);
+    color: #084887;
 }
 
 .block-user-icon span:nth-child(2) {
@@ -31,7 +31,7 @@
 
 .block-user-icon span:nth-child(3) {
     font-size: 17px;
-    color: #7288a2;
+    color: #F9AB55;
 }
 
 .block-user-info div {
@@ -41,7 +41,7 @@
 }
 
 .block-user-info div:nth-child(1) span:nth-child(1) {
-    color: #7288a2;
+    color: #F9AB55;
 }
 
 .block-user-info div:nth-child(1) span:nth-child(2) {
@@ -51,7 +51,7 @@
 
 
 .block-user-info div:nth-child(2) span:nth-child(1) {
-    color:#7288a2;
+    color:#F9AB55;
 }
 
 .block-user-info div:nth-child(2) span:nth-child(2) {
@@ -70,15 +70,18 @@
 .block-user-btn button {
     border-radius: 5px;
     width: 50%;
-    background-color: rgb(245, 73, 4);
-    border: 1px solid rgb(243, 71, 2);
+    background-color: #084887;
+    border: 1px solid #084887;
     font-size: 18px;
     height: 40px;
     cursor: pointer;
+    color: #FBFBFE;
 }
 
 .block-user-btn button:hover {
-    background-color: rgb(216, 61, 0);
+    background-color: #FBFBFE;
+    color: #084887;
+    transition: all ease 0.3s;
 }
 
 .block-user-input {
@@ -102,8 +105,9 @@
     cursor: pointer;
 }
 .block-user-input button:hover{
-   color: rgb(216, 61, 0);
+    color: #084887;
     text-decoration: underline;
+    transition: all ease 0.3s;
 }
 
 .block-history {
@@ -112,17 +116,14 @@
 
 .block-history details summary {
     font-size: 18px;
-}
-
-.block-history details summary:focus {
-    color: #db4900;
+    cursor: pointer;
 }
 
 .account-container {
     margin: 0;
     padding: 0;
     font-family: 'Hind', sans-serif;
-    color: #000;    
+    color: #000;
 }
 
 .accordion-item-account button {
@@ -132,7 +133,6 @@
       text-align: left;
       width: 100%;
       padding: 1em 0;
-      color: #7288a2;
       font-size: 1.15rem;
       font-weight: 400;
       border: none;
@@ -142,22 +142,16 @@
   
 .accordion-item-account button:hover {
     cursor: pointer;
-    color: #db4900;
+    color: #F9AB55;
 }
   
 .accordion-item-account button:focus {
     cursor: pointer;
-    color: #db4900;
+    color: #F58A07;
 }
-  
-.accordion-item-account button::after {
-    cursor: pointer;
-    color: #03b5d2;
-    border: 1px solid #db4900;
-}
-    
+
 .accordion-item-account button[aria-expanded='true'] {
-    color: #db4900;
+    color: #F58A07;
 }
 
 .account-close {

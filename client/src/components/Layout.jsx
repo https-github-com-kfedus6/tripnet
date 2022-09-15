@@ -6,8 +6,8 @@ import { useSelector } from 'react-redux';
 import { useAction } from '../hooks/useAction';
 
 const Layout = () => {
-    const {isShow,text}=useSelector(state=>state.message);
-    const {SetShowMessgeFalse}=useAction()
+    const { isShow, text } = useSelector(state => state.message);
+    const { SetShowMessgeFalse } = useAction()
     return (
         <div className='layout'>
             <header>
@@ -19,12 +19,12 @@ const Layout = () => {
             <footer>
                 <Footer />
             </footer>
-            {!isShow?<></>:
+            {!isShow ? <></> :
                 <div className='alert__main'>
                     <div className="alert__text">
                         {text}
-                    </div>    
-                    <div onClick={()=>SetShowMessgeFalse()} className="alert__exit">
+                    </div>
+                    <div onClick={() => SetShowMessgeFalse()} className="alert__exit">
                         &times;
                     </div>
                 </div>}

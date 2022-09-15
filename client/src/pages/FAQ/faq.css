@@ -11,7 +11,7 @@
 } 
 
 .accordion-item button[aria-expanded='true'] {
-    border-bottom: 1px solid #db4900;
+    border-bottom: 1px solid #F58A07;
 }
  
 .accordion-item button {
@@ -20,7 +20,6 @@
     text-align: left;
     width: 100%;
     padding: 1em 0;
-    color: #7288a2;
     font-size: 1.15rem;
     font-weight: 400;
     border: none;
@@ -30,18 +29,18 @@
 
 .accordion-item button:hover {
     cursor: pointer;
-    color: #db4900;
+    color: #F58A07;
 }
 
 .accordion-item button:focus {
     cursor: pointer;
-    color: #db4900;
+    color: #F58A07;
 }
 
 .accordion-item button::after {
     cursor: pointer;
-    color: #03b5d2;
-    border: 1px solid #db4900;
+    color: #000;
+    border: 1px solid #F58A07;
 }
 
 .accordion-title {
@@ -58,7 +57,7 @@
 }
 
 .accordion-item button[aria-expanded='true'] {
-    color: #db4900;
+    color: #F58A07;
 }
  
 .accordion-content.show {

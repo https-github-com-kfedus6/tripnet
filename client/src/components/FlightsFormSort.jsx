@@ -41,8 +41,7 @@ const FlightsFormSort = ({ startDate, startPosition, finishPosition, setStartDat
         }
     }
 
-    const [pos,setPos]=useState(false);
-
+    const [pos, setPos] = useState(false);
 
     const { SearchCity } = useAction()
 
@@ -58,9 +57,14 @@ const FlightsFormSort = ({ startDate, startPosition, finishPosition, setStartDat
         SearchCity(finishPosition, language, false);
     }, [finishPosition, language])
 
-    const changePos=()=>{
+    const changePos = () => {
+        if (changePosition === true) {
+            setChangePosition(false)
+        } else {
+            setChangePosition(true)
+        }
         setPos(changePosition);
-        let temp=startPosition;
+        let temp = startPosition;
         setStartPosition(finishPosition);
         setFinishPosition(temp)
     }
@@ -95,7 +99,7 @@ const FlightsFormSort = ({ startDate, startPosition, finishPosition, setStartDat
                             <div className='change-position'>
                                 <div>
                                     <span onClick={changePos}>
-                                        {pos ? <CgArrowsExchangeAlt /> : <CgArrowsExchange />}
+                                        {changePosition ? <CgArrowsExchangeAlt /> : <CgArrowsExchange />}
                                     </span>
                                 </div>
                             </div>

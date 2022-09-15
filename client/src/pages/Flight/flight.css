@@ -4,7 +4,7 @@
         justify-content: center;
         align-items: center;
         margin: auto;
-        width: 60%;
+        width: 50%;
     } 
 }
 @media screen and (max-width: 1024px) {
@@ -81,8 +81,9 @@
 .block-position-price div:nth-child(2) {
     width: 180px;
     height: 40px;
-    background-color: rgb(245, 73, 4);
+    background-color: #F58A07;
     border-radius: 5px;
+    color: #FBFBFE;
 }
 
 .block-position-price div:nth-child(2) span {
