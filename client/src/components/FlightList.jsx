@@ -59,27 +59,28 @@ const FlightList = ({ flight, is_admin, setScheduleTo, setScheduleWith, status, 
                     <div className='flight-image'>
                         <img src={process.env.REACT_APP_API_URL + flight.image} alt={flight.finishPosition} />
                     </div>}
-                <div className='items-comfort'>
+                <div className='items-block'>
                     {flight.params.map(img => {
+                        console.log(img.isWC)
                         return (
-                            <div key={img.id} className='item-comfort'>
-                                <div className={img.isWifi ? '' : 'image-status'}>
+                            <div key={img.id} className='items-comfort'>
+                                <div className={img.isWifi ? 'item-comfort' : 'image-status'}>
                                     <img src={process.env.REACT_APP_API_URL + "isWiFi.png"} />
                                     <span>Wi-Fi</span>
                                 </div>
-                                <div className={img.isMultimedia ? '' : 'image-status'}>
+                                <div className={img.isMultimedia ? 'item-comfort' : 'image-status'}>
                                     <img src={process.env.REACT_APP_API_URL + "IsMultimedia.png"} />
                                     <span>{t("flight.multimedia")}</span>
                                 </div>
-                                <div className={img.isWC ? '' : 'image-status'}>
+                                <div className={img.isWC ? 'item-comfort' : 'image-status'}>
                                     <img src={process.env.REACT_APP_API_URL + "isWC.png"} />
                                     <span>wc</span>
                                 </div>
-                                <div className={img.is220V ? '' : 'image-status'}>
+                                <div className={img.is220V ? 'item-comfort' : 'image-status'}>
                                     <img src={process.env.REACT_APP_API_URL + "is220v.png"} />
                                     <span>220v</span>
                                 </div>
-                                <div className={img.isAirConditioning ? '' : 'image-status'}>
+                                <div className={img.isAirConditioning ? 'item-comfort' : 'image-status'}>
                                     <img src={process.env.REACT_APP_API_URL + "IsAirConditioning.png"} />
                                     <span>{t("flight.air_conditioning")}</span>
                                 </div>
@@ -109,7 +110,7 @@ const FlightList = ({ flight, is_admin, setScheduleTo, setScheduleWith, status, 
                 <p>Популярні рейси</p>
                 <div className='flight-links-block'>
                     <div>
-                        {relinkBlocks==undefined || relinkBlocks.startPosition.length == 0 ? <></> : <>
+                        {relinkBlocks == undefined || relinkBlocks.startPosition.length == 0 ? <></> : <>
                             <span>з {flight.startPosition[language]}</span>
                             <div>
                                 {relinkBlocks.startPosition.map(x =>
@@ -125,7 +126,7 @@ const FlightList = ({ flight, is_admin, setScheduleTo, setScheduleWith, status, 
                         </>}
                     </div>
                     <div>
-                        {relinkBlocks==undefined || relinkBlocks.finishPosition.length == 0 ? <></> : <>
+                        {relinkBlocks == undefined || relinkBlocks.finishPosition.length == 0 ? <></> : <>
                             <span>до {flight.finishPosition[language]}</span>
                             <div>
                                 {relinkBlocks.finishPosition.map(x =>
