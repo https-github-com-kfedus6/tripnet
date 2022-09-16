@@ -33,15 +33,15 @@ const FlightsList = ({ finishPosition, startPosition, startDate, flights, setSta
                     setChangePosition={setChangePosition}
                     changePositionFun={changePositionFun}
                 /> : <></>}
-                <div className='bread__crumbs__main'>
-                    <Breadcrumbs>
-                        <NavLink to="/">
-                            {t("header.first_link")}
-                        </NavLink>
-                        <Typography color="text.primary">{t("header.third_link")}</Typography>
-                    </Breadcrumbs>
-                </div>
                 <div className='flights-block'>
+                    <div className='flight__bread__crumbs'>
+                        <Breadcrumbs>
+                            <NavLink to="/">
+                                {t("header.first_link")}
+                            </NavLink>
+                            <Typography color="text.primary">{t("header.third_link")}</Typography>
+                        </Breadcrumbs>
+                    </div>
 
                     <div className='items-flight'>
                         {flights.rows.map(item => {

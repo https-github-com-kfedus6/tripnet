@@ -45,12 +45,12 @@ const FlightList = ({ flight, is_admin, setScheduleTo, setScheduleWith, status, 
     return (
         <div className='block-flight'>
             <div className='block-position-price'>
-                <div>
-                    <h1>{flight.startPosition[language]}</h1>
+                <div className='where__until'>
+                    <h1 className='name__city'>{flight.startPosition[language]}</h1>
                     <span><ImArrowRight2 /></span>
-                    <h1>{flight.finishPosition[language]}</h1>
+                    <h1 className='name__city'>{flight.finishPosition[language]}</h1>
                 </div>
-                <div>
+                <div className='flight__price'>
                     <span>{flight.price}.00 UAH</span>
                 </div>
             </div>
@@ -61,7 +61,7 @@ const FlightList = ({ flight, is_admin, setScheduleTo, setScheduleWith, status, 
                     </div>}
                 <div className='items-block'>
                     {flight.params.map(img => {
-                        console.log(img.isWC)
+                        
                         return (
                             <div key={img.id} className='items-comfort'>
                                 <div className={img.isWifi ? 'item-comfort' : 'image-status'}>

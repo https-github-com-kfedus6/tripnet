@@ -1375,3 +1375,59 @@ main {
 .authorize__logo img{
     width: 100%;
 }
+.form-position{
+    margin: auto;
+}
+.header__components{
+    align-items: center;
+}
+.header__main{
+    align-items: center;
+}
+.header__register__with__language{
+    align-items: center;
+}
+.header__burger{
+    align-items: center;
+}
+.header_register{
+    align-items: center;
+}
+.lang-select{
+    align-items: center;
+}
+.change-position{
+    margin-left: 5px;
+    margin-right: 2px;
+    margin-block-end: 3px;
+}
+@media screen and (max-width: 578px) {
+    .form-block-date{
+        margin-left: 1%;
+    }
+}
+.flights-block{
+    display: flex;
+    flex-direction: column;
+    margin-top: 30px;
+}
+.flight__bread__crumbs{
+    justify-content: center;
+}
+.items-block{
+    justify-content: left;
+}
+@media screen and (min-width:1024px) {
+    
+    .footer-main{
+        margin-top: 70px;
+    }   
+}
+.footer-info{
+    margin-left: 15px;
+}
+.blog__social__networks{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}

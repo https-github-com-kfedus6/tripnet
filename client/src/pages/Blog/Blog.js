@@ -76,7 +76,7 @@ const Blog = () => {
       GetBlogDescription(id);
     }
   },[id]);
-  console.log(process.env.REACT_APP_THIS_URL+"blog/"+name+"/")
+  
   function createMarkup(text) { return {__html: text}; };
   return (
     (selectBlog==undefined||selectBlog==null||selectBlog.id!=id)?<div>loading...</div>:
