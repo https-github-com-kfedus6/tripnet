@@ -1431,3 +1431,14 @@ main {
     flex-direction: row;
     justify-content: space-between;
 }
+.header_register{
+    margin-top: 5px;
+}
+.mini__blog__description{
+    width: 96%;
+    margin: auto;
+}
+.mini__blog__name{
+    width: 96%;
+    margin: auto;
+}
