@@ -1,44 +1,3 @@
-@media screen and (min-width: 1024px) {
-    .container-flight {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        margin: auto;
-        width: 60%;
-    } 
-}
-@media screen and (max-width: 1024px) {
-    
-    .container-flight {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        width: 80%;
-        margin: auto;
-    }
-}
-@media screen and (max-width: 768px) {
-    .container-flight {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        width: 98%;
-        margin: auto;
-    }
-}
-
-@media screen and (max-width: 576px) {
-
-    .flight-links-block {
-        display: flex;
-        flex-direction: column;
-    }
-
-    .flight-links-block div {
-        margin-top: 15px;
-    }
-}
-
 .block-position-price div:nth-child(1) {
     display: flex;
 }
@@ -52,9 +11,9 @@
 .block-position-price div:nth-child(2) {
     width: 180px;
     height: 40px;
-    background-color: #F58A07;
+    background-color: #f58a07;
     border-radius: 5px;
-    color: #FBFBFE;
+    color: #fbfbfe;
 }
 
 .block-position-price div:nth-child(2) span {
@@ -72,30 +31,35 @@
     width: 100%;
     border-radius: 5px;
 }
- 
-.items-block {
+
+.items-block-comfort {
     width: 100%;
 }
 
 .items-comfort {
     display: flex;
-    justify-content: space-between;
 }
 
 .item-comfort {
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
-    flex-direction: column;
     margin-top: 5px;
+    margin-right: 50px;
 }
 
-.item-comfort img {
+.item-comfort div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.item-comfort div img {
     width: 50px;
     height: 50px;
 }
 
-.item-comfort span {
+.item-comfort div span {
     font-size: 15px;
     margin-top: 5px;
 }
@@ -113,7 +77,7 @@
     font-size: 22px;
 }
 
-.flight-maps iframe{
+.flight-maps iframe {
     width: 100%;
     height: 400px;
     border-radius: 5px;
@@ -121,7 +85,7 @@
 }
 
 .flight-maps iframe:hover {
-    box-shadow: 2px 2px 20px rgba(0,0,0,0.3);
+    box-shadow: 2px 2px 20px rgba(0, 0, 0, 0.3);
     transition: all ease 0.3s;
 }
 
@@ -208,7 +172,7 @@
     cursor: pointer;
 }
 
-.status-btn  button{
+.status-btn button {
     cursor: pointer;
     background: transparent;
     border: none;
@@ -223,7 +187,7 @@
 }
 
 .flight-links {
-    margin-top:40px;
+    margin-top: 40px;
 }
 
 .flight-links p {
@@ -232,7 +196,10 @@
 
 .flight-links-block {
     display: flex;
-    justify-content: space-between;
+}
+
+.flight-link-block {
+    width:50%;
 }
 
 .flight-links-block div span {
@@ -244,7 +211,7 @@
 }
 
 .flight-links-block div div a {
-    color: #F58A07;
+    color: #f58a07;
     text-decoration: none;
 }
 
@@ -252,7 +219,7 @@
     text-decoration: underline;
 }
 
-.block-position-price{
+.block-position-price {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -260,24 +227,76 @@
     align-items: center;
 }
 
-.where__until{
+.where__until {
     display: flex;
     margin-right: 70px;
 }
-@media screen and (max-width: 425px) {
-    .where__until{
+
+.where__until span {
+    margin-right: 20px;
+    margin-left: 20px;
+}
+
+@media screen and (min-width: 1024px) {
+    .container-flight {
+        margin: auto;
+        width: 60%;
+    }
+}
+@media screen and (max-width: 1024px) {
+    .container-flight {
+        width: 80%;
+        margin: auto;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .container-flight {
+        width: 95%;
+        margin: auto;
+    }
+    .name__city {
+        font-size: 20px;
+    }
+
+    .items-comfort {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .item-comfort {
+        margin-right: 0px;
+    }
+
+}
+ 
+@media screen and (max-width: 576px) {
+    .container-flight { 
+        width: 95%;
+        margin: auto;
+    }
+    
+    .flight-links-block {
         display: flex;
         flex-direction: column;
     }
+
+    .flight-links-block div {
+        margin-top: 15px;
+    }
+
+    .block-position-price {
+        margin-bottom: 5px;
+    }
 }
-@media screen and (max-width: 768px) {
-    .name__city{
-        font-size: 20px;
-    }   
-}
-@media screen and (min-width:426px) {
-    .where__until span{
+
+@media screen and (max-width: 426px) {
+    .where__until span {
         margin-right: 20px;
         margin-left: 20px;
     }
-}
+    .block-position-price div:nth-child(1) span {
+        font-size: 20px;
+    }
+} 

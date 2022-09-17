@@ -83,14 +83,14 @@ class FlightsController {
             if (page === undefined) {
                 page = 1
             }
-            console.log(req.query);
             let offset = page * limit - limit
             let arrFlights = {};// = { count: 0, rows: [] }
-            console.log("sd1");
             if (!startPosition && !finishPosition && !startDate) {
                 arrFlights = await Flight.findAndCountAll({
-                    where: { countFreePlace: { [Op.gte]: countFreePlace },
-                        countFreePlace: { [Op.gte]: countFreePlace } },
+                    where: {
+                        countFreePlace: { [Op.gte]: countFreePlace },
+                        countFreePlace: { [Op.gte]: countFreePlace }
+                    },
                     limit: Number(limit), offset: Number(offset), order: [['id', 'DESC']]
                 })
 
@@ -119,8 +119,6 @@ class FlightsController {
             } else if (startDate && !startPosition && !finishPosition) {
 
                 arrFlights = await Flight.findAndCountAll({ where: { startDate: startDate, countFreePlace: { [Op.gte]: countFreePlace } }, limit: Number(limit), offset: Number(offset), order: [['id', 'DESC']] })
-
-
 
             } else if (startDate && startPosition && !finishPosition) {
                 const regStartPosition = `(^${startPosition})|(\/\/${startPosition}$)`;

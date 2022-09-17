@@ -928,6 +928,7 @@ main {
     flex-wrap: wrap;
     align-items: center;
     justify-content: space-between;
+    margin-top: 10px;
 }
 .novetly__main:hover{
     transform: scale(1.1);
@@ -939,6 +940,7 @@ main {
     border-radius: 15px;
     justify-content: center;
     align-items: center;
+    margin-bottom: 15px;
 }
 .novetly__description{
     display: flex;
@@ -1417,6 +1419,19 @@ main {
 .items-block{
     justify-content: left;
 }
+
+.footer-logo {
+    margin-bottom: 20px;
+}
+
+.footer-protected {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 30px;
+    color: #F58A07;
+}
+
 @media screen and (min-width:1024px) {
     
     .footer-main{
@@ -1428,8 +1443,10 @@ main {
 }
 .blog__social__networks{
     display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+}
+
+.blog__social__networks button{
+margin-right: 10px;
 }
 .header_register{
     margin-top: 5px;

@@ -59,30 +59,40 @@ const FlightList = ({ flight, is_admin, setScheduleTo, setScheduleWith, status, 
                     <div className='flight-image'>
                         <img src={process.env.REACT_APP_API_URL + flight.image} alt={flight.finishPosition} />
                     </div>}
-                <div className='items-block'>
+                <div className='items-block-comfort'>
                     {flight.params.map(img => {
-                        
+
                         return (
                             <div key={img.id} className='items-comfort'>
                                 <div className={img.isWifi ? 'item-comfort' : 'image-status'}>
-                                    <img src={process.env.REACT_APP_API_URL + "isWiFi.png"} />
-                                    <span>Wi-Fi</span>
+                                    <div>
+                                        <img src={process.env.REACT_APP_API_URL + "isWiFi.png"} />
+                                        <span>Wi-Fi</span>
+                                    </div>
                                 </div>
                                 <div className={img.isMultimedia ? 'item-comfort' : 'image-status'}>
-                                    <img src={process.env.REACT_APP_API_URL + "IsMultimedia.png"} />
-                                    <span>{t("flight.multimedia")}</span>
+                                    <div>
+                                        <img src={process.env.REACT_APP_API_URL + "IsMultimedia.png"} />
+                                        <span>{t("flight.multimedia")}</span>
+                                    </div>
                                 </div>
                                 <div className={img.isWC ? 'item-comfort' : 'image-status'}>
-                                    <img src={process.env.REACT_APP_API_URL + "isWC.png"} />
-                                    <span>wc</span>
+                                    <div>
+                                        <img src={process.env.REACT_APP_API_URL + "isWC.png"} />
+                                        <span>wc</span>
+                                    </div>
                                 </div>
                                 <div className={img.is220V ? 'item-comfort' : 'image-status'}>
-                                    <img src={process.env.REACT_APP_API_URL + "is220v.png"} />
-                                    <span>220v</span>
+                                    <div>
+                                        <img src={process.env.REACT_APP_API_URL + "is220v.png"} />
+                                        <span>220v</span>
+                                    </div>
                                 </div>
                                 <div className={img.isAirConditioning ? 'item-comfort' : 'image-status'}>
-                                    <img src={process.env.REACT_APP_API_URL + "IsAirConditioning.png"} />
-                                    <span>{t("flight.air_conditioning")}</span>
+                                    <div>
+                                        <img src={process.env.REACT_APP_API_URL + "IsAirConditioning.png"} />
+                                        <span>{t("flight.air_conditioning")}</span>
+                                    </div>
                                 </div>
                             </div>
                         )
@@ -109,7 +119,7 @@ const FlightList = ({ flight, is_admin, setScheduleTo, setScheduleWith, status, 
             <div className='flight-links'>
                 <p>Популярні рейси</p>
                 <div className='flight-links-block'>
-                    <div>
+                    <div className='flight-link-block'>
                         {relinkBlocks == undefined || relinkBlocks.startPosition.length == 0 ? <></> : <>
                             <span>з {flight.startPosition[language]}</span>
                             <div>
@@ -125,7 +135,7 @@ const FlightList = ({ flight, is_admin, setScheduleTo, setScheduleWith, status, 
                             </div>
                         </>}
                     </div>
-                    <div>
+                    <div className='flight-link-block'>
                         {relinkBlocks == undefined || relinkBlocks.finishPosition.length == 0 ? <></> : <>
                             <span>до {flight.finishPosition[language]}</span>
                             <div>

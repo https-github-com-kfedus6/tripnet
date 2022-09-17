@@ -21,11 +21,10 @@ const Footer = () => {
     return (
         infoCompany == undefined ? <div>...loading</div> :
             <div className='footer-main'>
+                <div className='footer-logo'>
+                    <img src={process.env.REACT_APP_API_URL + 'logo.png'} alt="logo" />
+                </div>
                 <div className='footer-block'>
-                    <div className='footer-logo'>
-                        <img src={process.env.REACT_APP_API_URL + 'logo.png'} alt="logo" />
-                        <span>{t('footer.protected')}.</span>
-                    </div>
                     <div className='footer-link'>
                         <p onClick={() => navigate('/flightsCategory')}>{t('header.third_link')}</p>
                         <p onClick={() => navigate('/blog')}>{t("header.five_link")}</p>
@@ -45,6 +44,9 @@ const Footer = () => {
                             <a href='https://www.instagram.com/tripnet.com.ua/'><BsInstagram /></a>
                         </div>
                     </div>
+                </div>
+                <div className='footer-protected'>
+                    <span>{t('footer.protected')}.</span>
                 </div>
             </div>
     )

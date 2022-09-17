@@ -62,6 +62,7 @@ const FlightsFormSort = ({ startDate, startPosition, finishPosition, setStartDat
         setFinishPosition(temp)
     }
 
+
     return (
         <Stack spacing={5}>
             <div className='form-flights-container'>
@@ -79,7 +80,7 @@ const FlightsFormSort = ({ startDate, startPosition, finishPosition, setStartDat
                                     options={searchStartPostion.map((option) => option.title)}
                                     renderInput={(params) => (
                                         <TextField sx={{ backgroundColor: '#fff', borderRadius: '5px' }}
-                                            onChange={(e) => {setStartPosition(e.target.value) }}
+                                            onChange={(e) => { setStartPosition(e.target.value) }}
                                             {...params}
                                             label={t('flight.whence')}
                                             InputProps={{
@@ -107,7 +108,7 @@ const FlightsFormSort = ({ startDate, startPosition, finishPosition, setStartDat
                                     options={searchFinishPosition.map((option) => option.title)}
                                     renderInput={(params) => (
                                         <TextField sx={{ backgroundColor: '#fff', borderRadius: '5px' }}
-                                            onChange={(e) => {setFinishPosition(e.target.value) }}
+                                            onChange={(e) => { setFinishPosition(e.target.value) }}
                                             {...params}
                                             label={t('flight.whitherto')}
                                             InputProps={{

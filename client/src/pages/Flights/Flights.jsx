@@ -66,8 +66,8 @@ const Flights = ({ isShowFilter }) => {
         SetFlightParams(startPosition, finishPosition, startDate, sumOld, sumYoung);
         if (changePosition === true) {
             fetchGetFlights({
-                startPosition: finishPosition,
-                finishPosition: startPosition,
+                startPosition: startPosition,
+                finishPosition: finishPosition,
                 startDate: startDate,
                 countFreePlace: sumYoung + sumOld,
                 limit: limit,

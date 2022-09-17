@@ -16,7 +16,7 @@ const Home = () => {
     const [startDate, setStartDate] = useState('');
     const [sumYoung, setSumYoung] = useState(0);
     const [sumOld, setSumOld] = useState(1);
-    const [changePosition,setChangePosition]=useState(false);
+    const [changePosition, setChangePosition] = useState(false);
     const { SetFlightParams } = useAction();
     useEffect(() => {
 
@@ -40,9 +40,9 @@ const Home = () => {
                 deleteFlight={() => { }}
                 startDate={startDate}
                 startPosition={startPosition}
-                finishPosition={finishPosition} 
-                changePosition={changePosition} 
-                setChangePosition={setChangePosition}/>
+                finishPosition={finishPosition}
+                changePosition={changePosition}
+                setChangePosition={setChangePosition} />
             <div className='home__content'>
                 <ListNovetly />
                 <p className='home__title'>{t("home.benefits_company")}</p>
