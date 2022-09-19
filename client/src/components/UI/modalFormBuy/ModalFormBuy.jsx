@@ -12,26 +12,26 @@ import { useAction } from '../../../hooks/useAction';
 
 const ModalFormBuy = ({ visibleBuy, name, setName, phone, setPhone, reserveTicket, setVisiblyBuy, countTicket, setCountTicket, maxTicket }) => {
     const { t } = useTranslation()
-    const SetCountTicket=(e)=>{
-        if(isNaN(parseInt(e.target.value))&&e.target.value!="")return;
-        if((parseInt(e.target.value)<=0||parseInt(e.target.value)>maxTicket)&&e.target.value!="")return;
+    const SetCountTicket = (e) => {
+        if (isNaN(parseInt(e.target.value)) && e.target.value != "") return;
+        if ((parseInt(e.target.value) <= 0 || parseInt(e.target.value) > maxTicket) && e.target.value != "") return;
         setCountTicket(e.target.value)
     }
-    const {GetPhone}=useAction();
-    useEffect(()=>{
+    const { GetPhone } = useAction();
+    useEffect(() => {
         GetPhone();
-    },[])
-    const {user,telephone}=useSelector(state=>state.user);
-    useEffect(()=>{
-        if(user?.name){
+    }, [])
+    const { user, telephone } = useSelector(state => state.user);
+    useEffect(() => {
+        if (user?.name) {
             setName(user.name);
         }
-    },[user])
-    useEffect(()=>{
-        if(telephone!=0){
+    }, [user])
+    useEffect(() => {
+        if (telephone != 0) {
             setPhone(telephone);
         }
-    },[telephone])
+    }, [telephone])
 
     if (visibleBuy === false) {
         return (
@@ -46,7 +46,7 @@ const ModalFormBuy = ({ visibleBuy, name, setName, phone, setPhone, reserveTicke
                 <div className='modal-content-form-buy'>
                     <div className='model-block'>
                         <div className="modal-logo">
-                            <img src={process.env.REACT_APP_API_URL + 'logo.png'} alt="logo" />
+                            <img src={process.env.REACT_APP_API_URL + 'logo-green.png'} alt="logo" />
                             <Stack direction="row" spacing={1}>
                                 <IconButton size='large' onClick={() => setVisiblyBuy(false)}>
                                     <CloseOutlinedIcon fontSize='large' />
@@ -70,8 +70,8 @@ const ModalFormBuy = ({ visibleBuy, name, setName, phone, setPhone, reserveTicke
                                 minRows={1}
                                 className='input-modal'
                                 label={t('modalbuy.ticket')}
-                                value={countTicket} 
-                                onChange={SetCountTicket}/>
+                                value={countTicket}
+                                onChange={SetCountTicket} />
                         </div>
                         <div className='block-modal-btn'>
                             <button onClick={reserveTicket}>{t('modalbuy.btn-buy')}</button>

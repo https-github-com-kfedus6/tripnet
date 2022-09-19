@@ -3,7 +3,7 @@ body {
     height: 100%;
 }
 body {
-    font-family: "Montserrat", sans-serif;
+    font-family: Roboto,Helvetica Neue,Helvetica,Arial,sans-serif;
     margin: 0 auto;
     display: flex;
     flex-direction: column;
@@ -147,13 +147,19 @@ main {
         display: inline-block;
     }
 }
+
 .logo img {
     width: 100%;
+    cursor: pointer;
+}
+
+.logo {
+    width: 25%;
 }
 
 @media screen and (max-width: 1024px) and (min-width: 769px) {
     .logo {
-        width: 40%;
+        width: 25%;
     }
     .header__main {
         display: flex;
@@ -779,8 +785,9 @@ main {
 }
 
 .footer-logo img {
-    width: 200px;
-    height: 50px;
+    cursor: pointer;
+    width: 120px;
+    height: 70px;
 }
 
 .footer-logo span {
@@ -793,9 +800,24 @@ main {
     cursor: pointer;
     font-size: 17px;
 }
-    
-.footer-info p {
+
+.footer-link p:hover {
+    color:#fd9400;
+    transition: all ease 0.1s;
+}
+
+.footer-info div {
+    display: flex;
+    align-items: center;
+}
+
+.footer-info div p {
     font-size: 17px;
+}
+
+.footer-info div i {
+    font-size: 22px;
+    margin-right: 15px;
 }
 
 .footer-instagram p {
@@ -823,6 +845,18 @@ main {
     transition: all ease 0.3s;
 }
 
+.footer-logo {
+    margin-bottom: 20px;
+}
+
+.footer-protected {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 30px;
+    color: #F58A07;
+}
+
 @media screen and (min-width: 1024px) {
     .footer-main {
         margin: auto;
@@ -830,16 +864,38 @@ main {
         width: 60%;
         margin-bottom: 50px;
     }
+
+    .logo-none {
+        display: none;
+    }
+
+    .footer-logo {
+        margin-top: 10px;
+    }
+
+    .footer-logo span {
+        margin-bottom: 10px;
+    }
+
+    .footer-protected {
+        display: none;
+    }
+
 }
+
 @media screen and (max-width: 1024px) and (min-width: 768px) {
     .footer-main {
         margin: auto;
         margin-top: 50px;
         width: 80%;
         padding: 50px;
-        margin-bottom: 50px;
+    }
+
+    .logo-none-second {
+        display: none;
     }
 }
+
 @media screen and (max-width: 768px) {
     .footer-main {
         margin: auto;
@@ -885,7 +941,12 @@ main {
         align-items: center;
         margin-top: 40px;
     }
+
+    .logo-none-second {
+        display: none;
+    }
 }
+
 
 .css-jedpe8-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input.css-jedpe8-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input.css-jedpe8-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input {
     display: flex;
@@ -1060,6 +1121,7 @@ main {
     justify-content: center;
     margin-top: 15px;
     margin-bottom: 10px;
+    padding: 25px;
 }
 .mini__blog__name{
     font-weight: 600;
@@ -1284,20 +1346,22 @@ main {
     justify-content: center;
 }
 
+.section-home-title {
+    padding-top: 40px;
+}
+
 @media screen and (min-width:768px) {
     .home__title{
         font-size: 35px;
-        font-weight: 500;
     }
 }
 @media screen and (max-width:768px) {
     .home__title{
-        font-size: 20px;
-        font-weight: 900;
+        font-size: 24px;
     }
 }
 .footer-main{
-    margin-top: 30px;
+    margin-top: 60px;
 }
 @media screen and (min-width:768px) and (max-width:850px) {
     .header__register__with__language{
@@ -1385,6 +1449,7 @@ main {
 }
 .header__main{
     align-items: center;
+    padding: 5px;
 }
 .header__register__with__language{
     align-items: center;
@@ -1420,36 +1485,17 @@ main {
     justify-content: left;
 }
 
-.footer-logo {
-    margin-bottom: 20px;
-}
-
-.footer-protected {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 30px;
-    color: #F58A07;
-}
-
-@media screen and (min-width:1024px) {
-    
-    .footer-main{
-        margin-top: 70px;
-    }   
-}
-.footer-info{
-    margin-left: 15px;
-}
 .blog__social__networks{
     display: flex;
 }
 
 .blog__social__networks button{
-margin-right: 10px;
+    margin-right: 10px;
 }
+
 .header_register{
     margin-top: 5px;
+    cursor: pointer;
 }
 .mini__blog__description{
     width: 96%;

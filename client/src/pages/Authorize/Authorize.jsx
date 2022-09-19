@@ -11,12 +11,12 @@ const Authorize = ({ isShow, setIsShow }) => {
             <div onClick={(e) => e.stopPropagation()} className="modal__content">
                 <div className='authorize__header'>
                     <div className='authorize__logo'>
-                        <img src={process.env.REACT_APP_API_URL + "logo.png"} alt="logo" />
+                        <img src={process.env.REACT_APP_API_URL + "logo-green.png"} alt="logo" />
                     </div>
                 </div>
                 <div className='register__or__log'>
                     <div onClick={() => setIsRegister(true)} className={isRegister ? "active1" : ""}>
-                        <span className={!isRegister ? 'active-span' : ''} >{t("authorize.register")} </span> {t("authorize.or") }
+                        <span className={!isRegister ? 'active-span' : ''} >{t("authorize.register")} </span> {t("authorize.or")}
                     </div>
                     <div onClick={() => setIsRegister(false)} className={!isRegister ? "active1" : ""}>
                         <span className={isRegister ? 'active-span' : ''}>{t("authorize.log")}</span>

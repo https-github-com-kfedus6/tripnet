@@ -15,27 +15,27 @@ const Register = ({ close }) => {
     const [numberPhone, setNumberPhone] = useState("");
     const [password, setPassword] = useState("");
     const [password2, setPassword2] = useState("");
-    const {isShow,text}=useSelector(state=>state.message);
-    const {SetShowMessgeFalse,SetShowMessgeTrue}=useAction()
+    const { isShow, text } = useSelector(state => state.message);
+    const { SetShowMessgeFalse, SetShowMessgeTrue } = useAction()
     useEffect(() => {
         if (!isRegister) return;
         switch (reply) {
             case 200: {
                 SetShowMessgeTrue(t("authorize.you_have_successfully_registered"));
-                setTimeout(()=>SetShowMessgeFalse(),3000);
+                setTimeout(() => SetShowMessgeFalse(), 3000);
                 close(false);
             };
                 break
             case 411: {
                 SetShowMessgeTrue(t("authorize.email_is_busy"));
-                setTimeout(()=>SetShowMessgeFalse(),3000);
+                setTimeout(() => SetShowMessgeFalse(), 3000);
             }
-            break;
+                break;
             default: {
                 SetShowMessgeTrue("error");
-                setTimeout(()=>SetShowMessgeFalse(),3000);
+                setTimeout(() => SetShowMessgeFalse(), 3000);
             }
-            break;
+                break;
         }
     }, [reply]);
 
@@ -45,33 +45,33 @@ const Register = ({ close }) => {
         const regName = /drop|\(|delete|;/;
         if (tempName.length < 3 || regName.test(tempName)) {
             SetShowMessgeTrue(t("authorize.invalid_name"));
-            setTimeout(()=>SetShowMessgeFalse(),3000);
+            setTimeout(() => SetShowMessgeFalse(), 3000);
             return;
         }
         const regEmail = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
         if (!regEmail.test(email)) {
             SetShowMessgeTrue(t("authorize.mail_must_be_genuine"));
-            setTimeout(()=>SetShowMessgeFalse(),3000);
+            setTimeout(() => SetShowMessgeFalse(), 3000);
             return;
         }
         const regTelephone = /(^\++\d{11}$)|(^\d{10})$/;
         if (!regTelephone.test(numberPhone)) {
             SetShowMessgeTrue(t("authorize.invalid_telephone"));
-            setTimeout(()=>SetShowMessgeFalse(),3000);
+            setTimeout(() => SetShowMessgeFalse(), 3000);
             return;
         } if (password != password2) {
             SetShowMessgeTrue(t("authorize.passwords_do_not_match"));
-            setTimeout(()=>SetShowMessgeFalse(),3000);
+            setTimeout(() => SetShowMessgeFalse(), 3000);
             return;
         }
         if (regName.test(tempPass)) {
             SetShowMessgeTrue(t("authorize.invalid_pass"));
-            setTimeout(()=>SetShowMessgeFalse(),3000);
+            setTimeout(() => SetShowMessgeFalse(), 3000);
             return;
         }
         if (password.length < 8) {
             SetShowMessgeTrue(t("authorize.password_must_be_longer_than_8_characters"));
-            setTimeout(()=>SetShowMessgeFalse(),3000);
+            setTimeout(() => SetShowMessgeFalse(), 3000);
             return;
         }
         setIsRegister(true);

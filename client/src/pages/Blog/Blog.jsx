@@ -105,22 +105,22 @@ const Blog = () => {
                         <br />
                         <div className='blog__social__networks'>
                             <FacebookShareButton url={process.env.REACT_APP_THIS_URL + "blog/" + name + "/" + selectBlog.id}>
-                                <FacebookIcon size={50} />
+                                <FacebookIcon size={40} />
                             </FacebookShareButton >
                             <FacebookMessengerShareButton url={process.env.REACT_APP_THIS_URL + "blog/" + name + "/" + selectBlog.id}>
-                                <FacebookMessengerIcon size={50} />
+                                <FacebookMessengerIcon size={40} />
                             </FacebookMessengerShareButton>
                             <TwitterShareButton url={process.env.REACT_APP_THIS_URL + "blog/" + name + "/" + selectBlog.id}>
-                                <TwitterIcon size={50} />
+                                <TwitterIcon size={40} />
                             </TwitterShareButton>
                             <TelegramShareButton url={process.env.REACT_APP_THIS_URL + "blog/" + name + "/" + selectBlog.id}>
-                                <TelegramIcon size={50} />
+                                <TelegramIcon size={40} />
                             </TelegramShareButton>
                             <WhatsappShareButton url={process.env.REACT_APP_THIS_URL + "blog/" + name + "/" + selectBlog.id}>
-                                <WhatsappIcon size={50} />
+                                <WhatsappIcon size={40} />
                             </WhatsappShareButton>
                             <ViberShareButton url={process.env.REACT_APP_THIS_URL + "blog/" + name + "/" + selectBlog.id}>
-                                <ViberIcon size={50} />
+                                <ViberIcon size={40} />
                             </ViberShareButton>
                         </div>
                         <br />

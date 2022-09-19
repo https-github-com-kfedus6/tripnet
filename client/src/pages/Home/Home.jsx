@@ -45,7 +45,13 @@ const Home = () => {
                 setChangePosition={setChangePosition} />
             <div className='home__content'>
                 <ListNovetly />
-                <p className='home__title'>{t("home.benefits_company")}</p>
+                <div className='section-home-title'>
+                    <p className='home__title'>
+                        <span>
+                            {t("home.benefits_company")}
+                        </span>
+                    </p>
+                </div>
                 <div className="home__benefits__img">
                     <img src={process.env.REACT_APP_API_URL + "homeBenefits" + language + ".png"} />
                 </div>

@@ -3,8 +3,10 @@ import { useSelector } from 'react-redux';
 import { AiOutlinePlus, AiOutlineMinus, AiFillDelete } from 'react-icons/ai'
 import { useAction } from '../../hooks/useAction';
 import '../FAQ/faq.css'
+import { useTranslation } from 'react-i18next';
 
 const HomeFAQ = () => {
+    const { t } = useTranslation()
     const { FAQNovetly } = useSelector(state => state.FAQ);
     const { is_admin } = useSelector(state => state.user);
     const { GetFAQNovetly, deleteFAQ } = useAction();
@@ -38,7 +40,13 @@ const HomeFAQ = () => {
         return (
             <>
                 <div className='accordion-title'>
-                    <p className='home__title'>Питання та відповіді</p>
+                    <div className='section-home-title'>
+                        <p className='home__title'>
+                            <span>
+                                {t('FAQ.questions_and_answers')}
+                            </span>
+                        </p>
+                    </div>
                 </div>
                 <div className="accordion">
                     {FAQNovetly.map((item, i) => {

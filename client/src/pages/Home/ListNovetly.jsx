@@ -7,22 +7,28 @@ import Novetly from './Novetly';
 
 const ListNovetly = () => {
 
-    const {novetly}=useSelector(state=>state.novetly);
-    const {GetNovetly}=useAction();
+    const { novetly } = useSelector(state => state.novetly);
+    const { GetNovetly } = useAction();
 
-    useEffect(()=>{
+    useEffect(() => {
         GetNovetly();
-    },[])
-    
+    }, [])
+
     return (
-        novetly.lenght==0?<></>:
-        <div className='list__novetly__main'>
-            <p className='home__title'>{t("home.we_will_comfortably_deliver_to_such_countries")}</p>
-            <div className="list__novetly">
-                {novetly.map(x=><Novetly key={x.id} novetly={x}/>)}
+        novetly.lenght == 0 ? <></> :
+            <div className='list__novetly__main'>
+                <div className='section-home-title'>
+                    <p className='home__title'>
+                        <span>
+                            {t("home.we_will_comfortably_deliver_to_such_countries")}
+                        </span>
+                    </p>
+                </div>
+                <div className="list__novetly">
+                    {novetly.map(x => <Novetly key={x.id} novetly={x} />)}
+                </div>
             </div>
-        </div>
-  )
+    )
 }
 
 export default ListNovetly;

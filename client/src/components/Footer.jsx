@@ -3,6 +3,9 @@ import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom'
 import { useAction } from '../hooks/useAction';
 import { BsInstagram } from 'react-icons/bs'
+import { BiTimeFive } from 'react-icons/bi'
+import { GiSmartphone, GiPositionMarker } from 'react-icons/gi'
+import { HiOutlineMail } from 'react-icons/hi'
 import { useTranslation } from 'react-i18next';
 
 const Footer = () => {
@@ -21,10 +24,14 @@ const Footer = () => {
     return (
         infoCompany == undefined ? <div>...loading</div> :
             <div className='footer-main'>
-                <div className='footer-logo'>
-                    <img src={process.env.REACT_APP_API_URL + 'logo.png'} alt="logo" />
+                <div className='footer-logo logo-none' onClick={() => navigate("/")}>
+                    <img src={process.env.REACT_APP_API_URL + 'logo-green.png'} alt="logo" />
                 </div>
                 <div className='footer-block'>
+                    <div className='footer-logo logo-none-second' onClick={() => navigate("/")}>
+                        <img src={process.env.REACT_APP_API_URL + 'logo-green.png'} alt="logo" />
+                        <span className='protected-none'>{t('footer.protected')}.</span>
+                    </div>
                     <div className='footer-link'>
                         <p onClick={() => navigate('/flightsCategory')}>{t('header.third_link')}</p>
                         <p onClick={() => navigate('/blog')}>{t("header.five_link")}</p>
@@ -32,11 +39,25 @@ const Footer = () => {
                         <p onClick={() => navigate('/aboutUs')}>{t('header.fourth_link')}</p>
                     </div>
                     <div className='footer-info'>
-                        <p>{infoCompany.name}</p>
-                        <p>{infoCompany.email}</p>
-                        <p>{infoCompany.telephone}</p>
-                        <p>{infoCompany.address[language]}</p>
-                        <p>{infoCompany.openingHours[language]}</p>
+                        <div>
+                            <p>{infoCompany.name}</p>
+                        </div>
+                        <div>
+                            <i><HiOutlineMail /></i>
+                            <p>{infoCompany.email}</p>
+                        </div>
+                        <div>
+                            <i><GiSmartphone /></i>
+                            <p>{infoCompany.telephone}</p>
+                        </div>
+                        <div>
+                            <i><GiPositionMarker /></i>
+                            <p>{infoCompany.address[language]}</p>
+                        </div>
+                        <div>
+                            <i><BiTimeFive /></i>
+                            <p>{infoCompany.openingHours[language]}</p>
+                        </div>
                     </div>
                     <div className='footer-instagram'>
                         <p>{t('footer.social')}</p>
