@@ -1,7 +1,8 @@
 export const blogActionTypes={
     FETCH_GET_ALL_BLOG:"FETCH_GET_ALL_BLOG",
     FETCH_GET_BLOG_NOVETLY:"FETCH_GET_BLOG_NOVETLY",
-    FETCH_GET_DESCRIPTION:"FETCH_GET_DESCRIPTION"
+    FETCH_GET_DESCRIPTION:"FETCH_GET_DESCRIPTION",
+    FETCH_GET_SIMILAR:"FETCH_GET_SIMILAR"
 }
 
 const initialState={
@@ -10,7 +11,8 @@ const initialState={
     limit:12,
     selectBlog:undefined,
     blogNovetly:[],
-    countBlog:0
+    countBlog:0,
+    similarBlog:undefined
 };
 
 export const blogReducer=(state=initialState,action)=>{
@@ -23,6 +25,9 @@ export const blogReducer=(state=initialState,action)=>{
         }
         case blogActionTypes.FETCH_GET_DESCRIPTION:{
             return {...state,selectBlog:action.payload};
+        }
+        case blogActionTypes.FETCH_GET_SIMILAR:{
+            return {...state,similarBlog:action.payload};
         }
         default: return state;
     }

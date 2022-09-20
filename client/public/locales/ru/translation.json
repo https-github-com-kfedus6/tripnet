@@ -119,5 +119,12 @@
         "novetly": "Добавить страны на главную историю",
         "response": "Добавить отзыв",
         "order": "Бронирование клиентов"
+    },
+    "message":{
+        "successfully_added":"успешно выполнено",
+        "successfully_added_operator":"успешно выполнено в ближайшее время с вами свяжется оператор"
+    },
+    "reservation":{
+        "an_operator_will_contact_you_shortly_after_booking":"после бронирования в ближайшее время с вами свяжется оператор"
     }
 }

@@ -7,6 +7,7 @@ import ModalFormBuy from '../../components/UI/modalFormBuy/ModalFormBuy';
 import './flights.css';
 import Stack from '@mui/material/Stack';
 import Pagination from '@mui/material/Pagination';
+import { t } from 'i18next';
 
 const Flights = ({ isShowFilter }) => {
     const [visibleBuy, setVisiblyBuy] = useState(false)
@@ -29,7 +30,8 @@ const Flights = ({ isShowFilter }) => {
 
     const [changePosition, setChangePosition] = useState(false)
 
-    const { fetchGetFlights, fetchDeleteFlight, postFlightOrder, SetFlightParams } = useAction()
+    const { fetchGetFlights, fetchDeleteFlight, postFlightOrder, SetFlightParams,
+        SetShowMessgeTrue, SetShowMessgeFalse } = useAction()
 
     const { flights } = useSelector(state => state.flights)
 
@@ -93,7 +95,13 @@ const Flights = ({ isShowFilter }) => {
     }
 
     const reserveTicket = () => {
-        setVisiblyBuy(false)
+        const regTelephone = /(^\++\d{11}$)|(^\d{10})$/;
+        if (!regTelephone.test(phone)) {
+            SetShowMessgeTrue(t("authorize.invalid_telephone"));
+            setTimeout(() => SetShowMessgeFalse(), 3000);
+            return;
+        }
+        setVisiblyBuy(false);
         if (!is_login) {
             postFlightOrder({
                 flightId: flightId,

@@ -19,8 +19,8 @@ const HomeListBlog = () => {
                     </span>
                 </p>
             </div>
-            <div className='home__blog__container'>
-                <div className="home__list__blog">
+            <div className='blog__container'>
+                <div className="list__blog__main">
                     {blogNovetly.map(x => <HomeBlog key={x.id} blog={x} />)}
                 </div>
             </div>
