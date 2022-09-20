@@ -5,78 +5,26 @@ import { useAction } from '../../hooks/useAction';
 import { t } from 'i18next';
 import { Breadcrumbs, Typography } from '@mui/material';
 import HomeBlog from '../Home/HomeBlog';
-import {
-    EmailShareButton,
-    FacebookMessengerShareButton,
-    FacebookShareButton,
-    HatenaShareButton,
-    InstapaperShareButton,
-    LineShareButton,
-    LinkedinShareButton,
-    LivejournalShareButton,
-    MailruShareButton,
-    OKShareButton,
-    PinterestShareButton,
-    PocketShareButton,
-    RedditShareButton,
-    TelegramShareButton,
-    TumblrShareButton,
-    TwitterShareButton,
-    ViberShareButton,
-    VKShareButton,
-    WhatsappShareButton,
-    WorkplaceShareButton
-} from 'react-share';
-import {
-    FacebookShareCount,
-    HatenaShareCount,
-    OKShareCount,
-    PinterestShareCount,
-    RedditShareCount,
-    TumblrShareCount,
-    VKShareCount
-} from 'react-share';
-import {
-    EmailIcon,
-    FacebookIcon,
-    FacebookMessengerIcon,
-    HatenaIcon,
-    InstapaperIcon,
-    LineIcon,
-    LinkedinIcon,
-    LivejournalIcon,
-    MailruIcon,
-    OKIcon,
-    PinterestIcon,
-    PocketIcon,
-    RedditIcon,
-    TelegramIcon,
-    TumblrIcon,
-    TwitterIcon,
-    ViberIcon,
-    VKIcon,
-    WeiboIcon,
-    WhatsappIcon,
-    WorkplaceIcon
-} from 'react-share';
+import { FacebookMessengerShareButton, FacebookShareButton, TelegramShareButton, TwitterShareButton,
+    ViberShareButton, WhatsappShareButton} from 'react-share';
+import { FacebookIcon, FacebookMessengerIcon, TelegramIcon, TwitterIcon, ViberIcon, WhatsappIcon } from 'react-share';
 
 const Blog = () => {
     const { id } = useParams();
     const { name } = useParams();
-    const { selectBlog, blogNovetly } = useSelector(state => state.blog)
-    const { GetBlogDescription, GetBlogNovetly } = useAction();
+    const { selectBlog, similarBlog } = useSelector(state => state.blog)
+    const { GetBlogDescription, GetSimilarBlog } = useAction();
     const { language } = useSelector(state => state.language);
     const navigate = useNavigate();
 
     useEffect(() => {
-        GetBlogNovetly(6);
+        GetSimilarBlog(id);
     }, [])
     useEffect(() => {
         if (selectBlog == undefined || selectBlog == null || selectBlog.id != id) {
             GetBlogDescription(id);
         }
     }, [id]);
-
     function createMarkup(text) { return { __html: text }; };
     return (
         (selectBlog == undefined || selectBlog == null || selectBlog.id != id) ? <div>loading...</div> :
@@ -128,9 +76,10 @@ const Blog = () => {
                         <br />
                     </div>
                     <div className='blog__container'>
-                            <div className="list__blog__main">
-                                {blogNovetly.map(x => <HomeBlog key={x.id} blog={x} />)}
-                            </div>
+                        {similarBlog==undefined?<></>:
+                        <div className="list__blog__main">
+                            {similarBlog.map(x => <HomeBlog key={x.id} blog={x} />)}
+                        </div>}
                     </div>
                 </div>
             </>

@@ -63,7 +63,20 @@
     "home": {
         "benefits_company": "Преимущества компании",
         "we_will_comfortably_deliver_to_such_countries": "С комфортом доставим в такие страны",
-        "responce": "Отзывы"
+        "responce": "Отзывы",
+        "professional_drivers_name":"Профессиональные водители",
+        "work_without_intermediaries_name":"Работаем без посредников",
+        "have_proven_themselves_well_name":"Хорошо себя зарекомендовали",
+        "work_strictly_according_to_the_schedule_name":"Работаем четко по графику",
+        "professional_managers_name":"Профессиональные менеджеры",
+        "we_treat_our_work_professionally_name":"Профессионально относимся к нашей работе",
+        "professional_drivers_description":"Профессиональные водители, знающие безопасные маршруты и имеющие опыт в длительных поездках",
+        "work_without_intermediaries_description":"Мы работаем на прямую без посредников",
+        "have_proven_themselves_well_description":"Мы хорошо зарекомендовали себя в перевозках пассажиров",
+        "work_strictly_according_to_the_schedule_description":"Отправление автобусов всегда в указанные сроки",
+        "professional_managers_description":"Наши менеджеры обладают выдержкой, спокойствием и четко отвечают на ваши вопросы",
+        "we_treat_our_work_professionally_description":"Мы профессионально относимся к нашей работе и всегда на связи"
+
     },
     "modalbuy": {
         "title": "Забронировать рейс",

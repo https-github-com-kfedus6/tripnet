@@ -4,6 +4,7 @@ import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import FlightsFormSort from '../../components/FlightsFormSort';
 import { useAction } from '../../hooks/useAction';
+import CompanyBenefits from './CompanyBenefits';
 import HomeFAQ from './HomeFAQ';
 import HomeListBlog from './HomeListBlog';
 import ListNovetly from './ListNovetly';
@@ -45,19 +46,7 @@ const Home = () => {
                 setChangePosition={setChangePosition} />
             <div className='home__content'>
                 <ListNovetly />
-                <div className='section-home-title'>
-                    <p className='home__title'>
-                        <span>
-                            {t("home.benefits_company")}
-                        </span>
-                    </p>
-                </div>
-                <div className="home__benefits__img">
-                    <img src={process.env.REACT_APP_API_URL + "homeBenefits" + language + ".png"} />
-                </div>
-                <div className="home__benefits__img__mini">
-                    <img src={process.env.REACT_APP_API_URL + "homeBenefitsmini" + language + ".png"} />
-                </div>
+                <CompanyBenefits/>
                 <HomeFAQ />
                 <Responce />
                 

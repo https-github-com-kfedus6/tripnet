@@ -83,7 +83,7 @@ export const GetSimilarBlog=(id)=>async(dispatch)=>{
     try{
         const resp=await $host.get("api/blog/getSimilar?id="+id);
         if(resp.data.status==200){
-            
+            dispatch({type:blogActionTypes.FETCH_GET_SIMILAR,payload:resp.data.res});
         }else console.log(resp);
     }catch(err){
         console.log(err);

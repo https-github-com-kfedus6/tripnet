@@ -1510,3 +1510,53 @@ main {
 .alert__main{
     z-index: 500;
 }
+.company__benefits__img{
+    display: flex;
+    width: 50px;
+    margin: auto;
+}
+.company__benefits__img img{
+    width: 50px;
+}
+.company__benefits__main{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: 30px;
+}
+.company__benefits__desctiption{
+    display: flex;
+    justify-content: center;
+    text-align:center;
+}
+@media screen and (min-width: 768px) {
+    .company__benefits__main{
+        width: 30%;
+    }
+    
+    .company__benefits__name{
+        display: flex;
+        margin: 15px auto;
+        font-size: 20px;
+        font-weight: 700;
+        text-align: center;
+    }
+}
+@media screen and (max-width: 768px) {
+    .company__benefits__main{
+        width: 48%;
+    }
+    .company__benefits__name{
+        display: flex;
+        margin: 15px auto;
+        font-size: 18px;
+        font-weight: 700;
+        text-align: center;
+    }
+}
+.list__company__benefits{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}

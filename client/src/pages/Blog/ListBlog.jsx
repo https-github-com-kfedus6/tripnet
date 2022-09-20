@@ -59,7 +59,7 @@ export const ListBlog = () => {
               {x.miniDescription[language]}  
             </div>
             {is_admin?<button onClick={(e)=>{e.stopPropagation();DelBlog(x.id);GetBlogAll(setSelectPage,limit)}}>del</button>:<></>}
-        </div>)}
+          </div>)}
       </div>
       {totalCount==undefined?<></>:
         <div className='pagination'>

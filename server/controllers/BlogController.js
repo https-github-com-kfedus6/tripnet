@@ -74,18 +74,24 @@ class BlogController {
     }
     static GetSimilar=async(req,resp,next)=>{
         try{
-            const {id}=req.query;
+            let {id}=req.query;
+            id=parseInt(id);
             let res=[];
-            let after=await Blog.findAll({attributes:['name','id','description','createdAt','image',]
-            ,where:{id:{[Op.gt]:parseInt(id)}},limit:3});
-            let before=await Blog.findAll({attributes:['name','id','description','createdAt','image',]
-            ,where:{id:{[Op.lt]:parseInt(id)}},limit:(6-after.length)});
+            let after=await Blog.findAll({attributes:['name','id','description','createdAt','image','miniDescription']
+            ,where:{id:{[Op.gt]:parseInt(id)}},limit:3,id:{[Op.ne]:id}});
+            let before=await Blog.findAll({attributes:['name','id','description','createdAt','image','miniDescription']
+            ,where:{id:{[Op.lt]:parseInt(id)}},limit:(6-after.length),id:{[Op.ne]:id}});
             if((6-before.length-after.length)!=0){
-                let after2=await Blog.findAll({attributes:['name','id','description','createdAt','image',]
-                ,where:{id:{[Op.gt]:parseInt(id)}},limit:(6-before.length)});
-                res=[...before,after2]
+                let after2=await Blog.findAll({attributes:['name','id','description','createdAt','image','miniDescription']
+                ,where:{id:{[Op.ne]:id},id:{[Op.gt]:parseInt(id)}},limit:(6-before.length),id:{[Op.ne]:id}});
+                res=[...before,...after2]
             }else{
-                res=[...before,after];
+                res=[...before,...after];
+            }
+            for(let i=0;i<res.length;i++){
+                res[i].name=res[i].name.split("//");
+                res[i].description=res[i].description.split("//");
+                res[i].miniDescription=res[i].miniDescription.split("//");
             }
             return resp.json({status:200,res}); 
         }catch(err){
