@@ -13,6 +13,10 @@ const FlightsEdit = () => {
     const [finishPositionUA, SetFinishPositionUA] = useState("");
     const [startPositionRU, SetStartPositionRU] = useState("");
     const [finishPositionRU, SetFinishPositionRU] = useState("");
+    const [streetStartPositionUA, setStreetStartPositionUA] = useState("");
+    const [streetFinishPositionUA, setStreetFinishPositionUA] = useState("");
+    const [streetStartPositionRU, setStreetStartPositionRU] = useState("");
+    const [streetFinishPositionRU, setStreetFinishPositionRU] = useState("");
     const [startTime, setStartTime] = useState("00.00");
     const [finishTime, setFinishTime] = useState("00.00");
     const [countFreePlace, setCountFreePlace] = useState(1);
@@ -33,7 +37,7 @@ const FlightsEdit = () => {
             <div className='admin-block-flight'>
                 <p>Фотографія рейсу(не обовязково)</p>
                 <div>
-                    <input type={"file"} id="visitorphoto" name="visitorPhoto" accept="image/*" capture onChange={e => {setImage(e.target.files?.[0]);console.log(e.target)}} />
+                    <input type={"file"} id="visitorphoto" name="visitorPhoto" accept="image/*" capture onChange={e => { setImage(e.target.files?.[0]); console.log(e.target) }} />
                 </div>
                 <div>
                     <p>Дата відправлення:</p>
@@ -62,6 +66,22 @@ const FlightsEdit = () => {
                 <div>
                     <p>Місто приїзду рос:</p>
                     <input value={finishPositionRU} onChange={(e) => SetFinishPositionRU(e.target.value)} />
+                </div>
+                <div>
+                    <p>Вулиця посадки укр:</p>
+                    <input value={streetStartPositionUA} onChange={(e) => setStreetStartPositionUA(e.target.value)} />
+                </div>
+                <div>
+                    <p>Вулиця висадки укр:</p>
+                    <input value={streetFinishPositionUA} onChange={(e) => setStreetFinishPositionUA(e.target.value)} />
+                </div>
+                <div>
+                    <p>Вулиця посадки рос:</p>
+                    <input value={streetStartPositionRU} onChange={(e) => setStreetStartPositionRU(e.target.value)} />
+                </div>
+                <div>
+                    <p>Вулиця висадки рос:</p>
+                    <input value={streetFinishPositionRU} onChange={(e) => setStreetFinishPositionRU(e.target.value)} />
                 </div>
                 <div>
                     <p>Година виїзду:</p>
@@ -104,8 +124,9 @@ const FlightsEdit = () => {
                 </div>
                 <br />
                 <div>
-                    <button onClick={() => AddFlight(image, price, startPositionUA, startPositionRU, finishPositionUA
-                        , finishPositionRU, startDate, finishDate, startTime, finishTime, timeFlightUA, timeFlightRU,
+                    <button onClick={() => AddFlight(image, price, startPositionUA, startPositionRU, finishPositionUA,
+                        finishPositionRU, streetStartPositionUA, streetStartPositionRU, streetFinishPositionUA, streetFinishPositionRU,
+                        startDate, finishDate, startTime, finishTime, timeFlightUA, timeFlightRU,
                         countFreePlace, isWifi, isWC, is220V, isMultimedia, isAirConditioning,
                         descriptionUa, descriptionRu, map)}>Добавити</button>
                 </div>

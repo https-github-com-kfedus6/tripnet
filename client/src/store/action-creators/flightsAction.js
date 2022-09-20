@@ -63,7 +63,8 @@ export const fetchUpdateFlight = (formData) => async (dispatch) => {
 }
 
 export const AddFlight = (image, price, startPositionUA, startPositionRU, finishPositionUA,
-    finishPositionRU, startDate, finishDate, startTime, finishTime, timeFlightUA, timeFlightRU,
+    finishPositionRU, streetStartPositionUA, streetStartPositionRU, streetFinishPositionUA, streetFinishPositionRU,
+    startDate, finishDate, startTime, finishTime, timeFlightUA, timeFlightRU,
     countFreePlace, isWifi, isWC, is220V, isMultimedia, isAirConditioning, descriptionUA, descriptionRU,
     map) => async (dispatch) => {
         try {
@@ -74,6 +75,10 @@ export const AddFlight = (image, price, startPositionUA, startPositionRU, finish
             await formData.append("startPositionRU", startPositionRU);
             await formData.append("finishPositionUA", finishPositionUA);
             await formData.append("finishPositionRU", finishPositionRU);
+            await formData.append("streetStartPositionUA", streetStartPositionUA);
+            await formData.append("streetStartPositionRU", streetStartPositionRU);
+            await formData.append("streetFinishPositionUA", streetFinishPositionUA);
+            await formData.append("streetFinishPositionRU", streetFinishPositionRU);
             await formData.append("startDate", startDate);
             await formData.append("finishDate", finishDate)
             await formData.append("startTime", startTime);
@@ -151,13 +156,13 @@ export const SearchCity = (value, language, isStartPosition) => async (dispatch)
     }
 }
 
-export const GetRelinkBlocks=(id)=>async(dispatch)=>{
-    try{
-        const resp=await $host.get("api/flights/getRelinkBlocks/"+id);
-        if(resp.data.status==200){
-            dispatch({type:flightActionTypes.FETCH_GET_RELINKBLOCKS,payload:resp.data.res});
+export const GetRelinkBlocks = (id) => async (dispatch) => {
+    try {
+        const resp = await $host.get("api/flights/getRelinkBlocks/" + id);
+        if (resp.data.status == 200) {
+            dispatch({ type: flightActionTypes.FETCH_GET_RELINKBLOCKS, payload: resp.data.res });
         }
-    }catch(err){
+    } catch (err) {
         console.log(err);
     }
 }

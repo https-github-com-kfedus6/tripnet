@@ -139,10 +139,13 @@
       background: none;
       outline: none;
 }
-  
+
+.account-position {
+    font-weight: 700;
+}
+
 .accordion-item-account button:hover {
-    cursor: pointer;
-    color: #F9AB55;
+        cursor: pointer;
 }
   
 .accordion-item-account button:focus {
@@ -152,6 +155,20 @@
 
 .accordion-item-account button[aria-expanded='true'] {
     color: #F58A07;
+}
+
+.accordion-street {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.accordion-street div {
+    width: 50%;
+}
+
+.accordion-street-finish {
+    text-align: right;
 }
 
 .account-close {
