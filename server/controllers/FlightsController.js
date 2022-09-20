@@ -8,12 +8,15 @@ class FlightsController {
     async postFlights(req, res, next) {
         try {
             const { price, startPositionUA, startPositionRU, finishPositionUA, finishPositionRU,
+                streetStartPositionUA, streetStartPositionRU, streetFinishPositionUA, streetFinishPositionRU,
                 startDate, finishDate, startTime, finishTime, timeFlightUA, timeFlightRU, countFreePlace,
                 descriptionUA, descriptionRU, isWifi, isWC, is220V, isMultimedia,
                 isAirConditioning, map } = req.body;
             const timeFlight = [timeFlightUA, timeFlightRU].join("//");
             const startPosition = [startPositionUA, startPositionRU].join("//");
             const finishPosition = [finishPositionUA, finishPositionRU].join("//");
+            const streetStartPosition = [streetStartPositionUA, streetStartPositionRU].join("//");
+            const streetFinishPosition = [streetFinishPositionUA, streetFinishPositionRU].join("//");
             const description = [descriptionUA, descriptionRU].join("/*/");
             let image = req.files;
             let flight;
@@ -26,6 +29,8 @@ class FlightsController {
                     image: nameImg,
                     startPosition: startPosition,
                     finishPosition: finishPosition,
+                    streetStartPosition: streetStartPosition,
+                    streetFinishPosition: streetFinishPosition,
                     startDate: startDate,
                     finishDate: finishDate,
                     startTime: startTime,
@@ -42,6 +47,8 @@ class FlightsController {
                     price: price,
                     startPosition: startPosition,
                     finishPosition: finishPosition,
+                    streetStartPosition: streetStartPosition,
+                    streetFinishPosition: streetFinishPosition,
                     startDate: startDate,
                     finishDate: finishDate,
                     startTime: startTime,
@@ -136,6 +143,8 @@ class FlightsController {
             for (let i = 0; i < arrFlights.rows.length; i++) {
                 arrFlights.rows[i].startPosition = arrFlights.rows[i].startPosition.split("//");
                 arrFlights.rows[i].finishPosition = arrFlights.rows[i].finishPosition.split("//");
+                arrFlights.rows[i].streetStartPosition = arrFlights.rows[i].streetStartPosition.split("//");
+                arrFlights.rows[i].streetFinishPosition = arrFlights.rows[i].streetFinishPosition.split("//");
                 arrFlights.rows[i].description = arrFlights.rows[i].description.split("//")
             }
             return res.json({ status: 200, res: arrFlights })
@@ -150,6 +159,8 @@ class FlightsController {
             let flight = await Flight.findOne({ where: { id: parseInt(id) }, include: [{ as: 'params', model: ParamsFlight }, { as: 'schefule', model: ScheduleBus }] });
             flight.startPosition = flight.startPosition.split("//");
             flight.finishPosition = flight.finishPosition.split("//");
+            flight.streetStartPosition = flight.streetStartPosition.split("//");
+            flight.streetFinishPosition = flight.streetFinishPosition.split("//");
             flight.description = flight.description.split("/*/");
             flight.schefule[0].sunday = flight.schefule[0].sunday.split("//");
             let status = await ScheduleBusStatus.findAll({ where: { scheduleBusId: flight.schefule[0].id } });

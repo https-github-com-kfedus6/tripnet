@@ -37,6 +37,8 @@ const Flight = sequelize.define("flight", {
     price: { type: DataTypes.STRING },
     startPosition: { type: DataTypes.STRING },
     finishPosition: { type: DataTypes.STRING },
+    streetStartPosition: { type: DataTypes.STRING },
+    streetFinishPosition: { type: DataTypes.STRING },
     countFreePlace: { type: DataTypes.INTEGER },
     startDate: { type: DataTypes.STRING },
     finishDate: { type: DataTypes.STRING },
@@ -57,7 +59,7 @@ const Blog = sequelize.define('blog', {
     id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
     image: { type: DataTypes.STRING },
     description: { type: DataTypes.TEXT },
-    miniDescription:{ type: DataTypes.TEXT },
+    miniDescription: { type: DataTypes.TEXT },
     name: { type: DataTypes.STRING }
 });
 
@@ -99,7 +101,7 @@ const FlightOrder = sequelize.define("flightOrder", {
 Flight.hasMany(FlightOrder);
 FlightOrder.belongsTo(Flight);
 
-User.hasMany(FlightOrder,{as:"user"});
+User.hasMany(FlightOrder, { as: "user" });
 FlightOrder.belongsTo(User);
 
 Flight.hasMany(ParamsFlight, { as: 'params' });

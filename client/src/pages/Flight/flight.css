@@ -104,7 +104,12 @@
     padding-top: 50px;
 }
 
-.flight-maps h2 {
+.flight-street-start-finish{
+    padding-bottom: 20px;
+    word-wrap: break-word;
+}
+
+.flight-maps div h2 {
     font-weight: 400;
     font-size: 22px;
 }
@@ -243,7 +248,7 @@
 }
 
 .flight-links-block div div a {
-    color: #f58a07;
+    color: #084887;
     text-decoration: none;
 }
 

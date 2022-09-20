@@ -129,19 +129,29 @@ const FlightList = ({ flight, is_admin, setScheduleTo, setScheduleWith, status, 
                 changeSchedule={changeSchedule}
             />
             <div className='flight-maps'>
-                <h2>Карта маршута</h2>
-                <iframe src={flight.map} loading="lazy"></iframe>
+                <div>
+                    <h2>Карта маршрута</h2>
+                </div>
+                <div className='flight-street-start-finish'>
+                    <p>{t("flight.dispatch")} {flight.startPosition[language]}: {flight.streetStartPosition[language]}</p>
+                    <p>{t("flight.arrival")} {flight.finishPosition[language]}: {flight.streetFinishPosition[language]}</p>
+                </div>
+                <div>
+                    <iframe src={flight.map} loading="lazy"></iframe>
+                </div>
             </div>
             <div className='flight-description'>
                 <h2>{t("flight.info_for_flight")} {flight.startPosition[language]} - {flight.finishPosition[language]}:</h2>
                 <p dangerouslySetInnerHTML={createMarkup(flight.description[language])}></p>
             </div>
             <div className='flight-links'>
-                <p>Популярні рейси</p>
+                <div>
+                    <p>{t("flight.popular")}</p>
+                </div>
                 <div className='flight-links-block'>
                     <div className='flight-link-block'>
                         {relinkBlocks == undefined || relinkBlocks.startPosition.length == 0 ? <></> : <>
-                            <span>з {flight.startPosition[language]}</span>
+                            <span>{t("flight.with")} {flight.startPosition[language]}</span>
                             <div>
                                 {relinkBlocks.startPosition.map(x =>
                                     <div key={x.id}>
@@ -157,7 +167,7 @@ const FlightList = ({ flight, is_admin, setScheduleTo, setScheduleWith, status, 
                     </div>
                     <div className='flight-link-block'>
                         {relinkBlocks == undefined || relinkBlocks.finishPosition.length == 0 ? <></> : <>
-                            <span>до {flight.finishPosition[language]}</span>
+                            <span>{t("flight.to")} {flight.finishPosition[language]}</span>
                             <div>
                                 {relinkBlocks.finishPosition.map(x =>
                                     <div key={x.id}>
