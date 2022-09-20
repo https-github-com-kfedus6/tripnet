@@ -1,3 +1,4 @@
+import { t } from "i18next";
 import { $authHost, $host } from "../../http";
 import { blogActionTypes } from "../reducers/blogReducer";
 import { messageActionTypes } from "../reducers/messageReducer";
@@ -46,7 +47,7 @@ export const AddBlog=(descriptionUa,descriptionRu,image,name,miniDescription)=>a
         await formData.append("miniDescription",miniDescription);
         const resp=await $authHost.post("api/blog/add",formData);
         if(resp.data.status==200){
-            dispatch({type:messageActionTypes.SET_SHOW_TRUE,payload:"успішно додано"});
+            dispatch({type:messageActionTypes.SET_SHOW_TRUE,payload:t("message.successfully_added")});
             setTimeout(()=>dispatch({type:messageActionTypes.SET_SHOW_FALSE}),3000);
         }else {
             dispatch({type:messageActionTypes.SET_SHOW_TRUE,payload:"error"});
@@ -74,6 +75,17 @@ export const DelBlog=(id)=>async(dispatch)=>{
     }catch(err){
         dispatch({type:messageActionTypes.SET_SHOW_TRUE,payload:"error"});
         setTimeout(()=>dispatch({type:messageActionTypes.SET_SHOW_FALSE}),3000);
+        console.log(err);
+    }
+}
+
+export const GetSimilarBlog=(id)=>async(dispatch)=>{
+    try{
+        const resp=await $host.get("api/blog/getSimilar?id="+id);
+        if(resp.data.status==200){
+            
+        }else console.log(resp);
+    }catch(err){
         console.log(err);
     }
 }

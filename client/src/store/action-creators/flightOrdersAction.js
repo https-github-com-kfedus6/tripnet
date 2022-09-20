@@ -1,3 +1,4 @@
+import { t } from "i18next";
 import { $authHost, $host } from "../../http/index";
 import { flightOrdersActionTypes } from "../reducers/flightOrdersReducer";
 import { messageActionTypes } from "../reducers/messageReducer";
@@ -7,8 +8,8 @@ export const postFlightOrder = (data) => async (dispatch) => {
         const response = await $authHost.post('api/flightOrder/add', data);
         if(response.data.status==200){
             dispatch({ type: flightOrdersActionTypes.FETCH_POST_ORDER, payload: response.data.res })
-            dispatch({type:messageActionTypes.SET_SHOW_TRUE,payload:"успішно виконано"});
-            setTimeout(()=>dispatch({type:messageActionTypes.SET_SHOW_FALSE}),3000);
+            dispatch({type:messageActionTypes.SET_SHOW_TRUE,payload:t("message.successfully_added_operator")});
+            setTimeout(()=>dispatch({type:messageActionTypes.SET_SHOW_FALSE}),9000);
         }else{
             dispatch({type:messageActionTypes.SET_SHOW_TRUE,payload:"error"});
             setTimeout(()=>dispatch({type:messageActionTypes.SET_SHOW_FALSE}),3000);
@@ -35,7 +36,7 @@ export const putFlightOrder = (status, id, page, limit, countTicket) => async (d
     try {
         const response = await $authHost.put('api/flightOrder/setStatus', { status, id, page, limit, countTicket });
         if(response.data.status==200){
-            dispatch({type:messageActionTypes.SET_SHOW_TRUE,payload:"успішно виконано"});
+            dispatch({type:messageActionTypes.SET_SHOW_TRUE,payload:t("message.successfully_added")});
             setTimeout(()=>dispatch({type:messageActionTypes.SET_SHOW_FALSE}),3000);
             dispatch({ type: flightOrdersActionTypes.FETCH_PUT_ORDER, payload: response.data.res })
         }else {

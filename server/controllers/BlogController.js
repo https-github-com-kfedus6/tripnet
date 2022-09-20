@@ -2,6 +2,7 @@ const ErrorApi = require("../error/ErrorApi");
 const { Blog, Novetly } = require("../models/models");
 const uuid = require("uuid");
 const path = require("path");
+const { Op } = require("sequelize");
 
 class BlogController {
     static GetAll = async (req, resp, next) => {
@@ -67,6 +68,26 @@ class BlogController {
             const {id}=req.body;
             const res=await Blog.destroy({where:{id:parseInt(id)}});
             return resp.json({status:200,res});
+        }catch(err){
+            return next(ErrorApi.badRequest(err));
+        }
+    }
+    static GetSimilar=async(req,resp,next)=>{
+        try{
+            const {id}=req.query;
+            let res=[];
+            let after=await Blog.findAll({attributes:['name','id','description','createdAt','image',]
+            ,where:{id:{[Op.gt]:parseInt(id)}},limit:3});
+            let before=await Blog.findAll({attributes:['name','id','description','createdAt','image',]
+            ,where:{id:{[Op.lt]:parseInt(id)}},limit:(6-after.length)});
+            if((6-before.length-after.length)!=0){
+                let after2=await Blog.findAll({attributes:['name','id','description','createdAt','image',]
+                ,where:{id:{[Op.gt]:parseInt(id)}},limit:(6-before.length)});
+                res=[...before,after2]
+            }else{
+                res=[...before,after];
+            }
+            return resp.json({status:200,res}); 
         }catch(err){
             return next(ErrorApi.badRequest(err));
         }

@@ -114,5 +114,12 @@
         "novetly": "Добавити країни на головну сторіку",
         "response": "Добавити відгук",
         "order": "Бронювання клієнтів"
+    },
+    "message":{
+        "successfully_added":"успішно виконано",
+        "successfully_added_operator":"успішно виконано в найближчий час з вами зв'яжеться оператор"
+    },
+    "reservation":{
+        "an_operator_will_contact_you_shortly_after_booking":"після бронювання в найблищий час з вами зв'яжеться оператор"
     }
 }

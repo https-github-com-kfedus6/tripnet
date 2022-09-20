@@ -56,7 +56,7 @@ const FlightOrders = () => {
         setIsActive(false);
     }
     useEffect(()=>{
-        console.log(flightOrders);
+        
     },[flightOrders])
 
     const handleChange = (event, value) => {

@@ -60,8 +60,9 @@ const Home = () => {
                 </div>
                 <HomeFAQ />
                 <Responce />
-                <HomeListBlog />
+                
             </div>
+            <HomeListBlog />
         </div >
     )
 }

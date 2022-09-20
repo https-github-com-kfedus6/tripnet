@@ -73,6 +73,9 @@ const ModalFormBuy = ({ visibleBuy, name, setName, phone, setPhone, reserveTicke
                                 value={countTicket}
                                 onChange={SetCountTicket} />
                         </div>
+                        <div className='text'>
+                            {t("reservation.an_operator_will_contact_you_shortly_after_booking")}
+                        </div>
                         <div className='block-modal-btn'>
                             <button onClick={reserveTicket}>{t('modalbuy.btn-buy')}</button>
                         </div>

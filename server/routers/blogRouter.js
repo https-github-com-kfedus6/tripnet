@@ -8,5 +8,7 @@ rout.get("/getNovetly",BlogController.getNovetly);
 rout.get("/getDescription",BlogController.GetWithDescription);
 rout.post("/add",IsAdminMiddleWare,BlogController.Add);
 rout.delete("/del",IsAdminMiddleWare,BlogController.Del);
+rout.get("/getSimilar",BlogController.GetSimilar);
+
 
 module.exports=rout;
