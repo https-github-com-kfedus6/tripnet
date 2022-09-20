@@ -74,20 +74,30 @@ class BlogController {
     }
     static GetSimilar=async(req,resp,next)=>{
         try{
-            let {id}=req.query;
-            id=parseInt(id);
+            const {id}=req.query;
             let res=[];
-            let after=await Blog.findAll({attributes:['name','id','description','createdAt','image','miniDescription']
-            ,where:{id:{[Op.gt]:parseInt(id)}},limit:3,id:{[Op.ne]:id}});
-            let before=await Blog.findAll({attributes:['name','id','description','createdAt','image','miniDescription']
-            ,where:{id:{[Op.lt]:parseInt(id)}},limit:(6-after.length),id:{[Op.ne]:id}});
-            if((6-before.length-after.length)!=0){
-                let after2=await Blog.findAll({attributes:['name','id','description','createdAt','image','miniDescription']
-                ,where:{id:{[Op.ne]:id},id:{[Op.gt]:parseInt(id)}},limit:(6-before.length),id:{[Op.ne]:id}});
-                res=[...before,...after2]
-            }else{
+            let limit=6;
+            let count=await Blog.count();
+            if(count<limit){
+                let temp=await Blog.findAll({where:{id:{[Op.ne]:parseInt(id)}}})
+                res=[...temp];
+            }
+            else{
+                let before=await Blog.findAll({where:{id:{[Op.lt]:parseInt(id)}},
+                limit:parseInt(limit/2)});
+                let after=await Blog.findAll({where:{id:{[Op.gt]:parseInt(id)}},
+                limit:parseInt(limit-before.length)});
+                if(after.length!=limit/2){
+                    let temp=await Blog.findAll({where:{id:{[Op.lt]:parseInt(id)}},
+                    limit:parseInt(limit-after.length),order:[['id', 'DESC']]});
+                    before=[];
+                    for(let i=temp.length-1;i>=0;i--){
+                        before.push(temp[i]);
+                    }
+                }
                 res=[...before,...after];
             }
+
             for(let i=0;i<res.length;i++){
                 res[i].name=res[i].name.split("//");
                 res[i].description=res[i].description.split("//");

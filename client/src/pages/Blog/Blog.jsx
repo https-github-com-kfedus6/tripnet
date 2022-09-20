@@ -19,7 +19,7 @@ const Blog = () => {
 
     useEffect(() => {
         GetSimilarBlog(id);
-    }, [])
+    }, [id])
     useEffect(() => {
         if (selectBlog == undefined || selectBlog == null || selectBlog.id != id) {
             GetBlogDescription(id);
