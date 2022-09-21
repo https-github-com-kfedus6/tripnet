@@ -5,8 +5,10 @@ import { useAction } from '../../hooks/useAction';
 import { t } from 'i18next';
 import { Breadcrumbs, Typography } from '@mui/material';
 import HomeBlog from '../Home/HomeBlog';
-import { FacebookMessengerShareButton, FacebookShareButton, TelegramShareButton, TwitterShareButton,
-    ViberShareButton, WhatsappShareButton} from 'react-share';
+import {
+    FacebookMessengerShareButton, FacebookShareButton, TelegramShareButton, TwitterShareButton,
+    ViberShareButton, WhatsappShareButton
+} from 'react-share';
 import { FacebookIcon, FacebookMessengerIcon, TelegramIcon, TwitterIcon, ViberIcon, WhatsappIcon } from 'react-share';
 
 const Blog = () => {
@@ -76,10 +78,10 @@ const Blog = () => {
                         <br />
                     </div>
                     <div className='blog__container'>
-                        {similarBlog==undefined?<></>:
-                        <div className="list__blog__main">
-                            {similarBlog.map(x => <HomeBlog key={x.id} blog={x} />)}
-                        </div>}
+                        {similarBlog == undefined ? <></> :
+                            <div className="list__blog__main">
+                                {similarBlog.map(x => <HomeBlog key={x.id} blog={x} />)}
+                            </div>}
                     </div>
                 </div>
             </>

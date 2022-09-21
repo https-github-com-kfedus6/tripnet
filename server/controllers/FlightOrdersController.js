@@ -4,14 +4,13 @@ const ErrorApi = require("../error/ErrorApi");
 class FlightOrdersController {
     static Add = async (req, resp, next) => {
         try {
-            const { flightId, authorName, countTicket, phone,userId } = req.body;
-            let user=req.user;
-            console.log(user)
+            const { flightId, authorName, countTicket, phone, date, userId } = req.body;
+            let user = req.user;
             let res;
-            if(userId==0)
-                res = await FlightOrder.create({ authorName, countTicket, phone, flightId });
-            else res = await FlightOrder.create({ authorName, countTicket, phone, flightId, userId });
-                return resp.json({ status: 200, res });
+            if (userId == 0)
+                res = await FlightOrder.create({ authorName, countTicket, phone, date, flightId });
+            else res = await FlightOrder.create({ authorName, countTicket, phone, date, flightId, userId });
+            return resp.json({ status: 200, res });
         } catch (err) {
             return next(ErrorApi.badRequest(err));
         }
@@ -70,16 +69,16 @@ class FlightOrdersController {
             return next(ErrorApi.badRequest(err));
         }
     }
-    
-    static getUserFlight=async(req,resp,next)=>{
-    try{
-        const userId=req.user.id;
-        const res=await FlightOrder.findAll({where:{userId}});
-        return resp.json({status:200,res})
-    }catch(err){
-        return next(ErrorApi.badRequest(err));
+
+    static getUserFlight = async (req, resp, next) => {
+        try {
+            const userId = req.user.id;
+            const res = await FlightOrder.findAll({ where: { userId } });
+            return resp.json({ status: 200, res })
+        } catch (err) {
+            return next(ErrorApi.badRequest(err));
+        }
     }
-}
 }
 
 module.exports = FlightOrdersController

@@ -71,7 +71,6 @@
       margin: 2em 0;
 }
 
-
 .order-flight-pdt {
     width: 75%;
 }
@@ -82,9 +81,25 @@
     margin-top: 10px;
 }
 
+.order-street-position {
+    display: flex;
+    justify-content: space-between;
+}
+
+.order-street-position div {
+    word-wrap: break-word;
+    width: 50%;
+    margin-top: 0;
+}
+
+.order-street-finish {
+    text-align: right;
+}
+
 .order-flight-ticket {
     display: flex;
     flex-direction: column;
+    margin-top: 15px;
 }
 
 .order-flight-ticket span {
@@ -176,6 +191,10 @@
 
     .accordion-order-btn span { 
         margin-bottom: 5px;
+    }
+
+    .order-flight-pdt {
+        width: 99%;
     }
 
 }

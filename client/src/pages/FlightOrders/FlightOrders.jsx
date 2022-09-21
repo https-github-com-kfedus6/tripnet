@@ -108,6 +108,14 @@ const FlightOrders = () => {
                                                         <span>{flight.startPosition[language]}</span>
                                                         <span>{flight.finishPosition[language]}</span>
                                                     </div>
+                                                    <div className='order-street-position'>
+                                                        <div>
+                                                            <span>{flight.streetStartPosition[language]}</span>
+                                                        </div>
+                                                        <div>
+                                                            <span className='order-street-finish'>{flight.streetFinishPosition[language]}</span>
+                                                        </div>
+                                                    </div>
                                                     <div>
                                                         <span>{flight.startDate}</span>
                                                         <span>{flight.finishDate}</span>
@@ -119,7 +127,8 @@ const FlightOrders = () => {
                                                 </div>
                                                 <div className='order-flight-ticket'>
                                                     <span><b>{t('order.ticket')}:</b> <input value={countTicket} onChange={(e) => setCountTicket(e.target.value)} type={"number"} /></span>
-                                                    <span><b>{t('order.ticket_remained')}:</b>{flight.countFreePlace}</span>
+                                                    <span><b>{t('order.ticket_remained')}:</b> {flight.countFreePlace}</span>
+                                                    <span><b>Дата:</b> {item.date}</span>
                                                     <span><b>{t('order.price')}:</b> {flight.price}.00 UAH</span>
                                                     <span><b>{t('order.allPrice')}:</b> {+flight.price * +item.countTicket}.00 UAH</span>
                                                 </div>

@@ -573,6 +573,14 @@
     font-size: 14px;
 }
 
+.flight-not-found {
+    padding: 80px;
+}
+
+.flight-not-found p {
+    text-align: center;
+    font-size: 26px;
+}
 
 @media (max-width: 992px) {
     .items-flight {
@@ -697,6 +705,10 @@
     .item-border {
         display: none;
     }
+
+    .flight-not-found p {
+        font-size: 23px;
+    }
 }
 
 @media (max-width: 576px) {
@@ -773,6 +785,10 @@
     .buy-ticket button {
         width: 100%;
         margin-top: 10px;
+    }
+
+    .flight-not-found p {
+        font-size: 20px;
     }
 }
 @media screen and (min-width: 768px) {
