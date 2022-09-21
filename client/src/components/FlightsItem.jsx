@@ -214,11 +214,14 @@ const FlightsItem = ({ item, sumOld, sumYoung, deleteFlight, limit, page, openMo
                         <span><FaUser /> {item.countFreePlace} {t('flight.free_place')}</span>
                     </div>
                     <div className='btn-buy-modal'>
-                        <Stack direction="row" spacing={2}>
-                            <Button variant="contained" onClick={() => openModal(item.id)}>
-                                <div><FaShoppingCart /></div><span>{sum} UAH</span>
-                            </Button>
-                        </Stack>
+                        <div className='price-block'>
+                            <span>{sum} UAH</span>
+                        </div>
+                        <div>
+                            <button onClick={() => openModal(item.id)}>
+                                {t('modalbuy.btn-buy')}
+                            </button>
+                        </div>
                     </div>
                 </div >
             </div>

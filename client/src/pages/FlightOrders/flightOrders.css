@@ -41,7 +41,7 @@
 }
 
 .accordion-order-btn:hover {
-    color: #F9AB55;
+    color: #F58A07;
 }
 
 .accordion-order-btn:focus {
@@ -137,14 +137,9 @@
     color: red;
 }
 
-.order-iconc-close {
-    font-size: 25px;
-    color: red;
-}
-
-.order-iconc-check {
+.icon-order {
     font-size: 20px;
-    color: green;
+    font-weight: 700;
 }
 
 @media (min-width:1024px) {

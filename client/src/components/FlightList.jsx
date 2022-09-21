@@ -5,7 +5,6 @@ import { useSelector } from 'react-redux'
 import { useAction } from '../hooks/useAction'
 import FlightScheduleBusList from './FlightScheduleBusList'
 import { NavLink } from 'react-router-dom';
-import { HiOutlineArrowLongRight } from 'react-icons/hi'
 
 const FlightList = ({ flight, is_admin, setScheduleTo, setScheduleWith, status, changeStatus, changeSchedule, relinkBlocks }) => {
     const { language } = useSelector(state => state.language);
@@ -52,6 +51,7 @@ const FlightList = ({ flight, is_admin, setScheduleTo, setScheduleWith, status, 
                 </div>
                 <div className='flight__price'>
                     <span>{flight.price}.00 UAH</span>
+                    <button>{t('modalbuy.btn-buy')}</button>
                 </div>
             </div>
             <div className='block-comfort'>

@@ -55,9 +55,9 @@ const FlightOrders = () => {
         setPage(1);
         setIsActive(false);
     }
-    useEffect(()=>{
-        
-    },[flightOrders])
+    useEffect(() => {
+
+    }, [flightOrders])
 
     const handleChange = (event, value) => {
         setPage(value)
@@ -93,7 +93,7 @@ const FlightOrders = () => {
                                         </button>
                                         <div>
                                             <span className='icon-order' aria-hidden="true">
-                                                {item.status === null ? status : item.status === false ? <span className='order-iconc-close'><IoClose /></span> : <span className='order-iconc-check'><BsCheckLg /></span>}
+                                                {item.status === null ? status : item.status === false ? <span>{t("account.canceled")}</span> : <span>{t("account.accepted")}</span>}
                                             </span>
                                         </div>
                                     </div>

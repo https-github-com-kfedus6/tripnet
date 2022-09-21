@@ -3,25 +3,40 @@
 }
 
 .block-position-price div:nth-child(1) span {
-    font-size: 30px;
+    font-size: 28px;
     display: flex;
     align-items: center;
 }
 
-.block-position-price div:nth-child(2) {
-    width: 180px;
-    height: 40px;
-    background-color: #f58a07;
-    border-radius: 5px;
-    color: #fbfbfe;
+.flight__price {
+    margin-bottom: 20px;
 }
 
-.block-position-price div:nth-child(2) span {
-    font-size: 24px;
+.flight__price button {
+    background-color: #f58a07;
+    background-color: #f58a07;
+    border: 1px solid #f58a07;
+    width: 180px;
+    height: 35px;
+    font-size: 19px;
+    border-radius: 5px;
+    padding: 5px 10px;
+    cursor: pointer;
+    color: #FBFBFE;
+}
+
+.flight__price button:hover {
+    background-color: #FBFBFE;
+    color: #f58a07;
+}
+
+.flight__price span {
+    font-size: 20px;
     display: flex;
     justify-content: center;
-    margin-top: 6px;
+    margin-bottom: 5px;
 }
+
 .block-comfort {
     display: flex;
     flex-direction: column;
@@ -293,7 +308,7 @@
         margin: auto;
     }
     .name__city {
-        font-size: 20px;
+        font-size: 24px;
     }
 
     .items-comfort {
@@ -304,6 +319,10 @@
 
     .item-comfort {
         margin-right: 0px;
+    }
+
+    .block-position-price div:nth-child(1) span {
+        font-size: 20px;
     }
 
 }

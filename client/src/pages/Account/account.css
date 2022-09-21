@@ -138,10 +138,7 @@
       border: none;
       background: none;
       outline: none;
-}
-
-.account-position {
-    font-weight: 700;
+      font-weight: 700;
 }
 
 .accordion-item-account button:hover {
@@ -169,15 +166,6 @@
 
 .accordion-street-finish {
     text-align: right;
-}
-
-.account-close {
-    font-size: 25px;
-    color: red;
-}
-
-.account-check {
-    color: green;
 }
 
 .account-processing {

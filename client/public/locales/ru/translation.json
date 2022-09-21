@@ -69,19 +69,18 @@
         "benefits_company": "Преимущества компании",
         "we_will_comfortably_deliver_to_such_countries": "С комфортом доставим в такие страны",
         "responce": "Отзывы",
-        "professional_drivers_name":"Профессиональные водители",
-        "work_without_intermediaries_name":"Работаем без посредников",
-        "have_proven_themselves_well_name":"Хорошо себя зарекомендовали",
-        "work_strictly_according_to_the_schedule_name":"Работаем четко по графику",
-        "professional_managers_name":"Профессиональные менеджеры",
-        "we_treat_our_work_professionally_name":"Профессионально относимся к нашей работе",
-        "professional_drivers_description":"Профессиональные водители, знающие безопасные маршруты и имеющие опыт в длительных поездках",
-        "work_without_intermediaries_description":"Мы работаем на прямую без посредников",
-        "have_proven_themselves_well_description":"Мы хорошо зарекомендовали себя в перевозках пассажиров",
-        "work_strictly_according_to_the_schedule_description":"Отправление автобусов всегда в указанные сроки",
-        "professional_managers_description":"Наши менеджеры обладают выдержкой, спокойствием и четко отвечают на ваши вопросы",
-        "we_treat_our_work_professionally_description":"Мы профессионально относимся к нашей работе и всегда на связи"
-
+        "professional_drivers_name": "Профессиональные водители",
+        "work_without_intermediaries_name": "Работаем без посредников",
+        "have_proven_themselves_well_name": "Хорошо себя зарекомендовали",
+        "work_strictly_according_to_the_schedule_name": "Работаем четко по графику",
+        "professional_managers_name": "Профессиональные менеджеры",
+        "we_treat_our_work_professionally_name": "Профессионально относимся к нашей работе",
+        "professional_drivers_description": "Профессиональные водители, знающие безопасные маршруты и имеющие опыт в длительных поездках",
+        "work_without_intermediaries_description": "Мы работаем на прямую без посредников",
+        "have_proven_themselves_well_description": "Мы хорошо зарекомендовали себя в перевозках пассажиров",
+        "work_strictly_according_to_the_schedule_description": "Отправление автобусов всегда в указанные сроки",
+        "professional_managers_description": "Наши менеджеры обладают выдержкой, спокойствием и четко отвечают на ваши вопросы",
+        "we_treat_our_work_professionally_description": "Мы профессионально относимся к нашей работе и всегда на связи"
     },
     "modalbuy": {
         "title": "Забронировать рейс",
@@ -101,7 +100,9 @@
         "history_order": "История заказов",
         "in_processing": "В обработке",
         "count_tiket": "Количество билетов",
-        "price": "Цена"
+        "price": "Цена",
+        "canceled": "Отменена",
+        "accepted": "Принято"
     },
     "footer": {
         "protected": "Все права защищены",
@@ -133,11 +134,11 @@
         "response": "Добавить отзыв",
         "order": "Бронирование клиентов"
     },
-    "message":{
-        "successfully_added":"успешно выполнено",
-        "successfully_added_operator":"успешно выполнено в ближайшее время с вами свяжется оператор"
+    "message": {
+        "successfully_added": "Успешно выполнено",
+        "successfully_added_operator": "Успешно выполнено в ближайшее время с вами свяжется оператор"
     },
-    "reservation":{
-        "an_operator_will_contact_you_shortly_after_booking":"после бронирования в ближайшее время с вами свяжется оператор"
+    "reservation": {
+        "an_operator_will_contact_you_shortly_after_booking": "После бронирования в ближайшее время с вами свяжется оператор"
     }
 }
