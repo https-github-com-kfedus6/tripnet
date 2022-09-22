@@ -94,6 +94,7 @@ const FlightOrder = sequelize.define("flightOrder", {
     id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
     authorName: { type: DataTypes.STRING },
     countTicket: { type: DataTypes.INTEGER },
+    date: { type: DataTypes.STRING },
     phone: { type: DataTypes.STRING },
     status: { type: DataTypes.BOOLEAN, defaultValue: null },
 });

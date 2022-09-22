@@ -13,6 +13,7 @@ const Flights = ({ isShowFilter }) => {
     const [visibleBuy, setVisiblyBuy] = useState(false)
     const [name, setName] = useState('')
     const [phone, setPhone] = useState('')
+    const [date, setDate] = useState('')
     const [countTicket, setCountTicket] = useState(1)
     const [flightId, setFlightId] = useState('')
 
@@ -107,6 +108,7 @@ const Flights = ({ isShowFilter }) => {
                 flightId: flightId,
                 authorName: name,
                 countTicket: countTicket,
+                date: date,
                 phone: phone
             })
         } else {
@@ -114,6 +116,7 @@ const Flights = ({ isShowFilter }) => {
                 flightId: flightId,
                 authorName: name,
                 countTicket: countTicket,
+                date: date,
                 phone: phone,
                 userId: user.id
             })
@@ -158,12 +161,15 @@ const Flights = ({ isShowFilter }) => {
                 setChangePosition={setChangePosition}
                 changePositionFun={changePositionFun}
             />
-            {totalCount == undefined ? <></> :
+            {totalCount == undefined ? <></> : flights.rows.length ?
                 <div className='pagination'>
                     <Stack spacing={1}>
                         <Pagination count={totalCount} page={page} onChange={handleChange} />
                     </Stack>
-                </div>}
+                </div>
+                :
+                <></>
+            }
             <ModalFormBuy
                 visibleBuy={visibleBuy}
                 setVisiblyBuy={setVisiblyBuy}
@@ -171,6 +177,7 @@ const Flights = ({ isShowFilter }) => {
                 setName={setName}
                 phone={phone}
                 setPhone={setPhone}
+                setDate={setDate}
                 reserveTicket={reserveTicket}
                 countTicket={countTicket}
                 setCountTicket={setCountTicket}

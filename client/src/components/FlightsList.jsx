@@ -34,32 +34,37 @@ const FlightsList = ({ finishPosition, startPosition, startDate, flights, setSta
                     changePositionFun={changePositionFun}
                 /> : <></>}
                 <div className='bread__crumbs__main'>
-                        <Breadcrumbs>
-                            <NavLink to="/">
-                                {t("header.first_link")}
-                            </NavLink>
-                            <Typography color="text.primary">{t("header.third_link")}</Typography>
-                        </Breadcrumbs>
-                    </div>
+                    <Breadcrumbs>
+                        <NavLink to="/">
+                            {t("header.first_link")}
+                        </NavLink>
+                        <Typography color="text.primary">{t("header.third_link")}</Typography>
+                    </Breadcrumbs>
+                </div>
                 <div className='flights-block'>
-                    
-                    <div className='items-flight'>
-                        {flights.rows.map(item => {
-                            return (
-                                <FlightsItem
-                                    key={item.id}
-                                    item={item}
-                                    flights={flights}
-                                    sumOld={sumOld}
-                                    sumYoung={sumYoung}
-                                    deleteFlight={deleteFlight}
-                                    limit={limit}
-                                    page={page}
-                                    openModal={openModal}
-                                />
-                            )
-                        })}
-                    </div>
+                    {flights.rows.length ?
+                        <div className='items-flight'>
+                            {flights.rows.map(item => {
+                                return (
+                                    <FlightsItem
+                                        key={item.id}
+                                        item={item}
+                                        flights={flights}
+                                        sumOld={sumOld}
+                                        sumYoung={sumYoung}
+                                        deleteFlight={deleteFlight}
+                                        limit={limit}
+                                        page={page}
+                                        openModal={openModal}
+                                    />
+                                )
+                            })}
+                        </div>
+                        :
+                        <div className='flight-not-found'>
+                            <p>{t('flight.notfound')}!</p>
+                        </div>
+                    }
                 </div>
             </div>
         )

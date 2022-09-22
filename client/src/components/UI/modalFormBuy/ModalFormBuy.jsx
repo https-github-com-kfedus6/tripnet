@@ -10,7 +10,7 @@ import './modalFormBuy.css';
 import { useSelector } from 'react-redux';
 import { useAction } from '../../../hooks/useAction';
 
-const ModalFormBuy = ({ visibleBuy, name, setName, phone, setPhone, reserveTicket, setVisiblyBuy, countTicket, setCountTicket, maxTicket }) => {
+const ModalFormBuy = ({ visibleBuy, name, setName, setDate, phone, setPhone, reserveTicket, setVisiblyBuy, countTicket, setCountTicket, maxTicket }) => {
     const { t } = useTranslation()
     const SetCountTicket = (e) => {
         if (isNaN(parseInt(e.target.value)) && e.target.value != "") return;
@@ -65,6 +65,10 @@ const ModalFormBuy = ({ visibleBuy, name, setName, phone, setPhone, reserveTicke
                                 id="demo-helper-text-misaligned-no-helper"
                                 label={t('modalbuy.phone')}
                                 value={phone} onChange={(e) => setPhone(e.target.value)} />
+                            <TextField
+                                className='input-modal'
+                                type="date"
+                                onChange={(e) => setDate(e.target.value)} />
                             <TextField
                                 type={"number"}
                                 minRows={1}

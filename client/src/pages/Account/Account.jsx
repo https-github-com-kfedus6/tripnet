@@ -146,6 +146,7 @@ const Account = () => {
                                                                 <span>{item.authorName}</span>
                                                                 <span>{item.phone}</span>
                                                                 <span><strong>{t("account.count_tiket")}:</strong> {item.countTicket}</span>
+                                                                <span><strong>Дата:</strong> {item.date}</span>
                                                                 <span><strong>{t("account.price")}:</strong> {+flight.price * +item.countTicket} UAH</span>
                                                             </div>
                                                         </div>}
