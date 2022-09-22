@@ -24,7 +24,7 @@ export const Authorize = (email, password) => async (dispatch) => {
         const user = await jwtDecode(res.data.token);
         localStorage.setItem("token", res.data.token);
         dispatch({ type: userActionTypes.AUTHORIZE_USER_SUCCESSFUL, payload: user });
-    } else if(res.data.status)dispatch({ type: userActionTypes.REGISTER_USER_ERROR, payload: res.data.status });
+    } else if (res.data.status) dispatch({ type: userActionTypes.REGISTER_USER_ERROR, payload: res.data.status });
     else dispatch({ type: userActionTypes.REGISTER_USER_ERROR, payload: 400 });
 }
 
@@ -36,34 +36,34 @@ export const IsAuthorize = () => async (dispatch) => {
             let user = await jwtDecode(res.data.token);
             localStorage.setItem("token", res.data.token);
             dispatch({ type: userActionTypes.AUTHORIZE_USER_SUCCESSFUL, payload: user });
-        }  
-    }else dispatch({type:userActionTypes.NO_AUTHORIZE});
+        }
+    } else dispatch({ type: userActionTypes.NO_AUTHORIZE });
 }
 
-export const ChangePassword=(oldPassword,newPassword,id)=>async(dispatch)=>{
-    try{
-        const res=await $authHost.post("api/user/changePassword",{oldPassword,newPassword,id});
-        if(res.data.status==200){
+export const ChangePassword = (oldPassword, newPassword, id) => async (dispatch) => {
+    try {
+        const res = await $authHost.post("api/user/changePassword", { oldPassword, newPassword, id });
+        if (res.data.status == 200) {
             dispatch({ type: userActionTypes.REGISTER_USER_ERROR, payload: 200 });
-            dispatch({type:messageActionTypes.SET_SHOW_TRUE,payload:t("account.password_changed")});
-            setTimeout(()=>dispatch({type:messageActionTypes.SET_SHOW_FALSE}),3000);
-        }else{
-            dispatch({type:messageActionTypes.SET_SHOW_TRUE,payload:t("authorize.invalid_pass")});
-            setTimeout(()=>dispatch({type:messageActionTypes.SET_SHOW_FALSE}),3000);
+            dispatch({ type: messageActionTypes.SET_SHOW_TRUE, payload: t("account.password_changed") });
+            setTimeout(() => dispatch({ type: messageActionTypes.SET_SHOW_FALSE }), 3000);
+        } else {
+            dispatch({ type: messageActionTypes.SET_SHOW_TRUE, payload: t("authorize.invalid_pass") });
+            setTimeout(() => dispatch({ type: messageActionTypes.SET_SHOW_FALSE }), 3000);
         }
-    }catch(err){
+    } catch (err) {
         alert("error");
         console.log(err);
     }
 }
 
-export const GetPhone=()=>async(dispatch)=>{
-    try{
-        const resp=await $authHost.get("api/user/getPhone");
-        if(resp.data?.status==200){
-            dispatch({type:userActionTypes.GET_PHONE,payload:resp.data.res});
-        }else console.log(resp);
-    }catch(err){
+export const GetPhone = () => async (dispatch) => {
+    try {
+        const resp = await $authHost.get("api/user/getPhone");
+        if (resp.data?.status == 200) {
+            dispatch({ type: userActionTypes.GET_PHONE, payload: resp.data.res });
+        } else console.log(resp);
+    } catch (err) {
         console.log(err);
     }
 }
