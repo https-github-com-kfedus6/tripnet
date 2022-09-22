@@ -1,5 +1,4 @@
-import React, { useEffect } from 'react'
-import { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { FaUserCircle } from 'react-icons/fa'
 import { useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
@@ -33,6 +32,9 @@ const Account = () => {
     const { IsAuthorize, ChangePassword } = useAction();
     const [isChangePass, setIsChangePass] = useState("false")
 
+    const [checkPassword, setCheckPassword] = useState(false);
+    const [checkEmail, setCheckEmail] = useState(false);
+
     const change_password = () => {
         if (newPassword != newPassword2) {
             SetShowMessgeTrue(t("authorize.passwords_do_not_match"));
@@ -46,6 +48,9 @@ const Account = () => {
         }
         setIsChangePass(true);
         ChangePassword(oldPassword, newPassword, user.id);
+        setOldPassword("")
+        setNewPassword("")
+        setNewPassword2("")
     }
 
     useEffect(() => {
@@ -159,44 +164,73 @@ const Account = () => {
                         </details>
                     </div>
                 </div>
-                <div className='block-user-input'>
-                    <div>
-                        <TextField
-                            onChange={e => setOldPassword(e.target.value)}
-                            id="outlined-password-input"
-                            label={t("account.old_password")}
-                            type="password"
-                            autoComplete="current-password"
-                            value={oldPassword}
-                            size="small"
-                        />
+                <details className='block-user-input'>
+                    <summary>
+                        {t('account.change_email')}
+                    </summary>
+                    <div className='block-user-password'>
+                        <div>
+                            <TextField
+                                id="demo-helper-text-misaligned-no-helper"
+                                label={t('account.old_email')}
+                                size="small"
+                            />
+                        </div>
+                        <div>
+                            <TextField
+                                id="demo-helper-text-misaligned-no-helper"
+                                label={t('account.new_email')}
+                                size="small"
+                            />
+                        </div>
+                        <div>
+                            <button>{t('account.change_email')}</button>
+                        </div>
                     </div>
-                    <div>
-                        <TextField
-                            onChange={e => setNewPassword(e.target.value)}
-                            id="outlined-password-input"
-                            label={t("account.new_password")}
-                            type="password"
-                            autoComplete="current-password"
-                            value={newPassword}
-                            size="small"
-                        />
+                </details>
+                <details className='block-user-input'>
+                    <summary className='account-user-btn-change'>
+                        {t("account.change_password")}
+                    </summary>
+                    <div className='block-user-password'>
+                        <div>
+                            <TextField
+                                onChange={e => setOldPassword(e.target.value)}
+                                id="outlined-password-input"
+                                label={t("account.old_password")}
+                                type="password"
+                                autoComplete="current-password"
+                                value={oldPassword}
+                                size="small"
+                            />
+                        </div>
+                        <div>
+                            <TextField
+                                onChange={e => setNewPassword(e.target.value)}
+                                id="outlined-password-input"
+                                label={t("account.new_password")}
+                                type="password"
+                                autoComplete="current-password"
+                                value={newPassword}
+                                size="small"
+                            />
+                        </div>
+                        <div>
+                            <TextField
+                                onChange={e => setNewPassword2(e.target.value)}
+                                id="outlined-password-input"
+                                label={t("account.new_password")}
+                                type="password"
+                                autoComplete="current-password"
+                                value={newPassword2}
+                                size="small"
+                            />
+                        </div>
+                        <div>
+                            <button onClick={change_password}>{t("account.change_password")}</button>
+                        </div>
                     </div>
-                    <div>
-                        <TextField
-                            onChange={e => setNewPassword2(e.target.value)}
-                            id="outlined-password-input"
-                            label={t("account.new_password")}
-                            type="password"
-                            autoComplete="current-password"
-                            value={newPassword2}
-                            size="small"
-                        />
-                    </div>
-                    <div>
-                        <button onClick={change_password}>{t("account.change_password")}</button>
-                    </div>
-                </div>
+                </details>
                 <div className='block-user-btn'>
                     <button onClick={exit}>{t("account.exit")}</button>
                 </div>

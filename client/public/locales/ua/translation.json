@@ -96,6 +96,9 @@
     "account": {
         "hello": "Привіт!",
         "name": "Ім'я",
+        "change_email": "Поміняти почту",
+        "old_email": "Старий емейл",
+        "new_email": "Новий емейл",
         "old_password": "Старий пароль",
         "new_password": "Новий пароль",
         "change_password": "Поміняти пароль",
