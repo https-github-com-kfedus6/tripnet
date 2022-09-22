@@ -52,7 +52,8 @@ export const ChangePassword=(oldPassword,newPassword,id)=>async(dispatch)=>{
             setTimeout(()=>dispatch({type:messageActionTypes.SET_SHOW_FALSE}),3000);
         }
     }catch(err){
-        alert("error");
+        dispatch({type:messageActionTypes.SET_SHOW_TRUE,payload:"error"});
+        setTimeout(()=>dispatch({type:messageActionTypes.SET_SHOW_FALSE}),3000);
         console.log(err);
     }
 }
@@ -65,5 +66,24 @@ export const GetPhone=()=>async(dispatch)=>{
         }else console.log(resp);
     }catch(err){
         console.log(err);
+    }
+}
+
+export const EditEmail=(newEmail)=>async(dispatch)=>{
+    try{
+        const resp=await $authHost.post("api/user/editEmail",{newEmail});
+        if(resp.data.status==200){
+            const user = await jwtDecode(resp.data.token);
+            localStorage.setItem("token", resp.data.token);
+            dispatch({ type: userActionTypes.AUTHORIZE_USER_SUCCESSFUL, payload: user });
+            dispatch({type:messageActionTypes.SET_SHOW_TRUE,payload:"успішно виконано"});
+            setTimeout(()=>dispatch({type:messageActionTypes.SET_SHOW_FALSE}),3000);
+        }else {
+            dispatch({type:messageActionTypes.SET_SHOW_TRUE,payload:"error"});
+            setTimeout(()=>dispatch({type:messageActionTypes.SET_SHOW_FALSE}),3000);
+        }
+    }catch(err){
+        dispatch({type:messageActionTypes.SET_SHOW_TRUE,payload:"error"});
+        setTimeout(()=>dispatch({type:messageActionTypes.SET_SHOW_FALSE}),3000);
     }
 }

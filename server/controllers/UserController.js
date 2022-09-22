@@ -24,7 +24,7 @@ class UserController{
         try{
             const {email,password}=req.body;
             const reg=/drop|\(|delete|;/g;
-            if(reg.test(email)||reg.test(password))throw("invalid value");
+            if(reg.test(email))throw("invalid value");
             const res=await User.findOne({where:{email}});
             if(res==null){
                 return resp.json({status:415,message:"invalid email"});
@@ -73,6 +73,18 @@ class UserController{
             const {id}=req.user;
             const res=await User.findOne({attributes:['telephone'],where:{id}});
             return resp.json({status:200,res:res.dataValues.telephone});
+        }catch(err){
+            return next(ErrorApi.badRequest(err));
+        }
+    }
+    static EditEmail=async(req,resp,next)=>{
+        try{
+            const {id}=req.user;
+            const {newEmail}=req.body;
+            await User.update({email:newEmail},{where:{id}});
+            const res=await User.findOne({where:{id}});
+            const token=await jwt.sign({id:res.id,email:res.email,name:res.name,isAdmin:res.isAdmin},process.env.SECRET_KEY,{expiresIn:"1y"});
+            return resp.json({status:200,token});
         }catch(err){
             return next(ErrorApi.badRequest(err));
         }
