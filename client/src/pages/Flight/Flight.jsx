@@ -7,15 +7,22 @@ import { Breadcrumbs, Typography } from '@mui/material';
 import { t } from 'i18next';
 
 import './flight.css';
+import ModalFormBuy from '../../components/UI/modalFormBuy/ModalFormBuy';
 
 const Flight = () => {
+    const [visibleBuy, setVisiblyBuy] = useState(false)
+    const [name, setName] = useState('')
+    const [phone, setPhone] = useState('')
+    const [countTicket, setCountTicket] = useState(1)
+
     const { id } = useParams()
 
     const { flight, status, relinkBlocks } = useSelector(state => state.flights)
-    const { is_admin } = useSelector(state => state.user)
+    const { is_admin, is_login, user } = useSelector(state => state.user)
     const { language } = useSelector(state => state.language);
-    const { fetchGetFlight, fetchGetFlights, fetchPutFlightStatus, fetchPutFlightBusDate, GetRelinkBlocks } = useAction()
-
+    const { fetchGetFlight, fetchGetFlights, fetchPutFlightStatus, fetchPutFlightBusDate,
+        GetRelinkBlocks, SetShowMessgeTrue, SetShowMessgeFalse, postFlightOrder } = useAction()
+    
 
     const [scheduleWith, setScheduleWith] = useState('')
     const [scheduleTo, setScheduleTo] = useState('')
@@ -47,6 +54,33 @@ const Flight = () => {
         GetRelinkBlocks(id);
     }, [id])
 
+    const reserveTicket = () => {
+        const regTelephone = /(^\++\d{11}$)|(^\d{10})$/;
+        if (!regTelephone.test(phone)) {
+            SetShowMessgeTrue(t("authorize.invalid_telephone"));
+            setTimeout(() => SetShowMessgeFalse(), 3000);
+            return;
+        }
+        setVisiblyBuy(false);
+        if (!is_login) {
+            postFlightOrder({
+                flightId: id,
+                authorName: name,
+                countTicket: countTicket,
+                phone: phone
+            })
+        } else {
+            postFlightOrder({
+                flightId: id,
+                authorName: name,
+                countTicket: countTicket,
+                phone: phone,
+                userId: user.id
+            })
+        }
+        setCountTicket(1)
+    }
+    
     if (!Array.isArray(flight)) {
         return (
             <>
@@ -72,6 +106,19 @@ const Flight = () => {
                         changeStatus={changeStatus}
                         changeSchedule={changeSchedule}
                         relinkBlocks={relinkBlocks}
+                        setVisiblyBuy={setVisiblyBuy}
+                    />
+                    <ModalFormBuy
+                        visibleBuy={visibleBuy}
+                        setVisiblyBuy={setVisiblyBuy}
+                        name={name}
+                        setName={setName}
+                        phone={phone}
+                        setPhone={setPhone}
+                        reserveTicket={reserveTicket}
+                        countTicket={countTicket}
+                        setCountTicket={setCountTicket}
+                        maxTicket={flight.countFreePlace}
                     />
                 </div>
             </>

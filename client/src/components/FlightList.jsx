@@ -6,7 +6,8 @@ import { useAction } from '../hooks/useAction'
 import FlightScheduleBusList from './FlightScheduleBusList'
 import { NavLink } from 'react-router-dom';
 
-const FlightList = ({ flight, is_admin, setScheduleTo, setScheduleWith, status, changeStatus, changeSchedule, relinkBlocks }) => {
+const FlightList = ({ flight, is_admin, setScheduleTo, setScheduleWith, status, changeStatus,
+    changeSchedule, relinkBlocks, setVisiblyBuy }) => {
     const { language } = useSelector(state => state.language);
 
     function createMarkup(text) { return { __html: text }; };
@@ -51,7 +52,7 @@ const FlightList = ({ flight, is_admin, setScheduleTo, setScheduleWith, status, 
                 </div>
                 <div className='flight__price'>
                     <span>{flight.price}.00 UAH</span>
-                    <button>{t('modalbuy.btn-buy')}</button>
+                    <button onClick={()=>setVisiblyBuy(true)}>{t('modalbuy.btn-buy')}</button>
                 </div>
             </div>
             <div className='block-comfort'>
