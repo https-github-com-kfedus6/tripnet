@@ -1378,10 +1378,6 @@ main {
 .layout{
     position: relative;
 }
-.header_register{
-    font-size: 25px;
-    color:#000;
-}
 .home__title{
     display: flex;
     align-items: center;
@@ -1407,26 +1403,22 @@ main {
 }
 @media screen and (min-width:768px) and (max-width:850px) {
     .header__register__with__language{
-        width: 80%;
-        margin-left: 5%;
+        width: 30%;
     }
 }
 @media screen and (min-width:850px) and (max-width: 1024px) {
     .header__register__with__language{
         width: 70%;
-        margin-left: 5%;
     }
 }
 @media screen and (min-width:1300px) {
     .header__register__with__language{
         width: 50%;
-        margin-left: 7%;
     }
 }
 @media screen and (min-width:1024px) and (max-width:1300px) {
     .header__register__with__language{
         width: 80%;
-        margin-left: 5%;
         justify-content: space-between;
     }
 }
@@ -1603,4 +1595,12 @@ main {
 }
 .list__company__benefits{
     align-items: flex-start;
+}
+.header_register{
+    display: flex;
+    flex-direction: row;
+}
+.header_register div{
+    margin-left: 5px;
+    margin-right: 5px;
 }

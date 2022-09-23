@@ -53,10 +53,17 @@ const Header = () => {
                     </li> */}
                 </ul>
                 <div className='header__register__with__language'>
-                    <div>{is_login ? <div className='header_register' onClick={() => navigate("/account")}><FaUserCircle width={"20px"} /></div> :
-                        <div className='header_register' onClick={() => setIsShow(true)}>
-                            <FaUserCircle />
-                        </div>}
+                    <div>
+                        {is_login ? 
+                            <div className='header_register' onClick={() => navigate("/account")}>
+                                <div><FaUserCircle width={"20px"} /></div>
+                                <div> {user.name}</div>
+                            </div> :
+                            <div className='header_register' onClick={() => setIsShow(true)}>
+                                <div><FaUserCircle /></div>
+                                <div>{t("header.registering")}</div>
+                            </div>
+                        }
                     </div>
                     <div className='lang-select'>
                         <SetLanguage />
