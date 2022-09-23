@@ -83,8 +83,12 @@ class BlogController {
                 res=[...temp];
             }
             else{
-                let before=await Blog.findAll({where:{id:{[Op.lt]:parseInt(id)}},
-                limit:parseInt(limit/2)});
+                let tempBefore=await Blog.findAll({where:{id:{[Op.lt]:parseInt(id)}},
+                limit:parseInt(limit/2),order:[['id','DESC']]});
+                let before=[];
+                for(let i=tempBefore.length-1;i>=0;i--){
+                    before.push(tempBefore[i]);
+                }
                 let after=await Blog.findAll({where:{id:{[Op.gt]:parseInt(id)}},
                 limit:parseInt(limit-before.length)});
                 if(after.length!=limit/2){

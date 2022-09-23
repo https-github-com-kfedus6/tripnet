@@ -62,7 +62,7 @@ const FlightOrders = () => {
     const handleChange = (event, value) => {
         setPage(value)
     }
-
+    
     if (Array.isArray(flightOrders)) {
         return <></>
     } else {

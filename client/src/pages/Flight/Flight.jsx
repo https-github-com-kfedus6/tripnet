@@ -22,7 +22,7 @@ const Flight = () => {
     const { language } = useSelector(state => state.language);
     const { fetchGetFlight, fetchGetFlights, fetchPutFlightStatus, fetchPutFlightBusDate,
         GetRelinkBlocks, SetShowMessgeTrue, SetShowMessgeFalse, postFlightOrder } = useAction()
-    
+    const [date,setDate]=useState("");
 
     const [scheduleWith, setScheduleWith] = useState('')
     const [scheduleTo, setScheduleTo] = useState('')
@@ -67,7 +67,8 @@ const Flight = () => {
                 flightId: id,
                 authorName: name,
                 countTicket: countTicket,
-                phone: phone
+                phone: phone,
+                date
             })
         } else {
             postFlightOrder({
@@ -75,7 +76,8 @@ const Flight = () => {
                 authorName: name,
                 countTicket: countTicket,
                 phone: phone,
-                userId: user.id
+                userId: user.id,
+                date
             })
         }
         setCountTicket(1)
@@ -109,6 +111,7 @@ const Flight = () => {
                         setVisiblyBuy={setVisiblyBuy}
                     />
                     <ModalFormBuy
+                        setDate={setDate}
                         visibleBuy={visibleBuy}
                         setVisiblyBuy={setVisiblyBuy}
                         name={name}

@@ -30,7 +30,6 @@ const FlightsEdit = () => {
     const [isMultimedia, setIsMultimedia] = useState(false);
     const [isAirConditioning, setIsAirConditioning] = useState(false);
     const [map, setMap] = useState("");
-    console.log(image)
 
     return (
         <div className='admin-panel-flight'>

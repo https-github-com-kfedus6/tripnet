@@ -76,3 +76,14 @@ export const EditEmail=(newEmail)=>async(dispatch)=>{
         setTimeout(()=>dispatch({type:messageActionTypes.SET_SHOW_FALSE}),3000);
     }
 }
+
+export const GetPhone=()=>async(dispatch)=>{
+    try{
+        const resp=await $authHost.get("api/user/getPhone");
+        if(resp.data?.status==200){
+            dispatch({type:userActionTypes.GET_PHONE,payload:resp.data.res});
+        }else console.log(resp);
+    }catch(err){
+        console.log(err);
+    }
+}

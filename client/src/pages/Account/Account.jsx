@@ -23,7 +23,8 @@ const Account = () => {
         getUserHistory();
     }, [])
 
-    const { SetShowMessgeFalse, SetShowMessgeTrue, getUserHistory, fetchGetFlight } = useAction()
+    const { SetShowMessgeFalse, SetShowMessgeTrue, getUserHistory, fetchGetFlight,
+        EditEmail } = useAction()
     const { t } = useTranslation()
 
     const [oldPassword, setOldPassword] = useState("");
@@ -34,6 +35,7 @@ const Account = () => {
 
     const [checkPassword, setCheckPassword] = useState(false);
     const [checkEmail, setCheckEmail] = useState(false);
+    const [newEmail,setNewEmail]=useState("");
 
     const change_password = () => {
         if (newPassword != newPassword2) {
@@ -78,6 +80,17 @@ const Account = () => {
         }
         setIsActive(i);
         fetchGetFlight(id);
+    }
+
+    const editEmail=()=>{
+        const regEmail = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        if (!regEmail.test(newEmail)) {
+            SetShowMessgeTrue(t("authorize.mail_must_be_genuine"));
+            setTimeout(() => SetShowMessgeFalse(), 3000);
+            return;
+        }
+        EditEmail(newEmail);
+        setNewEmail("");
     }
 
     return (
@@ -172,19 +185,14 @@ const Account = () => {
                         <div>
                             <TextField
                                 id="demo-helper-text-misaligned-no-helper"
-                                label={t('account.old_email')}
-                                size="small"
-                            />
-                        </div>
-                        <div>
-                            <TextField
-                                id="demo-helper-text-misaligned-no-helper"
                                 label={t('account.new_email')}
                                 size="small"
+                                value={newEmail}
+                                onChange={(e)=>setNewEmail(e.target.value)}
                             />
                         </div>
                         <div>
-                            <button>{t('account.change_email')}</button>
+                            <button onClick={()=>editEmail()}>{t('account.change_email')}</button>
                         </div>
                     </div>
                 </details>

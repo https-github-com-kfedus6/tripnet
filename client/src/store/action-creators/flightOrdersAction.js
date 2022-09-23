@@ -26,7 +26,11 @@ export const getFlightOrder = (data) => async (dispatch) => {
                 ...data
             }
         })
-        dispatch({ type: flightOrdersActionTypes.FETCH_GET_ORDER, payload: response.data.res })
+        console.log(response,data);
+        if(response.data.status==200){
+            dispatch({ type: flightOrdersActionTypes.FETCH_GET_ORDER, payload: response.data.res })
+        }
+        else console.log(response);
     } catch (err) {
         console.log(err.message)
     }
