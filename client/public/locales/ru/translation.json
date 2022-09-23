@@ -93,12 +93,12 @@
     "account": {
         "hello": "Привет!",
         "name": "Имя",
-        "change_email": "Поменять почту",
+        "change_email": "Изменить почту",
         "old_email": "Старый емейл",
         "new_email": "Новый емейл",
         "old_password": "Старый пароль",
         "new_password": "Новый пароль",
-        "change_password": "Поменять пароль",
+        "change_password": "Изменить пароль",
         "exit": "Выйти",
         "password_changed": "Пароль изменен",
         "history_order": "История заказов",
@@ -145,5 +145,8 @@
     },
     "reservation": {
         "an_operator_will_contact_you_shortly_after_booking": "После бронирования в ближайшее время с вами свяжется оператор"
+    },
+    "blog": {
+        "details": "Подробности"
     }
 }

@@ -156,11 +156,11 @@
   
 .accordion-item-account button:focus {
     cursor: pointer;
-    color: #F58A07;
+    color: #F9AB55;
 }
 
 .accordion-item-account button[aria-expanded='true'] {
-    color: #F58A07;
+    color: #F9AB55;
 }
 
 .accordion-street {

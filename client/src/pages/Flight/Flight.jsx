@@ -4,10 +4,10 @@ import { NavLink, useParams } from 'react-router-dom';
 import { useAction } from '../../hooks/useAction';
 import FlightList from '../../components/FlightList';
 import { Breadcrumbs, Typography } from '@mui/material';
+import ModalFormBuy from '../../components/UI/modalFormBuy/ModalFormBuy';
 import { t } from 'i18next';
 
 import './flight.css';
-import ModalFormBuy from '../../components/UI/modalFormBuy/ModalFormBuy';
 
 const Flight = () => {
     const [visibleBuy, setVisiblyBuy] = useState(false)
@@ -82,7 +82,7 @@ const Flight = () => {
         }
         setCountTicket(1)
     }
-    
+
     if (!Array.isArray(flight)) {
         return (
             <>
