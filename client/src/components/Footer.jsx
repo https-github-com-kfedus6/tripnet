@@ -7,6 +7,7 @@ import { BiTimeFive } from 'react-icons/bi'
 import { GiSmartphone, GiPositionMarker } from 'react-icons/gi'
 import { HiOutlineMail } from 'react-icons/hi'
 import { useTranslation } from 'react-i18next';
+import { AiOutlineFacebook } from 'react-icons/ai'
 
 const Footer = () => {
     const { t } = useTranslation()
@@ -40,9 +41,6 @@ const Footer = () => {
                     </div>
                     <div className='footer-info'>
                         <div>
-                            <p>{infoCompany.name}</p>
-                        </div>
-                        <div>
                             <i><HiOutlineMail /></i>
                             <p>{infoCompany.email}</p>
                         </div>
@@ -59,10 +57,15 @@ const Footer = () => {
                             <p>{infoCompany.openingHours[language]}</p>
                         </div>
                     </div>
-                    <div className='footer-instagram'>
+                    <div className='footer-social'>
                         <p>{t('footer.social')}</p>
-                        <div>
-                            <a href='https://www.instagram.com/tripnet.com.ua/'><BsInstagram /></a>
+                        <div className='footer-icon-social'>
+                            <div>
+                                <a target="_blank" href='https://www.instagram.com/tripnet.com.ua/'><BsInstagram /></a>
+                            </div>
+                            <div>
+                                <a target="_blank" href="https://m.facebook.com/TripNET.com.ua/"><AiOutlineFacebook /></a>
+                            </div>
                         </div>
                     </div>
                 </div>

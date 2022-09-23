@@ -38,7 +38,7 @@ export const ListBlog = () => {
                         <NavLink to="/">
                             {t("header.first_link")}
                         </NavLink>
-                        <Typography color="text.primary">блог</Typography>
+                        <Typography color="text.primary">Блог</Typography>
                     </Breadcrumbs>
                 </div>
                 <p className='home__title'>Блог</p>
@@ -50,13 +50,13 @@ export const ListBlog = () => {
                                     <img src={process.env.REACT_APP_API_URL + x.image} />
                                 </div>
                                 <div className="mini__blog__date">
-                                    {x.createdAt.slice(0, 10)}
+                                    <span>{x.createdAt.slice(0, 10)}</span>
                                 </div>
                                 <div className='mini__blog__name'>
-                                    {x.name[language]}
+                                    <span>{x.name[language]}</span>
                                 </div>
                                 <div className='mini__blog__description'>
-                                    {x.miniDescription[language]}
+                                    <span>{x.miniDescription[language]}</span>
                                 </div>
                                 {is_admin ? <button onClick={(e) => { e.stopPropagation(); DelBlog(x.id); GetBlogAll(setSelectPage, limit) }}>del</button> : <></>}
                             </div>)}

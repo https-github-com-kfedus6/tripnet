@@ -13,9 +13,9 @@
 }
 
 .flight__price button {
-    background-color: #f58a07;
-    background-color: #f58a07;
-    border: 1px solid #f58a07;
+    background-color: #084887;
+    background-color: #084887;
+    border: 1px solid #084887;
     width: 180px;
     height: 35px;
     font-size: 19px;
@@ -27,7 +27,7 @@
 
 .flight__price button:hover {
     background-color: #FBFBFE;
-    color: #f58a07;
+    color: #084887;
 }
 
 .flight__price span {
