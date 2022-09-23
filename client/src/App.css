@@ -1597,3 +1597,10 @@ main {
     flex-wrap: wrap;
     justify-content: space-between;
 }
+.mini__blog__main{
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+.list__company__benefits{
+    align-items: flex-start;
+}
