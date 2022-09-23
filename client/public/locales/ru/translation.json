@@ -145,5 +145,8 @@
     },
     "reservation": {
         "an_operator_will_contact_you_shortly_after_booking": "После бронирования в ближайшее время с вами свяжется оператор"
+    },
+    "blog": {
+        "details": "Подробности"
     }
 }
