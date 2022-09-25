@@ -52,7 +52,7 @@ const FlightList = ({ flight, is_admin, setScheduleTo, setScheduleWith, status, 
                 </div>
                 <div className='flight__price'>
                     <span>{flight.price}.00 UAH</span>
-                    <button onClick={()=>setVisiblyBuy(true)}>{t('modalbuy.btn-buy')}</button>
+                    <button onClick={() => setVisiblyBuy(true)}>{t('modalbuy.btn-buy')}</button>
                 </div>
             </div>
             <div className='block-comfort'>
@@ -69,20 +69,10 @@ const FlightList = ({ flight, is_admin, setScheduleTo, setScheduleWith, status, 
                                     <div>
                                         <div>
                                             <div className='section-icon-wi-fi'>
-                                                <img src={process.env.REACT_APP_API_URL + "wi-fi2.png"} />
+                                                <img src={process.env.REACT_APP_API_URL + "wi-fi.png"} />
                                             </div>
                                         </div>
                                         <span>Wi-Fi</span>
-                                    </div>
-                                </div>
-                                <div className={img.isMultimedia ? 'item-comfort' : 'image-status'}>
-                                    <div>
-                                        <div>
-                                            <div className='section-icon-multimedia'>
-                                                <img src={process.env.REACT_APP_API_URL + "multimedia.png"} />
-                                            </div>
-                                        </div>
-                                        <span>{t("flight.multimedia")}</span>
                                     </div>
                                 </div>
                                 <div className={img.isWC ? 'item-comfort' : 'image-status'}>
@@ -109,7 +99,7 @@ const FlightList = ({ flight, is_admin, setScheduleTo, setScheduleWith, status, 
                                     <div>
                                         <div>
                                             <div className='section-icon-contd'>
-                                                <img src={process.env.REACT_APP_API_URL + "contd.png"} />
+                                                <img src={process.env.REACT_APP_API_URL + "cond.png"} />
                                             </div>
                                         </div>
                                         <span>{t("flight.air_conditioning")}</span>

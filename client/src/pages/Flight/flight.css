@@ -70,15 +70,15 @@
 }
 
 .item-comfort div div {
-    width: 70px;
-    height: 70px;
+    width: 80px;
+    height: 80px;
     background-color: #f58a07;
     border-radius: 50px;
 }
 
 .section-icon-wi-fi img {
-    width: 45px;
-    height: 45px;
+    width: 65px;
+    height: 65px;
 }
 
 .section-icon-multimedia img {
@@ -87,18 +87,18 @@
 }
 
 .section-icon-wc img {
-    width: 70px;
-    height: 70px;
+    width: 53px;
+    height: 53px;
 }
 
 .section-icon-220 img {
-    width: 85px;
-    height: 50px;
+    width: 53px;
+    height: 53px;
 }
 
 .section-icon-contd img {
-    width: 50px;
-    height: 50px;
+    width: 60px;
+    height: 60px;
 }
 
 .item-comfort div div div {
@@ -347,13 +347,13 @@
     }
     
     .item-comfort div div {
-        width: 50px;
-        height: 50px;
+        width: 60px;
+        height: 60px;
     }
 
     .section-icon-wi-fi img {
-        width: 30px;
-        height: 30px;
+        width: 42px;
+        height: 42px;
     }
 
     .section-icon-multimedia img {
@@ -362,18 +362,18 @@
     }
 
     .section-icon-wc img {
-        width: 45px;
-        height: 45px;
+        width: 40px;
+        height: 40px;
     }
 
     .section-icon-220 img {
-        width: 60px;
-        height: 35px;
+        width: 39px;
+        height: 39px;
     }
 
     .section-icon-contd img {
-        width: 35px;
-        height: 35px;
+        width: 43px;
+        height: 43px;
     }
 }
 

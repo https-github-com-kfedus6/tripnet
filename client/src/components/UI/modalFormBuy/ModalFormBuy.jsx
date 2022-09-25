@@ -46,7 +46,6 @@ const ModalFormBuy = ({ visibleBuy, name, setName, setDate, phone, setPhone, res
                 <div className='modal-content-form-buy'>
                     <div className='model-block'>
                         <div className="modal-logo">
-                            <img src={process.env.REACT_APP_API_URL + 'logo-green.png'} alt="logo" />
                             <Stack direction="row" spacing={1}>
                                 <IconButton size='large' onClick={() => setVisiblyBuy(false)}>
                                     <CloseOutlinedIcon fontSize='large' />

@@ -20,6 +20,7 @@
     background-color: #fff;
     border-radius: 16px;
     width: 40%;
+    height: 550px;
     min-height: 450px;
     box-shadow: 0px 0px 10px rgba(0,0,0, 0.9);
 }
@@ -28,7 +29,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 20px;
+    margin-top: 10px;
 }
 
 .title-modal h2 {
@@ -37,7 +38,7 @@
 
 .modal-logo {
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-end;
     align-items: center;
 }
 
@@ -54,7 +55,7 @@
 }
 
 .block-modal-input div {
-    margin-bottom: 5px;
+    margin-bottom: 6px;
 }
 
 .input-modal {
@@ -64,7 +65,7 @@
 .block-modal-btn {
     display: flex;
     justify-content: center;
-    margin-top: 20px;
+    margin-top: 25px;
 }
 
 .block-modal-btn button {
@@ -105,9 +106,11 @@
         width: 90%;
     }
 }
+
 .text{
     display: flex;
     justify-content: center;
     width: 90%;
     margin: auto;
+    margin-top: 15px;
 }

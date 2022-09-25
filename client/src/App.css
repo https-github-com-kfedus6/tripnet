@@ -930,7 +930,7 @@ main {
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        margin-top: 40px;
+        padding-top: 30px;
     }
 
     .footer-logo {
@@ -945,15 +945,15 @@ main {
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        margin-top: 40px;
+        padding-top: 30px;
     }
 
-    .footer-instagram {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        margin-top: 40px;
+    .footer-social {
+        padding-top: 30px;
+    }
+
+    .footer-protected {
+        padding-top: 30px;
     }
 
     .logo-none-second {
