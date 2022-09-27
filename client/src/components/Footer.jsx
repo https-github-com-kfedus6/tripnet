@@ -30,7 +30,7 @@ const Footer = () => {
                 </div>
                 <div className='footer-block'>
                     <div className='footer-logo logo-none-second' onClick={() => navigate("/")}>
-                        <img src={process.env.REACT_APP_API_URL + 'logo-green.png'} alt="logo" />
+                        <img src={process.env.REACT_APP_API_URL + 'logo-green2.png'} alt="logo" />
                         <span className='protected-none'>{t('footer.protected')}.</span>
                     </div>
                     <div className='footer-link'>

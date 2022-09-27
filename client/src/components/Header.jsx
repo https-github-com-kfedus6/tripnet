@@ -24,7 +24,7 @@ const Header = () => {
                     <li><NavLink to="/aboutUs">{t('header.fourth_link')}</NavLink></li>
                     <li><NavLink to='/blog'>{t("header.five_link")}</NavLink></li>
                     <li className='dropdown-header'>
-                        <div className='burger__menu__list'>
+                        <div className='burger__menu__list header__admin'>
                             {is_admin ?
                                 <>
                                     <a className="dropdown-toggle-header" role="button" data-bs-toggle="dropdown" aria-expanded="false">
