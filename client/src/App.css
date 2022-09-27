@@ -1139,7 +1139,7 @@ main {
     justify-content: center;
     margin-top: 15px;
     margin-bottom: 10px;
-    padding: 25px;
+    padding: 15px;
 }
 .mini__blog__name{
     font-weight: 600;
@@ -1620,4 +1620,11 @@ main {
 
 .header__admin{
     margin-right: 15px;
+}
+.pagination{
+    width: 350px;
+    margin: auto;
+}
+.burger__component__account {
+    margin-left: 5px;
 }

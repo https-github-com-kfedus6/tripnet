@@ -39,11 +39,17 @@ const Burger = ({setIsShowRegister}) => {
         </div>: <></>}
         <div className='burger__list'/>
 
-            {is_login ? <div className='burger__component'><NavLink to='/account'><FaUserCircle /></NavLink></div> :
-              <div onClick={()=>setIsShowRegister(true)} className='burger__component'>
-                  {t("header.registering")} 
-              </div>}
-          
+        {is_login ? 
+          <div className='burger__component'>
+            <NavLink to='/account'><FaUserCircle /> </NavLink>
+            <div className='burger__component__account'>{user.name}</div>
+          </div> 
+          :
+          <div onClick={()=>setIsShowRegister(true)} className='burger__component'>
+              <div><FaUserCircle /></div>
+              <div className='burger__component__account'>{t("header.registering")}</div> 
+          </div>
+        }
           <div className='burger__component'><NavLink to="/">{t('header.first_link')}</NavLink></div>
           <div className='burger__component'><NavLink to="/flightsCategory">{t('header.third_link')}</NavLink></div>
           <div className='burger__component'><NavLink to="/aboutUs">{t('header.fourth_link')}</NavLink></div>
