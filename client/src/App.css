@@ -248,6 +248,7 @@ main {
     display: flex;
     position: fixed;
     flex-direction: column;
+    top: 0px;
     height: 100%;
     width: 80%; 
     background-color: #FBFBFE;
