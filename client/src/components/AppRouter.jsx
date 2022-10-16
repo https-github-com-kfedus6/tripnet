@@ -22,6 +22,7 @@ import FlightsEdit from '../pages/Admin/FlightsEdit';
 import InfoCompanyEdit from '../pages/Admin/InfoCompanyEdit';
 import NovetlyEdit from '../pages/Admin/NovetlyEdit';
 import ResponceEdit from '../pages/Admin/ResponceEdit';
+import Services from '../pages/Services/Services';
 
 const AppRouter = () => {
     const { IsAuthorize } = useAction();
@@ -43,6 +44,7 @@ const AppRouter = () => {
                 <Route path='tinyMCE' element={<TinyMCE />} />
                 <Route path='blog' element={<ListBlog />} />
                 <Route path='blog/:name/:id' element={<Blog />} />
+                <Route path="services" element={<Services/>}/>
                 {is_admin ? <Route path='order' element={<FlightOrders />} /> : <></>}
                 {is_admin ? <Route path='aboutUsEdit' element={<AboutUsEdit />} /> : <></>}
                 {is_admin ? <Route path='blogEdit' element={<BlogEdit />} /> : <></>}

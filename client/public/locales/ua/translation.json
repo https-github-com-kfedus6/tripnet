@@ -159,5 +159,17 @@
     },
     "blog": {
         "details": "Подробиці"
+    },
+    "services":{
+        "all_services":"Всі послуги",
+        "reservation_online":"Бронювання онлайн",
+        "booking_management":"Управління бронюванням",
+        "luggage_transportation":"Перевезення багажу",
+        "transportation_animals":"Перевезення тварин",
+        "reservation_online_description":"Як забронювати та оплатити місце онлайн? Що робити далі?",
+        "booking_management_description":"Як управляти бронюванням в особистому кабінеті, або у месенджері.",
+        "luggage_transportation_description":"Правила перевезення ручної поклажі та багажу. Що робити з додатковим багажем?",
+        "transportation_animals_description":"Правила перевезення тварин. Які необхідні документи та скільки коштує місце?",
+        "details": "Подробиці"
     }
 }

@@ -730,7 +730,7 @@ main {
         display: none;
     }
     .footer__section{
-        margin: auto;
+        margin: 0 auto;
     }
 }
 
@@ -747,7 +747,7 @@ main {
         flex-direction: row;
     }
     .footer__section{
-        margin: auto;
+        margin: 0 auto;
     }
     .logo-none-second {
         display: none;
@@ -1666,7 +1666,7 @@ main {
         justify-content: center;
     }
 }
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 767px) {
     .header__components{
         display: none;
     }
@@ -1758,8 +1758,107 @@ footer{
     display: flex;
     color: gray;
     margin-top: 15px;
+}
+@media screen and (min-width: 768px) {
+    .services__main{
+        display: flex;
+        flex-direction: column;
+        width: 80%;
+        margin: auto;
+    }
+}
+@media screen and (max-width: 768px) {
+    .services__main{
+        display: flex;
+        flex-direction: column;
+        width: 98%;
+        margin: auto;    
+    }
+}
+.services__main{
+    margin-top: 50px;
+}
+.services__fixed__panel{
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    border-radius: 20px;
+    padding: 40px;
+    border: 1px solid #DBDBDB;
+    left: 65%
+}
+.services__fixed__panel div{
+    display: flex;
+    flex-direction: row;
+    margin-top: 10px;
+    align-items: center;
+    cursor: pointer;
+}
+.services__fixed__panel div:hover{
+    color: #386eba;
+}
+.services__fixed__panel div div{
+    margin-left: 10px;
+}
+.services__main{
+    margin-bottom: 100px;
+}
+.static__text{
+    width: 60%;
+}
+.list__services{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+.service{
+    display: flex;
+    flex-direction: column;
+    width: 47%;
+    margin: 0 auto;
+}
+.service__img{
+    display: flex;
+    width: 20%;
+    background-color: #EAF2FF;
+    border: 1px solid #C1DAFF;
+    border-radius: 10px;
+    box-sizing: border-box;
+    width: 64px;
+    height: 64px;
+    align-items: center;
+    justify-content: center;
+    margin-top: 40px;
+
+}
+.service__img img{
+    display: flex;
+    width: 32px;
+}
+@media screen and (min-width: 1024px) {
+    .services__main{
+        width: 80%;
+    }
+}
+@media screen and (min-width:768px) and (max-width:1024px){
+    .services__main{
+        width: 98%;
+    }
+}
+@media screen and (max-width:768px) {
+    
+}
+.service__detail{
+    margin-top: 20px;
+    color: #2F82FF;
+    cursor: pointer;
+}
+.service__detail a{
+    display: flex;
+    flex-direction: row;
     align-items: center;
 }
-.footer-main{
-
+.service__detail div{
+    margin-left: 15px;
+    align-items: center;
 }

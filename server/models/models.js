@@ -99,6 +99,12 @@ const FlightOrder = sequelize.define("flightOrder", {
     status: { type: DataTypes.BOOLEAN, defaultValue: null },
 });
 
+const Services=sequelize.define("service",{
+    id:{type:DataTypes.INTEGER, primaryKey: true, autoIncrement: true},
+    name:{type:DataTypes.STRING, unique: true},
+    description:{type:DataTypes.TEXT}
+})
+
 Flight.hasMany(FlightOrder);
 FlightOrder.belongsTo(Flight);
 
@@ -117,4 +123,4 @@ ScheduleBusStatus.belongsTo(ScheduleBus)
 Flight.hasMany(ScheduleBusStatus)
 ScheduleBusStatus.belongsTo(Flight)
 
-module.exports = { User, Flight, InfoCompany, Responce, Novetly, FAQ, Blog, ScheduleBus, ScheduleBusStatus, ParamsFlight, FlightOrder };
+module.exports = { User, Flight, InfoCompany, Responce, Novetly, FAQ, Blog, ScheduleBus, ScheduleBusStatus, ParamsFlight, FlightOrder,Services };
