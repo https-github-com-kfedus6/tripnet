@@ -17,42 +17,47 @@ const Header = () => {
     return (
         <div className='header__main'>
             <div className='header__components'>
-                <Logo />
-                <ul>
-                    <li><NavLink to="/">{t('header.first_link')}</NavLink></li>
-                    <li><NavLink to="/flightsCategory">{t('header.third_link')}</NavLink></li>
-                    <li><NavLink to="/aboutUs">{t('header.fourth_link')}</NavLink></li>
-                    <li><NavLink to='/blog'>{t("header.five_link")}</NavLink></li>
-                    <li className='dropdown-header'>
-                        <div className='burger__menu__list header__admin'>
-                            {is_admin ?
-                                <>
-                                    <a className="dropdown-toggle-header" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                        Admin
-                                    </a>
-                                    <div className="dropdown-menu-header">
-                                        <p><NavLink className="dropdown-item-header" to="/infoCompanyEdit">{t('admin.infoCompany')}</NavLink></p>
-                                        <p><NavLink className="dropdown-item-header" to="/aboutUsEdit">{t('admin.aboutUs')}</NavLink></p>
-                                        <p><NavLink className="dropdown-item-header" to="/blogEdit">{t('admin.blog')}</NavLink></p>
-                                        <p><NavLink className="dropdown-item-header" to="/faqEdit">{t('admin.faq')}</NavLink></p>
-                                        <p><NavLink className="dropdown-item-header" to="/flightsEdit">{t('admin.flight')}</NavLink></p>
-                                        <p><NavLink className="dropdown-item-header" to="/novetlyEdit">{t('admin.novetly')}</NavLink></p>
-                                        <p><NavLink className="dropdown-item-header" to="/responseEdit">{t('admin.response')}</NavLink></p>
-                                        <p><NavLink className="dropdown-item-header" to="/order">{t('admin.order')}</NavLink></p>
-                                    </div>
-                                </>
-                                :
-                                <></>
-                            }</div>
-                    </li>
-                    {/* <li>{is_admin ?
-                        <div className='user__nick'>
-                            <NavLink to="/admin"><FaUserEdit /></NavLink>
-                        </div> : <></>}
+                <div className='logo__with__link'>
+                    <Logo />
+                    <ul>
+                        <li><NavLink to="/">{t('header.first_link')}</NavLink></li>
+                        <li><NavLink to="/flightsCategory">{t('header.third_link')}</NavLink></li>
+                        <li><NavLink to="/aboutUs">{t('header.fourth_link')}</NavLink></li>
+                        <li><NavLink to='/blog'>{t("header.five_link")}</NavLink></li>
+                        <li className='dropdown-header'>
+                            <div className='burger__menu__list header__admin'>
+                                {is_admin ?
+                                    <>
+                                        <a className="dropdown-toggle-header" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                            Admin
+                                        </a>
+                                        <div className="dropdown-menu-header">
+                                            <p><NavLink className="dropdown-item-header" to="/infoCompanyEdit">{t('admin.infoCompany')}</NavLink></p>
+                                            <p><NavLink className="dropdown-item-header" to="/aboutUsEdit">{t('admin.aboutUs')}</NavLink></p>
+                                            <p><NavLink className="dropdown-item-header" to="/blogEdit">{t('admin.blog')}</NavLink></p>
+                                            <p><NavLink className="dropdown-item-header" to="/faqEdit">{t('admin.faq')}</NavLink></p>
+                                            <p><NavLink className="dropdown-item-header" to="/flightsEdit">{t('admin.flight')}</NavLink></p>
+                                            <p><NavLink className="dropdown-item-header" to="/novetlyEdit">{t('admin.novetly')}</NavLink></p>
+                                            <p><NavLink className="dropdown-item-header" to="/responseEdit">{t('admin.response')}</NavLink></p>
+                                            <p><NavLink className="dropdown-item-header" to="/order">{t('admin.order')}</NavLink></p>
+                                        </div>
+                                    </>
+                                    :
+                                    <></>
+                                }</div>
+                        </li>
+                        {/* <li>{is_admin ?
+                            <div className='user__nick'>
+                                <NavLink to="/admin"><FaUserEdit /></NavLink>
+                            </div> : <></>}
 
-                    </li> */}
-                </ul>
+                        </li> */}
+                    </ul>
+                </div>
                 <div className='header__register__with__language'>
+                    <div className='lang-select'>
+                        <SetLanguage />
+                    </div>
                     <div>
                         {is_login ? 
                             <div className='header_register' onClick={() => navigate("/account")}>
@@ -64,9 +69,6 @@ const Header = () => {
                                 <div>{t("header.registering")}</div>
                             </div>
                         }
-                    </div>
-                    <div className='lang-select'>
-                        <SetLanguage />
                     </div>
                 </div>
             </div>
