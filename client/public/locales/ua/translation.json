@@ -67,7 +67,19 @@
     },
     "footer": {
         "protected": "Всі права захищені",
-        "social": "Ми у соц. мережах"
+        "social": "Ми у соц. мережах",
+        "company":"Компанія",
+        "main":"Головна",
+        "flight":"Рейси",
+        "services":"Послуги",
+        "support":"Підтримка",
+        "reservation_online":"Бронювання онлайн",
+        "booking_management":"Управління бронюванням",
+        "luggage_transportation":"Перевезення багажу",
+        "transportation_animals":"Перевезення тварин",
+        "answers_and_questions":"Відповіді та питання",
+        "contacts":"Контакти",
+        "about_Tripnet":"Про TripNet"
     },
     "home": {
         "benefits_company": "Переваги компанії",

@@ -627,10 +627,11 @@ main {
 .footer-link p {
     cursor: pointer;
     font-size: 17px;
+    color: white;
 }
 
 .footer-link p:hover {
-    color:#fd9400;
+    color: gray;
     transition: all ease 0.1s;
 }
 
@@ -641,17 +642,19 @@ main {
 
 .footer-info div p {
     font-size: 17px;
+    color: white;
 }
 
 .footer-info div i {
     font-size: 22px;
     margin-right: 15px;
     margin-top: 5px;
-    color: #fd9400;
+    color: gray;
 }
 
 .footer-social p {
     font-size: 17px;
+    color: white;
 }
 
 .footer-icon-social {
@@ -673,18 +676,18 @@ main {
     font-size: 28px;
     margin-top: 5px;
     cursor: pointer;
-    color: #000;
+    color: white;
 }
 
 .footer-icon-social div a {
     font-size: 25px;
     margin-top: 5px;
     cursor: pointer;
-    color: #000;
+    color: white;
 }
 
 .footer-icon-social div:hover {
-    background-color: #fd9400;
+    background-color: white;
     transition: all ease 0.3s;
 }
 
@@ -697,17 +700,20 @@ main {
     justify-content: center;
     align-items: center;
     margin-top: 30px;
-    color: #F58A07;
+    color: white;
 }
+@media screen and (min-width: 1300px){
 
-@media screen and (min-width: 1024px) {
     .footer-main {
         margin: auto;
         margin-top: 50px;
         width: 80%;
         margin-bottom: 50px;
     }
-
+    .footer__component{
+        display: flex;
+        flex-direction: row;
+    }
     .logo-none {
         display: none;
     }
@@ -723,14 +729,63 @@ main {
     .footer-protected {
         display: none;
     }
+    .footer__section{
+        margin: auto;
+    }
+}
+
+@media screen and (min-width: 1024px) and (max-width:1300px) {
+    .footer-main {
+        margin: auto;
+        justify-content: space-around;
+        margin-top: 50px;
+        width: 80%;
+    }
+
+    .footer__component{
+        display: flex;
+        flex-direction: row;
+    }
+    .footer__section{
+        margin: auto;
+    }
+    .logo-none-second {
+        display: none;
+    }
+    .footer-logo{
+        width: 300px;
+    }
+    .footer-logo img{
+        width: 100%;
+    }
 
 }
 
 @media screen and (max-width: 1024px) and (min-width: 768px) {
     .footer-main {
-        margin: auto;
+        margin-left: 10%;
         margin-top: 50px;
         width: 80%;
+    }
+    .footer__component{
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-around;
+    }
+    .footer__section{
+        display: flex;
+        flex-direction: column;
+        width: 50%;
+        margin-top: 50px;
+        align-items: center;
+    }
+    .footer__section.pair{
+        text-align:left;
+        margin-left: 0;
+    }
+    .footer__section.pair div{
+        text-align: left;
     }
 
     .logo-none-second {
@@ -744,6 +799,13 @@ main {
         width: 98%;
         margin-top: 50px;
         margin-bottom: 50px;
+    }
+
+    .footer__section{
+        display: flex;
+        flex-direction: column;
+        margin-top: 50px;
+        align-items: center;
     }
 
     .footer-block {
@@ -1669,6 +1731,35 @@ main {
     flex-direction: row;
     align-items: center;
 }
-header{
-    margin-bottom: 150px;
+@media screen and (min-width:768px) {
+    header{
+        margin-bottom: 100px;
+    }   
+}
+@media screen and (max-width: 768px) {
+    header{
+        margin-bottom: 50px;
+    }
+}
+footer{
+    background-color: #14233C;
+}
+.footer-logo span{
+    color: gray;
+}
+.footer-icon-social{
+    margin-top: 35px;
+}
+.footer__section p{
+    color: white;
+    margin-bottom: 15px;
+}
+.footer__section div{
+    display: flex;
+    color: gray;
+    margin-top: 15px;
+    align-items: center;
+}
+.footer-main{
+
 }
