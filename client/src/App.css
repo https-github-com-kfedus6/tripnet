@@ -1354,11 +1354,7 @@ main {
         margin-left: 1%;
     }
 }
-.flights-block{
-    display: flex;
-    flex-direction: column;
-    margin-top: 30px;
-}
+
 .flight__bread__crumbs{
     justify-content: center;
 }
