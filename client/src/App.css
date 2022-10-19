@@ -74,7 +74,7 @@ main {
     flex-direction: column;
     top: 0px;
     height: 100%;
-    width: 80%; 
+    width: 70%; 
     background-color: #FBFBFE;
     z-index: 50;
     transition: 2s;
@@ -331,7 +331,7 @@ main {
 @media screen and (max-width: 1024px) and (min-width:769px){
     .FAQ__main {
         margin: auto;
-        width: 80%;
+        width: 70%;
     }
     .FAQ__name {
         font-size: 30px;
@@ -412,7 +412,7 @@ main {
 }
 @media screen and (min-width: 1024px) {
     .responce__main {
-        width: 80%;
+        width: 70%;
     }
 }
 @media screen and (max-width: 1024px) {
@@ -470,7 +470,7 @@ main {
     .home__content {
         display: flex;
         flex-direction: column;
-        width: 80%;
+        width: 70%;
         margin: 0 auto;
     }
 }
@@ -479,7 +479,7 @@ main {
     .home__content {
         display: flex;
         flex-direction: column;
-        width: 80%;
+        width: 70%;
         margin: 0 auto;
     }
 }
@@ -588,7 +588,7 @@ main {
 
 @media screen and (min-width: 1024px) {
     .blog__main_ {
-        width: 80%;
+        width: 70%;
     }
     .footer-logo img {
         cursor: pointer;
@@ -598,7 +598,7 @@ main {
 
 @media screen and (max-width: 1024px) {
     .blog__main_ {
-        width: 80%;
+        width: 70%;
     }
     .footer-logo img {
         cursor: pointer;
@@ -707,7 +707,7 @@ main {
     .footer-main {
         margin: auto;
         margin-top: 50px;
-        width: 80%;
+        width: 70%;
         margin-bottom: 50px;
     }
     .footer__component{
@@ -739,7 +739,7 @@ main {
         margin: auto;
         justify-content: space-around;
         margin-top: 50px;
-        width: 80%;
+        width: 70%;
     }
 
     .footer__component{
@@ -765,7 +765,7 @@ main {
     .footer-main {
         margin-left: 10%;
         margin-top: 50px;
-        width: 80%;
+        width: 70%;
     }
     .footer__component{
         display: flex;
@@ -1014,7 +1014,7 @@ main {
 }
 .responce__home__author__with__description{
     display: flex;
-    width: 80%;
+    width: 70%;
     flex-direction: column;
 }
 .home__list__blog__main{
@@ -1143,7 +1143,7 @@ main {
 @media screen and (min-width: 1024px) {
     .list__blog__main{
         display: flex;
-        width: 80%;
+        width: 70%;
         flex-direction: row;
         flex-wrap: wrap;
         justify-content:space-between;
@@ -1229,7 +1229,7 @@ main {
     .admin__panel__main{
         display: flex;
         flex-direction: column;
-        width: 80%;
+        width: 70%;
         margin: auto;
     }
 }
@@ -1237,7 +1237,7 @@ main {
     .admin__panel__main{
         display: flex;
         flex-direction: column;
-        width: 80%;
+        width: 70%;
         margin: auto;
     }
 }@media screen and (max-width: 768px) {
@@ -1354,7 +1354,7 @@ main {
         display: flex;
         margin: auto;
         margin-top: 30px;
-        width: 80%;
+        width: 70%;
     }   
 }
 @media screen and (max-width:1024px) {
@@ -1362,7 +1362,7 @@ main {
         display: flex;
         margin: auto;
         margin-top: 30px;
-        width: 80%;
+        width: 70%;
     }   
 }
 @media screen and (max-width:768px) {
@@ -1381,7 +1381,7 @@ main {
 }
 @media screen and (max-width: 500px) {
     .authorize__logo{
-        width: 80%;
+        width: 70%;
         margin-left: 20%;
     }    
 }
@@ -1692,15 +1692,15 @@ main {
 */
 @media screen and (min-width: 1024px) {
     .header__components{
-        width: 80%;
+        width: 70%;
     }
     .lang-select{
         margin-right: 5%;
     }
 }
-@media screen and (max-width:1024px) {
+@media screen and (max-width:1024px) and (min-width:480px) {
     .header__components{
-        width:100%;
+        width:90%;
     }
 }
 @media screen and (min-width: 768px) {
@@ -1843,7 +1843,7 @@ footer{
     .services__main{
         display: flex;
         flex-direction: column;
-        width: 80%;
+        width: 70%;
         margin: auto;
     }
 }
@@ -1917,16 +1917,13 @@ footer{
 }
 @media screen and (min-width: 1024px) {
     .services__main{
-        width: 80%;
+        width: 70%;
     }
 }
 @media screen and (min-width:768px) and (max-width:1024px){
     .services__main{
         width: 98%;
     }
-}
-@media screen and (max-width:768px) {
-    
 }
 .service__detail{
     margin-top: 20px;
@@ -1941,4 +1938,85 @@ footer{
 .service__detail div{
     margin-left: 15px;
     align-items: center;
+}
+@media screen and (min-width: 1024px){
+    .reserve__flight__main__content{
+        width: 70%;
+    }
+    .reserve__flight__step{
+        width: 23%;
+    }
+    .reserve__flight__main{
+        height: 500px
+    }
+    .reserve__flight__instruction{
+        margin-top: 70px;
+    }
+}
+@media screen and (min-width: 480px) and (max-width:1024px){
+    .reserve__flight__main__content{
+        width: 90%;
+    }
+    .reserve__flight__step{
+        margin-top: 40px;
+        width: 47%;
+    }
+    .reserve__flight__main{
+        height: 685px
+    }
+    .reserve__flight__instruction{
+        margin-top: 50px;
+    }
+}
+@media screen and (max-width: 768px) and (max-width:768px){
+    .reserve__flight__main__content{
+        width: 98%;
+    }
+    .reserve__flight__step{
+        margin-top: 40px;
+        width: 100%;
+    }
+    .reserve__flight__main{
+        height: 998px;
+    }
+    .reserve__flight__instruction{
+        margin-top: 50px;
+    }
+}
+.reserve__flight__number__step{
+    display: flex;
+    width: 64px;
+    height: 64px;
+    border-radius: 10px;
+    justify-content: center;
+    background-color: #C1D9FF;
+    align-items: center;
+    font-weight: 700;
+    font-size: 25px;
+    color: #2F82FF;
+}
+.reserve__flight__title{
+    font-weight: 700;
+    font-size: 21px;
+}
+.reserve__flight__main__content{
+    margin: 0 auto;
+}
+.reserve__flight__main__content h1{
+    justify-content: center;
+}
+.reserve__flight__instruction{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    width: 100%;
+}
+.reserve__flight__main{
+    display: flex;
+    align-items: center;
+    background-color: #F4F5F7;
+}
+.reserve__flight__description__title{
+    margin-top: 15px;
 }

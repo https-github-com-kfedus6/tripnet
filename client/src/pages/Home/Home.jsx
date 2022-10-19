@@ -10,6 +10,7 @@ import HomeListBlog from './HomeListBlog';
 import ListNovetly from './ListNovetly';
 import Responce from './Responce';
 import Header from '../../components/Header';
+import ReserveFlightHome from './ReserveFlightHome';
 
 const Home = () => {
     const { language } = useSelector(state => state.language);
@@ -31,10 +32,7 @@ const Home = () => {
 
     return (
         <>
-            <div className='header-baner'>
-                <Header />
-            </div>
-            <div className="home__main">
+            <div className='header-baner'/>
                 <FlightsFormSort
                     setStartDate={setStartDate}
                     setStartPosition={setStartPosition}
@@ -50,18 +48,19 @@ const Home = () => {
                     finishPosition={finishPosition}
                     changePosition={changePosition}
                     setChangePosition={setChangePosition} />
-                <div className='home__content'>
-                    <ListNovetly />
-                    <CompanyBenefits />
-                    <HomeFAQ />
-                    <Responce />
-
-                </div>
+                <ReserveFlightHome/>
                 <HomeListBlog />
-            </div>
         </>
     )
 }
 
 //<FlightsFormSort/>
 export default Home;
+
+/*<div className='home__content'>
+    <ListNovetly />
+    <CompanyBenefits />
+    <HomeFAQ />
+    <Responce />
+
+</div>*/

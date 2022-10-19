@@ -96,7 +96,16 @@
         "have_proven_themselves_well_description": "Ми добре зарекомендували себе у перевезеннях пасажирів",
         "work_strictly_according_to_the_schedule_description": "Відправлення автобусів завжди у вказані терміни",
         "professional_managers_description": "Наші менеджери мають витримку, спокій і чітко відповідають на ваші запитання",
-        "we_treat_our_work_professionally_description": "Ми професійно ставимося до нашої роботи та завжди на зв'язку"
+        "we_treat_our_work_professionally_description": "Ми професійно ставимося до нашої роботи та завжди на зв'язку",
+        "how_reserce_fligt_online":"Як забронювати рейс онлайн?",
+        "reserve_flight_title_1":"Оберіть рейс",
+        "reserve_flight_title_2":"Забронюйте місце",
+        "reserve_flight_title_3":"Підтвердіть бронювання",
+        "reserve_flight_title_4":"Оплатіть місце",
+        "reserve_flight_description_1":"За допомогою пошуку оберіть рейс з необхідними місцем призначення та бажаною датою відправки.",
+        "reserve_flight_description_2":"На сторінці рейсу, заповніть контактну форму та безкоштовно забронюйте місце.",
+        "reserve_flight_description_3":"Через кілька хвилин вам зателефонує менеджер, щоб підтвердити бронювання.",
+        "reserve_flight_description_4":"Після підтвердження оплатіть рейс на сайті, переказом на картку або при посадці на автобус."
     },
     "modalbuy": {
         "title": "Забронювати рейс",
