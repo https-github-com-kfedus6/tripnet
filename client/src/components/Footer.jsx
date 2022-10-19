@@ -67,9 +67,9 @@ const Footer = () => {
                     </div>
                     <div className='footer__section pair'>
                         <p>{t("footer.contacts")}</p>
-                        <div><GiSmartphone /> {infoCompany.telephone}</div>
-                        <div><CgMail/> {infoCompany.email}</div>
-                        <div><BiTime/> {infoCompany.openingHours[language]}</div>
+                        <div><GiSmartphone />{infoCompany.telephone}</div>
+                        <div><CgMail/>{infoCompany.email}</div>
+                        <div><BiTime/>{infoCompany.openingHours[language]}</div>
                     </div>
                 </div>
                 <div className='footer-protected'>
