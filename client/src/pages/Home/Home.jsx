@@ -9,6 +9,7 @@ import HomeFAQ from './HomeFAQ';
 import HomeListBlog from './HomeListBlog';
 import ListNovetly from './ListNovetly';
 import Responce from './Responce';
+import Header from '../../components/Header';
 
 const Home = () => {
     const { language } = useSelector(state => state.language);
@@ -27,32 +28,38 @@ const Home = () => {
         SetFlightParams(startPosition, finishPosition, startDate, sumOld, sumYoung);
         navigate("/flightsCategory");
     }
+
     return (
-        <div className="home__main">
-            <FlightsFormSort
-                setStartDate={setStartDate}
-                setStartPosition={setStartPosition}
-                setFinishPosition={setFinishPosition}
-                sortFlights={search}
-                sumOld={sumOld}
-                setSumOld={setSumOld}
-                sumYoung={sumYoung}
-                setSumYoung={setSumYoung}
-                deleteFlight={() => { }}
-                startDate={startDate}
-                startPosition={startPosition}
-                finishPosition={finishPosition}
-                changePosition={changePosition}
-                setChangePosition={setChangePosition} />
-            <div className='home__content'>
-                <ListNovetly />
-                <CompanyBenefits/>
-                <HomeFAQ />
-                <Responce />
-                
+        <>
+            <div className='header-baner'>
+                <Header />
             </div>
-            <HomeListBlog />
-        </div >
+            <div className="home__main">
+                <FlightsFormSort
+                    setStartDate={setStartDate}
+                    setStartPosition={setStartPosition}
+                    setFinishPosition={setFinishPosition}
+                    sortFlights={search}
+                    sumOld={sumOld}
+                    setSumOld={setSumOld}
+                    sumYoung={sumYoung}
+                    setSumYoung={setSumYoung}
+                    deleteFlight={() => { }}
+                    startDate={startDate}
+                    startPosition={startPosition}
+                    finishPosition={finishPosition}
+                    changePosition={changePosition}
+                    setChangePosition={setChangePosition} />
+                <div className='home__content'>
+                    <ListNovetly />
+                    <CompanyBenefits />
+                    <HomeFAQ />
+                    <Responce />
+
+                </div>
+                <HomeListBlog />
+            </div>
+        </>
     )
 }
 

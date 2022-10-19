@@ -5,7 +5,7 @@ const Logo = () => {
     const navigate = useNavigate();
     return (
         <div onClick={() => navigate("/")} className='logo'>
-            <img src={process.env.REACT_APP_API_URL + "logo-green.png"} />
+            <img src={process.env.REACT_APP_API_URL + "logo.png"} />
         </div>
     )
 }

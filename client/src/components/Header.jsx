@@ -14,6 +14,7 @@ const Header = () => {
     const { is_admin, is_login, user } = useSelector(state => state.user)
     const [isShow, setIsShow] = useState(false)
     const navigate = useNavigate();
+    
     return (
         <div className='header__main'>
             <div className='header__components'>
@@ -59,7 +60,7 @@ const Header = () => {
                         <SetLanguage />
                     </div>
                     <div>
-                        {is_login ? 
+                        {is_login ?
                             <div className='header_register' onClick={() => navigate("/account")}>
                                 <div><FaUserCircle width={"20px"} /></div>
                                 <div> {user.name}</div>
@@ -76,7 +77,7 @@ const Header = () => {
                 <Burger setIsShowRegister={setIsShow} />
             </div>
             <Authorize isShow={isShow} setIsShow={setIsShow} />
-        </div >
+        </div>
     )
 }
 

@@ -8,6 +8,7 @@ import './flights.css';
 import Stack from '@mui/material/Stack';
 import Pagination from '@mui/material/Pagination';
 import { t } from 'i18next';
+import Header from '../../components/Header';
 
 const Flights = ({ isShowFilter }) => {
     const [visibleBuy, setVisiblyBuy] = useState(false)
@@ -138,52 +139,55 @@ const Flights = ({ isShowFilter }) => {
     }
 
     return (
-        <div className='flights'>
-            <FlightsList
-                flights={flights}
-                sortFlights={sortFlights}
-                setStartDate={setStartDate}
-                setStartPosition={setStartPosition}
-                setFinishPosition={setFinishPosition}
-                sumOld={sumOld}
-                setSumOld={setSumOld}
-                sumYoung={sumYoung}
-                setSumYoung={setSumYoung}
-                deleteFlight={deleteFlight}
-                limit={limit}
-                page={page}
-                isFilterTrue={isShowFilter}
-                openModal={openModal}
-                startPosition={startPosition}
-                startDate={startDate}
-                finishPosition={finishPosition}
-                changePosition={changePosition}
-                setChangePosition={setChangePosition}
-                changePositionFun={changePositionFun}
-            />
-            {totalCount == undefined ? <></> : flights.rows.length ?
-                <div className='pagination'>
-                    <Stack spacing={1}>
-                        <Pagination count={totalCount} page={page} onChange={handleChange} />
-                    </Stack>
-                </div>
-                :
-                <></>
-            }
-            <ModalFormBuy
-                visibleBuy={visibleBuy}
-                setVisiblyBuy={setVisiblyBuy}
-                name={name}
-                setName={setName}
-                phone={phone}
-                setPhone={setPhone}
-                setDate={setDate}
-                reserveTicket={reserveTicket}
-                countTicket={countTicket}
-                setCountTicket={setCountTicket}
-                maxTicket={flights?.rows.find(x => x.id == flightId)?.countFreePlace}
-            />
-        </div>
+        <>
+            <Header />
+            <div className='flights'>
+                <FlightsList
+                    flights={flights}
+                    sortFlights={sortFlights}
+                    setStartDate={setStartDate}
+                    setStartPosition={setStartPosition}
+                    setFinishPosition={setFinishPosition}
+                    sumOld={sumOld}
+                    setSumOld={setSumOld}
+                    sumYoung={sumYoung}
+                    setSumYoung={setSumYoung}
+                    deleteFlight={deleteFlight}
+                    limit={limit}
+                    page={page}
+                    isFilterTrue={isShowFilter}
+                    openModal={openModal}
+                    startPosition={startPosition}
+                    startDate={startDate}
+                    finishPosition={finishPosition}
+                    changePosition={changePosition}
+                    setChangePosition={setChangePosition}
+                    changePositionFun={changePositionFun}
+                />
+                {totalCount == undefined ? <></> : flights.rows.length ?
+                    <div className='pagination'>
+                        <Stack spacing={1}>
+                            <Pagination count={totalCount} page={page} onChange={handleChange} />
+                        </Stack>
+                    </div>
+                    :
+                    <></>
+                }
+                <ModalFormBuy
+                    visibleBuy={visibleBuy}
+                    setVisiblyBuy={setVisiblyBuy}
+                    name={name}
+                    setName={setName}
+                    phone={phone}
+                    setPhone={setPhone}
+                    setDate={setDate}
+                    reserveTicket={reserveTicket}
+                    countTicket={countTicket}
+                    setCountTicket={setCountTicket}
+                    maxTicket={flights?.rows.find(x => x.id == flightId)?.countFreePlace}
+                />
+            </div>
+        </>
     )
 }
 

@@ -8,11 +8,9 @@ import { useAction } from '../hooks/useAction';
 const Layout = () => {
     const { isShow, text } = useSelector(state => state.message);
     const { SetShowMessgeFalse } = useAction()
+
     return (
         <div className='layout'>
-            <header>
-                <Header />
-            </header>
             <main>
                 <Outlet />
             </main>
