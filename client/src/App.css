@@ -2020,3 +2020,45 @@ footer{
 .reserve__flight__description__title{
     margin-top: 15px;
 }
+@media screen and (min-width:1024px) {
+    .services__home__main{
+        width: 70%;
+        margin: 50px auto;
+    }
+    .service__home{
+        width: 30%;
+    }
+}
+@media screen and (max-width:1024px) and (min-width:768px) {
+    .services__home__main{
+        width: 90%;
+        margin: 50px auto;
+    }
+    .service__home{
+        width: 30%;
+    }
+}
+@media screen and (min-width: 480px) and (max-width: 768px) {
+    .services__home__main{
+        width: 90%;
+        margin: 50px auto;
+    }
+    .service__home{
+        width: 48%;
+    }
+}
+@media screen and (max-width: 480px) {
+    .services__home__main{
+        width: 98%;
+        margin: 50px auto;
+    }
+    .service__home{
+        width: 100%;
+    }
+}
+.serivices__home__list{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}

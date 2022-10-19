@@ -11,6 +11,7 @@ import ListNovetly from './ListNovetly';
 import Responce from './Responce';
 import Header from '../../components/Header';
 import ReserveFlightHome from './ReserveFlightHome';
+import ServicesHome from './ServicesHome';
 
 const Home = () => {
     const { language } = useSelector(state => state.language);
@@ -49,6 +50,7 @@ const Home = () => {
                     changePosition={changePosition}
                     setChangePosition={setChangePosition} />
                 <ReserveFlightHome/>
+                <ServicesHome/>
                 <HomeListBlog />
         </>
     )
