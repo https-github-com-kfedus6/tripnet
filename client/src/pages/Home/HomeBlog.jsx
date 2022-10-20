@@ -25,11 +25,11 @@ const HomeBlog = ({ blog }) => {
                     <div className='mini__blog__description'>
                         <span>{blog.miniDescription[language]}</span>
                     </div>
-                    <div className='mini-blog-details'>
-                        <a onClick={() => navigate("/blog/" + blog.name[language] + "/" + blog.id)}>{t('blog.details')}
-                            <span><ImArrowRight2 /></span>
-                        </a>
-                    </div>
+                </div>
+                <div className='mini-blog-details'>
+                    <a onClick={() => navigate("/blog/" + blog.name[language] + "/" + blog.id)}>
+                        {t('blog.details')} <ImArrowRight2 />
+                    </a>
                 </div>
             </div>
         </div>

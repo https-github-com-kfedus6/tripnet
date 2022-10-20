@@ -1,3 +1,4 @@
+import { t } from 'i18next';
 import React from 'react'
 import { useEffect } from 'react';
 import { useSelector } from 'react-redux';
@@ -8,19 +9,13 @@ const HomeListBlog = () => {
     const { blogNovetly } = useSelector(state => state.blog);
     const { GetBlogNovetly } = useAction();
     useEffect(() => {
-        GetBlogNovetly(6);
+        GetBlogNovetly(3);
     }, [])
     return (
-        <div>
-            <div className='section-home-title'>
-                <p className='home__title'>
-                    <span>
-                        Блог
-                    </span>
-                </p>
-            </div>
-            <div className='blog__container'>
-                <div className="list__blog__main">
+        <div className='blog__home__main'>
+            <h1>{t("home.latest_news")}</h1>
+            <div className='blog__home__container'>
+                <div className="list__blog__home">
                     {blogNovetly.map(x => <HomeBlog key={x.id} blog={x} />)}
                 </div>
             </div>
