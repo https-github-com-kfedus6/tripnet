@@ -14,7 +14,7 @@ const Header = () => {
     const { is_admin, is_login, user } = useSelector(state => state.user)
     const [isShow, setIsShow] = useState(false)
     const navigate = useNavigate();
-    
+
     return (
         <div className='header__main'>
             <div className='header__components'>
@@ -23,8 +23,9 @@ const Header = () => {
                     <ul>
                         <li><NavLink to="/">{t('header.first_link')}</NavLink></li>
                         <li><NavLink to="/flightsCategory">{t('header.third_link')}</NavLink></li>
-                        <li><NavLink to="/aboutUs">{t('header.fourth_link')}</NavLink></li>
+                        <li><NavLink to="/">Послуги</NavLink></li>
                         <li><NavLink to='/blog'>{t("header.five_link")}</NavLink></li>
+                        <li><NavLink to="/">Контакти</NavLink></li>
                         <li className='dropdown-header'>
                             <div className='burger__menu__list header__admin'>
                                 {is_admin ?
@@ -66,8 +67,9 @@ const Header = () => {
                                 <div> {user.name}</div>
                             </div> :
                             <div className='header_register' onClick={() => setIsShow(true)}>
-                                <div><FaUserCircle /></div>
-                                <div>{t("header.registering")}</div>
+                                <div><span>Вхід</span></div>
+                                <span>|</span>
+                                <div><span>{t("header.registering")}</span></div>
                             </div>
                         }
                     </div>

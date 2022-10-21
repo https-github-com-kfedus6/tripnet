@@ -33,7 +33,14 @@ const Home = () => {
 
     return (
         <>
-            <div className='header-baner'/>
+            <div className='header-baner'>
+                <Header />
+                <div className='text-baner'>
+                    <span>Автобусні рейси з України до Європи</span>
+                </div>
+            </div>
+            <div />
+            <div className='form-flights-container'>
                 <FlightsFormSort
                     setStartDate={setStartDate}
                     setStartPosition={setStartPosition}
@@ -49,9 +56,10 @@ const Home = () => {
                     finishPosition={finishPosition}
                     changePosition={changePosition}
                     setChangePosition={setChangePosition} />
-                <ReserveFlightHome/>
-                <ServicesHome/>
-                <HomeListBlog />
+            </div>
+            <ReserveFlightHome />
+            <ServicesHome />
+            <HomeListBlog />
         </>
     )
 }

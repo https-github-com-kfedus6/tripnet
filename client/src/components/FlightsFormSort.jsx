@@ -64,109 +64,145 @@ const FlightsFormSort = ({ startDate, startPosition, finishPosition, setStartDat
 
 
     return (
-        <Stack spacing={5}>
-            <div className='form-flights-container'>
-                <div className='flights-sort-form'>
-                    <div className='form-flights'>
-                        <div className='form-block-position'>
-                            <div className='form-position icon-change'>
-                                <Autocomplete
-                                    size='small'
-                                    freeSolo
-                                    id="free-solo-2-demo"
-                                    disableClearable
-                                    value={startPosition}
-                                    onChange={(value, newValue) => setStartPosition(newValue)}
-                                    options={searchStartPostion.map((option) => option.title)}
-                                    renderInput={(params) => (
-                                        <TextField sx={{ backgroundColor: '#fff', borderRadius: '5px' }}
-                                            onChange={(e) => { setStartPosition(e.target.value) }}
-                                            {...params}
-                                            label={t('flight.whence')}
-                                            InputProps={{
-                                                ...params.InputProps,
-                                                type: 'search',
-                                            }}
-                                        />)}
-                                />
-                            </div>
-                            <div className='change-position'>
-                                <div>
-                                    <span onClick={changePos}>
-                                        {changePosition ? <CgArrowsExchangeAlt /> : <CgArrowsExchange />}
-                                    </span>
-                                </div>
-                            </div>
-                            <div className='form-position'>
-                                <Autocomplete
-                                    size='small'
-                                    freeSolo
-                                    id="free-solo-2-demo"
-                                    disableClearable
-                                    value={finishPosition}
-                                    onChange={(e, newValue) => setFinishPosition(newValue)}
-                                    options={searchFinishPosition.map((option) => option.title)}
-                                    renderInput={(params) => (
-                                        <TextField sx={{ backgroundColor: '#fff', borderRadius: '5px' }}
-                                            onChange={(e) => { setFinishPosition(e.target.value) }}
-                                            {...params}
-                                            label={t('flight.whitherto')}
-                                            InputProps={{
-                                                ...params.InputProps,
-                                                type: 'search',
-                                            }}
-                                        />)}
-                                />
-                            </div>
-                        </div>
-                        <div className='form-block-date'>
-                            <div className='form-date'>
-                                <input type="date" value={startDate} onChange={(e) => setStartDate(e.target.value)} />
-                            </div>
-
-                            <div className='dropdown'>
-                                <div onClick={() => setDropdowbCheck(true)} className='dropdown-select'>
-                                    <span className='select'>{t('flight.passengers')}</span>
-                                    <i className='down-icon icon'><AiOutlineCaretDown /></i>
-                                </div>
-                                <div className={dropdownCheck ? 'dropdown-list' : 'dropdown-none'}>
-                                    <div className='dropdown-list-item'>
-                                        <div>
-                                            <strong>{t('flight.adults')}</strong>
-                                            <br />
-                                            <span>{t('flight.older_15_years')}</span>
-                                        </div>
-                                        <div className='count-place'>
-                                            <div className='minus' onClick={() => countOldResult()}>-</div>
-                                            <div className='sum' value={sumOld}>{sumOld}</div>
-                                            <div className='plus' onClick={() => setSumOld(sumOld + 1)}>+</div>
-                                        </div>
-                                    </div>
-                                    <div className='dropdown-list-item'>
-                                        <div>
-                                            <strong>{t('flight.children')}</strong>
-                                            <br />
-                                            <span>{t('flight.younger_14_years')}</span>
-                                        </div>
-                                        <div className='count-place'>
-                                            <div className='minus' onClick={() => countYoungResult()}>-</div>
-                                            <div className='sum' value={sumYoung}>{sumYoung}</div>
-                                            <div className='plus' onClick={() => setSumYoung(sumYoung + 1)}>+</div>
-                                        </div>
-                                    </div>
-                                    <div className='dropdown-btn-none'>
-                                        <button onClick={() => setDropdowbCheck(false)} >{t('flight.dropdown_btn')}</button>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className='form-search'>
-                                <button onClick={sortFlights}>{t('flight.search')}</button>
-                            </div>
-                        </div>
-                    </div>
+        <div className='flights-sort-form'>
+            <div className='form-checkboxes'>
+                <div>
+                    <input type="radio" />
+                    <span>Рейс в один бік</span>
                 </div>
-            </div >
-        </Stack>
+                <div>
+                    <input type="radio" />
+                    <span>Рейс в дві сторони</span>
+                </div>
+            </div>
+            <div className='form-inputs-button-group'>
+                <div className='form-input-text'>
+                    <input id='form-text' className='position-text' type="text" placeholder=' ' />
+                    <label className='label-text' for='form-text'>Звідки</label>
+                </div>
+                <div className='form-swap'>
+                    <img src={process.env.REACT_APP_API_URL + 'swap.png'} alt="swap" />
+                </div>
+                <div className='form-input-text'>
+                    <input id='form-text-second' className='position-text' type="text" placeholder=' ' />
+                    <label className='label-text' for="form-text-second">Куда</label>
+                </div>
+                <div>
+                    <input type="date" />
+                </div>
+                <div>
+                    <input type="date" />
+                </div>
+                <div>
+                    <details>dsvsd</details>
+                </div>
+                <div>
+                    <button>Пошук</button>
+                </div>
+            </div>
+        </div>
+        /*  <Stack spacing={5}>
+             <div className='form-flights-container'>
+                 <div className='flights-sort-form'>
+                     <div className='form-flights'>
+                         <div className='form-block-position'>
+                             <div className='form-position icon-change'>
+                                 <Autocomplete
+                                     size='small'
+                                     freeSolo
+                                     id="free-solo-2-demo"
+                                     disableClearable
+                                     value={startPosition}
+                                     onChange={(value, newValue) => setStartPosition(newValue)}
+                                     options={searchStartPostion.map((option) => option.title)}
+                                     renderInput={(params) => (
+                                         <TextField sx={{ backgroundColor: '#fff', borderRadius: '5px' }}
+                                             onChange={(e) => { setStartPosition(e.target.value) }}
+                                             {...params}
+                                             label={t('flight.whence')}
+                                             InputProps={{
+                                                 ...params.InputProps,
+                                                 type: 'search',
+                                             }}
+                                         />)}
+                                 />
+                             </div>
+                             <div className='change-position'>
+                                 <div>
+                                     <span onClick={changePos}>
+                                         {changePosition ? <CgArrowsExchangeAlt /> : <CgArrowsExchange />}
+                                     </span>
+                                 </div>
+                             </div>
+                             <div className='form-position'>
+                                 <Autocomplete
+                                     size='small'
+                                     freeSolo
+                                     id="free-solo-2-demo"
+                                     disableClearable
+                                     value={finishPosition}
+                                     onChange={(e, newValue) => setFinishPosition(newValue)}
+                                     options={searchFinishPosition.map((option) => option.title)}
+                                     renderInput={(params) => (
+                                         <TextField sx={{ backgroundColor: '#fff', borderRadius: '5px' }}
+                                             onChange={(e) => { setFinishPosition(e.target.value) }}
+                                             {...params}
+                                             label={t('flight.whitherto')}
+                                             InputProps={{
+                                                 ...params.InputProps,
+                                                 type: 'search',
+                                             }}
+                                         />)}
+                                 />
+                             </div>
+                         </div>
+                         <div className='form-block-date'>
+                             <div className='form-date'>
+                                 <input type="date" value={startDate} onChange={(e) => setStartDate(e.target.value)} />
+                             </div>
+                             <div className='dropdown'>
+                                 <div onClick={() => setDropdowbCheck(true)} className='dropdown-select'>
+                                     <span className='select'>{t('flight.passengers')}</span>
+                                     <i className='down-icon icon'><AiOutlineCaretDown /></i>
+                                 </div>
+                                 <div className={dropdownCheck ? 'dropdown-list' : 'dropdown-none'}>
+                                     <div className='dropdown-list-item'>
+                                         <div>
+                                             <strong>{t('flight.adults')}</strong>
+                                             <br />
+                                             <span>{t('flight.older_15_years')}</span>
+                                         </div>
+                                         <div className='count-place'>
+                                             <div className='minus' onClick={() => countOldResult()}>-</div>
+                                             <div className='sum' value={sumOld}>{sumOld}</div>
+                                             <div className='plus' onClick={() => setSumOld(sumOld + 1)}>+</div>
+                                         </div>
+                                     </div>
+                                     <div className='dropdown-list-item'>
+                                         <div>
+                                             <strong>{t('flight.children')}</strong>
+                                             <br />
+                                             <span>{t('flight.younger_14_years')}</span>
+                                         </div>
+                                         <div className='count-place'>
+                                             <div className='minus' onClick={() => countYoungResult()}>-</div>
+                                             <div className='sum' value={sumYoung}>{sumYoung}</div>
+                                             <div className='plus' onClick={() => setSumYoung(sumYoung + 1)}>+</div>
+                                         </div>
+                                     </div>
+                                     <div className='dropdown-btn-none'>
+                                         <button onClick={() => setDropdowbCheck(false)} >{t('flight.dropdown_btn')}</button>
+                                     </div>
+                                 </div>
+                             </div>
+                             <div className='form-search'>
+                                 <button onClick={sortFlights}>{t('flight.search')}</button>
+                             </div>
+                         </div>
+                     </div>
+                 </div>
+             </div >
+         </Stack> */
     )
 }
 
