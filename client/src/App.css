@@ -1044,15 +1044,7 @@ main {
         display: flex;
         margin: auto;
         margin-top: 30px;
-        width: 70%;
-    }   
-}
-@media screen and (max-width:768px) {
-    .bread__crumbs__main{
-        display: flex;
-        margin: auto;
-        margin-top: 30px;
-        width: 98%;
+        width: 90%;
     }   
 }
 @media screen and (min-width: 500px) {
@@ -1548,63 +1540,60 @@ footer{
     color: gray;
     margin-top: 15px;
 }
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 1024px) {
     .services__main{
         display: flex;
         flex-direction: column;
         width: 70%;
         margin: auto;
     }
+    .static__text{
+        width: 90%;
+    }
+}
+@media screen and (min-width: 768px) and (max-width:1024px) {
+    .services__main{
+        display: flex;
+        flex-direction: column;
+        width: 90%;
+        margin: auto; 
+    }
+    .static__text{
+        width: 80%;
+    }
 }
 @media screen and (max-width: 768px) {
     .services__main{
         display: flex;
         flex-direction: column;
-        width: 98%;
-        margin: auto;    
+        width: 90%;
+        margin: auto; 
+    }
+    .static__text{
+        width: 100%;
+    }
+}
+@media screen and (min-width: 480px) {
+    .service{
+        width: 47%;
+    }    
+}
+@media screen and (max-width: 480px) {
+    .service{
+        width: 100%;
     }
 }
 .services__main{
     margin-top: 50px;
 }
-.services__fixed__panel{
-    display: flex;
-    flex-direction: column;
-    position: fixed;
-    border-radius: 20px;
-    padding: 40px;
-    border: 1px solid #DBDBDB;
-    left: 65%
-}
-.services__fixed__panel div{
-    display: flex;
-    flex-direction: row;
-    margin-top: 10px;
-    align-items: center;
-    cursor: pointer;
-}
-.services__fixed__panel div:hover{
-    color: #386eba;
-}
-.services__fixed__panel div div{
-    margin-left: 10px;
-}
 .services__main{
     margin-bottom: 100px;
-}
-.static__text{
-    width: 60%;
 }
 .list__services{
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-}
-.service{
-    display: flex;
-    flex-direction: column;
-    width: 47%;
-    margin: 0 auto;
+    justify-content: space-between;
 }
 .service__img{
     display: flex;
@@ -1623,16 +1612,6 @@ footer{
 .service__img img{
     display: flex;
     width: 32px;
-}
-@media screen and (min-width: 1024px) {
-    .services__main{
-        width: 70%;
-    }
-}
-@media screen and (min-width:768px) and (max-width:1024px){
-    .services__main{
-        width: 98%;
-    }
 }
 .service__detail{
     margin-top: 20px;
@@ -1973,6 +1952,101 @@ footer{
     flex-wrap: wrap;
     justify-content: space-between;
 }
-.services__home__main{
-
+@media screen and (min-width:1024px) {
+    .service__page__main{
+        display: flex;
+        flex-direction: row;
+        width: 70%;
+        margin: auto;
+        margin-top: 100px;
+    }
+}
+@media screen and (max-width:1024px) {
+    .service__page__main{
+        margin: auto;
+        margin-top: 50px;
+        width: 90%;
+    }
+}
+.service__page__description{
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 130%;
+    color: #4C4C4C;
+    margin-top: 5px;
+}
+.service__page__title{
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 23px;
+    line-height: 120%;
+    color: #111111;
+    margin-top: 30px;
+}
+@media screen and (min-width:1024px) {
+    .services__fixed__panel{
+        right: 15%;
+    }
+    .service__page__content{
+        width: 55%;
+    }
+}
+@media screen and (max-width:1024px) {
+    .fixed__panel{
+        display: none;
+    }
+}
+@media screen and (min-width:480px) {
+    .service__page__main__title{
+        font-family: 'Inter';
+        font-style: normal;
+        font-weight: 700;
+        font-size: 39px;
+        line-height: 120%;
+        color: #111111;
+        margin-bottom: 10px;
+    }
+}
+@media screen and (max-width:480px) {
+    .service__page__main__title{
+        font-family: 'Inter';
+        font-style: normal;
+        font-weight: 700;
+        font-size: 39px;
+        line-height: 120%;
+        color: #111111;
+    }
+}
+.services__fixed__panel{
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    border-radius: 20px;
+    padding: 40px;
+    border: 1px solid #DBDBDB;
+}
+.services__fixed__panel div{
+    display: flex;
+    flex-direction: row;
+    margin-top: 10px;
+    align-items: center;
+    cursor: pointer;
+}
+.services__fixed__panel div:hover{
+    color: #386eba;
+}
+.services__fixed__panel div div{
+    margin-left: 10px;
+}
+.service__select{
+    width: 10px;
+    height: 10px;
+    background-color: #2F82FF;
+    border-radius: 100%;
+}
+.additional__information__main{
+    
 }

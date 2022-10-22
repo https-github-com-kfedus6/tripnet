@@ -23,7 +23,7 @@ const Header = () => {
                     <ul>
                         <li><NavLink to="/">{t('header.first_link')}</NavLink></li>
                         <li><NavLink to="/flightsCategory">{t('header.third_link')}</NavLink></li>
-                        <li><NavLink to="/">Послуги</NavLink></li>
+                        <li><NavLink to="/services">Послуги</NavLink></li>
                         <li><NavLink to='/blog'>{t("header.five_link")}</NavLink></li>
                         <li><NavLink to="/">Контакти</NavLink></li>
                         <li className='dropdown-header'>

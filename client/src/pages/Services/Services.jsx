@@ -78,7 +78,6 @@ const Services = () => {
                 </div>
             </div>
             
-            <FixedPanel/>
         </div>
     </>
   )
