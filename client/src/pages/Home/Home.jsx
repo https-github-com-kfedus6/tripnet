@@ -36,7 +36,7 @@ const Home = () => {
             <div className='header-baner'>
                 <Header />
                 <div className='text-baner'>
-                    <span>Автобусні рейси з України до Європи</span>
+                    <span>{t('baner.text')}</span>
                 </div>
             </div>
             <div />

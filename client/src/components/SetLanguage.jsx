@@ -7,6 +7,7 @@ import Select from '@mui/material/Select';
 
 const SetLanguage = () => {
     const [dropdownCheck, setDropdowbCheck] = useState(false)
+    const [lang, setLang] = useState('')
 
     const { t, i18n } = useTranslation()
     const changeLanguage = (event) => {
@@ -21,6 +22,7 @@ const SetLanguage = () => {
         }
         return 'UA'
     }
+
     return (
         <>
             {/*  <FormControl size="small" >
@@ -49,11 +51,11 @@ const SetLanguage = () => {
                 </div>
                 <div className={dropdownCheck ? 'dropdown-list-block' : 'dropdown-none'}>
                     <div className='dropdown-list-lang'>
-                        <div>
+                        <div onClick={() => setDropdowbCheck(false)}>
                             <img className="icon-lang" src={process.env.REACT_APP_API_URL + 'UA.png'} alt="UK"></img>
                             <a className='title-lang'>{t('lang.uk')}</a>
                         </div>
-                        <div>
+                        <div value="RU" onClick={() => setDropdowbCheck(false)}>
                             <img className="icon-lang" src={process.env.REACT_APP_API_URL + 'RU.png'} alt="RU"></img>
                             <a className='title-lang'>{t('lang.ru')}</a>
                         </div>

@@ -3,9 +3,14 @@
         "first_link": "Головна",
         "second_link": "Всі рейси",
         "third_link": "Рейси",
-        "fourth_link": "Про нас",
+        "fourth_link": "Контакти",
         "five_link": "Блог",
+        "six_link": "Послуги",
+        "seven_link": "Вхід",
         "registering": "Реєстрація"
+    },
+    "baner": {
+        "text": "Автобусні рейси з України до Європи"
     },
     "flight": {
         "search": "Пошук",
@@ -13,11 +18,11 @@
         "whitherto": "Куди",
         "departure": "Відправлення",
         "return": "Повернення",
-        "passengers": "Пасажири",
+        "passegers": "Пасажири",
         "adults": "Дорослі",
         "children": "Діти",
-        "older_15_years": "Старше 15 років",
-        "younger_14_years": "Молодші 14 років",
+        "older_15_years": "Дорослий",
+        "younger_14_years": "Дитина (до 14 років)",
         "dropdown_btn": "Вибрати",
         "change": "Змінити",
         "delete": "Видалити",
@@ -68,18 +73,18 @@
     "footer": {
         "protected": "Всі права захищені",
         "social": "Ми у соц. мережах",
-        "company":"Компанія",
-        "main":"Головна",
-        "flight":"Рейси",
-        "services":"Послуги",
-        "support":"Підтримка",
-        "reservation_online":"Бронювання онлайн",
-        "booking_management":"Управління бронюванням",
-        "luggage_transportation":"Перевезення багажу",
-        "transportation_animals":"Перевезення тварин",
-        "answers_and_questions":"Відповіді та питання",
-        "contacts":"Контакти",
-        "about_Tripnet":"Про TripNet"
+        "company": "Компанія",
+        "main": "Головна",
+        "flight": "Рейси",
+        "services": "Послуги",
+        "support": "Підтримка",
+        "reservation_online": "Бронювання онлайн",
+        "booking_management": "Управління бронюванням",
+        "luggage_transportation": "Перевезення багажу",
+        "transportation_animals": "Перевезення тварин",
+        "answers_and_questions": "Відповіді та питання",
+        "contacts": "Контакти",
+        "about_Tripnet": "Про TripNet"
     },
     "home": {
         "benefits_company": "Переваги компанії",
@@ -97,17 +102,17 @@
         "work_strictly_according_to_the_schedule_description": "Відправлення автобусів завжди у вказані терміни",
         "professional_managers_description": "Наші менеджери мають витримку, спокій і чітко відповідають на ваші запитання",
         "we_treat_our_work_professionally_description": "Ми професійно ставимося до нашої роботи та завжди на зв'язку",
-        "how_reserce_fligt_online":"Як забронювати рейс онлайн?",
-        "reserve_flight_title_1":"Оберіть рейс",
-        "reserve_flight_title_2":"Забронюйте місце",
-        "reserve_flight_title_3":"Підтвердіть бронювання",
-        "reserve_flight_title_4":"Оплатіть місце",
-        "reserve_flight_description_1":"За допомогою пошуку оберіть рейс з необхідними місцем призначення та бажаною датою відправки.",
-        "reserve_flight_description_2":"На сторінці рейсу, заповніть контактну форму та безкоштовно забронюйте місце.",
-        "reserve_flight_description_3":"Через кілька хвилин вам зателефонує менеджер, щоб підтвердити бронювання.",
-        "reserve_flight_description_4":"Після підтвердження оплатіть рейс на сайті, переказом на картку або при посадці на автобус.",
-        "services":"Послуги",
-        "latest_news":"Останні новини"
+        "how_reserce_fligt_online": "Як забронювати рейс онлайн?",
+        "reserve_flight_title_1": "Оберіть рейс",
+        "reserve_flight_title_2": "Забронюйте місце",
+        "reserve_flight_title_3": "Підтвердіть бронювання",
+        "reserve_flight_title_4": "Оплатіть місце",
+        "reserve_flight_description_1": "За допомогою пошуку оберіть рейс з необхідними місцем призначення та бажаною датою відправки.",
+        "reserve_flight_description_2": "На сторінці рейсу, заповніть контактну форму та безкоштовно забронюйте місце.",
+        "reserve_flight_description_3": "Через кілька хвилин вам зателефонує менеджер, щоб підтвердити бронювання.",
+        "reserve_flight_description_4": "Після підтвердження оплатіть рейс на сайті, переказом на картку або при посадці на автобус.",
+        "services": "Послуги",
+        "latest_news": "Останні новини"
     },
     "modalbuy": {
         "title": "Забронювати рейс",
@@ -171,16 +176,16 @@
     "blog": {
         "details": "Подробиці"
     },
-    "services":{
-        "all_services":"Всі послуги",
-        "reservation_online":"Бронювання онлайн",
-        "booking_management":"Управління бронюванням",
-        "luggage_transportation":"Перевезення багажу",
-        "transportation_animals":"Перевезення тварин",
-        "reservation_online_description":"Як забронювати та оплатити місце онлайн? Що робити далі?",
-        "booking_management_description":"Як управляти бронюванням в особистому кабінеті, або у месенджері.",
-        "luggage_transportation_description":"Правила перевезення ручної поклажі та багажу. Що робити з додатковим багажем?",
-        "transportation_animals_description":"Правила перевезення тварин. Які необхідні документи та скільки коштує місце?",
+    "services": {
+        "all_services": "Всі послуги",
+        "reservation_online": "Бронювання онлайн",
+        "booking_management": "Управління бронюванням",
+        "luggage_transportation": "Перевезення багажу",
+        "transportation_animals": "Перевезення тварин",
+        "reservation_online_description": "Як забронювати та оплатити місце онлайн? Що робити далі?",
+        "booking_management_description": "Як управляти бронюванням в особистому кабінеті, або у месенджері.",
+        "luggage_transportation_description": "Правила перевезення ручної поклажі та багажу. Що робити з додатковим багажем?",
+        "transportation_animals_description": "Правила перевезення тварин. Які необхідні документи та скільки коштує місце?",
         "details": "Подробиці"
     }
 }

@@ -93,7 +93,7 @@
 .form-input-text input {
     box-sizing: border-box;
     width: 140px;
-    height: 50px;
+    height: 48px;
     background: #FFFFFF;
     border: 1px solid #DBDBDB;
     border-radius: 10px;
@@ -114,17 +114,19 @@
     font-size: 16px;
     line-height: 120%;
     color: #6A6A6A;
-    transition: top 150ms ease-in,left 150ms ease-in, font-size 150ms ease-in;
+    transition: top 100ms ease-in,left 100ms ease-in, font-size 100ms ease-in;
     background-color: #FFFFFF;
 }
 
 .position-text:hover {
     border: 1px solid #A5A5A5;
+    transition: all ease 0.4s;
 }
 
 .form-input-text input:focus {
     border: 1px solid #2F82FF;
     outline: none;
+    transition: all ease 0.4s;
 }
 
 .form-input-text input:focus ~ label,
@@ -144,9 +146,160 @@
 
 .form-swap img {
     cursor: pointer;
-    width: 24px;
-    height: 24px;
+    width: 20px;
+    height: 20px;
+}
 
+.dropdown-passengers {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0px;
+    gap: 10px;
+    width: 140px;
+    height: 48px;
+    position: relative;
+}
+
+.dropdown-select-passegers input {
+    box-sizing: border-box;
+    width: 140px;
+    height: 48px;
+    background: #FFFFFF;
+    border: 1px solid #DBDBDB;
+    border-radius: 10px;
+    cursor: pointer;
+    padding: 10px;
+}
+
+.dropdown-passegers-text {
+    position: absolute;
+    left: 10px;
+    top: 15px;
+    cursor: pointer;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 120%;
+    color: #6A6A6A;
+    transition: top 100ms ease-in,left 100ms ease-in, font-size 100ms ease-in;
+    background-color: #FFFFFF;
+    padding: 0 0.3rem;
+}
+
+.dropdown-icon-user {
+    position: absolute;
+    right: 10px;
+    top: 15px;
+    cursor: pointer;
+}
+
+.dropdown-icon-user img {
+    width: 16px;
+    height: 16px;
+}
+
+.dropdown-select-passegers input:hover {
+    border: 1px solid #A5A5A5;
+    transition: all ease 0.4s;
+}
+
+.dropdown-select-passegers input:focus {
+    border: 1px solid #2F82FF;
+    outline: none;
+    transition: all ease 0.4s;
+}
+
+.dropdown-passegers-input:focus ~ .dropdown-passegers-text,
+.dropdown-passegers-input:not(:placeholder-shown).dropdown-passegers-input:not(:focus)~.dropdown-passegers-text {
+    top:-8px;
+    font-size: 13px;
+} 
+
+.dropdown-list-passegers {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 20px;
+    gap: 10px;
+    width: 280px;
+    height: 114px;
+    background: #FFFFFF;
+    border: 1px solid #DBDBDB;
+    border-radius: 10px;
+}
+
+.dropdown-list-item-passegers {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0px;
+    width: 240px;
+}
+
+.dropdown-list-item-passegers-text {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 150%;
+    color: #4C4C4C;
+}
+
+.dropdown-list-item-passegers-count {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 0px;
+    gap: 10px;
+}
+
+.dropdown-list-item-passegers-count:nth-child(2) {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 150%;
+    color: #4C4C4C;
+}
+
+.dropdown-list-item-passegers-minus-and-plus img{
+    width: 18px;
+    height: 18px;
+    margin-top: 5px;
+    cursor: pointer;
+}
+
+.form-button-search button {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 14px 24px;
+    gap: 8px;
+    width: 140px;
+    height: 48px;
+    background: #2F82FF;
+    border: none;
+    border-radius: 10px;
+    flex: none;
+    order: 6;
+    flex-grow: 1;
+    cursor: pointer;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 120%;
+    color: #FFFFFF;
+}
+
+.form-button-search button:hover {
+    background: #599BFF;
+    transition: all ease 0.4s;
 }
 
 .flights {

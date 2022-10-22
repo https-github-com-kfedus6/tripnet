@@ -78,14 +78,14 @@ const FlightsFormSort = ({ startDate, startPosition, finishPosition, setStartDat
             <div className='form-inputs-button-group'>
                 <div className='form-input-text'>
                     <input id='form-text' className='position-text' type="text" placeholder=' ' />
-                    <label className='label-text' for='form-text'>Звідки</label>
+                    <label className='label-text' for='form-text'>{t('flight.whence')}</label>
                 </div>
                 <div className='form-swap'>
                     <img src={process.env.REACT_APP_API_URL + 'swap.png'} alt="swap" />
                 </div>
                 <div className='form-input-text'>
                     <input id='form-text-second' className='position-text' type="text" placeholder=' ' />
-                    <label className='label-text' for="form-text-second">Куда</label>
+                    <label className='label-text' for="form-text-second">{t('flight.whitherto')}</label>
                 </div>
                 <div>
                     <input type="date" />
@@ -93,10 +93,46 @@ const FlightsFormSort = ({ startDate, startPosition, finishPosition, setStartDat
                 <div>
                     <input type="date" />
                 </div>
-                <div>
-                    <details>dsvsd</details>
+                <div className='dropdown-passengers' onClick={() => setDropdowbCheck(true)}>
+                    <div className='dropdown-select-passegers'>
+                        <input className='dropdown-passegers-input' type="text" id='passegers' placeholder=' ' value={dropdownCheck ? `${sumOld} дорослих, ${sumYoung}...` : ''} />
+                        <label className='dropdown-passegers-text' for="passegers">{t('flight.passegers')}</label>
+                        <label className='dropdown-icon-user'>
+                            <img src={process.env.REACT_APP_API_URL + 'users.png'} alt="passegers" />
+                        </label>
+                    </div>
+                    <div className={dropdownCheck ? 'dropdown-list-passegers' : 'dropdown-none'}>
+                        <div className='dropdown-list-item-passegers'>
+                            <div className='dropdown-list-item-passegers-text'>
+                                <span>{t('flight.older_15_years')}</span>
+                            </div>
+                            <div className='dropdown-list-item-passegers-count'>
+                                <div className='dropdown-list-item-passegers-minus-and-plus'>
+                                    <img src={process.env.REACT_APP_API_URL + 'minuss.png'} alt="minus" onClick={() => countOldResult()} />
+                                </div>
+                                <div value={sumOld}>{sumOld}</div>
+                                <div className='dropdown-list-item-passegers-minus-and-plus'>
+                                    <img src={process.env.REACT_APP_API_URL + 'plus.png'} alt="plus" onClick={() => setSumOld(sumOld + 1)} />
+                                </div>
+                            </div>
+                        </div>
+                        <div className='dropdown-list-item-passegers'>
+                            <div className='dropdown-list-item-passegers-text'>
+                                <span>{t('flight.younger_14_years')}</span>
+                            </div>
+                            <div className='dropdown-list-item-passegers-count'>
+                                <div className='dropdown-list-item-passegers-minus-and-plus'>
+                                    <img src={process.env.REACT_APP_API_URL + 'minus.png'} alt="minus" onClick={() => countYoungResult()} />
+                                </div>
+                                <div value={sumYoung}>{sumYoung}</div>
+                                <div className='dropdown-list-item-passegers-minus-and-plus'>
+                                    <img src={process.env.REACT_APP_API_URL + 'plus.png'} alt="plus" onClick={() => setSumYoung(sumYoung + 1)} />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div>
+                <div className='form-button-search'>
                     <button>Пошук</button>
                 </div>
             </div>

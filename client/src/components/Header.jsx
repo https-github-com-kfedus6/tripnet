@@ -23,9 +23,9 @@ const Header = () => {
                     <ul>
                         <li><NavLink to="/">{t('header.first_link')}</NavLink></li>
                         <li><NavLink to="/flightsCategory">{t('header.third_link')}</NavLink></li>
-                        <li><NavLink to="/services">Послуги</NavLink></li>
+                        <li><NavLink to="/services">{t('header.six_link')}</NavLink></li>
                         <li><NavLink to='/blog'>{t("header.five_link")}</NavLink></li>
-                        <li><NavLink to="/">Контакти</NavLink></li>
+                        <li><NavLink to="/">{t('header.fourth_link')}</NavLink></li>
                         <li className='dropdown-header'>
                             <div className='burger__menu__list header__admin'>
                                 {is_admin ?
@@ -67,7 +67,7 @@ const Header = () => {
                                 <div> {user.name}</div>
                             </div> :
                             <div className='header_register' onClick={() => setIsShow(true)}>
-                                <div><span>Вхід</span></div>
+                                <div><span>{t('header.seven_link')}</span></div>
                                 <span>|</span>
                                 <div><span>{t("header.registering")}</span></div>
                             </div>

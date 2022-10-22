@@ -801,6 +801,10 @@ main {
     border-radius: 10px;
 }
 
+.dropdown-none {
+    display: none;
+}
+
 .title-lang:hover {
     color: #2F82FF;
     transition: all ease 0.3s;
@@ -1111,7 +1115,7 @@ main {
 }
 
 .header_register div span:hover {
-    color: #2F82FF;
+    color:#599BFF;
 }
 
 .header_register span {
