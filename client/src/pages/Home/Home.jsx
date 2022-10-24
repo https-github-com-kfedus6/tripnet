@@ -34,7 +34,6 @@ const Home = () => {
     return (
         <>
             <div className='header-baner'>
-                <Header />
                 <div className='text-baner'>
                     <span>{t('baner.text')}</span>
                 </div>

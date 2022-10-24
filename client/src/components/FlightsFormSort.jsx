@@ -62,7 +62,6 @@ const FlightsFormSort = ({ startDate, startPosition, finishPosition, setStartDat
         setFinishPosition(temp)
     }
 
-
     return (
         <div className='flights-sort-form'>
             <div className='form-checkboxes'>
@@ -76,16 +75,58 @@ const FlightsFormSort = ({ startDate, startPosition, finishPosition, setStartDat
                 </div>
             </div>
             <div className='form-inputs-button-group'>
-                <div className='form-input-text'>
+                {/*  <div className='form-input-text'>
                     <input id='form-text' className='position-text' type="text" placeholder=' ' />
                     <label className='label-text' for='form-text'>{t('flight.whence')}</label>
+                </div> */}
+                <div>
+                    <Autocomplete
+                        size='small'
+                        freeSolo
+                        id="free-solo-2-demo"
+                        disableClearable
+                        value={startPosition}
+                        onChange={(value, newValue) => setStartPosition(newValue)}
+                        options={searchStartPostion.map((option) => option.title)}
+                        renderInput={(params) => (
+                            <TextField sx={{ backgroundColor: '#fff', borderRadius: '5px' }}
+                                onChange={(e) => { setStartPosition(e.target.value) }}
+                                {...params}
+                                label={t('flight.whence')}
+                                InputProps={{
+                                    ...params.InputProps,
+                                    type: 'search',
+                                }}
+                            />)}
+                    />
                 </div>
                 <div className='form-swap'>
                     <img src={process.env.REACT_APP_API_URL + 'swap.png'} alt="swap" />
                 </div>
-                <div className='form-input-text'>
+                {/*   <div className='form-input-text'>
                     <input id='form-text-second' className='position-text' type="text" placeholder=' ' />
                     <label className='label-text' for="form-text-second">{t('flight.whitherto')}</label>
+                </div> */}
+                <div>
+                    <Autocomplete
+                        size='small'
+                        freeSolo
+                        id="free-solo-2-demo"
+                        disableClearable
+                        value={finishPosition}
+                        onChange={(e, newValue) => setFinishPosition(newValue)}
+                        options={searchFinishPosition.map((option) => option.title)}
+                        renderInput={(params) => (
+                            <TextField sx={{ backgroundColor: '#fff', borderRadius: '5px' }}
+                                onChange={(e) => { setFinishPosition(e.target.value) }}
+                                {...params}
+                                label={t('flight.whitherto')}
+                                InputProps={{
+                                    ...params.InputProps,
+                                    type: 'search',
+                                }}
+                            />)}
+                    />
                 </div>
                 <div>
                     <input type="date" />
@@ -93,9 +134,9 @@ const FlightsFormSort = ({ startDate, startPosition, finishPosition, setStartDat
                 <div>
                     <input type="date" />
                 </div>
-                <div className='dropdown-passengers' onClick={() => setDropdowbCheck(true)}>
-                    <div className='dropdown-select-passegers'>
-                        <input className='dropdown-passegers-input' type="text" id='passegers' placeholder=' ' value={dropdownCheck ? `${sumOld} дорослих, ${sumYoung}...` : ''} />
+                <div className='dropdown-passengers'>
+                    <div className='dropdown-select-passegers' onClick={() => dropdownCheck ? setDropdowbCheck(false) : setDropdowbCheck(true)}>
+                        <input className='dropdown-passegers-input' type="text" id='passegers' placeholder=' ' value={dropdownCheck ? `${sumOld} ${t('flight.pass_old')}, ${sumYoung} дитина` : ''} disabled />
                         <label className='dropdown-passegers-text' for="passegers">{t('flight.passegers')}</label>
                         <label className='dropdown-icon-user'>
                             <img src={process.env.REACT_APP_API_URL + 'users.png'} alt="passegers" />

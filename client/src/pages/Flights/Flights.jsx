@@ -140,7 +140,6 @@ const Flights = ({ isShowFilter }) => {
 
     return (
         <>
-            <Header />
             <div className='flights'>
                 <FlightsList
                     flights={flights}

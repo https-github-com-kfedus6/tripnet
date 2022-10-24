@@ -11,6 +11,9 @@ const Layout = () => {
 
     return (
         <div className='layout'>
+            <header>
+                <Header />
+            </header>
             <main>
                 <Outlet />
             </main>

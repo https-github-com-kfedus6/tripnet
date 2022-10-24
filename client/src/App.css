@@ -801,6 +801,10 @@ main {
     border-radius: 10px;
 }
 
+select {
+    -webkit-appearance: none;
+}
+
 .dropdown-none {
     display: none;
 }
@@ -1517,14 +1521,9 @@ main {
     gap: 20px;
 }
 @media screen and (min-width:768px) {
-    header{
-        margin-bottom: 100px;
-    }   
 }
 @media screen and (max-width: 768px) {
-    header{
-        margin-bottom: 50px;
-    }
+
 }
 footer{
     background-color: #14233C;
