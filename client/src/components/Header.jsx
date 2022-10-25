@@ -7,7 +7,7 @@ import SetLanguage from './SetLanguage';
 import { useSelector } from 'react-redux';
 import { useState } from 'react';
 import Authorize from '../pages/Authorize/Authorize';
-import { FaUserCircle, FaUserEdit } from 'react-icons/fa'
+import { FaProcedures, FaUserCircle, FaUserEdit } from 'react-icons/fa'
 
 const Header = () => {
     const { t, i18n } = useTranslation()
@@ -49,12 +49,6 @@ const Header = () => {
                                         <></>
                                     }</div>
                             </li>
-                            {/* <li>{is_admin ?
-                                <div className='user__nick'>
-                                    <NavLink to="/admin"><FaUserEdit /></NavLink>
-                                </div> : <></>}
-
-                            </li> */}
                         </ul>
                     </div>
                     <div className='header__register__with__language'>
@@ -64,8 +58,7 @@ const Header = () => {
                         <div>
                             {is_login ?
                                 <div className='header_register' onClick={() => navigate("/account")}>
-                                    <div><FaUserCircle width={"20px"} /></div>
-                                    <div> {user.name}</div>
+                                    <img src={process.env.REACT_APP_API_URL + 'user.png'} alt="user" />
                                 </div> :
                                 <div className='header_register' onClick={() => setIsShow(true)}>
                                     <div><span>{t('header.seven_link')}</span></div>
@@ -77,7 +70,14 @@ const Header = () => {
                     </div>
                 </div>
                 <div className='header__burger'>
-                    <Burger setIsShowRegister={setIsShow} />
+                    <div className='header__burger-container'>
+                        <div>
+                            <Logo />
+                        </div>
+                        <div>
+                            <Burger setIsShowRegister={setIsShow} />
+                        </div>
+                    </div>
                 </div>
             </div>
             <Authorize isShow={isShow} setIsShow={setIsShow} />

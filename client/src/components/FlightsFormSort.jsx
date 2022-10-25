@@ -163,7 +163,12 @@ const FlightsFormSort = ({ startDate, startPosition, finishPosition, setStartDat
                             </div>
                             <div className='dropdown-list-item-passegers-count'>
                                 <div className='dropdown-list-item-passegers-minus-and-plus'>
-                                    <img src={process.env.REACT_APP_API_URL + 'minus.png'} alt="minus" onClick={() => countYoungResult()} />
+                                    {sumYoung >= 1
+                                        ?
+                                        <img src={process.env.REACT_APP_API_URL + 'minuss.png'} alt="minus" onClick={() => countYoungResult()} />
+                                        :
+                                        <img src={process.env.REACT_APP_API_URL + 'minus.png'} alt="minus" onClick={() => countYoungResult()} />
+                                    }
                                 </div>
                                 <div value={sumYoung}>{sumYoung}</div>
                                 <div className='dropdown-list-item-passegers-minus-and-plus'>
