@@ -1962,7 +1962,7 @@ footer{
 @media screen and (max-width:1024px) {
     .service__page__main{
         margin: auto;
-        margin-top: 50px;
+        margin-top: 100px;
         width: 90%;
     }
 }
@@ -1987,14 +1987,18 @@ footer{
 @media screen and (min-width:1024px) {
     .services__fixed__panel{
         right: 15%;
+        position: fixed;
     }
     .service__page__content{
         width: 55%;
     }
 }
 @media screen and (max-width:1024px) {
-    .fixed__panel{
-        display: none;
+    .services__fixed__panel{
+        display: flex;
+        width: auto;
+        width: 250px;
+        margin-bottom: 50px;
     }
 }
 @media screen and (min-width:480px) {
@@ -2021,7 +2025,6 @@ footer{
 .services__fixed__panel{
     display: flex;
     flex-direction: column;
-    position: fixed;
     border-radius: 20px;
     padding: 40px;
     border: 1px solid #DBDBDB;
@@ -2044,4 +2047,18 @@ footer{
     height: 10px;
     background-color: #2F82FF;
     border-radius: 100%;
+}
+.additional__information__main{
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 24px;
+    gap: 8px;
+    margin-top: 30px;
+    background-color: #EAF2FF;
+    padding: 20px;
+    border: 1px solid #C1DAFF;
+    border-radius: 20px;
+    color: #13356A;
+    margin-bottom: 50px;
 }

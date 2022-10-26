@@ -25,6 +25,8 @@ import ResponceEdit from '../pages/Admin/ResponceEdit';
 import Services from '../pages/Services/Services';
 import ReservationOnline from '../pages/Services/pages/ReservationOnline';
 import LuggageTransportation from '../pages/Services/pages/LuggageTransportation';
+import ReservationManagement from '../pages/Services/pages/ReservationManagement';
+import TransportationAnimals from '../pages/Services/pages/TransportationAnimals';
 
 const AppRouter = () => {
     const { IsAuthorize } = useAction();
@@ -49,6 +51,8 @@ const AppRouter = () => {
                 <Route path="services" element={<Services/>}/>
                 <Route path='services/reservation_online' element={<ReservationOnline/>}/>
                 <Route path='services/luggage_transportation' element={<LuggageTransportation/>}/>
+                <Route path='services/booking_management' element={<ReservationManagement/>}/>
+                <Route path='services/transportation_animals' element={<TransportationAnimals/>}/>
                 {is_admin ? <Route path='order' element={<FlightOrders />} /> : <></>}
                 {is_admin ? <Route path='aboutUsEdit' element={<AboutUsEdit />} /> : <></>}
                 {is_admin ? <Route path='blogEdit' element={<BlogEdit />} /> : <></>}

@@ -4,11 +4,11 @@ import { useSelector } from 'react-redux'
 import FixedPanel from '../FixedPanel'
 import AdditionalInformation from './AdditionalInformation'
 
-const ReservationOnline = () => {
-  const {language}=useSelector(state=>state.language);
-  useEffect(()=>{
-
-  },[language]);
+const TransportationAnimals = () => {
+    const {language}=useSelector(state=>state.language);
+    useEffect(()=>{
+  
+    },[language]);
   return (
     <div className='service__page__main'>
       <div className="service__page__content">
@@ -35,10 +35,10 @@ const ReservationOnline = () => {
         <AdditionalInformation/>
       </div>
       <div className='fixed__panel'>
-          <FixedPanel indexService={1}/>
+          <FixedPanel indexService={4}/>
       </div>
     </div>
   )
 }
 
-export default ReservationOnline
+export default TransportationAnimals

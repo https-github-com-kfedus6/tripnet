@@ -1,8 +1,13 @@
 import { t } from 'i18next';
-import React from 'react'
+import React, { useEffect } from 'react'
+import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom'
 
 const FixedPanel = ({indexService}) => {
+    const {language}=useSelector(state=>state.language);
+    useEffect(()=>{
+  
+    },[language]);
     const navigate=useNavigate();
   return (
     <div className="services__fixed__panel">
@@ -22,13 +27,13 @@ const FixedPanel = ({indexService}) => {
         </div>
         <div onClick={()=>navigate("/services/luggage_transportation")}>
             {indexService!=3?
-                <img src={process.env.REACT_APP_API_URL+"booking_management.png"}/>
+                <img src={process.env.REACT_APP_API_URL+"luggage_transportation.png"}/>
                 :
                 <div className='service__select'/>}
             <div>{t("services.luggage_transportation")}</div>
         </div>
         <div onClick={()=>navigate("/services/transportation_animals")}>
-            {indexService!=2?
+            {indexService!=4?
                 <img src={process.env.REACT_APP_API_URL+"transportation_animals.png"}/>
                 :
                 <div className='service__select'/>}

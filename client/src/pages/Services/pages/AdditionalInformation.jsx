@@ -1,12 +1,23 @@
+import { t } from 'i18next';
 import React from 'react'
+import { useEffect } from 'react';
+import { useSelector } from 'react-redux';
 
 const AdditionalInformation = () => {
+  const {infoCompany}=useSelector(state=>state.infoCompany);
+  const {language}=useSelector(state=>state.language);
+  useEffect(()=>{
+
+  },[language]);
   return (
+    infoCompany==undefined?<div>loading...</div>:
     <div className='additional__information__main'>
-        .
-        Якщо у Вас залишилися питання щодо перевезення багажу, зв'яжіться з адміністрацією компанії за телефонами:
-        +380(98)545-33-78
-        +380(95)396-33-60
+      <div>
+        {t("services.add_info")}
+        <ul>
+          {infoCompany.telephone.split(" ").map((x,idx)=><li key={idx}>{x}</li>)}
+        </ul>
+      </div>
     </div>
   )
 }

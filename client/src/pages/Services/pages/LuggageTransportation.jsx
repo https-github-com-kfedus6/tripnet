@@ -1,63 +1,69 @@
-import React from 'react'
+import { t } from 'i18next'
+import React, { useEffect } from 'react'
+import { useSelector } from 'react-redux'
 import FixedPanel from '../FixedPanel'
 import AdditionalInformation from './AdditionalInformation'
 
 const LuggageTransportation = () => {
+    const {language}=useSelector(state=>state.language);
+    useEffect(()=>{
+  
+    },[language]);
   return (
     <div className='service__page__main'>
-        <div className="service__page__content">
-            <div className="service__page__main__title">
-                Перевезення багажу
-            </div>
-            <div className="service__page__title">
-                Ручна поклажа
-            </div>
-            <div className="service__page__description">
-                Пасажир має право на перевезення 1 місця ручної поклажі габаритами 40х20х60 см та загальною вагою до 10 кг у салоні автобуса. Ручну поклажу, яка перевозиться в салоні автобуса, слід розміщувати таким чином, щоб вона не перешкоджала вільному проходу пасажирів уздовж салону та не блокувала доступ до основних та аварійних виходів.
-            </div>
-            <div className="service__page__title">
-                Багаж
-            </div>
-            <div className="service__page__description">
-                Безкоштовно на одного пасажира дозволяється перевозити дві одиниці багажу, вага кожної одиниці не перевищує 30 кг. Вільне місце у багажному відділенні визначає водій при посадці, беручи до уваги загальну кількість пасажирів в автобусі, розподіл багажу по вантажному відсіку та інші фактори. Перевізник має право відмовити пасажиру у провезенні додаткового багажу (вантажу).
-            </div>
-            <div className="service__page__title">
-                Понаднормовий багаж
-            </div>
-            <div className="service__page__description">
-                Багаж, який перевищує норму, коштує 1 євро за 1 кг (за попередньою домовленістю).
-            </div>
-            <div className="service__page__title">
-                Залишений багаж
-            </div>
-            <div className="service__page__description">
-                Перевізник та екіпаж не несуть відповідальності за багаж, ручну поклажу та особисті речі, що перевозяться пасажирами у поїздці, залишені у салоні чи багажному відділенні автобуса.
-            </div>
-            <div className="service__page__title">
-                Умови перевезення
-            </div>
-            <div className="service__page__description">
-                Перевізник має право відмовити у перевезенні багажу або вантажу, якщо:
-                <ul>
-                    <li>
-                        утримання, структура, форма або запах багажу (вантажу) можуть пошкодити, забруднити багаж інших пасажирів, салон автобуса чи багажне відділення, або може заважати пасажирам чи екіпажу автобуса;
-                    </li>
-                    <li>
-                        екіпаж має підозри, що вміст багажу (вантажу) може викликати затримку під час проходження кордонів.
-                    </li>
-                </ul>
-            </div>
-            <div className="service__page__title">
-                Сумнівний багаж
-            </div>
-            <div className="service__page__description">
-                Обслуговуючий персонал автобуса має право у разі виникнення сумнівів, а також для забезпечення безпеки поїздки та виконання митних правил – зажадати від пасажира показати вміст багажу (вантажу). При відмові пасажира виконати цю вимогу, персонал автобуса має право відмовити пасажиру у перевезенні підозрілого багажу (вантажу).
-            </div>
-            <AdditionalInformation/>
+      <div className="service__page__content">
+        <div className="service__page__main__title">
+          {t("services.luggage_main_title")}
         </div>
-        <div className='fixed__panel'>
-            <FixedPanel indexService={3}/>
+        <div className="service__page__title">
+          {t("services.luggage_title_1")}
         </div>
+        <div className="service__page__description">
+          {t("services.luggage_description_1")}
+        </div>
+        <div className="service__page__title">
+          {t("services.luggage_title_2")}
+        </div>
+        <div className="service__page__description">
+          {t("services.luggage_description_2")}
+        </div>
+        <div className="service__page__title">
+          {t("services.luggage_title_3")}
+        </div>
+        <div className="service__page__description">
+          {t("services.luggage_description_3")}
+        </div>
+        <div className="service__page__title">
+          {t("services.luggage_title_4")}
+        </div>
+        <div className="service__page__description">
+          {t("services.luggage_description_4")}
+        </div>
+        <div className="service__page__title">
+          {t("services.luggage_title_5")}
+        </div>
+        <div className="service__page__description">
+          {t("services.luggage_description_5")}
+            <ul>
+              <li>
+                {t("services.luggage_description_5_li_1")}
+              </li>
+              <li>
+                {t("services.luggage_description_5_li_2")}
+              </li>
+            </ul>
+        </div>
+        <div className="service__page__title">
+          {t("services.luggage_title_6")}
+        </div>
+        <div className="service__page__description">
+          {t("services.luggage_description_6")}
+        </div>
+        <AdditionalInformation/>
+      </div>
+      <div className='fixed__panel'>
+          <FixedPanel indexService={3}/>
+      </div>
     </div>
   )
 }
