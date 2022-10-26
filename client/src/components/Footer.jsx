@@ -29,20 +29,20 @@ const Footer = () => {
                 <div className='footer__component'>
                     <div className='footer-block'>
                         <div className='footer-logo logo-none-second' onClick={() => navigate("/")}>
-                            <img src={process.env.REACT_APP_API_URL + 'logo-white2.png'} alt="logo" />
+                            <img src={process.env.REACT_APP_API_URL + 'logo-white3.png'} alt="logo" />
                             <span className='protected-none'>ⓒ 2022 TripNet. {t('footer.protected')}.</span>
                             <div className='footer-icon-social'>
                                 <div>
-                                    <a target="_blank" href='https://www.instagram.com/tripnet.com.ua/'><BsInstagram /></a>
+                                    <a target="_blank" href='#'><FaTelegramPlane /></a>
+                                </div>
+                                <div>
+                                    <a target="_blank" href='#'><FaViber /></a>
                                 </div>
                                 <div>
                                     <a target="_blank" href="https://m.facebook.com/TripNET.com.ua/"><FaFacebookF /></a>
                                 </div>
                                 <div>
-                                    <a target="_blank" href='#'><FaTelegramPlane/></a>
-                                </div>
-                                <div>
-                                    <a target="_blank" href='#'><FaViber/></a>
+                                    <a target="_blank" href='https://www.instagram.com/tripnet.com.ua/'><BsInstagram /></a>
                                 </div>
                             </div>
                         </div>
@@ -63,9 +63,18 @@ const Footer = () => {
                         </div>
                         <div className='footer__section pair'>
                             <p>{t("footer.contacts")}</p>
-                            <div><GiSmartphone />{infoCompany.telephone}</div>
-                            <div><CgMail/>{infoCompany.email}</div>
-                            <div><BiTime/>{infoCompany.openingHours[language]}</div>
+                            <div>
+                                <img src={process.env.REACT_APP_API_URL + 'phone.png'} alt="phone" />
+                                {infoCompany.telephone}
+                            </div>
+                            <div>
+                                <img src={process.env.REACT_APP_API_URL + 'mail.png'} alt="mail" />
+                                {infoCompany.email}
+                            </div>
+                            <div>
+                                <img src={process.env.REACT_APP_API_URL + 'clock.png'} alt="clock" />
+                                {infoCompany.openingHours[language]}
+                            </div>
                         </div>
                     </div>
                 </div>
