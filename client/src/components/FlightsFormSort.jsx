@@ -1,19 +1,32 @@
 import React, { useState } from 'react';
-import { AiOutlineCaretDown } from 'react-icons/ai';
 import { useTranslation } from 'react-i18next';
-import Stack from '@mui/material/Stack';
-import Autocomplete from '@mui/material/Autocomplete';
-import TextField from '@mui/material/TextField';
 import { useEffect } from 'react';
 import { useAction } from '../hooks/useAction';
 import { useSelector } from 'react-redux';
-import { CgArrowsExchange, CgArrowsExchangeAlt } from 'react-icons/cg';
+import AirDatepicker from 'air-datepicker';
+import ua from 'air-datepicker/locale/uk';
+import ru from 'air-datepicker/locale/ru';
+import 'air-datepicker/air-datepicker.css';
 
 const FlightsFormSort = ({ startDate, startPosition, finishPosition, setStartDate, setStartPosition, setFinishPosition, sortFlights, sumOld, setSumOld, sumYoung, setSumYoung, setChangePosition, changePosition, changePositionFun }) => {
     const { t } = useTranslation()
 
     const [isOpen, setIsOpen] = useState(false)
     const [dropdownCheck, setDropdowbCheck] = useState(false)
+
+    const { SearchCity } = useAction()
+
+    const { language } = useSelector(state => state.language);
+
+    const { searchStartPostion, searchFinishPosition } = useSelector(state => state.flights)
+
+    useEffect(() => {
+        SearchCity(startPosition, language, true);
+    }, [startPosition, language])
+
+    useEffect(() => {
+        SearchCity(finishPosition, language, false);
+    }, [finishPosition, language])
 
     const countOldResult = () => {
         if (sumOld === 1) {
@@ -31,20 +44,6 @@ const FlightsFormSort = ({ startDate, startPosition, finishPosition, setStartDat
         }
     }
 
-    const { SearchCity } = useAction()
-
-    const { language } = useSelector(state => state.language);
-
-    const { searchStartPostion, searchFinishPosition } = useSelector(state => state.flights)
-
-    useEffect(() => {
-        SearchCity(startPosition, language, true);
-    }, [startPosition, language])
-
-    useEffect(() => {
-        SearchCity(finishPosition, language, false);
-    }, [finishPosition, language])
-
     const changePos = () => {
         setChangePosition(!changePosition);
         let temp = startPosition;
@@ -56,6 +55,16 @@ const FlightsFormSort = ({ startDate, startPosition, finishPosition, setStartDat
         setStartPosition(e.target.textContent)
         setIsOpen(!isOpen)
     }
+
+    new AirDatepicker('#date', localStorage.getItem('i18nextLng') === 'UA' ?
+        {
+            locale: ua
+        }
+        :
+        {
+            locale: ru
+        }
+    )
 
     return (
         <div className='flights-sort-form'>
@@ -120,8 +129,16 @@ const FlightsFormSort = ({ startDate, startPosition, finishPosition, setStartDat
                             null
                     }
                 </div>
-                <div>
-                    <input type="date" />
+                <div className='form-input-date'>
+                    <input id='date' type='text'
+                        className='form-input-text-date'
+                        placeholder=' '
+                        autocomplete="off"
+                    />
+                    <label className='form-label-date' for='date'>Туди</label>
+                    <label className='form-button-date'>
+                        <img src={process.env.REACT_APP_API_URL + 'vector.png'} alt="date" />
+                    </label>
                 </div>
                 <div>
                     <input type="date" />

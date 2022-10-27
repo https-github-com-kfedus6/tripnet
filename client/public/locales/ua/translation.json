@@ -79,13 +79,14 @@
         "flight": "Рейси",
         "services": "Послуги",
         "support": "Підтримка",
-        "reservation_online": "Бронювання онлайн",
+        "reservation_online": "Бронювання рейсу",
         "booking_management": "Управління бронюванням",
         "luggage_transportation": "Перевезення багажу",
         "transportation_animals": "Перевезення тварин",
         "answers_and_questions": "Відповіді та питання",
         "contacts": "Контакти",
-        "about_Tripnet": "Про TripNet"
+        "about_Tripnet": "Про TripNet",
+        "footer_company": "Компанія"
     },
     "home": {
         "benefits_company": "Переваги компанії",
