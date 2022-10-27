@@ -17,7 +17,12 @@ const HomeBlog = ({ blog }) => {
             <div className='mini-block-info'>
                 <div>
                     <div className="mini__blog__date">
-                        <span>{blog.createdAt.slice(0, 10)}</span>
+                        <span>{blog.createdAt.slice(0, 10).split("-").map((x,idx)=>{
+                            if(idx==0)return <div className='date__widt__margin' key={idx}>{x}</div>;
+                            if(idx==1)return <div className='date__widt__margin' key={idx}>{t("blog."+x)}</div>;
+                            return <div key={idx}>{x}</div>;
+                        })} 
+                        </span>
                     </div>
                     <div className='mini__blog__name'>
                         <span>{blog.name[language]}</span>

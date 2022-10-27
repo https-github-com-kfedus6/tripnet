@@ -10,6 +10,7 @@ import { getPageCount } from '../../utils/page';
 import { Breadcrumbs, Typography } from '@mui/material';
 import { ImArrowRight2 } from 'react-icons/im'
 import { t } from 'i18next';
+import HomeBlog from '../Home/HomeBlog';
 
 export const ListBlog = () => {
     const { listBlog, limit, countBlog, page } = useSelector(state => state.blog);
@@ -42,34 +43,10 @@ export const ListBlog = () => {
                         <Typography color="text.primary">Блог</Typography>
                     </Breadcrumbs>
                 </div>
-                <p className='home__title'>Блог</p>
                 <div className='blog__container'>
+                    <h1>Блог</h1>
                     <div className='list__blog__main'>
-                        {listBlog.map(x =>
-                            <div className='mini__blog__main' key={x.id}>
-                                <div className='mini__blog__img'>
-                                    <img src={process.env.REACT_APP_API_URL + x.image} />
-                                </div>
-                                <div className='mini-block-info'>
-                                    <div>
-                                        <div className="mini__blog__date">
-                                            <span>{x.createdAt.slice(0, 10)}</span>
-                                        </div>
-                                        <div className='mini__blog__name'>
-                                            <span>{x.name[language]}</span>
-                                        </div>
-                                        <div className='mini__blog__description'>
-                                            <span>{x.miniDescription[language]}</span>
-                                        </div>
-                                        <div className='mini-blog-details'>
-                                            <a onClick={() => navigate("/blog/" + x.name[language] + "/" + x.id)}>{t('blog.details')}
-                                                <span><ImArrowRight2 /></span>
-                                            </a>
-                                        </div>
-                                        {is_admin ? <button onClick={(e) => { e.stopPropagation(); DelBlog(x.id); GetBlogAll(setSelectPage, limit) }}>del</button> : <></>}
-                                    </div>
-                                </div>
-                            </div>)}
+                        {listBlog.map(x =><HomeBlog key={x.id} blog={x} />)}
                     </div>
                     {totalCount == undefined ? <></> :
                         <div className='pagination'>

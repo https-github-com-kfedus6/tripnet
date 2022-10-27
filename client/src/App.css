@@ -1569,7 +1569,7 @@ footer{
     }
 }
 .services__main{
-    margin-top: 50px;
+    margin-top: 30px;
 }
 .services__main{
     margin-bottom: 100px;
@@ -2111,3 +2111,38 @@ footer{
         top: 200px;
     }
 } 
+@media screen and (min-width:1024px) {
+    .blog__container{
+        width: 70%;
+        margin: 30px auto;
+    }
+    .mini__blog__main{
+        width: 32%;
+    }
+}
+@media screen and (max-width:1024px) {
+    .blog__container{
+        width: 90%;
+        margin: 100px auto;
+    }
+}
+.list__blog__main{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+.bread__crumbs__main{
+    margin-top: 110px;
+}
+.mini__blog__date span{
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: left;
+}
+.date__widt__margin{
+    margin-left: 5px;
+}
+.mini-blog-details{
+    cursor: pointer;
+}
