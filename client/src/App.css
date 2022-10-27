@@ -2170,3 +2170,28 @@ footer{
 .mini-blog-details{
     cursor: pointer;
 }
+.one__blog__main img{
+    width: 100%;
+}
+.blog__one__main__container{
+    display: flex;
+    flex-direction: row;
+}
+.fixed{
+    position: fixed;       
+}
+@media screen and (min-width:1024px) {
+    .blog__one__container{
+        width: 70%;
+        margin: 0 auto;
+    }
+    .one__blog__main{
+        width: 50%;
+    }
+    .blog__fixes__panel{
+        display: flex;
+        background-color: red;
+        top: 15%;
+        left:60%
+    }
+}

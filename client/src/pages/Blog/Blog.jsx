@@ -30,52 +30,54 @@ const Blog = () => {
     function createMarkup(text) { return { __html: text }; };
     return (
         (selectBlog == undefined || selectBlog == null || selectBlog.id != id) ? <div>loading...</div> :
-            <>
-                <div className='bread__crumbs__main'>
-                    <Breadcrumbs>
-                        <NavLink to="/">
-                            {t("header.first_link")}
-                        </NavLink>
-                        <NavLink to="/blog">
-                            блог
-                        </NavLink>
-                        <Typography color="text.primary">{selectBlog.name[language]}</Typography>
-                    </Breadcrumbs>
-                </div>
-                <br />
-                <div className='blog__main__'>
-                    <div className='blog__main_'>
-                        <img src={process.env.REACT_APP_API_URL + selectBlog.image} />
-                        <h1>{selectBlog.name[language]}</h1>
-                        <div dangerouslySetInnerHTML={createMarkup(selectBlog.description[language])} className="blog__main">
+            <div className='blog__one__main__container'>
+                <div>
+                    <div className='bread__crumbs__main'>
+                        <Breadcrumbs>
+                            <NavLink to="/">
+                                {t("header.first_link")}
+                            </NavLink>
+                            <NavLink to="/blog">
+                                блог
+                            </NavLink>
+                            <Typography color="text.primary">{selectBlog.name[language]}</Typography>
+                        </Breadcrumbs>
+                    </div>
+                    <br />
+                    <div className='blog__one__container'>
+                        <div className='one__blog__main'>
+                            <img src={process.env.REACT_APP_API_URL + selectBlog.image} />
+                            <h1>{selectBlog.name[language]}</h1>
+                            <div dangerouslySetInnerHTML={createMarkup(selectBlog.description[language])} className="blog__main">
 
+                            </div>
+                            <br />
+                            <br />
+                            <br />
+                            <div className='blog__social__networks'>
+                                <FacebookShareButton url={process.env.REACT_APP_THIS_URL + "blog/" + name + "/" + selectBlog.id}>
+                                    <FacebookIcon size={40} />
+                                </FacebookShareButton >
+                                <FacebookMessengerShareButton url={process.env.REACT_APP_THIS_URL + "blog/" + name + "/" + selectBlog.id}>
+                                    <FacebookMessengerIcon size={40} />
+                                </FacebookMessengerShareButton>
+                                <TwitterShareButton url={process.env.REACT_APP_THIS_URL + "blog/" + name + "/" + selectBlog.id}>
+                                    <TwitterIcon size={40} />
+                                </TwitterShareButton>
+                                <TelegramShareButton url={process.env.REACT_APP_THIS_URL + "blog/" + name + "/" + selectBlog.id}>
+                                    <TelegramIcon size={40} />
+                                </TelegramShareButton>
+                                <WhatsappShareButton url={process.env.REACT_APP_THIS_URL + "blog/" + name + "/" + selectBlog.id}>
+                                    <WhatsappIcon size={40} />
+                                </WhatsappShareButton>
+                                <ViberShareButton url={process.env.REACT_APP_THIS_URL + "blog/" + name + "/" + selectBlog.id}>
+                                    <ViberIcon size={40} />
+                                </ViberShareButton>
+                            </div>
+                            <br />
+                            <br />
+                            <br />
                         </div>
-                        <br />
-                        <br />
-                        <br />
-                        <div className='blog__social__networks'>
-                            <FacebookShareButton url={process.env.REACT_APP_THIS_URL + "blog/" + name + "/" + selectBlog.id}>
-                                <FacebookIcon size={40} />
-                            </FacebookShareButton >
-                            <FacebookMessengerShareButton url={process.env.REACT_APP_THIS_URL + "blog/" + name + "/" + selectBlog.id}>
-                                <FacebookMessengerIcon size={40} />
-                            </FacebookMessengerShareButton>
-                            <TwitterShareButton url={process.env.REACT_APP_THIS_URL + "blog/" + name + "/" + selectBlog.id}>
-                                <TwitterIcon size={40} />
-                            </TwitterShareButton>
-                            <TelegramShareButton url={process.env.REACT_APP_THIS_URL + "blog/" + name + "/" + selectBlog.id}>
-                                <TelegramIcon size={40} />
-                            </TelegramShareButton>
-                            <WhatsappShareButton url={process.env.REACT_APP_THIS_URL + "blog/" + name + "/" + selectBlog.id}>
-                                <WhatsappIcon size={40} />
-                            </WhatsappShareButton>
-                            <ViberShareButton url={process.env.REACT_APP_THIS_URL + "blog/" + name + "/" + selectBlog.id}>
-                                <ViberIcon size={40} />
-                            </ViberShareButton>
-                        </div>
-                        <br />
-                        <br />
-                        <br />
                     </div>
                     <div className='blog__container'>
                         {similarBlog == undefined ? <></> :
@@ -84,7 +86,11 @@ const Blog = () => {
                             </div>}
                     </div>
                 </div>
-            </>
+                <div className='blog__fixes__panel fixed'>
+                    fdsfd
+                </div>
+            </div>
+
     )
 }
 

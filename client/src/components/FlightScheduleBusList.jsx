@@ -7,7 +7,7 @@ import { t } from 'i18next'
 
 const FlightScheduleBusList = ({ flight, is_admin, setScheduleTo, setScheduleWith, status, changeStatus, changeSchedule }) => {
     const { language } = useSelector(state => state.language);
-
+    
     return (
         <div className='block-schedule'>
             <div className='schedule-with-to'>
