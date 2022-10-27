@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, NavLink } from 'react-router-dom'
 import { useAction } from '../hooks/useAction';
 import { BsInstagram } from 'react-icons/bs'
 import { GiSmartphone } from 'react-icons/gi'
@@ -48,18 +48,20 @@ const Footer = () => {
                         </div>
                     </div>
                     <div className='footer__list'>
+                        <div className="footer__section">
+                            <p>{t("footer.company")}</p>
+                            <div><NavLink to="/">{t('header.first_link')}</NavLink></div>
+                            <div><NavLink to="/flightsCategory">{t('header.third_link')}</NavLink></div>
+                            <div><NavLink to="/services">{t('header.six_link')}</NavLink></div>
+                            <div><NavLink to='/blog'>{t("header.five_link")}</NavLink></div>
+                            <div><NavLink to="/">{t('header.fourth_link')}</NavLink></div>
+                        </div>
                         <div className="footer__section pair">
                             <p>{t("footer.services")}</p>
-                            <div>{t("footer.reservation_online")}</div>
-                            <div>{t("footer.booking_management")}</div>
-                            <div>{t("footer.luggage_transportation")}</div>
-                            <div>{t("footer.transportation_animals")}</div>
-                        </div>
-                        <div className="footer__section">
-                            <p>{t("footer.support")}</p>
-                            <div>{t("footer.answers_and_questions")}</div>
-                            <div>{t("footer.contacts")}</div>
-                            <div>{t("footer.about_Tripnet")}</div>
+                            <div><NavLink to="/">{t("footer.reservation_online")}</NavLink></div>
+                            <div><NavLink to="/">{t("footer.booking_management")}</NavLink></div>
+                            <div><NavLink to="/">{t("footer.luggage_transportation")}</NavLink></div>
+                            <div><NavLink to="/">{t("footer.transportation_animals")}</NavLink></div>
                         </div>
                         <div className='footer__section pair'>
                             <p>{t("footer.contacts")}</p>
