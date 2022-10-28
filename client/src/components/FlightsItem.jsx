@@ -223,8 +223,59 @@ const FlightsItem = ({ item, sumOld, sumYoung, deleteFlight, limit, page, openMo
                             </button>
                         </div>
                     </div>
-                </div >
+                </div>
             </div>
+            /*  <div className='item-flight'>
+                 <div className='item-blocks'>
+                     <div className='item-position'>
+                         <span>{item.startPosition[language]}</span>
+                         <span>{item.finishPosition[language]}</span>
+                     </div>
+                     <div className='item-street-position'>
+                         <div>
+                             <small>({item.streetStartPosition[language]})</small>
+                         </div>
+                         <div>
+                             <small className='item-street-finish'>({item.streetFinishPosition[language]})</small>
+                         </div>
+                     </div>
+                     <div className='item-time'>
+                         <div className='item-start-time'>
+                             <span>{item.startTime}</span>
+                             <span><TbBus /></span>
+                         </div>
+                         <div className='item-border'></div>
+                         <div className='item-flight-time'><span><BiTimeFive /></span> <span>{item.timeFlight.split("//")[language]}.</span></div>
+                         <div className='item-border'></div>
+                         <div className='item-finish-time'>
+                             <span><GiPositionMarker /></span>
+                             <span>{item.finishTime}</span>
+                         </div>
+                     </div>
+                     <div className='item-date'>
+                         <span>{item.startDate}</span>
+                         <span>{item.finishDate}</span>
+                     </div>
+                 </div>
+                 <div className='btn-buy'>
+                     <div className='btn-flight-info'>
+                         <NavLink to={`/flight/${item.startPosition[language]}-${item.finishPosition[language]}/${item.id}`}>{t('flight.info_flight')}!</NavLink>
+                     </div>
+                     <div className='free-place'>
+                         <span><FaUser /> {item.countFreePlace} {t('flight.free_place')}</span>
+                     </div>
+                     <div className='btn-buy-modal'>
+                         <div className='price-block'>
+                             <span>{sum} UAH</span>
+                         </div>
+                         <div>
+                             <button onClick={() => openModal(item.id)}>
+                                 {t('modalbuy.btn-buy')}
+                             </button>
+                         </div>
+                     </div>
+                 </div >
+             </div> */
         )
     }
 }

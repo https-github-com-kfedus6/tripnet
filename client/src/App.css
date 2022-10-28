@@ -1025,22 +1025,7 @@ main {
     width: 100%;
     background-color: rgb(241, 237, 237);
 }
-@media screen and (min-width:1024px) {
-    .bread__crumbs__main{
-        display: flex;
-        margin: auto;
-        margin-top: 30px;
-        width: 70%;
-    }   
-}
-@media screen and (max-width:1024px) {
-    .bread__crumbs__main{
-        display: flex;
-        margin: auto;
-        margin-top: 30px;
-        width: 90%;
-    }   
-}
+
 @media screen and (min-width: 500px) {
     .authorize__logo{
         width: 50%;
@@ -1409,7 +1394,7 @@ main {
     display: flex;
     background: #0e1419 url('../public//baner/bus-baner3.png') no-repeat center;
     background-size: cover;
-    height: 600px;
+    height: 650px;
 }
 
 .header__main{
@@ -2074,6 +2059,7 @@ footer{
     color: #13356A;
     margin-bottom: 50px;
 }
+
 @media screen and (max-width: 1024px) {
     .header__components{
         display: none;
@@ -2112,6 +2098,7 @@ footer{
         margin: auto;
         justify-content: space-between;
     }
+
 } 
 
 @media screen and (max-width:768px) {
@@ -2156,9 +2143,7 @@ footer{
     flex-wrap: wrap;
     justify-content: space-between;
 }
-.bread__crumbs__main{
-    margin-top: 110px;
-}
+
 .mini__blog__date span{
     display: flex;
     flex-direction: row-reverse;
@@ -2178,7 +2163,7 @@ footer{
     flex-direction: row;
 }
 .fixed{
-    position: fixed;       
+    position: fixed;
 }
 @media screen and (min-width:1024px) {
     .blog__one__container{

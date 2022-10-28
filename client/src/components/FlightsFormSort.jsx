@@ -11,8 +11,10 @@ import 'air-datepicker/air-datepicker.css';
 const FlightsFormSort = ({ startDate, startPosition, finishPosition, setStartDate, setStartPosition, setFinishPosition, sortFlights, sumOld, setSumOld, sumYoung, setSumYoung, setChangePosition, changePosition, changePositionFun }) => {
     const { t } = useTranslation()
 
-    const [isOpen, setIsOpen] = useState(false)
     const [dropdownCheck, setDropdowbCheck] = useState(false)
+
+    const [isOpen, setIsOpen] = useState(false)
+    const [isOpenFinish, setIsOpenFinish] = useState(false)
 
     const { SearchCity } = useAction()
 
@@ -56,7 +58,22 @@ const FlightsFormSort = ({ startDate, startPosition, finishPosition, setStartDat
         setIsOpen(!isOpen)
     }
 
+    const liFinishClickHandler = (e) => {
+        setFinishPosition(e.target.textContent)
+        setIsOpenFinish(!isOpenFinish)
+    }
+
     new AirDatepicker('#date', localStorage.getItem('i18nextLng') === 'UA' ?
+        {
+            locale: ua,
+        }
+        :
+        {
+            locale: ru
+        }
+    )
+
+    new AirDatepicker('#date-second', localStorage.getItem('i18nextLng') === 'UA' ?
         {
             locale: ua
         }
@@ -79,116 +96,134 @@ const FlightsFormSort = ({ startDate, startPosition, finishPosition, setStartDat
                 </div>
             </div>
             <div className='form-inputs-button-group'>
-                <div className='form-input-text'>
-                    <input id='form-text' className='position-text'
-                        type="text"
-                        placeholder=' '
-                        autocomplete="off"
-                        value={startPosition}
-                        onChange={(e) => { setStartPosition(e.target.value) }}
-                        onClick={() => setIsOpen(true)}
-                    />
-                    <label className='label-text' for='form-text'>{t('flight.whence')}</label>
-                    {
-                        startPosition && isOpen
-                            ?
-                            <ul className='autocomplete'>
-                                {searchStartPostion.map((city) => {
-                                    return (
-                                        <li key={city.title} onClick={liStartClickHandler}>{city.title}</li>
-                                    )
-                                })}
-                            </ul>
-                            :
-                            null
-                    }
+                <div className='form-sort-input-group'>
+                    <div className='form-input-text'>
+                        <input id='form-text' className='position-text'
+                            type="text"
+                            placeholder=' '
+                            autocomplete="off"
+                            value={startPosition}
+                            onChange={(e) => { setStartPosition(e.target.value) }}
+                            onClick={() => setIsOpen(true)}
+                        />
+                        <label className='label-text' for='form-text'>{t('flight.whence')}</label>
+                        {
+                            startPosition && isOpen
+                                ?
+                                <ul className='autocomplete'>
+                                    {searchStartPostion.map((city) => {
+                                        return (
+                                            <li key={city.title} onClick={liStartClickHandler}>{city.title}</li>
+                                        )
+                                    })}
+                                </ul>
+                                :
+                                null
+                        }
+                        <div className='form-swap form-swap-none'>
+                            <img src={process.env.REACT_APP_API_URL + 'swap.png'} alt="swap" />
+                        </div>
+                    </div>
+                    <div className='form-swap form-swap-second-none'>
+                        <img src={process.env.REACT_APP_API_URL + 'swap.png'} alt="swap" />
+                    </div>
+                    <div className='form-input-text'>
+                        <input id='form-text-second' className='position-text'
+                            type="text"
+                            placeholder=' '
+                            autocomplete="off"
+                            value={finishPosition}
+                            onChange={(e) => { setFinishPosition(e.target.value) }}
+                            onClick={() => setIsOpenFinish(true)}
+                        />
+                        <label className='label-text' for="form-text-second">{t('flight.whitherto')}</label>
+                        {
+                            finishPosition && isOpenFinish
+                                ?
+                                <ul className='autocomplete'>
+                                    {searchFinishPosition.map((city) => {
+                                        return (
+                                            <li key={city.title} onClick={liFinishClickHandler}>{city.title}</li>
+                                        )
+                                    })}
+                                </ul>
+                                :
+                                null
+                        }
+                    </div>
                 </div>
-                <div className='form-swap'>
-                    <img src={process.env.REACT_APP_API_URL + 'swap.png'} alt="swap" />
-                </div>
-                <div className='form-input-text'>
-                    <input id='form-text-second' className='position-text'
-                        type="text"
-                        placeholder=' '
-                        autocomplete="off"
-                        value={finishPosition}
-                        onChange={(e) => { setFinishPosition(e.target.value) }}
-                    />
-                    <label className='label-text' for="form-text-second">{t('flight.whitherto')}</label>
-                    {
-                        finishPosition
-                            ?
-                            <ul className='autocomplete'>
-                                {searchFinishPosition.map((city) => {
-                                    return (
-                                        <li key={city.title} onClick={(e) => setFinishPosition(e.target.textContent)}>{city.title}</li>
-                                    )
-                                })}
-                            </ul>
-                            :
-                            null
-                    }
-                </div>
-                <div className='form-input-date'>
-                    <input id='date' type='text'
-                        className='form-input-text-date'
-                        placeholder=' '
-                        autocomplete="off"
-                    />
-                    <label className='form-label-date' for='date'>Туди</label>
-                    <label className='form-button-date'>
-                        <img src={process.env.REACT_APP_API_URL + 'vector.png'} alt="date" />
-                    </label>
-                </div>
-                <div>
-                    <input type="date" />
-                </div>
-                <div className='dropdown-passengers'>
-                    <div className='dropdown-select-passegers' onClick={() => dropdownCheck ? setDropdowbCheck(false) : setDropdowbCheck(true)}>
-                        <input className='dropdown-passegers-input' type="text" id='passegers' placeholder=' ' value={dropdownCheck ? `${sumOld} ${t('flight.pass_old')}, ${sumYoung} дитина` : ''} disabled />
-                        <label className='dropdown-passegers-text' for="passegers">{t('flight.passegers')}</label>
-                        <label className='dropdown-icon-user'>
-                            <img src={process.env.REACT_APP_API_URL + 'users.png'} alt="passegers" />
+                <div className='form-sort-input-group'>
+                    <div className='form-input-date'>
+                        <input id='date' type='text'
+                            className='form-input-text-date'
+                            placeholder=' '
+                            autocomplete="off"
+                        />
+                        <label className='form-label-date' for='date'>Туди</label>
+                        <label className='form-button-date'>
+                            <img src={process.env.REACT_APP_API_URL + 'vector.png'} alt="date" />
                         </label>
                     </div>
-                    <div className={dropdownCheck ? 'dropdown-list-passegers' : 'dropdown-none'}>
-                        <div className='dropdown-list-item-passegers'>
-                            <div className='dropdown-list-item-passegers-text'>
-                                <span>{t('flight.older_15_years')}</span>
-                            </div>
-                            <div className='dropdown-list-item-passegers-count'>
-                                <div className='dropdown-list-item-passegers-minus-and-plus'>
-                                    <img src={process.env.REACT_APP_API_URL + 'minuss.png'} alt="minus" onClick={() => countOldResult()} />
-                                </div>
-                                <div value={sumOld}>{sumOld}</div>
-                                <div className='dropdown-list-item-passegers-minus-and-plus'>
-                                    <img src={process.env.REACT_APP_API_URL + 'plus.png'} alt="plus" onClick={() => setSumOld(sumOld + 1)} />
-                                </div>
-                            </div>
+                    <div className='form-input-date'>
+                        <input id='date-second' type='text'
+                            className='form-input-text-date'
+                            placeholder=' '
+                            autocomplete="off"
+                        />
+                        <label className='form-label-date' for='date-second'>Назад</label>
+                        <label className='form-button-date'>
+                            <img src={process.env.REACT_APP_API_URL + 'vector.png'} alt="date" />
+                        </label>
+                    </div>
+                </div>
+                <div className='form-sort-input-group'>
+                    <div className='dropdown-passengers'>
+                        <div className='dropdown-select-passegers' onClick={() => dropdownCheck ? setDropdowbCheck(false) : setDropdowbCheck(true)}>
+                            <input className='dropdown-passegers-input' type="text" id='passegers' placeholder=' ' value={dropdownCheck ? `${sumOld} ${t('flight.pass_old')}, ${sumYoung} дитина` : ''} disabled />
+                            <label className='dropdown-passegers-text' for="passegers">{t('flight.passegers')}</label>
+                            <label className='dropdown-icon-user'>
+                                <img src={process.env.REACT_APP_API_URL + 'users.png'} alt="passegers" />
+                            </label>
                         </div>
-                        <div className='dropdown-list-item-passegers'>
-                            <div className='dropdown-list-item-passegers-text'>
-                                <span>{t('flight.younger_14_years')}</span>
-                            </div>
-                            <div className='dropdown-list-item-passegers-count'>
-                                <div className='dropdown-list-item-passegers-minus-and-plus'>
-                                    {sumYoung >= 1
-                                        ?
-                                        <img src={process.env.REACT_APP_API_URL + 'minuss.png'} alt="minus" onClick={() => countYoungResult()} />
-                                        :
-                                        <img src={process.env.REACT_APP_API_URL + 'minus.png'} alt="minus" onClick={() => countYoungResult()} />
-                                    }
+                        <div className={dropdownCheck ? 'dropdown-list-passegers' : 'dropdown-none'}>
+                            <div className='dropdown-list-item-passegers'>
+                                <div className='dropdown-list-item-passegers-text'>
+                                    <span>{t('flight.older_15_years')}</span>
                                 </div>
-                                <div value={sumYoung}>{sumYoung}</div>
-                                <div className='dropdown-list-item-passegers-minus-and-plus'>
-                                    <img src={process.env.REACT_APP_API_URL + 'plus.png'} alt="plus" onClick={() => setSumYoung(sumYoung + 1)} />
+                                <div className='dropdown-list-item-passegers-count'>
+                                    <div className='dropdown-list-item-passegers-minus-and-plus'>
+                                        <img src={process.env.REACT_APP_API_URL + 'minuss.png'} alt="minus" onClick={() => countOldResult()} />
+                                    </div>
+                                    <div value={sumOld}>{sumOld}</div>
+                                    <div className='dropdown-list-item-passegers-minus-and-plus'>
+                                        <img src={process.env.REACT_APP_API_URL + 'plus.png'} alt="plus" onClick={() => setSumOld(sumOld + 1)} />
+                                    </div>
+                                </div>
+                            </div>
+                            <div className='dropdown-list-item-passegers'>
+                                <div className='dropdown-list-item-passegers-text'>
+                                    <span>{t('flight.younger_14_years')}</span>
+                                </div>
+                                <div className='dropdown-list-item-passegers-count'>
+                                    <div className='dropdown-list-item-passegers-minus-and-plus'>
+                                        {sumYoung >= 1
+                                            ?
+                                            <img src={process.env.REACT_APP_API_URL + 'minuss.png'} alt="minus" onClick={() => countYoungResult()} />
+                                            :
+                                            <img src={process.env.REACT_APP_API_URL + 'minus.png'} alt="minus" onClick={() => countYoungResult()} />
+                                        }
+                                    </div>
+                                    <div value={sumYoung}>{sumYoung}</div>
+                                    <div className='dropdown-list-item-passegers-minus-and-plus'>
+                                        <img src={process.env.REACT_APP_API_URL + 'plus.png'} alt="plus" onClick={() => setSumYoung(sumYoung + 1)} />
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div className='form-button-search'>
-                    <button onClick={sortFlights}>Пошук</button>
+                    <div className='form-button-search'>
+                        <button onClick={sortFlights}>{t('flight.search')}</button>
+                    </div>
                 </div>
             </div>
         </div >

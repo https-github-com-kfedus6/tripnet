@@ -13,33 +13,42 @@ const FlightsList = ({ finishPosition, startPosition, startDate, flights, setSta
         )
     } else {
         return (
-            <div className='flights-container'>
-                {isFilterTrue ? <FlightsFormSort
-                    setStartDate={setStartDate}
-                    setStartPosition={setStartPosition}
-                    setFinishPosition={setFinishPosition}
-                    sortFlights={sortFlights}
-                    sumOld={sumOld}
-                    setSumOld={setSumOld}
-                    sumYoung={sumYoung}
-                    setSumYoung={setSumYoung}
-                    deleteFlight={deleteFlight}
-                    limit={limit}
-                    page={page}
-                    startPosition={startPosition}
-                    finishPosition={finishPosition}
-                    startDate={startDate}
-                    changePosition={changePosition}
-                    setChangePosition={setChangePosition}
-                    changePositionFun={changePositionFun}
-                /> : <></>}
-                <div className='bread__crumbs__main'>
-                    <Breadcrumbs>
-                        <NavLink to="/">
-                            {t("header.first_link")}
-                        </NavLink>
-                        <Typography color="text.primary">{t("header.third_link")}</Typography>
-                    </Breadcrumbs>
+            <>
+                <div className='flights-container'>
+                    <div className='fligths-form'>
+                        <div className='bredcrumbs'>
+                            <div>
+                                <NavLink to="/">{t("header.first_link")}</NavLink>
+                            </div>
+                            <div>
+                                <img src={process.env.REACT_APP_API_URL + 'chevron-right.png'} alt="right" />
+                            </div>
+                            <div>
+                                <span>
+                                    {t('flight.search')}
+                                </span>
+                            </div>
+                        </div>
+                        {isFilterTrue ? <FlightsFormSort
+                            setStartDate={setStartDate}
+                            setStartPosition={setStartPosition}
+                            setFinishPosition={setFinishPosition}
+                            sortFlights={sortFlights}
+                            sumOld={sumOld}
+                            setSumOld={setSumOld}
+                            sumYoung={sumYoung}
+                            setSumYoung={setSumYoung}
+                            deleteFlight={deleteFlight}
+                            limit={limit}
+                            page={page}
+                            startPosition={startPosition}
+                            finishPosition={finishPosition}
+                            startDate={startDate}
+                            changePosition={changePosition}
+                            setChangePosition={setChangePosition}
+                            changePositionFun={changePositionFun}
+                        /> : <></>}
+                    </div>
                 </div>
                 <div className='flights-block'>
                     {flights.rows.length ?
@@ -66,10 +75,9 @@ const FlightsList = ({ finishPosition, startPosition, startDate, flights, setSta
                         </div>
                     }
                 </div>
-            </div>
+            </>
         )
     }
-
 }
 
 export default FlightsList;

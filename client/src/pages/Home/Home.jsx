@@ -39,22 +39,24 @@ const Home = () => {
                 </div>
             </div>
             <div />
-            <div className='form-flights-container'>
-                <FlightsFormSort
-                    setStartDate={setStartDate}
-                    setStartPosition={setStartPosition}
-                    setFinishPosition={setFinishPosition}
-                    sortFlights={search}
-                    sumOld={sumOld}
-                    setSumOld={setSumOld}
-                    sumYoung={sumYoung}
-                    setSumYoung={setSumYoung}
-                    deleteFlight={() => { }}
-                    startDate={startDate}
-                    startPosition={startPosition}
-                    finishPosition={finishPosition}
-                    changePosition={changePosition}
-                    setChangePosition={setChangePosition} />
+            <div className='form-fligths-home'>
+                <div className='form-flights-container'>
+                    <FlightsFormSort
+                        setStartDate={setStartDate}
+                        setStartPosition={setStartPosition}
+                        setFinishPosition={setFinishPosition}
+                        sortFlights={search}
+                        sumOld={sumOld}
+                        setSumOld={setSumOld}
+                        sumYoung={sumYoung}
+                        setSumYoung={setSumYoung}
+                        deleteFlight={() => { }}
+                        startDate={startDate}
+                        startPosition={startPosition}
+                        finishPosition={finishPosition}
+                        changePosition={changePosition}
+                        setChangePosition={setChangePosition} />
+                </div>
             </div>
             <ReserveFlightHome />
             <ServicesHome />
