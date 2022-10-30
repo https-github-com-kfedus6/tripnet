@@ -176,106 +176,112 @@ const FlightsItem = ({ item, sumOld, sumYoung, deleteFlight, limit, page, openMo
         return (
             <div className='item-flight'>
                 <div className='item-blocks'>
-                    <div className='item-position'>
-                        <span>{item.startPosition[language]}</span>
-                        <span>{item.finishPosition[language]}</span>
-                    </div>
-                    <div className='item-street-position'>
-                        <div>
-                            <small>({item.streetStartPosition[language]})</small>
+                    <div className='item-info-group'>
+                        <div className='item-block-position'>
+                            <div className='item-position'>
+                                <div className='item-street-start-finish'>
+                                    <div>
+                                        <img src={process.env.REACT_APP_API_URL + "UA.png"} alt="flag" />
+                                        <span>{item.startPosition[language]}</span>
+                                    </div>
+                                    <span>{item.streetStartPosition[language]}</span>
+                                </div>
+                                <div className='item-time-date'>
+                                    <span>{item.startTime}</span>
+                                    <span>{item.startDate}</span>
+                                </div>
+                            </div>
+                            <div className='item-position'>
+                                <div className='item-street-start-finish'>
+                                    <div>
+                                        <img src={process.env.REACT_APP_API_URL + "UA.png"} alt="flag" />
+                                        <span>{item.finishPosition[language]}</span>
+                                    </div>
+                                    <span>{item.streetFinishPosition[language]}</span>
+                                </div>
+                                <div className='item-time-date'>
+                                    <span>{item.finishTime}</span>
+                                    <span>{item.finishDate}</span>
+                                </div>
+                            </div>
+                            <div className='item-block-btn-price'>
+                                <span>{sum} грн</span>
+                                <button onClick={() => openModal(item.id)}>
+                                    {t('modalbuy.btn-buy')}
+                                </button>
+                            </div>
                         </div>
-                        <div>
-                            <small className='item-street-finish'>({item.streetFinishPosition[language]})</small>
-                        </div>
                     </div>
-                    <div className='item-time'>
-                        <div className='item-start-time'>
-                            <span>{item.startTime}</span>
-                            <span><TbBus /></span>
-                        </div>
-                        <div className='item-border'></div>
-                        <div className='item-flight-time'><span><BiTimeFive /></span> <span>{item.timeFlight.split("//")[language]}.</span></div>
-                        <div className='item-border'></div>
-                        <div className='item-finish-time'>
-                            <span><GiPositionMarker /></span>
-                            <span>{item.finishTime}</span>
-                        </div>
-                    </div>
-                    <div className='item-date'>
-                        <span>{item.startDate}</span>
-                        <span>{item.finishDate}</span>
-                    </div>
-                </div>
-                <div className='btn-buy'>
-                    <div className='btn-flight-info'>
-                        <NavLink to={`/flight/${item.startPosition[language]}-${item.finishPosition[language]}/${item.id}`}>{t('flight.info_flight')}!</NavLink>
-                    </div>
-                    <div className='free-place'>
-                        <span><FaUser /> {item.countFreePlace} {t('flight.free_place')}</span>
-                    </div>
-                    <div className='btn-buy-modal'>
-                        <div className='price-block'>
-                            <span>{sum} UAH</span>
-                        </div>
-                        <div>
-                            <button onClick={() => openModal(item.id)}>
-                                {t('modalbuy.btn-buy')}
-                            </button>
+                    <div className='item-block-info'>
+                        <div className='item-block-info-flight'>
+                            <div className='item-block-reverse-free-place'>
+                                <div>
+                                    <img src={process.env.REACT_APP_API_URL + "reverse.png"} alt="reverse" />
+                                    <span>{t("flight.reverse_flight")}</span>
+                                </div>
+                                <div>
+                                    <img src={process.env.REACT_APP_API_URL + "users-silver.png"} alt="users" />
+                                    <span>{item.countFreePlace} {t('flight.free_place')}</span>
+                                </div>
+                            </div>
+                            <div className='item-btn-info-flight'>
+                                <NavLink to={`/flight/${item.startPosition[language]}-${item.finishPosition[language]}/${item.id}`}>{t('flight.info_flight')}</NavLink>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
             /*  <div className='item-flight'>
-                 <div className='item-blocks'>
-                     <div className='item-position'>
-                         <span>{item.startPosition[language]}</span>
-                         <span>{item.finishPosition[language]}</span>
-                     </div>
-                     <div className='item-street-position'>
-                         <div>
-                             <small>({item.streetStartPosition[language]})</small>
-                         </div>
-                         <div>
-                             <small className='item-street-finish'>({item.streetFinishPosition[language]})</small>
-                         </div>
-                     </div>
-                     <div className='item-time'>
-                         <div className='item-start-time'>
-                             <span>{item.startTime}</span>
-                             <span><TbBus /></span>
-                         </div>
-                         <div className='item-border'></div>
-                         <div className='item-flight-time'><span><BiTimeFive /></span> <span>{item.timeFlight.split("//")[language]}.</span></div>
-                         <div className='item-border'></div>
-                         <div className='item-finish-time'>
-                             <span><GiPositionMarker /></span>
-                             <span>{item.finishTime}</span>
-                         </div>
-                     </div>
-                     <div className='item-date'>
-                         <span>{item.startDate}</span>
-                         <span>{item.finishDate}</span>
-                     </div>
-                 </div>
-                 <div className='btn-buy'>
-                     <div className='btn-flight-info'>
-                         <NavLink to={`/flight/${item.startPosition[language]}-${item.finishPosition[language]}/${item.id}`}>{t('flight.info_flight')}!</NavLink>
-                     </div>
-                     <div className='free-place'>
-                         <span><FaUser /> {item.countFreePlace} {t('flight.free_place')}</span>
-                     </div>
-                     <div className='btn-buy-modal'>
-                         <div className='price-block'>
-                             <span>{sum} UAH</span>
-                         </div>
-                         <div>
-                             <button onClick={() => openModal(item.id)}>
-                                 {t('modalbuy.btn-buy')}
-                             </button>
-                         </div>
-                     </div>
-                 </div >
-             </div> */
+                        <div className='item-blocks'>
+                            <div className='item-position'>
+                                <span>{item.startPosition[language]}</span>
+                                <span>{item.finishPosition[language]}</span>
+                            </div>
+                            <div className='item-street-position'>
+                                <div>
+                                    <small>({item.streetStartPosition[language]})</small>
+                                </div>
+                                <div>
+                                    <small className='item-street-finish'>({item.streetFinishPosition[language]})</small>
+                                </div>
+                            </div>
+                            <div className='item-time'>
+                                <div className='item-start-time'>
+                                    <span>{item.startTime}</span>
+                                    <span><TbBus /></span>
+                                </div>
+                                <div className='item-border'></div>
+                                <div className='item-flight-time'><span><BiTimeFive /></span> <span>{item.timeFlight.split("//")[language]}.</span></div>
+                                <div className='item-border'></div>
+                                <div className='item-finish-time'>
+                                    <span><GiPositionMarker /></span>
+                                    <span>{item.finishTime}</span>
+                                </div>
+                            </div>
+                            <div className='item-date'>
+                                <span>{item.startDate}</span>
+                                <span>{item.finishDate}</span>
+                            </div>
+                        </div>
+                        <div className='btn-buy'>
+                            <div className='btn-flight-info'>
+                                <NavLink to={`/flight/${item.startPosition[language]}-${item.finishPosition[language]}/${item.id}`}>{t('flight.info_flight')}!</NavLink>
+                            </div>
+                            <div className='free-place'>
+                                <span><FaUser /> {item.countFreePlace} {t('flight.free_place')}</span>
+                            </div>
+                            <div className='btn-buy-modal'>
+                                <div className='price-block'>
+                                    <span>{sum} UAH</span>
+                                </div>
+                                <div>
+                                    <button onClick={() => openModal(item.id)}>
+                                        {t('modalbuy.btn-buy')}
+                                    </button>
+                                </div>
+                            </div>
+                        </div >
+                    </div> */
         )
     }
 }
