@@ -101,12 +101,12 @@ const FlightsFormSort = ({ startDate, startPosition, finishPosition, setStartDat
                         <input id='form-text' className='position-text'
                             type="text"
                             placeholder=' '
-                            autocomplete="off"
+                            autoComplete="off"
                             value={startPosition}
                             onChange={(e) => { setStartPosition(e.target.value) }}
                             onClick={() => setIsOpen(true)}
                         />
-                        <label className='label-text' for='form-text'>{t('flight.whence')}</label>
+                        <label className='label-text' htmlFor='form-text'>{t('flight.whence')}</label>
                         {
                             startPosition && isOpen
                                 ?
@@ -131,12 +131,12 @@ const FlightsFormSort = ({ startDate, startPosition, finishPosition, setStartDat
                         <input id='form-text-second' className='position-text'
                             type="text"
                             placeholder=' '
-                            autocomplete="off"
+                            autoComplete="off"
                             value={finishPosition}
                             onChange={(e) => { setFinishPosition(e.target.value) }}
                             onClick={() => setIsOpenFinish(true)}
                         />
-                        <label className='label-text' for="form-text-second">{t('flight.whitherto')}</label>
+                        <label className='label-text' htmlFor="form-text-second">{t('flight.whitherto')}</label>
                         {
                             finishPosition && isOpenFinish
                                 ?
@@ -157,9 +157,9 @@ const FlightsFormSort = ({ startDate, startPosition, finishPosition, setStartDat
                         <input id='date' type='text'
                             className='form-input-text-date'
                             placeholder=' '
-                            autocomplete="off"
+                            autoComplete="off"
                         />
-                        <label className='form-label-date' for='date'>Туди</label>
+                        <label className='form-label-date' htmlFor='date'>Туди</label>
                         <label className='form-button-date'>
                             <img src={process.env.REACT_APP_API_URL + 'vector.png'} alt="date" />
                         </label>
@@ -168,9 +168,9 @@ const FlightsFormSort = ({ startDate, startPosition, finishPosition, setStartDat
                         <input id='date-second' type='text'
                             className='form-input-text-date'
                             placeholder=' '
-                            autocomplete="off"
+                            autoComplete="off"
                         />
-                        <label className='form-label-date' for='date-second'>Назад</label>
+                        <label className='form-label-date' htmlFor='date-second'>Назад</label>
                         <label className='form-button-date'>
                             <img src={process.env.REACT_APP_API_URL + 'vector.png'} alt="date" />
                         </label>
@@ -180,7 +180,7 @@ const FlightsFormSort = ({ startDate, startPosition, finishPosition, setStartDat
                     <div className='dropdown-passengers'>
                         <div className='dropdown-select-passegers' onClick={() => dropdownCheck ? setDropdowbCheck(false) : setDropdowbCheck(true)}>
                             <input className='dropdown-passegers-input' type="text" id='passegers' placeholder=' ' value={dropdownCheck ? `${sumOld} ${t('flight.pass_old')}, ${sumYoung} дитина` : ''} disabled />
-                            <label className='dropdown-passegers-text' for="passegers">{t('flight.passegers')}</label>
+                            <label className='dropdown-passegers-text' htmlFor="passegers">{t('flight.passegers')}</label>
                             <label className='dropdown-icon-user'>
                                 <img src={process.env.REACT_APP_API_URL + 'users.png'} alt="passegers" />
                             </label>

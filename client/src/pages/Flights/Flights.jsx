@@ -4,11 +4,9 @@ import { useAction } from '../../hooks/useAction';
 import FlightsList from '../../components/FlightsList';
 import { getPageCount, getPagesArray } from '../../utils/page';
 import ModalFormBuy from '../../components/UI/modalFormBuy/ModalFormBuy';
-import './flights.css';
-import Stack from '@mui/material/Stack';
-import Pagination from '@mui/material/Pagination';
 import { t } from 'i18next';
-import Header from '../../components/Header';
+
+import './flights.css';
 
 const Flights = ({ isShowFilter }) => {
     const [visibleBuy, setVisiblyBuy] = useState(false)
@@ -154,6 +152,8 @@ const Flights = ({ isShowFilter }) => {
                     deleteFlight={deleteFlight}
                     limit={limit}
                     page={page}
+                    totalCount={totalCount}
+                    handleChange={handleChange}
                     isFilterTrue={isShowFilter}
                     openModal={openModal}
                     startPosition={startPosition}
@@ -163,15 +163,6 @@ const Flights = ({ isShowFilter }) => {
                     setChangePosition={setChangePosition}
                     changePositionFun={changePositionFun}
                 />
-                {totalCount == undefined ? <></> : flights.rows.length ?
-                    <div className='pagination'>
-                        <Stack spacing={1}>
-                            <Pagination count={totalCount} page={page} onChange={handleChange} />
-                        </Stack>
-                    </div>
-                    :
-                    <></>
-                }
                 <ModalFormBuy
                     visibleBuy={visibleBuy}
                     setVisiblyBuy={setVisiblyBuy}

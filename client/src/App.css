@@ -891,15 +891,12 @@ main {
     flex-direction: column;
 }
 
-
 .pagination{
     display: flex;
     justify-content: center;
-    margin-top: 15px;
-    margin-bottom: 10px;
-    padding: 15px;
+    align-items: center;
+    padding-bottom: 60px;
 }
-
 
 @media screen and (min-width: 1024px) {
     .admin__panel__main{

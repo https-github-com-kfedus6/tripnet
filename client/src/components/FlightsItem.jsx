@@ -210,6 +210,9 @@ const FlightsItem = ({ item, sumOld, sumYoung, deleteFlight, limit, page, openMo
                                     {t('modalbuy.btn-buy')}
                                 </button>
                             </div>
+                            <div className='item-btn-info-flight item-btn-info-flight-none'>
+                                <NavLink to={`/flight/${item.startPosition[language]}-${item.finishPosition[language]}/${item.id}`}>{t('flight.info_flight')}</NavLink>
+                            </div>
                         </div>
                     </div>
                     <div className='item-block-info'>
@@ -224,7 +227,7 @@ const FlightsItem = ({ item, sumOld, sumYoung, deleteFlight, limit, page, openMo
                                     <span>{item.countFreePlace} {t('flight.free_place')}</span>
                                 </div>
                             </div>
-                            <div className='item-btn-info-flight'>
+                            <div className='item-btn-info-flight item-btn-info-flight-none-second'>
                                 <NavLink to={`/flight/${item.startPosition[language]}-${item.finishPosition[language]}/${item.id}`}>{t('flight.info_flight')}</NavLink>
                             </div>
                         </div>

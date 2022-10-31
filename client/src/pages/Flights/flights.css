@@ -488,7 +488,7 @@
     background: #F4F5F7;
 }
 
-.items-flight {
+.items-flights {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -568,6 +568,7 @@
 }
 
 .item-street-start-finish {
+    word-wrap: break-word;
     font-family: 'Inter';
     font-style: normal;
     font-weight: 400;
@@ -675,12 +676,11 @@
     align-items: center;
     padding: 8px 16px;
     gap: 8px;
-    width: 42%;
+    width: auto;
     height: 20px;
     background: #E1F6EA;
     border-radius: 100px;
 }
-
 
 .item-block-reverse-free-place div:nth-child(1) img {
     width: 16px;
@@ -708,7 +708,6 @@
 .item-block-reverse-free-place div:nth-child(2) img {
     width: 16px;
     height: 16px;
-    
 }
 
 .item-block-reverse-free-place div:nth-child(2) span {
@@ -744,7 +743,9 @@
     transition: all ease 0.4s;
 }
 
-
+.item-btn-info-flight-none {
+    display: none;
+}
 
 .change-flight {
     display: flex;
@@ -866,6 +867,61 @@
         gap: 8px;
         width: 100%;
     }
+
+    .item-flight {
+        width: 90%;
+    }
+}
+
+@media (max-width:768px) {
+    .item-btn-info-flight-none-second {
+        display: none;
+    }
+
+    .item-btn-info-flight-none {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        padding: 0px;
+        gap: 4px;
+        border-radius: 10px;
+        margin-top: -25px;
+    }
+
+    .item-block-position {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 40px;
+    }
+
+    .item-block-btn-price {
+        align-items: flex-start;
+    }
+
+    .item-info-group {
+        padding: 0px 30px 25px;
+    }
+
+    .item-block-info-flight {
+        padding: 0px 25px;
+    }
+
+    .item-block-reverse-free-place {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .item-block-reverse-free-place div:nth-child(1) {
+        width: auto;
+    }
+
+    .item-block-reverse-free-place div:nth-child(2) {
+        justify-content: flex-end;
+    }
 }
 
 @media (max-width:480px) {
@@ -915,220 +971,33 @@
     .form-swap-second-none {
         display: none;
     }
-}
 
-/* 
-@media (max-width: 992px) {
-    .items-flight {
-        width: 99%;
-    }
-
-    .page-more {    
-        width: 70%;
-    }
-
-    .flights-sort-form {
-        width: 99%;
-    }
-
-    .form-flights {
-        flex-direction: column;
-    }
-
-    .form-position {
-        width: 50%;
-    }
-
-    .form-date,
-    .form-people,
-    .form-search {
-        width: 100%;
-    }
-
-    .dropdown-list {
-        position: absolute;
-        top: 110%;
-        left: 0;
-    }
-
-    .form-block-ticket,
-    .form-block-contact,
-    .form-block-bank {
-        width: 90%;
-    }
-
-    .form-btn-back div {
-        width: 92%;
-    }
-}
-@media (max-width: 768px) {
-    .items-flight {
-        width: 99%;
-    }
-
-    .page-more {
-        width: 80%;
-    }
-
-    .form-flights {
-        flex-direction: column;
-    }
-
-    .dropdown-list {
-        position: absolute;
-        top: 110%;
-        left: 0;
-    }
-
-    .btn-buy {
+    .item-block-reverse-free-place {
         display: flex;
+        flex-direction: column;
         justify-content: center;
-        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .item-block-reverse-free-place div:nth-child(1) {
+        display: flex;
+        flex-direction: row;
         align-items: center;
+        padding: 8px 16px;
+        gap: 8px;
+        width: auto;
     }
 
-    .btn-buy div {
-        margin-top: 5px;
-    }
-
-    .item-flight {
-        height: auto;
-    }
-
-    .btn-buy div:nth-child(3) button {
-        width: 200px;
-    }
-
-    .btn-buy div:nth-child(3) button div {
-        margin-bottom: 5px;
-    }
-
-    .from-block-input-number-email {
+    .item-block-reverse-free-place div:nth-child(2) {
         display: flex;
-        flex-direction: column;
+        flex-direction: row;
+        align-items: center;
+        justify-content: flex-start;
+        padding: 4px 0px;
+        gap: 8px;
     }
 
-    .from-block-input-number-email div {
+    .item-block-btn-price button {
         width: 100%;
-        margin-top: 10px;
-    }
-
-    .input-month-year-cvc div:nth-child(1),
-    .input-month-year-cvc div:nth-child(2) {
-        width: 50%;
-    }
-
-    .input-card {
-        width: 100%;
-    }
-
-    .input-persone-card {
-        width: 100%;
-    }
-
-    .buy-ticket button {
-        width: 50%;
-    }
-
-    .item-start-time span:nth-child(2) {
-        display: none;
-    }
-
-    .item-finish-time span:nth-child(1) {
-        display: none;
-    }
-
-    .item-border {
-        display: none;
-    }
-
-    .flight-not-found p {
-        font-size: 23px;
     }
 }
-
-@media (max-width: 576px) {
-    .items-flight {
-        width: 99%;
-    }
-
-    .page-more {
-        width: 90%;
-    }
-
-    .item-time {
-        font-size: 22px;
-    }
-
-    .item-position {
-        font-size: 18px;
-    }
-    .page {
-        width: 40px;
-        height: 40px;
-        font-size: 17px;
-        border-radius: 20px;
-    }
-
-    .form-block-position {
-        display: flex;
-        flex-direction: column;
-    }
-
-    .form-block-position div:nth-child(1) {
-        margin-bottom: 2px;
-    }
-
-    .form-position {
-        width: 99%;
-    }
-
-    .form-block-date {
-        display: flex;
-        flex-direction: column;
-    }
-
-    .form-block-date div {
-        margin-bottom: 5px;
-    }
-
-    .form-date,
-    .form-people,
-    .form-search {
-        width: 99%;
-    }
-
-    .form-btn {
-        display: flex;
-        flex-direction: column;
-    }
-
-    .form-btn div {
-        margin-bottom: 10px;
-    }
-
-    .dropdown-list {
-        position: absolute;
-        top: 110%;
-        left: 0;
-    }
-
-    .buy-ticket {
-        display: flex;
-        flex-direction: column;
-    }
-
-    .buy-ticket button {
-        width: 100%;
-        margin-top: 10px;
-    }
-
-    .flight-not-found p {
-        font-size: 20px;
-    }
-}
-@media screen and (min-width: 768px) {
-    .where__until{
-        display: flex;
-    }   
-} */

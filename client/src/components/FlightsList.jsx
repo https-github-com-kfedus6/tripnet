@@ -1,11 +1,12 @@
-import { Breadcrumbs, Link, Typography } from '@mui/material'
-import { t } from 'i18next'
 import React from 'react'
 import { NavLink } from 'react-router-dom'
 import FlightsFormSort from './FlightsFormSort'
 import FlightsItem from './FlightsItem'
+import Stack from '@mui/material/Stack';
+import Pagination from '@mui/material/Pagination';
+import { t } from 'i18next'
 
-const FlightsList = ({ finishPosition, startPosition, startDate, flights, setStartDate, setStartPosition, setFinishPosition, sortFlights, sumOld, setSumOld, sumYoung, setSumYoung, deleteFlight, limit, page, isFilterTrue, openModal, changePosition, setChangePosition, changePositionFun }) => {
+const FlightsList = ({ finishPosition, startPosition, startDate, flights, setStartDate, setStartPosition, setFinishPosition, sortFlights, sumOld, setSumOld, sumYoung, setSumYoung, deleteFlight, limit, page, isFilterTrue, openModal, changePosition, setChangePosition, changePositionFun, totalCount, handleChange }) => {
 
     if (flights == undefined || flights.length === 0) {
         return (
@@ -52,7 +53,7 @@ const FlightsList = ({ finishPosition, startPosition, startDate, flights, setSta
                 </div>
                 <div className='flights-block'>
                     {flights.rows.length ?
-                        <div className='items-flight'>
+                        <div className='items-flights'>
                             {flights.rows.map(item => {
                                 return (
                                     <FlightsItem
@@ -73,6 +74,15 @@ const FlightsList = ({ finishPosition, startPosition, startDate, flights, setSta
                         <div className='flight-not-found'>
                             <p>{t('flight.notfound')}!</p>
                         </div>
+                    }
+                    {totalCount == undefined ? <></> : flights.rows.length ?
+                        <div className='pagination'>
+                            <Stack spacing={1}>
+                                <Pagination count={totalCount} page={page} onChange={handleChange} shape="rounded" color="primary" />
+                            </Stack>
+                        </div>
+                        :
+                        <></>
                     }
                 </div>
             </>
