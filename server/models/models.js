@@ -33,7 +33,8 @@ const FAQ = sequelize.define('FAQ', {
 
 const Flight = sequelize.define("flight", {
     id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
-    image: { type: DataTypes.STRING },
+    flagStart: { type: DataTypes.STRING },
+    flagFinish: { type: DataTypes.STRING },
     price: { type: DataTypes.STRING },
     startPosition: { type: DataTypes.STRING },
     finishPosition: { type: DataTypes.STRING },
@@ -46,7 +47,8 @@ const Flight = sequelize.define("flight", {
     finishTime: { type: DataTypes.STRING },
     timeFlight: { type: DataTypes.STRING },
     description: { type: DataTypes.TEXT },
-    map: { type: DataTypes.TEXT }
+    map: { type: DataTypes.TEXT },
+    currentFlight: { type: DataTypes.BOOLEAN, defaultValue: true }
 });
 
 const Novetly = sequelize.define("novetly", {
@@ -99,10 +101,10 @@ const FlightOrder = sequelize.define("flightOrder", {
     status: { type: DataTypes.BOOLEAN, defaultValue: null },
 });
 
-const Services=sequelize.define("service",{
-    id:{type:DataTypes.INTEGER, primaryKey: true, autoIncrement: true},
-    name:{type:DataTypes.STRING, unique: true},
-    description:{type:DataTypes.TEXT}
+const Services = sequelize.define("service", {
+    id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
+    name: { type: DataTypes.STRING, unique: true },
+    description: { type: DataTypes.TEXT }
 })
 
 Flight.hasMany(FlightOrder);
@@ -123,4 +125,4 @@ ScheduleBusStatus.belongsTo(ScheduleBus)
 Flight.hasMany(ScheduleBusStatus)
 ScheduleBusStatus.belongsTo(Flight)
 
-module.exports = { User, Flight, InfoCompany, Responce, Novetly, FAQ, Blog, ScheduleBus, ScheduleBusStatus, ParamsFlight, FlightOrder,Services };
+module.exports = { User, Flight, InfoCompany, Responce, Novetly, FAQ, Blog, ScheduleBus, ScheduleBusStatus, ParamsFlight, FlightOrder, Services };

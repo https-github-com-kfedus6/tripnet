@@ -18,15 +18,19 @@ class FlightsController {
             const streetStartPosition = [streetStartPositionUA, streetStartPositionRU].join("//");
             const streetFinishPosition = [streetFinishPositionUA, streetFinishPositionRU].join("//");
             const description = [descriptionUA, descriptionRU].join("/*/");
-            let image = req.files;
+            let { flagStartImg, flagFinishImg } = req.files;
             let flight;
-            if (image != null && image != undefined) {
-                const nameImg = uuid.v4() + ".jpg";
-                image.image.mv(path.resolve(__dirname, '..', 'static', nameImg));
+
+            if (flagStartImg != null && flagStartImg != undefined) {
+                const nameImgStart = uuid.v4() + ".jpg";
+                const nameImgFinish = uuid.v4() + ".jpg";
+                flagStartImg.mv(path.resolve(__dirname, '..', 'static', nameImgStart));
+                flagFinishImg.mv(path.resolve(__dirname, '..', 'static', nameImgFinish));
 
                 flight = await Flight.create({
                     price: price,
-                    image: nameImg,
+                    flagStart: nameImgStart,
+                    flagFinish: nameImgFinish,
                     startPosition: startPosition,
                     finishPosition: finishPosition,
                     streetStartPosition: streetStartPosition,

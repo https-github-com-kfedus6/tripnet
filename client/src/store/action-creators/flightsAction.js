@@ -62,14 +62,16 @@ export const fetchUpdateFlight = (formData) => async (dispatch) => {
     }
 }
 
-export const AddFlight = (image, price, startPositionUA, startPositionRU, finishPositionUA,
+export const AddFlight = (flagStartImg, flagFinishImg, price, startPositionUA, startPositionRU, finishPositionUA,
     finishPositionRU, streetStartPositionUA, streetStartPositionRU, streetFinishPositionUA, streetFinishPositionRU,
     startDate, finishDate, startTime, finishTime, timeFlightUA, timeFlightRU,
     countFreePlace, isWifi, isWC, is220V, isMultimedia, isAirConditioning, descriptionUA, descriptionRU,
     map) => async (dispatch) => {
+
         try {
             let formData = new FormData();
-            if (image != undefined) await formData.append("image", image);
+            if (flagStartImg != undefined) await formData.append("flagStartImg", flagStartImg);
+            if (flagFinishImg != undefined) await formData.append("flagFinishImg", flagFinishImg);
             await formData.append("price", price);
             await formData.append("startPositionUA", startPositionUA);
             await formData.append("startPositionRU", startPositionRU);

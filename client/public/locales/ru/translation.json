@@ -31,6 +31,7 @@
         "delete": "Удалить",
         "info_flight": "Подробнее о рейсе",
         "reverse_flight": "Есть обратные рейсы",
+        "info_icon_flight": "Неактуальный рейс",
         "free_place": "свободных мест",
         "update": "Обновить",
         "no_update": "Не обновлять",

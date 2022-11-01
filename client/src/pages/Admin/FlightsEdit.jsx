@@ -4,8 +4,10 @@ import { useState } from 'react'
 import { useAction } from '../../hooks/useAction';
 
 const FlightsEdit = () => {
+
     const { AddFlight } = useAction();
-    const [image, setImage] = useState(undefined);
+    const [flagStartImg, setFlagStartImg] = useState(undefined);
+    const [flagFinishImg, setFlagFinishImg] = useState(undefined);
     const [startDate, setStartDate] = useState("дд.мм.рррр");
     const [finishDate, setFinishDate] = useState("дд.мм.рррр");
     const [price, setPrice] = useState("");
@@ -34,21 +36,13 @@ const FlightsEdit = () => {
     return (
         <div className='admin-panel-flight'>
             <div className='admin-block-flight'>
-                <p>Фотографія рейсу(не обовязково)</p>
                 <div>
-                    <input type={"file"} id="visitorphoto" name="visitorPhoto" accept="image/*" capture onChange={e => { setImage(e.target.files?.[0]); console.log(e.target) }} />
+                    <p>Фотографія прапору рейсу виїзду (обов'язково):</p>
+                    <input type={"file"} id="visitorphoto" name="visitorPhoto" accept="image/*" capture onChange={e => { setFlagStartImg(e.target.files?.[0]) }} />
                 </div>
                 <div>
-                    <p>Дата відправлення:</p>
-                    <input type={"date"} value={startDate} onChange={(e) => setStartDate(e.target.value)} />
-                </div>
-                <div>
-                    <p>Дата прибуття:</p>
-                    <input type={"date"} value={finishDate} onChange={(e) => setFinishDate(e.target.value)} />
-                </div>
-                <div>
-                    <p>Ціна квитка в грн</p>
-                    <input value={price} type={"number"} onChange={e => setPrice(e.target.value)} />
+                    <p>Фотографія прапору рейсу приїзду (обов'язково):</p>
+                    <input type={"file"} id="visitorphoto" name="visitorPhoto" accept="image/*" capture onChange={e => { setFlagFinishImg(e.target.files?.[0]) }} />
                 </div>
                 <div>
                     <p>Місто виїзду укр:</p>
@@ -81,6 +75,18 @@ const FlightsEdit = () => {
                 <div>
                     <p>Вулиця висадки рос:</p>
                     <input value={streetFinishPositionRU} onChange={(e) => setStreetFinishPositionRU(e.target.value)} />
+                </div>
+                <div>
+                    <p>Дата відправлення:</p>
+                    <input type={"date"} value={startDate} onChange={(e) => setStartDate(e.target.value)} />
+                </div>
+                <div>
+                    <p>Дата прибуття:</p>
+                    <input type={"date"} value={finishDate} onChange={(e) => setFinishDate(e.target.value)} />
+                </div>
+                <div>
+                    <p>Ціна квитка в грн</p>
+                    <input value={price} type={"number"} onChange={e => setPrice(e.target.value)} />
                 </div>
                 <div>
                     <p>Година виїзду:</p>
@@ -123,7 +129,7 @@ const FlightsEdit = () => {
                 </div>
                 <br />
                 <div>
-                    <button onClick={() => AddFlight(image, price, startPositionUA, startPositionRU, finishPositionUA,
+                    <button onClick={() => AddFlight(flagStartImg, flagFinishImg, price, startPositionUA, startPositionRU, finishPositionUA,
                         finishPositionRU, streetStartPositionUA, streetStartPositionRU, streetFinishPositionUA, streetFinishPositionRU,
                         startDate, finishDate, startTime, finishTime, timeFlightUA, timeFlightRU,
                         countFreePlace, isWifi, isWC, is220V, isMultimedia, isAirConditioning,
