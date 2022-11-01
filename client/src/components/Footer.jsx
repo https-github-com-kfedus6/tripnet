@@ -54,14 +54,14 @@ const Footer = () => {
                             <div><NavLink to="/flightsCategory">{t('header.third_link')}</NavLink></div>
                             <div><NavLink to="/services">{t('header.six_link')}</NavLink></div>
                             <div><NavLink to='/blog'>{t("header.five_link")}</NavLink></div>
-                            <div><NavLink to="/">{t('header.fourth_link')}</NavLink></div>
+                            <div><NavLink to="/contacts">{t('header.fourth_link')}</NavLink></div>
                         </div>
                         <div className="footer__section pair">
                             <p>{t("footer.services")}</p>
-                            <div><NavLink to="/">{t("footer.reservation_online")}</NavLink></div>
-                            <div><NavLink to="/">{t("footer.booking_management")}</NavLink></div>
-                            <div><NavLink to="/">{t("footer.luggage_transportation")}</NavLink></div>
-                            <div><NavLink to="/">{t("footer.transportation_animals")}</NavLink></div>
+                            <div><NavLink to="/services/reservation_online">{t("footer.reservation_online")}</NavLink></div>
+                            <div><NavLink to="/services/booking_management">{t("footer.booking_management")}</NavLink></div>
+                            <div><NavLink to="/services/luggage_transportation">{t("footer.luggage_transportation")}</NavLink></div>
+                            <div><NavLink to="/services/transportation_animals">{t("footer.transportation_animals")}</NavLink></div>
                         </div>
                         <div className='footer__section pair'>
                             <p>{t("footer.contacts")}</p>

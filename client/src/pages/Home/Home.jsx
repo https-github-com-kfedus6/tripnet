@@ -4,13 +4,9 @@ import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import FlightsFormSort from '../../components/FlightsFormSort';
 import { useAction } from '../../hooks/useAction';
-import CompanyBenefits from './CompanyBenefits';
-import HomeFAQ from './HomeFAQ';
 import HomeListBlog from './HomeListBlog';
-import ListNovetly from './ListNovetly';
-import Responce from './Responce';
-import Header from '../../components/Header';
 import ReserveFlightHome from './ReserveFlightHome';
+import Responce from './Responce';
 import ServicesHome from './ServicesHome';
 
 const Home = () => {
@@ -60,6 +56,7 @@ const Home = () => {
             </div>
             <ReserveFlightHome />
             <ServicesHome />
+            <Responce/>
             <HomeListBlog />
         </>
     )

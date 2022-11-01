@@ -12,8 +12,11 @@ class ResponceController {
     }
     static Add=async(req,resp,next)=>{
         try{
-            const {authorName,description}=req.body;
-            const res=await Responce.create({nameAuthor:authorName,description});
+            const {authorName,description,wheretoWhere}=req.body;
+            const { image } = req.files;
+            const nameImg = uuid.v4() + ".jpg";
+            image.mv(path.resolve(__dirname, '..', 'static', nameImg));
+            const res=await Responce.create({nameAuthor:authorName,description,wheretoWhere,imageAuthor:nameImg});
             return resp.json({status:200,res});
         }catch(err){
             return next(ErrorApi.badRequest(err));

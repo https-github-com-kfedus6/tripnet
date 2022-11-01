@@ -19,15 +19,15 @@ const AboutUs = () => {
   },[language])
   function createMarkup(text) { return {__html: text}; };
   return ( 
-    <>
-    <div className='bread__crumbs__main'>
-      <Breadcrumbs>
-          <NavLink to="/">
-              {t("header.first_link")}
-          </NavLink>
-          <Typography color="text.primary">{t("header.fourth_link")}</Typography>
-      </Breadcrumbs>
-    </div>
+      <>
+      <div className='bread__crumbs__main'>
+        <Breadcrumbs>
+            <NavLink to="/">
+                {t("header.first_link")}
+            </NavLink>
+            <Typography color="text.primary">{t("header.fourth_link")}</Typography>
+        </Breadcrumbs>
+      </div>
       <p className='home__title'>{t("header.fourth_link")}</p>
       <div className="about__us__main">
         {aboutUs!=undefined?<div className='about__us__value' dangerouslySetInnerHTML=

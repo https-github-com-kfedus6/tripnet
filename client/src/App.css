@@ -404,54 +404,6 @@ main {
 .flight__edit input {
     width: 130px;
 }
-
-.list__responce__main {
-    display: flex;
-    justify-content: center;
-    width: 100%;
-}
-@media screen and (min-width: 1024px) {
-    .responce__main {
-        width: 70%;
-    }
-}
-@media screen and (max-width: 1024px) {
-    .responce__main {
-        width: 70%;
-    }
-}
-@media screen and (max-width: 768px) {
-    .responce__main {
-        width: 80%;
-    }
-}
-@media screen and (max-width: 425px) {
-    .responce__main {
-        width: 100%;
-    }
-}
-.responce__main {
-    display: flex;
-    background-color: bisque;
-    justify-content: center;
-}
-.responce__main {
-    display: flex;
-    flex-direction: column;
-}
-.responce__name__author__and__description {
-    display: flex;
-    flex-direction: column;
-}
-.responce__name__author {
-    margin-top: 10px;
-    font-size: 20px;
-    font-weight: 200;
-}
-.responce__description {
-    margin-top: 5px;
-}
-
 .icon-account {
     font-size: 26px;
 }
@@ -862,33 +814,6 @@ main {
     display: flex;
     align-items: center;
     justify-content: center;
-}
-.responce__home__main{
-    display: flex;
-    align-items: center;
-    flex-direction: row;
-    margin-bottom: 30px;
-    justify-content: space-around;
-}
-.responce__home__user__icon{
-    font-size: 250%;
-}
-.responce__home__name__author{
-    display: flex;
-    justify-content: left;
-    margin-bottom: 10px;
-    font-size: large;
-    font-weight:bolder;
-}
-.responce__home__description{
-    display: flex;
-    justify-content: left;
-    text-align: left;
-}
-.responce__home__author__with__description{
-    display: flex;
-    width: 70%;
-    flex-direction: column;
 }
 
 .pagination{
@@ -2176,4 +2101,245 @@ footer{
         top: 15%;
         left:60%
     }
+}
+@media screen and (min-width:1024px) {
+    .bread__crumbs__main{
+        width: 70%;
+        margin: auto;
+        margin-top: 110px;
+   }   
+}
+@media screen and (max-width:1024px) {
+    .bread__crumbs__main{
+        width: 90%;
+        margin: auto;
+        margin-top: 110px;
+    }   
+}
+@media screen and (min-width:1024px) {
+    .contacts__main{
+        width: 70%;
+        margin: 50px auto;
+    }
+    .contacts__controler{
+        width: 60%;   
+    }
+}
+@media screen and (max-width:1024px) {
+    .contacts__main{
+        width: 90%;
+        margin: 50px auto;
+    }
+}
+@media screen and (min-width:480px) {
+    .contact{
+        width: 47%;
+    }
+}
+@media screen and (max-width:480px) {
+    .contact {
+        width: 100%;
+     }
+    .contact2{
+        margin-top: 50px;
+    }
+}
+.list__contacts{
+    margin-top: 20px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+.constact__title{
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 21px;
+    line-height: 120%;
+    color: #111111;
+}
+.list__phone{
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+.phone__or_email{
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 30px;
+    line-height: 120%;
+    color: #2F82FF;
+}
+.contacts__social__networks{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 180px;
+}
+.contacts__social__networks div{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 14px;
+    gap: 10px;
+
+    width: 6px;
+    height: 6px;
+    background: #2F82FF;
+    border-radius: 6px;
+    cursor: pointer;
+}
+.contacts__social__networks div:hover{
+    background: #589bfe;
+}
+.contacts__social__networks div a{
+    color:white;
+}
+.contact__email{
+    margin-top: 15px;
+}
+@media screen and (min-width:480px) {
+    .blog__date__with__social__netvork{
+        margin-top: 30px;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }    
+}
+
+@media screen and (max-width:480px) {
+    .blog__date__with__social__netvork{
+        margin-top: 30px;
+        display: flex;
+        flex-direction: column-reverse;
+    }
+}
+
+.blog__social__networks{
+    width: 100px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.blog__social__networks div a{
+    color:#2F82FF;
+}
+.blog__social__networks div a:hover{
+    color:#66a3ff;
+}
+@media screen and (min-width:1024px) {
+    .responce__main{
+        padding-top: 50px;
+        padding-bottom: 50px;
+    }
+    .blog__one__container{
+        width: 70%;
+        margin: auto;
+    }
+}
+@media screen and (max-width:1024px) {
+    .blog__one__container{
+        width: 90%;
+        margin: auto;
+    }
+    .responce__main{
+        padding-top: 25px;
+        padding-bottom: 25px;
+    }
+}
+@media screen and (min-width:1024px) {
+    .responce__container{
+        width: 70%;
+        margin: 50px auto;
+    }
+}
+@media screen and (max-width:1024px) {
+    .responce__container{
+        width: 90%;
+        margin: 25px auto;
+    }
+}
+.responce__main{
+    background-color: #F4F5F7;
+    width: 100%;
+}
+.responce{
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+    background: #FFFFFF;
+    border: 1px solid #DBDBDB;
+    border-radius: 20px;
+}
+.responce__content{
+    width: 85%;
+    margin: 10px auto;
+}
+.img__with__name__and__where__to__where{
+    display: flex;
+    flex-direction: row;
+    height: 40px;
+}
+.responce__img{
+    gap: 16px;
+    border: 1px solid #DBDBDB;
+    border-radius: 20px;
+}
+.responce__img img{
+    height: 100%;
+    border-radius: 20px;
+}
+.name__with__where__to__where{
+    margin-left: 10px;
+}
+.name__author{
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 120%;
+    color: #111111;
+}
+.where__to__where{
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 150%;
+    color: #6A6A6A;
+    margin-top: 5px;
+
+}
+@media screen and (min-width:768px) {
+    .responce{
+        width:32%;
+    }
+}
+@media screen and (min-width:480px) and (max-width:767px) {
+    .responce{
+        width:48%;
+    }
+}
+@media screen and (max-width:480px) {
+    .responce{
+        width:100%
+    }
+}
+.list__responce{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+.responce__description{
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 150%;
+    color: #4C4C4C;
 }

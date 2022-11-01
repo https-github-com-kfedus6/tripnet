@@ -5,11 +5,8 @@ import { useAction } from '../../hooks/useAction';
 import { t } from 'i18next';
 import { Breadcrumbs, Typography } from '@mui/material';
 import HomeBlog from '../Home/HomeBlog';
-import {
-    FacebookMessengerShareButton, FacebookShareButton, TelegramShareButton, TwitterShareButton,
-    ViberShareButton, WhatsappShareButton
-} from 'react-share';
-import { FacebookIcon, FacebookMessengerIcon, TelegramIcon, TwitterIcon, ViberIcon, WhatsappIcon } from 'react-share';
+import { BsInstagram } from 'react-icons/bs'
+import { FaFacebookF, FaTelegramPlane, FaViber } from 'react-icons/fa'
 
 const Blog = () => {
     const { id } = useParams();
@@ -46,37 +43,34 @@ const Blog = () => {
                     <br />
                     <div className='blog__one__container'>
                         <div className='one__blog__main'>
-                            <img src={process.env.REACT_APP_API_URL + selectBlog.image} />
-                            <h1>{selectBlog.name[language]}</h1>
-                            <div dangerouslySetInnerHTML={createMarkup(selectBlog.description[language])} className="blog__main">
 
+                            <img src={process.env.REACT_APP_API_URL + selectBlog.image} />
+                            <div className='blog__date__with__social__netvork'>
+                                <div className="mini__blog__date">
+                                    <span>{selectBlog.createdAt.slice(0, 10).split("-").map((x,idx)=>{
+                                        if(idx==0)return <div className='date__widt__margin' key={idx}>{x}</div>;
+                                        if(idx==1)return <div className='date__widt__margin' key={idx}>{t("blog."+x)}</div>;
+                                        return <div key={idx}>{x}</div>;
+                                    })} 
+                                    </span>
+                                </div>
+                                <div className="blog__social__networks">
+                                    <div>
+                                        <a target="_blank" href='#'><FaTelegramPlane /></a>
+                                    </div>
+                                    <div>
+                                        <a target="_blank" href='#'><FaViber /></a>
+                                    </div>
+                                    <div>
+                                        <a target="_blank" href="https://m.facebook.com/TripNET.com.ua/"><FaFacebookF /></a>
+                                    </div>
+                                    <div>
+                                        <a target="_blank" href='https://www.instagram.com/tripnet.com.ua/'><BsInstagram /></a>
+                                    </div>
+                                </div>
                             </div>
-                            <br />
-                            <br />
-                            <br />
-                            <div className='blog__social__networks'>
-                                <FacebookShareButton url={process.env.REACT_APP_THIS_URL + "blog/" + name + "/" + selectBlog.id}>
-                                    <FacebookIcon size={40} />
-                                </FacebookShareButton >
-                                <FacebookMessengerShareButton url={process.env.REACT_APP_THIS_URL + "blog/" + name + "/" + selectBlog.id}>
-                                    <FacebookMessengerIcon size={40} />
-                                </FacebookMessengerShareButton>
-                                <TwitterShareButton url={process.env.REACT_APP_THIS_URL + "blog/" + name + "/" + selectBlog.id}>
-                                    <TwitterIcon size={40} />
-                                </TwitterShareButton>
-                                <TelegramShareButton url={process.env.REACT_APP_THIS_URL + "blog/" + name + "/" + selectBlog.id}>
-                                    <TelegramIcon size={40} />
-                                </TelegramShareButton>
-                                <WhatsappShareButton url={process.env.REACT_APP_THIS_URL + "blog/" + name + "/" + selectBlog.id}>
-                                    <WhatsappIcon size={40} />
-                                </WhatsappShareButton>
-                                <ViberShareButton url={process.env.REACT_APP_THIS_URL + "blog/" + name + "/" + selectBlog.id}>
-                                    <ViberIcon size={40} />
-                                </ViberShareButton>
-                            </div>
-                            <br />
-                            <br />
-                            <br />
+                            <h1>{selectBlog.name[language]}</h1>
+                            <div dangerouslySetInnerHTML={createMarkup(selectBlog.description[language])} className="blog__main"/>
                         </div>
                     </div>
                     <div className='blog__container'>

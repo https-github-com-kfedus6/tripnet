@@ -21,6 +21,8 @@ const InfoCompany = sequelize.define("infoCompany", {
 
 const Responce = sequelize.define('responce', {
     id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
+    wheretoWhere:{type:DataTypes.STRING},
+    imageAuthor:{type:DataTypes.STRING},
     description: { type: DataTypes.TEXT },
     nameAuthor: { type: DataTypes.STRING }
 });

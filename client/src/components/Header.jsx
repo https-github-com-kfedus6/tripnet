@@ -26,7 +26,7 @@ const Header = () => {
                             <li><NavLink to="/flightsCategory">{t('header.third_link')}</NavLink></li>
                             <li><NavLink to="/services">{t('header.six_link')}</NavLink></li>
                             <li><NavLink to='/blog'>{t("header.five_link")}</NavLink></li>
-                            <li><NavLink to="/">{t('header.fourth_link')}</NavLink></li>
+                            <li><NavLink to="/contacts">{t('header.fourth_link')}</NavLink></li>
                             <li className='dropdown-header'>
                                 <div className='burger__menu__list header__admin'>
                                     {is_admin ?
