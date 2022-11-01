@@ -3,7 +3,6 @@ import React, { useRef, useState } from "react";
 import { useSelector } from 'react-redux'
 import { useAction } from "../../hooks/useAction";
 import { useEffect } from 'react';
-import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination, Navigation } from "swiper";
 import { FaUserCircle } from 'react-icons/fa';
 const Responce = () => {
@@ -13,46 +12,36 @@ const Responce = () => {
     useEffect(() => {
         GetResponceNovetly();
     }, [])
-
+    
     return (
         novetlyResponce == undefined ? <div>loading...</div> : novetlyResponce.length == 0 ? <></> :
-            <div>
-                <div className='section-home-title'>
-                    <p className='home__title'>
-                        <span>
-                            {t("home.responce")}
-                        </span>
-                    </p>
-                </div>
-                <div className='list__responce__home__main'>
-                    <>
-                        <Swiper
-                            pagination={{
-                                dynamicBullets: true,
-                            }}
-                            modules={[Pagination]}
-                            className="my-swiper">
-
-                            {novetlyResponce.map(x =>
-                                <SwiperSlide style={{ "minHeight": "200px" }} key={x.id}>
-
-                                    <div className='responce__home__main'>
-                                        <div className='responce__home__user__icon'><FaUserCircle /></div>
-                                        <div className='responce__home__author__with__description'>
-                                            <div>
-                                                <div className='responce__home__name__author'>
-                                                    {x.nameAuthor}
-                                                </div>
-                                                <div className='responce__home__description'>
-                                                    {x.description}
-                                                </div>
+            <div className='responce__main'>
+                <div className="responce__container">
+                    <h1>{t("home.responce")}</h1>
+                    <div className="list__responce">
+                        {novetlyResponce.map(x=>
+                            <div key={x.id} className='responce'>
+                                <div className="responce__content">
+                                    <div className="img__with__name__and__where__to__where">
+                                        <div className="responce__img">
+                                            <img src={process.env.REACT_APP_API_URL+x.imageAuthor}/>
+                                        </div>
+                                        <div className="name__with__where__to__where">
+                                            <div className="name__author">
+                                                {x.nameAuthor}
+                                            </div>
+                                            <div className="where_to__where">
+                                                {x.wheretoWhere}
                                             </div>
                                         </div>
                                     </div>
-                                    {is_admin ? <button onClick={() => DelResponce(x.id)}>del</button> : <></>}
-                                </SwiperSlide>)}
-                        </Swiper>
-                    </>
+                                    <div className="responce__description">
+                                        {x.description}
+                                    </div>
+                                </div>
+                            </div>
+                        )}
+                    </div>
                 </div>
             </div>
     )
