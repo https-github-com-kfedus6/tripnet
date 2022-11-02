@@ -2282,7 +2282,7 @@ footer{
 .img__with__name__and__where__to__where{
     display: flex;
     flex-direction: row;
-    height: 40px;
+    height: 60px;
 }
 .responce__img{
     gap: 16px;
@@ -2314,18 +2314,25 @@ footer{
     margin-top: 5px;
 
 }
+.list__responce__collum{
+    display: flex;
+    flex-direction: column;
+}
+.responce{
+    margin-top: 20px;
+}
 @media screen and (min-width:768px) {
-    .responce{
+    .list__responce__collum{
         width:32%;
     }
 }
 @media screen and (min-width:480px) and (max-width:767px) {
-    .responce{
+    .list__responce__collum{
         width:48%;
     }
 }
 @media screen and (max-width:480px) {
-    .responce{
+    .list__responce__collum{
         width:100%
     }
 }
@@ -2342,4 +2349,48 @@ footer{
     font-size: 16px;
     line-height: 150%;
     color: #4C4C4C;
+}
+@media screen and (min-width:480px) and (max-width:768px) {
+    .list__responce__collum.no__with__480__to__768{
+        display: none;
+    }
+    .list__responce__collum.with__480__to__768{
+        display: flex;
+        flex-direction: column;
+        width: 48%;
+    }
+}
+@media screen and (max-width:480px) {
+    .list__responce__collum.with__480__to__768{
+        display: none;
+    }
+}
+@media screen and (min-width:768px) {
+    .list__responce__collum.with__480__to__768{
+        display: none;
+    }
+}
+.admin-blok-blog{
+    width: 100%;
+}
+@media screen and (min-width:1024px) {
+    .admin-panel-blog{
+        width: 70%;
+        margin: 110px auto;
+    }   
+}
+@media screen and (max-width:1024px) {
+    .admin-panel-blog{
+        width: 90%;
+        margin: 110px auto;
+    }   
+}
+.mini__blog__main{
+    margin-top: 30px;
+}
+.pagination{
+    margin-top: 40px;
+}
+.service__page__main{
+    margin-top: 20px;
 }
