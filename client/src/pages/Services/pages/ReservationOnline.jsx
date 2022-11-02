@@ -18,7 +18,12 @@ const ReservationOnline = () => {
               <NavLink to="/">
                   {t("header.first_link")}
               </NavLink>
-              <Typography color="text.primary">Блог</Typography>
+              <NavLink to="/services">
+                  {t("footer.services")}
+              </NavLink>
+              <Typography color="text.primary">
+                {t("services.reservation_online_main_title")}
+              </Typography>
           </Breadcrumbs>
       </div>
       <div className='service__page__main'>

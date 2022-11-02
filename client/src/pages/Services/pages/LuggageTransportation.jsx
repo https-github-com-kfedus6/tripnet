@@ -13,14 +13,19 @@ const LuggageTransportation = () => {
     },[language]);
   return (
     <>
-      <div className='bread__crumbs__main'>
-          <Breadcrumbs>
-              <NavLink to="/">
-                  {t("header.first_link")}
-              </NavLink>
-              <Typography color="text.primary">Блог</Typography>
-          </Breadcrumbs>
-      </div>
+    <div className='bread__crumbs__main'>
+        <Breadcrumbs>
+            <NavLink to="/">
+                {t("header.first_link")}
+            </NavLink>
+            <NavLink to="/services">
+                {t("footer.services")}
+            </NavLink>
+            <Typography color="text.primary">
+              {t("services.luggage_main_title")}
+            </Typography>
+        </Breadcrumbs>
+    </div>
       <div className='service__page__main'>
         <div className="service__page__content">
           <div className="service__page__main__title">
