@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
-import { NavLink, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { useAction } from '../../hooks/useAction';
 import FlightList from '../../components/FlightList';
-import { Breadcrumbs, Typography } from '@mui/material';
 import ModalFormBuy from '../../components/UI/modalFormBuy/ModalFormBuy';
 import { t } from 'i18next';
 
@@ -22,13 +21,15 @@ const Flight = () => {
     const { language } = useSelector(state => state.language);
     const { fetchGetFlight, fetchGetFlights, fetchPutFlightStatus, fetchPutFlightBusDate,
         GetRelinkBlocks, SetShowMessgeTrue, SetShowMessgeFalse, postFlightOrder } = useAction()
-    const [date,setDate]=useState("");
+    const [date, setDate] = useState("");
 
     const [scheduleWith, setScheduleWith] = useState('')
     const [scheduleTo, setScheduleTo] = useState('')
+
     useEffect(() => {
 
     }, [language])
+
     useEffect(() => {
         fetchGetFlight(id)
         fetchGetFlights({
@@ -86,19 +87,7 @@ const Flight = () => {
     if (!Array.isArray(flight)) {
         return (
             <>
-                <div className='bread__crumbs__main'>
-                    <Breadcrumbs>
-                        <NavLink to="/">
-                            {t("header.first_link")}
-                        </NavLink>
-                        <NavLink to="/flightsCategory">
-                            {t("header.third_link")}
-                        </NavLink>
-                        <Typography color="text.primary">{flight.startPosition[language]}-{flight.finishPosition[language]}</Typography>
-                    </Breadcrumbs>
-                </div>
-
-                <div className='container-flight'>
+                <div className='flight'>
                     <FlightList
                         flight={flight}
                         is_admin={is_admin}

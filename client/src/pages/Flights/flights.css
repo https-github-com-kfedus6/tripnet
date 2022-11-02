@@ -21,7 +21,7 @@
     padding: 0 0 30px 0;
 }
 
-.bredcrumbs  {
+.bredcrumbs-flights {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -30,12 +30,12 @@
     padding: 15px 0 30px 0;
 }
 
-.bredcrumbs div:nth-child(2) {
+.bredcrumbs-flights div:nth-child(2) {
     display: flex;
     align-items: center;
 }
 
-.bredcrumbs div:nth-child(1) a {
+.bredcrumbs-flights div:nth-child(1) a {
     font-family: 'Inter';
     font-style: normal;
     font-weight: 400;
@@ -45,18 +45,19 @@
     text-decoration: none;
 }
 
-.bredcrumbs div:nth-child(1) a:hover {
+.bredcrumbs-flights div:nth-child(1) a:hover {
     color: #2F82FF;
     transition: all ease 0.4s;
 }
 
-.bredcrumbs div:nth-child(3) span {
+.bredcrumbs-flights div:nth-child(3) span {
     font-family: 'Inter';
     font-style: normal;
     font-weight: 400;
     font-size: 16px;
     line-height: 120%;
     color: #2F82FF;
+    cursor: default;
 }
 
 .form-flights-container {
@@ -128,6 +129,7 @@
     flex: none;
     order: 1;
     flex-grow: 0;
+    cursor: pointer;
 }
 
 .form-inputs-button-group {
@@ -142,7 +144,6 @@
     align-self: stretch;
     flex-grow: 0;
 }
-
 
 .form-input-text {
     display: block;
@@ -426,6 +427,7 @@
     font-size: 16px;
     line-height: 150%;
     color: #4C4C4C;
+    cursor: default;
 }
 
 .dropdown-list-item-passegers-count {
@@ -434,6 +436,7 @@
     align-items: center;
     padding: 0px;
     gap: 10px;
+    cursor: default;
 }
 
 .dropdown-list-item-passegers-count:nth-child(2) {
@@ -567,6 +570,7 @@
     font-size: 21px;
     line-height: 120%;
     color: #111111;
+    cursor: default;
 }
 
 .item-street-start-finish {
@@ -577,6 +581,7 @@
     font-size: 16px;
     line-height: 150%;
     color: #4C4C4C;
+    cursor: default;
 }
 
 .item-time-date {
@@ -594,6 +599,7 @@
     font-size: 16px;
     line-height: 150%;
     color: #111111;
+    cursor: default;
 }
 
 .item-time-date span:nth-child(2) {
@@ -603,6 +609,7 @@
     font-size: 16px;
     line-height: 150%;
     color: #4C4C4C;
+    cursor: default;
 }
 
 .item-block-btn-price {
@@ -622,6 +629,7 @@
     line-height: 120%;
     text-align: right;
     color: #111111;
+    cursor: default;
 }
 
 .item-block-btn-price {
@@ -697,6 +705,7 @@
     height: 20px;
     background: #E1F6EA;
     border-radius: 100px;
+    cursor: default;
 }
 
 .item-info-false {
@@ -709,6 +718,7 @@
     height: 20px;
     background: #FFF6ED;
     border-radius: 100px;
+    cursor:default;
 }
 
 .item-block-reverse-free-place div:nth-child(1) img {
@@ -723,6 +733,7 @@
     font-size: 16px;
     line-height: 150%;
     color: #188C46;
+    cursor: default;
 }
 
 .item-info-false span {
@@ -732,6 +743,7 @@
     font-size: 16px;
     line-height: 150%;
     color: #D2833A;
+    cursor: default;
 }
 
 .item-block-reverse-free-place div:nth-child(2) {
@@ -755,6 +767,7 @@
     font-size: 16px;
     line-height: 150%;
     color: #6A6A6A;
+    cursor: default;
 }
 
 .item-btn-info-flight {

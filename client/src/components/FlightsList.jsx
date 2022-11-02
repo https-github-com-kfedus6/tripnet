@@ -17,7 +17,7 @@ const FlightsList = ({ finishPosition, startPosition, startDate, flights, setSta
             <>
                 <div className='flights-container'>
                     <div className='fligths-form'>
-                        <div className='bredcrumbs'>
+                        <div className='bredcrumbs-flights'>
                             <div>
                                 <NavLink to="/">{t("header.first_link")}</NavLink>
                             </div>
