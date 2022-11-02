@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Header from './Header';
 import Footer from './Footer';
 import { Outlet } from 'react-router-dom';
@@ -8,7 +8,10 @@ import { useAction } from '../hooks/useAction';
 const Layout = () => {
     const { isShow, text } = useSelector(state => state.message);
     const { SetShowMessgeFalse } = useAction()
+    const {language}=useSelector(state=>state.language);
+    useEffect(()=>{
 
+    },[language]);
     return (
         <div className='layout'>
             <header>
