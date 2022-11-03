@@ -246,12 +246,160 @@
     display: none;
 }
 
+.block-schedule {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0px;
+    gap: 16px;
+    width: 90%;
+}
+
+.schedule-date-with-to {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0px;
+    gap: 8px;
+}
+
+.schedule-date-with-to b {
+    font-family: 'Inter';
+    font-style: normal;
+    font-size: 21px;
+    line-height: 120%;
+    color: #111111;
+    cursor: default;
+}
+
+.schedule-date-with-to span {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 150%;
+    color: #4C4C4C;
+    cursor: default;
+}
+
+.block-schedule-table {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0px;
+    width: 100%;
+    height: auto;
+    border: 1px solid #DBDBDB;
+    border-radius: 10px;
+}
+
+.schedule-table-day {
+    width: 100%;
+}
+
+.table-day {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+
+.table-day div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 56px;
+    background: #F4F5F7;
+    border-bottom: 1px solid #DBDBDB;
+}
+
+.table-day div span {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 150%;
+    color: #4C4C4C;
+    cursor: default;
+}
+
+.table-status {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.table-day-status-number {
+    width: 14.28%;
+    height: 56px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.table-day-status {
+    width: 85%;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #EAF2FF;
+    border-radius: 4px;
+}
+
+.table-day-status span {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 150%;
+    cursor: default;
+    color: #2F82FF;
+}
+
+.table-day-number {
+    width: 14.28%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.table-day-number span {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 150%;
+    color: #A5A5A5;
+    cursor: default;
+}
+
+.schedule-time-with-to {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0px;
+    gap: 8px;
+}
+
+.schedule-time-with-to span {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 150%;
+    color: #4C4C4C;
+    cursor: default;
+}
+
 .block-flight-maps {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     padding: 0px;
     gap: 16px;
+    width: 90%;
 }
 
 .flight-maps-street {
@@ -270,6 +418,7 @@
     font-size: 21px;
     line-height: 120%;
     color: #111111;
+    cursor: default;
 }
 
 .flight-maps-street span {
@@ -301,7 +450,7 @@
     padding: 0px;
     gap: 8px;
     cursor: default;
-    width: 95%;
+    width: 90%;
 }
 
 .block-flight-description b {

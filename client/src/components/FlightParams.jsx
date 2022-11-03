@@ -2,7 +2,7 @@ import React from 'react'
 
 const FlightParams = ({ status }) => {
     return (
-        <div key={status.id} className='items-comfort'>
+        <div className='items-comfort'>
             <div className={status.isMultimedia ? 'item-comfort' : 'comfort-status'}>
                 <img src={process.env.REACT_APP_API_URL + "multimedia.png"} />
                 <span>Мультимедія</span>
