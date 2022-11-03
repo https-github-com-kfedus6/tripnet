@@ -14,7 +14,7 @@ const Header = () => {
     const { is_admin, is_login, user } = useSelector(state => state.user)
     const [isShow, setIsShow] = useState(false)
     const navigate = useNavigate();
-
+    const [isRegister, setIsRegister] = useState(true);
     return (
         <>
             <div className='header__main'>
@@ -60,10 +60,10 @@ const Header = () => {
                                 <div className='header_register' onClick={() => navigate("/account")}>
                                     <img src={process.env.REACT_APP_API_URL + 'user.png'} alt="user" />
                                 </div> :
-                                <div className='header_register' onClick={() => setIsShow(true)}>
-                                    <div><span>{t('header.seven_link')}</span></div>
+                                <div className='header_register'>
+                                    <div onClick={() =>{setIsRegister(false);setIsShow(true)}}><span>{t('header.seven_link')}</span></div>
                                     <span>|</span>
-                                    <div><span>{t("header.registering")}</span></div>
+                                    <div onClick={() =>{setIsRegister(true);setIsShow(true)}}><span>{t("header.registering")}</span></div>
                                 </div>
                             }
                         </div>
@@ -80,7 +80,7 @@ const Header = () => {
                     </div>
                 </div>
             </div>
-            <Authorize isShow={isShow} setIsShow={setIsShow} />
+            <Authorize isRegister={isRegister} setIsRegister={setIsRegister} isShow={isShow} setIsShow={setIsShow} />
         </>
     )
 }

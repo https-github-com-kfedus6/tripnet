@@ -53,10 +53,11 @@
         "here_are_some_useful_links": "Ось кілька корисних посилань:"
     },
     "authorize": {
+        "enter":"Вхід",
         "authorize": "Aвторизація",
         "register": "Зареєструватися",
         "log": "Увійти",
-        "or": "або",
+        "or": "Aбо",
         "password": "Пароль",
         "return_password": "Повторити пароль",
         "number_phone": "Номер телефона",

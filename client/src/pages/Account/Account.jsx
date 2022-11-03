@@ -6,6 +6,10 @@ import { useAction } from '../../hooks/useAction'
 import TextField from '@mui/material/TextField';
 import { useTranslation } from 'react-i18next';
 import { ImArrowRight2 } from 'react-icons/im'
+//import PhoneInput from 'react-phone-number-input'
+import PhoneInput from 'react-phone-input-2'
+import 'react-phone-input-2/lib/style.css'
+
 
 import '../Account/account.css'
 
@@ -36,6 +40,8 @@ const Account = () => {
     const [checkPassword, setCheckPassword] = useState(false);
     const [checkEmail, setCheckEmail] = useState(false);
     const [newEmail,setNewEmail]=useState("");
+    
+    const [phoneValue,setPhoneValue]=useState("")
 
     const change_password = () => {
         if (newPassword != newPassword2) {
@@ -94,6 +100,7 @@ const Account = () => {
     }
 
     return (
+    <>
         <div className='container-user'>
             <div className='block-user'>
                 <div className='block-user-icon'>
@@ -244,6 +251,15 @@ const Account = () => {
                 </div>
             </div>
         </div>
+        {/*
+        <div className='phone__number1'>
+        <PhoneInput
+            international
+            country="ua"
+            value={phoneValue}
+            onChange={e=>setPhoneValue(e)}/>
+                                    </div>*/}
+    </>
     )
 }
 

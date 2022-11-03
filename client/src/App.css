@@ -258,7 +258,7 @@ main {
         margin: auto;
         padding: 20px;
         border: 1px solid #888;
-        width: 30%;
+        width: 480px;
         border-radius: 10px;
     }
     .register__or__log {
@@ -280,7 +280,7 @@ main {
         margin: auto;
         padding: 20px;
         border: 1px solid #888;
-        width: 45%;
+        width: 480px;
     }
     .register__or__log {
         display: flex;
@@ -290,7 +290,7 @@ main {
         height: 60px;
     }
 }
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 768px) and (min-width:480px) {
     .modal__content {
         display: flex;
         flex-direction: column;
@@ -298,16 +298,29 @@ main {
         margin: auto;
         padding: 20px;
         border: 1px solid #888;
-        width: 70%;
+        width: 480px;
     }
 }
-@media screen and (max-width: 425px) {
+@media screen and (min-width:480px) {
+    .modal__content {
+        border-radius: 40px;
+    }
+}
+@media screen and (max-width: 480px) {
     .register__or__log {
         display: flex;
         flex-direction: row;
         font-size: 15px;
         align-items: center;
         height: 60px;
+    }
+    .modal__content {
+        display: flex;
+        flex-direction: column;
+        background-color: #fefefe;
+        margin: auto;
+        padding: 20px;
+        width: 100%;
     }
 }
 .list__FAQ__main {
@@ -2393,4 +2406,39 @@ footer{
 }
 .service__page__main{
     margin-top: 20px;
+}
+.enter{
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 31px;
+    line-height: 120%;
+    color: #111111;
+}
+.enter__or__exit{
+    width: 100%;
+    margin-top: 30px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.exit{
+    display: flex;
+    justify-content: right;
+    align-items: flex-start;
+}
+.athorize__or{
+    display: flex;
+    justify-content: center;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 19px;
+    line-height: 150%;
+    color: #6A6A6A;
+    height: 50px;
+    align-items: center;
+}
+.btn__authorize button{
+    background-color: #2F82FF;
 }

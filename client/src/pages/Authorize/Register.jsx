@@ -79,8 +79,17 @@ const Register = ({ close }) => {
     }
 
     return (
+        
         <div className="register__main">
-            <div className="user__name">
+            <div className="enter__or__exit">
+                <div className="enter">
+
+                </div>
+                <div className="exit">
+                    
+                </div>
+            </div>
+            {/*<div className="user__name">
                 <TextField
                     className='input-material'
                     onChange={(e) => setName(e.target.value)}
@@ -126,7 +135,7 @@ const Register = ({ close }) => {
             </div>
             <div className="btn__authorize">
                 <button onClick={(e) => { e.stopPropagation(); register() }}>{t("authorize.register")}</button>
-            </div>
+            </div>*/}
         </div>
     )
 }

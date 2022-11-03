@@ -4,6 +4,8 @@ import { useState } from 'react'
 import { useSelector } from 'react-redux';
 import { useAction } from '../../hooks/useAction';
 import TextField from '@mui/material/TextField';
+import { IoClose, IoLockClosed } from 'react-icons/io5';
+import { GrClose } from 'react-icons/gr';
 
 const Log = ({ close }) => {
     const [email, setEmail] = useState("");
@@ -58,6 +60,44 @@ const Log = ({ close }) => {
     return (
         <form>
             <div className="log__main register__main">
+                <div className="enter__or__exit">
+                    <div className="enter">
+                        {t("authorize.enter")}
+                    </div>
+                    <div className="exit">
+                        <GrClose onClick={()=>close(false)} style={{color:"#2F82FF",cursor:"pointer"}}/>
+                    </div>
+                </div>
+                <div className="enter__with__google__or__with__login__and__password">
+                    <div className="enter__with__google">
+
+                    </div>
+                    <div className="athorize__or">
+                        {t("authorize.or")}
+                    </div>
+                    <div className="login__and__passworf">
+                        <div className='email'>
+                            <TextField style={{"borderRadius":"20px"}}
+                                onChange={(e) => setEmail(e.target.value)}
+                                id="demo-helper-text-misaligned-no-helper"
+                                label={t("authorize.email")}
+                            />
+                        </div>
+                        <div className='password'>
+                            <TextField style={{"borderRadius":"20px"}}
+                                onChange={(e) => setPassword(e.target.value)}
+                                id="outlined-password-input"
+                                label={t("authorize.password")}
+                                type="password"
+                                autoComplete="current-password"
+                            />
+                        </div>
+                        <div className="btn__authorize">
+                            <button onClick={(e) => { e.preventDefault(); log(); return false; }}>{t("authorize.log")}</button>
+                        </div>
+                    </div>
+                </div>
+                {/*
                 <div className='email'>
                     <TextField
                         onChange={(e) => setEmail(e.target.value)}
@@ -76,8 +116,9 @@ const Log = ({ close }) => {
                 </div>
                 <div className="btn__authorize">
                     <button onClick={(e) => { e.preventDefault(); log(); return false; }}>{t("authorize.log")}</button>
-                </div>
+                </div>*/}
             </div>
+        
         </form>
     )
 }
