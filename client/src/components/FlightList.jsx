@@ -86,21 +86,19 @@ const FlightList = ({ flight, is_admin, setScheduleTo, setScheduleWith, status, 
                             <b>Умови</b>
                             {flight.params.map(status => {
                                 return (
-                                    <FlightParams status={status} />
+                                    <FlightParams key={status.id} status={status} />
                                 )
                             })}
                         </div>
-                        <div>
-                            <FlightScheduleBusList
-                                flight={flight}
-                                is_admin={is_admin}
-                                setScheduleTo={setScheduleTo}
-                                setScheduleWith={setScheduleWith}
-                                status={status}
-                                changeStatus={changeStatus}
-                                changeSchedule={changeSchedule}
-                            />
-                        </div>
+                        <FlightScheduleBusList
+                            flight={flight}
+                            is_admin={is_admin}
+                            setScheduleTo={setScheduleTo}
+                            setScheduleWith={setScheduleWith}
+                            status={status}
+                            changeStatus={changeStatus}
+                            changeSchedule={changeSchedule}
+                        />
                         <div className='block-flight-maps'>
                             <div className='flight-maps-street'>
                                 <b>Карта маршрута</b>
@@ -114,6 +112,43 @@ const FlightList = ({ flight, is_admin, setScheduleTo, setScheduleWith, status, 
                         <div className='block-flight-description'>
                             <b>Опис рейсу</b>
                             <span style={{ wordBreak: 'break-word' }} dangerouslySetInnerHTML={createMarkup(flight.description[language])}></span>
+                        </div>
+                        <div className='flight-links'>
+                            <div>
+                                <p>{t("flight.popular")}</p>
+                            </div>
+                            <div className='flight-links-block'>
+                                <div className='flight-link-block'>
+                                    {relinkBlocks == undefined || relinkBlocks.startPosition.length == 0 ? <></> : <>
+                                        <span>{t("flight.with")} {flight.startPosition[language]}</span>
+                                        <div>
+                                            {relinkBlocks.startPosition.map(x =>
+                                                <div key={x.id}>
+                                                    <NavLink
+                                                        to={"/flight/" + flight.startPosition[language] + "-"
+                                                            + x.finishPosition.split("//")[language] + "/" + x.id}
+                                                        key={x.id}>
+                                                        {flight.startPosition[language]}-{x.finishPosition.split("//")[language]}
+                                                    </NavLink>
+                                                </div>)}
+                                        </div>
+                                    </>}
+                                </div>
+                                <div className='flight-link-block'>
+                                    {relinkBlocks == undefined || relinkBlocks.finishPosition.length == 0 ? <></> : <>
+                                        <span>{t("flight.to")} {flight.finishPosition[language]}</span>
+                                        <div>
+                                            {relinkBlocks.finishPosition.map(x =>
+                                                <div key={x.id}>
+                                                    <NavLink to={"/flight/" + x.startPosition.split("//")[language] + "-" + flight.startPosition[language]
+                                                        + "/" + x.id}>
+                                                        {x.startPosition.split("//")[language]}-{flight.finishPosition[language]}
+                                                    </NavLink>
+                                                </div>)}
+                                        </div>
+                                    </>}
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div className='block-flight-reserve'>

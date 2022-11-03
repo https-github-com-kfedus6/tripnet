@@ -72,7 +72,7 @@ class FlightsController {
                 tuesday: "Вт", wednesday: "Ср", thursday: "Чт", friday: "Пт", suturday: "Cб", sunday: "Нд//Вс", flightId: flight.id
             });
 
-            for (let i = 0; i < 7; i++) {
+            for (let i = 0; i < 31; i++) {
                 const scheduleBusStatus = await ScheduleBusStatus.create({ scheduleBusId: scheduleBus.id, flightId: flight.id })
             }
 
