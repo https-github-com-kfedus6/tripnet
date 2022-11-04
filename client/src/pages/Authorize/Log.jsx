@@ -6,6 +6,7 @@ import { useAction } from '../../hooks/useAction';
 import TextField from '@mui/material/TextField';
 import { IoClose, IoLockClosed } from 'react-icons/io5';
 import { GrClose } from 'react-icons/gr';
+import { GoogleLogin } from '@react-oauth/google';
 
 const Log = ({ close }) => {
     const [email, setEmail] = useState("");
@@ -70,7 +71,10 @@ const Log = ({ close }) => {
                 </div>
                 <div className="enter__with__google__or__with__login__and__password">
                     <div className="enter__with__google">
-
+                        <GoogleLogin
+                            onSuccess={CredentialResponce=>console.log(CredentialResponce)}
+                            onError={(e)=>console.log(e)}
+                            />
                     </div>
                     <div className="athorize__or">
                         {t("authorize.or")}

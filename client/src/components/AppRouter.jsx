@@ -7,7 +7,6 @@ import Flight from '../pages/Flight/Flight';
 import AboutUs from '../pages/AboutUs/AboutUs';
 import { useEffect } from 'react';
 import { useAction } from '../hooks/useAction';
-import TinyMCE from './TinyMCE/TinyMCE';
 import { useSelector } from 'react-redux';
 import { ListBlog } from '../pages/Blog/ListBlog';
 import Blog from '../pages/Blog/Blog';
@@ -46,7 +45,6 @@ const AppRouter = () => {
                 <Route path='flight/:name/:id' element={<Flight />} />
                 <Route path='FAQ' element={<FAQ />} />
                 <Route path='aboutUs' element={<AboutUs />} />
-                <Route path='tinyMCE' element={<TinyMCE />} />
                 <Route path='blog' element={<ListBlog />} />
                 <Route path='blog/:name/:id' element={<Blog />} />
                 <Route path="services" element={<Services/>}/>

@@ -1,5 +1,5 @@
 const ErrorApi = require("../error/ErrorApi");
-const { Blog, Novetly } = require("../models/models");
+const { Blog, Novetly, BlogRetaledFlight } = require("../models/models");
 const uuid = require("uuid");
 const path = require("path");
 const { Op } = require("sequelize");
@@ -45,7 +45,12 @@ class BlogController {
             res.name = res.name.split("//");
             res.miniDescription=res.miniDescription.split("//")
             res.description=res.description.split("/*/");
-            return resp.json({ status: 200, res });
+            let blogRetaledFlight=await BlogRetaledFlight.findAll({where:{blogId:id}});
+            for(let i=0;i<blogRetaledFlight.length;i++){
+                blogRetaledFlight[i].whence=blogRetaledFlight[i].whence.split("//");
+                blogRetaledFlight[i].whither=blogRetaledFlight[i].whither.split("//");
+            }
+            return resp.json({ status: 200, res, blogRetaledFlight });
         } catch (err) {
             return next(ErrorApi.badRequest(err));
         }

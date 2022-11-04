@@ -67,6 +67,12 @@ const Blog = sequelize.define('blog', {
     name: { type: DataTypes.STRING }
 });
 
+const BlogRetaledFlight=sequelize.define('blogRetaledFlight',{
+    id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
+    whence:{type:DataTypes.STRING},
+    whither:{type:DataTypes.STRING}
+})
+
 const ScheduleBus = sequelize.define('scheduleBus', {
     id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
     scheduleWith: { type: DataTypes.STRING },
@@ -112,6 +118,9 @@ const Services = sequelize.define("service", {
 Flight.hasMany(FlightOrder);
 FlightOrder.belongsTo(Flight);
 
+Blog.hasMany(BlogRetaledFlight);
+BlogRetaledFlight.belongsTo(Blog);
+
 User.hasMany(FlightOrder, { as: "user" });
 FlightOrder.belongsTo(User);
 
@@ -127,4 +136,4 @@ ScheduleBusStatus.belongsTo(ScheduleBus)
 Flight.hasMany(ScheduleBusStatus)
 ScheduleBusStatus.belongsTo(Flight)
 
-module.exports = { User, Flight, InfoCompany, Responce, Novetly, FAQ, Blog, ScheduleBus, ScheduleBusStatus, ParamsFlight, FlightOrder, Services };
+module.exports = { User, Flight, InfoCompany, Responce, Novetly, FAQ, Blog, ScheduleBus, ScheduleBusStatus, ParamsFlight, FlightOrder, Services, BlogRetaledFlight };

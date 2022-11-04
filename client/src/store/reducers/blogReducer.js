@@ -12,7 +12,8 @@ const initialState={
     selectBlog:undefined,
     blogNovetly:[],
     countBlog:0,
-    similarBlog:undefined
+    similarBlog:undefined,
+    blogRetaledFlight:[]
 };
 
 export const blogReducer=(state=initialState,action)=>{
@@ -24,7 +25,7 @@ export const blogReducer=(state=initialState,action)=>{
             return {...state,blogNovetly:action.payload};
         }
         case blogActionTypes.FETCH_GET_DESCRIPTION:{
-            return {...state,selectBlog:action.payload};
+            return {...state,selectBlog:action.payload.selectBlog,blogRetaledFlight:action.payload.blogRetaledFlight};
         }
         case blogActionTypes.FETCH_GET_SIMILAR:{
             return {...state,similarBlog:action.payload};

@@ -29,3 +29,5 @@ const Authorize = ({ isShow, setIsShow, isRegister, setIsRegister }) => {
 }
 
 export default Authorize
+//357033640863-eptls0vgv7h5rq9dq25m6kedsgfuj8l4.apps.googleusercontent.com
+//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

@@ -30,7 +30,7 @@ export const GetBlogDescription=(id)=>async(dispatch)=>{
     try{
         const resp=await $host.get("api/blog/getDescription?id="+parseInt(id));
         if(resp.data.status==200){
-            dispatch({type:blogActionTypes.FETCH_GET_DESCRIPTION,payload:resp.data.res});
+            dispatch({type:blogActionTypes.FETCH_GET_DESCRIPTION,payload:{selectBlog:resp.data.res,blogRetaledFlight:resp.data.blogRetaledFlight}});
         }else console.log(resp);
     }catch(err){
         console.log(err);

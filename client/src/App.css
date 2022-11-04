@@ -2097,22 +2097,10 @@ footer{
     display: flex;
     flex-direction: row;
 }
-.fixed{
-    position: fixed;
-}
 @media screen and (min-width:1024px) {
     .blog__one__container{
         width: 70%;
         margin: 0 auto;
-    }
-    .one__blog__main{
-        width: 50%;
-    }
-    .blog__fixes__panel{
-        display: flex;
-        background-color: red;
-        top: 15%;
-        left:60%
     }
 }
 @media screen and (min-width:1024px) {
@@ -2215,7 +2203,7 @@ footer{
 }
 @media screen and (min-width:480px) {
     .blog__date__with__social__netvork{
-        margin-top: 30px;
+        margin-top: 15px;
         display: flex;
         flex-direction: row;
         justify-content: space-between;
@@ -2224,7 +2212,7 @@ footer{
 
 @media screen and (max-width:480px) {
     .blog__date__with__social__netvork{
-        margin-top: 30px;
+        margin-top: 15px;
         display: flex;
         flex-direction: column-reverse;
     }
@@ -2236,10 +2224,10 @@ footer{
     flex-direction: row;
     justify-content: space-between;
 }
-.blog__social__networks div a{
+.blog__social__networks button svg{
     color:#2F82FF;
 }
-.blog__social__networks div a:hover{
+.blog__social__networks button svg:hover{
     color:#66a3ff;
 }
 @media screen and (min-width:1024px) {
@@ -2248,14 +2236,17 @@ footer{
         padding-bottom: 50px;
     }
     .blog__one__container{
-        width: 70%;
-        margin: auto;
+        width: 100%;
+        display: flex;
+        justify-content: left;
+    }
+    .one__blog__main{
+        width: 60%;
     }
 }
 @media screen and (max-width:1024px) {
     .blog__one__container{
-        width: 90%;
-        margin: auto;
+        width: 100%;
     }
     .responce__main{
         padding-top: 25px;
@@ -2441,4 +2432,75 @@ footer{
 }
 .btn__authorize button{
     background-color: #2F82FF;
+}
+.enter__with__google{
+    margin-top: 15px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+@media screen and (min-width:1024px) {
+    .blog__with__static__panel{
+        width: 70%;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+    
+    .blog__fixed__panel{
+        display: flex;
+        flex-direction: column;
+        padding: 40px;
+        gap: 20px;
+        background: #FFFFFF;
+        border: 1px solid #DBDBDB;
+        border-radius: 20px;
+        position: absolute;
+        right: 15%;
+    }
+}
+@media screen and (max-width:1024px) {
+    .blog__with__static__panel{
+        width: 90%;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+    
+    .blog__fixed__panel{
+        display: flex;
+        flex-direction: column;
+        padding: 40px;
+        gap: 20px;
+        background: #FFFFFF;
+        border: 1px solid #DBDBDB;
+        border-radius: 20px;
+        margin-top: 20px;
+    }   
+    .blog__fixed__panel{
+        width: 100%;
+    }
+}
+.container__blog__fixed__panel{
+    display: flex;
+}
+.blog__fixed__panel__title{
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 21px;
+    line-height: 120%;
+    color: #111111;
+    margin-bottom: 15px;
+}
+.blog__list__similar__flight{
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 120%;
+    color: #4C4C4C;
+    align-items: center;
 }
