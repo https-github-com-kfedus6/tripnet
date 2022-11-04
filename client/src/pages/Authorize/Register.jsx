@@ -5,6 +5,7 @@ import { useState } from 'react'
 import { useSelector } from "react-redux";
 import { useAction } from "../../hooks/useAction";
 import TextField from '@mui/material/TextField';
+import { GrClose } from 'react-icons/gr';
 
 const Register = ({ close }) => {
     const { Register } = useAction()
@@ -83,10 +84,10 @@ const Register = ({ close }) => {
         <div className="register__main">
             <div className="enter__or__exit">
                 <div className="enter">
-
+                    {t("authorize.register")}
                 </div>
                 <div className="exit">
-                    
+                    <GrClose onClick={()=>close(false)} style={{color:"#2F82FF",cursor:"pointer"}}/>
                 </div>
             </div>
             {/*<div className="user__name">

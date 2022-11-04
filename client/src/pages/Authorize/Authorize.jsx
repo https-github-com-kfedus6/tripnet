@@ -1,13 +1,14 @@
 import { t } from 'i18next';
 import React from 'react'
 import { useState } from 'react';
+import ForgorPass from './ForgorPass';
 import Log from './Log';
 import Register from './Register';
 
 const Authorize = ({ isShow, setIsShow, isRegister, setIsRegister }) => {
-    
+    const [isForgorPass,setIsForgorPass]=useState(false);
     return (
-        <div onClick={() => setIsShow(false)} className={isShow ? "authorize__main active" : "authorize__main"}>
+        <div onClick={() => {setIsForgorPass(false);setIsShow(false)}} className={isShow ? "authorize__main active" : "authorize__main"}>
             <div onClick={(e) => e.stopPropagation()} className="modal__content">
                  {/*<div className='authorize__header'>
                     <div className='authorize__logo'>
@@ -22,7 +23,7 @@ const Authorize = ({ isShow, setIsShow, isRegister, setIsRegister }) => {
                         <span className={isRegister ? 'active-span' : ''}>{t("authorize.log")}</span>
                     </div>
                 </div>*/}
-                {isRegister ? <Register close={setIsShow} /> : <Log close={setIsShow} />}
+                {isForgorPass ? <ForgorPass/> : isRegister ? <Register close={setIsShow} /> : <Log setIsRegister={setIsRegister} close={setIsShow} setIsForgorPass={setIsForgorPass} />}
             </div>
         </div>
     )

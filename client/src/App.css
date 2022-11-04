@@ -2241,7 +2241,7 @@ footer{
         justify-content: left;
     }
     .one__blog__main{
-        width: 60%;
+        width: 50%;
     }
 }
 @media screen and (max-width:1024px) {
@@ -2458,6 +2458,7 @@ footer{
         border-radius: 20px;
         position: absolute;
         right: 15%;
+        min-width: 252px;
     }
 }
 @media screen and (max-width:1024px) {
@@ -2495,6 +2496,9 @@ footer{
     color: #111111;
     margin-bottom: 15px;
 }
+.blog__list__similar__flight svg{
+    font-size: 11px;
+}
 .blog__list__similar__flight{
     font-family: 'Inter';
     font-style: normal;
@@ -2503,4 +2507,136 @@ footer{
     line-height: 120%;
     color: #4C4C4C;
     align-items: center;
+    cursor: pointer;
+}
+.blog__list__similar__flight:hover{
+    color:#5297ff;
+}
+.fotgor__pass__or__register{
+    display: flex;
+    flex-direction: column;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 150%;
+    color: #6A6A6A;
+}
+.fotgor__pass__or__register div{
+    display:inline;
+    margin-top: 10px;
+}
+.authorize__active{
+    cursor: pointer;
+    color:#2F82FF;
+}
+@media screen and (min-width:1024px) {
+    .edit__account__main{
+        width: 70%;
+        margin: 20px auto;
+    }
+}
+@media screen and (max-width:1024px) {
+    .edit__account__main{
+        width: 90%;
+        margin: 20px auto;
+    }
+}
+.adit__account__title{
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 39px;
+    line-height: 120%;
+    color: #111111;
+}
+.edit__account__content{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin-top: 40px;
+    justify-content: space-between;
+}
+.edit__account__description__title{
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 21px;
+    line-height: 120%;
+    color: #111111;
+}
+.text__edit{
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 120%;
+    cursor: pointer;
+    color: #2F82FF;
+}
+.edit__contact__data {
+    display: flex;
+    flex-direction: column;
+}
+.input__name__or__surname input {
+    width: 270px;
+}
+.buttons__cansel__and__save{
+    margin-top: 10px;
+    display: flex;
+    flex-direction: row;
+    width: 270px;
+}
+.button__cansel{
+    width: 100%;
+}
+.button__cansel button{
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 120%;
+    color: #2F82FF;
+    width: 100%;
+    height: 40px;
+    background-color: white;
+    border-color: #2F82FF;
+    border-radius: 10px;
+}
+.button__save{
+    width: 100%;
+}
+.button__save button{
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 120%;
+    color: white;
+    width: 100%;
+    height: 40px;
+    background-color: #2F82FF;
+    border-color: #2F82FF;
+    border-radius: 10px;
+    margin-left: 25px;
+}
+.edit__account__mini__title{
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 150%;
+    color: #111111;
+    margin-top: 15px;
+}
+.edit__account__description{
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 150%;
+    color: #4C4C4C;
+}
+@media screen and (min-width:1024px) {
+
 }

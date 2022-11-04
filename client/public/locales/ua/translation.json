@@ -72,7 +72,10 @@
         "invalid_pass": "некоректний пароль",
         "you_have_successfully_registered": "ви успішно зареєструвалися",
         "email_or_password_is_invalid": "не вірний пароль або почта",
-        "invalid_email": "невірна почта"
+        "invalid_email": "невірна почта",
+        "forgot_pass":"Забули пароль?",
+        "no_register":"Ще не має аккаунта?",
+        "restore":"Відновити"
     },
     "footer": {
         "protected": "Всі права захищені",
@@ -142,7 +145,15 @@
         "price": "Ціна",
         "in_processing": "В обробці",
         "canceled": "Відмінена",
-        "accepted": "Принята"
+        "accepted": "Принята",
+        "personal_office":"Особистий кабінет",
+        "setting_profile":"Налаштування профілю",
+        "my_profile":"Мій профіль",
+        "contact_data":"Контактні дані",
+        "edit":"Редагувати",
+        "surname":"Прізвище",
+        "cansel":"Скасувати",
+        "save":"Зберегти"
     },
     "lang": {
         "uk": "Українська",

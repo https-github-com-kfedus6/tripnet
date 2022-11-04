@@ -72,7 +72,10 @@
         "log": "Войти",
         "or": "Или",
         "password": "Пароль",
-        "number_phone": "Номер телефону"
+        "number_phone": "Номер телефону",
+        "forgot_pass":"Забыли пароль?",
+        "no_register":"Еще нет аккаунта?",
+        "restore":"Восстановить"
     },
     "home": {
         "benefits_company": "Преимущества компании",
@@ -125,7 +128,15 @@
         "count_tiket": "Количество билетов",
         "price": "Цена",
         "canceled": "Отменена",
-        "accepted": "Принято"
+        "accepted": "Принято",
+        "personal_office":"Личный кабинет",
+        "setting_profile":"Настройка профиля",
+        "my_profile":"Мой профиль",
+        "contact_data":"Контактные данные",
+        "edit":"Редактировать",
+        "surname":"Фамилия",
+        "cansel":"Отменить",
+        "save":"Сохранить"
     },
     "footer": {
         "protected": "Все права защищены",

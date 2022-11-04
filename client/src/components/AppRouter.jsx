@@ -27,6 +27,7 @@ import LuggageTransportation from '../pages/Services/pages/LuggageTransportation
 import ReservationManagement from '../pages/Services/pages/ReservationManagement';
 import TransportationAnimals from '../pages/Services/pages/TransportationAnimals';
 import Contacts from '../pages/contacts/Contacts';
+import EditAccount from '../pages/Account/EditAccount';
 
 const AppRouter = () => {
     const { IsAuthorize } = useAction();
@@ -62,6 +63,7 @@ const AppRouter = () => {
                 {is_admin ? <Route path='novetlyEdit' element={<NovetlyEdit />} /> : <></>}
                 {is_admin ? <Route path='responseEdit' element={<ResponceEdit />} /> : <></>}
                 {is_login ? <Route path='account' element={<Account />} /> : <></>}
+                {is_login ? <Route path='account/edit' element={<EditAccount/>}/> : <></> }
                 <Route path='*' element={<Error />} />
             </Route>
         </Routes>

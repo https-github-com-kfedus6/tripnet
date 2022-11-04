@@ -8,7 +8,7 @@ import { IoClose, IoLockClosed } from 'react-icons/io5';
 import { GrClose } from 'react-icons/gr';
 import { GoogleLogin } from '@react-oauth/google';
 
-const Log = ({ close }) => {
+const Log = ({ close, setIsForgorPass, setIsRegister }) => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [isLog, setIsLog] = useState(false);
@@ -95,6 +95,24 @@ const Log = ({ close }) => {
                                 type="password"
                                 autoComplete="current-password"
                             />
+                        </div>
+                        <div className="fotgor__pass__or__register">
+                            <div className="forgot__pass">
+                                <div>
+                                    {t("authorize.forgot_pass")}
+                                </div>
+                                <div onClick={()=>setIsForgorPass(true)} className='authorize__active'>
+                                    {t("authorize.restore")}
+                                </div>                                
+                            </div>
+                            <div className="no__register">
+                                <div>
+                                    {t("authorize.no_register")}
+                                </div>
+                                <div onClick={()=>setIsRegister(true)} className='authorize__active'>
+                                    {t("authorize.register")}
+                                </div>
+                            </div>
                         </div>
                         <div className="btn__authorize">
                             <button onClick={(e) => { e.preventDefault(); log(); return false; }}>{t("authorize.log")}</button>
