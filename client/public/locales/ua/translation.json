@@ -42,7 +42,7 @@
         "time": "Час",
         "dispatch": "Відправлення",
         "arrival": "Прибуття",
-        "popular": "Популярні рейси",
+        "popular": "Інші рейси",
         "with": "з",
         "to": "до",
         "notfound": "По вашому запиту поїздки не знайдені"
@@ -53,7 +53,7 @@
         "here_are_some_useful_links": "Ось кілька корисних посилань:"
     },
     "authorize": {
-        "enter":"Вхід",
+        "enter": "Вхід",
         "authorize": "Aвторизація",
         "register": "Зареєструватися",
         "log": "Увійти",
@@ -73,9 +73,9 @@
         "you_have_successfully_registered": "ви успішно зареєструвалися",
         "email_or_password_is_invalid": "не вірний пароль або почта",
         "invalid_email": "невірна почта",
-        "forgot_pass":"Забули пароль?",
-        "no_register":"Ще не має аккаунта?",
-        "restore":"Відновити"
+        "forgot_pass": "Забули пароль?",
+        "no_register": "Ще не має аккаунта?",
+        "restore": "Відновити"
     },
     "footer": {
         "protected": "Всі права захищені",
@@ -146,14 +146,14 @@
         "in_processing": "В обробці",
         "canceled": "Відмінена",
         "accepted": "Принята",
-        "personal_office":"Особистий кабінет",
-        "setting_profile":"Налаштування профілю",
-        "my_profile":"Мій профіль",
-        "contact_data":"Контактні дані",
-        "edit":"Редагувати",
-        "surname":"Прізвище",
-        "cansel":"Скасувати",
-        "save":"Зберегти"
+        "personal_office": "Особистий кабінет",
+        "setting_profile": "Налаштування профілю",
+        "my_profile": "Мій профіль",
+        "contact_data": "Контактні дані",
+        "edit": "Редагувати",
+        "surname": "Прізвище",
+        "cansel": "Скасувати",
+        "save": "Зберегти"
     },
     "lang": {
         "uk": "Українська",
@@ -203,7 +203,7 @@
         "10": "жовтень",
         "11": "листопад",
         "12": "грудень",
-        "similarFlight":"Пов’язанні рейси"
+        "similarFlight": "Пов’язанні рейси"
     },
     "services": {
         "all_services": "Всі послуги",

@@ -2,10 +2,11 @@ import React, { useState } from 'react';
 import { useSelector } from 'react-redux'
 import { useAction } from '../hooks/useAction'
 import { NavLink } from 'react-router-dom';
-import FlightScheduleBusList from './FlightScheduleBusList'
 import { VscArrowSmallRight } from 'react-icons/vsc'
-import { t } from 'i18next'
+import FlightScheduleBusList from './FlightScheduleBusList'
 import FlightParams from './FlightParams';
+import FlightReserve from './FlightReserve';
+import { t } from 'i18next'
 
 const FlightList = ({ flight, is_admin, setScheduleTo, setScheduleWith, status, changeStatus,
     changeSchedule, relinkBlocks, setVisiblyBuy }) => {
@@ -113,82 +114,54 @@ const FlightList = ({ flight, is_admin, setScheduleTo, setScheduleWith, status, 
                             <b>Опис рейсу</b>
                             <span style={{ wordBreak: 'break-word' }} dangerouslySetInnerHTML={createMarkup(flight.description[language])}></span>
                         </div>
-                        <div className='flight-links'>
-                            <div>
-                                <p>{t("flight.popular")}</p>
-                            </div>
-                            <div className='flight-links-block'>
-                                <div className='flight-link-block'>
-                                    {relinkBlocks == undefined || relinkBlocks.startPosition.length == 0 ? <></> : <>
-                                        <span>{t("flight.with")} {flight.startPosition[language]}</span>
-                                        <div>
-                                            {relinkBlocks.startPosition.map(x =>
-                                                <div key={x.id}>
-                                                    <NavLink
-                                                        to={"/flight/" + flight.startPosition[language] + "-"
-                                                            + x.finishPosition.split("//")[language] + "/" + x.id}
-                                                        key={x.id}>
-                                                        {flight.startPosition[language]}-{x.finishPosition.split("//")[language]}
-                                                    </NavLink>
-                                                </div>)}
-                                        </div>
-                                    </>}
-                                </div>
-                                <div className='flight-link-block'>
-                                    {relinkBlocks == undefined || relinkBlocks.finishPosition.length == 0 ? <></> : <>
-                                        <span>{t("flight.to")} {flight.finishPosition[language]}</span>
-                                        <div>
-                                            {relinkBlocks.finishPosition.map(x =>
-                                                <div key={x.id}>
-                                                    <NavLink to={"/flight/" + x.startPosition.split("//")[language] + "-" + flight.startPosition[language]
-                                                        + "/" + x.id}>
-                                                        {x.startPosition.split("//")[language]}-{flight.finishPosition[language]}
-                                                    </NavLink>
-                                                </div>)}
-                                        </div>
-                                    </>}
-                                </div>
-                            </div>
-                        </div>
+
                     </div>
-                    <div className='block-flight-reserve'>
-                        <div className={flight.currentFlight ? 'flight-info-message-first' : 'flight-message-status'}>
-                            <div className='flight-message-icon'>
-                                <img src={process.env.REACT_APP_API_URL + 'info-blue.png'} alt='info' />
-                            </div>
-                            <div className='flight-message-text'>
-                                <b>Зворотній рейс</b>
-                                <span>
-                                    Інформація про зворотній рейс з’явиться у профілі користувача.
-                                    Для незареєстрованих користувачів, інформація про зворотній рейс буде відправлено як повідомлення на вказаний номер телефону.
-                                </span>
-                            </div>
+                    <FlightReserve
+                        flight={flight}
+                    />
+                </div>
+                <div className='flight-links'>
+                    <div>
+                        <b>{t("flight.popular")}</b>
+                    </div>
+                    <div className='flight-links-block'>
+                        <div className='flight-link-block'>
+                            {relinkBlocks == undefined || relinkBlocks.startPosition.length == 0 ? <></> : <>
+                                <b>{t("flight.with")} {flight.startPosition[language]}</b>
+                                <div className='flight-items-link'>
+                                    {relinkBlocks.startPosition.map(x =>
+                                        <div key={x.id} className='flight-item-link'>
+                                            <NavLink
+                                                to={"/flight/" + flight.startPosition[language] + "-"
+                                                    + x.finishPosition.split("//")[language] + "/" + x.id}
+                                                key={x.id}>
+                                                <div>
+                                                    <span>{flight.startPosition[language]}</span>
+                                                    <span>{<VscArrowSmallRight />}</span>
+                                                    <span>{x.finishPosition.split("//")[language]}</span>
+                                                </div>
+                                            </NavLink>
+                                        </div>)}
+                                </div>
+                            </>}
                         </div>
-                        <div className={flight.currentFlight ? 'flight-info-message-second' : 'flight-message-status'}>
-                            <div className='flight-message-icon'>
-                                <img src={process.env.REACT_APP_API_URL + 'info-blue.png'} alt='info' />
-                            </div>
-                            <div className='flight-message-text'>
-                                <b>Оплата бронювання</b>
-                                <span>
-                                    Рейс можна буде оплатити після підтвердження бронювання менеджером.
-                                </span>
-                            </div>
-                        </div>
-                        <div className={flight.currentFlight ? 'flight-message-status' : 'flight-info-message-thrid'}>
-                            <div className='flight-message-icon'>
-                                <img src={process.env.REACT_APP_API_URL + 'info.png'} alt='info' />
-                            </div>
-                            <div className='flight-message-text-thrid'>
-                                <b>Неактуальний рейс</b>
-                                <span>
-                                    Дата відправлення або ціна на цей рейс могли змінитися. Поточнюйте ці дані у менеджера за телефонами:
-                                    <br />
-                                    +38(056)491-23-21
-                                    <br />
-                                    +38(044)723-11-71
-                                </span>
-                            </div>
+                        <div className='flight-link-block'>
+                            {relinkBlocks == undefined || relinkBlocks.finishPosition.length == 0 ? <></> : <>
+                                <b>{t("flight.to")} {flight.finishPosition[language]}</b>
+                                <div className='flight-items-link'>
+                                    {relinkBlocks.finishPosition.map(x =>
+                                        <div key={x.id} className='flight-item-link'>
+                                            <NavLink to={"/flight/" + x.startPosition.split("//")[language] + "-" + flight.startPosition[language]
+                                                + "/" + x.id}>
+                                                <div>
+                                                    <span>{x.startPosition.split("//")[language]}</span>
+                                                    <span>{<VscArrowSmallRight />}</span>
+                                                    <span>{flight.finishPosition[language]}</span>
+                                                </div>
+                                            </NavLink>
+                                        </div>)}
+                                </div>
+                            </>}
                         </div>
                     </div>
                 </div>
