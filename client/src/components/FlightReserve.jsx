@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import { useSelector } from 'react-redux'
 import AirDatepicker from 'air-datepicker';
 import ua from 'air-datepicker/locale/uk';
 import ru from 'air-datepicker/locale/ru';
@@ -8,10 +7,19 @@ import { t } from 'i18next'
 
 const FlightReserve = ({ flight }) => {
 
+    const [dropdownCheckBack, setDropdowbCheckBack] = useState(false)
     const [dropdownCheck, setDropdowbCheck] = useState(false)
     const [sumYoung, setSumYoung] = useState(0)
     const [sumOld, setSumOld] = useState(1)
+    const [sumYoungBack, setSumYoungBack] = useState(0)
+    const [sumOldBack, setSumOldBack] = useState(1)
     const [checked, setChecked] = useState(false);
+
+    const [value, setValue] = useState();
+
+    const handleChange = (newValue) => {
+        setValue(newValue);
+    };
 
     const countOldResult = () => {
         if (sumOld === 1) {
@@ -28,6 +36,23 @@ const FlightReserve = ({ flight }) => {
             setSumYoung(sumYoung - 1)
         }
     }
+
+    const countOldResultBack = () => {
+        if (sumOldBack === 1) {
+            setSumOldBack(1)
+        } else {
+            setSumOldBack(sumOldBack - 1)
+        }
+    }
+
+    const countYoungResultBack = () => {
+        if (sumYoungBack === 0) {
+            setSumYoungBack(0)
+        } else {
+            setSumYoungBack(sumYoungBack - 1)
+        }
+    }
+
 
     new AirDatepicker('#date', localStorage.getItem('i18nextLng') === 'UA' ?
         {
@@ -113,7 +138,7 @@ const FlightReserve = ({ flight }) => {
                                     <img src={process.env.REACT_APP_API_URL + 'users.png'} alt="passegers" />
                                 </label>
                             </div>
-                            <div className={dropdownCheck ? 'dropdown-list-passegers' : 'dropdown-none'}>
+                            <div className={dropdownCheck ? 'dropdown-list-passegers' : 'dropdown-reserve-none'}>
                                 <div className='dropdown-list-item-passegers'>
                                     <div className='dropdown-list-item-passegers-text'>
                                         <span>{t('flight.older_15_years')}</span>
@@ -175,25 +200,25 @@ const FlightReserve = ({ flight }) => {
                                 <span>{flight.countFreePlace} {t('flight.free_place')}</span>
                             </div>
                             <div className='dropdown-passengers'>
-                                <div className='dropdown-select-passegers' onClick={() => dropdownCheck ? setDropdowbCheck(false) : setDropdowbCheck(true)}>
-                                    <input className='dropdown-passegers-input' type="text" id='passegers' placeholder=' ' value={dropdownCheck ? `${sumOld} ${t('flight.pass_old')}, ${sumYoung} дитина` : ''} disabled />
+                                <div className='dropdown-select-passegers' onClick={() => dropdownCheckBack ? setDropdowbCheckBack(false) : setDropdowbCheckBack(true)}>
+                                    <input className='dropdown-passegers-input' type="text" id='passegers' placeholder=' ' value={dropdownCheckBack ? `${sumOldBack} ${t('flight.pass_old')}, ${sumYoungBack} дитина` : ''} disabled />
                                     <label className='dropdown-passegers-text' htmlFor="passegers">{t('flight.passegers')}</label>
                                     <label className='dropdown-icon-user'>
                                         <img src={process.env.REACT_APP_API_URL + 'users.png'} alt="passegers" />
                                     </label>
                                 </div>
-                                <div className={dropdownCheck ? 'dropdown-list-passegers' : 'dropdown-none'}>
+                                <div className={dropdownCheckBack ? 'dropdown-list-passegers' : 'dropdown-reserve-back-none'}>
                                     <div className='dropdown-list-item-passegers'>
                                         <div className='dropdown-list-item-passegers-text'>
                                             <span>{t('flight.older_15_years')}</span>
                                         </div>
                                         <div className='dropdown-list-item-passegers-count'>
                                             <div className='dropdown-list-item-passegers-minus-and-plus'>
-                                                <img src={process.env.REACT_APP_API_URL + 'minuss.png'} alt="minus" onClick={() => countOldResult()} />
+                                                <img src={process.env.REACT_APP_API_URL + 'minuss.png'} alt="minus" onClick={() => countOldResultBack()} />
                                             </div>
-                                            <div value={sumOld}>{sumOld}</div>
+                                            <div value={sumOldBack}>{sumOldBack}</div>
                                             <div className='dropdown-list-item-passegers-minus-and-plus'>
-                                                <img src={process.env.REACT_APP_API_URL + 'plus.png'} alt="plus" onClick={() => setSumOld(sumOld + 1)} />
+                                                <img src={process.env.REACT_APP_API_URL + 'plus.png'} alt="plus" onClick={() => setSumOldBack(sumOldBack + 1)} />
                                             </div>
                                         </div>
                                     </div>
@@ -203,16 +228,16 @@ const FlightReserve = ({ flight }) => {
                                         </div>
                                         <div className='dropdown-list-item-passegers-count'>
                                             <div className='dropdown-list-item-passegers-minus-and-plus'>
-                                                {sumYoung >= 1
+                                                {sumYoungBack >= 1
                                                     ?
-                                                    <img src={process.env.REACT_APP_API_URL + 'minuss.png'} alt="minus" onClick={() => countYoungResult()} />
+                                                    <img src={process.env.REACT_APP_API_URL + 'minuss.png'} alt="minus" onClick={() => countYoungResultBack()} />
                                                     :
-                                                    <img src={process.env.REACT_APP_API_URL + 'minus.png'} alt="minus" onClick={() => countYoungResult()} />
+                                                    <img src={process.env.REACT_APP_API_URL + 'minus.png'} alt="minus" onClick={() => countYoungResultBack()} />
                                                 }
                                             </div>
-                                            <div value={sumYoung}>{sumYoung}</div>
+                                            <div value={sumYoungBack}>{sumYoungBack}</div>
                                             <div className='dropdown-list-item-passegers-minus-and-plus'>
-                                                <img src={process.env.REACT_APP_API_URL + 'plus.png'} alt="plus" onClick={() => setSumYoung(sumYoung + 1)} />
+                                                <img src={process.env.REACT_APP_API_URL + 'plus.png'} alt="plus" onClick={() => setSumYoungBack(sumYoungBack + 1)} />
                                             </div>
                                         </div>
                                     </div>
@@ -220,12 +245,12 @@ const FlightReserve = ({ flight }) => {
                             </div>
                         </div>
                         <div className='form-input-date'>
-                            <input id='date' type='text'
+                            <input id='date-second' type='text'
                                 className='form-input-text-date'
                                 placeholder=' '
                                 autoComplete="off"
                             />
-                            <label className='form-label-date' htmlFor='date'>Дата відправлення</label>
+                            <label className='form-label-date' htmlFor='date-second'>Дата відправлення</label>
                             <label className='form-button-date'>
                                 <img src={process.env.REACT_APP_API_URL + 'vector.png'} alt="date" />
                             </label>
