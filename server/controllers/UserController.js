@@ -56,12 +56,18 @@ class UserController {
             const { oldPassword, newPassword, id } = req.body;
             if (!Number.isInteger(id)) throw ("id is not true");
             const user = await User.findOne({ where: { id } });
-            if (await bcrypt.compareSync(oldPassword, user.password)) {
+            if(user.password==null){
                 const cryptNewPassword = await bcrypt.hash(newPassword, 3);
                 const res = await User.update({ password: cryptNewPassword }, { where: { id } });
                 resp.json({ status: 200 });
-            } else return resp.json({ status: 415, message: "password is not true" });
-            resp.json({ user })
+            }else{
+                if (await bcrypt.compareSync(oldPassword, user.password)) {
+                    const cryptNewPassword = await bcrypt.hash(newPassword, 3);
+                    const res = await User.update({ password: cryptNewPassword }, { where: { id } });
+                    resp.json({ status: 200 });
+                } else return resp.json({ status: 415, message: "password is not true" });
+                resp.json({ user })
+            }
         } catch (err) {
             return next(ErrorApi.badRequest(err));
         }
@@ -131,6 +137,16 @@ class UserController {
             const token = await jwt.sign({ id: res.id, email: res.email, surname:res.surname,name: res.name, isAdmin: res.isAdmin }, process.env.SECRET_KEY, { expiresIn: "1y" });
                 
             return resp.json({status:200,res,token});
+        }catch(err){
+            return next(ErrorApi.badRequest(err));
+        }
+    }
+    static IsPasswordNull=async(req,resp,next)=>{
+        try{
+            const {id}=req.user;
+            const user=await User.findOne({where:{id}});
+            const res=user.password==null;
+            return resp.json({status:200,res});
         }catch(err){
             return next(ErrorApi.badRequest(err));
         }

@@ -12,5 +12,6 @@ rout.post("/editEmail",AuthMiddleWare,UserController.EditEmail);
 rout.post("/regWithGoogle",UserController.RegInGoogle);
 rout.post("/registerWithGoogle",UserController.RegisterInGoogle);
 rout.post("/updateInfoForUser",AuthMiddleWare,UserController.SetNewInfoAboutUser);
+rout.post("/isPasswordNull",AuthMiddleWare,UserController.IsPasswordNull);
 
 module.exports = rout;

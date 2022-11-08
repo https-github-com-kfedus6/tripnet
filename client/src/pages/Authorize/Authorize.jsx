@@ -23,7 +23,7 @@ const Authorize = ({ isShow, setIsShow, isRegister, setIsRegister }) => {
                         <span className={isRegister ? 'active-span' : ''}>{t("authorize.log")}</span>
                     </div>
                 </div>*/}
-                {isForgorPass ? <ForgorPass/> : isRegister ? <Register close={setIsShow} /> : <Log setIsRegister={setIsRegister} close={setIsShow} setIsForgorPass={setIsForgorPass} />}
+                {isForgorPass ? <ForgorPass/> : isRegister ? <Register setIsRegisterOrLog={setIsRegister} close={setIsShow} /> : <Log setIsRegister={setIsRegister} close={setIsShow} setIsForgorPass={setIsForgorPass} />}
             </div>
         </div>
     )

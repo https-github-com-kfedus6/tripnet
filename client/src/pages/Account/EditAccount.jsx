@@ -21,12 +21,15 @@ const EditAccount = () => {
     const [newPassword,setNewPassword]=useState("");
     const [newPassword2,setNewPassword2]=useState("");
     const [isChangePass, setIsChangePass] = useState("false");
-    const { is_admin, is_login, user, reply, telephone } = useSelector(state => state.user);
-    const {UpdateInfoForUser, GetPhone}=useAction()
+    const { is_admin, is_login, user, reply, telephone,isPasswordNull } = useSelector(state => state.user);
+    const {UpdateInfoForUser, GetPhone, IsPasswordNull}=useAction()
     const EditInfoUser=()=>{
         
         UpdateInfoForUser(name,surname,phone);
     }
+    useEffect(()=>{
+        IsPasswordNull();
+    },[])
     useEffect(()=>{
         GetPhone();
     },[user])
@@ -73,7 +76,7 @@ const EditAccount = () => {
                 <NavLink to="/">
                     {t("header.first_link")}
                 </NavLink>
-                <NavLink to="/blog">
+                <NavLink to="/account">
                     {t("account.personal_office")}
                 </NavLink>
                 <Typography color="text.primary">{t("account.setting_profile")}</Typography>
@@ -99,13 +102,13 @@ const EditAccount = () => {
                                         {t("account.surname")}
                                     </div>
                                     <div className="edit__account__description">
-                                        {user.surname}
+                                        {user.surname==""?t("account.no_specefied"):user.surname}
                                     </div>
                                     <div className="edit__account__mini__title">
                                         {t("account.name")}
                                     </div>
                                     <div className="edit__account__description">
-                                        {user.name}
+                                        {user.name==""?t("account.no_specefied"):user.name}
                                     </div>
                                     <div className="edit__account__mini__title">
                                         Телефон
@@ -193,11 +196,11 @@ const EditAccount = () => {
                             </div>
                             {!isEditPassword?
                                     <div onClick={()=>setIsEditPassword(true)} className='text__edit'>
-                                        {t("account.change_password")}
+                                        {isPasswordNull?t("account.create_password"):t("account.change_password")}
                                     </div>
                                 :   
                                     <div className='account__edit__change__password'>
-                                        <div>
+                                        {isPasswordNull?<></>: <div>
                                             <TextField
                                                 onChange={e => setOldPassword(e.target.value)}
                                                 id="outlined-password-input"
@@ -206,7 +209,7 @@ const EditAccount = () => {
                                                 autoComplete="current-password"
                                                 value={oldPassword}
                                             />
-                                        </div>
+                                        </div>}
                                         <div>
                                             <TextField
                                                 onChange={e => setNewPassword(e.target.value)}

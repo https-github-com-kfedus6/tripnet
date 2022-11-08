@@ -8,15 +8,12 @@ import TextField from '@mui/material/TextField';
 import { GrClose } from 'react-icons/gr';
 import { GoogleLogin } from '@react-oauth/google';
 
-const Register = ({ close }) => {
+const Register = ({ close, setIsRegisterOrLog }) => {
     const { Register } = useAction()
     const [isRegister, setIsRegister] = useState(false);
     const { reply,is_login } = useSelector(state => state.user);
-    const [name, setName] = useState("");
     const [email, setEmail] = useState("");
-    const [numberPhone, setNumberPhone] = useState("");
     const [password, setPassword] = useState("");
-    const [password2, setPassword2] = useState("");
     const { isShow, text } = useSelector(state => state.message);
     const { SetShowMessgeFalse, SetShowMessgeTrue, RegisterWithGoogle } = useAction();
     
@@ -51,32 +48,9 @@ const Register = ({ close }) => {
     }, [reply]);
 
     const register = () => {
-        let tempName = name.toLocaleLowerCase();
-        let tempPass = password.toLocaleLowerCase();
-        const regName = /drop|\(|delete|;/;
-        if (tempName.length < 3 || regName.test(tempName)) {
-            SetShowMessgeTrue(t("authorize.invalid_name"));
-            setTimeout(() => SetShowMessgeFalse(), 3000);
-            return;
-        }
         const regEmail = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
         if (!regEmail.test(email)) {
             SetShowMessgeTrue(t("authorize.mail_must_be_genuine"));
-            setTimeout(() => SetShowMessgeFalse(), 3000);
-            return;
-        }
-        const regTelephone = /(^\++\d{11}$)|(^\d{10})$/;
-        if (!regTelephone.test(numberPhone)) {
-            SetShowMessgeTrue(t("authorize.invalid_telephone"));
-            setTimeout(() => SetShowMessgeFalse(), 3000);
-            return;
-        } if (password != password2) {
-            SetShowMessgeTrue(t("authorize.passwords_do_not_match"));
-            setTimeout(() => SetShowMessgeFalse(), 3000);
-            return;
-        }
-        if (regName.test(tempPass)) {
-            SetShowMessgeTrue(t("authorize.invalid_pass"));
             setTimeout(() => SetShowMessgeFalse(), 3000);
             return;
         }
@@ -86,16 +60,19 @@ const Register = ({ close }) => {
             return;
         }
         setIsRegister(true);
-        Register(name, email, numberPhone, password);
+        Register("", email, "", password);
     }
 
     return (
         
-        <div className="authorize__register__main">
+        <div className="authorize__register__main register__authorize__register__main">
             <div className="register__left">
                 <div className="enter__or__exit">
                     <div className="enter">
                         {t("header.registering")}
+                    </div>
+                    <div onClick={()=>close(false)} className="exit__register__left">
+                        &times;
                     </div>
                 </div>
                 <div style={{marginTop:"30px"}} className="enter__with__google">
@@ -109,8 +86,40 @@ const Register = ({ close }) => {
                 <div className="athorize__or">
                     {t("authorize.or")}
                 </div>
-                
+                <div className="login__and__passworf register__login__and__passworf">
+                    <div className='email'>
+                        <TextField style={{"borderRadius":"20px"}}
+                            onChange={(e) => setEmail(e.target.value)}
+                            id="demo-helper-text-misaligned-no-helper"
+                            label={t("authorize.email")}
+                        />
+                    </div>
+                    <div className='password'>
+                        <TextField style={{"borderRadius":"20px"}}
+                            onChange={(e) => setPassword(e.target.value)}
+                            id="outlined-password-input"
+                            label={t("authorize.password")}
+                            type="password"
+                            autoComplete="current-password"
+                        />
+                    </div>
+                    
+                    <div className="btn__authorize register__btn__authorize">
+                        <button onClick={(e) => { e.preventDefault(); register();return false; }}>{t("authorize.register")}</button>
+                    </div>
+                </div>
+                <div className="is__account__register__main">
+                    <div className="is__account__register">
+                        <div>
+                            {t("authorize.is_acount")}
+                        </div>
+                        <div onClick={()=>setIsRegisterOrLog(false)} className='authorize__active'>
+                            {t("authorize.log")}
+                        </div>                                
+                    </div>
+                </div>
             </div>
+                
             <div className="register__right">
                 <div className="register__right__content">
                     <div onClick={()=>close(false)} className="exit__register">

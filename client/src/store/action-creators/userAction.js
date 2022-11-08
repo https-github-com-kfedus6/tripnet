@@ -47,6 +47,7 @@ export const ChangePassword = (oldPassword, newPassword, id) => async (dispatch)
             dispatch({ type: userActionTypes.REGISTER_USER_ERROR, payload: 200 });
             dispatch({type:messageActionTypes.SET_SHOW_TRUE,payload:t("account.password_changed")});
             setTimeout(()=>dispatch({type:messageActionTypes.SET_SHOW_FALSE}),3000);
+            dispatch({type:userActionTypes.SET_IS_PASSWORD_NULL,payload:false})
         }else{
             dispatch({type:messageActionTypes.SET_SHOW_TRUE,payload:t("authorize.invalid_pass")});
             setTimeout(()=>dispatch({type:messageActionTypes.SET_SHOW_FALSE}),3000);
@@ -137,5 +138,15 @@ export const UpdateInfoForUser=(name,surname,phone)=>async(dispatch)=>{
     }catch(err){
         dispatch({type:messageActionTypes.SET_SHOW_TRUE,payload:"error"});
         setTimeout(()=>dispatch({type:messageActionTypes.SET_SHOW_FALSE}),5000);
+    }
+}
+export const IsPasswordNull=()=>async(dispatch)=>{
+    try{
+        const res=await $authHost.post("api/user/isPasswordNull");
+        if(res.data.status==200){
+            dispatch({type:userActionTypes.SET_IS_PASSWORD_NULL,payload:res.data.res})
+        }else console.log(res);
+    }catch(err){
+        console.log(err);
     }
 }

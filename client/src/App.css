@@ -2953,4 +2953,214 @@ footer{
 
 .btn__authorize__register button{
     width: 100%;
+    margin-top: 30px;
+}
+.login__and__passworf{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.email{
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+.password{
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+}
+@media screen and (min-width:480px) {
+    .register__login__and__passworf{
+        padding-right: 20px;
+    }
+    .btn__authorize button{
+        width: 100%;
+    }
+    .btn__authorize{
+        width: 100%;
+    }   
+    .register__login__and__passworf div{
+        width: 100%;
+    }
+    .exit__register__left{
+        display: none;
+    }
+}
+.register__is__account{
+    margin-top: 15px;
+}
+@media screen and (max-width:480px) {
+    .exit__register__left{
+        display: flex;
+        justify-content: right;
+        font-size: 40px;
+        color:#2F82FF;
+        cursor: pointer;
+    }
+    .enter__or__exit{
+        width: 90%;
+        margin: auto;
+    }
+    .register__authorize__register__main{
+        margin-top: 80px;
+    }
+    .exit__register{
+        display: none;
+    }
+    .register__is__account{
+        margin-bottom: 20px;
+    }
+    .is__account__register__main{
+        width: 90%;
+        margin: auto;
+        margin-bottom: 30px;
+    }
+}
+.is__account__register__main{
+    display: flex;
+    flex-direction: column;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 150%;
+    color: #6A6A6A;
+}
+.is__account__register__main div{
+    display:inline;
+    margin-top: 15px;
+}
+.register__btn__authorize{
+    margin-top: 35px;
+}
+.blog__container{
+    margin-top: 30px;
+}
+.user__profile{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 40px;
+    gap: 20px;
+    background: #FFFFFF;
+    border: 1px solid #DBDBDB;
+    border-radius: 20px;
+}
+.user__profile__title{
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 21px;
+    line-height: 120%;
+    color: #111111;
+}
+.account__surname__with__name{
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 150%;
+    color: #111111;
+}
+@media screen and (min-width:1024px) {
+    .account__main2{
+        width: 70%;
+        margin: 30px auto;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+    .account__message{
+        width: 280px;
+    }
+    .user__profile__left{
+        display: none;
+    }
+}
+@media screen and (max-width:1024px) {
+    .account__main2{
+        width: 90%;
+        margin: 30px auto;
+    }
+    .user__profile{
+        width: 280px;
+    }
+    .user__profile__right{
+        display: none;
+    }
+    .user__profile__left{
+        margin-left: 5%;
+        margin-top: 20px;
+    }
+}
+.account__email{
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 150%;
+    color: #6A6A6A;
+}
+.account__message{
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 24px;
+    gap: 8px;
+    background: #EAF2FF;
+    border-radius: 20px;
+    margin-top: 20px;
+}
+.account__setting__profile__button{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+.account__setting__profile__button button{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 14px 24px;
+    gap: 8px;
+    width: 250px;
+    height: 50px;
+    background: #2F82FF;
+    border-radius: 10px;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 120%;
+    color: #FFFFFF;
+    cursor: pointer;
+}
+.account__message__title{
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 21px;
+    line-height: 120%;
+    color: #13356A;
+}
+.account__message__description{
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 150%;
+    color: #13356A;
+}
+.account__message{
+    display: flex;
+    flex-direction: column;
+}
+.my__booking__title{
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 39px;
+    line-height: 120%;
+    color: #111111;
 }
