@@ -9,5 +9,8 @@ rout.post("/isAuthorize",UserController.IsAuthorize);
 rout.post("/changePassword",AuthMiddleWare,UserController.ChangePassword);
 rout.get("/getPhone",AuthMiddleWare,UserController.GetPhone);
 rout.post("/editEmail",AuthMiddleWare,UserController.EditEmail);
+rout.post("/regWithGoogle",UserController.RegInGoogle);
+rout.post("/registerWithGoogle",UserController.RegisterInGoogle);
+rout.post("/updateInfoForUser",AuthMiddleWare,UserController.SetNewInfoAboutUser);
 
 module.exports = rout;

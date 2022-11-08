@@ -11,12 +11,12 @@ import './App.css';
 import { GoogleOAuthProvider } from '@react-oauth/google';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
-
+console.log(process.env.GOOGLE_ID);
 root.render(
     <React.StrictMode>
         <Suspense fallback={<div>Loading...</div>}>
            <Provider store={store}>
-                <GoogleOAuthProvider clientId='357033640863-eptls0vgv7h5rq9dq25m6kedsgfuj8l4.apps.googleusercontent.com'>
+                <GoogleOAuthProvider clientId={"357033640863-2fp06dgvoi1hjdam532virn2f8q9u8mi.apps.googleusercontent.com"}>
                     <App />                    
                 </GoogleOAuthProvider>
             </Provider>

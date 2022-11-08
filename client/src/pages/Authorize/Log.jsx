@@ -13,7 +13,10 @@ const Log = ({ close, setIsForgorPass, setIsRegister }) => {
     const [password, setPassword] = useState("");
     const [isLog, setIsLog] = useState(false);
     const { reply, is_login } = useSelector(state => state.user);
-    const { Authorize, SetShowMessgeFalse, SetShowMessgeTrue } = useAction()
+    const { Authorize, SetShowMessgeFalse, SetShowMessgeTrue,LogWithGoogle } = useAction()
+    const logWithGoogle=(e)=>{
+        LogWithGoogle(e.credential);
+    }
     const log = () => {
         const regEmail = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
         const regPass = /drop|\(|delete|;/;
@@ -65,16 +68,18 @@ const Log = ({ close, setIsForgorPass, setIsRegister }) => {
                     <div className="enter">
                         {t("authorize.enter")}
                     </div>
-                    <div className="exit">
-                        <GrClose onClick={()=>close(false)} style={{color:"#2F82FF",cursor:"pointer"}}/>
+                    <div onClick={()=>close(false)} className="exit">
+                        &times;
                     </div>
                 </div>
                 <div className="enter__with__google__or__with__login__and__password">
                     <div className="enter__with__google">
-                        <GoogleLogin
-                            onSuccess={CredentialResponce=>console.log(CredentialResponce)}
-                            onError={(e)=>console.log(e)}
-                            />
+                        <div style={{width:"auto"}} className='google__login'>
+                            <GoogleLogin
+                                onSuccess={CredentialResponce=>logWithGoogle(CredentialResponce)}
+                                onError={(e)=>console.log(e)}
+                                />
+                        </div>
                     </div>
                     <div className="athorize__or">
                         {t("authorize.or")}

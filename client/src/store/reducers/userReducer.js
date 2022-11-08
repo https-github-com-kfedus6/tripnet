@@ -10,7 +10,7 @@ const initialState = {
     is_login: false,
     is_admin: false,
     reply: 0,
-    telephone: 0
+    telephone: ""
 }
 
 export const userReducer = (state = initialState, action) => {

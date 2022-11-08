@@ -5,16 +5,14 @@ const bcrypt = require("bcrypt");
 class UserController {
     static Add = async (req, resp, next) => {
         try {
-            console.log(req.body)
             const { name, email, telephone, password } = req.body;
             const isEmailTrue = await User.findOne({ where: { email } });
             const reg = /drop|\(|delete|;/g;
             if (reg.test(name) || reg.test(email) || reg.test(telephone) || reg.test(password)) throw ("invalid value");
             if (isEmailTrue != null) return resp.json({ status: 411, message: "email is busy" });
             const cryptPass = await bcrypt.hash(password, 3);
-            console.log(cryptPass);
             const res = await User.create({ name: name, email: email, telephone: telephone, password: cryptPass, isAdmin: false });
-            const token = await jwt.sign({ id: res.id, email: res.email, name: res.name, isAdmin: res.isAdmin }, process.env.SECRET_KEY, { expiresIn: "1y" });
+            const token =  await jwt.sign({ id: res.id, email: res.email, surname:res.surname,name: res.name, isAdmin: res.isAdmin }, process.env.SECRET_KEY, { expiresIn: "1y" });
             return resp.json({ status: 200, token });
         } catch (err) {
             return next(ErrorApi.badRequest(err));
@@ -30,7 +28,7 @@ class UserController {
                 return resp.json({status:415,message:"invalid email"});
             }
             if (await bcrypt.compareSync(password, res.password)) {
-                const token = await jwt.sign({ id: res.id, email: res.email, name: res.name, isAdmin: res.isAdmin }, process.env.SECRET_KEY, { expiresIn: "1y" });
+                const token =  await jwt.sign({ id: res.id, email: res.email, surname:res.surname,name: res.name, isAdmin: res.isAdmin }, process.env.SECRET_KEY, { expiresIn: "1y" });
                 return resp.json({ status: 200, token });
             } else return resp.json({ status: 416, message: "invalid password" })
         } catch (err) {
@@ -45,7 +43,7 @@ class UserController {
                 return resp.json({ status: 420 });
             } else {
                 const res = await User.findOne({ where: { email: verifyToken.email } });
-                const newToken = await jwt.sign({ id: res.id, email: res.email, name: res.name, isAdmin: res.isAdmin }, process.env.SECRET_KEY, { expiresIn: "1y" });
+                const newToken = await jwt.sign({ id: res.id, email: res.email, surname:res.surname,name: res.name, isAdmin: res.isAdmin }, process.env.SECRET_KEY, { expiresIn: "1y" });
                 return resp.json({ status: 200, token: newToken });
             }
 
@@ -85,6 +83,54 @@ class UserController {
             const res=await User.findOne({where:{id}});
             const token=await jwt.sign({id:res.id,email:res.email,name:res.name,isAdmin:res.isAdmin},process.env.SECRET_KEY,{expiresIn:"1y"});
             return resp.json({status:200,token});
+        }catch(err){
+            return next(ErrorApi.badRequest(err));
+        }
+    }
+    static RegisterInGoogle=async(req,resp,next)=>{
+        try{
+            const {token}=req.body;
+            const result=jwt.decode(token);
+            if(result.email_verified==true){
+                const isEmailTrue = await User.findOne({ where: { email:result.email } });
+                console.log(2);
+                if (isEmailTrue != null) return resp.json({ status: 411, message: "email is busy" });
+                const res=await User.create({email:result.email,name:result.given_name,surname:result.family_name});
+                const newToken =  await jwt.sign({ id: res.id, email: res.email, surname:res.surname,name: res.name, isAdmin: res.isAdmin }, process.env.SECRET_KEY, { expiresIn: "1y" });
+                console.log(3);
+                return resp.json({status:200,token:newToken});    
+            }else{
+                console.log(4);
+                return resp.json({status:420,message:"email is false"});
+            }
+        }catch(err){
+            return next(ErrorApi.badRequest(err));
+        }
+    }
+    static RegInGoogle=async(req,resp,next)=>{
+        try{
+            const {token}=req.body;
+            const tokenDecode=await jwt.decode(token);
+            const res=await User.findOne({where:{email:tokenDecode.email}});
+            if(res==null){
+                return resp.json({status:415,message:"invalid email"});
+            }
+            const newToken =  await jwt.sign({ id: res.id, email: res.email, surname:res.surname,name: res.name, isAdmin: res.isAdmin }, process.env.SECRET_KEY, { expiresIn: "1y" });
+            return resp.json({ status: 200, token:newToken });  
+        }catch(err){
+            return next(ErrorApi.badRequest(err));
+        }
+    }
+    static SetNewInfoAboutUser=async(req,resp,next)=>{
+        try{
+            const {id}=req.user;
+            const {name,surname,phone}=req.body;
+    
+            await User.update({name:name,surname:surname,telephone:phone},{where:{id:id}});
+            const res=await User.findOne({where:{id}})
+            const token = await jwt.sign({ id: res.id, email: res.email, surname:res.surname,name: res.name, isAdmin: res.isAdmin }, process.env.SECRET_KEY, { expiresIn: "1y" });
+                
+            return resp.json({status:200,res,token});
         }catch(err){
             return next(ErrorApi.badRequest(err));
         }

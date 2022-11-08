@@ -64,9 +64,10 @@ main {
     width: 80%;
     left: 100%;
     background-color: #fd9400;
-    z-index: 50;
+    z-index: 500;
     transition: 2s;
     position: fixed;
+    background-color: white;
 }
 .burger__menu.actived {
     display: flex;
@@ -75,7 +76,7 @@ main {
     top: 0px;
     height: 100%;
     width: 70%; 
-    background-color: #FBFBFE;
+    background-color: red;
     z-index: 50;
     transition: 2s;
     left: 20%;
@@ -132,6 +133,7 @@ main {
     justify-content: flex-start;
     align-items: flex-start;
     margin: 0 auto;
+    background-color: white;
 }
 .burger__component{
     display: flex;
@@ -156,11 +158,6 @@ main {
 }
 .params__flight {
     display: flex;
-}
-.burger__exit__main{
-    display: flex;
-    justify-content: right;
-    width: 100%;
 }
 .direction {
     display: flex;
@@ -2433,12 +2430,6 @@ footer{
 .btn__authorize button{
     background-color: #2F82FF;
 }
-.enter__with__google{
-    margin-top: 15px;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-}
 @media screen and (min-width:1024px) {
     .blog__with__static__panel{
         width: 70%;
@@ -2550,13 +2541,6 @@ footer{
     line-height: 120%;
     color: #111111;
 }
-.edit__account__content{
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    margin-top: 40px;
-    justify-content: space-between;
-}
 .edit__account__description__title{
     font-family: 'Inter';
     font-style: normal;
@@ -2637,6 +2621,336 @@ footer{
     line-height: 150%;
     color: #4C4C4C;
 }
+.burget__menu{
+    height: 100%;
+    background-color: white;
+}
+@media screen and (min-width:1024px) { 
+    .header-baner{
+        margin-top: 85px;
+    }
+}
+@media screen and (max-width:1024px) { 
+    .header-baner{
+        margin-top: 80px;
+    }
+}
+.burger__menu__main{
+    position: fixed;
+    height: 100%;
+    background-color: white;
+    width: 70%;
+    z-index: 150;
+    left: 30%;
+}
+.burger__exit1 div{
+    font-size: 40px;
+    cursor: pointer;
+    color: #2F82FF;
+}
+.burger__exit1{
+    display: flex;
+    margin-top: 20px;
+    width: 95%;
+    justify-content: right;
+    margin-right: 50px;
+}
+.exit{
+    cursor: pointer;
+    color: #2F82FF;
+    font-size: 30px;
+}
+.burger__menu__list1{
+    width: 80%;
+    margin: 25px auto;
+}
+@media screen and (min-width:768px) {
+    .burger__menu__list1{
+        display: flex;
+        flex-direction: column;
+        width: 50%;
+        justify-content:flex-start;
+        margin-left: 5%;
+    }
+    .burger__buttons{
+        display: flex;
+        flex-direction: row;
+    }
+    .burger__buttons div{
+        width: 100%;
+    }
+    .burger__button__register{
+        margin-left: 15px;
+    }
+}
+.burger__button__register{
+    margin-top: 30px;
+}
+.burger__button__register button{
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 120%;
+    color: white;
+    width: 100%;
+    height: 40px;
+    background-color: #2F82FF;
+    border-color: #2F82FF;
+    border-radius: 10px;
+}
+.burger__button__log__in{
+    margin-top: 30px;
+}
+.burger__button__log__in button{
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 120%;
+    color: #2F82FF;
+    width: 100%;
+    height: 40px;
+    background-color: white;
+    border-color: #2F82FF;
+    border-radius: 10px;
+}
 @media screen and (min-width:1024px) {
+    .burger__menu__main{
+        display: none;
+    }
+}
+.setting__accout{
+    display: flex;
+    flex-direction: column;
+}
+.edit__account__email{
+    display: flex;
+    flex-direction: column;
+}
+.account__edit__change__password div{
+    margin-top: 5px;
+}
+.enter__with__google{
+    display: flex;
+    margin-top: 10px;
+    width: 100%;
+    justify-content: center;
+}
+.google__login{
+    width: auto;
+    margin: auto;
+}
+.edit__account__message__content{
+    display: flex;
+    flex-direction: row;
+    background-color: #C1D9FF;
+    padding: 10px;
+    border-radius: 15px;
+}
+.i__in__circle{
+    display: flex;
+    color:#13356A;
+    border-color: #13356A;
+    border-width: 2px;
+    border-style:solid;
+    border-radius: 15px;
+    width: 25px;
+    height: 25px;
+    justify-content: center;
+    align-items: center;
+}
+.edit__account__message__title{
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 21px;
+    line-height: 120%;
+    color: #13356A;
+}
+.edit__account__text{
+    margin-left: 5px;
+}
+.edit__account__descrition{
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 150%;
+    color: #13356A;
+}
+@media screen and (min-width:1024px) {
+    
+    .text__edit__or__contact__data{
+        width: 300px;
+    }
+    .setting__accout{
+        margin-left: 10px;
+        width: 300px;
+    }
+    .edit__account__main{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+    .edit__account__content{
+        display: flex;
+        flex-direction: row;
+        margin-top: 40px;
+        justify-content: space-between;
+    }
+}
+@media screen and (min-width:480px) and (max-width:1024px) {
+    
+    .setting__accout{
+        margin-left: 10px;
+    }
+    .edit__account__message__content{
+        width: 100%;
+    }
+    .edit__account__message{
+        width: 100%;
+        margin-top: 20px;
+    }
+    .edit__account__content__main{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        width: 100%;
+    }
+    .edit__account__content{
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        margin-top: 40px;
+        justify-content: space-between;
+    }
+}
+@media screen and (max-width:480px) {
+    .setting__accout{
+        margin-top: 20px;
+    }
+    .edit__account__message{
+        margin-top: 20px;
+    }
+}
+@media screen and (min-width:1024px) {   
+    .account__main{
+        margin-top: 30px auto;
+        width: 70%;
+        display: flex;
+        flex-direction: row;
 
+    }
+}
+.register__main{
+    margin: 15px;
+}
+.modal__content{
+    padding: 0;
+}
+.authorize__register__main{
+    display: flex;
+    justify-content: space-between;
+}
+@media screen and (min-width:480px) {
+    .authorize__register__main{
+        flex-direction: row;
+    }
+    .log__main{
+        width: 350px;
+        margin: 50px;
+    }
+    .register__left{
+        margin-left: 25px;
+        width: 100%;
+        margin-top: 25px;
+        margin-bottom: 25px;
+    }
+    .register__right{
+        border-top-right-radius: 35px;
+        border-bottom-right-radius: 35px;
+    }
+    .register__right__content{
+        margin-right: 25px;
+        margin-top: 25px;
+        margin-bottom: 25px;
+    }
+}
+
+@media screen and (max-width:480px) {
+    .authorize__register__main{
+        flex-direction: column;
+    }
+    .modal__content{
+        min-width: 100%;
+    }
+    .log__main{
+        margin: 20px;
+    }
+}
+.authorize__main{
+    width: auto;
+}
+.modal__content{
+    width: auto;
+}
+.register__right{
+    background: #F4F5F7;
+    width: 100%;
+}
+.exit__register{
+    display: flex;
+    justify-content: right;
+    font-size: 40px;
+    color:#2F82FF;
+    cursor: pointer;
+}
+.register__list__service{
+    padding: 20px;
+}
+.register__right__title{
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 21px;
+    line-height: 120%;
+    color: #111111;
+    margin-top: 15px;
+}
+.register__right__description{
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 150%;
+    color: #4C4C4C;
+    margin-top: 5px;
+}
+.regiter__inputs{
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.regiter__inputs div{
+    display: flex;
+    width: 90%;
+    justify-content: center;
+}
+.authorize__main{
+    z-index: 15000;
+}
+.btn__authorize__register{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 25px;
+    width: 70%;
+    margin-left: 40px;
+}
+
+.btn__authorize__register button{
+    width: 100%;
 }

@@ -6,18 +6,28 @@ import { useSelector } from "react-redux";
 import { useAction } from "../../hooks/useAction";
 import TextField from '@mui/material/TextField';
 import { GrClose } from 'react-icons/gr';
+import { GoogleLogin } from '@react-oauth/google';
 
 const Register = ({ close }) => {
     const { Register } = useAction()
     const [isRegister, setIsRegister] = useState(false);
-    const { reply } = useSelector(state => state.user);
+    const { reply,is_login } = useSelector(state => state.user);
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const [numberPhone, setNumberPhone] = useState("");
     const [password, setPassword] = useState("");
     const [password2, setPassword2] = useState("");
     const { isShow, text } = useSelector(state => state.message);
-    const { SetShowMessgeFalse, SetShowMessgeTrue } = useAction()
+    const { SetShowMessgeFalse, SetShowMessgeTrue, RegisterWithGoogle } = useAction();
+    
+    const registerWithGoogle=(e)=>{
+        RegisterWithGoogle(e.credential);
+    }
+    useEffect(()=>{
+        if(is_login==true){
+            close(false);
+        }
+    },[is_login])
     useEffect(() => {
         if (!isRegister) return;
         switch (reply) {
@@ -81,16 +91,47 @@ const Register = ({ close }) => {
 
     return (
         
-        <div className="register__main">
-            <div className="enter__or__exit">
-                <div className="enter">
-                    {t("authorize.register")}
+        <div className="authorize__register__main">
+            <div className="register__left">
+                <div className="enter__or__exit">
+                    <div className="enter">
+                        {t("header.registering")}
+                    </div>
                 </div>
-                <div className="exit">
-                    <GrClose onClick={()=>close(false)} style={{color:"#2F82FF",cursor:"pointer"}}/>
+                <div style={{marginTop:"30px"}} className="enter__with__google">
+                <div style={{width:"auto"}} className='google__login'>
+                        <GoogleLogin
+                            onSuccess={CredentialResponce=>registerWithGoogle(CredentialResponce)}
+                            onError={(e)=>console.log(e)}
+                            />
+                    </div>
                 </div>
+                <div className="athorize__or">
+                    {t("authorize.or")}
+                </div>
+                
             </div>
-            {/*<div className="user__name">
+            <div className="register__right">
+                <div className="register__right__content">
+                    <div onClick={()=>close(false)} className="exit__register">
+                        &times;
+                    </div>
+                    <div className="register__list__service">
+                        <div className='service__img'>
+                            <img src={process.env.REACT_APP_API_URL+"booking_management_blue.png"}/>
+                        </div>
+                        <div className='register__right__title'>{t("services.booking_management")}</div>
+                        <div className='register__right__description'>{t("services.booking_management_description")}</div>
+                    </div>
+                    <div className="register__list__service two">
+                            <img src={process.env.REACT_APP_API_URL+"pay_online.png"}/>
+                        <div className='register__right__title'>{t("services.booking_management")}</div>
+                        <div className='register__right__description'>{t("services.booking_management_description")}</div>
+                    </div>
+                </div>  
+            </div>
+        </div>
+            /*<div className="user__name">
                 <TextField
                     className='input-material'
                     onChange={(e) => setName(e.target.value)}
@@ -136,8 +177,7 @@ const Register = ({ close }) => {
             </div>
             <div className="btn__authorize">
                 <button onClick={(e) => { e.stopPropagation(); register() }}>{t("authorize.register")}</button>
-            </div>*/}
-        </div>
+            </div>*/
     )
 }
 

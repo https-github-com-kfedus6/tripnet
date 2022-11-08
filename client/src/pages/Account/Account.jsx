@@ -43,23 +43,6 @@ const Account = () => {
     
     const [phoneValue,setPhoneValue]=useState("")
 
-    const change_password = () => {
-        if (newPassword != newPassword2) {
-            SetShowMessgeTrue(t("authorize.passwords_do_not_match"));
-            setTimeout(() => SetShowMessgeFalse(), 3000);
-            return;
-        }
-        if (newPassword.length < 8) {
-            SetShowMessgeTrue(t("authorize.password_must_be_longer_than_8_characters"));
-            setTimeout(() => SetShowMessgeFalse(), 3000);
-            return;
-        }
-        setIsChangePass(true);
-        ChangePassword(oldPassword, newPassword, user.id);
-        setOldPassword("")
-        setNewPassword("")
-        setNewPassword2("")
-    }
 
     useEffect(() => {
         if (isChangePass) {
@@ -88,44 +71,9 @@ const Account = () => {
         fetchGetFlight(id);
     }
 
-    const editEmail=()=>{
-        const regEmail = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-        if (!regEmail.test(newEmail)) {
-            SetShowMessgeTrue(t("authorize.mail_must_be_genuine"));
-            setTimeout(() => SetShowMessgeFalse(), 3000);
-            return;
-        }
-        EditEmail(newEmail);
-        setNewEmail("");
-    }
 
     return (
     <>
-        <div className='container-user'>
-            <div className='block-user'>
-                <div className='block-user-icon'>
-                    <span><FaUserCircle /></span>
-                    <span>{t("account.hello")}</span>
-                    <span>{user.name}</span>
-                </div>
-                <div className='block-user-info'>
-                    <div>
-                        <span>email</span>
-                        <span>{user.email}</span>
-                    </div>
-                    <div>
-                        <span>{t("account.name")}</span>
-                        <span>{user.name}</span>
-                    </div>
-                </div>
-                <div>
-                    <div className='block-history'>
-                        <details>
-                            <summary>
-                                {t("account.history_order")}
-                            </summary>
-                            <div className='account-container'>
-                                <div className="container-account">
                                     <div className="accordion-account">
                                         {userHistoty.map((item, i) => {
                                             return (
@@ -179,86 +127,6 @@ const Account = () => {
                                             )
                                         })}
                                     </div>
-                                </div>
-                            </div >
-                        </details>
-                    </div>
-                </div>
-                <details className='block-user-input'>
-                    <summary>
-                        {t('account.change_email')}
-                    </summary>
-                    <div className='block-user-password'>
-                        <div>
-                            <TextField
-                                id="demo-helper-text-misaligned-no-helper"
-                                label={t('account.new_email')}
-                                size="small"
-                                value={newEmail}
-                                onChange={(e)=>setNewEmail(e.target.value)}
-                            />
-                        </div>
-                        <div>
-                            <button onClick={()=>editEmail()}>{t('account.change_email')}</button>
-                        </div>
-                    </div>
-                </details>
-                <details className='block-user-input'>
-                    <summary className='account-user-btn-change'>
-                        {t("account.change_password")}
-                    </summary>
-                    <div className='block-user-password'>
-                        <div>
-                            <TextField
-                                onChange={e => setOldPassword(e.target.value)}
-                                id="outlined-password-input"
-                                label={t("account.old_password")}
-                                type="password"
-                                autoComplete="current-password"
-                                value={oldPassword}
-                                size="small"
-                            />
-                        </div>
-                        <div>
-                            <TextField
-                                onChange={e => setNewPassword(e.target.value)}
-                                id="outlined-password-input"
-                                label={t("account.new_password")}
-                                type="password"
-                                autoComplete="current-password"
-                                value={newPassword}
-                                size="small"
-                            />
-                        </div>
-                        <div>
-                            <TextField
-                                onChange={e => setNewPassword2(e.target.value)}
-                                id="outlined-password-input"
-                                label={t("account.new_password")}
-                                type="password"
-                                autoComplete="current-password"
-                                value={newPassword2}
-                                size="small"
-                            />
-                        </div>
-                        <div>
-                            <button onClick={change_password}>{t("account.change_password")}</button>
-                        </div>
-                    </div>
-                </details>
-                <div className='block-user-btn'>
-                    <button onClick={exit}>{t("account.exit")}</button>
-                </div>
-            </div>
-        </div>
-        {/*
-        <div className='phone__number1'>
-        <PhoneInput
-            international
-            country="ua"
-            value={phoneValue}
-            onChange={e=>setPhoneValue(e)}/>
-                                    </div>*/}
     </>
     )
 }

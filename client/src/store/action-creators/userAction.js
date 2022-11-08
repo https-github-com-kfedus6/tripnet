@@ -87,3 +87,55 @@ export const GetPhone=()=>async(dispatch)=>{
         console.log(err);
     }
 }
+export const RegisterWithGoogle=(token)=>async(dispatch)=>{
+    try{
+        const res = await $host.post('api/user/registerWithGoogle', { token });
+        if (res.data.status == 200) {
+            const user = await jwtDecode(res.data.token);
+            localStorage.setItem("token", res.data.token);
+            dispatch({ type: userActionTypes.AUTHORIZE_USER_SUCCESSFUL, payload: user });
+        }
+        else if(res.data.status==411){
+            dispatch({type:messageActionTypes.SET_SHOW_TRUE,payload:t("authorize.you_register")});
+            setTimeout(()=>dispatch({type:messageActionTypes.SET_SHOW_FALSE}),5000);
+        }
+        else dispatch({ type: userActionTypes.REGISTER_USER_ERROR, payload: res.data.status });
+    }catch(err){
+        dispatch({ type: userActionTypes.REGISTER_USER, action: 500 });
+    }
+}
+export const LogWithGoogle=(token)=>async(dispatch)=>{
+    try{
+        const res = await $host.post("api/user/regWithGoogle", { token });
+        if (res.data.status == 200) {
+            const user = await jwtDecode(res.data.token);
+            localStorage.setItem("token", res.data.token);
+            dispatch({ type: userActionTypes.AUTHORIZE_USER_SUCCESSFUL, payload: user });
+        }
+        else if (res.data.status==415){
+            dispatch({type:messageActionTypes.SET_SHOW_TRUE,payload:t("authorize.you_not_register")});
+            setTimeout(()=>dispatch({type:messageActionTypes.SET_SHOW_FALSE}),5000);
+        } 
+        else dispatch({ type: userActionTypes.REGISTER_USER_ERROR, payload: 400 });
+    }catch(err){
+        dispatch({ type: userActionTypes.REGISTER_USER_ERROR, payload: 400 });
+    }
+}
+export const UpdateInfoForUser=(name,surname,phone)=>async(dispatch)=>{
+    try{
+        const res=await $authHost.post("api/user/updateInfoForUser",{name,surname,phone});
+        if(res.data.status==200){
+            dispatch({type:messageActionTypes.SET_SHOW_TRUE,payload:t("message.successfully_added")});
+            setTimeout(()=>dispatch({type:messageActionTypes.SET_SHOW_FALSE}),5000);
+            const user = await jwtDecode(res.data.token);
+            localStorage.setItem("token", res.data.token);
+            dispatch({ type: userActionTypes.AUTHORIZE_USER_SUCCESSFUL, payload: user });
+        }else{
+            dispatch({type:messageActionTypes.SET_SHOW_TRUE,payload:t("error")});
+            setTimeout(()=>dispatch({type:messageActionTypes.SET_SHOW_FALSE}),5000);
+        }
+    }catch(err){
+        dispatch({type:messageActionTypes.SET_SHOW_TRUE,payload:"error"});
+        setTimeout(()=>dispatch({type:messageActionTypes.SET_SHOW_FALSE}),5000);
+    }
+}

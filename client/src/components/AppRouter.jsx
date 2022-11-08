@@ -54,6 +54,8 @@ const AppRouter = () => {
                 <Route path='services/booking_management' element={<ReservationManagement/>}/>
                 <Route path='services/transportation_animals' element={<TransportationAnimals/>}/>
                 <Route path='contacts' element={<Contacts/>}/>
+                {is_login ? <Route path='account' element={<Account />} /> : <></>}
+                {is_login ? <Route path='account/edit' element={<EditAccount/>}/> : <></> }
                 {is_admin ? <Route path='order' element={<FlightOrders />} /> : <></>}
                 {is_admin ? <Route path='aboutUsEdit' element={<AboutUsEdit />} /> : <></>}
                 {is_admin ? <Route path='blogEdit' element={<BlogEdit />} /> : <></>}
@@ -62,8 +64,6 @@ const AppRouter = () => {
                 {is_admin ? <Route path='infoCompanyEdit' element={<InfoCompanyEdit />} /> : <></>}
                 {is_admin ? <Route path='novetlyEdit' element={<NovetlyEdit />} /> : <></>}
                 {is_admin ? <Route path='responseEdit' element={<ResponceEdit />} /> : <></>}
-                {is_login ? <Route path='account' element={<Account />} /> : <></>}
-                {is_login ? <Route path='account/edit' element={<EditAccount/>}/> : <></> }
                 <Route path='*' element={<Error />} />
             </Route>
         </Routes>

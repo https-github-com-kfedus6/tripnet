@@ -15,6 +15,8 @@ const Header = () => {
     const [isShow, setIsShow] = useState(false)
     const navigate = useNavigate();
     const [isRegister, setIsRegister] = useState(true);
+    const [isBurgerShow,setIsBurgerShow]=useState(false);
+    
     return (
         <>
             <div className='header__main'>
@@ -74,12 +76,15 @@ const Header = () => {
                         <div>
                             <Logo />
                         </div>
-                        <div>
-                            <Burger setIsShowRegister={setIsShow} />
-                        </div>
+                        {!isBurgerShow?
+                            <div className='menu-burger' onClick={() => setIsBurgerShow(true)}>
+                                <img src={process.env.REACT_APP_API_URL + 'menu.png'} alt="burger" />
+                            </div>
+                            :<></>}
                     </div>
                 </div>
             </div>
+            {isBurgerShow? <Burger onClick={()=>setIsBurgerShow(false)} setIsRegister={setIsRegister} setIsShowRegister={setIsShow} setIsBurgerShow={setIsBurgerShow}/>:<></>}
             <Authorize isRegister={isRegister} setIsRegister={setIsRegister} isShow={isShow} setIsShow={setIsShow} />
         </>
     )
