@@ -3,6 +3,7 @@ import AirDatepicker from 'air-datepicker';
 import ua from 'air-datepicker/locale/uk';
 import ru from 'air-datepicker/locale/ru';
 import 'air-datepicker/air-datepicker.css';
+import PhoneInput from 'react-phone-input-2'
 import { t } from 'i18next'
 
 const FlightReserve = ({ flight }) => {
@@ -53,7 +54,6 @@ const FlightReserve = ({ flight }) => {
         }
     }
 
-
     new AirDatepicker('#date', localStorage.getItem('i18nextLng') === 'UA' ?
         {
             locale: ua,
@@ -103,14 +103,19 @@ const FlightReserve = ({ flight }) => {
                         <label htmlFor='reserve-second' className='reserve-label-text'>Ім'я</label>
                     </div>
                     <div className='reserve-input'>
-                        <input
+                        <PhoneInput
+                            className='react-input-phone'
+                            international
+                            country="ua"
+                        />
+                        {/* <input
                             id='reserve-third'
                             type="text"
                             className='reserve-input-text'
                             placeholder=' '
                             autoComplete="off"
                         />
-                        <label htmlFor='reserve-third' className='reserve-label-text'>Телефон</label>
+                        <label htmlFor='reserve-third' className='reserve-label-text'>Телефон</label> */}
                     </div>
                     <div className='reserve-input'>
                         <input

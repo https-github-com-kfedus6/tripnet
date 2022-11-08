@@ -9,7 +9,7 @@ import FlightReserve from './FlightReserve';
 import { t } from 'i18next'
 
 const FlightList = ({ flight, is_admin, setScheduleTo, setScheduleWith, status, changeStatus,
-    changeSchedule, relinkBlocks, setVisiblyBuy }) => {
+    changeSchedule, relinkBlocks }) => {
 
     const { language } = useSelector(state => state.language);
 

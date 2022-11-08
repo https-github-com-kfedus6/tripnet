@@ -4,9 +4,11 @@
     bottom: 0;
     left: 0;
     right: 0;
-    background: rgba(0,0,0, 0.7);
+    background: rgba(0,0,0, 0.6);
     display: none;
-    z-index: 101;
+    z-index: 121;
+    padding: 30px 0;
+    overflow: scroll;
 }
 
 .modal-form-buy.act {
@@ -16,77 +18,78 @@
 }
 
 .modal-content-form-buy {
-    padding: 10px;
-    background-color: #fff;
-    border-radius: 16px;
-    width: 40%;
-    height: 550px;
-    min-height: 450px;
-    box-shadow: 0px 0px 10px rgba(0,0,0, 0.9);
-}
-
-.title-modal {
+    box-sizing: border-box;
     display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 10px;
-}
-
-.title-modal h2 {
-    font-size: 26px;
-}
-
-.modal-logo {
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-}
-
-.modal-logo img {
-    width: 25%;
-}
-
-.block-modal-input {
-    display: flex;
-    justify-content: center;
-    align-items: center;
     flex-direction: column;
+    align-items: flex-start;
+    padding: 30px;
+    gap: 20px;
+    width: 33%;
+    height: auto;
+    box-shadow: 0px 0px 10px rgba(0,0,0, 0.6);
+    background: #FFFFFF;
+    border: 1px solid #DBDBDB;
+    border-radius: 40px;
+    position: relative;
+}
+
+.modal-form-close {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 14px;
+    gap: 10px;
+
+    position: absolute;
+    width: 52px;
+    height: 52px;
+    right: 0;
+    top: 0;
+}
+
+.modal-form-close button {
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.modal-form-block-reserve {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0px;
+    gap: 25px;
     margin-top: 20px;
 }
 
-.block-modal-input div {
-    margin-bottom: 6px;
+.flight-form-header-reserve b {
+    font-family: 'Inter';
+    font-style: normal;
+    font-size: 31px;
+    line-height: 120%;
+    color: #111111;
+    cursor: default;
 }
 
-.input-modal {
-    width: 80%;
-}
-
-.block-modal-btn {
+.flight-header-reserve-positions {
     display: flex;
-    justify-content: center;
-    margin-top: 25px;
+    align-items: flex-start;
+    padding: 0px;
 }
 
-.block-modal-btn button {
-    border-radius: 5px;
-    width: 50%;
-    background-color: #084887;
-    border: 1px solid #084887;
-    font-size: 18px;
-    height: 50px;
-    cursor: pointer;
-    color: #FBFBFE;
+.flight-header-reserve-positions b {
+    font-family: 'Inter';
+    font-style: normal;
+    font-size: 21px;
+    line-height: 120%;
+    color: #111111;
+    cursor: default;
 }
 
-.block-modal-btn button:hover {
-    background-color: #FBFBFE;
-    color: #084887;
-    transition: all ease 0.3s;
-}
-
-.css-1u3bzj6-MuiFormControl-root-MuiTextField-root {
-    margin-top: 10px;
+.flight-header-reserve-positions span {
+    font-size: 25px;
 }
 
 @media (max-width: 992px) {

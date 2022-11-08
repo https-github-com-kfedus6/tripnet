@@ -9,12 +9,22 @@ import { t } from 'i18next';
 import './flights.css';
 
 const Flights = ({ isShowFilter }) => {
+
     const [visibleBuy, setVisiblyBuy] = useState(false)
+
     const [name, setName] = useState('')
     const [phone, setPhone] = useState('')
-    const [date, setDate] = useState('')
+    const [suername, setSurename] = useState('')
+    const [email, setEmail] = useState('')
     const [countTicket, setCountTicket] = useState(1)
+
+    const [dropdownCheckBack, setDropdowbCheckBack] = useState(false)
+    const [dropdownCheck, setDropdowbCheck] = useState(false)
+    const [sumYoungBack, setSumYoungBack] = useState(0)
+    const [sumOldBack, setSumOldBack] = useState(1)
+    const [date, setDate] = useState('')
     const [flightId, setFlightId] = useState('')
+    const [checked, setChecked] = useState(false);
 
     const { startPositionInitial, finishPositionInitial, dateInitial, sumOldInitial, sumYoungInitial } = useSelector(state => state.flightsSearchWithHomeReducer)
 
@@ -31,9 +41,9 @@ const Flights = ({ isShowFilter }) => {
     const [changePosition, setChangePosition] = useState(false)
 
     const { fetchGetFlights, fetchDeleteFlight, postFlightOrder, SetFlightParams,
-        SetShowMessgeTrue, SetShowMessgeFalse } = useAction()
+        SetShowMessgeTrue, SetShowMessgeFalse, fetchGetFlight } = useAction()
 
-    const { flights } = useSelector(state => state.flights)
+    const { flights, flight } = useSelector(state => state.flights)
 
     useEffect(() => {
         fetchGetFlights({
@@ -45,6 +55,10 @@ const Flights = ({ isShowFilter }) => {
             page: page
         })
     }, [limit, page])
+
+    useEffect(() => {
+        fetchGetFlight(flightId)
+    }, [flightId])
 
     useEffect(() => {
         if (flights != undefined) setTotalCount(getPageCount(flights.count, limit))
@@ -61,6 +75,7 @@ const Flights = ({ isShowFilter }) => {
     }
 
     const { is_login, user } = useSelector(state => state.user);
+
     const sortFlights = (event) => {
 
         event.preventDefault();
@@ -164,6 +179,7 @@ const Flights = ({ isShowFilter }) => {
                     changePositionFun={changePositionFun}
                 />
                 <ModalFormBuy
+                    flight={flight}
                     visibleBuy={visibleBuy}
                     setVisiblyBuy={setVisiblyBuy}
                     name={name}
@@ -175,6 +191,20 @@ const Flights = ({ isShowFilter }) => {
                     countTicket={countTicket}
                     setCountTicket={setCountTicket}
                     maxTicket={flights?.rows.find(x => x.id == flightId)?.countFreePlace}
+                    dropdownCheck={dropdownCheck}
+                    setDropdowbCheck={setDropdowbCheck}
+                    dropdownCheckBack={dropdownCheckBack}
+                    setDropdowbCheckBack={setDropdowbCheckBack}
+                    sumYoung={sumYoung}
+                    setSumYoung={setSumYoung}
+                    sumOld={sumOld}
+                    setSumOld={setSumOld}
+                    sumYoungBack={sumYoungBack}
+                    setSumYoungBack={setSumYoungBack}
+                    sumOldBack={sumOldBack}
+                    setSumOldBack={setSumOldBack}
+                    checked={checked}
+                    setChecked={setChecked}
                 />
             </div>
         </>

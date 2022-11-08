@@ -2625,16 +2625,7 @@ footer{
     height: 100%;
     background-color: white;
 }
-@media screen and (min-width:1024px) { 
-    .header-baner{
-        margin-top: 85px;
-    }
-}
-@media screen and (max-width:1024px) { 
-    .header-baner{
-        margin-top: 80px;
-    }
-}
+
 .burger__menu__main{
     position: fixed;
     height: 100%;
