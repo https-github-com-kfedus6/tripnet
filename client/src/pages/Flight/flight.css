@@ -927,6 +927,14 @@
     font-size: 22px;
 }
 
+.dropdown-reserve-none {
+    display: none;
+}
+
+.dropdown-reserve-back-none {
+    display: none;
+}
+
 @media (max-width:1024px) {
     .block-flight-info-and-reserve  {
         flex-direction: column;
