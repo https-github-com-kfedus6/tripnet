@@ -4,6 +4,7 @@ import { useAction } from '../../hooks/useAction';
 import FlightsList from '../../components/FlightsList';
 import { getPageCount, getPagesArray } from '../../utils/page';
 import ModalFormBuy from '../../components/UI/modalFormBuy/ModalFormBuy';
+
 import { t } from 'i18next';
 
 import './flights.css';
@@ -14,9 +15,8 @@ const Flights = ({ isShowFilter }) => {
 
     const [name, setName] = useState('')
     const [phone, setPhone] = useState('')
-    const [suername, setSurename] = useState('')
+    const [surename, setSurename] = useState('')
     const [email, setEmail] = useState('')
-    const [countTicket, setCountTicket] = useState(1)
 
     const [dropdownCheckBack, setDropdowbCheckBack] = useState(false)
     const [dropdownCheck, setDropdowbCheck] = useState(false)
@@ -66,14 +66,6 @@ const Flights = ({ isShowFilter }) => {
 
     let pagesArray = getPagesArray(totalCount)
 
-    const changePage = (page) => {
-        setPage(page)
-    }
-
-    const moreFlights = () => {
-        setLimit(limit + 3)
-    }
-
     const { is_login, user } = useSelector(state => state.user);
 
     const sortFlights = (event) => {
@@ -110,37 +102,60 @@ const Flights = ({ isShowFilter }) => {
     }
 
     const reserveTicket = () => {
-        const regTelephone = /(^\++\d{11}$)|(^\d{10})$/;
-        if (!regTelephone.test(phone)) {
-            SetShowMessgeTrue(t("authorize.invalid_telephone"));
-            setTimeout(() => SetShowMessgeFalse(), 3000);
-            return;
-        }
+        /* const regTelephone = /(^\++\d{11}$)|(^\d{10})$/;
+         if (!regTelephone.test(phone)) {
+             SetShowMessgeTrue(t("authorize.invalid_telephone"));
+             setTimeout(() => SetShowMessgeFalse(), 3000);
+             return;
+         }*/
+
         setVisiblyBuy(false);
-        if (!is_login) {
-            postFlightOrder({
-                flightId: flightId,
-                authorName: name,
-                countTicket: countTicket,
-                date: date,
-                phone: phone
-            })
+        let maxTicket = flights?.rows.find(x => x.id == flightId)?.countFreePlace
+
+        let countTicket = sumOld + sumYoung
+
+        if (maxTicket > countTicket) {
+            if (!is_login) {
+                postFlightOrder({
+                    surename: surename,
+                    name: name,
+                    phone: phone.phone,
+                    email: email,
+                    countPersons: sumOld + sumYoung,
+                    date: date,
+                    flightId: flightId
+                })
+                setSurename('')
+                setName('')
+                setPhone('')
+                setEmail('')
+                setDate('')
+                setSumOld(1)
+                setSumYoung(0)
+            } else {
+                postFlightOrder({
+                    surename: surename,
+                    name: name,
+                    phone: phone.phone,
+                    email: email,
+                    countPersons: sumOld + sumYoung,
+                    date: date,
+                    flightId: flightId,
+                    userId: user.id
+                })
+                setDate('')
+                setSumOld(1)
+                setSumYoung(0)
+            }
         } else {
-            postFlightOrder({
-                flightId: flightId,
-                authorName: name,
-                countTicket: countTicket,
-                date: date,
-                phone: phone,
-                userId: user.id
-            })
+            console.log('no ticket')
         }
-        setCountTicket(1)
     }
 
     const openModal = (id) => {
         setVisiblyBuy(true)
         setFlightId(id)
+        setDate(flight.startDate)
     }
 
     const changePositionFun = () => {
@@ -187,10 +202,8 @@ const Flights = ({ isShowFilter }) => {
                     phone={phone}
                     setPhone={setPhone}
                     setDate={setDate}
+                    date={date}
                     reserveTicket={reserveTicket}
-                    countTicket={countTicket}
-                    setCountTicket={setCountTicket}
-                    maxTicket={flights?.rows.find(x => x.id == flightId)?.countFreePlace}
                     dropdownCheck={dropdownCheck}
                     setDropdowbCheck={setDropdowbCheck}
                     dropdownCheckBack={dropdownCheckBack}
@@ -205,6 +218,10 @@ const Flights = ({ isShowFilter }) => {
                     setSumOldBack={setSumOldBack}
                     checked={checked}
                     setChecked={setChecked}
+                    surename={surename}
+                    setSurename={setSurename}
+                    email={email}
+                    setEmail={setEmail}
                 />
             </div>
         </>

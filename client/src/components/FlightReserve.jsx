@@ -264,7 +264,7 @@ const FlightReserve = ({ flight }) => {
                 </div>
                 <div className='reserve-btn'>
                     <span>{flight.price} грн</span>
-                    <button>{t('flight.search')}</button>
+                    <button>{t('modalbuy.btn-buy')}</button>
                 </div>
             </div>
             <div className='flight-block-message'>
