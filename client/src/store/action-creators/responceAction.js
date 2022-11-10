@@ -13,9 +13,15 @@ export const GetResponceNovetly=()=>async(dispatch)=>{
     }
 }
 
-export const AddResponce=(authorName,description)=>async(dispatch)=>{
-    try{
-        const res=await $authHost.post("api/responce/add",{authorName,description});
+export const AddResponce=(authorName, wheretoWhere, image, description)=>async(dispatch)=>{
+    try{ 
+        let formData=new FormData();
+        await formData.append("image",image);
+        await formData.append("description",description);
+        await formData.append("authorName",authorName);
+        await formData.append("wheretoWhere",wheretoWhere);
+        const res=await $authHost.post("api/responce/add",formData);
+        console.log(res);
         if(res.data.status==200){
             dispatch({type:messageActionTypes.SET_SHOW_TRUE,payload:"успішно виконано"});
             setTimeout(()=>dispatch({type:messageActionTypes.SET_SHOW_FALSE}),3000);

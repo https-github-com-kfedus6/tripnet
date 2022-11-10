@@ -9,7 +9,7 @@ const NovetlyEdit = () => {
     const { AddNovetly } = useAction();
     return (
         <div className='admin-panel-novetly'>
-            <div className='admin-block-novetly '>
+            <div className='admin-block-novetly'>
                 <p>Виберіть фотографію країни</p>
                 <div>
                     <input type="file" id="visitorphoto" name="visitorPhoto" accept="image/*" capture onChange={e => setImage(e.target.files?.[0])} />

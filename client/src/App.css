@@ -3164,3 +3164,33 @@ footer{
 .user__profile{
     width: 240px;
 }
+@media screen and (min-width:1024px) {
+    .admin-panel-info-company{
+        width: 70%;
+        margin: 120px auto;
+    }
+    .admin-panel-blog{
+        width: 70%;
+        margin: 120px auto;
+    }
+    .admin-panel-block{
+        width: 100%;
+    }
+    .admin-blok-blog{
+        width: 100%;
+    }
+    .admin-panel-novetly{
+        width: 70%;
+        margin: 120px auto;
+    }
+    .admin-block-novetly{
+        width: 100%;
+    }
+    .admin-panel-response{
+        width: 70%;
+        margin: 120px auto;
+    }
+    .admin-block-response{
+        width: 100%;
+    }
+}

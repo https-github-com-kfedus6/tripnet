@@ -46,6 +46,7 @@ const Responce = () => {
                         <div className="list__responce__collum no__with__480__to__768">
                             {novetlyResponce1.map(x=>
                                 <div key={x.id} className='responce'>
+                                    {is_admin?<button onClick={()=>DelResponce(x.id)}>del</button>:<></>}
                                     <div className="responce__content">
                                         <div className="img__with__name__and__where__to__where">
                                             <div className="responce__img">
@@ -70,6 +71,7 @@ const Responce = () => {
                         <div className="list__responce__collum no__with__480__to__768">
                             {novetlyResponce2.map(x=>
                                 <div key={x.id} className='responce'>
+                                    {is_admin?<button onClick={()=>DelResponce(x.id)}>del</button>:<></>}
                                     <div className="responce__content">
                                         <div className="img__with__name__and__where__to__where">
                                             <div className="responce__img">
@@ -93,8 +95,8 @@ const Responce = () => {
                         </div>
                         <div className="list__responce__collum no__with__480__to__768">
                             {novetlyResponce3.map((x,idx)=>
-                            
                                 <div key={x.id} className={idx==novetlyResponce3.length-1?"responce last":"responce"}>
+                                    {is_admin?<button onClick={()=>DelResponce(x.id)}>del</button>:<></>}
                                     <div className="responce__content">
                                         <div className="img__with__name__and__where__to__where">
                                             <div className="responce__img">
