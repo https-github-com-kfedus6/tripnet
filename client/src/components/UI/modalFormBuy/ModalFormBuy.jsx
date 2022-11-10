@@ -5,39 +5,40 @@ import PhoneInput from 'react-phone-input-2';
 import AirDatepicker from 'air-datepicker';
 import ua from 'air-datepicker/locale/uk';
 import ru from 'air-datepicker/locale/ru';
-import { VscArrowSmallRight } from 'react-icons/vsc'
+import { VscArrowSmallRight } from 'react-icons/vsc';
+
 import { t } from 'i18next'
 
 import './modalFormBuy.css';
 
-const ModalFormBuy = (
-    { visibleBuy, name, setName, setDate, phone,
-        setPhone, reserveTicket, setVisiblyBuy,
-        countTicket, setCountTicket, maxTicket,
-        dropdownCheck, setDropdowbCheck,
-        dropdownCheckBack, setDropdowbCheckBack,
-        flight, sumYoung, setSumYoung, setSumOld, sumOld,
-        sumOldBack, setSumOldBack, sumYoungBack, setSumYoungBack,
-        checked, setChecked
-    }
-) => {
+const ModalFormBuy = ({ visibleBuy, name, setName, date, setDate, phone,
+    setPhone, reserveTicket, setVisiblyBuy,
+    dropdownCheck, setDropdowbCheck,
+    dropdownCheckBack, setDropdowbCheckBack,
+    flight, sumYoung, setSumYoung, setSumOld, sumOld,
+    sumOldBack, setSumOldBack, sumYoungBack, setSumYoungBack,
+    checked, setChecked, surename, setSurename,
+    email, setEmail }) => {
 
     const { language } = useSelector(state => state.language);
 
-    const SetCountTicket = (e) => {
-        if (isNaN(parseInt(e.target.value)) && e.target.value != "") return;
-        if ((parseInt(e.target.value) <= 0 || parseInt(e.target.value) > maxTicket) && e.target.value != "") return;
-        setCountTicket(e.target.value)
-    }
+    /*  const SetCountTicket = (e) => {
+         if (isNaN(parseInt(e.target.value)) && e.target.value != "") return;
+         if ((parseInt(e.target.value) <= 0 || parseInt(e.target.value) > maxTicket) && e.target.value != "") return;
+         setCountTicket(e.target.value)
+     } */
     const { GetPhone } = useAction();
     useEffect(() => {
         GetPhone();
     }, [])
 
     const { user, telephone } = useSelector(state => state.user);
+
     useEffect(() => {
         if (user?.name) {
             setName(user.name);
+            setEmail(user.email)
+            setSurename(user.surname)
         }
     }, [user])
 
@@ -99,7 +100,6 @@ const ModalFormBuy = (
         }
     )
 
-
     if (visibleBuy === false) {
         return (
             <div className='modal-form-buy'>
@@ -111,156 +111,95 @@ const ModalFormBuy = (
         return (
             <div className='modal-form-buy act'>
                 <div className='modal-content-form-buy'>
-                    <div className='modal-form-block-reserve'>
-                        <div className='modal-form-close'>
-                            <button onClick={() => setVisiblyBuy(false)}>
-                                <img src={process.env.REACT_APP_API_URL + 'x.png'} alt="close" />
-                            </button>
-                        </div>
-                        <div className='flight-form-header-reserve'>
-                            <b>Бронювання онлайн</b>
-                        </div>
-                        <div className='flight-header-reserve-positions'>
-                            <b>{flight.startPosition[language]}</b>
-                            <span><VscArrowSmallRight /></span>
-                            <b>{flight.finishPosition[language]}</b>
-                        </div>
-                        <div className='flight-contact-info'>
-                            <span>Контактні дані</span>
-                            <div className='reserve-input'>
-                                <input
-                                    id='reserve-first'
-                                    type="text"
-                                    className='reserve-input-text'
-                                    placeholder=' '
-                                    autoComplete="off"
-                                />
-                                <label htmlFor='reserve-first' className='reserve-label-text'>Прізвище</label>
+                    <div className='modal-body'>
+                        <div className='modal-form-block-reserve'>
+                            <div className='modal-form-close'>
+                                <button onClick={() => setVisiblyBuy(false)}>
+                                    <img src={process.env.REACT_APP_API_URL + 'x.png'} alt="close" />
+                                </button>
                             </div>
-                            <div className='reserve-input'>
-                                <input
-                                    id='reserve-second'
-                                    type="text"
-                                    className='reserve-input-text'
-                                    placeholder=' '
-                                    autoComplete="off"
-                                />
-                                <label htmlFor='reserve-second' className='reserve-label-text'>Ім'я</label>
+                            <div className='flight-form-header-reserve'>
+                                <b>Бронювання онлайн</b>
                             </div>
-                            <div className='reserve-input'>
-                                <PhoneInput
-                                    className='react-input-phone'
-                                    international
-                                    country="ua"
-                                />
+                            <div className='flight-header-reserve-positions'>
+                                <b>{flight.startPosition[language]}</b>
+                                <span><VscArrowSmallRight /></span>
+                                <b>{flight.finishPosition[language]}</b>
                             </div>
-                            <div className='reserve-input'>
-                                <input
-                                    id='reserve-fourth'
-                                    type="email"
-                                    className='reserve-input-text'
-                                    placeholder=' '
-                                    autoComplete="off"
-                                />
-                                <label htmlFor='reserve-fourth' className='reserve-label-text'>E-mail</label>
-                            </div>
-                        </div>
-                        <div className='reserve-details'>
-                            <span>Деталі рейсу</span>
-                            <div className='reserve-dropdown-free-place'>
-                                <div className='reserve-free-place'>
-                                    <img src={process.env.REACT_APP_API_URL + "users-silver.png"} alt="users" />
-                                    <span>{flight.countFreePlace} {t('flight.free_place')}</span>
+                            <div className='flight-contact-info'>
+                                <span>Контактні дані</span>
+                                <div className='reserve-input'>
+                                    <input
+                                        id='reserve-first'
+                                        type="text"
+                                        className='reserve-input-text'
+                                        placeholder=' '
+                                        autoComplete="off"
+                                        value={surename}
+                                        onChange={(e) => setSurename(e.target.value)}
+                                    />
+                                    <label htmlFor='reserve-first' className='reserve-label-text'>Прізвище</label>
                                 </div>
-                                <div className='dropdown-passengers'>
-                                    <div className='dropdown-select-passegers' onClick={() => dropdownCheck ? setDropdowbCheck(false) : setDropdowbCheck(true)}>
-                                        <input className='dropdown-passegers-input' type="text" id='passegers' placeholder=' ' value={dropdownCheck ? `${sumOld} ${t('flight.pass_old')}, ${sumYoung} дитина` : ''} disabled />
-                                        <label className='dropdown-passegers-text' htmlFor="passegers">{t('flight.passegers')}</label>
-                                        <label className='dropdown-icon-user'>
-                                            <img src={process.env.REACT_APP_API_URL + 'users.png'} alt="passegers" />
-                                        </label>
-                                    </div>
-                                    <div className={dropdownCheck ? 'dropdown-list-passegers' : 'dropdown-reserve-none'}>
-                                        <div className='dropdown-list-item-passegers'>
-                                            <div className='dropdown-list-item-passegers-text'>
-                                                <span>{t('flight.older_15_years')}</span>
-                                            </div>
-                                            <div className='dropdown-list-item-passegers-count'>
-                                                <div className='dropdown-list-item-passegers-minus-and-plus'>
-                                                    <img src={process.env.REACT_APP_API_URL + 'minuss.png'} alt="minus" onClick={() => countOldResult()} />
-                                                </div>
-                                                <div value={sumOld}>{sumOld}</div>
-                                                <div className='dropdown-list-item-passegers-minus-and-plus'>
-                                                    <img src={process.env.REACT_APP_API_URL + 'plus.png'} alt="plus" onClick={() => setSumOld(sumOld + 1)} />
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div className='dropdown-list-item-passegers'>
-                                            <div className='dropdown-list-item-passegers-text'>
-                                                <span>{t('flight.younger_14_years')}</span>
-                                            </div>
-                                            <div className='dropdown-list-item-passegers-count'>
-                                                <div className='dropdown-list-item-passegers-minus-and-plus'>
-                                                    {sumYoung >= 1
-                                                        ?
-                                                        <img src={process.env.REACT_APP_API_URL + 'minuss.png'} alt="minus" onClick={() => countYoungResult()} />
-                                                        :
-                                                        <img src={process.env.REACT_APP_API_URL + 'minus.png'} alt="minus" onClick={() => countYoungResult()} />
-                                                    }
-                                                </div>
-                                                <div value={sumYoung}>{sumYoung}</div>
-                                                <div className='dropdown-list-item-passegers-minus-and-plus'>
-                                                    <img src={process.env.REACT_APP_API_URL + 'plus.png'} alt="plus" onClick={() => setSumYoung(sumYoung + 1)} />
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+                                <div className='reserve-input'>
+                                    <input
+                                        id='reserve-second'
+                                        type="text"
+                                        className='reserve-input-text'
+                                        placeholder=' '
+                                        autoComplete="off"
+                                        value={name}
+                                        onChange={(e) => setName(e.target.value)}
+                                    />
+                                    <label htmlFor='reserve-second' className='reserve-label-text'>Ім'я</label>
+                                </div>
+                                <div className='reserve-input'>
+                                    <PhoneInput
+                                        className='react-input-phone'
+                                        international
+                                        country="ua"
+                                        onChange={phone => setPhone({ phone })}
+                                    />
+                                </div>
+                                <div className='reserve-input'>
+                                    <input
+                                        id='reserve-fourth'
+                                        type="email"
+                                        className='reserve-input-text'
+                                        placeholder=' '
+                                        autoComplete="off"
+                                        value={email}
+                                        onChange={(e) => setEmail(e.target.value)}
+                                    />
+                                    <label htmlFor='reserve-fourth' className='reserve-label-text'>E-mail</label>
                                 </div>
                             </div>
-                            <div className='form-input-date'>
-                                <input id='date' type='text'
-                                    className='form-input-text-date'
-                                    placeholder=' '
-                                    autoComplete="off"
-                                />
-                                <label className='form-label-date' htmlFor='date'>Дата відправлення</label>
-                                <label className='form-button-date'>
-                                    <img src={process.env.REACT_APP_API_URL + 'vector.png'} alt="date" />
-                                </label>
-                            </div>
-                        </div>
-                        <div className='reverse-reserve-details'>
-                            <span className='reserve-reserve-details-text'>Зворотній рейс</span>
-                            <div className='reverse-checkbox'>
-                                <input type="checkbox" checked={checked} onChange={() => setChecked(!checked)} />
-                                <span className='reverse-checkbox-text'>Забронювати зворотній рейс</span>
-                            </div>
-                            <div className={checked ? 'reserve-details' : 'reserve-none'}>
+                            <div className='reserve-details'>
+                                <span>Деталі рейсу</span>
                                 <div className='reserve-dropdown-free-place'>
                                     <div className='reserve-free-place'>
                                         <img src={process.env.REACT_APP_API_URL + "users-silver.png"} alt="users" />
                                         <span>{flight.countFreePlace} {t('flight.free_place')}</span>
                                     </div>
                                     <div className='dropdown-passengers'>
-                                        <div className='dropdown-select-passegers' onClick={() => dropdownCheckBack ? setDropdowbCheckBack(false) : setDropdowbCheckBack(true)}>
-                                            <input className='dropdown-passegers-input' type="text" id='passegers' placeholder=' ' value={dropdownCheckBack ? `${sumOldBack} ${t('flight.pass_old')}, ${sumYoungBack} дитина` : ''} disabled />
-                                            <label className='dropdown-passegers-text' htmlFor="passegers">{t('flight.passegers')}</label>
+                                        <div className='dropdown-select-passegers' onClick={() => dropdownCheck ? setDropdowbCheck(false) : setDropdowbCheck(true)}>
+                                            <input className='dropdown-passegers-input' type="text" id='passegers-form-second' placeholder=' ' value={dropdownCheck ? `${sumOld} ${t('flight.pass_old')}, ${sumYoung} дитина` : ''} disabled />
+                                            <label className='dropdown-passegers-text' htmlFor="passegers-form-second">{t('flight.passegers')}</label>
                                             <label className='dropdown-icon-user'>
                                                 <img src={process.env.REACT_APP_API_URL + 'users.png'} alt="passegers" />
                                             </label>
                                         </div>
-                                        <div className={dropdownCheckBack ? 'dropdown-list-passegers' : 'dropdown-reserve-back-none'}>
+                                        <div className={dropdownCheck ? 'dropdown-list-passegers' : 'dropdown-reserve-none'}>
                                             <div className='dropdown-list-item-passegers'>
                                                 <div className='dropdown-list-item-passegers-text'>
                                                     <span>{t('flight.older_15_years')}</span>
                                                 </div>
                                                 <div className='dropdown-list-item-passegers-count'>
                                                     <div className='dropdown-list-item-passegers-minus-and-plus'>
-                                                        <img src={process.env.REACT_APP_API_URL + 'minuss.png'} alt="minus" onClick={() => countOldResultBack()} />
+                                                        <img src={process.env.REACT_APP_API_URL + 'minuss.png'} alt="minus" onClick={() => countOldResult()} />
                                                     </div>
-                                                    <div value={sumOldBack}>{sumOldBack}</div>
+                                                    <div value={sumOld}>{sumOld}</div>
                                                     <div className='dropdown-list-item-passegers-minus-and-plus'>
-                                                        <img src={process.env.REACT_APP_API_URL + 'plus.png'} alt="plus" onClick={() => setSumOldBack(sumOldBack + 1)} />
+                                                        <img src={process.env.REACT_APP_API_URL + 'plus.png'} alt="plus" onClick={() => setSumOld(sumOld + 1)} />
                                                     </div>
                                                 </div>
                                             </div>
@@ -270,16 +209,16 @@ const ModalFormBuy = (
                                                 </div>
                                                 <div className='dropdown-list-item-passegers-count'>
                                                     <div className='dropdown-list-item-passegers-minus-and-plus'>
-                                                        {sumYoungBack >= 1
+                                                        {sumYoung >= 1
                                                             ?
-                                                            <img src={process.env.REACT_APP_API_URL + 'minuss.png'} alt="minus" onClick={() => countYoungResultBack()} />
+                                                            <img src={process.env.REACT_APP_API_URL + 'minuss.png'} alt="minus" onClick={() => countYoungResult()} />
                                                             :
-                                                            <img src={process.env.REACT_APP_API_URL + 'minus.png'} alt="minus" onClick={() => countYoungResultBack()} />
+                                                            <img src={process.env.REACT_APP_API_URL + 'minus.png'} alt="minus" onClick={() => countYoungResult()} />
                                                         }
                                                     </div>
-                                                    <div value={sumYoungBack}>{sumYoungBack}</div>
+                                                    <div value={sumYoung}>{sumYoung}</div>
                                                     <div className='dropdown-list-item-passegers-minus-and-plus'>
-                                                        <img src={process.env.REACT_APP_API_URL + 'plus.png'} alt="plus" onClick={() => setSumYoungBack(sumYoungBack + 1)} />
+                                                        <img src={process.env.REACT_APP_API_URL + 'plus.png'} alt="plus" onClick={() => setSumYoung(sumYoung + 1)} />
                                                     </div>
                                                 </div>
                                             </div>
@@ -287,49 +226,120 @@ const ModalFormBuy = (
                                     </div>
                                 </div>
                                 <div className='form-input-date'>
-                                    <input id='date-second' type='text'
+                                    <input id='date' type='text'
                                         className='form-input-text-date'
                                         placeholder=' '
                                         autoComplete="off"
+                                        value={date}
+                                        onChange={(e) => setDate(e.target.value)}
                                     />
-                                    <label className='form-label-date' htmlFor='date-second'>Дата відправлення</label>
+                                    <label className='form-label-date' htmlFor='date'>Дата відправлення</label>
                                     <label className='form-button-date'>
                                         <img src={process.env.REACT_APP_API_URL + 'vector.png'} alt="date" />
                                     </label>
                                 </div>
                             </div>
-                            <div className='reserve-btn'>
-                                <span>{flight.price} грн</span>
-                                <button>{t('flight.search')}</button>
+                            <div className='reverse-reserve-details'>
+                                <span className='reserve-reserve-details-text'>Зворотній рейс</span>
+                                <div className='reverse-checkbox'>
+                                    <input type="checkbox" checked={checked} onChange={() => setChecked(!checked)} />
+                                    <span className='reverse-checkbox-text'>Забронювати зворотній рейс</span>
+                                </div>
+                                <div className={checked ? 'reserve-details' : 'reserve-none'}>
+                                    <div className='reserve-dropdown-free-place'>
+                                        <div className='reserve-free-place'>
+                                            <img src={process.env.REACT_APP_API_URL + "users-silver.png"} alt="users" />
+                                            <span>{flight.countFreePlace} {t('flight.free_place')}</span>
+                                        </div>
+                                        <div className='dropdown-passengers'>
+                                            <div className='dropdown-select-passegers' onClick={() => dropdownCheckBack ? setDropdowbCheckBack(false) : setDropdowbCheckBack(true)}>
+                                                <input className='dropdown-passegers-input' type="text" id='passegers-form-first' placeholder=' ' value={dropdownCheckBack ? `${sumOldBack} ${t('flight.pass_old')}, ${sumYoungBack} дитина` : ''} disabled />
+                                                <label className='dropdown-passegers-text' htmlFor="passegers-form-first">{t('flight.passegers')}</label>
+                                                <label className='dropdown-icon-user'>
+                                                    <img src={process.env.REACT_APP_API_URL + 'users.png'} alt="passegers" />
+                                                </label>
+                                            </div>
+                                            <div className={dropdownCheckBack ? 'dropdown-list-passegers' : 'dropdown-reserve-back-none'}>
+                                                <div className='dropdown-list-item-passegers'>
+                                                    <div className='dropdown-list-item-passegers-text'>
+                                                        <span>{t('flight.older_15_years')}</span>
+                                                    </div>
+                                                    <div className='dropdown-list-item-passegers-count'>
+                                                        <div className='dropdown-list-item-passegers-minus-and-plus'>
+                                                            <img src={process.env.REACT_APP_API_URL + 'minuss.png'} alt="minus" onClick={() => countOldResultBack()} />
+                                                        </div>
+                                                        <div value={sumOldBack}>{sumOldBack}</div>
+                                                        <div className='dropdown-list-item-passegers-minus-and-plus'>
+                                                            <img src={process.env.REACT_APP_API_URL + 'plus.png'} alt="plus" onClick={() => setSumOldBack(sumOldBack + 1)} />
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div className='dropdown-list-item-passegers'>
+                                                    <div className='dropdown-list-item-passegers-text'>
+                                                        <span>{t('flight.younger_14_years')}</span>
+                                                    </div>
+                                                    <div className='dropdown-list-item-passegers-count'>
+                                                        <div className='dropdown-list-item-passegers-minus-and-plus'>
+                                                            {sumYoungBack >= 1
+                                                                ?
+                                                                <img src={process.env.REACT_APP_API_URL + 'minuss.png'} alt="minus" onClick={() => countYoungResultBack()} />
+                                                                :
+                                                                <img src={process.env.REACT_APP_API_URL + 'minus.png'} alt="minus" onClick={() => countYoungResultBack()} />
+                                                            }
+                                                        </div>
+                                                        <div value={sumYoungBack}>{sumYoungBack}</div>
+                                                        <div className='dropdown-list-item-passegers-minus-and-plus'>
+                                                            <img src={process.env.REACT_APP_API_URL + 'plus.png'} alt="plus" onClick={() => setSumYoungBack(sumYoungBack + 1)} />
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div className='form-input-date'>
+                                        <input id='date-second' type='text'
+                                            className='form-input-text-date'
+                                            placeholder=' '
+                                            autoComplete="off"
+                                        />
+                                        <label className='form-label-date' htmlFor='date-second'>Дата відправлення</label>
+                                        <label className='form-button-date'>
+                                            <img src={process.env.REACT_APP_API_URL + 'vector.png'} alt="date" />
+                                        </label>
+                                    </div>
+                                </div>
+                                <div className='reserve-btn'>
+                                    <span>{flight.price} грн</span>
+                                    <button onClick={reserveTicket}> {t('modalbuy.btn-buy')}</button>
+                                </div>
+                            </div>
+                            <div className='flight-block-message'>
+                                <div className={flight.currentFlight ? 'flight-info-message-first' : 'flight-message-status'}>
+                                    <div className='flight-message-icon'>
+                                        <img src={process.env.REACT_APP_API_URL + 'info-blue.png'} alt='info' />
+                                    </div>
+                                    <div className='flight-message-text'>
+                                        <b>Зворотній рейс</b>
+                                        <span>
+                                            Інформація про зворотній рейс з’явиться у профілі користувача.
+                                            Для незареєстрованих користувачів, інформація про зворотній рейс буде відправлено як повідомлення на вказаний номер телефону.
+                                        </span>
+                                    </div>
+                                </div>
+                                <div className={flight.currentFlight ? 'flight-info-message-second' : 'flight-message-status'}>
+                                    <div className='flight-message-icon'>
+                                        <img src={process.env.REACT_APP_API_URL + 'info-blue.png'} alt='info' />
+                                    </div>
+                                    <div className='flight-message-text'>
+                                        <b>Оплата бронювання</b>
+                                        <span>
+                                            Рейс можна буде оплатити після підтвердження бронювання менеджером.
+                                        </span>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                        <div className='flight-block-message'>
-                            <div className={flight.currentFlight ? 'flight-info-message-first' : 'flight-message-status'}>
-                                <div className='flight-message-icon'>
-                                    <img src={process.env.REACT_APP_API_URL + 'info-blue.png'} alt='info' />
-                                </div>
-                                <div className='flight-message-text'>
-                                    <b>Зворотній рейс</b>
-                                    <span>
-                                        Інформація про зворотній рейс з’явиться у профілі користувача.
-                                        Для незареєстрованих користувачів, інформація про зворотній рейс буде відправлено як повідомлення на вказаний номер телефону.
-                                    </span>
-                                </div>
-                            </div>
-                            <div className={flight.currentFlight ? 'flight-info-message-second' : 'flight-message-status'}>
-                                <div className='flight-message-icon'>
-                                    <img src={process.env.REACT_APP_API_URL + 'info-blue.png'} alt='info' />
-                                </div>
-                                <div className='flight-message-text'>
-                                    <b>Оплата бронювання</b>
-                                    <span>
-                                        Рейс можна буде оплатити після підтвердження бронювання менеджером.
-                                    </span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    {/*  <div className='model-block'>
+                        {/*  <div className='model-block'>
                         <div className="modal-logo">
                             <Stack direction="row" spacing={1}>
                                 <IconButton size='large' onClick={() => setVisiblyBuy(false)}>
@@ -368,8 +378,9 @@ const ModalFormBuy = (
                             <button onClick={reserveTicket}>{t('modalbuy.btn-buy')}</button>
                         </div>
                     </div> */}
+                    </div>
                 </div>
-            </div>
+            </div >
         )
     }
 };

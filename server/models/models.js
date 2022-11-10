@@ -3,10 +3,10 @@ const { DataTypes } = require("sequelize");
 
 const User = sequelize.define("user", {
     id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
-    name: { type: DataTypes.STRING, defaultValue:"" },
-    surname: { type:DataTypes.STRING, defaultValue:"" },
+    name: { type: DataTypes.STRING, defaultValue: "" },
+    surname: { type: DataTypes.STRING, defaultValue: "" },
     email: { type: DataTypes.STRING },
-    telephone: { type: DataTypes.STRING, defaultValue:"" },
+    telephone: { type: DataTypes.STRING, defaultValue: "" },
     password: { type: DataTypes.STRING },
     isAdmin: { type: DataTypes.BOOLEAN, defaultValue: false }
 });
@@ -22,8 +22,8 @@ const InfoCompany = sequelize.define("infoCompany", {
 
 const Responce = sequelize.define('responce', {
     id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
-    wheretoWhere:{type:DataTypes.STRING},
-    imageAuthor:{type:DataTypes.STRING},
+    wheretoWhere: { type: DataTypes.STRING },
+    imageAuthor: { type: DataTypes.STRING },
     description: { type: DataTypes.TEXT },
     nameAuthor: { type: DataTypes.STRING }
 });
@@ -70,10 +70,10 @@ const Blog = sequelize.define('blog', {
     name: { type: DataTypes.STRING }
 });
 
-const BlogRetaledFlight=sequelize.define('blogRetaledFlight',{
+const BlogRetaledFlight = sequelize.define('blogRetaledFlight', {
     id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
-    whence:{type:DataTypes.STRING},
-    whither:{type:DataTypes.STRING}
+    whence: { type: DataTypes.STRING },
+    whither: { type: DataTypes.STRING }
 })
 
 const ScheduleBus = sequelize.define('scheduleBus', {
@@ -105,10 +105,12 @@ const ParamsFlight = sequelize.define('paramsFlight', {
 
 const FlightOrder = sequelize.define("flightOrder", {
     id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
-    authorName: { type: DataTypes.STRING },
-    countTicket: { type: DataTypes.INTEGER },
-    date: { type: DataTypes.STRING },
+    surename: { type: DataTypes.STRING },
+    name: { type: DataTypes.STRING },
     phone: { type: DataTypes.STRING },
+    email: { type: DataTypes.STRING },
+    countPersons: { type: DataTypes.INTEGER },
+    date: { type: DataTypes.STRING },
     status: { type: DataTypes.BOOLEAN, defaultValue: null },
 });
 

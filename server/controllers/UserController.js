@@ -2,6 +2,7 @@ const ErrorApi = require("../error/ErrorApi");
 const { User } = require("../models/models");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
+
 class UserController {
     static Add = async (req, resp, next) => {
         try {
@@ -12,23 +13,23 @@ class UserController {
             if (isEmailTrue != null) return resp.json({ status: 411, message: "email is busy" });
             const cryptPass = await bcrypt.hash(password, 3);
             const res = await User.create({ name: name, email: email, telephone: telephone, password: cryptPass, isAdmin: false });
-            const token =  await jwt.sign({ id: res.id, email: res.email, surname:res.surname,name: res.name, isAdmin: res.isAdmin }, process.env.SECRET_KEY, { expiresIn: "1y" });
+            const token = await jwt.sign({ id: res.id, email: res.email, surname: res.surname, name: res.name, isAdmin: res.isAdmin }, process.env.SECRET_KEY, { expiresIn: "1y" });
             return resp.json({ status: 200, token });
         } catch (err) {
             return next(ErrorApi.badRequest(err));
         }
     }
-    static Authorize=async(req,resp,next)=>{
-        try{
-            const {email,password}=req.body;
-            const reg=/drop|\(|delete|;/g;
-            if(reg.test(email))throw("invalid value");
-            const res=await User.findOne({where:{email}});
-            if(res==null){
-                return resp.json({status:415,message:"invalid email"});
+    static Authorize = async (req, resp, next) => {
+        try {
+            const { email, password } = req.body;
+            const reg = /drop|\(|delete|;/g;
+            if (reg.test(email)) throw ("invalid value");
+            const res = await User.findOne({ where: { email } });
+            if (res == null) {
+                return resp.json({ status: 415, message: "invalid email" });
             }
             if (await bcrypt.compareSync(password, res.password)) {
-                const token =  await jwt.sign({ id: res.id, email: res.email, surname:res.surname,name: res.name, isAdmin: res.isAdmin }, process.env.SECRET_KEY, { expiresIn: "1y" });
+                const token = await jwt.sign({ id: res.id, email: res.email, surname: res.surname, name: res.name, isAdmin: res.isAdmin }, process.env.SECRET_KEY, { expiresIn: "1y" });
                 return resp.json({ status: 200, token });
             } else return resp.json({ status: 416, message: "invalid password" })
         } catch (err) {
@@ -43,7 +44,7 @@ class UserController {
                 return resp.json({ status: 420 });
             } else {
                 const res = await User.findOne({ where: { email: verifyToken.email } });
-                const newToken = await jwt.sign({ id: res.id, email: res.email, surname:res.surname,name: res.name, isAdmin: res.isAdmin }, process.env.SECRET_KEY, { expiresIn: "1y" });
+                const newToken = await jwt.sign({ id: res.id, email: res.email, surname: res.surname, name: res.name, isAdmin: res.isAdmin }, process.env.SECRET_KEY, { expiresIn: "1y" });
                 return resp.json({ status: 200, token: newToken });
             }
 
@@ -56,11 +57,11 @@ class UserController {
             const { oldPassword, newPassword, id } = req.body;
             if (!Number.isInteger(id)) throw ("id is not true");
             const user = await User.findOne({ where: { id } });
-            if(user.password==null){
+            if (user.password == null) {
                 const cryptNewPassword = await bcrypt.hash(newPassword, 3);
                 const res = await User.update({ password: cryptNewPassword }, { where: { id } });
                 resp.json({ status: 200 });
-            }else{
+            } else {
                 if (await bcrypt.compareSync(oldPassword, user.password)) {
                     const cryptNewPassword = await bcrypt.hash(newPassword, 3);
                     const res = await User.update({ password: cryptNewPassword }, { where: { id } });
@@ -81,73 +82,73 @@ class UserController {
             return next(ErrorApi.badRequest(err));
         }
     }
-    static EditEmail=async(req,resp,next)=>{
-        try{
-            const {id}=req.user;
-            const {newEmail}=req.body;
-            await User.update({email:newEmail},{where:{id}});
-            const res=await User.findOne({where:{id}});
-            const token=await jwt.sign({id:res.id,email:res.email,name:res.name,isAdmin:res.isAdmin},process.env.SECRET_KEY,{expiresIn:"1y"});
-            return resp.json({status:200,token});
-        }catch(err){
+    static EditEmail = async (req, resp, next) => {
+        try {
+            const { id } = req.user;
+            const { newEmail } = req.body;
+            await User.update({ email: newEmail }, { where: { id } });
+            const res = await User.findOne({ where: { id } });
+            const token = await jwt.sign({ id: res.id, email: res.email, name: res.name, isAdmin: res.isAdmin }, process.env.SECRET_KEY, { expiresIn: "1y" });
+            return resp.json({ status: 200, token });
+        } catch (err) {
             return next(ErrorApi.badRequest(err));
         }
     }
-    static RegisterInGoogle=async(req,resp,next)=>{
-        try{
-            const {token}=req.body;
-            const result=jwt.decode(token);
-            if(result.email_verified==true){
-                const isEmailTrue = await User.findOne({ where: { email:result.email } });
+    static RegisterInGoogle = async (req, resp, next) => {
+        try {
+            const { token } = req.body;
+            const result = jwt.decode(token);
+            if (result.email_verified == true) {
+                const isEmailTrue = await User.findOne({ where: { email: result.email } });
                 console.log(2);
                 if (isEmailTrue != null) return resp.json({ status: 411, message: "email is busy" });
-                const res=await User.create({email:result.email,name:result.given_name,surname:result.family_name});
-                const newToken =  await jwt.sign({ id: res.id, email: res.email, surname:res.surname,name: res.name, isAdmin: res.isAdmin }, process.env.SECRET_KEY, { expiresIn: "1y" });
+                const res = await User.create({ email: result.email, name: result.given_name, surname: result.family_name });
+                const newToken = await jwt.sign({ id: res.id, email: res.email, surname: res.surname, name: res.name, isAdmin: res.isAdmin }, process.env.SECRET_KEY, { expiresIn: "1y" });
                 console.log(3);
-                return resp.json({status:200,token:newToken});    
-            }else{
+                return resp.json({ status: 200, token: newToken });
+            } else {
                 console.log(4);
-                return resp.json({status:420,message:"email is false"});
+                return resp.json({ status: 420, message: "email is false" });
             }
-        }catch(err){
+        } catch (err) {
             return next(ErrorApi.badRequest(err));
         }
     }
-    static RegInGoogle=async(req,resp,next)=>{
-        try{
-            const {token}=req.body;
-            const tokenDecode=await jwt.decode(token);
-            const res=await User.findOne({where:{email:tokenDecode.email}});
-            if(res==null){
-                return resp.json({status:415,message:"invalid email"});
+    static RegInGoogle = async (req, resp, next) => {
+        try {
+            const { token } = req.body;
+            const tokenDecode = await jwt.decode(token);
+            const res = await User.findOne({ where: { email: tokenDecode.email } });
+            if (res == null) {
+                return resp.json({ status: 415, message: "invalid email" });
             }
-            const newToken =  await jwt.sign({ id: res.id, email: res.email, surname:res.surname,name: res.name, isAdmin: res.isAdmin }, process.env.SECRET_KEY, { expiresIn: "1y" });
-            return resp.json({ status: 200, token:newToken });  
-        }catch(err){
+            const newToken = await jwt.sign({ id: res.id, email: res.email, surname: res.surname, name: res.name, isAdmin: res.isAdmin }, process.env.SECRET_KEY, { expiresIn: "1y" });
+            return resp.json({ status: 200, token: newToken });
+        } catch (err) {
             return next(ErrorApi.badRequest(err));
         }
     }
-    static SetNewInfoAboutUser=async(req,resp,next)=>{
-        try{
-            const {id}=req.user;
-            const {name,surname,phone}=req.body;
-    
-            await User.update({name:name,surname:surname,telephone:phone},{where:{id:id}});
-            const res=await User.findOne({where:{id}})
-            const token = await jwt.sign({ id: res.id, email: res.email, surname:res.surname,name: res.name, isAdmin: res.isAdmin }, process.env.SECRET_KEY, { expiresIn: "1y" });
-                
-            return resp.json({status:200,res,token});
-        }catch(err){
+    static SetNewInfoAboutUser = async (req, resp, next) => {
+        try {
+            const { id } = req.user;
+            const { name, surname, phone } = req.body;
+
+            await User.update({ name: name, surname: surname, telephone: phone }, { where: { id: id } });
+            const res = await User.findOne({ where: { id } })
+            const token = await jwt.sign({ id: res.id, email: res.email, surname: res.surname, name: res.name, isAdmin: res.isAdmin }, process.env.SECRET_KEY, { expiresIn: "1y" });
+
+            return resp.json({ status: 200, res, token });
+        } catch (err) {
             return next(ErrorApi.badRequest(err));
         }
     }
-    static IsPasswordNull=async(req,resp,next)=>{
-        try{
-            const {id}=req.user;
-            const user=await User.findOne({where:{id}});
-            const res=user.password==null;
-            return resp.json({status:200,res});
-        }catch(err){
+    static IsPasswordNull = async (req, resp, next) => {
+        try {
+            const { id } = req.user;
+            const user = await User.findOne({ where: { id } });
+            const res = user.password == null;
+            return resp.json({ status: 200, res });
+        } catch (err) {
             return next(ErrorApi.badRequest(err));
         }
     }

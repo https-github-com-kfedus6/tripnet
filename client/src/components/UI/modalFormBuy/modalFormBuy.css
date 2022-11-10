@@ -13,24 +13,28 @@
 
 .modal-form-buy.act {
     display: flex;
-    justify-content: center;
-    align-items: center;
 }
 
 .modal-content-form-buy {
-    box-sizing: border-box;
     display: flex;
-    flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
     padding: 30px;
-    gap: 20px;
-    width: 33%;
-    height: auto;
-    box-shadow: 0px 0px 10px rgba(0,0,0, 0.6);
-    background: #FFFFFF;
-    border: 1px solid #DBDBDB;
-    border-radius: 40px;
+}
+
+.modal-body {
     position: relative;
+    margin: 0 24px;
+    max-height: 100%;
+    max-width: 31%;
+    -ms-overflow-style: none; 
+    scrollbar-width: none;
+}
+
+.modal-body::-webkit-scrollbar {
+    display: none;
 }
 
 .modal-form-close {
@@ -55,13 +59,18 @@
 }
 
 .modal-form-block-reserve {
-    width: 100%;
+    box-sizing: border-box;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    padding: 0px;
+    background: #FFFFFF;
+    border: 1px solid #DBDBDB;
+    border-radius: 40px;
+    width: 100%;
+    height: 100%;
     gap: 25px;
-    margin-top: 20px;
+    padding: 50px 30px;
+    position: relative;
 }
 
 .flight-form-header-reserve b {
@@ -92,28 +101,58 @@
     font-size: 25px;
 }
 
-@media (max-width: 992px) {
-    .modal-content-form-buy {
-        width: 60%;
+@media (max-width: 1350px) {
+    .modal-body {
+        max-width: 33%;
+    }
+}
+@media (max-width: 1300px) {
+    .modal-body {
+        max-width: 35%;
+    }
+}
+@media (max-width: 1250px) {
+    .modal-body {
+        max-width: 38%;
+    }
+}
+@media (max-width: 1150px) {
+    .modal-body {
+        max-width: 41%;
+    }
+}
+@media (max-width: 1100px) {
+    .modal-body {
+        max-width: 46%;
+    }
+}
+@media (max-width: 1050px) {
+    .modal-body {
+        max-width: 48%;
+    }
+}
+@media (max-width: 1024px) {
+    .modal-body {
+        max-width: 55%;
     }
 }
 
 @media (max-width: 768px) {
-    .modal-content-form-buy {
-        width: 80%;
+    .modal-form-buy {
+        padding: 0;
     }
-}
 
-@media (max-width: 576px) {
     .modal-content-form-buy {
-        width: 90%;
+        padding: 0;
     }
-}
 
-.text{
-    display: flex;
-    justify-content: center;
-    width: 90%;
-    margin: auto;
-    margin-top: 15px;
+    .modal-body {
+        max-width: 100%;
+        margin: 0;
+    }
+
+    .modal-form-block-reserve {
+        border-radius: 0;
+        padding: 50px 15px;
+    }
 }
