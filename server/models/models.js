@@ -51,7 +51,9 @@ const Flight = sequelize.define("flight", {
     timeFlight: { type: DataTypes.STRING },
     description: { type: DataTypes.TEXT },
     map: { type: DataTypes.TEXT },
-    currentFlight: { type: DataTypes.BOOLEAN, defaultValue: true }
+    currentFlight: { type: DataTypes.BOOLEAN, defaultValue: true },
+    countryStart: { type: DataTypes.STRING },
+    countryFinish: {type:DataTypes.STRING}
 });
 
 const Novetly = sequelize.define("novetly", {

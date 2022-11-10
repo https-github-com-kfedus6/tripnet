@@ -1,9 +1,9 @@
 import { Breadcrumbs, Typography } from '@mui/material'
 import { t } from 'i18next'
 import React, { useEffect } from 'react'
+import { useState } from 'react'
 import { useSelector } from 'react-redux'
-import { NavLink } from 'react-router-dom'
-import FixedPanel from '../FixedPanel'
+import { NavLink, useNavigate } from 'react-router-dom'
 import AdditionalInformation from './AdditionalInformation'
 
 const LuggageTransportation = () => {
@@ -11,6 +11,41 @@ const LuggageTransportation = () => {
     useEffect(()=>{
   
     },[language]);
+    const [scrollPosition, setScrollPosition] = useState(0);
+    const handleScroll = () => {
+        const position = window.pageYOffset;
+        setScrollPosition(position);
+    };
+    useEffect(() => {
+        window.addEventListener('scroll', handleScroll, { passive: true });
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
+        };
+    }, []);
+    useEffect(()=>{
+      if(document.querySelector("#FixedPanelMain")==null)return;
+      if(document.querySelector("#AdditionalInformation")==null)return;
+      if(document.querySelector("#FixedPanel")==null)return;
+      if(window.screen.width<1025){
+        document.querySelector("#FixedPanel").style.position="unset";
+        return;
+      }
+      if(document.querySelector("#AdditionalInformation").getBoundingClientRect().top-
+        140+document.querySelector("#AdditionalInformation").getBoundingClientRect().height-
+        document.querySelector("#FixedPanel").getBoundingClientRect().height-45<0){
+          document.querySelector("#FixedPanel").style.position="unset";
+          document.querySelector("#FixedPanelMain").style.display="flex"
+          document.querySelector("#FixedPanelMain").style.alignItems="flex-end";
+          document.querySelector("#FixedPanelMain").style.marginBottom="45px";
+        }
+      else{
+        document.querySelector("#FixedPanel").style.position="fixed";
+        document.querySelector("#FixedPanelMain").style.display="unset"
+        document.querySelector("#FixedPanelMain").style.alignItems="unset";
+      }
+    },[scrollPosition]);
+    const navigate=useNavigate()
+    const indexService=3;
   return (
     <>
     <div className='bread__crumbs__main'>
@@ -75,10 +110,39 @@ const LuggageTransportation = () => {
           <div className="service__page__description">
             {t("services.luggage_description_6")}
           </div>
-          <AdditionalInformation/>
+          <div id="AdditionalInformation"><AdditionalInformation/></div>
         </div>
-        <div className='fixed__panel'>
-            <FixedPanel indexService={3}/>
+        <div className='fixed__panel' id="FixedPanelMain">
+          <div id="FixedPanel" className="services__fixed__panel">
+            <div onClick={()=>navigate("/services/reservation_online")}>
+                {indexService!=1?
+                    <img src={process.env.REACT_APP_API_URL+"reservation_online.png"}/>
+                    :
+                    <div className='service__select'/>}
+                <div>{t("services.reservation_online")}</div>
+            </div>
+            <div onClick={()=>navigate("/services/booking_management")}>
+                {indexService!=2?
+                    <img src={process.env.REACT_APP_API_URL+"booking_management.png"}/>
+                    :
+                    <div className='service__select'/>}
+                <div>{t("services.booking_management")}</div>
+            </div>
+            <div onClick={()=>navigate("/services/luggage_transportation")}>
+                {indexService!=3?
+                    <img src={process.env.REACT_APP_API_URL+"luggage_transportation.png"}/>
+                    :
+                    <div className='service__select'/>}
+                <div>{t("services.luggage_transportation")}</div>
+            </div>
+            <div onClick={()=>navigate("/services/transportation_animals")}>
+                {indexService!=4?
+                    <img src={process.env.REACT_APP_API_URL+"transportation_animals.png"}/>
+                    :
+                    <div className='service__select'/>}
+                <div>{t("services.transportation_animals")}</div>
+            </div>
+          </div>
         </div>
       </div>
     </>

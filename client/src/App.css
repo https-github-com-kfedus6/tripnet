@@ -3,7 +3,7 @@ body {
     height: 100%;
 }
 body {
-    font-family: Roboto,Helvetica Neue,Helvetica,Arial,sans-serif;
+    font-family: Roboto, Helvetica Neue, Helvetica, Arial, sans-serif;
     margin: 0 auto;
     display: flex;
     flex-direction: column;
@@ -2433,7 +2433,7 @@ footer{
 @media screen and (min-width:1024px) {
     .blog__with__static__panel{
         width: 70%;
-        margin: 0 auto;
+        margin: auto;
         display: flex;
         flex-direction: row;
         justify-content: space-between;
@@ -3154,4 +3154,13 @@ footer{
     font-size: 39px;
     line-height: 120%;
     color: #111111;
+}
+.service__page__main{
+    justify-content: space-between;
+}
+.burger__personal__office{
+    margin-top: 25px;
+}
+.user__profile{
+    width: 240px;
 }

@@ -71,7 +71,7 @@ const Blog = () => {
 
     return (
         (selectBlog == undefined || selectBlog == null || selectBlog.id != id) ? <div>loading...</div> :
-            <div className='blog__one__main__container'>
+            <>
                 <div>
                     <div className='bread__crumbs__main'>
                         <Breadcrumbs>
@@ -136,7 +136,7 @@ const Blog = () => {
                             </div>}
                     </div>
                 </div>
-            </div>
+            </>
 
     )
 }

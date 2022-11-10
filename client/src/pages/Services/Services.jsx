@@ -3,7 +3,6 @@ import { t } from 'i18next'
 import React from 'react'
 import { ImArrowRight2 } from 'react-icons/im'
 import { NavLink, useNavigate } from 'react-router-dom'
-import FixedPanel from './FixedPanel'
 
 const Services = () => {
     const navigate=useNavigate();

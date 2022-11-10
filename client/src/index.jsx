@@ -11,7 +11,7 @@ import './App.css';
 import { GoogleOAuthProvider } from '@react-oauth/google';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
-console.log(process.env.GOOGLE_ID);
+
 root.render(
     <React.StrictMode>
         <Suspense fallback={<div>Loading...</div>}>

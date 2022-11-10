@@ -96,7 +96,7 @@ const Account = () => {
                     {user.email}
                 </div>
                 <div className="account__setting__profile__button">
-                    {t("account.setting_profile")}
+                    <button onClick={()=>navigate("/account/edit")}>{t("account.setting_profile")}</button>
                 </div>
             </div>
             <div className='account__main2'>

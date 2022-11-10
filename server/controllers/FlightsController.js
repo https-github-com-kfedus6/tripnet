@@ -11,13 +11,15 @@ class FlightsController {
                 streetStartPositionUA, streetStartPositionRU, streetFinishPositionUA, streetFinishPositionRU,
                 startDate, finishDate, startTime, finishTime, timeFlightUA, timeFlightRU, countFreePlace,
                 descriptionUA, descriptionRU, isWifi, isWC, is220V, isMultimedia,
-                isAirConditioning, map } = req.body;
+                isAirConditioning, map, countryStartUA, countryStartRU, countryFinishtUA, countryFinishtRU } = req.body;
             const timeFlight = [timeFlightUA, timeFlightRU].join("//");
             const startPosition = [startPositionUA, startPositionRU].join("//");
             const finishPosition = [finishPositionUA, finishPositionRU].join("//");
             const streetStartPosition = [streetStartPositionUA, streetStartPositionRU].join("//");
             const streetFinishPosition = [streetFinishPositionUA, streetFinishPositionRU].join("//");
             const description = [descriptionUA, descriptionRU].join("/*/");
+            const countryStart=[countryStartUA,countryStartRU].join("//");
+            const countryFinish=[countryFinishtUA,countryFinishtRU].join("//");
             let { flagStartImg, flagFinishImg } = req.files;
             let flight;
 
@@ -42,11 +44,12 @@ class FlightsController {
                     timeFlight: timeFlight,
                     countFreePlace: countFreePlace,
                     description: description,
-                    map: map
+                    map: map,
+                    countryStart: countryStart,
+                    countryFinish: countryFinish
                 })
             }
             else {
-                console.log(2);
                 flight = await Flight.create({
                     price: price,
                     startPosition: startPosition,
@@ -60,7 +63,9 @@ class FlightsController {
                     timeFlight: timeFlight,
                     countFreePlace: countFreePlace,
                     description: description,
-                    map: map
+                    map: map,
+                    countryStart: countryStart,
+                    countryFinish: countryFinish
                 })
             }
             const params = await ParamsFlight.create({
