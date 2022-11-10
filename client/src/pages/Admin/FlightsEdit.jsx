@@ -11,6 +11,7 @@ const FlightsEdit = () => {
     const [startDate, setStartDate] = useState("дд.мм.рррр");
     const [finishDate, setFinishDate] = useState("дд.мм.рррр");
     const [price, setPrice] = useState("");
+    const [childPrice, setChildPrice] = useState("");
     const [startPositionUA, SetStartPositionUA] = useState("");
     const [finishPositionUA, SetFinishPositionUA] = useState("");
     const [startPositionRU, SetStartPositionRU] = useState("");
@@ -89,6 +90,10 @@ const FlightsEdit = () => {
                     <input value={price} type={"number"} onChange={e => setPrice(e.target.value)} />
                 </div>
                 <div>
+                    <p>Дитяча ціна квитка в грн</p>
+                    <input value={childPrice} type={"number"} onChange={e => setChildPrice(e.target.value)} />
+                </div>
+                <div>
                     <p>Година виїзду:</p>
                     <input type={"time"} value={startTime} onChange={(e) => setStartTime(e.target.value)} />
                 </div>
@@ -129,7 +134,7 @@ const FlightsEdit = () => {
                 </div>
                 <br />
                 <div>
-                    <button onClick={() => AddFlight(flagStartImg, flagFinishImg, price, startPositionUA, startPositionRU, finishPositionUA,
+                    <button onClick={() => AddFlight(flagStartImg, flagFinishImg, price, childPrice, startPositionUA, startPositionRU, finishPositionUA,
                         finishPositionRU, streetStartPositionUA, streetStartPositionRU, streetFinishPositionUA, streetFinishPositionRU,
                         startDate, finishDate, startTime, finishTime, timeFlightUA, timeFlightRU,
                         countFreePlace, isWifi, isWC, is220V, isMultimedia, isAirConditioning,

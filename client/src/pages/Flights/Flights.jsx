@@ -23,6 +23,7 @@ const Flights = ({ isShowFilter }) => {
     const [sumYoungBack, setSumYoungBack] = useState(0)
     const [sumOldBack, setSumOldBack] = useState(1)
     const [date, setDate] = useState('')
+    const [dateBack, setDateBack] = useState('')
     const [flightId, setFlightId] = useState('')
     const [checked, setChecked] = useState(false);
 
@@ -31,6 +32,7 @@ const Flights = ({ isShowFilter }) => {
     const [startPosition, setStartPosition] = useState(startPositionInitial)
     const [finishPosition, setFinishPosition] = useState(finishPositionInitial)
     const [startDate, setStartDate] = useState(dateInitial)
+    const [finishDate, setFinishDate] = useState(dateInitial)
     const [totalCount, setTotalCount] = useState(undefined)
     const [limit, setLimit] = useState(5)
     const [page, setPage] = useState(1)
@@ -172,7 +174,10 @@ const Flights = ({ isShowFilter }) => {
                 <FlightsList
                     flights={flights}
                     sortFlights={sortFlights}
+                    startDate={startDate}
                     setStartDate={setStartDate}
+                    finishDate={finishDate}
+                    setFinishDate={setFinishDate}
                     setStartPosition={setStartPosition}
                     setFinishPosition={setFinishPosition}
                     sumOld={sumOld}
@@ -187,7 +192,6 @@ const Flights = ({ isShowFilter }) => {
                     isFilterTrue={isShowFilter}
                     openModal={openModal}
                     startPosition={startPosition}
-                    startDate={startDate}
                     finishPosition={finishPosition}
                     changePosition={changePosition}
                     setChangePosition={setChangePosition}
@@ -203,6 +207,8 @@ const Flights = ({ isShowFilter }) => {
                     setPhone={setPhone}
                     setDate={setDate}
                     date={date}
+                    dateBack={dateBack}
+                    setDateBack={setDateBack}
                     reserveTicket={reserveTicket}
                     dropdownCheck={dropdownCheck}
                     setDropdowbCheck={setDropdowbCheck}

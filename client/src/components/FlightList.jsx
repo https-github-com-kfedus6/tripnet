@@ -81,7 +81,7 @@ const FlightList = ({ flight, is_admin, setScheduleTo, setScheduleWith, status, 
                         <div className='flight-price'>
                             <b>Ціни</b>
                             <span>Дорослий: {flight.price} грн</span>
-                            <span>Дитячий: 800 грн</span>
+                            <span>Дитячий: {flight.childPrice} грн</span>
                         </div>
                         <div className='flight-comfort'>
                             <b>Умови</b>

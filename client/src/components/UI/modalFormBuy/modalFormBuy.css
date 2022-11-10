@@ -101,6 +101,31 @@
     font-size: 25px;
 }
 
+.form-label-date-modal {
+    position: absolute;
+    left: 10px;
+    top: 14px;
+    width: auto;
+    padding: 0 0.3rem;
+    cursor: text;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 120%;
+    color: #6A6A6A;
+    transition: top 100ms ease-in,left 100ms ease-in, font-size 100ms ease-in;
+    background-color: #FFFFFF;
+    cursor: pointer;
+}
+
+.form-input-text-date:focus ~ .form-label-date-modal,
+.form-input-text-date:not(:placeholder-shown).form-input-text-date:not(:focus)~.form-label-date-modal {
+    top:-8px;
+    font-size: 13px;
+    width: auto;
+} 
+
 @media (max-width: 1350px) {
     .modal-body {
         max-width: 33%;

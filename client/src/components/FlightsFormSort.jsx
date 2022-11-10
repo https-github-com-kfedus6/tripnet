@@ -3,12 +3,13 @@ import { useTranslation } from 'react-i18next';
 import { useEffect } from 'react';
 import { useAction } from '../hooks/useAction';
 import { useSelector } from 'react-redux';
-import AirDatepicker from 'air-datepicker';
-import ua from 'air-datepicker/locale/uk';
-import ru from 'air-datepicker/locale/ru';
-import 'air-datepicker/air-datepicker.css';
+import { LocalizationProvider } from '@mui/x-date-pickers';
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
+import { DesktopDatePicker } from '@mui/x-date-pickers/DesktopDatePicker';
+import Box from '@mui/material/Box';
+import ukLocale from 'date-fns/locale/uk';
 
-const FlightsFormSort = ({ startDate, startPosition, finishPosition, setStartDate, setStartPosition, setFinishPosition, sortFlights, sumOld, setSumOld, sumYoung, setSumYoung, setChangePosition, changePosition, changePositionFun }) => {
+const FlightsFormSort = ({ finishDate, setFinishDate, startDate, setStartDate, startPosition, finishPosition, setStartPosition, setFinishPosition, sortFlights, sumOld, setSumOld, sumYoung, setSumYoung, setChangePosition, changePosition, changePositionFun }) => {
     const { t } = useTranslation()
 
     const [dropdownCheck, setDropdowbCheck] = useState(false)
@@ -63,25 +64,13 @@ const FlightsFormSort = ({ startDate, startPosition, finishPosition, setStartDat
         setIsOpenFinish(!isOpenFinish)
     }
 
-    new AirDatepicker('#date', localStorage.getItem('i18nextLng') === 'UA' ?
-        {
-            locale: ua,
-        }
-        :
-        {
-            locale: ru
-        }
-    )
+    const handleChangeDateStart = (newDate) => {
+        setStartDate(newDate);
+    }
 
-    new AirDatepicker('#date-second', localStorage.getItem('i18nextLng') === 'UA' ?
-        {
-            locale: ua
-        }
-        :
-        {
-            locale: ru
-        }
-    )
+    const handleChangeDateFinish = (newDate) => {
+        setFinishDate(newDate);
+    }
 
     return (
         <div className='flights-sort-form'>
@@ -154,26 +143,42 @@ const FlightsFormSort = ({ startDate, startPosition, finishPosition, setStartDat
                 </div>
                 <div className='form-sort-input-group'>
                     <div className='form-input-date'>
-                        <input id='date' type='text'
-                            className='form-input-text-date'
-                            placeholder=' '
-                            autoComplete="off"
-                        />
-                        <label className='form-label-date' htmlFor='date'>Туди</label>
-                        <label className='form-button-date'>
-                            <img src={process.env.REACT_APP_API_URL + 'vector.png'} alt="date" />
-                        </label>
+                        <LocalizationProvider
+                            dateAdapter={AdapterDayjs}
+                            adapterLocale={ukLocale}
+                        >
+                            <DesktopDatePicker
+                                inputFormat="DD.MM.YYYY"
+                                value={startDate}
+                                onChange={handleChangeDateStart}
+                                renderInput={({ inputRef, inputProps, InputProps }) => (
+                                    <Box sx={{ display: 'flex', alignItems: 'center' }}>
+                                        <input autoComplete='off' className='form-input-text-date' id='custom-date-thrid' ref={inputRef} {...inputProps} />
+                                        <label className='form-label-date bg' htmlFor="custom-date-thrid">Туди</label>
+                                        {InputProps?.endAdornment}
+                                    </Box>
+                                )}
+                            />
+                        </LocalizationProvider>
                     </div>
                     <div className='form-input-date'>
-                        <input id='date-second' type='text'
-                            className='form-input-text-date'
-                            placeholder=' '
-                            autoComplete="off"
-                        />
-                        <label className='form-label-date' htmlFor='date-second'>Назад</label>
-                        <label className='form-button-date'>
-                            <img src={process.env.REACT_APP_API_URL + 'vector.png'} alt="date" />
-                        </label>
+                        <LocalizationProvider
+                            dateAdapter={AdapterDayjs}
+                            adapterLocale={ukLocale}
+                        >
+                            <DesktopDatePicker
+                                inputFormat="DD.MM.YYYY"
+                                value={finishDate}
+                                onChange={handleChangeDateFinish}
+                                renderInput={({ inputRef, inputProps, InputProps }) => (
+                                    <Box sx={{ display: 'flex', alignItems: 'center' }}>
+                                        <input autoComplete='off' className='form-input-text-date' id='custom-date-fourth' ref={inputRef} {...inputProps} />
+                                        <label className='form-label-date bg' htmlFor="custom-date-fourth">Назад</label>
+                                        {InputProps?.endAdornment}
+                                    </Box>
+                                )}
+                            />
+                        </LocalizationProvider>
                     </div>
                 </div>
                 <div className='form-sort-input-group'>

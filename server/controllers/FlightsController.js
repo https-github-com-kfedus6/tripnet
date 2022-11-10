@@ -7,7 +7,7 @@ const { Op } = require('sequelize');
 class FlightsController {
     async postFlights(req, res, next) {
         try {
-            const { price, startPositionUA, startPositionRU, finishPositionUA, finishPositionRU,
+            const { price, childPrice, startPositionUA, startPositionRU, finishPositionUA, finishPositionRU,
                 streetStartPositionUA, streetStartPositionRU, streetFinishPositionUA, streetFinishPositionRU,
                 startDate, finishDate, startTime, finishTime, timeFlightUA, timeFlightRU, countFreePlace,
                 descriptionUA, descriptionRU, isWifi, isWC, is220V, isMultimedia,
@@ -18,8 +18,8 @@ class FlightsController {
             const streetStartPosition = [streetStartPositionUA, streetStartPositionRU].join("//");
             const streetFinishPosition = [streetFinishPositionUA, streetFinishPositionRU].join("//");
             const description = [descriptionUA, descriptionRU].join("/*/");
-            const countryStart=[countryStartUA,countryStartRU].join("//");
-            const countryFinish=[countryFinishtUA,countryFinishtRU].join("//");
+            const countryStart = [countryStartUA, countryStartRU].join("//");
+            const countryFinish = [countryFinishtUA, countryFinishtRU].join("//");
             let { flagStartImg, flagFinishImg } = req.files;
             let flight;
 
@@ -31,6 +31,7 @@ class FlightsController {
 
                 flight = await Flight.create({
                     price: price,
+                    childPrice: childPrice,
                     flagStart: nameImgStart,
                     flagFinish: nameImgFinish,
                     startPosition: startPosition,
@@ -52,6 +53,7 @@ class FlightsController {
             else {
                 flight = await Flight.create({
                     price: price,
+                    childPrice: childPrice,
                     startPosition: startPosition,
                     finishPosition: finishPosition,
                     streetStartPosition: streetStartPosition,

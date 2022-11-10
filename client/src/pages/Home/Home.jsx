@@ -14,6 +14,7 @@ const Home = () => {
     const [startPosition, setStartPosition] = useState('');
     const [finishPosition, setFinishPosition] = useState('');
     const [startDate, setStartDate] = useState('');
+    const [finishDate, setFinishDate] = useState('')
     const [sumYoung, setSumYoung] = useState(0);
     const [sumOld, setSumOld] = useState(1);
     const [changePosition, setChangePosition] = useState(false);
@@ -39,6 +40,7 @@ const Home = () => {
                 <div className='form-flights-container'>
                     <FlightsFormSort
                         setStartDate={setStartDate}
+                        setFinishDate={setFinishDate}
                         setStartPosition={setStartPosition}
                         setFinishPosition={setFinishPosition}
                         sortFlights={search}
@@ -48,6 +50,7 @@ const Home = () => {
                         setSumYoung={setSumYoung}
                         deleteFlight={() => { }}
                         startDate={startDate}
+                        finishDate={finishDate}
                         startPosition={startPosition}
                         finishPosition={finishPosition}
                         changePosition={changePosition}
@@ -56,7 +59,7 @@ const Home = () => {
             </div>
             <ReserveFlightHome />
             <ServicesHome />
-            <Responce/>
+            <Responce />
             <HomeListBlog />
         </>
     )

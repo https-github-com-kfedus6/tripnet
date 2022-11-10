@@ -1,9 +1,10 @@
 import React, { useState } from 'react'
-import AirDatepicker from 'air-datepicker';
-import ua from 'air-datepicker/locale/uk';
-import ru from 'air-datepicker/locale/ru';
-import 'air-datepicker/air-datepicker.css';
 import PhoneInput from 'react-phone-input-2'
+import { LocalizationProvider } from '@mui/x-date-pickers';
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
+import { DesktopDatePicker } from '@mui/x-date-pickers/DesktopDatePicker';
+import Box from '@mui/material/Box';
+import ukLocale from 'date-fns/locale/uk';
 import { t } from 'i18next'
 
 const FlightReserve = ({ flight }) => {
@@ -54,26 +55,6 @@ const FlightReserve = ({ flight }) => {
         }
     }
 
-    new AirDatepicker('#date', localStorage.getItem('i18nextLng') === 'UA' ?
-        {
-            locale: ua,
-        }
-        :
-        {
-            locale: ru
-        }
-    )
-
-    new AirDatepicker('#date-second', localStorage.getItem('i18nextLng') === 'UA' ?
-        {
-            locale: ua
-        }
-        :
-        {
-            locale: ru
-        }
-    )
-
     return (
         <div className='flight-block-message-reserve'>
             <div className={flight.currentFlight ? 'flight-block-reserve' : 'flight-block-reserve-none'}>
@@ -108,14 +89,6 @@ const FlightReserve = ({ flight }) => {
                             international
                             country="ua"
                         />
-                        {/* <input
-                            id='reserve-third'
-                            type="text"
-                            className='reserve-input-text'
-                            placeholder=' '
-                            autoComplete="off"
-                        />
-                        <label htmlFor='reserve-third' className='reserve-label-text'>Телефон</label> */}
                     </div>
                     <div className='reserve-input'>
                         <input
@@ -181,15 +154,21 @@ const FlightReserve = ({ flight }) => {
                         </div>
                     </div>
                     <div className='form-input-date'>
-                        <input id='date' type='text'
-                            className='form-input-text-date'
-                            placeholder=' '
-                            autoComplete="off"
-                        />
-                        <label className='form-label-date' htmlFor='date'>Дата відправлення</label>
-                        <label className='form-button-date'>
-                            <img src={process.env.REACT_APP_API_URL + 'vector.png'} alt="date" />
-                        </label>
+                        <LocalizationProvider
+                            dateAdapter={AdapterDayjs}
+                            adapterLocale={ukLocale}
+                        >
+                            <DesktopDatePicker
+                                inputFormat="DD.MM.YYYY"
+                                renderInput={({ inputRef, inputProps, InputProps }) => (
+                                    <Box sx={{ display: 'flex', alignItems: 'center' }}>
+                                        <input autoComplete='off' className='form-input-text-date' id='custom-date-second' ref={inputRef} {...inputProps} />
+                                        <label className='form-label-date-modal' htmlFor="custom-date-second">Дата відправлення</label>
+                                        {InputProps?.endAdornment}
+                                    </Box>
+                                )}
+                            />
+                        </LocalizationProvider>
                     </div>
                 </div>
                 <div className='reverse-reserve-details'>
@@ -250,15 +229,21 @@ const FlightReserve = ({ flight }) => {
                             </div>
                         </div>
                         <div className='form-input-date'>
-                            <input id='date-second' type='text'
-                                className='form-input-text-date'
-                                placeholder=' '
-                                autoComplete="off"
-                            />
-                            <label className='form-label-date' htmlFor='date-second'>Дата відправлення</label>
-                            <label className='form-button-date'>
-                                <img src={process.env.REACT_APP_API_URL + 'vector.png'} alt="date" />
-                            </label>
+                            <LocalizationProvider
+                                dateAdapter={AdapterDayjs}
+                                adapterLocale={ukLocale}
+                            >
+                                <DesktopDatePicker
+                                    inputFormat="DD.MM.YYYY"
+                                    renderInput={({ inputRef, inputProps, InputProps }) => (
+                                        <Box sx={{ display: 'flex', alignItems: 'center' }}>
+                                            <input autoComplete='off' className='form-input-text-date' id='custom-date-second' ref={inputRef} {...inputProps} />
+                                            <label className='form-label-date-modal' htmlFor="custom-date-second">Дата відправлення</label>
+                                            {InputProps?.endAdornment}
+                                        </Box>
+                                    )}
+                                />
+                            </LocalizationProvider>
                         </div>
                     </div>
                 </div>
