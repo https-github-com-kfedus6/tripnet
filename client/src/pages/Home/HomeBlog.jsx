@@ -8,9 +8,12 @@ import { t } from 'i18next';
 const HomeBlog = ({ blog }) => {
     const navigate = useNavigate();
     const { language } = useSelector(state => state.language);
+    const {is_admin}=useSelector(state=>state.user);
+    const {DelBlog}=useAction();
 
     return (
         <div className='mini__blog__main'>
+            {is_admin?<button onClick={()=>DelBlog(blog.id)}>del</button>:<></>}
             <div className='mini__blog__img'>
                 <img src={process.env.REACT_APP_API_URL + blog.image} />
             </div>

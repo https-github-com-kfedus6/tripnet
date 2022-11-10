@@ -30,8 +30,7 @@ export const ListBlog = () => {
     useEffect(() => {
         GetBlogAll(selectPage, limit);
     }, [selectPage]);
-    /*let a="fd";
-    a.slice(8)*/
+    
     return (
         listBlog == undefined ? <>loading...</> :
             <>
