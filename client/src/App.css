@@ -3201,7 +3201,7 @@ footer{
         margin-left: 0;
         width: 60%;
     }
-    .logo__with__link div{
+    .logo__with__link div.logo{
         width: 20%;
     }
     .logo__with__link ul li{
@@ -3228,4 +3228,17 @@ footer{
     .logo__with__link{
         width: 100%; 
     }
+    .burger__menu__list{
+        margin-left: 50px;
+    }
+}
+.admin__blog__related__flight{
+    display: flex;
+    flex-direction: column;
+}
+.admin__blog__related__flight input{
+    height: 30px;
+}
+.admin__blog__related__flight button{
+    width: 50px;
 }
