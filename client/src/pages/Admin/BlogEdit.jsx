@@ -12,6 +12,9 @@ const BlogEdit = () => {
     const [ua, setUa] = useState("");
     const [ru, setRu] = useState("");
     const { AddBlog } = useAction();
+    const [retaledFlight,setRetaledFlight]=useState([]);
+    const [newWhence,setNewWhence]=useState("");
+    const [newWhither,setNewWriter]=useState("");
     return (
         <div className="admin-panel-blog">
             <div className='admin-blok-blog'>
@@ -30,6 +33,7 @@ const BlogEdit = () => {
                     <p>міні опис</p>
                     <input maxLength={200} onChange={e => setMiniDescriptionUA(e.target.value)} value={miniDescriptionUA} />
                 </div>
+
                 <br />
                 <Editor value={ua}
                     apiKey="t6okxmezjfhajn8bk23u3dkejv0oc9c1qhs7gmmh9qskcfdp"
@@ -51,6 +55,16 @@ const BlogEdit = () => {
                     onEditorChange={(newText) => setRu(newText)}
                 />
                 <br />
+                
+                <p>повязані рейси</p>
+                <div className="admin__blog__related__flight">
+                    <p>звідки</p>
+                    <input maxLength={25} onChange={e => setNewWhence(e.target.value)} value={newWhence} />
+                    <p>куди</p>
+                    <input maxLength={25} onChange={e => setNewWriter(e.target.value)} value={newWhither} />
+                    <button onClick={()=>setRetaledFlight([...retaledFlight,])}>add</button>                    
+                </div>
+                
                 <button onClick={() => AddBlog(ua, ru, image, [nameUa, nameRu].join("//"),[miniDescriptionUA,miniDescriptionRU].join("//"))}>Добавити</button>
             </div>
         </div>

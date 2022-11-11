@@ -3259,3 +3259,50 @@ footer{
         width: 80%;
     }
 }
+
+@media screen and (min-width:1024px) and (max-width:1300px)  {
+    .logo__with__link ul {
+        margin-left: 0;
+        width: 60%;
+    }
+    .logo__with__link div.logo{
+        width: 20%;
+    }
+    .logo__with__link ul li{
+        width: auto;
+    }
+    .logo__with__link ul li{
+        width: 0%;
+    }
+    .logo__with__link ul li a{
+        font-size: 15px;
+    }
+    .logo__with__link__flight{
+        margin-left: 13%;
+    }
+    .logo__with__link__services{
+        margin-left:9%;
+    }
+    .logo__with__link__blog{
+        margin-left: 14%;
+    }
+    .logo__with__link__contacts{
+        margin-left: 5%;
+    }
+    .logo__with__link{
+        width: 100%; 
+    }
+    .burger__menu__list{
+        margin-left: 50px;
+    }
+}
+.admin__blog__related__flight{
+    display: flex;
+    flex-direction: column;
+}
+.admin__blog__related__flight input{
+    height: 30px;
+}
+.admin__blog__related__flight button{
+    width: 50px;
+}
