@@ -339,6 +339,15 @@
     align-items: center;
 }
 
+
+.table-day-status-number-admin {
+    width: 14.28%;
+    height: 56px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .table-day-status {
     width: 85%;
     height: 40px;
@@ -347,6 +356,20 @@
     align-items: center;
     background: #EAF2FF;
     border-radius: 4px;
+}
+
+.table-day-status-number-admin div {
+    cursor: pointer;
+}
+
+.table-day-status-number-admin div button {
+    background:transparent;
+    border:none;
+    cursor: pointer;
+}
+
+.table-day-status-number-admin div button span {
+    cursor: pointer;
 }
 
 .table-day-status span {

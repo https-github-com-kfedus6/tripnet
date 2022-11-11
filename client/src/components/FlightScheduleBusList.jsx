@@ -2,7 +2,10 @@ import React from 'react'
 import { useSelector } from 'react-redux'
 import { t } from 'i18next'
 
-const FlightScheduleBusList = ({ flight, is_admin, setScheduleTo, setScheduleWith, status, changeStatus, changeSchedule }) => {
+const FlightScheduleBusList = ({
+    flight, is_admin, setScheduleToUA, setScheduleWithUA,
+    setScheduleToRU, setScheduleWithRU,
+    status, changeStatus, changeSchedule }) => {
 
     const { language } = useSelector(state => state.language);
 
@@ -15,14 +18,22 @@ const FlightScheduleBusList = ({ flight, is_admin, setScheduleTo, setScheduleWit
                         return (
                             <div key={item.id}>
                                 <p>{t("flight.schedule_valid_with")}
-                                    <input type="text" placeholder={item.scheduleWith}
+                                    <input type="text" placeholder={t('lang.uk')}
                                         className='create-date'
-                                        onChange={(e) => setScheduleWith(e.target.value)}
+                                        onChange={(e) => setScheduleWithUA(e.target.value)}
+                                    />
+                                    <input type="text" placeholder={t('lang.ru')}
+                                        className='create-date'
+                                        onChange={(e) => setScheduleWithRU(e.target.value)}
                                     />
                                     по
-                                    <input type="text" placeholder={item.scheduleTo}
+                                    <input type="text" placeholder={t('lang.uk')}
                                         className='create-date'
-                                        onChange={(e) => setScheduleTo(e.target.value)}
+                                        onChange={(e) => setScheduleToUA(e.target.value)}
+                                    />
+                                    <input type="text" placeholder={t('lang.ru')}
+                                        className='create-date'
+                                        onChange={(e) => setScheduleToRU(e.target.value)}
                                     />
                                     <button className='change-date' onClick={() => changeSchedule(item.id)}>Обновити</button>
                                 </p>
@@ -30,7 +41,7 @@ const FlightScheduleBusList = ({ flight, is_admin, setScheduleTo, setScheduleWit
                         )
                     } else {
                         return (
-                            <span key={item.id}>{t("flight.schedule_valid_with")} <strong>{item.scheduleWith}</strong> по <strong>{item.scheduleTo}.</strong></span>
+                            <span key={item.id}>{t("flight.schedule_valid_with")} <strong>{item.scheduleWith[language]}</strong> по <strong>{item.scheduleTo[language]}.</strong></span>
                         )
                     }
                 })}
@@ -69,7 +80,13 @@ const FlightScheduleBusList = ({ flight, is_admin, setScheduleTo, setScheduleWit
                     {status.map((s, id) => {
                         if (is_admin) {
                             return (
-                                <div key={s.id}><button /* onClick={() => changeStatus(day.id, s.id, s.status)} */></button></div>
+                                <div key={s.id} className='table-day-status-number-admin'>
+                                    <div className={s.status === true ? 'table-day-status' : 'table-day-number'}>
+                                        <button onClick={() => changeStatus(s.id, s.status)}>
+                                            <span>{id + 1}</span>
+                                        </button>
+                                    </div>
+                                </div>
                             )
                         } else {
                             return (

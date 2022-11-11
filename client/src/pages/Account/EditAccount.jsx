@@ -72,15 +72,13 @@ const EditAccount = () => {
     return (
         <>
             <div className='bread__crumbs__main'>
-                <Breadcrumbs>
-                    <NavLink to="/">
-                        {t("header.first_link")}
-                    </NavLink>
-                    <NavLink to="/account">
-                        {t("account.personal_office")}
-                    </NavLink>
-                    <Typography color="text.primary">{t("account.setting_profile")}</Typography>
-                </Breadcrumbs>
+                <div className='bredcrumbs-flight'>
+                    <span className='bredcrumbs-flight-services-link'><NavLink to="/">{t("header.first_link")}</NavLink></span>
+                    <span><img src={process.env.REACT_APP_API_URL + 'chevron-right.png'} alt="right" /></span>
+                    <span className='bredcrumbs-flight-services-link'><NavLink to="/account">{t("account.personal_office")}</NavLink></span>
+                    <span><img src={process.env.REACT_APP_API_URL + 'chevron-right.png'} alt="right" /></span>
+                    <span className='bredcrumbs-flight-text'>{t("account.setting_profile")}</span>
+                </div>
             </div>
             <div className="edit__account__main">
                 <div className="edit__account__content__main">
@@ -246,11 +244,14 @@ const EditAccount = () => {
                 <div className="edit__account__message">
                     <div className="edit__account__message__content">
                         <div className="edit__account__text">
+                            <div className='flight-message-icon'>
+                                <img src={process.env.REACT_APP_API_URL + 'info-blue.png'} alt='info' />
+                            </div>
                             <div className="edit__account__message__title">
                                 {t("account.date_editing")}
-                            </div>
-                            <div className="edit__account__descrition">
-                                {t("account.date_editing_descritpion")}
+                                <div className="edit__account__descrition">
+                                    {t("account.date_editing_descritpion")}
+                                </div>
                             </div>
                         </div>
                     </div>

@@ -3,13 +3,14 @@ export const flightActionTypes = {
     FETCH_GET_FLIGHTS: 'FETCH_GET_FLIGHTS',
     FETCH_GET_FLIGHT: 'FETCH_GET_FLIGHT',
     FETCH_UPDATE_FLIGHT: 'FETCH_UPDATE_FLIGHT',
+    FETCH_UPDATE_FLIGHT_CHILD_PRICE: 'FETCH_UPDATE_FLIGHT_CHILD_PRICE',
     FETCH_DELETE_FLIGHT: 'FETCH_GET_FLIGHT',
     FETCH_ERROR_FLIGHT: 'FETCH_ERROR_FLIGHT',
     FETCH_PUT_FLIGHT_STATUS: 'FETCH_PUT_FLIGHT_STATUS',
     FETCH_PUT_FLIGHT_SCHEDULE_BUS: 'FETCH_PUT_FLIGHT_SCHEDULE_BUS',
     FETCH_SEARCH_START_POSTION: 'FETCH_SEARCH_START_POSTION',
     FETCH_SEARCH_FINISH_POSTION: 'FETCH_SEARCH_FINISH_POSTION',
-    FETCH_GET_RELINKBLOCKS:"FETCH_GET_RELINKBLOCKS"
+    FETCH_GET_RELINKBLOCKS: "FETCH_GET_RELINKBLOCKS",
 }
 
 const initialState = {
@@ -17,9 +18,9 @@ const initialState = {
     flight: [],
     status: [],
     page: 1,
-    searchStartPostion:[],
-    searchFinishPosition:[],
-    relinkBlocks:undefined
+    searchStartPostion: [],
+    searchFinishPosition: [],
+    relinkBlocks: undefined
 }
 
 export const flightsReducer = (state = initialState, action) => {
@@ -36,17 +37,20 @@ export const flightsReducer = (state = initialState, action) => {
         case flightActionTypes.FETCH_UPDATE_FLIGHT: {
             return { ...state, flights: action.payload }
         }
+        case flightActionTypes.FETCH_UPDATE_FLIGHT_CHILD_PRICE: {
+            return { ...state, flights: action.payload }
+        }
         case flightActionTypes.FETCH_PUT_FLIGHT_STATUS: {
             return { ...state, status: action.payload }
         }
-        case flightActionTypes.FETCH_SEARCH_START_POSTION:{
-            return {...state, searchStartPostion: action.payload };
+        case flightActionTypes.FETCH_SEARCH_START_POSTION: {
+            return { ...state, searchStartPostion: action.payload };
         }
-        case flightActionTypes.FETCH_SEARCH_FINISH_POSTION:{
-            return {...state, searchFinishPosition: action.payload};
+        case flightActionTypes.FETCH_SEARCH_FINISH_POSTION: {
+            return { ...state, searchFinishPosition: action.payload };
         }
-        case flightActionTypes.FETCH_GET_RELINKBLOCKS:{
-            return {...state, relinkBlocks:action.payload};
+        case flightActionTypes.FETCH_GET_RELINKBLOCKS: {
+            return { ...state, relinkBlocks: action.payload };
         }
         default: {
             return state

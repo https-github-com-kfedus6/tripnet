@@ -174,7 +174,10 @@ class FlightsController {
             flight.streetFinishPosition = flight.streetFinishPosition.split("//");
             flight.description = flight.description.split("/*/");
             flight.schefule[0].sunday = flight.schefule[0].sunday.split("//");
+            flight.schefule[0].scheduleTo = flight.schefule[0].scheduleTo.split('//')
+            flight.schefule[0].scheduleWith = flight.schefule[0].scheduleWith.split('//')
             let status = await ScheduleBusStatus.findAll({ where: { scheduleBusId: flight.schefule[0].id } });
+            console.log(status)
 
             return res.json({ status: 200, res: { flight, status } });
         } catch (err) {
@@ -318,6 +321,18 @@ class FlightsController {
         }
     }
 
+    async patchChildPrice(req, res, next) {
+        try {
+            const { childPrice } = req.body
+            const { id } = req.params
+
+            await Flight.update({ childPrice: childPrice }, { where: { id: id } })
+
+            return res.json({ status: 200 })
+        } catch (err) {
+            return next(ErrorApi.badRequest(err));
+        }
+    }
 }
 
 const flightsController = new FlightsController();

@@ -112,6 +112,8 @@ const FlightOrder = sequelize.define("flightOrder", {
     email: { type: DataTypes.STRING },
     countPersons: { type: DataTypes.INTEGER },
     date: { type: DataTypes.STRING },
+    countPersonsBack: { type: DataTypes.INTEGER },
+    dateBack: { type: DataTypes.STRING },
     status: { type: DataTypes.BOOLEAN, defaultValue: null },
 });
 

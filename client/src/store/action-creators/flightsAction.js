@@ -48,7 +48,7 @@ export const fetchUpdateFlight = (formData) => async (dispatch) => {
         if (response.data.status == 200) {
             dispatch({ type: messageActionTypes.SET_SHOW_TRUE, payload: "успішно виконано" });
             setTimeout(() => dispatch({ type: messageActionTypes.SET_SHOW_FALSE }), 3000);
-        } else console.log(response);
+        } else console.log('error')
     } catch (err) {
         console.log(err);
         /* if (response.data.status == 200) {
@@ -59,6 +59,15 @@ export const fetchUpdateFlight = (formData) => async (dispatch) => {
              dispatch({ type: messageActionTypes.SET_SHOW_TRUE, payload: "error" });
              setTimeout(() => dispatch({ type: messageActionTypes.SET_SHOW_FALSE }), 3000);
          }*/
+    }
+}
+
+export const fetchPatchFlightChildePrice = (id, childPrice) => async (dispatch) => {
+    try {
+        const response = await $authHost.put(`/api/flights/childPrice/${id}`, { childPrice })
+        dispatch({ type: flightActionTypes.FETCH_UPDATE_FLIGHT_CHILD_PRICE, payload: response.data.res })
+    } catch (err) {
+        dispatch({ type: messageActionTypes.SET_SHOW_TRUE, payload: "error" });
     }
 }
 
@@ -129,9 +138,9 @@ export const fetchPutFlightStatus = (sheduleBusId, id, status) => async (dispatc
     }
 }
 
-export const fetchPutFlightBusDate = (id, scheduleWith, scheduleTo) => async (dispatch) => {
+export const fetchPutFlightBusDate = (id, scheduleWithUA, scheduleToUA, scheduleWithRU, scheduleToRU) => async (dispatch) => {
     try {
-        const response = await $authHost.put('api/scheduleBusStatus/', { id, scheduleWith, scheduleTo })
+        const response = await $authHost.put('api/scheduleBusStatus/', { id, scheduleWithUA, scheduleToUA, scheduleWithRU, scheduleToRU })
         if (response.data.status == 200) {
             dispatch({ type: flightActionTypes.FETCH_PUT_FLIGHT_SCHEDULE_BUS, payload: response.data.res })
             dispatch({ type: messageActionTypes.SET_SHOW_TRUE, payload: "успішно виконано" });

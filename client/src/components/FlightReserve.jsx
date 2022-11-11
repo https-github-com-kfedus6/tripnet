@@ -7,14 +7,14 @@ import Box from '@mui/material/Box';
 import ukLocale from 'date-fns/locale/uk';
 import { t } from 'i18next'
 
-const FlightReserve = ({ flight }) => {
+const FlightReserve = ({ flight, name, setName, date, setDate,
+    phone, setPhone, sumYoung, setSumYoung, setSumOld, sumOld,
+    sumOldBack, setSumOldBack, sumYoungBack, setSumYoungBack,
+    surename, setSurename, email, setEmail, dateBack, setDateBack,
+    reserveTicket }) => {
 
     const [dropdownCheckBack, setDropdowbCheckBack] = useState(false)
     const [dropdownCheck, setDropdowbCheck] = useState(false)
-    const [sumYoung, setSumYoung] = useState(0)
-    const [sumOld, setSumOld] = useState(1)
-    const [sumYoungBack, setSumYoungBack] = useState(0)
-    const [sumOldBack, setSumOldBack] = useState(1)
     const [checked, setChecked] = useState(false);
 
     const [value, setValue] = useState();
@@ -55,6 +55,14 @@ const FlightReserve = ({ flight }) => {
         }
     }
 
+    const handleChangeDate = (newDate) => {
+        setDate(newDate);
+    };
+
+    const handleChangeDateBack = (newDate) => {
+        setDateBack(newDate);
+    };
+
     return (
         <div className='flight-block-message-reserve'>
             <div className={flight.currentFlight ? 'flight-block-reserve' : 'flight-block-reserve-none'}>
@@ -70,6 +78,8 @@ const FlightReserve = ({ flight }) => {
                             className='reserve-input-text'
                             placeholder=' '
                             autoComplete="off"
+                            value={surename}
+                            onChange={(e) => setSurename(e.target.value)}
                         />
                         <label htmlFor='reserve-first' className='reserve-label-text'>Прізвище</label>
                     </div>
@@ -80,6 +90,8 @@ const FlightReserve = ({ flight }) => {
                             className='reserve-input-text'
                             placeholder=' '
                             autoComplete="off"
+                            value={name}
+                            onChange={(e) => setName(e.target.value)}
                         />
                         <label htmlFor='reserve-second' className='reserve-label-text'>Ім'я</label>
                     </div>
@@ -88,6 +100,7 @@ const FlightReserve = ({ flight }) => {
                             className='react-input-phone'
                             international
                             country="ua"
+                            onChange={phone => setPhone({ phone })}
                         />
                     </div>
                     <div className='reserve-input'>
@@ -97,6 +110,8 @@ const FlightReserve = ({ flight }) => {
                             className='reserve-input-text'
                             placeholder=' '
                             autoComplete="off"
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)}
                         />
                         <label htmlFor='reserve-fourth' className='reserve-label-text'>E-mail</label>
                     </div>
@@ -110,8 +125,8 @@ const FlightReserve = ({ flight }) => {
                         </div>
                         <div className='dropdown-passengers'>
                             <div className='dropdown-select-passegers' onClick={() => dropdownCheck ? setDropdowbCheck(false) : setDropdowbCheck(true)}>
-                                <input className='dropdown-passegers-input' type="text" id='passegers' placeholder=' ' value={dropdownCheck ? `${sumOld} ${t('flight.pass_old')}, ${sumYoung} дитина` : ''} disabled />
-                                <label className='dropdown-passegers-text' htmlFor="passegers">{t('flight.passegers')}</label>
+                                <input className='dropdown-passegers-input' type="text" id='passegers-first' placeholder=' ' value={dropdownCheck ? `${sumOld} ${t('flight.pass_old')}, ${sumYoung} дитина` : ''} disabled />
+                                <label className='dropdown-passegers-text' htmlFor="passegers-first">{t('flight.passegers')}</label>
                                 <label className='dropdown-icon-user'>
                                     <img src={process.env.REACT_APP_API_URL + 'users.png'} alt="passegers" />
                                 </label>
@@ -160,10 +175,12 @@ const FlightReserve = ({ flight }) => {
                         >
                             <DesktopDatePicker
                                 inputFormat="DD.MM.YYYY"
+                                value={date}
+                                onChange={handleChangeDate}
                                 renderInput={({ inputRef, inputProps, InputProps }) => (
                                     <Box sx={{ display: 'flex', alignItems: 'center' }}>
-                                        <input autoComplete='off' className='form-input-text-date' id='custom-date-second' ref={inputRef} {...inputProps} />
-                                        <label className='form-label-date-modal' htmlFor="custom-date-second">Дата відправлення</label>
+                                        <input autoComplete='off' className='form-input-text-date' id='custom-date-fifth' ref={inputRef} {...inputProps} />
+                                        <label className='form-label-date-modal' htmlFor="custom-date-fifth">Дата відправлення</label>
                                         {InputProps?.endAdornment}
                                     </Box>
                                 )}
@@ -185,8 +202,8 @@ const FlightReserve = ({ flight }) => {
                             </div>
                             <div className='dropdown-passengers'>
                                 <div className='dropdown-select-passegers' onClick={() => dropdownCheckBack ? setDropdowbCheckBack(false) : setDropdowbCheckBack(true)}>
-                                    <input className='dropdown-passegers-input' type="text" id='passegers' placeholder=' ' value={dropdownCheckBack ? `${sumOldBack} ${t('flight.pass_old')}, ${sumYoungBack} дитина` : ''} disabled />
-                                    <label className='dropdown-passegers-text' htmlFor="passegers">{t('flight.passegers')}</label>
+                                    <input className='dropdown-passegers-input' type="text" id='passegers-fifth' placeholder=' ' value={dropdownCheckBack ? `${sumOldBack} ${t('flight.pass_old')}, ${sumYoungBack} дитина` : ''} disabled />
+                                    <label className='dropdown-passegers-text' htmlFor="passegers-fifth">{t('flight.passegers')}</label>
                                     <label className='dropdown-icon-user'>
                                         <img src={process.env.REACT_APP_API_URL + 'users.png'} alt="passegers" />
                                     </label>
@@ -235,10 +252,12 @@ const FlightReserve = ({ flight }) => {
                             >
                                 <DesktopDatePicker
                                     inputFormat="DD.MM.YYYY"
+                                    value={dateBack}
+                                    onChange={handleChangeDateBack}
                                     renderInput={({ inputRef, inputProps, InputProps }) => (
                                         <Box sx={{ display: 'flex', alignItems: 'center' }}>
-                                            <input autoComplete='off' className='form-input-text-date' id='custom-date-second' ref={inputRef} {...inputProps} />
-                                            <label className='form-label-date-modal' htmlFor="custom-date-second">Дата відправлення</label>
+                                            <input autoComplete='off' className='form-input-text-date' id='custom-date-sixth' ref={inputRef} {...inputProps} />
+                                            <label className='form-label-date-modal' htmlFor="custom-date-sixth">Дата відправлення</label>
                                             {InputProps?.endAdornment}
                                         </Box>
                                     )}
@@ -249,7 +268,7 @@ const FlightReserve = ({ flight }) => {
                 </div>
                 <div className='reserve-btn'>
                     <span>{flight.price} грн</span>
-                    <button>{t('modalbuy.btn-buy')}</button>
+                    <button onClick={reserveTicket}>{t('modalbuy.btn-buy')}</button>
                 </div>
             </div>
             <div className='flight-block-message'>

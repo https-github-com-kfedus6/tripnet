@@ -116,11 +116,21 @@ main {
     display: flex;
     flex-direction: column;
     text-decoration: none;
-    color: black;
     align-items: flex-start;
     justify-content: flex-start;
-    
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 120%;
+    color: #111111;
 }
+
+.burger__component a:hover {
+    color: #5297ff;
+    transition: ease 0.4s;
+}
+
 .burger__admin__panel{
     margin-top: 10px;
 }
@@ -744,7 +754,7 @@ main {
     align-items: flex-start;
     padding: 20px;
     gap: 10px;
-    width: 120px;
+    width: auto;
     height: 50px;
     background: #FFFFFF;
     position: absolute;
@@ -1354,6 +1364,7 @@ main {
     line-height: 120%;
     text-align: center;
     color: #FFFFFF;
+    cursor: default;
 }
 
 .logo__with__link{
@@ -2030,14 +2041,13 @@ footer{
         margin: auto;
         justify-content: space-between;
     }
-
-} 
+}
 
 @media screen and (max-width:768px) {
     .text-baner {
         width: 600px;
         height: 150px;
-        font-size: 57px;
+        font-size: 55px;
         position: absolute;
         left: calc(50% - 600px/2 - 0.5px);
         top: 240px;
@@ -2048,12 +2058,13 @@ footer{
     .text-baner {
         width: 440px;
         height: 177px;
-        font-size: 45px;
+        font-size: 40px;
         position: absolute;
         left: calc(50% - 440px/2 - 0.5px);
         top: 200px;
     }
-} 
+}
+
 @media screen and (min-width:1024px) {
     .blog__container{
         width: 70%;
@@ -2094,6 +2105,22 @@ footer{
     display: flex;
     flex-direction: row;
 }
+
+.bredcrumbs-flight-services-link a {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 120%;
+    color: #4C4C4C;
+    text-decoration: none;
+}
+
+.bredcrumbs-flight-services-link a:hover {
+    color: #5297ff;
+    transition: all ease 0.4s;
+}
+
 @media screen and (min-width:1024px) {
     .blog__one__container{
         width: 70%;
@@ -2630,9 +2657,8 @@ footer{
     position: fixed;
     height: 100%;
     background-color: white;
-    width: 70%;
+    width: 100%;
     z-index: 150;
-    left: 30%;
 }
 .burger__exit1 div{
     font-size: 40px;
@@ -2651,18 +2677,16 @@ footer{
     color: #2F82FF;
     font-size: 30px;
 }
+
 .burger__menu__list1{
-    width: 80%;
-    margin: 25px auto;
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    justify-content:flex-start;
+    margin-left: 10px;
 }
+
 @media screen and (min-width:768px) {
-    .burger__menu__list1{
-        display: flex;
-        flex-direction: column;
-        width: 50%;
-        justify-content:flex-start;
-        margin-left: 5%;
-    }
     .burger__buttons{
         display: flex;
         flex-direction: row;
@@ -2752,6 +2776,11 @@ footer{
     align-items: center;
 }
 .edit__account__message__title{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0px;
+    gap: 10px;
     font-family: 'Inter';
     font-style: normal;
     font-weight: 700;
@@ -2761,6 +2790,8 @@ footer{
 }
 .edit__account__text{
     margin-left: 5px;
+    display: flex;
+    gap:10px;
 }
 .edit__account__descrition{
     font-family: 'Inter';
@@ -3054,6 +3085,7 @@ footer{
     line-height: 150%;
     color: #111111;
 }
+
 @media screen and (min-width:1024px) {
     .account__main2{
         width: 70%;
@@ -3118,6 +3150,7 @@ footer{
     width: 250px;
     height: 50px;
     background: #2F82FF;
+    border: none;
     border-radius: 10px;
     font-family: 'Inter';
     font-style: normal;
@@ -3127,6 +3160,12 @@ footer{
     color: #FFFFFF;
     cursor: pointer;
 }
+
+.account__setting__profile__button button:hover {
+    background-color: #5297ff;
+    transition: all ease 0.4s;
+}
+
 .account__message__title{
     font-family: 'Inter';
     font-style: normal;
@@ -3145,7 +3184,7 @@ footer{
 }
 .account__message{
     display: flex;
-    flex-direction: column;
+    gap: 10px;
 }
 .my__booking__title{
     font-family: 'Inter';
@@ -3160,6 +3199,13 @@ footer{
 }
 .burger__personal__office{
     margin-top: 25px;
+    cursor: pointer;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 120%;
+    color: #111111;
 }
 .user__profile{
     width: 240px;
@@ -3192,5 +3238,24 @@ footer{
     }
     .admin-block-response{
         width: 100%;
+    }
+}
+
+@media (max-width:1024px) {
+    .dropdown-list-lang {
+        position: absolute;
+        top: 360px;
+    }
+}
+
+@media (max-width:480px) {
+    .dropdown-list-lang {
+        width: 84%;
+    }
+}
+
+@media (max-width:380px) {
+    .dropdown-list-lang {
+        width: 80%;
     }
 }

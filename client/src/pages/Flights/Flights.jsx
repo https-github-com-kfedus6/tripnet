@@ -125,6 +125,8 @@ const Flights = ({ isShowFilter }) => {
                     email: email,
                     countPersons: sumOld + sumYoung,
                     date: date,
+                    countPersonsBack: sumOldBack + sumYoungBack,
+                    dateBack: dateBack,
                     flightId: flightId
                 })
                 setSurename('')
@@ -132,6 +134,9 @@ const Flights = ({ isShowFilter }) => {
                 setPhone('')
                 setEmail('')
                 setDate('')
+                setDateBack('')
+                setSumOldBack(1)
+                setSumYoung(0)
                 setSumOld(1)
                 setSumYoung(0)
             } else {
@@ -142,9 +147,14 @@ const Flights = ({ isShowFilter }) => {
                     email: email,
                     countPersons: sumOld + sumYoung,
                     date: date,
+                    countPersonsBack: sumOldBack + sumYoungBack,
+                    dateBack: dateBack,
                     flightId: flightId,
                     userId: user.id
                 })
+                setDateBack('')
+                setSumOldBack(1)
+                setSumYoung(0)
                 setDate('')
                 setSumOld(1)
                 setSumYoung(0)

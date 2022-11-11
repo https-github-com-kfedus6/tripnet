@@ -40,9 +40,9 @@ const Account = () => {
 
     const [checkPassword, setCheckPassword] = useState(false);
     const [checkEmail, setCheckEmail] = useState(false);
-    const [newEmail,setNewEmail]=useState("");
-    
-    const [phoneValue,setPhoneValue]=useState("")
+    const [newEmail, setNewEmail] = useState("");
+
+    const [phoneValue, setPhoneValue] = useState("")
 
 
     useEffect(() => {
@@ -76,27 +76,24 @@ const Account = () => {
     return (
         <>
             <div className='bread__crumbs__main'>
-                <Breadcrumbs>
-                    <NavLink to="/">
-                        {t("header.first_link")}
-                    </NavLink>
-                    <Typography color="text.primary">
-                        {t("account.personal_office")}
-                    </Typography>
-                </Breadcrumbs>
+                <div className='bredcrumbs-flight'>
+                    <span className='bredcrumbs-flight-services-link'><NavLink to="/">{t("header.first_link")}</NavLink></span>
+                    <span><img src={process.env.REACT_APP_API_URL + 'chevron-right.png'} alt="right" /></span>
+                    <span className='bredcrumbs-flight-text'>{t("account.personal_office")}</span>
+                </div>
             </div>
             <div className="user__profile user__profile__left">
                 <div className="user__profile__title">
                     {t("account.profile")}
                 </div>
                 <div className="account__surname__with__name">
-                    {user.name+" "+user.surname}
+                    {user.name + " " + user.surname}
                 </div>
                 <div className="account__email">
                     {user.email}
                 </div>
                 <div className="account__setting__profile__button">
-                    <button onClick={()=>navigate("/account/edit")}>{t("account.setting_profile")}</button>
+                    <button onClick={() => navigate("/account/edit")}>{t("account.setting_profile")}</button>
                 </div>
             </div>
             <div className='account__main2'>
@@ -156,30 +153,33 @@ const Account = () => {
                         )
                     })}
                 </div>
-                    <div className="account__right">
-                        <div className="user__profile user__profile__right">
-                            <div className="user__profile__title">
-                                {t("account.profile")}
-                            </div>
-                            <div className="account__surname__with__name">
-                                {user.name+" "+user.surname}
-                            </div>
-                            <div className="account__email">
-                                {user.email}
-                            </div>
-                            <div className="account__setting__profile__button">
-                                <button onClick={()=>navigate("/account/edit")}>{t("account.setting_profile")}</button>
-                            </div>
+                <div className="account__right">
+                    <div className="user__profile user__profile__right">
+                        <div className="user__profile__title">
+                            {t("account.profile")}
                         </div>
-                        <div className="account__message">
-                            <div className="account__message__title">
-                                {t("account.message_title")}
-                            </div>
+                        <div className="account__surname__with__name">
+                            {user.name + " " + user.surname}
+                        </div>
+                        <div className="account__email">
+                            {user.email}
+                        </div>
+                        <div className="account__setting__profile__button">
+                            <button onClick={() => navigate("/account/edit")}>{t("account.setting_profile")}</button>
+                        </div>
+                    </div>
+                    <div className="account__message">
+                        <div className='flight-message-icon'>
+                            <img src={process.env.REACT_APP_API_URL + 'info-blue.png'} alt='info' />
+                        </div>
+                        <div className="account__message__title">
+                            {t("account.message_title")}
                             <div className="account__message__description">
                                 {t("account.message_description")}
                             </div>
                         </div>
                     </div>
+                </div>
             </div>
         </>
     )

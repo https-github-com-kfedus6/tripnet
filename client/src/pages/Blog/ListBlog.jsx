@@ -36,12 +36,11 @@ export const ListBlog = () => {
         listBlog == undefined ? <>loading...</> :
             <>
                 <div className='bread__crumbs__main'>
-                    <Breadcrumbs>
-                        <NavLink to="/">
-                            {t("header.first_link")}
-                        </NavLink>
-                        <Typography color="text.primary">Блог</Typography>
-                    </Breadcrumbs>
+                    <div className='bredcrumbs-flight'>
+                        <span className='bredcrumbs-flight-services-link'><NavLink to="/">{t("header.first_link")}</NavLink></span>
+                        <span><img src={process.env.REACT_APP_API_URL + 'chevron-right.png'} alt="right" /></span>
+                        <span className='bredcrumbs-flight-text'>Блог</span>
+                    </div>
                 </div>
                 <div className='blog__container'>
                     <h1>Блог</h1>

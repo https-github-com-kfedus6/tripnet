@@ -11,11 +11,11 @@ const Burger = ({ setIsShowRegister, setIsRegister, setIsBurgerShow }) => {
     const { t, i18n } = useTranslation()
     const [isBurgerClick, setIsBurgerClick] = useState(false);
     const { is_login, user, is_admin } = useSelector(state => state.user)
-    const navigate=useNavigate();
+    const navigate = useNavigate();
     return (
         <div className={"burger__menu__main"}>
             <div className='burger__exit1'>
-                <div onClick={() => { setIsBurgerShow(false)}}>
+                <div onClick={() => { setIsBurgerShow(false) }}>
                     &times;
                 </div>
             </div>
@@ -39,23 +39,23 @@ const Burger = ({ setIsShowRegister, setIsRegister, setIsBurgerShow }) => {
 
                         </details>
                     </div> : <></>}
-                <div onClick={() => { setIsBurgerShow(false)}} className='burger__component'><NavLink to="/">{t('header.first_link')}</NavLink></div>
-                <div onClick={() => { setIsBurgerShow(false)}} className='burger__component'><NavLink to="/flightsCategory">{t('header.third_link')}</NavLink></div>
-                <div onClick={() => { setIsBurgerShow(false)}} className='burger__component'><NavLink to="/services">{t('header.six_link')}</NavLink></div>
-                <div onClick={() => { setIsBurgerShow(false)}} className='burger__component'><NavLink to="/contacts">{t('header.fourth_link')}</NavLink></div>
-                <div onClick={() => { setIsBurgerShow(false)}} className='burger__component'><NavLink to="/blog">блог</NavLink></div>
+                <div onClick={() => { setIsBurgerShow(false) }} className='burger__component'><NavLink to="/">{t('header.first_link')}</NavLink></div>
+                <div onClick={() => { setIsBurgerShow(false) }} className='burger__component'><NavLink to="/flightsCategory">{t('header.third_link')}</NavLink></div>
+                <div onClick={() => { setIsBurgerShow(false) }} className='burger__component'><NavLink to="/services">{t('header.six_link')}</NavLink></div>
+                <div onClick={() => { setIsBurgerShow(false) }} className='burger__component'><NavLink to="/contacts">{t('header.fourth_link')}</NavLink></div>
+                <div onClick={() => { setIsBurgerShow(false) }} className='burger__component'><NavLink to="/blog">Блог</NavLink></div>
                 <div className='burger__set__language1'><SetLanguage /></div>
-                {!is_login?
-                    <div onClick={() => { setIsBurgerShow(false)}} className="burger__buttons">
+                {!is_login ?
+                    <div onClick={() => { setIsBurgerShow(false) }} className="burger__buttons">
                         <div className='burger__button__log__in'>
-                            <button onClick={()=>{setIsShowRegister(true);setIsRegister(false);setIsBurgerShow(false)}}>{t("authorize.enter")}</button>
+                            <button onClick={() => { setIsShowRegister(true); setIsRegister(false); setIsBurgerShow(false) }}>{t("authorize.enter")}</button>
                         </div>
                         <div className="burger__button__register">
-                            <button onClick={()=>{setIsShowRegister(true);setIsRegister(true);setIsBurgerShow(false)}}>{t("authorize.register")}</button>
+                            <button onClick={() => { setIsShowRegister(true); setIsRegister(true); setIsBurgerShow(false) }}>{t("authorize.register")}</button>
                         </div>
                     </div>
                     :
-                    <div onClick={()=>{navigate("/account");setIsBurgerShow(false)}} className="burger__personal__office">
+                    <div onClick={() => { navigate("/account"); setIsBurgerShow(false) }} className="burger__personal__office">
                         {t("account.personal_office")}
                     </div>
                 }

@@ -243,8 +243,8 @@ const ModalFormBuy = ({ visibleBuy, name, setName, date, setDate,
                                         </div>
                                         <div className='dropdown-passengers'>
                                             <div className='dropdown-select-passegers' onClick={() => dropdownCheckBack ? setDropdowbCheckBack(false) : setDropdowbCheckBack(true)}>
-                                                <input className='dropdown-passegers-input' type="text" id='passegers-form-first' placeholder=' ' value={dropdownCheckBack ? `${sumOldBack} ${t('flight.pass_old')}, ${sumYoungBack} дитина` : ''} disabled />
-                                                <label className='dropdown-passegers-text' htmlFor="passegers-form-first">{t('flight.passegers')}</label>
+                                                <input className='dropdown-passegers-input' type="text" id='passegers-form-third' placeholder=' ' value={dropdownCheckBack ? `${sumOldBack} ${t('flight.pass_old')}, ${sumYoungBack} дитина` : ''} disabled />
+                                                <label className='dropdown-passegers-text' htmlFor="passegers-form-third">{t('flight.passegers')}</label>
                                                 <label className='dropdown-icon-user'>
                                                     <img src={process.env.REACT_APP_API_URL + 'users.png'} alt="passegers" />
                                                 </label>
@@ -337,45 +337,6 @@ const ModalFormBuy = ({ visibleBuy, name, setName, date, setDate,
                                 </div>
                             </div>
                         </div>
-                        {/*  <div className='model-block'>
-                        <div className="modal-logo">
-                            <Stack direction="row" spacing={1}>
-                                <IconButton size='large' onClick={() => setVisiblyBuy(false)}>
-                                    <CloseOutlinedIcon fontSize='large' />
-                                </IconButton>
-                            </Stack>
-                        </div>
-                        <h2 className='title-modal'>{t('modalbuy.title')}</h2>
-                        <div className='block-modal-input'>
-                            <TextField
-                                className='input-modal'
-                                id="demo-helper-text-misaligned-no-helper"
-                                label={t('modalbuy.name')}
-                                value={name} onChange={(e) => setName(e.target.value)} />
-                            <TextField
-                                className='input-modal'
-                                id="demo-helper-text-misaligned-no-helper"
-                                label={t('modalbuy.phone')}
-                                value={phone} onChange={(e) => setPhone(e.target.value)} />
-                            <TextField
-                                className='input-modal'
-                                type="date"
-                                onChange={(e) => setDate(e.target.value)} />
-                            <TextField
-                                type={"number"}
-                                minRows={1}
-                                className='input-modal'
-                                label={t('modalbuy.ticket')}
-                                value={countTicket}
-                                onChange={SetCountTicket} />
-                        </div>
-                        <div className='text'>
-                            {t("reservation.an_operator_will_contact_you_shortly_after_booking")}
-                        </div>
-                        <div className='block-modal-btn'>
-                            <button onClick={reserveTicket}>{t('modalbuy.btn-buy')}</button>
-                        </div>
-                    </div> */}
                     </div>
                 </div>
             </div >

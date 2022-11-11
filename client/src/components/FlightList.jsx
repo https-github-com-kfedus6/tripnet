@@ -8,8 +8,13 @@ import FlightParams from './FlightParams';
 import FlightReserve from './FlightReserve';
 import { t } from 'i18next'
 
-const FlightList = ({ flight, is_admin, setScheduleTo, setScheduleWith, status, changeStatus,
-    changeSchedule, relinkBlocks }) => {
+const FlightList = ({ flight, is_admin, setScheduleToUA, setScheduleWithUA,
+    setScheduleToRU, setScheduleWithRU, status, changeStatus,
+    changeSchedule, relinkBlocks, name, setName, date, setDate,
+    phone, setPhone, sumYoung, setSumYoung, setSumOld, sumOld,
+    sumOldBack, setSumOldBack, sumYoungBack, setSumYoungBack, surename, setSurename,
+    email, setEmail, dateBack, setDateBack, reserveTicket,
+    setChildPrice, changeFlightChildPrice }) => {
 
     const { language } = useSelector(state => state.language);
 
@@ -81,7 +86,20 @@ const FlightList = ({ flight, is_admin, setScheduleTo, setScheduleWith, status, 
                         <div className='flight-price'>
                             <b>Ціни</b>
                             <span>Дорослий: {flight.price} грн</span>
-                            <span>Дитячий: {flight.childPrice} грн</span>
+                            {is_admin
+                                ?
+                                <>
+                                    <span>Дитячий:
+                                        <input type="text" placeholder={flight.childPrice}
+                                            onChange={(e) => setChildPrice(e.target.value)}
+                                        />
+                                        грн</span>
+                                    <button onClick={changeFlightChildPrice}>Обновити</button>
+                                </>
+                                :
+                                <span>Дитячий: {flight.childPrice} грн</span>
+                            }
+
                         </div>
                         <div className='flight-comfort'>
                             <b>Умови</b>
@@ -94,8 +112,10 @@ const FlightList = ({ flight, is_admin, setScheduleTo, setScheduleWith, status, 
                         <FlightScheduleBusList
                             flight={flight}
                             is_admin={is_admin}
-                            setScheduleTo={setScheduleTo}
-                            setScheduleWith={setScheduleWith}
+                            setScheduleToUA={setScheduleToUA}
+                            setScheduleWithUA={setScheduleWithUA}
+                            setScheduleToRU={setScheduleToRU}
+                            setScheduleWithRU={setScheduleWithRU}
                             status={status}
                             changeStatus={changeStatus}
                             changeSchedule={changeSchedule}
@@ -118,6 +138,27 @@ const FlightList = ({ flight, is_admin, setScheduleTo, setScheduleWith, status, 
                     </div>
                     <FlightReserve
                         flight={flight}
+                        date={date}
+                        setDate={setDate}
+                        dateBack={dateBack}
+                        setDateBack={setDateBack}
+                        sumOld={sumOld}
+                        setSumOld={setSumOld}
+                        sumOldBack={sumOldBack}
+                        setSumOldBack={setSumOldBack}
+                        sumYoung={sumYoung}
+                        setSumYoung={setSumYoung}
+                        sumYoungBack={sumYoungBack}
+                        setSumYoungBack={setSumYoungBack}
+                        name={name}
+                        setName={setName}
+                        surename={surename}
+                        setSurename={setSurename}
+                        phone={phone}
+                        setPhone={setPhone}
+                        email={email}
+                        setEmail={setEmail}
+                        reserveTicket={reserveTicket}
                     />
                 </div>
                 <div className='flight-links'>
