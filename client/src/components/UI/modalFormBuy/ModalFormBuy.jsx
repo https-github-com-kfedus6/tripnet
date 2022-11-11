@@ -1,32 +1,28 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux';
 import { useAction } from '../../../hooks/useAction';
 import PhoneInput from 'react-phone-input-2';
-import AirDatepicker from 'air-datepicker';
-import ua from 'air-datepicker/locale/uk';
-import ru from 'air-datepicker/locale/ru';
 import { VscArrowSmallRight } from 'react-icons/vsc';
+import { LocalizationProvider } from '@mui/x-date-pickers';
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
+import { DesktopDatePicker } from '@mui/x-date-pickers/DesktopDatePicker';
+import Box from '@mui/material/Box';
+import ukLocale from 'date-fns/locale/uk';
 
 import { t } from 'i18next'
 
 import './modalFormBuy.css';
 
-const ModalFormBuy = ({ visibleBuy, name, setName, date, setDate, phone,
-    setPhone, reserveTicket, setVisiblyBuy,
-    dropdownCheck, setDropdowbCheck,
-    dropdownCheckBack, setDropdowbCheckBack,
+const ModalFormBuy = ({ visibleBuy, name, setName, date, setDate,
+    phone, setPhone, reserveTicket, setVisiblyBuy, dropdownCheck,
+    setDropdowbCheck, dropdownCheckBack, setDropdowbCheckBack,
     flight, sumYoung, setSumYoung, setSumOld, sumOld,
     sumOldBack, setSumOldBack, sumYoungBack, setSumYoungBack,
     checked, setChecked, surename, setSurename,
-    email, setEmail }) => {
+    email, setEmail, dateBack, setDateBack }) => {
 
     const { language } = useSelector(state => state.language);
 
-    /*  const SetCountTicket = (e) => {
-         if (isNaN(parseInt(e.target.value)) && e.target.value != "") return;
-         if ((parseInt(e.target.value) <= 0 || parseInt(e.target.value) > maxTicket) && e.target.value != "") return;
-         setCountTicket(e.target.value)
-     } */
     const { GetPhone } = useAction();
     useEffect(() => {
         GetPhone();
@@ -80,25 +76,13 @@ const ModalFormBuy = ({ visibleBuy, name, setName, date, setDate, phone,
         }
     }
 
-    new AirDatepicker('#date', localStorage.getItem('i18nextLng') === 'UA' ?
-        {
-            locale: ua,
-        }
-        :
-        {
-            locale: ru
-        }
-    )
+    const handleChangeDate = (newDate) => {
+        setDate(newDate);
+    };
 
-    new AirDatepicker('#date-second', localStorage.getItem('i18nextLng') === 'UA' ?
-        {
-            locale: ua
-        }
-        :
-        {
-            locale: ru
-        }
-    )
+    const handleChangeDateBack = (newDate) => {
+        setDateBack(newDate);
+    };
 
     if (visibleBuy === false) {
         return (
@@ -225,18 +209,24 @@ const ModalFormBuy = ({ visibleBuy, name, setName, date, setDate, phone,
                                         </div>
                                     </div>
                                 </div>
-                                <div className='form-input-date'>
-                                    <input id='date' type='text'
-                                        className='form-input-text-date'
-                                        placeholder=' '
-                                        autoComplete="off"
-                                        value={date}
-                                        onChange={(e) => setDate(e.target.value)}
-                                    />
-                                    <label className='form-label-date' htmlFor='date'>Дата відправлення</label>
-                                    <label className='form-button-date'>
-                                        <img src={process.env.REACT_APP_API_URL + 'vector.png'} alt="date" />
-                                    </label>
+                                <div className='form-input-date-ui'>
+                                    <LocalizationProvider
+                                        dateAdapter={AdapterDayjs}
+                                        adapterLocale={ukLocale}
+                                    >
+                                        <DesktopDatePicker
+                                            inputFormat="DD.MM.YYYY"
+                                            value={date}
+                                            onChange={handleChangeDate}
+                                            renderInput={({ inputRef, inputProps, InputProps }) => (
+                                                <Box sx={{ display: 'flex', alignItems: 'center' }}>
+                                                    <input autoComplete='off' className='form-input-text-date' id='custom-date' ref={inputRef} {...inputProps} />
+                                                    <label className='form-label-date-modal' htmlFor="custom-date">Дата відправлення</label>
+                                                    {InputProps?.endAdornment}
+                                                </Box>
+                                            )}
+                                        />
+                                    </LocalizationProvider>
                                 </div>
                             </div>
                             <div className='reverse-reserve-details'>
@@ -297,15 +287,23 @@ const ModalFormBuy = ({ visibleBuy, name, setName, date, setDate, phone,
                                         </div>
                                     </div>
                                     <div className='form-input-date'>
-                                        <input id='date-second' type='text'
-                                            className='form-input-text-date'
-                                            placeholder=' '
-                                            autoComplete="off"
-                                        />
-                                        <label className='form-label-date' htmlFor='date-second'>Дата відправлення</label>
-                                        <label className='form-button-date'>
-                                            <img src={process.env.REACT_APP_API_URL + 'vector.png'} alt="date" />
-                                        </label>
+                                        <LocalizationProvider
+                                            dateAdapter={AdapterDayjs}
+                                            adapterLocale={ukLocale}
+                                        >
+                                            <DesktopDatePicker
+                                                inputFormat="DD.MM.YYYY"
+                                                value={dateBack}
+                                                onChange={handleChangeDateBack}
+                                                renderInput={({ inputRef, inputProps, InputProps }) => (
+                                                    <Box sx={{ display: 'flex', alignItems: 'center' }}>
+                                                        <input autoComplete='off' className='form-input-text-date' id='custom-date-second' ref={inputRef} {...inputProps} />
+                                                        <label className='form-label-date-modal' htmlFor="custom-date-second">Дата відправлення</label>
+                                                        {InputProps?.endAdornment}
+                                                    </Box>
+                                                )}
+                                            />
+                                        </LocalizationProvider>
                                     </div>
                                 </div>
                                 <div className='reserve-btn'>

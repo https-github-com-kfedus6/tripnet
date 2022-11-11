@@ -39,6 +39,7 @@ const Flight = sequelize.define("flight", {
     flagStart: { type: DataTypes.STRING },
     flagFinish: { type: DataTypes.STRING },
     price: { type: DataTypes.STRING },
+    childPrice: { type: DataTypes.STRING },
     startPosition: { type: DataTypes.STRING },
     finishPosition: { type: DataTypes.STRING },
     streetStartPosition: { type: DataTypes.STRING },
@@ -53,7 +54,7 @@ const Flight = sequelize.define("flight", {
     map: { type: DataTypes.TEXT },
     currentFlight: { type: DataTypes.BOOLEAN, defaultValue: true },
     countryStart: { type: DataTypes.STRING },
-    countryFinish: {type:DataTypes.STRING}
+    countryFinish: { type: DataTypes.STRING }
 });
 
 const Novetly = sequelize.define("novetly", {

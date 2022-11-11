@@ -133,7 +133,7 @@ main {
     justify-content: flex-start;
     align-items: flex-start;
     margin: 0 auto;
-    background-color: white;
+    cursor:pointer;
 }
 .burger__component{
     display: flex;

@@ -45,12 +45,12 @@ export const ListBlog = () => {
                 <div className='blog__container'>
                     <h1>Блог</h1>
                     <div className='list__blog__main'>
-                        {listBlog.map(x =><HomeBlog key={x.id} blog={x} />)}
+                        {listBlog.map(x => <HomeBlog key={x.id} blog={x} />)}
                     </div>
                     {totalCount == undefined ? <></> :
                         <div className='pagination'>
                             <Stack spacing={1}>
-                                <Pagination count={totalCount} page={page} onChange={handleChange} />
+                                <Pagination count={totalCount} page={page} onChange={handleChange} shape="rounded" color="primary" />
                             </Stack>
                         </div>
                     }
