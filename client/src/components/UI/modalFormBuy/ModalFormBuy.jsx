@@ -23,7 +23,7 @@ const ModalFormBuy = ({ visibleBuy, name, setName, date, setDate,
 
     const { language } = useSelector(state => state.language);
 
-    const { GetPhone } = useAction();
+    const { GetPhone, fetchGetFlightAuditBack } = useAction();
     useEffect(() => {
         GetPhone();
     }, [])

@@ -124,9 +124,9 @@ const Flights = ({ isShowFilter }) => {
                     phone: phone.phone,
                     email: email,
                     countPersons: sumOld + sumYoung,
-                    date: date,
+                    date: `${date.$D}.${date.$M + 1}.${date.$y}`,
                     countPersonsBack: sumOldBack + sumYoungBack,
-                    dateBack: dateBack,
+                    dateBack: `${dateBack.$D}.${dateBack.$M + 1}.${dateBack.$y}`,
                     flightId: flightId
                 })
                 setSurename('')
@@ -146,9 +146,9 @@ const Flights = ({ isShowFilter }) => {
                     phone: phone.phone,
                     email: email,
                     countPersons: sumOld + sumYoung,
-                    date: date,
+                    date: `${date.$D}.${date.$M + 1}.${date.$y}`,
                     countPersonsBack: sumOldBack + sumYoungBack,
-                    dateBack: dateBack,
+                    dateBack: `${dateBack.$D}.${dateBack.$M + 1}.${dateBack.$y}`,
                     flightId: flightId,
                     userId: user.id
                 })

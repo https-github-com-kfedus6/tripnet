@@ -133,7 +133,6 @@ class FlightsController {
                     limit: Number(limit), offset: Number(offset), order: [['id', 'DESC']]
                 })
 
-
             } else if (startDate && !startPosition && !finishPosition) {
 
                 arrFlights = await Flight.findAndCountAll({ where: { startDate: startDate, countFreePlace: { [Op.gte]: countFreePlace } }, limit: Number(limit), offset: Number(offset), order: [['id', 'DESC']] })
@@ -333,6 +332,7 @@ class FlightsController {
             return next(ErrorApi.badRequest(err));
         }
     }
+
 }
 
 const flightsController = new FlightsController();
