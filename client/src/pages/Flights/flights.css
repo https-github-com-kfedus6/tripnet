@@ -908,7 +908,58 @@
 .flight-not-found p {
     text-align: center;
     font-size: 26px;
-} 
+}
+
+.flight-block-update-admin {
+    width: 100%;
+    border-top: 1px solid #DBDBDB;
+    margin-top: 20px;
+}
+
+.flight-block-update-admin-btn {
+    width: 100%;
+}
+
+.flight-block-update-admin-btns {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 50px;
+    margin-top: 20px;
+    width: 100%;
+}
+
+.flight-block-update-admin-btns a {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+}
+
+.flight-block-update-admin-btns a button {
+    width: 30%;
+    height: 35px;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    background-color: silver;
+}
+
+.flight-block-update-admin-btns button {
+    width: 30%;
+    height: 35px;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    background-color: silver;
+}
+
+.flight-block-update-admin-btns button:hover {
+    background-color: rgb(204, 204, 204);
+}
 
 @media (max-width:1024px) {
     
@@ -956,6 +1007,14 @@
 
     .item-flight {
         width: 90%;
+    }
+
+    .flight-block-update-admin-btns button {
+        width: 35%;
+    }
+    
+    .flight-block-update-admin-btns a button {
+        width: 35%;
     }
 }
 
@@ -1011,6 +1070,30 @@
     
     .item-block-btn-price button {
         width: 50%;
+    }
+
+    .flight-block-update-admin-btns {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+        padding: 0 25px;
+    }
+    
+    .flight-block-update-admin-btns button {
+        width: 50%;
+    }
+    
+    .flight-block-update-admin-btns a button {
+        width: 50%;
+    }
+    
+    .flight-block-update-admin-btns a {
+        width: 100%;
+        display: flex;
+        justify-content: flex-start;
+        align-items: flex-start;
+        text-decoration: none;
     }
 }
 
@@ -1088,6 +1171,14 @@
     }
 
     .item-block-btn-price button {
+        width: 100%;
+    }
+
+    .flight-block-update-admin-btns button {
+        width: 100%;
+    }
+
+    .flight-block-update-admin-btns a button {
         width: 100%;
     }
 }

@@ -360,3 +360,79 @@
         width: 99%;
     }
 }
+
+.flight-update-admin {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 125px;
+}
+
+.flight-blocks-update-admin {
+    width: 70%;
+}
+
+.flight-block-update-start-finish-admin {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.flight-update-start-finish-admin {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    width: 100%;
+    gap: 5px;
+}
+
+.flight-update-input-start-finish-admin {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    width: 100%;
+}
+
+.flight-update-input-start-finish-admin p {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 150%;
+    color: #4C4C4C;
+    cursor: default;
+}
+
+.flight-update-input-start-finish-admin span {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 150%;
+    color: #4C4C4C;
+    cursor: default;
+}
+
+
+.flight-update-input-start-finish-admin input {
+    width: 70%;
+    height: 35px;
+    border: 1px solid silver;
+    border-radius: 10px;
+    outline: none;
+    padding: 5px;
+}
+
+.flight-update-date-admin p {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 150%;
+    color: #4C4C4C;
+    cursor: default;
+}

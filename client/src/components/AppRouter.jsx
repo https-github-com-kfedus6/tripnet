@@ -28,6 +28,7 @@ import ReservationManagement from '../pages/Services/pages/ReservationManagement
 import TransportationAnimals from '../pages/Services/pages/TransportationAnimals';
 import Contacts from '../pages/contacts/Contacts';
 import EditAccount from '../pages/Account/EditAccount';
+import FlightUpdate from '../pages/Admin/FlightUpdate';
 
 const AppRouter = () => {
     const { IsAuthorize } = useAction();
@@ -48,14 +49,14 @@ const AppRouter = () => {
                 <Route path='aboutUs' element={<AboutUs />} />
                 <Route path='blog' element={<ListBlog />} />
                 <Route path='blog/:name/:id' element={<Blog />} />
-                <Route path="services" element={<Services/>}/>
-                <Route path='services/reservation_online' element={<ReservationOnline/>}/>
-                <Route path='services/luggage_transportation' element={<LuggageTransportation/>}/>
-                <Route path='services/booking_management' element={<ReservationManagement/>}/>
-                <Route path='services/transportation_animals' element={<TransportationAnimals/>}/>
-                <Route path='contacts' element={<Contacts/>}/>
+                <Route path="services" element={<Services />} />
+                <Route path='services/reservation_online' element={<ReservationOnline />} />
+                <Route path='services/luggage_transportation' element={<LuggageTransportation />} />
+                <Route path='services/booking_management' element={<ReservationManagement />} />
+                <Route path='services/transportation_animals' element={<TransportationAnimals />} />
+                <Route path='contacts' element={<Contacts />} />
                 {is_login ? <Route path='account' element={<Account />} /> : <></>}
-                {is_login ? <Route path='account/edit' element={<EditAccount/>}/> : <></> }
+                {is_login ? <Route path='account/edit' element={<EditAccount />} /> : <></>}
                 {is_admin ? <Route path='order' element={<FlightOrders />} /> : <></>}
                 {is_admin ? <Route path='aboutUsEdit' element={<AboutUsEdit />} /> : <></>}
                 {is_admin ? <Route path='blogEdit' element={<BlogEdit />} /> : <></>}
@@ -64,6 +65,7 @@ const AppRouter = () => {
                 {is_admin ? <Route path='infoCompanyEdit' element={<InfoCompanyEdit />} /> : <></>}
                 {is_admin ? <Route path='novetlyEdit' element={<NovetlyEdit />} /> : <></>}
                 {is_admin ? <Route path='responseEdit' element={<ResponceEdit />} /> : <></>}
+                {is_admin ? <Route path='flightUpdate/:id' element={<FlightUpdate />} /> : <></>}
                 <Route path='*' element={<Error />} />
             </Route>
         </Routes>

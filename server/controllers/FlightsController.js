@@ -332,7 +332,6 @@ class FlightsController {
             return next(ErrorApi.badRequest(err));
         }
     }
-
 }
 
 const flightsController = new FlightsController();
