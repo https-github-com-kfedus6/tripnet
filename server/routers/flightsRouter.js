@@ -12,5 +12,6 @@ router.delete('/:id', IsAdminMiddleWare, flightsController.deleteFlight);
 router.put('/', IsAdminMiddleWare, flightsController.updateFlight);
 router.get("/getRelinkBlocks/:id", flightsController.getRelinkBlocks);
 router.put('/childPrice/:id', IsAdminMiddleWare, flightsController.patchChildPrice)
+router.put('/currentFlight/:id', IsAdminMiddleWare, flightsController.statusFlight)
 
 module.exports = router

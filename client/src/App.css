@@ -2130,15 +2130,11 @@ footer{
 @media screen and (min-width:1024px) {
     .bread__crumbs__main{
         width: 70%;
-        margin: auto;
-        margin-top: 110px;
    }   
 }
 @media screen and (max-width:1024px) {
     .bread__crumbs__main{
         width: 90%;
-        margin: auto;
-        margin-top: 110px;
     }   
 }
 @media screen and (min-width:1024px) {
@@ -2416,8 +2412,8 @@ footer{
 .mini__blog__main{
     margin-top: 30px;
 }
-.pagination{
-    margin-top: 40px;
+.pagination-blog {
+    margin-top: 50px;
 }
 .service__page__main{
     margin-top: 20px;
@@ -3063,21 +3059,35 @@ footer{
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    padding: 40px;
+    padding: 30px;
     gap: 20px;
     background: #FFFFFF;
     border: 1px solid #DBDBDB;
     border-radius: 20px;
 }
-.user__profile__title{
+
+.user__profile__title {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+}
+
+.user__profile__title b{
     font-family: 'Inter';
     font-style: normal;
-    font-weight: 700;
     font-size: 21px;
     line-height: 120%;
     color: #111111;
 }
-.account__surname__with__name{
+.account__surname__with__name {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 3px;
+}
+
+.account__surname__with__name span{
     font-family: 'Inter';
     font-style: normal;
     font-weight: 400;
@@ -3087,25 +3097,11 @@ footer{
 }
 
 @media screen and (min-width:1024px) {
-    .account__main2{
-        width: 70%;
-        margin: 30px auto;
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-    }
     .account__message{
         width: 280px;
     }
-    .user__profile__left{
-        display: none;
-    }
 }
 @media screen and (max-width:1024px) {
-    .account__main2{
-        width: 90%;
-        margin: 30px auto;
-    }
     .user__profile{
         width: 280px;
     }
@@ -3117,14 +3113,7 @@ footer{
         margin-top: 20px;
     }
 }
-.account__email{
-    font-family: 'Inter';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 150%;
-    color: #6A6A6A;
-}
+
 .account__message{
     display: flex;
     flex-direction: row;
@@ -3208,7 +3197,7 @@ footer{
     color: #111111;
 }
 .user__profile{
-    width: 240px;
+    width: 262px;
 }
 @media screen and (min-width:1024px) {
     .admin-panel-info-company{

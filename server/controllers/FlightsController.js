@@ -176,7 +176,6 @@ class FlightsController {
             flight.schefule[0].scheduleTo = flight.schefule[0].scheduleTo.split('//')
             flight.schefule[0].scheduleWith = flight.schefule[0].scheduleWith.split('//')
             let status = await ScheduleBusStatus.findAll({ where: { scheduleBusId: flight.schefule[0].id } });
-            console.log(status)
 
             return res.json({ status: 200, res: { flight, status } });
         } catch (err) {
@@ -243,20 +242,55 @@ class FlightsController {
 
     async updateFlight(req, res, next) {
         try {
-            let { id, price, startPosition, finishPosition, startDate, finishDate, startTime, finishTime, timeFlight, countFreePlace } = req.body
+            let { id, price, maps, startPosition, finishPosition, startSreerPosition, finishStreetPosition, startDate, finishDate, startTime, finishTime, countFreePlace } = req.body
             await Flight.update({
                 startPosition: startPosition,
                 finishPosition: finishPosition,
+                startStreerPosition: startSreerPosition,
+                finishStreetPosition: finishStreetPosition,
                 startDate: startDate,
                 finishDate: finishDate,
                 startTime: startTime,
                 finishTime: finishTime,
-                timeFlight: timeFlight,
                 countFreePlace: countFreePlace,
-                price: price
+                price: price,
+                map: maps
             }, { where: { id: id } })
             return res.json({ status: 200 })
 
+        } catch (err) {
+            return next(ErrorApi.badRequest(err));
+        }
+    }
+
+    async statusFlight(req, res, next) {
+        try {
+            const { id } = req.params
+            let { currentFlight, limit, page } = req.body
+
+            if (limit === undefined) {
+                limit = 3
+            }
+
+            if (page === undefined) {
+                page = 1
+            }
+            let offset = page * limit - limit
+            let arrFlights = {};// = { count: 0, rows: [] }
+
+            Flight.update({ currentFlight: currentFlight }, { where: { id: id } })
+
+            arrFlights = await Flight.findAndCountAll({ limit: Number(limit), offset: Number(offset), order: [['id', 'DESC']] })
+
+            for (let i = 0; i < arrFlights.rows.length; i++) {
+                arrFlights.rows[i].startPosition = arrFlights.rows[i].startPosition.split("//");
+                arrFlights.rows[i].finishPosition = arrFlights.rows[i].finishPosition.split("//");
+                arrFlights.rows[i].streetStartPosition = arrFlights.rows[i].streetStartPosition.split("//");
+                arrFlights.rows[i].streetFinishPosition = arrFlights.rows[i].streetFinishPosition.split("//");
+                arrFlights.rows[i].description = arrFlights.rows[i].description.split("//")
+            }
+
+            return res.json(({ status: 200, res: arrFlights }))
         } catch (err) {
             return next(ErrorApi.badRequest(err));
         }

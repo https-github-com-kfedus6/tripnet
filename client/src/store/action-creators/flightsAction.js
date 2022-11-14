@@ -62,6 +62,24 @@ export const fetchUpdateFlight = (formData) => async (dispatch) => {
     }
 }
 
+export const fetchPutSatusFlight = (id, currentFlight) => async (dispatch) => {
+    try {
+        const response = await $authHost.put(`/api/flights/currentFlight/${id}`, { currentFlight })
+
+        if (response.data.status == 200) {
+            dispatch({ type: messageActionTypes.SET_SHOW_TRUE, payload: "успішно виконано" });
+            setTimeout(() => dispatch({ type: messageActionTypes.SET_SHOW_FALSE }), 3000);
+            dispatch({ type: flightActionTypes.FETCH_UPDATE_STATUS_FLIGHT, payload: response.data.res })
+        } else {
+            dispatch({ type: messageActionTypes.SET_SHOW_TRUE, payload: "error" });
+            setTimeout(() => dispatch({ type: messageActionTypes.SET_SHOW_FALSE }), 3000);
+        }
+
+    } catch (err) {
+        dispatch({ type: messageActionTypes.SET_SHOW_TRUE, payload: "error" })
+    }
+}
+
 export const fetchPatchFlightChildePrice = (id, childPrice) => async (dispatch) => {
     try {
         const response = await $authHost.put(`/api/flights/childPrice/${id}`, { childPrice })

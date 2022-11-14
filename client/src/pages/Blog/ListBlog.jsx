@@ -30,7 +30,7 @@ export const ListBlog = () => {
     useEffect(() => {
         GetBlogAll(selectPage, limit);
     }, [selectPage]);
-    
+
     return (
         listBlog == undefined ? <>loading...</> :
             <>
@@ -47,7 +47,7 @@ export const ListBlog = () => {
                         {listBlog.map(x => <HomeBlog key={x.id} blog={x} />)}
                     </div>
                     {totalCount == undefined ? <></> :
-                        <div className='pagination'>
+                        <div className='pagination pagination-blog'>
                             <Stack spacing={1}>
                                 <Pagination count={totalCount} page={page} onChange={handleChange} shape="rounded" color="primary" />
                             </Stack>

@@ -6,7 +6,7 @@ import Stack from '@mui/material/Stack';
 import Pagination from '@mui/material/Pagination';
 import { t } from 'i18next'
 
-const FlightsList = ({ finishPosition, finishDate, setFinishDate, startPosition, startDate, flights, setStartDate, setStartPosition, setFinishPosition, sortFlights, sumOld, setSumOld, sumYoung, setSumYoung, deleteFlight, limit, page, isFilterTrue, openModal, changePosition, setChangePosition, changePositionFun, totalCount, handleChange }) => {
+const FlightsList = ({ finishPosition, finishDate, setFinishDate, startPosition, startDate, flights, setStartDate, setStartPosition, setFinishPosition, sortFlights, sumOld, setSumOld, sumYoung, setSumYoung, deleteFlight, limit, page, isFilterTrue, openModal, changePosition, setChangePosition, changePositionFun, totalCount, handleChange, changeCurrentFlight }) => {
 
     if (flights == undefined || flights.length === 0) {
         return (
@@ -68,6 +68,7 @@ const FlightsList = ({ finishPosition, finishDate, setFinishDate, startPosition,
                                         limit={limit}
                                         page={page}
                                         openModal={openModal}
+                                        changeCurrentFlight={changeCurrentFlight}
                                     />
                                 )
                             })}
@@ -77,7 +78,7 @@ const FlightsList = ({ finishPosition, finishDate, setFinishDate, startPosition,
                             <p>{t('flight.notfound')}!</p>
                         </div>
                     }
-                    {/*  {totalCount == undefined ? <></> : flights.rows.length ?
+                    {totalCount == undefined ? <></> : flights.rows.length ?
                         <div className='pagination'>
                             <Stack spacing={1}>
                                 <Pagination count={totalCount} page={page} onChange={handleChange} shape="rounded" color="primary" />
@@ -85,7 +86,7 @@ const FlightsList = ({ finishPosition, finishDate, setFinishDate, startPosition,
                         </div>
                         :
                         <></>
-                    } */}
+                    }
                 </div>
             </>
         )

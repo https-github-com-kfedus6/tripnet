@@ -2,17 +2,15 @@ import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux';
 import { useParams, useNavigate } from 'react-router-dom';
 import { useAction } from '../../hooks/useAction';
-import { LocalizationProvider } from '@mui/x-date-pickers';
-import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
-import { DesktopDatePicker } from '@mui/x-date-pickers/DesktopDatePicker';
-import Box from '@mui/material/Box';
-import ukLocale from 'date-fns/locale/uk';
+import { useTranslation } from 'react-i18next';
 
 const FlightUpdate = () => {
 
-    const { id } = useParams()
+    const { t } = useTranslation()
 
-    const { fetchGetFlight, fetchUpdateFlight } = useAction()
+    const { id, limit, page } = useParams()
+
+    const { fetchGetFlight, fetchUpdateFlight, fetchDeleteFlight, fetchPutSatusFlight } = useAction()
 
     const { flight } = useSelector(state => state.flights)
 
@@ -22,32 +20,57 @@ const FlightUpdate = () => {
     const [newFinishPosition, setNewFinishPosition] = useState('')
     const [newStreetStartPosition, setNewStreetStartPosition] = useState('')
     const [newStreetFinishPosition, setNewStreetFinishPosition] = useState('')
-    const [newStartDate, setNewStartDate] = useState('')
-    const [newFinishDate, setNewFinishDate] = useState('')
+    const [newStartUpdateDate, setNewStartUpdateDate] = useState('')
+    const [newFinishUpdateDate, setNewFinishUpdateDate] = useState('')
     const [newStartTime, setNewStartTime] = useState('')
     const [newFinishTime, setNewFinishTime] = useState('')
-    const [newTimeFlight, setNewTimeFllight] = useState('')
     const [newCountFreePlace, setNewCaountFreePlace] = useState('')
     const [newPrice, setNewPrice] = useState('')
-    const [newMaps, setNewMaps] = useState('')
+    const [newMap, setNewMap] = useState('')
 
     useEffect(() => {
         fetchGetFlight(id)
     }, [])
 
     const changeFlight = () => {
+
+        let newStartDate = newStartUpdateDate.split('-')
+        newStartDate = `${newStartDate[2]}.${newStartDate[1]}.${newStartDate[0]}`
+        let newFinishDate = newFinishUpdateDate.split('-')
+        newFinishDate = `${newFinishDate[2]}.${newFinishDate[1]}.${newFinishDate[0]}`
+
         let formData = new FormData();
         formData.append('id', id);
         formData.append('price', newPrice == "" ? flight.price : newPrice);
         formData.append('startPosition', newStartPosition == "" ? flight.startPosition.join("//") : newStartPosition);
         formData.append('finishPosition', newFinishPosition == "" ? flight.finishPosition.join("//") : newFinishPosition);
+        formData.append('streetStartPosition', newStreetStartPosition == "" ? flight.streetStartPosition.join("//") : newStreetStartPosition);
+        formData.append('streetFinishPosition', newStreetFinishPosition == "" ? flight.streetFinishPosition.join("//") : newStreetFinishPosition);
         formData.append('startDate', newStartDate == "" ? flight.startDate : newStartDate);
         formData.append('finishDate', newFinishDate == "" ? flight.finishDate : newFinishDate);
         formData.append('startTime', newStartTime == "" ? flight.startTime : newStartTime);
         formData.append('finishTime', newFinishTime == "" ? flight.finishTime : newFinishTime);
-        formData.append('timeFlight', newTimeFlight == "" ? flight.timeFlight : newTimeFlight);
         formData.append('countFreePlace', newCountFreePlace == "" ? flight.countFreePlace : newCountFreePlace);
+        formData.append('maps', newMap == '' ? flight.map : newMap)
         fetchUpdateFlight(formData)
+        navigate(-1)
+    }
+
+    const deleteFlight = () => {
+        fetchDeleteFlight(id)
+        navigate(-1)
+    }
+
+    const changeCurrentFlight = () => {
+        let currentFlight = true
+        if (flight.currentFlight === true) {
+            currentFlight = false
+            fetchPutSatusFlight(id, currentFlight)
+        } else {
+            currentFlight = true
+            fetchPutSatusFlight(id, currentFlight, limit, page)
+        }
+        navigate(-1)
     }
 
     return (
@@ -73,26 +96,19 @@ const FlightUpdate = () => {
                                 onChange={(e) => setNewStreetStartPosition(e.target.value)}
                             />
                         </div>
-                        <div className='flight-update-date-admin'>
+                        <div className='flight-update-date-time-admin'>
                             <p>Змінити дату відправлення:</p>
-                            <LocalizationProvider
-                                dateAdapter={AdapterDayjs}
-                                adapterLocale={ukLocale}
-                            >
-                                <DesktopDatePicker
-                                    inputFormat="DD.MM.YYYY"
-                                    renderInput={({ inputRef, inputProps, InputProps }) => (
-                                        <Box sx={{ display: 'flex', alignItems: 'center' }}>
-                                            <input autoComplete='off' id='custom-date-thrid' ref={inputRef} {...inputProps} />
-                                            {InputProps?.endAdornment}
-                                        </Box>
-                                    )}
-                                />
-                            </LocalizationProvider>
+                            <input type="date"
+                                value={newStartUpdateDate}
+                                onChange={(e) => setNewStartUpdateDate(e.target.value)}
+                            />
                         </div>
-                        <div>
+                        <div className='flight-update-date-time-admin'>
                             <p>Змінити годину виїзду:</p>
-                            <input type="time" />
+                            <input type="time"
+                                value={newStartTime}
+                                onChange={(e) => setNewStartTime(e.target.value)}
+                            />
                         </div>
                     </div>
                     <div className='flight-update-start-finish-admin'>
@@ -110,34 +126,61 @@ const FlightUpdate = () => {
                             <span>Приклад: <b>Українська//Російська</b></span>
                             <input type="text"
                                 placeholder='Українська//Російська'
+                                value={newStreetFinishPosition}
+                                onChange={(e) => setNewStreetFinishPosition(e.target.value)}
                             />
                         </div>
-                        <div className='flight-update-date-admin'>
+                        <div className='flight-update-date-time-admin'>
                             <p>Змінити дату прибуття:</p>
-                            <input type="date" />
+                            <input type="date"
+                                value={newFinishUpdateDate}
+                                onChange={(e) => setNewFinishUpdateDate(e.target.value)}
+                            />
                         </div>
-                        <div>
+                        <div className='flight-update-date-time-admin'>
                             <p>Змінити годинуну приїзду:</p>
-                            <input type="time" />
+                            <input type="time"
+                                value={newFinishTime}
+                                onChange={(e) => setNewFinishTime(e.target.value)}
+                            />
                         </div>
                     </div>
                 </div>
                 <div>
-                    <div>
+                    <div className='flight-update-maps-palce-price-admin'>
                         <p>Змінити силку на карту:</p>
-                        <input type="text" />
+                        <input type="text"
+                            placeholder='https://www.google.com/maps/embed?pb=!1m28!1m12!1m3!1d2617240.3241472957!2d25.011163846924628!3d50.163030132931446!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m13!3e6!4m5!1s0x473add7c09109a57%3A0x4223c517012378e2!2z0JvRjNCy0L7Qsiwg0JvRjNCy0L7QstGB0LrQsNGPINC-0LHQu9Cw0YHRgtGMLCA3OTAwMA!3m2!1d49.839683!2d24.029716999999998!4m5!1s0x40d4cf4ee15a4505%3A0x764931d2170146fe!2z0JrQuNC10LIsIDAyMDAw!3m2!1d50.4501!2d30.5234!5e0!3m2!1sru!2sua!4v1668425414479!5m2!1sru!2sua'
+                            value={newMap}
+                            onChange={(e) => setNewMap(e.target.value)}
+                        />
                     </div>
-                    <div>
+                    <div className='flight-update-maps-palce-price-admin'>
                         <p>Змінити кількість вільних місць:</p>
-                        <input type="text" />
+                        <input type="text"
+                            placeholder='25'
+                            value={newCountFreePlace}
+                            onChange={(e) => setNewCaountFreePlace(e.target.value)}
+                        />
                     </div>
-                    <div>
+                    <div className='flight-update-maps-palce-price-admin'>
                         <p>Змінити ціну квитка в грн:</p>
-                        <input type="text" />
+                        <input type="text"
+                            placeholder='3100'
+                            value={newPrice}
+                            onChange={(e) => setNewPrice(e.target.value)}
+                        />
+                    </div>
+                </div>
+                <div className='flight-block-update-admin-btn'>
+                    <div className='flight-update-change-delete-admin'>
+                        <button onClick={changeCurrentFlight} >{flight.currentFlight ? 'Не актуальний' : 'Aктуальний'}</button>
+                        <button onClick={(changeFlight)}>{t('flight.update')}</button>
+                        <button onClick={deleteFlight}>{t('flight.delete')}</button>
                     </div>
                 </div>
             </div>
-        </div>
+        </div >
     )
 }
 

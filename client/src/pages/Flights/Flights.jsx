@@ -43,7 +43,7 @@ const Flights = ({ isShowFilter }) => {
     const [changePosition, setChangePosition] = useState(false)
 
     const { fetchGetFlights, fetchDeleteFlight, postFlightOrder, SetFlightParams,
-        SetShowMessgeTrue, SetShowMessgeFalse, fetchGetFlight } = useAction()
+        SetShowMessgeTrue, SetShowMessgeFalse, fetchGetFlight, fetchPutSatusFlight } = useAction()
 
     const { flights, flight } = useSelector(state => state.flights)
 
@@ -99,8 +99,18 @@ const Flights = ({ isShowFilter }) => {
     const deleteFlight = (id) => {
         fetchDeleteFlight(id)
     }
+
     const handleChange = (event, value) => {
         setPage(value)
+    }
+
+    const changeCurrentFlight = (id, currentFlight) => {
+        if (currentFlight === true) {
+            currentFlight = false
+        } else {
+            currentFlight = true
+        }
+        fetchPutSatusFlight(id, currentFlight, limit, page)
     }
 
     const reserveTicket = () => {
@@ -206,6 +216,7 @@ const Flights = ({ isShowFilter }) => {
                     changePosition={changePosition}
                     setChangePosition={setChangePosition}
                     changePositionFun={changePositionFun}
+                    changeCurrentFlight={changeCurrentFlight}
                 />
                 <ModalFormBuy
                     flight={flight}

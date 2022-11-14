@@ -65,7 +65,7 @@ const AppRouter = () => {
                 {is_admin ? <Route path='infoCompanyEdit' element={<InfoCompanyEdit />} /> : <></>}
                 {is_admin ? <Route path='novetlyEdit' element={<NovetlyEdit />} /> : <></>}
                 {is_admin ? <Route path='responseEdit' element={<ResponceEdit />} /> : <></>}
-                {is_admin ? <Route path='flightUpdate/:id' element={<FlightUpdate />} /> : <></>}
+                {is_admin ? <Route path='flightUpdate/:id/:limit/:page' element={<FlightUpdate />} /> : <></>}
                 <Route path='*' element={<Error />} />
             </Route>
         </Routes>

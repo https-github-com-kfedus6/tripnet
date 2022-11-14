@@ -3,6 +3,7 @@ export const flightActionTypes = {
     FETCH_GET_FLIGHTS: 'FETCH_GET_FLIGHTS',
     FETCH_GET_FLIGHT: 'FETCH_GET_FLIGHT',
     FETCH_UPDATE_FLIGHT: 'FETCH_UPDATE_FLIGHT',
+    FETCH_UPDATE_STATUS_FLIGHT: 'FETCH_UPDATE_STATUS_FLIGHT',
     FETCH_UPDATE_FLIGHT_CHILD_PRICE: 'FETCH_UPDATE_FLIGHT_CHILD_PRICE',
     FETCH_DELETE_FLIGHT: 'FETCH_GET_FLIGHT',
     FETCH_ERROR_FLIGHT: 'FETCH_ERROR_FLIGHT',
@@ -36,6 +37,9 @@ export const flightsReducer = (state = initialState, action) => {
         }
         case flightActionTypes.FETCH_UPDATE_FLIGHT: {
             return { ...state, flights: action.payload }
+        }
+        case flightActionTypes.FETCH_UPDATE_STATUS_FLIGHT: {
+            return { ...state, flights: action.payload.res, status: action.payload.status }
         }
         case flightActionTypes.FETCH_UPDATE_FLIGHT_CHILD_PRICE: {
             return { ...state, flights: action.payload }
