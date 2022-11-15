@@ -2852,15 +2852,11 @@ footer{
         margin-top: 20px;
     }
 }
-@media screen and (min-width:1024px) {   
-    .account__main{
-        margin-top: 30px auto;
-        width: 70%;
-        display: flex;
-        flex-direction: row;
 
-    }
+.account__main{
+    margin-top: 25px;
 }
+
 .register__main{
     margin: 15px;
 }

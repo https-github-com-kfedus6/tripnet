@@ -79,6 +79,17 @@ class FlightOrdersController {
             return next(ErrorApi.badRequest(err));
         }
     }
+
+    static getUserOrders = async (req, res, next) => {
+        try {
+            const userId = req.user.id
+            const userOrders = await FlightOrder.findAll({ where: { userId } })
+            console.log('true', userOrders)
+            //return res.json({ status: 200 })
+        } catch (err) {
+            return next(ErrorApi.badRequest(err));
+        }
+    }
 }
 
 module.exports = FlightOrdersController
