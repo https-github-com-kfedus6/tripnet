@@ -82,10 +82,11 @@ export const getUserHistory = () => async (dispatch) => {
 }
 
 export const fetchGetFlightAccountOrders = () => async (dispatch) => {
+    console.log('Yes')
     try {
-        const response = await $authHost.get("api/flightOrder/getUserOrders")
+        const response = await $authHost.get("api/flightOrder/getOrdersAccount")
         if (response.data.status == 200) {
-            dispatch({ type: flightOrdersActionTypes.FETCH_GET_FLIGHT_ACCOUNT_ORDER, payload: response.data.userFlightOrders });
+            dispatch({ type: flightOrdersActionTypes.FETCH_GET_FLIGHT_ACCOUNT_ORDER, payload: response.data.flightOrders });
         }
     } catch (err) {
         console.log(err)

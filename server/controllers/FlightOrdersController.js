@@ -84,8 +84,17 @@ class FlightOrdersController {
         try {
             const userId = req.user.id
             const userOrders = await FlightOrder.findAll({ where: { userId } })
-            console.log('true', userOrders)
-            //return res.json({ status: 200 })
+            let flightOrders = []
+            for (let i = 0; i < userOrders.length; i++) {
+                let flight = await Flight.findOne({ where: { id: userOrders[i].flightId } })
+                flight.startPosition = flight.startPosition.split("//");
+                flight.finishPosition = flight.finishPosition.split("//");
+                flight.streetStartPosition = flight.streetStartPosition.split("//");
+                flight.streetFinishPosition = flight.streetFinishPosition.split("//");
+                flight.description = flight.description.split("/*/");
+                flightOrders.push(flight)
+            }
+            return res.json({ status: 200, flightOrders })
         } catch (err) {
             return next(ErrorApi.badRequest(err));
         }

@@ -20,11 +20,16 @@ const Burger = ({ setIsShowRegister, setIsRegister, setIsBurgerShow }) => {
                 </div>
             </div>
             <div className='burger__menu__list1'>
+                <div onClick={() => { setIsBurgerShow(false) }} className='burger__component'><NavLink to="/">{t('header.first_link')}</NavLink></div>
+                <div onClick={() => { setIsBurgerShow(false) }} className='burger__component'><NavLink to="/flightsCategory">{t('header.third_link')}</NavLink></div>
+                <div onClick={() => { setIsBurgerShow(false) }} className='burger__component'><NavLink to="/services">{t('header.six_link')}</NavLink></div>
+                <div onClick={() => { setIsBurgerShow(false) }} className='burger__component'><NavLink to="/contacts">{t('header.fourth_link')}</NavLink></div>
+                <div onClick={() => { setIsBurgerShow(false) }} className='burger__component'><NavLink to="/blog">Блог</NavLink></div>
                 {is_admin ?
                     <div className='burger__admin__panel'>
                         <details onClick={e => { e.stopPropagation(); }}>
                             <summary>
-                                admin panel
+                                Admin
                             </summary>
                             <div>
                                 <div><NavLink to="/infoCompanyEdit">{t('admin.infoCompany')}</NavLink></div>
@@ -39,11 +44,6 @@ const Burger = ({ setIsShowRegister, setIsRegister, setIsBurgerShow }) => {
 
                         </details>
                     </div> : <></>}
-                <div onClick={() => { setIsBurgerShow(false) }} className='burger__component'><NavLink to="/">{t('header.first_link')}</NavLink></div>
-                <div onClick={() => { setIsBurgerShow(false) }} className='burger__component'><NavLink to="/flightsCategory">{t('header.third_link')}</NavLink></div>
-                <div onClick={() => { setIsBurgerShow(false) }} className='burger__component'><NavLink to="/services">{t('header.six_link')}</NavLink></div>
-                <div onClick={() => { setIsBurgerShow(false) }} className='burger__component'><NavLink to="/contacts">{t('header.fourth_link')}</NavLink></div>
-                <div onClick={() => { setIsBurgerShow(false) }} className='burger__component'><NavLink to="/blog">Блог</NavLink></div>
                 <div className='burger__set__language1'><SetLanguage /></div>
                 {!is_login ?
                     <div onClick={() => { setIsBurgerShow(false) }} className="burger__buttons">

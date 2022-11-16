@@ -4,6 +4,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    padding-bottom: 150px;
 }
 
 .block-account {
@@ -16,6 +17,7 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: flex-start;
+    margin-top: 30px;
 }
 
 .block-flight-cart-account {
@@ -25,11 +27,20 @@
     align-items: flex-start;
     padding: 0px;
     gap: 40px;
-    width: 60%;
-    height: 304px;
+    width: 65%;
+    height: auto;
     background: #FFFFFF;
     border: 1px solid #DBDBDB;
     border-radius: 20px;
+}
+
+.block-fligth-cart-items {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+    padding: 0px;
 }
 
 .flight-cart-account-status {
@@ -37,7 +48,7 @@
     display: flex;
     flex-direction: row;
     align-items: center;
-    padding: 12px 40px;
+    padding: 12px 30px;
     gap: 8px;
     width: 100%;
     height: 48px;
@@ -60,4 +71,240 @@
     line-height: 150%;
     color: #79491D;
     opacity: 0.8;
+    cursor: default;
+}
+
+.item-start-finish-position-account {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 0px;
+    width: 100%;
+    gap: 40px;
+    padding: 0 30px;
+}
+
+.item-position-account {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0px;
+    gap: 12px;
+    width: 100%;
+    word-break: break-word;
+}
+
+.item-street-start-finish-account {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0px;
+    gap: 5px;
+}
+
+.item-street-start-finish-account div {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 0px;
+    gap: 10px;
+}
+
+.item-street-start-finish-account div img {
+    width: 28px;
+    height: 20px;
+}
+
+.item-street-start-finish-account div span {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 21px;
+    line-height: 120%;
+    color: #111111;
+    cursor: default;
+}
+
+.item-street-start-finish-account {
+    word-wrap: break-word;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 150%;
+    color: #4C4C4C;
+    cursor: default;
+}
+
+.item-time-date-account {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 0px;
+    gap: 10px;
+}
+
+.item-time-date-account span:nth-child(1) {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 150%;
+    color: #111111;
+    cursor: default;
+}
+
+.item-time-date-account span:nth-child(2) {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 150%;
+    color: #4C4C4C;
+    cursor: default;
+}
+
+.item-detailed-payment-group {
+    width: 100%;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.item-payment {
+    width: 100%;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 12px 30px;
+    border-top: 1px solid #DBDBDB;
+    gap: 12px;
+}
+
+.item-payment div span {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 150%;
+    color: #111111;
+    cursor: default;
+} 
+
+.item-payment-price {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0px;
+    gap: 8px;
+}
+
+.item-payment-price div:nth-child(1) span {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 150%;
+    color: #4C4C4C;
+    cursor: default;
+}
+
+.item-payment-price div:nth-child(2) {
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    padding: 0px;
+    gap: 8px;
+}
+
+.item-payment-price div:nth-child(2) img {
+    width: 16px;
+    height: 16px;
+}
+
+.item-payment-price div:nth-child(2) span {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 150%;
+    color: #6A6A6A;
+    cursor: default;
+}
+
+.item-detailed-info-main {
+    width: 100%;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 25px;
+    border-top: 1px solid #DBDBDB;
+}
+
+.item-detailed-info-main div:nth-child(1) button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 120%;
+    color: #2F82FF;
+    outline: none;
+}
+
+.item-detailed-info-main div:nth-child(2) a {
+    cursor: pointer;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 120%;
+    color: #2F82FF;
+    text-decoration: none;
+}
+
+.item-detailed-info-main div:nth-child(2) a:hover {
+    color: #599BFF;
+    transition: all ease 0.4s;
+}
+
+.item-detailed-info-main div:nth-child(1) button:hover {
+    color: #599BFF;
+    transition: all ease 0.4s;
+}
+
+.account__setting__profile__button{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+.account__setting__profile__button button{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 14px 24px;
+    gap: 8px;
+    height: 48px;
+    background: #2F82FF;
+    border: none;
+    border-radius: 10px;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 120%;
+    color: #FFFFFF;
+    cursor: pointer;
+}
+
+.account__setting__profile__button button:hover {
+    background-color: #5297ff;
+    transition: all ease 0.4s;
 }

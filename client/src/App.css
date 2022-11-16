@@ -81,16 +81,54 @@ main {
     transition: 2s;
     left: 20%;
 }
-.burger__admin__panel{
+.burger__admin__panel {
     display: flex;
     align-items: flex-start;
     justify-content: flex-start;
+    margin-bottom:20px;
 }
+
+.burger__admin__panel details summary {
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    align-items: flex-start;
+    justify-content: flex-start;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 120%;
+    color: #111111;
+    cursor: pointer;
+}
+
+.burger__admin__panel div div a {
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    align-items: flex-start;
+    justify-content: flex-start;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 120%;
+    color: #111111;
+    cursor: pointer;
+}
+
+.burger__admin__panel div div a:hover {
+    color: #5297ff;
+    transition: ease 0.4s;
+}
+
 .burger__admin__panel div{
     flex-direction: column;
     display: flex;
     align-items: flex-start;
     justify-content: flex-start;
+    gap: 10px;
 }
 .burger__admin__panel div div{
     margin-top: 10px;
@@ -2544,6 +2582,7 @@ footer{
     cursor: pointer;
     color:#2F82FF;
 }
+
 @media screen and (min-width:1024px) {
     .edit__account__main{
         width: 70%;
@@ -2854,7 +2893,7 @@ footer{
 }
 
 .account__main{
-    margin-top: 25px;
+    margin-top: 30px;
 }
 
 .register__main{
@@ -3048,129 +3087,7 @@ footer{
 .register__btn__authorize{
     margin-top: 35px;
 }
-.blog__container{
-    margin-top: 30px;
-}
-.user__profile{
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 30px;
-    gap: 20px;
-    background: #FFFFFF;
-    border: 1px solid #DBDBDB;
-    border-radius: 20px;
-}
 
-.user__profile__title {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 15px;
-}
-
-.user__profile__title b{
-    font-family: 'Inter';
-    font-style: normal;
-    font-size: 21px;
-    line-height: 120%;
-    color: #111111;
-}
-.account__surname__with__name {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 3px;
-}
-
-.account__surname__with__name span{
-    font-family: 'Inter';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 150%;
-    color: #111111;
-}
-
-@media screen and (min-width:1024px) {
-    .account__message{
-        width: 280px;
-    }
-}
-@media screen and (max-width:1024px) {
-    .user__profile{
-        width: 280px;
-    }
-    .user__profile__right{
-        display: none;
-    }
-    .user__profile__left{
-        margin-left: 5%;
-        margin-top: 20px;
-    }
-}
-
-.account__message{
-    display: flex;
-    flex-direction: row;
-    align-items: flex-start;
-    padding: 24px;
-    gap: 8px;
-    background: #EAF2FF;
-    border-radius: 20px;
-    margin-top: 20px;
-}
-.account__setting__profile__button{
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-}
-.account__setting__profile__button button{
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    padding: 14px 24px;
-    gap: 8px;
-    width: 250px;
-    height: 50px;
-    background: #2F82FF;
-    border: none;
-    border-radius: 10px;
-    font-family: 'Inter';
-    font-style: normal;
-    font-weight: 500;
-    font-size: 16px;
-    line-height: 120%;
-    color: #FFFFFF;
-    cursor: pointer;
-}
-
-.account__setting__profile__button button:hover {
-    background-color: #5297ff;
-    transition: all ease 0.4s;
-}
-
-.account__message__title{
-    font-family: 'Inter';
-    font-style: normal;
-    font-weight: 700;
-    font-size: 21px;
-    line-height: 120%;
-    color: #13356A;
-}
-.account__message__description{
-    font-family: 'Inter';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 150%;
-    color: #13356A;
-}
-.account__message{
-    display: flex;
-    gap: 10px;
-}
 .my__booking__title{
     font-family: 'Inter';
     font-style: normal;
@@ -3178,6 +3095,7 @@ footer{
     font-size: 39px;
     line-height: 120%;
     color: #111111;
+    cursor: default;
 }
 .service__page__main{
     justify-content: space-between;
@@ -3191,9 +3109,6 @@ footer{
     font-size: 16px;
     line-height: 120%;
     color: #111111;
-}
-.user__profile{
-    width: 262px;
 }
 @media screen and (min-width:1024px) {
     .admin-panel-info-company{

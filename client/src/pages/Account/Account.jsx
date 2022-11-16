@@ -13,7 +13,7 @@ const Account = () => {
     const { t } = useTranslation()
 
     const { is_admin, is_login, user, reply } = useSelector(state => state.user)
-    const { userHistoty } = useSelector(state => state.order)
+    const { userHistoty, flightAccountOrders } = useSelector(state => state.order)
     const { flight } = useSelector(state => state.flights)
 
     const { language } = useSelector(state => state.language)
@@ -81,13 +81,70 @@ const Account = () => {
                     </div>
                 </div>
                 <div className='block-fligth-cart-profile-account'>
-                    <div className='block-flight-cart-account'>
-                        <div className='flight-cart-account-status'>
-                            <img src={process.env.REACT_APP_API_URL + 'clock-pink.png'} alt="time" />
-                            <span>В обробці</span>
-                        </div>
-                        <div>
-                        </div>
+                    <div className='block-fligth-cart-items'>
+                        {flightAccountOrders.map(item => {
+                            return (
+                                <div className='block-flight-cart-account'>
+                                    <div className='flight-cart-account-status'>
+                                        <img src={process.env.REACT_APP_API_URL + 'clock-pink.png'} alt="time" />
+                                        <span>В обробці</span>
+                                    </div>
+                                    <div className='item-start-finish-position-account'>
+                                        <div className='item-position-account'>
+                                            <div className='item-street-start-finish-account'>
+                                                <div>
+                                                    <img src={process.env.REACT_APP_API_URL + item.flagStart} alt="flag" />
+                                                    <span>{item.startPosition[language]}</span>
+                                                </div>
+                                                <span>{item.streetStartPosition[language]}</span>
+                                            </div>
+                                            <div className='item-time-date-account'>
+                                                <span>{item.startTime}</span>
+                                                <span>{item.startDate}</span>
+                                            </div>
+                                        </div>
+                                        <div className='item-position-account'>
+                                            <div className='item-street-start-finish-account'>
+                                                <div>
+                                                    <img src={process.env.REACT_APP_API_URL + item.flagFinish} alt="flag" />
+                                                    <span>{item.finishPosition[language]}</span>
+                                                </div>
+                                                <span>{item.streetFinishPosition[language]}</span>
+                                            </div>
+                                            <div className='item-time-date-account'>
+                                                <span>{item.finishTime}</span>
+                                                <span>{item.finishDate}</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div className='item-detailed-payment-group'>
+                                        <div className='item-payment'>
+                                            <div>
+                                                <span>Оплата бронювання</span>
+                                            </div>
+                                            <div className='item-payment-price'>
+                                                <div>
+                                                    <span>До сплати: 4800 грн</span>
+                                                </div>
+                                                <div>
+                                                    <img src={process.env.REACT_APP_API_URL + 'info-silver.png'} alt="info" />
+                                                    <span>Оплата стане доступною після підтвердження бронювання.</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div className='item-detailed-info-main'>
+                                            <div>
+                                                <button>Детальна інформація</button>
+                                                <img src={process.env.REACT_APP_API_URL + 'Vector-account.png'} alt="vector" />
+                                            </div>
+                                            <div>
+                                                <NavLink to={`/flight/${item.startPosition[language]}-${item.finishPosition[language]}/${item.id}`}>Сторінка рейсу</NavLink>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            )
+                        })}
                     </div>
                     <div className="account__right">
                         <div className="user__profile user__profile__right">
