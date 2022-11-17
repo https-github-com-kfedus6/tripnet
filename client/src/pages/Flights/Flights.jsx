@@ -133,9 +133,11 @@ const Flights = ({ isShowFilter }) => {
                     name: name,
                     phone: phone.phone,
                     email: email,
-                    countPersons: sumOld + sumYoung,
+                    countPersons: sumOld,
+                    countChildren: sumYoung,
                     date: `${date.$D}.${date.$M + 1}.${date.$y}`,
-                    countPersonsBack: sumOldBack + sumYoungBack,
+                    countPersonsBack: sumOldBack,
+                    countChildrenBack: sumYoungBack,
                     dateBack: `${dateBack.$D}.${dateBack.$M + 1}.${dateBack.$y}`,
                     flightId: flightId
                 })
@@ -155,9 +157,11 @@ const Flights = ({ isShowFilter }) => {
                     name: name,
                     phone: phone.phone,
                     email: email,
-                    countPersons: sumOld + sumYoung,
+                    countPersons: sumOld,
+                    countChildren: sumYoung,
                     date: `${date.$D}.${date.$M + 1}.${date.$y}`,
-                    countPersonsBack: sumOldBack + sumYoungBack,
+                    countPersonsBack: sumOldBack,
+                    countChildrenBack: sumYoungBack,
                     dateBack: `${dateBack.$D}.${dateBack.$M + 1}.${dateBack.$y}`,
                     flightId: flightId,
                     userId: user.id

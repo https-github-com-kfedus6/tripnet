@@ -91,7 +91,7 @@ const ModalFormBuy = ({ visibleBuy, name, setName, date, setDate,
                 </div>
             </div>
         )
-    } else if (flight !== undefined) {
+    } else if (!Array.isArray(flight)) {
         return (
             <div className='modal-form-buy act'>
                 <div className='modal-content-form-buy'>
@@ -340,6 +340,10 @@ const ModalFormBuy = ({ visibleBuy, name, setName, date, setDate,
                     </div>
                 </div>
             </div >
+        )
+    } else {
+        return (
+            <></>
         )
     }
 };

@@ -14,56 +14,51 @@ const Account = () => {
 
     const { is_admin, is_login, user, reply } = useSelector(state => state.user)
     const { userHistoty, flightAccountOrders } = useSelector(state => state.order)
-    const { flight } = useSelector(state => state.flights)
 
     const { language } = useSelector(state => state.language)
-    const [isActive, setIsActive] = useState(null)
 
-    const { SetShowMessgeFalse, SetShowMessgeTrue, getUserHistory, fetchGetFlight,
+    const { SetShowMessgeFalse, SetShowMessgeTrue, getUserHistory,
         EditEmail, IsAuthorize, ChangePassword, fetchGetFlightAccountOrders } = useAction()
 
-    const [oldPassword, setOldPassword] = useState("");
-    const [newPassword, setNewPassword] = useState("");
-    const [newPassword2, setNewPassword2] = useState("");
-    const [isChangePass, setIsChangePass] = useState("false")
-
-    const [checkPassword, setCheckPassword] = useState(false);
-    const [checkEmail, setCheckEmail] = useState(false);
-    const [newEmail, setNewEmail] = useState("");
-
-    const [phoneValue, setPhoneValue] = useState("")
+    /*  const [oldPassword, setOldPassword] = useState("");
+     const [newPassword, setNewPassword] = useState("");
+     const [newPassword2, setNewPassword2] = useState("");
+     const [isChangePass, setIsChangePass] = useState("false")
+ 
+     const [checkPassword, setCheckPassword] = useState(false);
+     const [checkEmail, setCheckEmail] = useState(false);
+     const [newEmail, setNewEmail] = useState("");
+ 
+     const [phoneValue, setPhoneValue] = useState("") */
 
     useEffect(() => {
         fetchGetFlightAccountOrders()
-    }, [])
-
-    useEffect(() => {
         getUserHistory();
     }, [])
 
-    useEffect(() => {
-        if (isChangePass) {
-            if (reply == 200) {
-                setOldPassword("");
-                setNewPassword("");
-                setNewPassword2("");
-            }
-            setIsChangePass(false);
-        }
-    }, [reply])
+    /*   useEffect(() => {
+          if (isChangePass) {
+              if (reply == 200) {
+                  setOldPassword("");
+                  setNewPassword("");
+                  setNewPassword2("");
+              }
+              setIsChangePass(false);
+          }
+      }, [reply]) */
 
-    const exit = () => {
-        localStorage.removeItem("token");
-        IsAuthorize();
-        navigate("/");
-    }
+    /*  const exit = () => {
+         localStorage.removeItem("token");
+         IsAuthorize();
+         navigate("/");
+     } */
 
-    const toggle = (i, id) => {
-        if (isActive == i) {
-            return setIsActive(null);
-        }
-        setIsActive(i);
-    }
+    /*  const toggle = (i, id) => {
+         if (isActive == i) {
+             return setIsActive(null);
+         }
+         setIsActive(i);
+     } */
 
     return (
         <div className='container-account'>
@@ -75,20 +70,43 @@ const Account = () => {
                         <span className='bredcrumbs-flight-text'>{t("account.personal_office")}</span>
                     </div>
                 </div>
-                <div className='account__main'>
-                    <div className="my__booking__title">
-                        {t("account.my_booking")}
+                <div className="account-user-profile account-user-profile-none">
+                    <b>{t("account.profile")}</b>
+                    <div className="account-surname-with-name">
+                        <span>{user.name + " " + user.surname}</span>
+                        <span>{user.email}</span>
+                    </div>
+                    <div className="account-setting-profile-button">
+                        <button onClick={() => navigate("/account/edit")}>{t("account.setting_profile")}</button>
                     </div>
                 </div>
                 <div className='block-fligth-cart-profile-account'>
                     <div className='block-fligth-cart-items'>
+                        <div className='account-main-title'>
+                            <b>{t("account.my_booking")}</b>
+                        </div>
                         {flightAccountOrders.map(item => {
+                            let itemUserHistory = userHistoty.filter(user => user.flightId === item.id)
                             return (
-                                <div className='block-flight-cart-account'>
-                                    <div className='flight-cart-account-status'>
-                                        <img src={process.env.REACT_APP_API_URL + 'clock-pink.png'} alt="time" />
-                                        <span>В обробці</span>
-                                    </div>
+                                <div key={item.id} className='block-flight-cart-account'>
+                                    {itemUserHistory[0].status === null ?
+                                        <div className='flight-cart-account-status-processing'>
+                                            <img src={process.env.REACT_APP_API_URL + 'clock-pink.png'} alt="time" />
+                                            <span>В обробці</span>
+                                        </div>
+                                        :
+                                        itemUserHistory[0].status === true
+                                            ?
+                                            <div className='flight-cart-account-status-success'>
+                                                <img src={process.env.REACT_APP_API_URL + 'check.png'} alt="time" />
+                                                <span>Підтверджено</span>
+                                            </div>
+                                            :
+                                            <div className='flight-cart-account-status-cancelled'>
+                                                <img src={process.env.REACT_APP_API_URL + 'x-x.png'} alt="time" />
+                                                <span>Скасовано</span>
+                                            </div>
+                                    }
                                     <div className='item-start-finish-position-account'>
                                         <div className='item-position-account'>
                                             <div className='item-street-start-finish-account'>
@@ -118,13 +136,13 @@ const Account = () => {
                                         </div>
                                     </div>
                                     <div className='item-detailed-payment-group'>
-                                        <div className='item-payment'>
+                                        <div className={itemUserHistory[0].status === null ? 'item-payment' : 'item-payment-none'}>
                                             <div>
                                                 <span>Оплата бронювання</span>
                                             </div>
                                             <div className='item-payment-price'>
                                                 <div>
-                                                    <span>До сплати: 4800 грн</span>
+                                                    <span>До сплати: {+item.price * +itemUserHistory[0].countPersons} грн</span>
                                                 </div>
                                                 <div>
                                                     <img src={process.env.REACT_APP_API_URL + 'info-silver.png'} alt="info" />
@@ -146,34 +164,30 @@ const Account = () => {
                             )
                         })}
                     </div>
-                    <div className="account__right">
-                        <div className="user__profile user__profile__right">
-                            <div className="user__profile__title">
-                                <b>{t("account.profile")}</b>
-                                <div className="account__surname__with__name">
-                                    <span>{user.name + " " + user.surname}</span>
-                                    <span>{user.email}</span>
-                                </div>
+                    <div className="block-account-user">
+                        <div className="account-user-profile account-user-profile-none-second">
+                            <b>{t("account.profile")}</b>
+                            <div className="account-surname-with-name">
+                                <span>{user.name + " " + user.surname}</span>
+                                <span>{user.email}</span>
                             </div>
-                            <div className="account__setting__profile__button">
+                            <div className="account-setting-profile-button">
                                 <button onClick={() => navigate("/account/edit")}>{t("account.setting_profile")}</button>
                             </div>
                         </div>
-                        <div className="account__message">
+                        <div className="account-message">
                             <div className='flight-message-icon'>
                                 <img src={process.env.REACT_APP_API_URL + 'info-blue.png'} alt='info' />
                             </div>
-                            <div className="account__message__title">
-                                {t("account.message_title")}
-                                <div className="account__message__description">
-                                    {t("account.message_description")}
-                                </div>
+                            <div className="account-message-title-description">
+                                <b>{t("account.message_title")}</b>
+                                <span>{t("account.message_description")}</span>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
+        </div >
     )
 }
 

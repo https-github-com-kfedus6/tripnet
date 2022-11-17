@@ -2586,13 +2586,11 @@ footer{
 @media screen and (min-width:1024px) {
     .edit__account__main{
         width: 70%;
-        margin: 20px auto;
     }
 }
 @media screen and (max-width:1024px) {
     .edit__account__main{
         width: 90%;
-        margin: 20px auto;
     }
 }
 .adit__account__title{
@@ -2797,6 +2795,7 @@ footer{
     background-color: #C1D9FF;
     padding: 10px;
     border-radius: 15px;
+    width: 100%;
 }
 .i__in__circle{
     display: flex;
@@ -2836,6 +2835,13 @@ footer{
     line-height: 150%;
     color: #13356A;
 }
+
+@media (max-width:1024px) {
+    .block-account-edit {
+        width: 90%;
+    }
+}
+
 @media screen and (min-width:1024px) {
     
     .text__edit__or__contact__data{
@@ -2846,9 +2852,11 @@ footer{
         width: 300px;
     }
     .edit__account__main{
+        margin-top: 30px;
         display: flex;
         flex-direction: row;
         justify-content: space-between;
+        width: 100%;
     }
     .edit__account__content{
         display: flex;
@@ -2867,7 +2875,6 @@ footer{
     }
     .edit__account__message{
         width: 100%;
-        margin-top: 20px;
     }
     .edit__account__content__main{
         display: flex;
@@ -2890,10 +2897,6 @@ footer{
     .edit__account__message{
         margin-top: 20px;
     }
-}
-
-.account__main{
-    margin-top: 30px;
 }
 
 .register__main{
@@ -3088,15 +3091,6 @@ footer{
     margin-top: 35px;
 }
 
-.my__booking__title{
-    font-family: 'Inter';
-    font-style: normal;
-    font-weight: 700;
-    font-size: 39px;
-    line-height: 120%;
-    color: #111111;
-    cursor: default;
-}
 .service__page__main{
     justify-content: space-between;
 }

@@ -70,194 +70,196 @@ const EditAccount = () => {
         setEmail("");
     }
     return (
-        <>
-            <div className='bread__crumbs__main'>
-                <div className='bredcrumbs-flight'>
-                    <span className='bredcrumbs-flight-services-link'><NavLink to="/">{t("header.first_link")}</NavLink></span>
-                    <span><img src={process.env.REACT_APP_API_URL + 'chevron-right.png'} alt="right" /></span>
-                    <span className='bredcrumbs-flight-services-link'><NavLink to="/account">{t("account.personal_office")}</NavLink></span>
-                    <span><img src={process.env.REACT_APP_API_URL + 'chevron-right.png'} alt="right" /></span>
-                    <span className='bredcrumbs-flight-text'>{t("account.setting_profile")}</span>
-                </div>
-            </div>
-            <div className="edit__account__main">
-                <div className="edit__account__content__main">
-                    <div className="adit__account__title">
-                        {t("account.my_profile")}
+        <div className='container-account-edit'>
+            <div className='block-account-edit'>
+                <div className='bread__crumbs__main'>
+                    <div className='bredcrumbs-flight'>
+                        <span className='bredcrumbs-flight-services-link'><NavLink to="/">{t("header.first_link")}</NavLink></span>
+                        <span><img src={process.env.REACT_APP_API_URL + 'chevron-right.png'} alt="right" /></span>
+                        <span className='bredcrumbs-flight-services-link'><NavLink to="/account">{t("account.personal_office")}</NavLink></span>
+                        <span><img src={process.env.REACT_APP_API_URL + 'chevron-right.png'} alt="right" /></span>
+                        <span className='bredcrumbs-flight-text'>{t("account.setting_profile")}</span>
                     </div>
-                    <div className="edit__account__content">
-                        <div className="contact__data">
-                            <div className="edit__account__description__title">
-                                {t("account.contact_data")}
-                            </div>
-                            <div className="text__edit__or__contact__data">
-                                {!isEditContactData ?
-                                    <>
-                                        <div onClick={() => setIsEditContactData(true)} className='text__edit'>
-                                            {t("account.edit")}
-                                        </div>
-                                        <div className="edit__account__mini__title">
-                                            {t("account.surname")}
-                                        </div>
-                                        <div className="edit__account__description">
-                                            {user.surname == "" ? t("account.no_specefied") : user.surname}
-                                        </div>
-                                        <div className="edit__account__mini__title">
-                                            {t("account.name")}
-                                        </div>
-                                        <div className="edit__account__description">
-                                            {user.name == "" ? t("account.no_specefied") : user.name}
-                                        </div>
-                                        <div className="edit__account__mini__title">
-                                            Телефон
-                                        </div>
-                                        <div className="edit__account__description">
-                                            {telephone == "" ? t("account.no_specefied") : telephone}
-                                        </div>
-                                    </>
-                                    :
-                                    <div className='edit__contact__data'>
-                                        <div className='input__name__or__surname'>
-                                            <TextField
-                                                value={surname}
-                                                id="demo-helper-text-misaligned-no-helper"
-                                                onChange={(e) => setSurname(e.target.value)}
-                                                label={t("account.surname")} />
-                                        </div>
-                                        <br />
-                                        <div className='input__name__or__surname'>
-                                            <TextField
-                                                value={name}
-                                                id="demo-helper-text-misaligned-no-helper"
-                                                onChange={(e) => setName(e.target.value)}
-                                                label={t("account.name")} />
-                                        </div>
-                                        <br />
-                                        <div>
-                                            <PhoneInput
-                                                international
-                                                country="ua"
-                                                value={phone}
-                                                onChange={e => setPhone(e)} />
-                                        </div>
-                                        <br />
-                                        <div className="buttons__cansel__and__save">
-                                            <div className='button__cansel'>
-                                                <button onClick={() => setIsEditContactData(false)}>{t("account.cansel")}</button>
+                </div>
+                <div className="edit__account__main">
+                    <div className="edit__account__content__main">
+                        <div className="adit__account__title">
+                            {t("account.my_profile")}
+                        </div>
+                        <div className="edit__account__content">
+                            <div className="contact__data">
+                                <div className="edit__account__description__title">
+                                    {t("account.contact_data")}
+                                </div>
+                                <div className="text__edit__or__contact__data">
+                                    {!isEditContactData ?
+                                        <>
+                                            <div onClick={() => setIsEditContactData(true)} className='text__edit'>
+                                                {t("account.edit")}
                                             </div>
-                                            <div className="button__save">
-                                                <button onClick={() => { EditInfoUser(); setIsEditContactData(false) }}>{t("account.save")}</button>
+                                            <div className="edit__account__mini__title">
+                                                {t("account.surname")}
+                                            </div>
+                                            <div className="edit__account__description">
+                                                {user.surname == "" ? t("account.no_specefied") : user.surname}
+                                            </div>
+                                            <div className="edit__account__mini__title">
+                                                {t("account.name")}
+                                            </div>
+                                            <div className="edit__account__description">
+                                                {user.name == "" ? t("account.no_specefied") : user.name}
+                                            </div>
+                                            <div className="edit__account__mini__title">
+                                                Телефон
+                                            </div>
+                                            <div className="edit__account__description">
+                                                {telephone == "" ? t("account.no_specefied") : telephone}
+                                            </div>
+                                        </>
+                                        :
+                                        <div className='edit__contact__data'>
+                                            <div className='input__name__or__surname'>
+                                                <TextField
+                                                    value={surname}
+                                                    id="demo-helper-text-misaligned-no-helper"
+                                                    onChange={(e) => setSurname(e.target.value)}
+                                                    label={t("account.surname")} />
+                                            </div>
+                                            <br />
+                                            <div className='input__name__or__surname'>
+                                                <TextField
+                                                    value={name}
+                                                    id="demo-helper-text-misaligned-no-helper"
+                                                    onChange={(e) => setName(e.target.value)}
+                                                    label={t("account.name")} />
+                                            </div>
+                                            <br />
+                                            <div>
+                                                <PhoneInput
+                                                    international
+                                                    country="ua"
+                                                    value={phone}
+                                                    onChange={e => setPhone(e)} />
+                                            </div>
+                                            <br />
+                                            <div className="buttons__cansel__and__save">
+                                                <div className='button__cansel'>
+                                                    <button onClick={() => setIsEditContactData(false)}>{t("account.cansel")}</button>
+                                                </div>
+                                                <div className="button__save">
+                                                    <button onClick={() => { EditInfoUser(); setIsEditContactData(false) }}>{t("account.save")}</button>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                }
+                                    }
 
-                            </div>
-                        </div>
-                        <div className="setting__accout">
-                            <div className="edit__account__description__title">
-                                {t("account.setting_profile")}
-                            </div>
-                            <div className="edit__account__email">
-                                <div className="edit__account__mini__title">
-                                    E-mail
                                 </div>
-                                {!isEditEmail ?
-                                    <>
-                                        <div className="edit__account__description">
-                                            {user.email}
-                                        </div>
-                                        <div onClick={() => setIsEditEmail(true)} className='text__edit'>
-                                            {t("account.change_email")}
-                                        </div>
-                                    </>
+                            </div>
+                            <div className="setting__accout">
+                                <div className="edit__account__description__title">
+                                    {t("account.setting_profile")}
+                                </div>
+                                <div className="edit__account__email">
+                                    <div className="edit__account__mini__title">
+                                        E-mail
+                                    </div>
+                                    {!isEditEmail ?
+                                        <>
+                                            <div className="edit__account__description">
+                                                {user.email}
+                                            </div>
+                                            <div onClick={() => setIsEditEmail(true)} className='text__edit'>
+                                                {t("account.change_email")}
+                                            </div>
+                                        </>
+                                        :
+                                        <>
+                                            <TextField
+                                                value={email}
+                                                id="demo-helper-text-misaligned-no-helper"
+                                                onChange={(e) => setEmail(e.target.value)}
+                                                label="E-mail" />
+                                            <div className="buttons__cansel__and__save">
+                                                <div className='button__cansel'>
+                                                    <button onClick={() => setIsEditEmail(false)}>{t("account.cansel")}</button>
+                                                </div>
+                                                <div className="button__save">
+                                                    <button onClick={() => { UpdateEmail(); setIsEditEmail(false) }}>{t("account.save")}</button>
+                                                </div>
+                                            </div>
+                                        </>
+                                    }
+                                </div>
+                                <div className="edit__account__mini__title">
+                                    {t("account.password")}
+                                </div>
+                                {!isEditPassword ?
+                                    <div onClick={() => setIsEditPassword(true)} className='text__edit'>
+                                        {isPasswordNull ? t("account.create_password") : t("account.change_password")}
+                                    </div>
                                     :
-                                    <>
-                                        <TextField
-                                            value={email}
-                                            id="demo-helper-text-misaligned-no-helper"
-                                            onChange={(e) => setEmail(e.target.value)}
-                                            label="E-mail" />
+                                    <div className='account__edit__change__password'>
+                                        {isPasswordNull ? <></> : <div>
+                                            <TextField
+                                                onChange={e => setOldPassword(e.target.value)}
+                                                id="outlined-password-input"
+                                                label={t("account.old_password")}
+                                                type="password"
+                                                autoComplete="current-password"
+                                                value={oldPassword}
+                                            />
+                                        </div>}
+                                        <div>
+                                            <TextField
+                                                onChange={e => setNewPassword(e.target.value)}
+                                                id="outlined-password-input"
+                                                label={t("account.new_password")}
+                                                type="password"
+                                                autoComplete="current-password"
+                                                value={newPassword}
+                                            />
+                                        </div>
+                                        <div>
+                                            <TextField
+                                                onChange={e => setNewPassword2(e.target.value)}
+                                                id="outlined-password-input"
+                                                label={t("account.new_password")}
+                                                type="password"
+                                                autoComplete="current-password"
+                                                value={newPassword2}
+                                            />
+                                        </div>
                                         <div className="buttons__cansel__and__save">
                                             <div className='button__cansel'>
-                                                <button onClick={() => setIsEditEmail(false)}>{t("account.cansel")}</button>
+                                                <button onClick={() => setIsEditPassword(false)}>{t("account.cansel")}</button>
                                             </div>
                                             <div className="button__save">
-                                                <button onClick={() => { UpdateEmail(); setIsEditEmail(false) }}>{t("account.save")}</button>
+                                                <button onClick={() => { change_password(); setIsEditPassword(false) }}>{t("account.save")}</button>
                                             </div>
                                         </div>
-                                    </>
+                                    </div>
                                 }
                             </div>
-                            <div className="edit__account__mini__title">
-                                {t("account.password")}
-                            </div>
-                            {!isEditPassword ?
-                                <div onClick={() => setIsEditPassword(true)} className='text__edit'>
-                                    {isPasswordNull ? t("account.create_password") : t("account.change_password")}
-                                </div>
-                                :
-                                <div className='account__edit__change__password'>
-                                    {isPasswordNull ? <></> : <div>
-                                        <TextField
-                                            onChange={e => setOldPassword(e.target.value)}
-                                            id="outlined-password-input"
-                                            label={t("account.old_password")}
-                                            type="password"
-                                            autoComplete="current-password"
-                                            value={oldPassword}
-                                        />
-                                    </div>}
-                                    <div>
-                                        <TextField
-                                            onChange={e => setNewPassword(e.target.value)}
-                                            id="outlined-password-input"
-                                            label={t("account.new_password")}
-                                            type="password"
-                                            autoComplete="current-password"
-                                            value={newPassword}
-                                        />
-                                    </div>
-                                    <div>
-                                        <TextField
-                                            onChange={e => setNewPassword2(e.target.value)}
-                                            id="outlined-password-input"
-                                            label={t("account.new_password")}
-                                            type="password"
-                                            autoComplete="current-password"
-                                            value={newPassword2}
-                                        />
-                                    </div>
-                                    <div className="buttons__cansel__and__save">
-                                        <div className='button__cansel'>
-                                            <button onClick={() => setIsEditPassword(false)}>{t("account.cansel")}</button>
-                                        </div>
-                                        <div className="button__save">
-                                            <button onClick={() => { change_password(); setIsEditPassword(false) }}>{t("account.save")}</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            }
                         </div>
                     </div>
-                </div>
-                <div className="edit__account__message">
-                    <div className="edit__account__message__content">
-                        <div className="edit__account__text">
-                            <div className='flight-message-icon'>
-                                <img src={process.env.REACT_APP_API_URL + 'info-blue.png'} alt='info' />
-                            </div>
-                            <div className="edit__account__message__title">
-                                {t("account.date_editing")}
-                                <div className="edit__account__descrition">
-                                    {t("account.date_editing_descritpion")}
+                    <div className="edit__account__message">
+                        <div className="edit__account__message__content">
+                            <div className="edit__account__text">
+                                <div className='flight-message-icon'>
+                                    <img src={process.env.REACT_APP_API_URL + 'info-blue.png'} alt='info' />
+                                </div>
+                                <div className="edit__account__message__title">
+                                    {t("account.date_editing")}
+                                    <div className="edit__account__descrition">
+                                        {t("account.date_editing_descritpion")}
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </>
+        </div>
     )
 }
 
