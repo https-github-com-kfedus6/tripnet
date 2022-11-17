@@ -3206,3 +3206,24 @@ footer{
 .admin__blog__related__flight button{
     width: 50px;
 }
+@media screen and (min-width:1024px) {
+    .bread__crumbs__main{
+        width: 70%;
+        margin: auto;
+        margin-top: 115px;
+    }
+}
+
+@media screen and (max-width:1024px) {
+    .bread__crumbs__main{
+        width: 90%;
+        margin: auto;
+        margin-top: 115px;
+    }
+}
+.blog__container{
+    margin-top: 30px;
+}
+.container-account{
+    margin-top: 30px;
+}

@@ -117,7 +117,7 @@ class UserController {
     static RegInGoogle = async (req, resp, next) => {
         try {
             const { token } = req.body;
-            const tokenDecode = await jwt.decode(token);
+            const tokenDecode = await jwt.decode(token,"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");
             const res = await User.findOne({ where: { email: tokenDecode.email } });
             if (res == null) {
                 return resp.json({ status: 415, message: "invalid email" });

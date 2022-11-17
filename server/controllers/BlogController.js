@@ -57,12 +57,15 @@ class BlogController {
     }
     static Add = async (req, resp, next) => {
         try {
-            const { name, descriptionUa, descriptionRu, miniDescription } = req.body;
+            const { name, descriptionUa, descriptionRu, miniDescription, listFlight } = req.body;
             const description = [descriptionUa, descriptionRu].join("/*/");
             const { image } = req.files;
             const nameImg = uuid.v4() + ".jpg";
             image.mv(path.resolve(__dirname, '..', 'static', nameImg));
             const res = await Blog.create({ image: nameImg, name, description, miniDescription });
+            await JSON.parse(listFlight).forEach(x => {
+                BlogRetaledFlight.create({whence:x.whence,whither:x.whither,blogId:res.id});
+            }); 
             return resp.json({ status: 200, res });
         } catch (err) {
             return next(ErrorApi.badRequest(err));

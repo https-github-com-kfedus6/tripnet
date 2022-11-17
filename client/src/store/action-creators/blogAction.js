@@ -37,7 +37,7 @@ export const GetBlogDescription=(id)=>async(dispatch)=>{
     }
 }
 
-export const AddBlog=(descriptionUa,descriptionRu,image,name,miniDescription)=>async(dispatch)=>{
+export const AddBlog=(descriptionUa,descriptionRu,image,name,miniDescription,listFlight)=>async(dispatch)=>{
     try{
         let formData=new FormData();
         await formData.append("image",image);
@@ -45,6 +45,8 @@ export const AddBlog=(descriptionUa,descriptionRu,image,name,miniDescription)=>a
         await formData.append("descriptionRu",descriptionRu);
         await formData.append("name",name);
         await formData.append("miniDescription",miniDescription);
+        await formData.append("listFlight",JSON.stringify(listFlight));
+        console.log(JSON.stringify(listFlight));
         const resp=await $authHost.post("api/blog/add",formData);
         if(resp.data.status==200){
             dispatch({type:messageActionTypes.SET_SHOW_TRUE,payload:t("message.successfully_added")});

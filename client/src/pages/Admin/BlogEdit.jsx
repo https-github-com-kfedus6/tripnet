@@ -1,5 +1,6 @@
 import { Editor } from '@tinymce/tinymce-react';
 import React from 'react'
+import { useEffect } from 'react';
 import { useState } from 'react';
 import { useAction } from '../../hooks/useAction';
 
@@ -12,9 +13,19 @@ const BlogEdit = () => {
     const [ua, setUa] = useState("");
     const [ru, setRu] = useState("");
     const { AddBlog } = useAction();
+    const newReteladFlight=()=>{
+        setRetaledFlight([...retaledFlight,{whence:[newWhenceUA,newWhenceRU].join("//"),
+            whither:[newWhitherUA,newWhitherRU].join("//")}]);
+    }
     const [retaledFlight,setRetaledFlight]=useState([]);
-    const [newWhence,setNewWhence]=useState("");
-    const [newWhither,setNewWriter]=useState("");
+    const [newWhenceUA,setNewWhenceUA]=useState("");
+    const [newWhitherUA,setNewWriterUA]=useState("");
+    const [newWhenceRU,setNewWhenceRU]=useState("");
+    const [newWhitherRU,setNewWriterRU]=useState("");
+    useEffect(()=>{
+
+    },[retaledFlight]);
+    console.log(retaledFlight);
     return (
         <div className="admin-panel-blog">
             <div className='admin-blok-blog'>
@@ -29,9 +40,9 @@ const BlogEdit = () => {
                     <p>Назва</p>
                     <input maxLength={60} onChange={e => setNameUa(e.target.value)} value={nameUa} />
                 </div>
-                <div className='admin-blog-input'>
+                <div className='admin__blog__related__flight'>
                     <p>міні опис</p>
-                    <input maxLength={200} onChange={e => setMiniDescriptionUA(e.target.value)} value={miniDescriptionUA} />
+                    <input maxLength={252} onChange={e => setMiniDescriptionUA(e.target.value)} value={miniDescriptionUA} />
                 </div>
 
                 <br />
@@ -45,9 +56,9 @@ const BlogEdit = () => {
                     <p>Назва</p>
                     <input maxLength={60} onChange={e => setNameRu(e.target.value)} value={nameRu} />
                 </div> 
-                <div className='admin-blog-input'>
+                <div className='admin__blog__related__flight'>
                     <p>міні опис</p>
-                    <input maxLength={200} onChange={e => setMiniDescriptionRU(e.target.value)} value={miniDescriptionRU} />
+                    <input maxLength={252} onChange={e => setMiniDescriptionRU(e.target.value)} value={miniDescriptionRU} />
                 </div>
                 <br />
                 <Editor value={ru}
@@ -58,14 +69,22 @@ const BlogEdit = () => {
                 
                 <p>повязані рейси</p>
                 <div className="admin__blog__related__flight">
-                    <p>звідки</p>
-                    <input maxLength={25} onChange={e => setNewWhence(e.target.value)} value={newWhence} />
-                    <p>куди</p>
-                    <input maxLength={25} onChange={e => setNewWriter(e.target.value)} value={newWhither} />
-                    <button onClick={()=>setRetaledFlight([...retaledFlight,])}>add</button>                    
+                    <p>звідки ua</p>
+                    <input maxLength={25} onChange={e => setNewWhenceUA(e.target.value)} value={newWhenceUA} />
+                    <p>куди ua</p>
+                    <input maxLength={25} onChange={e => setNewWriterUA(e.target.value)} value={newWhitherUA} />
+                    <p>звідки ru</p>
+                    <input maxLength={25} onChange={e => setNewWhenceRU(e.target.value)} value={newWhenceRU} />
+                    <p>куди ru</p>
+                    <input maxLength={25} onChange={e => setNewWriterRU(e.target.value)} value={newWhitherRU} />
+                    <button onClick={()=>newReteladFlight()}>add</button>                    
                 </div>
-                
-                <button onClick={() => AddBlog(ua, ru, image, [nameUa, nameRu].join("//"),[miniDescriptionUA,miniDescriptionRU].join("//"))}>Добавити</button>
+                <select>
+                    {retaledFlight.map((x,idx)=>
+                        <option key={idx}>{x.whence}-{x.whither}</option>
+                        )}
+                </select>
+                <button onClick={() => AddBlog(ua, ru, image, [nameUa, nameRu].join("//"),[miniDescriptionUA,miniDescriptionRU].join("//"),retaledFlight)}>Добавити</button>
             </div>
         </div>
     )
