@@ -111,10 +111,12 @@ const Flight = () => {
                     name: name,
                     phone: phone.phone,
                     email: email,
-                    countPersons: sumOld + sumYoung,
-                    date: date,
-                    countPersonsBack: sumOldBack + sumYoungBack,
-                    dateBack: dateBack,
+                    countPersons: sumOld,
+                    countChildren: sumYoung,
+                    date: `${date.$D}.${date.$M + 1}.${date.$y}`,
+                    countPersonsBack: sumOldBack,
+                    countChildrenBack: sumYoungBack,
+                    dateBack: `${dateBack.$D}.${dateBack.$M + 1}.${dateBack.$y}`,
                     flightId: id
                 })
                 setSurename('')
@@ -133,10 +135,12 @@ const Flight = () => {
                     name: name,
                     phone: phone.phone,
                     email: email,
-                    countPersons: sumOld + sumYoung,
-                    date: date,
-                    countPersonsBack: sumOldBack + sumYoungBack,
-                    dateBack: dateBack,
+                    countPersons: sumOld,
+                    countChildren: sumYoung,
+                    date: `${date.$D}.${date.$M + 1}.${date.$y}`,
+                    countPersonsBack: sumOldBack,
+                    countChildrenBack: sumYoungBack,
+                    dateBack: `${dateBack.$D}.${dateBack.$M + 1}.${dateBack.$y}`,
                     flightId: id,
                     userId: user.id
                 })
