@@ -2843,9 +2843,9 @@ footer{
 }
 
 @media screen and (min-width:1024px) {
-    
     .text__edit__or__contact__data{
         width: 300px;
+        margin-top: 5px;
     }
     .setting__accout{
         margin-left: 10px;
@@ -2861,12 +2861,14 @@ footer{
     .edit__account__content{
         display: flex;
         flex-direction: row;
-        margin-top: 40px;
+        margin-top: 30px;
         justify-content: space-between;
     }
 }
 @media screen and (min-width:480px) and (max-width:1024px) {
-    
+    .text__edit__or__contact__data{
+        margin-top: 5px;
+    }
     .setting__accout{
         margin-left: 10px;
     }
@@ -2875,6 +2877,7 @@ footer{
     }
     .edit__account__message{
         width: 100%;
+        margin-top: 25px;
     }
     .edit__account__content__main{
         display: flex;
@@ -2882,15 +2885,21 @@ footer{
         justify-content: space-between;
         width: 100%;
     }
+    .edit__account__main{
+        margin-top: 30px;
+    }
     .edit__account__content{
         display: flex;
         flex-direction: row;
         flex-wrap: wrap;
-        margin-top: 40px;
+        margin-top: 30px;
         justify-content: space-between;
     }
 }
 @media screen and (max-width:480px) {
+    .text__edit__or__contact__data{
+        margin-top: 5px;
+    }
     .setting__accout{
         margin-top: 20px;
     }

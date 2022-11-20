@@ -74,9 +74,7 @@ const FlightsList = ({ finishPosition, finishDate, setFinishDate, startPosition,
                             })}
                         </div>
                         :
-                        <div className='flight-not-found'>
-                            <p>{t('flight.notfound')}!</p>
-                        </div>
+                        <></>
                     }
                     {totalCount == undefined ? <></> : flights.rows.length ?
                         <div className='pagination'>

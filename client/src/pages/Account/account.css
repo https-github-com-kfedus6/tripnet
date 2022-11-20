@@ -1,5 +1,5 @@
 .container-account-edit {
-    margin-top: 100px;
+    margin-top: 115px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -12,12 +12,16 @@
 }
 
 .container-account {
-    margin-top: 100px;
+    margin-top: 115px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     padding-bottom: 150px;
+}
+
+.block-account {
+    width: 70%;
 }
 
 .account-main-title {
@@ -171,10 +175,6 @@
     color: #13356A;
 }
 
-.block-account {
-    width: 70%;
-}
-
 .block-fligth-cart-profile-account {
     width: 100%;
     display: flex;
@@ -312,7 +312,7 @@
 
 .item-position-account {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: flex-start;
     padding: 0px;
     gap: 12px;

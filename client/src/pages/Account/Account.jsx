@@ -62,60 +62,68 @@ const Account = () => {
      } */
 
     return (
-        <>
-            <div className='bread__crumbs__main'>
-                <div className='bredcrumbs-flight'>
-                    <span className='bredcrumbs-flight-services-link'><NavLink to="/">{t("header.first_link")}</NavLink></span>
-                    <span><img src={process.env.REACT_APP_API_URL + 'chevron-right.png'} alt="right" /></span>
-                    <span className='bredcrumbs-flight-text'>{t("account.personal_office")}</span>
-                </div>
-                <div className="account-user-profile account-user-profile-none">
-                    <b>{t("account.profile")}</b>
-                    <div className="account-surname-with-name">
-                        <span>{user.name + " " + user.surname}</span>
-                        <span>{user.email}</span>
+        <div className='container-account'>
+            <div className='block-account'>
+                <div className='bread-crumbs-main'>
+                    <div className='bredcrumbs-flight'>
+                        <span className='bredcrumbs-flight-services-link'><NavLink to="/">{t("header.first_link")}</NavLink></span>
+                        <span><img src={process.env.REACT_APP_API_URL + 'chevron-right.png'} alt="right" /></span>
+                        <span className='bredcrumbs-flight-text'>{t("account.personal_office")}</span>
                     </div>
-                    <div className="account-setting-profile-button">
-                        <button onClick={() => navigate("/account/edit")}>{t("account.setting_profile")}</button>
-                    </div>
-                </div>
-                <div className='block-fligth-cart-profile-account'>
-                    <div className='block-fligth-cart-items'>
-                        <div className='account-main-title'>
-                            <b>{t("account.my_booking")}</b>
+                    <div className="account-user-profile account-user-profile-none">
+                        <b>{t("account.profile")}</b>
+                        <div className="account-surname-with-name">
+                            <span>{user.name + " " + user.surname}</span>
+                            <span>{user.email}</span>
                         </div>
-                        {flightAccountOrders.map(item => {
-                            let itemUserHistory = userHistoty.filter(user => user.flightId === item.id)
-                            return (
-                                <div key={item.id} className='block-flight-cart-account'>
-                                    {itemUserHistory[0].status === null ?
-                                        <div className='flight-cart-account-status-processing'>
-                                            <img src={process.env.REACT_APP_API_URL + 'clock-pink.png'} alt="time" />
-                                            <span>В обробці</span>
-                                        </div>
-                                        :
-                                        itemUserHistory[0].status === true
-                                            ?
-                                            <div className='flight-cart-account-status-success'>
-                                                <img src={process.env.REACT_APP_API_URL + 'check.png'} alt="time" />
-                                                <span>Підтверджено</span>
+                        <div className="account-setting-profile-button">
+                            <button onClick={() => navigate("/account/edit")}>{t("account.setting_profile")}</button>
+                        </div>
+                    </div>
+                    <div className='block-fligth-cart-profile-account'>
+                        <div className='block-fligth-cart-items'>
+                            <div className='account-main-title'>
+                                <b>{t("account.my_booking")}</b>
+                            </div>
+                            {flightAccountOrders.map(item => {
+                                let itemUserHistory = userHistoty.filter(user => user.flightId === item.id)
+                                let objUserHistory = itemUserHistory.reduce((target, key) => {
+                                    target = key
+                                    return target;
+                                }, {})
+
+                                return (
+                                    <div key={item.id} className='block-flight-cart-account'>
+                                        {objUserHistory.status === null ?
+                                            <div className='flight-cart-account-status-processing'>
+                                                <img src={process.env.REACT_APP_API_URL + 'clock-pink.png'} alt="time" />
+                                                <span>В обробці</span>
                                             </div>
                                             :
-                                            <div className='flight-cart-account-status-cancelled'>
-                                                <img src={process.env.REACT_APP_API_URL + 'x-x.png'} alt="time" />
-                                                <span>Скасовано</span>
-                                            </div>
-                                    }
-                                    <div className='item-start-finish-position-account'>
-                                        <div className='item-position-account'>
-                                            <div className='item-street-start-finish-account'>
-                                                <div>
-                                                    <img src={process.env.REACT_APP_API_URL + item.flagStart} alt="flag" />
-                                                    <span>{item.startPosition[language]}</span>
+                                            objUserHistory.status === true
+                                                ?
+                                                <div className='flight-cart-account-status-success'>
+                                                    <img src={process.env.REACT_APP_API_URL + 'check.png'} alt="time" />
+                                                    <span>Підтверджено</span>
                                                 </div>
-                                                <div className='item-time-date-account'>
-                                                    <span>{item.startTime}</span>
-                                                    <span>{item.startDate}</span>
+                                                :
+                                                <div className='flight-cart-account-status-cancelled'>
+                                                    <img src={process.env.REACT_APP_API_URL + 'x-x.png'} alt="time" />
+                                                    <span>Скасовано</span>
+                                                </div>
+                                        }
+                                        <div className='item-start-finish-position-account'>
+                                            <div className='item-position-account'>
+                                                <div className='item-street-start-finish-account'>
+                                                    <div>
+                                                        <img src={process.env.REACT_APP_API_URL + item.flagStart} alt="flag" />
+                                                        <span>{item.startPosition[language]}</span>
+                                                    </div>
+                                                    <span>{item.streetStartPosition[language]}</span>
+                                                    <div className='item-time-date-account'>
+                                                        <span>{item.startTime}</span>
+                                                        <span>{item.startDate}</span>
+                                                    </div>
                                                 </div>
                                             </div>
                                             <div className='item-position-account'>
@@ -125,26 +133,21 @@ const Account = () => {
                                                         <span>{item.finishPosition[language]}</span>
                                                     </div>
                                                     <span>{item.streetFinishPosition[language]}</span>
-                                                </div>
-                                                <div className='item-time-date-account'>
-                                                    <span>{item.finishTime}</span>
-                                                    <span>{item.finishDate}</span>
+                                                    <div className='item-time-date-account'>
+                                                        <span>{item.finishTime}</span>
+                                                        <span>{item.finishDate}</span>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div className='item-detailed-payment-group'>
-                                        <div className={itemUserHistory[0].status === null ? 'item-payment' : 'item-payment-none'}>
-                                            <div>
-                                                <span>Оплата бронювання</span>
-                                            </div>
-                                            <div className='item-payment-price'>
+                                        <div className='item-detailed-payment-group'>
+                                            <div className={objUserHistory.status === null ? 'item-payment' : 'item-payment-none'}>
                                                 <div>
-                                                    <span>До сплати: {+item.price * +itemUserHistory[0].countPersons} грн</span>
+                                                    <span>Оплата бронювання</span>
                                                 </div>
                                                 <div className='item-payment-price'>
                                                     <div>
-                                                        <span>До сплати: 4800 грн</span>
+                                                        <span>До сплати: {+item.price * +objUserHistory.countPersons} грн</span>
                                                     </div>
                                                     <div>
                                                         <img src={process.env.REACT_APP_API_URL + 'info-silver.png'} alt="info" />
@@ -163,74 +166,74 @@ const Account = () => {
                                             </div>
                                         </div>
                                     </div>
+                                )
+                            })}
+                        </div>
+                        <div className="block-account-user">
+                            <div className="account-user-profile account-user-profile-none-second">
+                                <b>{t("account.profile")}</b>
+                                <div className="account-surname-with-name">
+                                    <span>{user.name + " " + user.surname}</span>
+                                    <span>{user.email}</span>
                                 </div>
-                            )
-                        })}
-                    </div>
-                    <div className="block-account-user">
-                        <div className="account-user-profile account-user-profile-none-second">
-                            <b>{t("account.profile")}</b>
-                            <div className="account-surname-with-name">
-                                <span>{user.name + " " + user.surname}</span>
-                                <span>{user.email}</span>
+                                <div className="account-setting-profile-button">
+                                    <button onClick={() => navigate("/account/edit")}>{t("account.setting_profile")}</button>
+                                </div>
                             </div>
-                            <div className="account-setting-profile-button">
-                                <button onClick={() => navigate("/account/edit")}>{t("account.setting_profile")}</button>
-                            </div>
-                        </div>
-                        <div className="account-message">
-                            <div className='flight-message-icon'>
-                                <img src={process.env.REACT_APP_API_URL + 'info-blue.png'} alt='info' />
-                            </div>
-                            <div className="account-message-title-description">
-                                <b>{t("account.message_title")}</b>
-                                <span>{t("account.message_description")}</span>
+                            <div className="account-message">
+                                <div className='flight-message-icon'>
+                                    <img src={process.env.REACT_APP_API_URL + 'info-blue.png'} alt='info' />
+                                </div>
+                                <div className="account-message-title-description">
+                                    <b>{t("account.message_title")}</b>
+                                    <span>{t("account.message_description")}</span>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <GooglePayButton
-                    environment="PRODUCTION"
-                    buttonColor='white'
-                    paymentRequest={{
-                        apiVersion: 2,
-                        apiVersionMinor: 0,
-                        allowedPaymentMethods: [
-                        {
-                            type: 'CARD',
-                            parameters: {
-                            allowedAuthMethods: ['PAN_ONLY', 'CRYPTOGRAM_3DS'],
-                            allowedCardNetworks: ['MASTERCARD', 'VISA'],
+и                    <GooglePayButton
+                        environment="PRODUCTION"
+                        buttonColor='white'
+                        paymentRequest={{
+                            apiVersion: 2,
+                            apiVersionMinor: 0,
+                            allowedPaymentMethods: [
+                                {
+                                    type: 'CARD',
+                                    parameters: {
+                                        allowedAuthMethods: ['PAN_ONLY', 'CRYPTOGRAM_3DS'],
+                                        allowedCardNetworks: ['MASTERCARD', 'VISA'],
+                                    },
+                                    tokenizationSpecification: {
+                                        type: 'PAYMENT_GATEWAY',
+                                        parameters: {
+                                            gateway: 'example',
+                                            gatewayMerchantId: 'exampleGatewayMerchantId',
+                                        },
+                                    },
+                                },
+                            ],
+                            merchantInfo: {
+                                merchantId: '12345678901234567890',
+                                merchantName: 'Demo Merchant',
                             },
-                            tokenizationSpecification: {
-                            type: 'PAYMENT_GATEWAY',
-                            parameters: {
-                                gateway: 'example',
-                                gatewayMerchantId: 'exampleGatewayMerchantId',
+                            transactionInfo: {
+                                totalPriceStatus: 'FINAL',
+                                totalPriceLabel: 'Total',
+                                totalPrice: '100.00',
+                                currencyCode: 'GBP',
+                                countryCode: 'UA',
                             },
-                            },
-                        },
-                        ],
-                        merchantInfo: {
-                        merchantId: '12345678901234567890',
-                        merchantName: 'Demo Merchant',
-                        },
-                        transactionInfo: {
-                        totalPriceStatus: 'FINAL',
-                        totalPriceLabel: 'Total',
-                        totalPrice: '100.00',
-                        currencyCode: 'GBP',
-                        countryCode: 'UA',
-                        },
-                    }}
-                    onLoadPaymentData={paymentRequest => {
-                        console.log('load payment data', paymentRequest);
-                    }}
+                        }}
+                        onLoadPaymentData={paymentRequest => {
+                            console.log('load payment data', paymentRequest);
+                        }}
                     />
-                
+
+                </div>
             </div>
-        </>
-    
+        </div>
+
     )
 }
 
