@@ -125,8 +125,16 @@ const Services = sequelize.define("service", {
     description: { type: DataTypes.TEXT }
 })
 
+const ForgorPass=sequelize.define("forgorPass",{
+    id:{type:DataTypes.INTEGER, primaryKey:true,autoIncrementIdentity:true},
+    key:{type:DataTypes.UUID, unique:true}
+})
+
 Flight.hasMany(FlightOrder);
 FlightOrder.belongsTo(Flight);
+
+User.hasMany(ForgorPass);
+ForgorPass.belongsTo(User);
 
 Blog.hasMany(BlogRetaledFlight);
 BlogRetaledFlight.belongsTo(Blog);
@@ -146,4 +154,4 @@ ScheduleBusStatus.belongsTo(ScheduleBus)
 Flight.hasMany(ScheduleBusStatus)
 ScheduleBusStatus.belongsTo(Flight)
 
-module.exports = { User, Flight, InfoCompany, Responce, Novetly, FAQ, Blog, ScheduleBus, ScheduleBusStatus, ParamsFlight, FlightOrder, Services, BlogRetaledFlight };
+module.exports = { User, Flight, InfoCompany, Responce, Novetly, FAQ, Blog, ScheduleBus, ScheduleBusStatus, ParamsFlight, FlightOrder, Services, BlogRetaledFlight, ForgorPass };

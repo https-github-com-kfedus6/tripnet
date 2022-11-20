@@ -29,6 +29,7 @@ import TransportationAnimals from '../pages/Services/pages/TransportationAnimals
 import Contacts from '../pages/contacts/Contacts';
 import EditAccount from '../pages/Account/EditAccount';
 import FlightUpdate from '../pages/Admin/FlightUpdate';
+import ForgorPass from '../pages/Account/ForgorPass';
 
 const AppRouter = () => {
     const { IsAuthorize } = useAction();
@@ -55,6 +56,7 @@ const AppRouter = () => {
                 <Route path='services/booking_management' element={<ReservationManagement />} />
                 <Route path='services/transportation_animals' element={<TransportationAnimals />} />
                 <Route path='contacts' element={<Contacts />} />
+                <Route path='user/forgorPass/:key' element={<ForgorPass/>}/>
                 {is_login ? <Route path='account' element={<Account />} /> : <></>}
                 {is_login ? <Route path='account/edit' element={<EditAccount />} /> : <></>}
                 {is_admin ? <Route path='order' element={<FlightOrders />} /> : <></>}

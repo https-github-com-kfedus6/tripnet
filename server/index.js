@@ -8,6 +8,7 @@ const path = require('path');
 const router = require('./routers/index');
 const models = require("./models/models");
 const errorMiddlawere = require('./middleware/ErrorMiddleWare')
+const sendEmail=require("./sendEmail/index");
 //const {sendMessageInChat}=require("./telegramBot/index");
 
 const app = express(router);

@@ -4,7 +4,6 @@ import { NavLink, useNavigate } from 'react-router-dom'
 import { useAction } from '../../hooks/useAction'
 import { useTranslation } from 'react-i18next';
 import GooglePayButton from '@google-pay/button-react';
-import { LiqPayPay, LiqPaySubscribe } from "react-liqpay";
 
 import '../Account/account.css'
 
@@ -228,7 +227,15 @@ const Account = () => {
                         console.log('load payment data', paymentRequest);
                     }}
                     />
-                <LiqPayPay
+                
+            </div>
+        </>
+    
+    )
+}
+
+export default Account;
+/*<LiqPayPay
                     publicKey={process.env.REACT_APP_PUBLIC_KEY}
                     privateKey={process.env.REACT_APP_PRIVATE_KEY}
                     amount="3"
@@ -273,9 +280,4 @@ const Account = () => {
                         cursor: 'pointer'
                       }}
                     />
-            </div>
-        </div >
-    )
-}
-
-export default Account;
+                    */

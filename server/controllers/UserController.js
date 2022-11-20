@@ -1,7 +1,9 @@
 const ErrorApi = require("../error/ErrorApi");
-const { User } = require("../models/models");
+const { User, ForgorPass } = require("../models/models");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
+const uuid = require("uuid");
+const sendEmail = require("../sendEmail");
 
 class UserController {
     static Add = async (req, resp, next) => {
@@ -149,6 +151,16 @@ class UserController {
             const res = user.password == null;
             return resp.json({ status: 200, res });
         } catch (err) {
+            return next(ErrorApi.badRequest(err));
+        }
+    }
+    static ForgorPass=async(req,resp,next)=>{
+        try{
+            const {id, email}=req.user;
+            const key=uuid.v4();
+            const res=await ForgorPass.create({userId:id,key});
+            //sendEmail(email,)
+        }catch(err){
             return next(ErrorApi.badRequest(err));
         }
     }
