@@ -17,7 +17,9 @@ const InfoCompany = sequelize.define("infoCompany", {
     openingHours: { type: DataTypes.STRING },
     name: { type: DataTypes.STRING },
     address: { type: DataTypes.STRING },
-    description: { type: DataTypes.TEXT }
+    description: { type: DataTypes.TEXT },
+    telegram:{type:DataTypes.STRING},
+    viber:{type:DataTypes.STRING}
 });
 
 const Responce = sequelize.define('responce', {

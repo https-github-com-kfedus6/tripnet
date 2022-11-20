@@ -3221,3 +3221,17 @@ footer{
 .container-account{
     margin-top: 30px;
 }
+@media screen and (min-width:1024px) {
+    .admin-panel-info-company{
+        width: 70%;
+        margin: auto;
+        margin-top: 100px;
+    }
+}
+@media screen and (max-width:1024px) {
+    .admin-panel-info-company{
+        width: 90%;
+        margin: auto;
+        margin-top: 100px;
+    }
+}

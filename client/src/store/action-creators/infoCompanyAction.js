@@ -13,10 +13,10 @@ export const GetInfoCompany=()=>async(dispatch)=>{
     }
 }
 
-export const SetInfoCompany=(name,email,phone,addressUA,addressRU,openingHoursUA,openingHoursRU)=>async(dispatch)=>{
+export const SetInfoCompany=(name,email,phone,addressUA,addressRU,openingHoursUA,openingHoursRU,telegram,viber)=>async(dispatch)=>{
     try{
         const resp=await $authHost.put("api/infoCompany/update",{name,email,phone,addressUA,addressRU
-        ,openingHoursUA,openingHoursRU});
+        ,openingHoursUA,openingHoursRU,telegram,viber});
         if(resp.data.status==200){
             dispatch({type:messageActionTypes.SET_SHOW_TRUE,payload:"успішно виконано"});
             setTimeout(()=>dispatch({type:messageActionTypes.SET_SHOW_FALSE}),3000);

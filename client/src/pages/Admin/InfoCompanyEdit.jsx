@@ -14,6 +14,8 @@ const InfoCompanyEdit = () => {
     const [telephone, setTelephone] = useState("");
     const [openingHoursUA, setOpeningHoursUA] = useState("");
     const [openingHoursRU, setOpeningHoursRU] = useState("");
+    const [viber,setViber]=useState("");
+    const [telegram,setTelegram]=useState("");
     useEffect(() => {
         if (infoCompany != undefined) {
             setName(infoCompany.name);
@@ -23,8 +25,11 @@ const InfoCompanyEdit = () => {
             setTelephone(infoCompany.telephone);
             setOpeningHoursUA(infoCompany.openingHours[0]);
             setOpeningHoursRU(infoCompany.openingHours[1]);
+            setTelegram(infoCompany.telegram);
+            setViber(infoCompany.viber);
         }
     }, [infoCompany])
+    console.log(infoCompany)
     return (
         <div className='admin-panel-info-company'>
             <div className='admin-panel-block'>
@@ -56,10 +61,18 @@ const InfoCompanyEdit = () => {
                     <p>Години робити російською</p>
                     <input value={openingHoursRU} onChange={(e) => setOpeningHoursRU(e.target.value)} />
                 </div>
+                <div>
+                    <p>telegram</p>
+                    <input value={telegram} onChange={e=>setTelegram(e.target.value)}/>
+                </div>
+                <div>
+                    <p>viber</p>
+                    <input value={viber} onChange={e=>setViber(e.target.value)}/>
+                </div>
                 <br />
                 <div>
                     <button onClick={() => SetInfoCompany(name, email, telephone, addressUA,
-                        addressRU, openingHoursUA, openingHoursRU)}>Добавити</button>
+                        addressRU, openingHoursUA, openingHoursRU,telegram,viber)}>Добавити</button>
                 </div>
             </div>
         </div>

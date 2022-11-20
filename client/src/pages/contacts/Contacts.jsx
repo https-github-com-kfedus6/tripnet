@@ -37,10 +37,10 @@ const Contacts = () => {
                                 </div>
                                 <div className="contacts__social__networks">
                                     <div>
-                                        <a target="_blank" href='#'><FaTelegramPlane /></a>
+                                        <a target="_blank" href={infoCompany.telegram}><FaTelegramPlane /></a>
                                     </div>
                                     <div>
-                                        <a target="_blank" href='#'><FaViber /></a>
+                                        <a target="_blank" href={infoCompany.viber}><FaViber /></a>
                                     </div>
                                     <div>
                                         <a target="_blank" href="https://m.facebook.com/TripNET.com.ua/"><FaFacebookF /></a>
