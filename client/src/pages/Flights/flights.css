@@ -901,15 +901,6 @@
     font-size: 14px;
 }
 
-.flight-not-found {
-    padding: 80px;
-}
-
-.flight-not-found p {
-    text-align: center;
-    font-size: 26px;
-}
-
 .flight-block-update-admin {
     width: 100%;
     border-top: 1px solid #DBDBDB;

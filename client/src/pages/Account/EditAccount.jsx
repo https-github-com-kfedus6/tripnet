@@ -72,7 +72,7 @@ const EditAccount = () => {
     return (
         <div className='container-account-edit'>
             <div className='block-account-edit'>
-                <div className='bread__crumbs__main'>
+                <div className='bread-crumbs-main'>
                     <div className='bredcrumbs-flight'>
                         <span className='bredcrumbs-flight-services-link'><NavLink to="/">{t("header.first_link")}</NavLink></span>
                         <span><img src={process.env.REACT_APP_API_URL + 'chevron-right.png'} alt="right" /></span>
