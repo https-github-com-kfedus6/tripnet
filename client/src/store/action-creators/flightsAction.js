@@ -196,3 +196,14 @@ export const GetRelinkBlocks = (id) => async (dispatch) => {
         console.log(err);
     }
 }
+
+export const GetRelinkBlocksBlog=(startPosition,finishPosition,maxCount)=>async(dispatch)=>{
+    try{
+        const res=await $host("api/blog/getForFlight",{startPosition,finishPosition,maxCount});
+        if(res.data.status==200){
+            dispatch({type:flightActionTypes.FETCH_SET_RELINKBLOCKD_BLOG,payload:res.data.res});
+        }else console.log(res);
+    }catch(err){
+        console.log(err);
+    }
+}

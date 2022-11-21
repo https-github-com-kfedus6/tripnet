@@ -5,15 +5,17 @@ import { useAction } from '../../hooks/useAction';
 import FlightList from '../../components/FlightList';
 
 import './flight.css';
+import { GetRelinkBlocksBlog } from '../../store/action-creators/flightsAction';
 
 const Flight = () => {
 
     const { id } = useParams()
 
-    const { flight, status, relinkBlocks } = useSelector(state => state.flights)
+    const { flight, status, relinkBlocks,relinkBlocksBlog } = useSelector(state => state.flights)
     const { telephone } = useSelector(state => state.user);
     const { is_admin, is_login, user } = useSelector(state => state.user)
     const { language } = useSelector(state => state.language);
+    console.log(relinkBlocksBlog)
 
     const { fetchGetFlight, fetchGetFlights, fetchPutFlightStatus, fetchPutFlightBusDate,
         GetRelinkBlocks, postFlightOrder, GetPhone, fetchPatchFlightChildePrice } = useAction()
@@ -50,7 +52,10 @@ const Flight = () => {
     useEffect(() => {
         GetPhone();
     }, [])
-
+    useEffect(()=>{
+        if(flight==undefined)return;
+        GetRelinkBlocksBlog(flight.startPosition,flight.finishPosition,6);
+    },[flight])
 
     useEffect(() => {
         if (user?.name) {

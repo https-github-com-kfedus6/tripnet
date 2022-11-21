@@ -9,6 +9,6 @@ rout.get("/getDescription",BlogController.GetWithDescription);
 rout.post("/add",IsAdminMiddleWare,BlogController.Add);
 rout.delete("/del",IsAdminMiddleWare,BlogController.Del);
 rout.get("/getSimilar",BlogController.GetSimilar);
-
+rout.post("/getForFlight",BlogController.GetBlogForFlight);
 
 module.exports=rout;

@@ -120,6 +120,19 @@ class BlogController {
             return next(ErrorApi.badRequest(err));
         }
     }
+    static GetBlogForFlight=async(req,resp,next)=>{
+        try{
+            const {maxCount,finishPosition,startPosition}=req.body;
+            let blogRetaledFlight=await BlogRetaledFlight.findAll({
+                where:{[Op.or]:[{whence:startPosition},{whither:startPosition},
+                {whence:finishPosition},{whither:finishPosition}]}});
+            const res=await Blog.findAll({limit:parseInt(maxCount),where:{
+                id:{[Op.or]:[blogRetaledFlight.map(x=>x.blogId)]}}});
+            resp.json({status:200,res});
+        }catch(err){
+            return next(ErrorApi.badRequest(err));
+        }
+    }
 }
 
 module.exports = BlogController;
