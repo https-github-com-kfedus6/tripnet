@@ -77,11 +77,11 @@ const FlightsFormSort = ({ finishDate, setFinishDate, startDate, setStartDate, s
             <div className='form-checkboxes'>
                 <div>
                     <input type="radio" />
-                    <span>Рейс в один бік</span>
+                    <span>{t('flight.flight_radio')}</span>
                 </div>
                 <div>
                     <input type="radio" />
-                    <span>Рейс в дві сторони</span>
+                    <span>{t('flight.flight_radio_second')}</span>
                 </div>
             </div>
             <div className='form-inputs-button-group'>

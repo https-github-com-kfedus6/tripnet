@@ -67,10 +67,10 @@ const FlightReserve = ({ flight, name, setName, date, setDate,
         <div className='flight-block-message-reserve'>
             <div className={flight.currentFlight ? 'flight-block-reserve' : 'flight-block-reserve-none'}>
                 <div className='flight-header-reserve'>
-                    <b>Бронювання онлайн</b>
+                    <b>{t('modalbuy.title_first')}</b>
                 </div>
                 <div className='flight-contact-info'>
-                    <span>Контактні дані</span>
+                    <span>{t('modalbuy.title_second')}</span>
                     <div className='reserve-input'>
                         <input
                             id='reserve-first'
@@ -81,7 +81,7 @@ const FlightReserve = ({ flight, name, setName, date, setDate,
                             value={surename}
                             onChange={(e) => setSurename(e.target.value)}
                         />
-                        <label htmlFor='reserve-first' className='reserve-label-text'>Прізвище</label>
+                        <label htmlFor='reserve-first' className='reserve-label-text'>{t('modalbuy.surename')}</label>
                     </div>
                     <div className='reserve-input'>
                         <input
@@ -93,7 +93,7 @@ const FlightReserve = ({ flight, name, setName, date, setDate,
                             value={name}
                             onChange={(e) => setName(e.target.value)}
                         />
-                        <label htmlFor='reserve-second' className='reserve-label-text'>Ім'я</label>
+                        <label htmlFor='reserve-second' className='reserve-label-text'>{t('modalbuy.name')}</label>
                     </div>
                     <div className='reserve-input'>
                         <PhoneInput
@@ -117,7 +117,7 @@ const FlightReserve = ({ flight, name, setName, date, setDate,
                     </div>
                 </div>
                 <div className='reserve-details'>
-                    <span>Деталі рейсу</span>
+                    <span>{t('modalbuy.modal_details_title')}</span>
                     <div className='reserve-dropdown-free-place'>
                         <div className='reserve-free-place'>
                             <img src={process.env.REACT_APP_API_URL + "users-silver.png"} alt="users" />
@@ -180,7 +180,7 @@ const FlightReserve = ({ flight, name, setName, date, setDate,
                                 renderInput={({ inputRef, inputProps, InputProps }) => (
                                     <Box sx={{ display: 'flex', alignItems: 'center' }}>
                                         <input autoComplete='off' className='form-input-text-date' id='custom-date-fifth' ref={inputRef} {...inputProps} />
-                                        <label className='form-label-date-modal' htmlFor="custom-date-fifth">Дата відправлення</label>
+                                        <label className='form-label-date-modal' htmlFor="custom-date-fifth">{t('modalbuy.date_back')}</label>
                                         {InputProps?.endAdornment}
                                     </Box>
                                 )}
@@ -189,10 +189,10 @@ const FlightReserve = ({ flight, name, setName, date, setDate,
                     </div>
                 </div>
                 <div className='reverse-reserve-details'>
-                    <span className='reserve-reserve-details-text'>Зворотній рейс</span>
+                    <span className='reserve-reserve-details-text'>{t('modalbuy.flight_back')}</span>
                     <div className='reverse-checkbox'>
                         <input type="checkbox" checked={checked} onChange={() => setChecked(!checked)} />
-                        <span className='reverse-checkbox-text'>Забронювати зворотній рейс</span>
+                        <span className='reverse-checkbox-text'>{t('modalbuy.flight_back_title')}</span>
                     </div>
                     <div className={checked ? 'reserve-details' : 'reserve-none'}>
                         <div className='reserve-dropdown-free-place'>
@@ -257,7 +257,7 @@ const FlightReserve = ({ flight, name, setName, date, setDate,
                                     renderInput={({ inputRef, inputProps, InputProps }) => (
                                         <Box sx={{ display: 'flex', alignItems: 'center' }}>
                                             <input autoComplete='off' className='form-input-text-date' id='custom-date-sixth' ref={inputRef} {...inputProps} />
-                                            <label className='form-label-date-modal' htmlFor="custom-date-sixth">Дата відправлення</label>
+                                            <label className='form-label-date-modal' htmlFor="custom-date-sixth">{t('modalbuy.date_back')}</label>
                                             {InputProps?.endAdornment}
                                         </Box>
                                     )}
@@ -277,11 +277,8 @@ const FlightReserve = ({ flight, name, setName, date, setDate,
                         <img src={process.env.REACT_APP_API_URL + 'info-blue.png'} alt='info' />
                     </div>
                     <div className='flight-message-text'>
-                        <b>Зворотній рейс</b>
-                        <span>
-                            Інформація про зворотній рейс з’явиться у профілі користувача.
-                            Для незареєстрованих користувачів, інформація про зворотній рейс буде відправлено як повідомлення на вказаний номер телефону.
-                        </span>
+                        <b>{t('modalbuy.message_title_first')}</b>
+                        <span>{t('modalbuy.text_message_first')}.</span>
                     </div>
                 </div>
                 <div className={flight.currentFlight ? 'flight-info-message-second' : 'flight-message-status'}>
@@ -289,10 +286,8 @@ const FlightReserve = ({ flight, name, setName, date, setDate,
                         <img src={process.env.REACT_APP_API_URL + 'info-blue.png'} alt='info' />
                     </div>
                     <div className='flight-message-text'>
-                        <b>Оплата бронювання</b>
-                        <span>
-                            Рейс можна буде оплатити після підтвердження бронювання менеджером.
-                        </span>
+                        <b>{t('modalbuy.message_title_second')}</b>
+                        <span>{t('modalbuy.text_message_second')}.</span>
                     </div>
                 </div>
                 <div className={flight.currentFlight ? 'flight-message-status' : 'flight-info-message-thrid'}>
@@ -300,13 +295,14 @@ const FlightReserve = ({ flight, name, setName, date, setDate,
                         <img src={process.env.REACT_APP_API_URL + 'info.png'} alt='info' />
                     </div>
                     <div className='flight-message-text-thrid'>
-                        <b>Неактуальний рейс</b>
+                        <b>{t('modalbuy.message_title_third')}</b>
                         <span>
-                            Дата відправлення або ціна на цей рейс могли змінитися. Поточнюйте ці дані у менеджера за телефонами:
+                            {t('modalbuy.text_message_third')}:
                             <br />
-                            +38(056)491-23-21
-                            <br />
-                            +38(044)723-11-71
+                            <ul>
+                                <li>+38(056)491-23-21</li>
+                                <li>+38(044)723-11-71</li>
+                            </ul>
                         </span>
                     </div>
                 </div>

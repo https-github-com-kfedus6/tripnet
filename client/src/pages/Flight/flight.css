@@ -977,6 +977,33 @@
     display: none;
 }
 
+.flight-blog {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0px;
+    gap: 30px;
+    margin-top: 50px;
+    margin-bottom: 100px;
+}
+
+.flight-blog b {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 39px;
+    line-height: 120%;
+    color: #111111;
+}
+
+.flight-blog-items {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    gap: 12px;
+}
+
 @media (max-width:1024px) {
     .block-flight-info-and-reserve  {
         flex-direction: column;

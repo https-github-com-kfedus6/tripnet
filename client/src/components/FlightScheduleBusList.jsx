@@ -12,7 +12,7 @@ const FlightScheduleBusList = ({
     return (
         <div className='block-schedule'>
             <div className='schedule-date-with-to'>
-                <b>Розклад</b>
+                <b>{t('flight.bus_schedule')}</b>
                 {flight.schefule.map(item => {
                     if (is_admin) {
                         return (
@@ -35,7 +35,7 @@ const FlightScheduleBusList = ({
                                         className='create-date'
                                         onChange={(e) => setScheduleToRU(e.target.value)}
                                     />
-                                    <button className='change-date' onClick={() => changeSchedule(item.id)}>Обновити</button>
+                                    <button className='change-date' onClick={() => changeSchedule(item.id)}>{t('flight.update')}</button>
                                 </p>
                             </div>
                         )
@@ -101,9 +101,9 @@ const FlightScheduleBusList = ({
                 </div>
             </div>
             <div className='schedule-time-with-to'>
-                <span>Орієнтовний час у дорозі: {flight.timeFlight.split("//")[language]}</span>
-                <span>Час відправлення: {flight.startTime}</span>
-                <span>Час прибуття: {flight.finishTime}</span>
+                <span>{t('flight.flight_time_first')}: {flight.timeFlight.split("//")[language]}</span>
+                <span>{t('flight.flight_time_second')}: {flight.startTime}</span>
+                <span>{t('flight.flight_time_third')}: {flight.finishTime}</span>
             </div>
         </div>
     )
