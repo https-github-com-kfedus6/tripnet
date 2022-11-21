@@ -18,8 +18,8 @@ const InfoCompany = sequelize.define("infoCompany", {
     name: { type: DataTypes.STRING },
     address: { type: DataTypes.STRING },
     description: { type: DataTypes.TEXT },
-    telegram:{type:DataTypes.STRING},
-    viber:{type:DataTypes.STRING}
+    telegram: { type: DataTypes.STRING },
+    viber: { type: DataTypes.STRING }
 });
 
 const Responce = sequelize.define('responce', {
@@ -112,6 +112,7 @@ const FlightOrder = sequelize.define("flightOrder", {
     name: { type: DataTypes.STRING },
     phone: { type: DataTypes.STRING },
     email: { type: DataTypes.STRING },
+    price: { type: DataTypes.STRING },
     countPersons: { type: DataTypes.INTEGER },
     countChildren: { type: DataTypes.INTEGER },
     date: { type: DataTypes.STRING },
@@ -127,9 +128,9 @@ const Services = sequelize.define("service", {
     description: { type: DataTypes.TEXT }
 })
 
-const ForgorPass=sequelize.define("forgorPass",{
+const ForgorPass = sequelize.define("forgorPass", {
     id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
-    sekretKey:{type:DataTypes.STRING, unique:true}
+    sekretKey: { type: DataTypes.STRING, unique: true }
 })
 
 Flight.hasMany(FlightOrder);

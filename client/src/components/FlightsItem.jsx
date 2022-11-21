@@ -61,7 +61,7 @@ const FlightsItem = ({ item, sumOld, sumYoung, deleteFlight, limit, page, openMo
                             </div>
                         </div>
                         <div className='item-block-btn-price'>
-                            <span>{sum} грн</span>
+                            <span>{(item.price * sumOld) + (item.childPrice * sumYoung)} грн</span>
                             {
                                 item.currentFlight ?
                                     <button className='item-button-active' onClick={() => openModal(item.id)}>

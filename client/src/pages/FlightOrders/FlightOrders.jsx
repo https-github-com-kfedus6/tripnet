@@ -34,6 +34,7 @@ const FlightOrders = () => {
         if (isActive == i) {
             return setIsActive(null);
         }
+        console.log(i)
         setIsActive(i);
         fetchGetFlight(id);
     }
@@ -62,7 +63,7 @@ const FlightOrders = () => {
     const handleChange = (event, value) => {
         setPage(value)
     }
-    
+
     if (Array.isArray(flightOrders)) {
         return <></>
     } else {

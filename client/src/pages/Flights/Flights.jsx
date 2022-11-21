@@ -139,6 +139,7 @@ const Flights = ({ isShowFilter }) => {
                     countPersonsBack: sumOldBack,
                     countChildrenBack: sumYoungBack,
                     dateBack: `${dateBack.$D}.${dateBack.$M + 1}.${dateBack.$y}`,
+                    price: (flight.price * sumOld) + (flight.childPrice * sumYoung),
                     flightId: flightId
                 })
                 setSurename('')
@@ -163,6 +164,7 @@ const Flights = ({ isShowFilter }) => {
                     countPersonsBack: sumOldBack,
                     countChildrenBack: sumYoungBack,
                     dateBack: `${dateBack.$D}.${dateBack.$M + 1}.${dateBack.$y}`,
+                    price: (flight.price * sumOld) + (flight.childPrice * sumYoung),
                     flightId: flightId,
                     userId: user.id
                 })

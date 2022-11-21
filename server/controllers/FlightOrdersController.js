@@ -4,12 +4,12 @@ const ErrorApi = require("../error/ErrorApi");
 class FlightOrdersController {
     static Add = async (req, resp, next) => {
         try {
-            const { flightId, surename, name, email, countPersons, countChildren, phone, date, countPersonsBack, countChildrenBack, dateBack, userId } = req.body;
+            const { flightId, price, surename, name, email, countPersons, countChildren, phone, date, countPersonsBack, countChildrenBack, dateBack, userId } = req.body;
             let user = req.user;
             let res;
             if (userId == 0)
-                res = await FlightOrder.create({ surename, name, email, countPersons, countChildren, phone, date, countPersonsBack, countChildrenBack, dateBack, flightId });
-            else res = await FlightOrder.create({ surename, name, email, countPersons, countChildren, phone, date, countPersonsBack, countChildrenBack, dateBack, flightId, userId });
+                res = await FlightOrder.create({ price, surename, name, email, countPersons, countChildren, phone, date, countPersonsBack, countChildrenBack, dateBack, flightId });
+            else res = await FlightOrder.create({ price, surename, name, email, countPersons, countChildren, phone, date, countPersonsBack, countChildrenBack, dateBack, flightId, userId });
             return resp.json({ status: 200, res });
         } catch (err) {
             return next(ErrorApi.badRequest(err));
