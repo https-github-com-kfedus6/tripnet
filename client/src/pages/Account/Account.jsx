@@ -19,7 +19,9 @@ const Account = () => {
     const { language } = useSelector(state => state.language)
 
     const { SetShowMessgeFalse, SetShowMessgeTrue, getUserHistory,
-        EditEmail, IsAuthorize, ChangePassword, fetchGetFlightAccountOrders } = useAction()
+        EditEmail, IsAuthorize, ChangePassword, fetchGetFlightAccountOrders, deleteFlightOrder } = useAction()
+
+    const [checkAccountDetails, setCheckAccountDetails] = useState(null)
 
     /*  const [oldPassword, setOldPassword] = useState("");
      const [newPassword, setNewPassword] = useState("");
@@ -54,12 +56,16 @@ const Account = () => {
          navigate("/");
      } */
 
-    /*  const toggle = (i, id) => {
-         if (isActive == i) {
-             return setIsActive(null);
-         }
-         setIsActive(i);
-     } */
+    const handleDetailsAccount = (i) => {
+        if (checkAccountDetails == i) {
+            return setCheckAccountDetails(null);
+        }
+        setCheckAccountDetails(i);
+    }
+
+    const deleteOrder = (id) => {
+        deleteFlightOrder(id);
+    }
 
     return (
         <div className='container-account'>
@@ -85,7 +91,8 @@ const Account = () => {
                             <div className='account-main-title'>
                                 <b>{t("account.my_booking")}</b>
                             </div>
-                            {flightAccountOrders.map(item => {
+                            {flightAccountOrders.map((item, i) => {
+
                                 let itemUserHistory = userHistoty.filter(user => user.flightId === item.id)
                                 let objUserHistory = itemUserHistory.reduce((target, key) => {
                                     target = key
@@ -93,7 +100,7 @@ const Account = () => {
                                 }, {})
 
                                 return (
-                                    <div key={item.id} className='block-flight-cart-account'>
+                                    <div key={i} className='block-flight-cart-account'>
                                         {objUserHistory.status === null ?
                                             <div className='flight-cart-account-status-processing'>
                                                 <img src={process.env.REACT_APP_API_URL + 'clock-pink.png'} alt="time" />
@@ -147,7 +154,7 @@ const Account = () => {
                                                 </div>
                                                 <div className='item-payment-price'>
                                                     <div>
-                                                        <span>До сплати: {+item.price * +objUserHistory.countPersons} грн</span>
+                                                        <span>До сплати: {objUserHistory.price} грн</span>
                                                     </div>
                                                     <div>
                                                         <img src={process.env.REACT_APP_API_URL + 'info-silver.png'} alt="info" />
@@ -156,12 +163,46 @@ const Account = () => {
                                                 </div>
                                             </div>
                                             <div className='item-detailed-info-main'>
-                                                <div>
-                                                    <button>Детальна інформація</button>
-                                                    <img src={process.env.REACT_APP_API_URL + 'Vector-account.png'} alt="vector" />
+                                                <div className='item-detailed-info-button'>
+                                                    <div>
+                                                        <button onClick={() => handleDetailsAccount(i)}>Детальна інформація</button>
+                                                        <img src={process.env.REACT_APP_API_URL + 'Vector-account.png'} alt="vector" />
+                                                    </div>
+                                                    <div>
+                                                        <NavLink to={`/flight/${item.startPosition[language]}-${item.finishPosition[language]}/${item.id}`}>Сторінка рейсу</NavLink>
+                                                    </div>
                                                 </div>
-                                                <div>
-                                                    <NavLink to={`/flight/${item.startPosition[language]}-${item.finishPosition[language]}/${item.id}`}>Сторінка рейсу</NavLink>
+                                                <div className={checkAccountDetails == i ? 'item-detailed-info-user' : 'item-detailed-info-none'} >
+                                                    <div className='item-contact-details'>
+                                                        <span className='item-contact-details-title'>Контактні дані</span>
+                                                        <div className='item-contact-details-info'>
+                                                            <img src={process.env.REACT_APP_API_URL + 'user-account.png'} alt="user" />
+                                                            <span>Замовник: {`${objUserHistory.surename} ${objUserHistory.name}`}</span>
+                                                        </div>
+                                                        <div className='item-contact-details-info'>
+                                                            <img src={process.env.REACT_APP_API_URL + 'phone-account.png'} alt="phone" />
+                                                            <span>Телефон: {objUserHistory.phone}</span>
+                                                        </div>
+                                                        <div className='item-contact-details-info'>
+                                                            <img src={process.env.REACT_APP_API_URL + 'mail-account.png'} alt="email" />
+                                                            <span>Email: {objUserHistory.email}</span>
+                                                        </div>
+                                                    </div>
+                                                    <div className='item-contact-details'>
+                                                        <span className='item-contact-details-title'>Деталі рейсу</span>
+                                                        <div className='item-contact-details-info'>
+                                                            <img src={process.env.REACT_APP_API_URL + 'users-account.png'} alt="users" />
+                                                            <span>Пасажири: {`${objUserHistory.countPersons} дорослих, ${objUserHistory.countChildren} дитина`}</span>
+                                                        </div>
+                                                        <div className='item-contact-details-info'>
+                                                            <img src={process.env.REACT_APP_API_URL + 'phone-account.png'} alt="phone" />
+                                                            <span>Дата відправлення: {objUserHistory.date}</span>
+                                                        </div>
+                                                        <div className='item-contact-details-delete'>
+                                                            <img src={process.env.REACT_APP_API_URL + 'trash-account.png'} alt="delete" />
+                                                            <button onClick={() => deleteOrder(objUserHistory.id)}>Скасувати бронювання</button>
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -191,7 +232,7 @@ const Account = () => {
                             </div>
                         </div>
                     </div>
-и                    <GooglePayButton
+                    и                    <GooglePayButton
                         environment="PRODUCTION"
                         buttonColor='white'
                         paymentRequest={{
@@ -229,10 +270,9 @@ const Account = () => {
                             console.log('load payment data', paymentRequest);
                         }}
                     />
-
                 </div>
             </div>
-        </div>
+        </div >
 
     )
 }

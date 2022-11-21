@@ -117,6 +117,7 @@ const Flight = () => {
                     countPersonsBack: sumOldBack,
                     countChildrenBack: sumYoungBack,
                     dateBack: `${dateBack.$D}.${dateBack.$M + 1}.${dateBack.$y}`,
+                    price: (flight.price * sumOld) + (flight.childPrice * sumYoung),
                     flightId: id
                 })
                 setSurename('')
@@ -141,6 +142,7 @@ const Flight = () => {
                     countPersonsBack: sumOldBack,
                     countChildrenBack: sumYoungBack,
                     dateBack: `${dateBack.$D}.${dateBack.$M + 1}.${dateBack.$y}`,
+                    price: (flight.price * sumOld) + (flight.childPrice * sumYoung),
                     flightId: id,
                     userId: user.id
                 })

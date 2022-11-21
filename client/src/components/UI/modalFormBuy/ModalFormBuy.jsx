@@ -307,7 +307,7 @@ const ModalFormBuy = ({ visibleBuy, name, setName, date, setDate,
                                     </div>
                                 </div>
                                 <div className='reserve-btn'>
-                                    <span>{flight.price} грн</span>
+                                    <span>{(flight.price * sumOld) + (flight.childPrice * sumYoung)} грн</span>
                                     <button onClick={reserveTicket}> {t('modalbuy.btn-buy')}</button>
                                 </div>
                             </div>

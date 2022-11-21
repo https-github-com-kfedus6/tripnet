@@ -464,11 +464,20 @@
     width: 100%;
     box-sizing: border-box;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: space-between;
     align-items: center;
     padding: 12px 25px;
     border-top: 1px solid #DBDBDB;
+}
+
+.item-detailed-info-button {
+    width: 100%;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .item-detailed-info-main div:nth-child(1) button {
@@ -510,6 +519,92 @@
 }
 
 .item-payment-none {
+    display: none;
+}
+
+.item-detailed-info-user {
+    width: 100%;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.item-contact-details {
+    width: 100%;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 15px 5px;
+    gap: 12px;
+}
+
+.item-contact-details-title {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 150%;
+    color: #111111;
+    cursor: default;
+}
+
+.item-contact-details-info {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 0px;
+    gap: 6px;
+}
+
+.item-contact-details-info img {
+    width: 16px;
+    height: 16px;
+}
+
+.item-contact-details-info span {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 150%;
+    color: #4C4C4C;
+    cursor: default;
+}
+
+.item-contact-details-delete {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0px;
+    gap: 6px;
+    margin-top: 5px;
+}
+
+.item-contact-details-delete img {
+    width: 16px;
+    height: 16px;
+}
+
+.item-contact-details-delete button {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 120%;
+    color: #FF2F2F;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.item-contact-details-delete button:hover {
+    color: #FF8282;
+    transition: all ease 0.4s;
+}
+
+.item-detailed-info-none {
     display: none;
 }
 

@@ -2692,9 +2692,7 @@ footer{
         margin-left: 15px;
     }
 }
-.burger__button__register{
-    margin-top: 30px;
-}
+
 .burger__button__register button{
     font-family: 'Inter';
     font-style: normal;
@@ -2711,6 +2709,11 @@ footer{
 .burger__button__log__in{
     margin-top: 30px;
 }
+
+.burger__button__register{
+    margin-top: 30px;
+}
+
 .burger__button__log__in button{
     font-family: 'Inter';
     font-style: normal;
@@ -2724,6 +2727,7 @@ footer{
     border-color: #2F82FF;
     border-radius: 10px;
 }
+
 @media screen and (min-width:1024px) {
     .burger__menu__main{
         display: none;
@@ -3276,9 +3280,12 @@ footer{
 }
 @media screen and (min-width:1024px) {
     .forgot__pass__main{
-        width: 70%;
+        width: 40%;
         margin: auto;
         margin-top: 120px;
+        display: flex;
+        gap: 15px;
+        flex-direction: column;
     }
 }
 @media screen and (max-width:1024px) {
@@ -3286,5 +3293,8 @@ footer{
         width: 90%;
         margin: auto;
         margin-top: 120px;
+        display: flex;
+        gap: 15px;
+        flex-direction: column;
     }
 }
