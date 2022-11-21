@@ -128,8 +128,8 @@ const Services = sequelize.define("service", {
 })
 
 const ForgorPass=sequelize.define("forgorPass",{
-    id:{type:DataTypes.INTEGER, primaryKey:true,autoIncrementIdentity:true},
-    key:{type:DataTypes.UUID, unique:true}
+    id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
+    sekretKey:{type:DataTypes.STRING, unique:true}
 })
 
 Flight.hasMany(FlightOrder);
