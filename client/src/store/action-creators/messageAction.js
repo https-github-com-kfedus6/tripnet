@@ -7,3 +7,7 @@ export const SetShowMessgeTrue = (text) => async (dispatch) => {
 export const SetShowMessgeFalse = () => async (dispatch) => {
     dispatch({ type: messageActionTypes.SET_SHOW_FALSE });
 }
+
+export const SetShowMessgeTrueWithTitle=(text,title)=>async(dispatch)=>{
+    dispatch({ type: messageActionTypes.SET_SHOW_TRUE_WITH_TITLE, payload: {text:text,title:title} });
+}

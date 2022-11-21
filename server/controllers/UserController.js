@@ -156,10 +156,38 @@ class UserController {
     }
     static ForgorPass=async(req,resp,next)=>{
         try{
-            const {id, email}=req.user;
+            const {email}=req.body;
+            const user=await User.findOne({where:{email}});
+            if(user==null)return resp.json({status:200,reply:-1});
             const key=uuid.v4();
-            const res=await ForgorPass.create({userId:id,key});
-            //sendEmail(email,)
+            console.log(key,user.id)
+            const res= await ForgorPass.create({userId:user.id,sekretKey:key});
+            console.log(res);
+            sendEmail(email,"Для відновлення паролю перейдіть по силці "+process.env.FRONT_URL+"user/forgorPass/"+key+" якщо це не ви то просто проігноруйте це повідмолення.");
+            return resp.json({status:200,reply:1})
+        }catch(err){
+            return next(ErrorApi.badRequest(err));
+        }
+    }
+    static FotgotPassTrue=async(req,resp,next)=>{
+        try{
+            console.log(1);
+            const {key,newPass}=req.body;
+            console.log(key,newPass);
+            const {userId}=await ForgorPass.findOne({where:{sekretKey:key}});
+            const cryptPass = await bcrypt.hash(newPass, 3);
+            const res=await User.update({password:cryptPass},{where:{id:userId}});
+            return resp.json({status:200,reply:1});
+        }catch(err){
+            return next(ErrorApi.badRequest(err));
+        }
+    }
+    static IsForgotPassTrue=async(req,resp,next)=>{
+        try{
+            const {key}=req.body;
+            const forgorPass=await ForgorPass.findOne({where:{sekretKey:key}})
+            const res=forgorPass!=null
+            return resp.json({status:200,res});
         }catch(err){
             return next(ErrorApi.badRequest(err));
         }

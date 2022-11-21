@@ -3,7 +3,10 @@ export const userActionTypes = {
     AUTHORIZE_USER_SUCCESSFUL: "AUTHORIZE_USER_SUCCESSFUL",
     NO_AUTHORIZE: "NO_AUTHORIZE",
     GET_PHONE: "GET_PHONE",
-    SET_IS_PASSWORD_NULL:"SET_IS_PASSWORD_NULL"
+    SET_IS_PASSWORD_NULL:"SET_IS_PASSWORD_NULL",
+    SET_IS_EMAIL_TRUE:"SET_IS_EMAIL_TRUE",
+    SET_SECRET_KEY:"SET_SECRET_KEY",
+    SET_REPLY:"SET_REPLY"
 }
 
 const initialState = {
@@ -12,7 +15,8 @@ const initialState = {
     is_admin: false,
     reply: 0,
     telephone: "",
-    isPasswordNull:false
+    isPasswordNull:false,
+    isSecretKeyTrue:null
 }
 
 export const userReducer = (state = initialState, action) => {
@@ -31,6 +35,15 @@ export const userReducer = (state = initialState, action) => {
         }
         case userActionTypes.SET_IS_PASSWORD_NULL:{
             return {...state,isPasswordNull:action.payload};
+        }
+        case userActionTypes.SET_IS_EMAIL_TRUE:{//is email true reply=1 else reply=-1
+            return {...state,reply:action.payload};
+        }
+        case userActionTypes.SET_SECRET_KEY:{
+            return {...state,isSecretKeyTrue:action.payload};
+        }
+        case userActionTypes.SET_REPLY:{
+            return {...state,reply:action.payload};
         }
         default: {
             return state

@@ -13,5 +13,8 @@ rout.post("/regWithGoogle",UserController.RegInGoogle);
 rout.post("/registerWithGoogle",UserController.RegisterInGoogle);
 rout.post("/updateInfoForUser",AuthMiddleWare,UserController.SetNewInfoAboutUser);
 rout.post("/isPasswordNull",AuthMiddleWare,UserController.IsPasswordNull);
+rout.post("/forgotPass",UserController.ForgorPass);
+rout.post("/isKeyForgotPassTrue",UserController.IsForgotPassTrue);
+rout.post("/forgotPassTrue",UserController.FotgotPassTrue)
 
 module.exports = rout;

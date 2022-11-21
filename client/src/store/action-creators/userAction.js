@@ -150,3 +150,43 @@ export const IsPasswordNull=()=>async(dispatch)=>{
         console.log(err);
     }
 }
+export const ForgotPassword=(email)=>async(dispatch)=>{
+    try{
+        const res=await $host.post("api/user/forgotPass",{email});
+        console.log(res);
+        if(res.data.status==200){
+            dispatch({type:userActionTypes.SET_IS_EMAIL_TRUE,payload:res.data.reply})
+        }else{
+            dispatch({type:messageActionTypes.SET_SHOW_TRUE,payload:"error"});
+            setTimeout(()=>dispatch({type:messageActionTypes.SET_SHOW_FALSE}),5000);
+            console.log(res)
+        }
+    }catch(err){
+        dispatch({type:messageActionTypes.SET_SHOW_TRUE,payload:"error"});
+        setTimeout(()=>dispatch({type:messageActionTypes.SET_SHOW_FALSE}),5000);
+    }
+}
+export const IsSecretKeyTrue=(key)=>async(dispatch)=>{
+    try{
+        const res=await $host.post("api/user/isKeyForgotPassTrue",{key});
+        if(res.data.status==200){
+            dispatch({type:userActionTypes.SET_SECRET_KEY,payload:res.data.res});
+        }else{
+            console.log(res);
+        }
+    }catch(err){
+        console.log(err)
+    }
+}
+export const ForgorPassTrue=(key,newPassword)=>async(dispatch)=>{
+    try{
+        const res=await $host.post("api/user/forgotPassTrue",{key,newPass:newPassword});
+        if(res.data.status==200){
+            dispatch({type:userActionTypes.SET_REPLY,payload:res.data.reply});
+        }else{
+            console.log(res);
+        }
+    }catch(err){
+        console.log(err);
+    }
+}

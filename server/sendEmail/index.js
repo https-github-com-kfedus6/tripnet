@@ -19,7 +19,7 @@ const sendEmail=(where,text)=>{
     }
     transporter.sendMail(mailOption,(err,info)=>{
         if(err){
-            console.log(err);
+            console.log(1);
         }else {
             mailOption.to=where;
             mailOption.html=text;
