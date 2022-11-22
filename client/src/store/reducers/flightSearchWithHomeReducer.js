@@ -6,7 +6,8 @@ export const flightsSearchWithHomeActionTypes = {
 const initialState = {
     startPositionInitial: "",
     finishPositionInitial: "",
-    dateInitial: "",
+    startDateInitial: "",
+    finishDateInitial: "",
     sumOldInitial: 1,
     sumYoungInitial: 0
 }
@@ -16,7 +17,7 @@ export const flightsSearchWithHomeReducer = (state = initialState, action) => {
         case flightsSearchWithHomeActionTypes.FETCH_SET_INFO: {
             return {
                 ...state, startPositionInitial: action.payload.startPosition, finishPositionInitial: action.payload.finishPosition,
-                dateInitial: action.payload.date, sumOldInitial: action.payload.sumOld, sumYoungInitial: action.payload.sumYoung
+                startDateInitial: action.payload.startDate, finishDateInitial: action.payload.finishDate, sumOldInitial: action.payload.sumOld, sumYoungInitial: action.payload.sumYoung
             };
         }
         default: return state;

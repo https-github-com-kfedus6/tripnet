@@ -92,8 +92,12 @@ class FlightsController {
 
     async getSortFlights(req, res, next) {
         try {
-            let { startPosition, finishPosition, startDate, countFreePlace, limit, page } = req.query
+            let { startPosition, finishPosition, startDate, finishDate, countFreePlace, limit, page } = req.query
             countFreePlace = parseInt(countFreePlace);
+            console.log('startPosition', startPosition)
+            console.log('finishPosition', finishPosition)
+            console.log('startDate', startDate)
+            console.log('finishDate', finishDate)
             if (limit === undefined) {
                 limit = 3
             }
@@ -121,8 +125,7 @@ class FlightsController {
                 const regFinishPosition = `(^${finishPosition})|(\/\/${finishPosition}$)`;
                 arrFlights = await Flight.findAndCountAll({ where: { startPosition: { [Op.regexp]: regStartPosition }, finishPosition: { [Op.regexp]: regFinishPosition }, countFreePlace: { [Op.gte]: countFreePlace } }, limit: Number(limit), offset: Number(offset), order: [['id', 'DESC']] })
 
-
-            } else if (startPosition && finishPosition && startDate) {
+            } else if (startPosition && finishPosition && startDate && !finishDate) {
                 const regStartPosition = `(^${startPosition})|(\/\/${startPosition}$)`;
                 const regFinishPosition = `(^${finishPosition})|(\/\/${finishPosition}$)`;
                 arrFlights = await Flight.findAndCountAll({
@@ -132,9 +135,20 @@ class FlightsController {
                     },
                     limit: Number(limit), offset: Number(offset), order: [['id', 'DESC']]
                 })
-
+                console.log('3')
+            } else if (startPosition && finishPosition && startDate && finishDate) {
+                const regStartPosition = `(^${startPosition})|(\/\/${startPosition}$)`;
+                const regFinishPosition = `(^${finishPosition})|(\/\/${finishPosition}$)`;
+                arrFlights = await Flight.findAndCountAll({
+                    where: {
+                        startPosition: { [Op.regexp]: regStartPosition }, finishPosition: { [Op.regexp]: regFinishPosition },
+                        startDate: startDate, countFreePlace: { [Op.gte]: countFreePlace }
+                    },
+                    limit: Number(limit), offset: Number(offset), order: [['id', 'DESC']]
+                })
+                console.log('10')
             } else if (startDate && !startPosition && !finishPosition) {
-
+                console.log('4')
                 arrFlights = await Flight.findAndCountAll({ where: { startDate: startDate, countFreePlace: { [Op.gte]: countFreePlace } }, limit: Number(limit), offset: Number(offset), order: [['id', 'DESC']] })
 
             } else if (startDate && startPosition && !finishPosition) {
@@ -149,6 +163,7 @@ class FlightsController {
                     },
                     limit: Number(limit), offset: Number(offset), order: [['id', 'DESC']]
                 })
+                console.log('5')
             }
             for (let i = 0; i < arrFlights.rows.length; i++) {
                 arrFlights.rows[i].startPosition = arrFlights.rows[i].startPosition.split("//");

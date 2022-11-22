@@ -24,7 +24,7 @@ const Home = () => {
     }, [language])
     const navigate = useNavigate();
     const search = () => {
-        SetFlightParams(startPosition, finishPosition, startDate, sumOld, sumYoung);
+        SetFlightParams(startPosition, finishPosition, startDate, finishDate, sumOld, sumYoung);
         navigate("/flightsCategory");
     }
 

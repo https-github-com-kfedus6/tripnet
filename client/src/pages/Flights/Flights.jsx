@@ -27,12 +27,12 @@ const Flights = ({ isShowFilter }) => {
     const [flightId, setFlightId] = useState('')
     const [checked, setChecked] = useState(false);
 
-    const { startPositionInitial, finishPositionInitial, dateInitial, sumOldInitial, sumYoungInitial } = useSelector(state => state.flightsSearchWithHomeReducer)
+    const { startPositionInitial, finishPositionInitial, startDateInitial, finishDateInitial, sumOldInitial, sumYoungInitial } = useSelector(state => state.flightsSearchWithHomeReducer)
 
     const [startPosition, setStartPosition] = useState(startPositionInitial)
     const [finishPosition, setFinishPosition] = useState(finishPositionInitial)
-    const [startDate, setStartDate] = useState(dateInitial)
-    const [finishDate, setFinishDate] = useState(dateInitial)
+    const [startDate, setStartDate] = useState(startDateInitial)
+    const [finishDate, setFinishDate] = useState(finishDateInitial)
     const [totalCount, setTotalCount] = useState(undefined)
     const [limit, setLimit] = useState(5)
     const [page, setPage] = useState(1)
@@ -52,6 +52,7 @@ const Flights = ({ isShowFilter }) => {
             startPosition: startPosition,
             finishPosition: finishPosition,
             startDate: startDate,
+            finishDate: finishDate,
             countFreePlace: sumYoung + sumOld,
             limit: limit,
             page: page
@@ -74,12 +75,13 @@ const Flights = ({ isShowFilter }) => {
 
         event.preventDefault();
         setPage(1);
-        SetFlightParams(startPosition, finishPosition, startDate, sumOld, sumYoung);
+        SetFlightParams(startPosition, finishPosition, startDate, finishDate, sumOld, sumYoung);
         if (changePosition === true) {
             fetchGetFlights({
                 startPosition: startPosition,
                 finishPosition: finishPosition,
-                startDate: startDate,
+                startDate: !startDate ? undefined : `${startDate.$D}.${startDate.$M + 1}.${startDate.$y}`,
+                finishDate: !finishDate ? undefined : `${finishDate.$D}.${finishDate.$M + 1}.${finishDate.$y}`,
                 countFreePlace: sumYoung + sumOld,
                 limit: limit,
                 page: 1
@@ -88,7 +90,8 @@ const Flights = ({ isShowFilter }) => {
             fetchGetFlights({
                 startPosition: startPosition,
                 finishPosition: finishPosition,
-                startDate: startDate,
+                startDate: !startDate ? undefined : `${startDate.$D}.${startDate.$M + 1}.${startDate.$y}`,
+                finishDate: !finishDate ? undefined : `${finishDate.$D}.${finishDate.$M + 1}.${finishDate.$y}`,
                 countFreePlace: sumYoung + sumOld,
                 limit: limit,
                 page: 1

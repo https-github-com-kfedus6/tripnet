@@ -104,19 +104,19 @@ const Account = () => {
                                         {objUserHistory.status === null ?
                                             <div className='flight-cart-account-status-processing'>
                                                 <img src={process.env.REACT_APP_API_URL + 'clock-pink.png'} alt="time" />
-                                                <span>В обробці</span>
+                                                <span>{t('account.in_processing')}</span>
                                             </div>
                                             :
                                             objUserHistory.status === true
                                                 ?
                                                 <div className='flight-cart-account-status-success'>
                                                     <img src={process.env.REACT_APP_API_URL + 'check.png'} alt="time" />
-                                                    <span>Підтверджено</span>
+                                                    <span>{t('account.accepted')}</span>
                                                 </div>
                                                 :
                                                 <div className='flight-cart-account-status-cancelled'>
                                                     <img src={process.env.REACT_APP_API_URL + 'x-x.png'} alt="time" />
-                                                    <span>Скасовано</span>
+                                                    <span>{t('account.canceled')}</span>
                                                 </div>
                                         }
                                         <div className='item-start-finish-position-account'>
@@ -150,34 +150,34 @@ const Account = () => {
                                         <div className='item-detailed-payment-group'>
                                             <div className={objUserHistory.status === null ? 'item-payment' : 'item-payment-none'}>
                                                 <div>
-                                                    <span>Оплата бронювання</span>
+                                                    <span>{t('modalbuy.message_title_second')}</span>
                                                 </div>
                                                 <div className='item-payment-price'>
                                                     <div>
-                                                        <span>До сплати: {objUserHistory.price} грн</span>
+                                                        <span>{t('account.payable')}: {objUserHistory.price} грн</span>
                                                     </div>
                                                     <div>
                                                         <img src={process.env.REACT_APP_API_URL + 'info-silver.png'} alt="info" />
-                                                        <span>Оплата стане доступною після підтвердження бронювання.</span>
+                                                        <span>{t('account.payable_success')}.</span>
                                                     </div>
                                                 </div>
                                             </div>
                                             <div className='item-detailed-info-main'>
                                                 <div className='item-detailed-info-button'>
                                                     <div>
-                                                        <button onClick={() => handleDetailsAccount(i)}>Детальна інформація</button>
+                                                        <button onClick={() => handleDetailsAccount(i)}>{t('account.details_btn')}</button>
                                                         <img src={process.env.REACT_APP_API_URL + 'Vector-account.png'} alt="vector" />
                                                     </div>
                                                     <div>
-                                                        <NavLink to={`/flight/${item.startPosition[language]}-${item.finishPosition[language]}/${item.id}`}>Сторінка рейсу</NavLink>
+                                                        <NavLink to={`/flight/${item.startPosition[language]}-${item.finishPosition[language]}/${item.id}`}>{t('account.flight_btn')}</NavLink>
                                                     </div>
                                                 </div>
                                                 <div className={checkAccountDetails == i ? 'item-detailed-info-user' : 'item-detailed-info-none'} >
                                                     <div className='item-contact-details'>
-                                                        <span className='item-contact-details-title'>Контактні дані</span>
+                                                        <span className='item-contact-details-title'>{t('account.contact_data')}</span>
                                                         <div className='item-contact-details-info'>
                                                             <img src={process.env.REACT_APP_API_URL + 'user-account.png'} alt="user" />
-                                                            <span>Замовник: {`${objUserHistory.surename} ${objUserHistory.name}`}</span>
+                                                            <span>{t('account.client')}: {`${objUserHistory.surename} ${objUserHistory.name}`}</span>
                                                         </div>
                                                         <div className='item-contact-details-info'>
                                                             <img src={process.env.REACT_APP_API_URL + 'phone-account.png'} alt="phone" />
@@ -189,18 +189,18 @@ const Account = () => {
                                                         </div>
                                                     </div>
                                                     <div className='item-contact-details'>
-                                                        <span className='item-contact-details-title'>Деталі рейсу</span>
+                                                        <span className='item-contact-details-title'>{t('modalbuy.modal_details_title')}</span>
                                                         <div className='item-contact-details-info'>
                                                             <img src={process.env.REACT_APP_API_URL + 'users-account.png'} alt="users" />
-                                                            <span>Пасажири: {`${objUserHistory.countPersons} дорослих, ${objUserHistory.countChildren} дитина`}</span>
+                                                            <span>{t('flight.passegers')}: {`${objUserHistory.countPersons} ${t('flight.pass_old')}, ${objUserHistory.countChildren} дитина`}</span>
                                                         </div>
                                                         <div className='item-contact-details-info'>
                                                             <img src={process.env.REACT_APP_API_URL + 'phone-account.png'} alt="phone" />
-                                                            <span>Дата відправлення: {objUserHistory.date}</span>
+                                                            <span>{t('modalbuy.date_back')}: {objUserHistory.date}</span>
                                                         </div>
                                                         <div className='item-contact-details-delete'>
                                                             <img src={process.env.REACT_APP_API_URL + 'trash-account.png'} alt="delete" />
-                                                            <button onClick={() => deleteOrder(objUserHistory.id)}>Скасувати бронювання</button>
+                                                            <button onClick={() => deleteOrder(objUserHistory.id)}>{t('account.delete_user_order')}</button>
                                                         </div>
                                                     </div>
                                                 </div>
