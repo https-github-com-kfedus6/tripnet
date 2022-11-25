@@ -4,7 +4,9 @@ import { LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { DesktopDatePicker } from '@mui/x-date-pickers/DesktopDatePicker';
 import Box from '@mui/material/Box';
-import ukLocale from 'date-fns/locale/uk';
+import 'dayjs/locale/ru';
+import 'dayjs/locale/uk';
+
 import { t } from 'i18next'
 
 const FlightReserve = ({ flight, name, setName, date, setDate,
@@ -171,7 +173,7 @@ const FlightReserve = ({ flight, name, setName, date, setDate,
                     <div className='form-input-date'>
                         <LocalizationProvider
                             dateAdapter={AdapterDayjs}
-                            adapterLocale={ukLocale}
+                            adapterLocale={localStorage.getItem('i18nextLng') === 'UA' ? 'uk' : 'ru'}
                         >
                             <DesktopDatePicker
                                 inputFormat="DD.MM.YYYY"
@@ -248,7 +250,7 @@ const FlightReserve = ({ flight, name, setName, date, setDate,
                         <div className='form-input-date'>
                             <LocalizationProvider
                                 dateAdapter={AdapterDayjs}
-                                adapterLocale={ukLocale}
+                                adapterLocale={localStorage.getItem('i18nextLng') === 'UA' ? 'uk' : 'ru'}
                             >
                                 <DesktopDatePicker
                                     inputFormat="DD.MM.YYYY"

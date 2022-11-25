@@ -515,6 +515,7 @@
     font-size: 16px;
     line-height: 120%;
     color: #FFFFFF;
+    outline:none;
 }
 
 .form-button-search button:hover {
@@ -855,15 +856,7 @@
     align-items: center;
     flex-direction: column;
     margin-top: 20px;
-}
-
-.page-more {
-    width: 60%;
-}
-
-.page-none {
-    display: none;
-}
+} 
 
 .page-wrapper-none {
     display: none;
@@ -871,25 +864,6 @@
 
 .page-wrapper {
     display: flex;
-    margin-top: 10px;
-}
-
-.page-wrapper a {
-    text-decoration: none;
-    color: #000;
-}
-
-.page {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 45px;
-    height: 45px;
-    font-size: 18px;
-    border: 1px solid silver;
-    border-radius: 25px;
-    cursor: pointer;
-    margin-right: 1px;
 }
 
 .admin-delete-flight button {

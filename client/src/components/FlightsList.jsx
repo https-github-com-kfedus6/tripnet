@@ -6,7 +6,7 @@ import Stack from '@mui/material/Stack';
 import Pagination from '@mui/material/Pagination';
 import { t } from 'i18next'
 
-const FlightsList = ({ finishPosition, finishDate, setFinishDate, startPosition, startDate, flights, setStartDate, setStartPosition, setFinishPosition, sortFlights, sumOld, setSumOld, sumYoung, setSumYoung, deleteFlight, limit, page, isFilterTrue, openModal, changePosition, setChangePosition, changePositionFun, totalCount, handleChange, changeCurrentFlight }) => {
+const FlightsList = ({ finishPosition, finishDate, setFinishDate, startPosition, startDate, flights, setStartDate, setStartPosition, setFinishPosition, sortFlights, sumOld, setSumOld, sumYoung, setSumYoung, deleteFlight, limit, page, isFilterTrue, openModal, changePosition, setChangePosition, changePositionFun, totalCount, handleChange, changeCurrentFlight, setInOneDirection, setInTwoDirections, inOneDirection, inTwoDirections, handleChangeInOneDirection, handleChangeInTwoDirections }) => {
 
     if (flights == undefined || flights.length === 0) {
         return (
@@ -50,6 +50,12 @@ const FlightsList = ({ finishPosition, finishDate, setFinishDate, startPosition,
                             changePosition={changePosition}
                             setChangePosition={setChangePosition}
                             changePositionFun={changePositionFun}
+                            setInOneDirection={setInOneDirection}
+                            setInTwoDirections={setInTwoDirections}
+                            inOneDirection={inOneDirection}
+                            inTwoDirections={inTwoDirections}
+                            handleChangeInOneDirection={handleChangeInOneDirection}
+                            handleChangeInTwoDirections={handleChangeInTwoDirections}
                         /> : <></>}
                     </div>
                 </div>

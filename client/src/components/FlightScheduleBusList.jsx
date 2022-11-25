@@ -9,6 +9,8 @@ const FlightScheduleBusList = ({
 
     const { language } = useSelector(state => state.language);
 
+    const statusDayHidden = [1, 2, 3, 4, 5, 6, 7]
+
     return (
         <div className='block-schedule'>
             <div className='schedule-date-with-to'>
@@ -77,6 +79,18 @@ const FlightScheduleBusList = ({
                     })}
                 </div>
                 <div className='table-status'>
+                    {statusDayHidden.map(h => {
+                        console.log(new Date())
+                        if (h <= 1) {
+                            return (
+                                <div key={h.id} className='table-day-status-number-admin-hidden'>
+                                    <div className='table-day-number-hidden'>
+                                    </div>
+                                </div>
+                            )
+                        }
+                    })
+                    }
                     {status.map((s, id) => {
                         if (is_admin) {
                             return (

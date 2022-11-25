@@ -3,13 +3,14 @@ import { useTranslation } from 'react-i18next';
 import { useEffect } from 'react';
 import { useAction } from '../hooks/useAction';
 import { useSelector } from 'react-redux';
-import { LocalizationProvider } from '@mui/x-date-pickers';
+import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { DesktopDatePicker } from '@mui/x-date-pickers/DesktopDatePicker';
+import 'dayjs/locale/ru';
+import 'dayjs/locale/uk';
 import Box from '@mui/material/Box';
-import ukLocale from 'date-fns/locale/uk';
 
-const FlightsFormSort = ({ finishDate, setFinishDate, startDate, setStartDate, startPosition, finishPosition, setStartPosition, setFinishPosition, sortFlights, sumOld, setSumOld, sumYoung, setSumYoung, setChangePosition, changePosition, changePositionFun }) => {
+const FlightsFormSort = ({ finishDate, setFinishDate, startDate, setStartDate, startPosition, finishPosition, setStartPosition, setFinishPosition, sortFlights, sumOld, setSumOld, sumYoung, setSumYoung, setChangePosition, changePosition, changePositionFun, setInOneDirection, setInTwoDirections, inOneDirection, inTwoDirections, handleChangeInOneDirection, handleChangeInTwoDirections }) => {
     const { t } = useTranslation()
 
     const [dropdownCheck, setDropdowbCheck] = useState(false)
@@ -70,17 +71,19 @@ const FlightsFormSort = ({ finishDate, setFinishDate, startDate, setStartDate, s
 
     const handleChangeDateFinish = (newDate) => {
         setFinishDate(newDate);
+        setInOneDirection(false)
+        setInTwoDirections(true)
     }
 
     return (
         <div className='flights-sort-form'>
             <div className='form-checkboxes'>
                 <div>
-                    <input type="radio" />
+                    <input type="radio" name='sorting' checked={inOneDirection} onChange={(e) => handleChangeInOneDirection(e.target.value)} />
                     <span>{t('flight.flight_radio')}</span>
                 </div>
                 <div>
-                    <input type="radio" />
+                    <input type="radio" name='sorting' checked={inTwoDirections} onChange={(e) => handleChangeInTwoDirections(e.target.value)} />
                     <span>{t('flight.flight_radio_second')}</span>
                 </div>
             </div>
@@ -145,7 +148,7 @@ const FlightsFormSort = ({ finishDate, setFinishDate, startDate, setStartDate, s
                     <div className='form-input-date'>
                         <LocalizationProvider
                             dateAdapter={AdapterDayjs}
-                            adapterLocale={ukLocale}
+                            adapterLocale={localStorage.getItem('i18nextLng') === 'UA' ? 'uk' : 'ru'}
                         >
                             <DesktopDatePicker
                                 inputFormat="DD.MM.YYYY"
@@ -164,7 +167,7 @@ const FlightsFormSort = ({ finishDate, setFinishDate, startDate, setStartDate, s
                     <div className='form-input-date'>
                         <LocalizationProvider
                             dateAdapter={AdapterDayjs}
-                            adapterLocale={ukLocale}
+                            adapterLocale={localStorage.getItem('i18nextLng') === 'UA' ? 'uk' : 'ru'}
                         >
                             <DesktopDatePicker
                                 inputFormat="DD.MM.YYYY"

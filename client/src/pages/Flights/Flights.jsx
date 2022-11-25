@@ -25,7 +25,9 @@ const Flights = ({ isShowFilter }) => {
     const [date, setDate] = useState('')
     const [dateBack, setDateBack] = useState('')
     const [flightId, setFlightId] = useState('')
-    const [checked, setChecked] = useState(false);
+    const [checked, setChecked] = useState(false)
+    const [inOneDirection, setInOneDirection] = useState(true)
+    const [inTwoDirections, setInTwoDirections] = useState(false)
 
     const { startPositionInitial, finishPositionInitial, startDateInitial, finishDateInitial, sumOldInitial, sumYoungInitial } = useSelector(state => state.flightsSearchWithHomeReducer)
 
@@ -49,6 +51,8 @@ const Flights = ({ isShowFilter }) => {
 
     useEffect(() => {
         fetchGetFlights({
+            inOneDirection: inOneDirection,
+            inTwoDirections: inTwoDirections,
             startPosition: startPosition,
             finishPosition: finishPosition,
             startDate: startDate,
@@ -78,6 +82,8 @@ const Flights = ({ isShowFilter }) => {
         SetFlightParams(startPosition, finishPosition, startDate, finishDate, sumOld, sumYoung);
         if (changePosition === true) {
             fetchGetFlights({
+                inOneDirection: inOneDirection,
+                inTwoDirections: inTwoDirections,
                 startPosition: startPosition,
                 finishPosition: finishPosition,
                 startDate: !startDate ? undefined : `${startDate.$D}.${startDate.$M + 1}.${startDate.$y}`,
@@ -88,6 +94,8 @@ const Flights = ({ isShowFilter }) => {
             })
         } else {
             fetchGetFlights({
+                inOneDirection: inOneDirection,
+                inTwoDirections: inTwoDirections,
                 startPosition: startPosition,
                 finishPosition: finishPosition,
                 startDate: !startDate ? undefined : `${startDate.$D}.${startDate.$M + 1}.${startDate.$y}`,
@@ -197,6 +205,16 @@ const Flights = ({ isShowFilter }) => {
         }
     }
 
+    const handleChangeInOneDirection = (radio) => {
+        setInOneDirection(true)
+        setInTwoDirections(false)
+    }
+
+    const handleChangeInTwoDirections = (radio) => {
+        setInOneDirection(false)
+        setInTwoDirections(true)
+    }
+
     return (
         <>
             <div className='flights'>
@@ -226,6 +244,12 @@ const Flights = ({ isShowFilter }) => {
                     setChangePosition={setChangePosition}
                     changePositionFun={changePositionFun}
                     changeCurrentFlight={changeCurrentFlight}
+                    setInOneDirection={setInOneDirection}
+                    setInTwoDirections={setInTwoDirections}
+                    inOneDirection={inOneDirection}
+                    inTwoDirections={inTwoDirections}
+                    handleChangeInOneDirection={handleChangeInOneDirection}
+                    handleChangeInTwoDirections={handleChangeInTwoDirections}
                 />
                 <ModalFormBuy
                     flight={flight}

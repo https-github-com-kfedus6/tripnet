@@ -339,8 +339,16 @@
     align-items: center;
 }
 
-
 .table-day-status-number-admin {
+    width: 14.28%;
+    height: 56px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.table-day-status-number-admin-hidden {
+    visibility: hidden;
     width: 14.28%;
     height: 56px;
     display: flex;
@@ -388,6 +396,15 @@
     justify-content: center;
     align-items: center;
 }
+
+.table-day-number-hidden {
+    width: 14.28%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    visibility: hidden;
+}
+
 
 .table-day-number span {
     font-family: 'Inter';

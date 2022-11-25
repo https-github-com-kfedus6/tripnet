@@ -18,14 +18,31 @@ const Home = () => {
     const [sumYoung, setSumYoung] = useState(0);
     const [sumOld, setSumOld] = useState(1);
     const [changePosition, setChangePosition] = useState(false);
+
+    const [inOneDirection, setInOneDirection] = useState(true)
+    const [inTwoDirections, setInTwoDirections] = useState(false)
+
     const { SetFlightParams } = useAction();
+
     useEffect(() => {
 
     }, [language])
+
     const navigate = useNavigate();
+
     const search = () => {
         SetFlightParams(startPosition, finishPosition, startDate, finishDate, sumOld, sumYoung);
         navigate("/flightsCategory");
+    }
+
+    const handleChangeInOneDirection = (radio) => {
+        setInOneDirection(true)
+        setInTwoDirections(false)
+    }
+
+    const handleChangeInTwoDirections = (radio) => {
+        setInOneDirection(false)
+        setInTwoDirections(true)
     }
 
     return (
@@ -39,6 +56,12 @@ const Home = () => {
             <div className='form-fligths-home'>
                 <div className='form-flights-container'>
                     <FlightsFormSort
+                        setInOneDirection={setInOneDirection}
+                        setInTwoDirections={setInTwoDirections}
+                        inOneDirection={inOneDirection}
+                        inTwoDirections={inTwoDirections}
+                        handleChangeInOneDirection={handleChangeInOneDirection}
+                        handleChangeInTwoDirections={handleChangeInTwoDirections}
                         setStartDate={setStartDate}
                         setFinishDate={setFinishDate}
                         setStartPosition={setStartPosition}
