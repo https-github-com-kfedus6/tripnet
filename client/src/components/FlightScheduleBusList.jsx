@@ -52,7 +52,7 @@ const FlightScheduleBusList = ({
                 <div className='schedule-table-day'>
                     {flight.schefule.map(day => {
                         return (
-                            <div key={day.id} className='table-day' >
+                            <div key={`${day.id}days`} className='table-day' >
                                 <div>
                                     <span>{day.monday}</span>
                                 </div>
@@ -80,10 +80,14 @@ const FlightScheduleBusList = ({
                 </div>
                 <div className='table-status'>
                     {statusDayHidden.map(h => {
-                        console.log(new Date())
-                        if (h <= 1) {
+                        const date = new Date()
+                        const month = date.getMonth()
+                        const year = date.getFullYear()
+                        const newDate = new Date(year, month, 1)
+                        const day = newDate.getDay()
+                        if (+h + 1 <= +day) {
                             return (
-                                <div key={h.id} className='table-day-status-number-admin-hidden'>
+                                <div key={`${h.id}dates`} className='table-day-status-number-admin-hidden'>
                                     <div className='table-day-number-hidden'>
                                     </div>
                                 </div>
@@ -92,24 +96,31 @@ const FlightScheduleBusList = ({
                     })
                     }
                     {status.map((s, id) => {
-                        if (is_admin) {
-                            return (
-                                <div key={s.id} className='table-day-status-number-admin'>
-                                    <div className={s.status === true ? 'table-day-status' : 'table-day-number'}>
-                                        <button onClick={() => changeStatus(s.id, s.status)}>
-                                            <span>{id + 1}</span>
-                                        </button>
+                        const date = new Date()
+                        const month = date.getMonth()
+                        const year = date.getFullYear()
+                        const newDate = new Date(year, month + 1, 0)
+                        const lastDate = newDate.getDate()
+                        if (+id < +lastDate) {
+                            if (is_admin) {
+                                return (
+                                    <div key={`${s.id}status`} className='table-day-status-number-admin'>
+                                        <div className={s.status === true ? 'table-day-status' : 'table-day-number'}>
+                                            <button onClick={() => changeStatus(s.id, s.status)}>
+                                                <span>{id + 1}</span>
+                                            </button>
+                                        </div>
                                     </div>
-                                </div>
-                            )
-                        } else {
-                            return (
-                                <div key={s.id} className='table-day-status-number'>
-                                    <div className={s.status === true ? 'table-day-status' : 'table-day-number'}>
-                                        <span >{id + 1}</span>
+                                )
+                            } else {
+                                return (
+                                    <div key={s.id} className='table-day-status-number'>
+                                        <div className={s.status === true ? 'table-day-status' : 'table-day-number'}>
+                                            <span >{id + 1}</span>
+                                        </div>
                                     </div>
-                                </div>
-                            )
+                                )
+                            }
                         }
                     })}
                 </div>

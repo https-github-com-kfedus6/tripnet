@@ -198,7 +198,6 @@ export const GetRelinkBlocks = (id) => async (dispatch) => {
 }
 
 export const GetRelinkBlocksBlog = (startPosition, finishPosition, maxCount) => async (dispatch) => {
-    console.log(startPosition)
     try {
         const res = await $host.post("api/blog/getForFlight", { startPosition, finishPosition, maxCount });
         if (res.data.status == 200) {
