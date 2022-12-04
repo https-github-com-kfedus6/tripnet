@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import { NavLink } from 'react-router-dom'
 import { useSelector } from 'react-redux';
 import { useAction } from '../../hooks/useAction';
 import { IoClose } from 'react-icons/io5';
@@ -70,8 +71,21 @@ const FlightOrders = () => {
         return (
             <div className='order-container'>
                 <div className="container-orders">
+                    <div className='bredcrumbs-flights'>
+                        <div>
+                            <NavLink to="/">{t("header.first_link")}</NavLink>
+                        </div>
+                        <div>
+                            <img src={process.env.REACT_APP_API_URL + 'chevron-right.png'} alt="right" />
+                        </div>
+                        <div>
+                            <span>
+                                {t('order.title')}
+                            </span>
+                        </div>
+                    </div>
                     <div className='accordion-title-order'>
-                        <h2>{t('order.title')}</h2>
+                        <b>{t('order.title')}</b>
                     </div>
                     <div className="accordion-orders">
                         {flightOrders.rows.map((item, i) => {
@@ -79,11 +93,12 @@ const FlightOrders = () => {
                             let dateDay = date[2]
                             dateDay = dateDay.slice(0, 2)
                             let time = date[2].slice(3, 8)
-
                             let status = item.status
+
                             if (status === null) {
                                 status = t('order.status')
                             }
+
                             return (
                                 <div key={item.id} className="accordion-item-order">
                                     <div className='accordion-header-order'>
@@ -144,16 +159,15 @@ const FlightOrders = () => {
                                                 </div>
                                             </>
                                         }
-
                                     </div>
                                 </div>
                             )
                         })}
                     </div>
                     {totalCount == undefined || isNaN(totalCount) ? <></> :
-                        <div className='pagination'>
-                            <Stack spacing={10}>
-                                <Pagination count={totalCount} page={page} onChange={handleChange} />
+                        <div className='pagination-order'>
+                            <Stack spacing={1}>
+                                <Pagination count={totalCount} page={page} onChange={handleChange} shape="rounded" color="primary" />
                             </Stack>
                         </div>}
                 </div>

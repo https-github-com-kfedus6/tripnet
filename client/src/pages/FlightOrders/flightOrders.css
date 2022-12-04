@@ -5,8 +5,9 @@
     color: #000;
     display: flex;
     flex-direction: column;
+    margin-top: 100px;
 }
-  
+
 .accordion-header-order {
     display: flex;
     justify-content: space-between;
@@ -16,6 +17,19 @@
 .accordion-orders {
     display: flex;
     flex-direction: column-reverse;
+}
+
+.accordion-title-order {
+    margin-bottom: 20px;
+}
+
+.accordion-title-order b {
+    font-family: 'Inter';
+    font-style: normal;
+    font-size: 39px;
+    line-height: 120%;
+    color: #111111;
+    cursor: default;
 }
 
 .accordion-item-order {
@@ -155,6 +169,14 @@
 .icon-order {
     font-size: 20px;
     font-weight: 700;
+}
+
+.pagination-order {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 60px;
+    margin-top: 50px;
 }
 
 @media (min-width:1024px) {
