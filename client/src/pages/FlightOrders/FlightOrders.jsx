@@ -145,8 +145,8 @@ const FlightOrders = () => {
                                                     <span><b>{t('order.ticket')}:</b> <input value={countTicket} onChange={(e) => setCountTicket(e.target.value)} type={"number"} /></span>
                                                     <span><b>{t('order.ticket_remained')}:</b> {flight.countFreePlace}</span>
                                                     <span><b>Дата:</b> {item.date}</span>
-                                                    <span><b>{t('order.price')}:</b> {flight.price}.00 UAH</span>
-                                                    <span><b>{t('order.allPrice')}:</b> {+flight.price * +item.countTicket}.00 UAH</span>
+                                                    <span><b>{t('order.price')}:</b> {flight.price} грн</span>
+                                                    <span><b>{t('order.allPrice')}:</b> {+flight.price * +item.countTicket} грн</span>
                                                 </div>
                                                 <div className='order-status-btn'>
                                                     <div>
