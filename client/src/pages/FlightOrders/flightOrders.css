@@ -1,8 +1,6 @@
 .order-container {
     margin: 0;
     padding: 0;
-    font-family: 'Hind', sans-serif;
-    color: #000;
     display: flex;
     flex-direction: column;
     margin-top: 100px;
@@ -32,143 +30,24 @@
     cursor: default;
 }
 
-.accordion-item-order {
-    padding: 5px 10px;
-    border: 1px solid silver;
-    border-radius: 5px;
-    margin-top: 10px;
-}
-
-.accordion-order-btn {
-    position: relative;
-    display: flex;
-    justify-content: space-between;
-    text-align: left;
-    width: 75%;
-    padding: 1em 0;
-    font-size: 1.15rem;
-    font-weight: 400;
-    border: none;
-    background: none;
-    outline: none;
-    cursor:pointer;
-}
-
-.accordion-order-btn:hover {
-    color: #F58A07;
-}
-
-.accordion-order-btn:focus {
-    color: #F58A07;
-}
-
-.accordion-content-order.show {
-      opacity: 1;
-      max-height: 9999px;
-      transition: all 500ms linear;
-      will-change: opacity, max-height;
-      transition: all 0.7s cubic-bezier(0,1,0,1);
-}
-
-.accordion-content-order {
-      opacity: 0;
-      max-height: 0;
-      overflow: hidden;
-      transition: opacity 500ms linear, max-height 500ms linear;
-      will-change: opacity, max-height;
-      transition: all 0.7s cubic-bezier(0,1,0,1);
-} 
-  
-.accordion-content-order p {
-      font-size: 1rem;
-      font-weight: 300;
-      margin: 2em 0;
-}
-
-.order-flight-pdt {
-    width: 75%;
-}
-
-.order-flight-pdt div {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 10px;
-}
-
-.order-street-position {
-    display: flex;
-    justify-content: space-between;
-}
-
-.order-street-position div {
-    word-wrap: break-word;
-    width: 50%;
-    margin-top: 0;
-}
-
-.order-street-finish {
-    text-align: right;
-}
-
-.order-flight-ticket {
+.item-paymet-date {
     display: flex;
     flex-direction: column;
-    margin-top: 15px;
+    align-items: flex-start;
+    gap:12px;
 }
 
-.order-flight-ticket span {
-    margin-top: 10px;
-}
-
-.order-status-btn {
-    margin-top: 25px;
+.item-paymet-date-time-name {
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
 }
 
-.order-status-btn div:nth-child(1) {
-    display: flex;
-    justify-content: space-between;
-    width: 75%;
-    align-items: center;
-}
-
-.order-status-btn div:nth-child(2) {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.order-status-btn div:nth-child(1) button {
-    border-radius: 5px;
-    background-color: #084887;
-    border: 1px solid #084887;
+.item-contact-details-info span:nth-child(1) {
+    color: rgb(99, 99, 99);
     font-size: 18px;
-    height: 40px;
-    cursor: pointer;
-    color: #FBFBFE;
-}
-
-.order-status-btn div:nth-child(1) button:hover {
-    background-color: #FBFBFE;
-    color: #084887;
-    transition: all ease 0.3s;
-}
-
-.order-status-btn div:nth-child(2) button {
-    background: none;
-    border: none;
-    font-size: 28px;
-    cursor: pointer;
-}
-
-.order-status-btn div:nth-child(2) button:hover {
-    color: red;
-}
-
-.icon-order {
-    font-size: 20px;
-    font-weight: 700;
+    margin-top: 3px;
 }
 
 .pagination-order {
@@ -182,41 +61,27 @@
 @media (min-width:1024px) {
     .container-orders {
         margin: auto;
-        width: 60%;
+        width: 70%;
     }
 }
 
 @media (max-width:1024px) {
     .container-orders{
         margin: auto;
-        width: 80%;
+        width: 90%;
     }
 }
 
 @media (max-width:768px) {
     .container-orders {
         margin: auto;
-        width: 98%;
+        width: 90%;
     }
 }
 
 @media (max-width:576px) {
     .container-orders {
         margin: auto;
-        width: 98%;
+        width: 90%;
     }
-
-    .accordion-order-btn {
-        display: flex;
-        flex-direction: column;
-    }
-
-    .accordion-order-btn span { 
-        margin-bottom: 5px;
-    }
-
-    .order-flight-pdt {
-        width: 99%;
-    }
-
 }

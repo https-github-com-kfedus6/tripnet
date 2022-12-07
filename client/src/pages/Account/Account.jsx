@@ -13,48 +13,19 @@ const Account = () => {
 
     const { t } = useTranslation()
 
-    const { is_admin, is_login, user, reply } = useSelector(state => state.user)
+    const { user } = useSelector(state => state.user)
     const { userHistoty, flightAccountOrders } = useSelector(state => state.order)
 
     const { language } = useSelector(state => state.language)
 
-    const { SetShowMessgeFalse, SetShowMessgeTrue, getUserHistory,
-        EditEmail, IsAuthorize, ChangePassword, fetchGetFlightAccountOrders, deleteFlightOrder } = useAction()
+    const { getUserHistory, fetchGetFlightAccountOrders, deleteFlightOrder } = useAction()
 
     const [checkAccountDetails, setCheckAccountDetails] = useState(null)
-
-    /*  const [oldPassword, setOldPassword] = useState("");
-     const [newPassword, setNewPassword] = useState("");
-     const [newPassword2, setNewPassword2] = useState("");
-     const [isChangePass, setIsChangePass] = useState("false")
- 
-     const [checkPassword, setCheckPassword] = useState(false);
-     const [checkEmail, setCheckEmail] = useState(false);
-     const [newEmail, setNewEmail] = useState("");
- 
-     const [phoneValue, setPhoneValue] = useState("") */
 
     useEffect(() => {
         fetchGetFlightAccountOrders()
         getUserHistory();
     }, [])
-
-    /*   useEffect(() => {
-          if (isChangePass) {
-              if (reply == 200) {
-                  setOldPassword("");
-                  setNewPassword("");
-                  setNewPassword2("");
-              }
-              setIsChangePass(false);
-          }
-      }, [reply]) */
-
-    /*  const exit = () => {
-         localStorage.removeItem("token");
-         IsAuthorize();
-         navigate("/");
-     } */
 
     const handleDetailsAccount = (i) => {
         if (checkAccountDetails == i) {
