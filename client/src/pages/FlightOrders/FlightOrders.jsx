@@ -11,6 +11,7 @@ import { getPageCount } from '../../utils/page';
 
 const FlightOrders = () => {
 
+    const [isActive, setIsActive] = useState(false)
     const [limit, setLimit] = useState(5)
     const [page, setPage] = useState(1)
     const [totalCount, setTotalCount] = useState(undefined)
@@ -38,15 +39,6 @@ const FlightOrders = () => {
     useEffect(() => {
         setTotalCount(getPageCount(flightOrders.count, limit))
     }, [flightOrders])
-
-    /* const toggle = (i, id) => {
-        if (isActive == i) {
-            return setIsActive(null);
-        }
-        console.log(i)
-        setIsActive(i);
-        fetchGetFlight(id);
-    } */
 
     const [countTicket, setCountTicket] = useState(1);
 
@@ -166,69 +158,46 @@ const FlightOrders = () => {
                                             </div>
                                         </div>
                                         <div className='item-detailed-payment-group'>
-                                            {objUserHistory.status === null
-                                                ?
-                                                <div className='item-payment'>
-                                                    <div className='item-paymet-date'>
-                                                        <div>
-                                                            <span>Дата бронювання</span>
-                                                        </div>
-                                                        <div className='item-paymet-date-time-name'>
-                                                            <div className='item-contact-details-info'>
-                                                                <img src={process.env.REACT_APP_API_URL + 'user-account.png'} alt="user" />
-                                                                <span>{t('account.client')}: {`${objUserHistory.surename} ${objUserHistory.name}`}</span>
-                                                            </div>
-                                                            <div className='item-contact-details-info'>
-                                                                <img src={process.env.REACT_APP_API_URL + 'phone-account.png'} alt="phone" />
-                                                                <span>Дата: {dateDay}.{date[1]}.{date[0]}</span>
-                                                            </div>
-                                                            <div className='item-contact-details-info'>
-                                                                <span><BiTimeFive /></span>
-                                                                <span>Час: {time}</span>
-                                                            </div>
-                                                        </div>
-                                                    </div>
+                                            <div className='item-payment-order'>
+                                                <div className='item-paymet-date'>
                                                     <div>
-                                                        <span>{t('modalbuy.message_title_second')}</span>
-                                                    </div>
-                                                    <div className='item-payment-price'>
-                                                        <div>
-                                                            <span>{t('account.payable')}: {objUserHistory.price} грн</span>
-                                                        </div>
-                                                        <div>
-                                                            <img src={process.env.REACT_APP_API_URL + 'info-silver.png'} alt="info" />
-                                                            <span>{t('account.payable_success')}.</span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                :
-                                                <div className='item-payment'>
-                                                    <div>
-                                                        <span>Дата бронювання</span>
+                                                        <span className='item-paymet-date-title'>Дата бронювання</span>
                                                     </div>
                                                     <div className='item-paymet-date-time-name'>
-                                                        <div className='item-contact-details-info'>
+                                                        <div className='item-contact-details-info-order'>
                                                             <img src={process.env.REACT_APP_API_URL + 'user-account.png'} alt="user" />
                                                             <span>{t('account.client')}: {`${objUserHistory.surename} ${objUserHistory.name}`}</span>
                                                         </div>
-                                                        <div className='item-contact-details-info'>
+                                                        <div className='item-contact-details-info-order'>
                                                             <img src={process.env.REACT_APP_API_URL + 'phone-account.png'} alt="phone" />
                                                             <span>Дата: {dateDay}.{date[1]}.{date[0]}</span>
                                                         </div>
-                                                        <div className='item-contact-details-info'>
-                                                            <span><BiTimeFive /></span>
+                                                        <div className='item-contact-details-info-order'>
+                                                            <i><BiTimeFive /></i>
                                                             <span>Час: {time}</span>
                                                         </div>
                                                     </div>
                                                 </div>
-                                            }
-                                            <div className='item-detailed-info-main'>
-                                                <div className='item-detailed-info-button'>
+                                                <div>
+                                                    <span className='item-paymet-date-title'>{t('modalbuy.message_title_second')}</span>
+                                                </div>
+                                                <div className='item-payment-price'>
                                                     <div>
+                                                        <span>{t('account.payable')}: {objUserHistory.price} грн</span>
+                                                    </div>
+                                                    <div>
+                                                        <img src={process.env.REACT_APP_API_URL + 'info-silver.png'} alt="info" />
+                                                        <span>{t('account.payable_success')}.</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div className='item-detailed-info-main-order'>
+                                                <div className='item-detailed-info-button-order'>
+                                                    <div className='item-detailed-info-button-order-show-info'>
                                                         <button onClick={() => handleDetailsOrder(i)}>{t('account.details_btn')}</button>
                                                         <img src={process.env.REACT_APP_API_URL + 'Vector-account.png'} alt="vector" />
                                                     </div>
-                                                    <div>
+                                                    <div className='item-detailed-info-button-order-go-flight'>
                                                         <NavLink to={`/flight/${item.startPosition[language]}-${item.finishPosition[language]}/${item.id}`}>{t('account.flight_btn')}</NavLink>
                                                     </div>
                                                 </div>
@@ -258,9 +227,31 @@ const FlightOrders = () => {
                                                             <img src={process.env.REACT_APP_API_URL + 'phone-account.png'} alt="phone" />
                                                             <span>{t('modalbuy.date_back')}: {objUserHistory.date}</span>
                                                         </div>
-                                                        <div className='item-contact-details-delete'>
+                                                    </div>
+                                                    <div className='item-contact-details-order-admin'>
+                                                        <div className='item-contact-details-order-admin-cancel'>
+                                                            <img src={process.env.REACT_APP_API_URL + 'x-x.png'} alt="cancel" />
+                                                            <button onClick={() => changeStatusOrderFalse(objUserHistory.id)}>{t('account.delete_user_order')}</button>
+                                                        </div>
+                                                        <div className='item-contact-details-order-admin-check'>
+                                                            <img src={process.env.REACT_APP_API_URL + 'check.png'} alt="check" />
+                                                            <button onClick={() => changeStatusOrderTrue(objUserHistory.id)}>Підтвердження бронювання</button>
+                                                        </div>
+                                                        <div className='item-contact-details-order-admin-paid'>
+                                                            <img src={process.env.REACT_APP_API_URL + 'check-green.png'} alt="paid" />
+                                                            <button>Оплачено</button>
+                                                        </div>
+                                                        <div className='item-contact-details-order-admin-paid'>
+                                                            <img src={process.env.REACT_APP_API_URL + 'check-green.png'} alt="paid" />
+                                                            <button>Внесено передоплату</button>
+                                                        </div>
+                                                        <div className='item-contact-details-order-admin-success'>
+                                                            <img src={process.env.REACT_APP_API_URL + 'check-gray.png'} alt="success" />
+                                                            <button>Виконано</button>
+                                                        </div>
+                                                        <div className='item-contact-details-order-admin-delete'>
                                                             <img src={process.env.REACT_APP_API_URL + 'trash-account.png'} alt="delete" />
-                                                            <button onClick={() => deleteOrder(objUserHistory.id)}>{t('account.delete_user_order')}</button>
+                                                            <button onClick={() => deleteOrder(objUserHistory.id)}>Видалити бронювання</button>
                                                         </div>
                                                     </div>
                                                 </div>

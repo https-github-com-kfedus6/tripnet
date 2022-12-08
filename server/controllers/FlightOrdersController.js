@@ -37,6 +37,7 @@ class FlightOrdersController {
     static SetStatus = async (req, resp, next) => {
         try {
             let { status, id, page, limit, countTicket } = req.body;
+            console.log(status, id)
             page = page | 1;
             limit = limit | 5;
             await FlightOrder.update({ status: status, countTicket }, { where: { id } });

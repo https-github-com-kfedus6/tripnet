@@ -46,7 +46,6 @@ export const putFlightOrder = (status, id, page, limit, countTicket) => async (d
         } else {
             dispatch({ type: messageActionTypes.SET_SHOW_TRUE, payload: "error" });
             setTimeout(() => dispatch({ type: messageActionTypes.SET_SHOW_FALSE }), 3000);
-            console.log(response)
         }
     } catch (err) {
         console.log(err.message)
