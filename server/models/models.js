@@ -120,6 +120,10 @@ const FlightOrder = sequelize.define("flightOrder", {
     countChildrenBack: { type: DataTypes.INTEGER },
     dateBack: { type: DataTypes.STRING },
     status: { type: DataTypes.BOOLEAN, defaultValue: null },
+    statusPaymentInProcessing: { type: DataTypes.BOOLEAN, defaultValue: false },
+    statusPayment: { type: DataTypes.BOOLEAN, defaultValue: false },
+    statusPrepayment: { type: DataTypes.BOOLEAN, defaultValue: false },
+    statusSuccess: { type: DataTypes.BOOLEAN, defaultValue: false }
 });
 
 const Services = sequelize.define("service", {

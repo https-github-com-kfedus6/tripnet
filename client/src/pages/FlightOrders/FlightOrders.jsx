@@ -25,7 +25,10 @@ const FlightOrders = () => {
     const { flightOrders } = useSelector(state => state.order)
     const { flight } = useSelector(state => state.flights)
 
-    const { getFlightOrder, putFlightOrder, deleteFlightOrder, fetchGetFlight, getUserHistory, fetchGetFlightAccountOrders } = useAction()
+    const { getFlightOrder, putFlightOrder, putFlightOrderStatusPayment,
+        putFlightOrderStatusPrePayment, putFlightOrderStatusSuccess, deleteFlightOrder,
+        fetchGetFlight, getUserHistory, fetchGetFlightAccountOrders
+    } = useAction()
 
     useEffect(() => {
         fetchGetFlightAccountOrders()
@@ -50,6 +53,36 @@ const FlightOrders = () => {
     const changeStatusOrderFalse = (id) => {
         let status = false
         putFlightOrder(status, id, page, limit, countTicket)
+    }
+
+    const changeStatusOrderPayment = (status, id) => {
+        let statusPayment
+        if (status === false) {
+            statusPayment = true
+        } else {
+            statusPayment = false
+        }
+        putFlightOrderStatusPayment(statusPayment, id, page, limit, countTicket)
+    }
+
+    const changeStatusOrderPrePayment = (status, id) => {
+        let statusPrePayment
+        if (status === false) {
+            statusPrePayment = true
+        } else {
+            statusPrePayment = false
+        }
+        putFlightOrderStatusPrePayment(statusPrePayment, id, page, limit, countTicket)
+    }
+
+    const changeStatusOrderSuccess = (status, id) => {
+        let statusSuccess
+        if (status === false) {
+            statusSuccess = true
+        } else {
+            statusSuccess = false
+        }
+        putFlightOrderStatusSuccess(statusSuccess, id, page, limit, countTicket)
     }
 
     const deleteOrder = (id) => {
@@ -111,23 +144,51 @@ const FlightOrders = () => {
 
                                 return (
                                     <div key={i} className='block-flight-cart-account'>
-                                        {objUserHistory.status === null ?
-                                            <div className='flight-cart-account-status-processing'>
-                                                <img src={process.env.REACT_APP_API_URL + 'clock-pink.png'} alt="time" />
-                                                <span>{t('account.in_processing')}</span>
+                                        {objUserHistory.statusSuccess === true
+                                            ?
+                                            <div className='flight-cart-account-status-is-success'>
+                                                <img src={process.env.REACT_APP_API_URL + 'check-gray.png'} alt="time" />
+                                                <span>Виконано</span>
                                             </div>
                                             :
-                                            objUserHistory.status === true
+                                            objUserHistory.statusPrepayment === true
                                                 ?
-                                                <div className='flight-cart-account-status-success'>
-                                                    <img src={process.env.REACT_APP_API_URL + 'check.png'} alt="time" />
-                                                    <span>{t('account.accepted')}</span>
+                                                <div className='flight-cart-account-status-payment'>
+                                                    <img src={process.env.REACT_APP_API_URL + 'check-green.png'} alt="time" />
+                                                    <span>Внесено передоплату</span>
                                                 </div>
                                                 :
-                                                <div className='flight-cart-account-status-cancelled'>
-                                                    <img src={process.env.REACT_APP_API_URL + 'x-x.png'} alt="time" />
-                                                    <span>{t('account.canceled')}</span>
-                                                </div>
+                                                objUserHistory.statusPayment === true
+                                                    ?
+                                                    <div className='flight-cart-account-status-payment'>
+                                                        <img src={process.env.REACT_APP_API_URL + 'check-green.png'} alt="time" />
+                                                        <span>Оплачено</span>
+                                                    </div>
+                                                    :
+                                                    objUserHistory.statusPaymentInProcessing === true
+                                                        ?
+                                                        <div className='flight-cart-account-status-success'>
+                                                            <img src={process.env.REACT_APP_API_URL + 'clock-blue.png'} alt="time" />
+                                                            <span>Оплата в обробці</span>
+                                                        </div>
+                                                        :
+                                                        objUserHistory.status === null ?
+                                                            <div className='flight-cart-account-status-processing'>
+                                                                <img src={process.env.REACT_APP_API_URL + 'clock-pink.png'} alt="time" />
+                                                                <span>{t('account.in_processing')}</span>
+                                                            </div>
+                                                            :
+                                                            objUserHistory.status === true
+                                                                ?
+                                                                <div className='flight-cart-account-status-success'>
+                                                                    <img src={process.env.REACT_APP_API_URL + 'check.png'} alt="time" />
+                                                                    <span>{t('account.accepted')}</span>
+                                                                </div>
+                                                                :
+                                                                <div className='flight-cart-account-status-cancelled'>
+                                                                    <img src={process.env.REACT_APP_API_URL + 'x-x.png'} alt="time" />
+                                                                    <span>{t('account.canceled')}</span>
+                                                                </div>
                                         }
                                         <div className='item-start-finish-position-account'>
                                             <div className='item-position-account'>
@@ -239,15 +300,15 @@ const FlightOrders = () => {
                                                         </div>
                                                         <div className='item-contact-details-order-admin-paid'>
                                                             <img src={process.env.REACT_APP_API_URL + 'check-green.png'} alt="paid" />
-                                                            <button>Оплачено</button>
+                                                            <button onClick={() => changeStatusOrderPayment(objUserHistory.statusPayment, objUserHistory.id)}>Оплачено</button>
                                                         </div>
                                                         <div className='item-contact-details-order-admin-paid'>
                                                             <img src={process.env.REACT_APP_API_URL + 'check-green.png'} alt="paid" />
-                                                            <button>Внесено передоплату</button>
+                                                            <button onClick={() => changeStatusOrderPrePayment(objUserHistory.statusPrepayment, objUserHistory.id)}>Внесено передоплату</button>
                                                         </div>
                                                         <div className='item-contact-details-order-admin-success'>
                                                             <img src={process.env.REACT_APP_API_URL + 'check-gray.png'} alt="success" />
-                                                            <button>Виконано</button>
+                                                            <button onClick={() => changeStatusOrderSuccess(objUserHistory.statusSuccess, objUserHistory.id)}>Виконано</button>
                                                         </div>
                                                         <div className='item-contact-details-order-admin-delete'>
                                                             <img src={process.env.REACT_APP_API_URL + 'trash-account.png'} alt="delete" />

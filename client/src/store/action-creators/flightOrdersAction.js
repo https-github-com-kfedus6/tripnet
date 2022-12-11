@@ -52,6 +52,54 @@ export const putFlightOrder = (status, id, page, limit, countTicket) => async (d
     }
 }
 
+export const putFlightOrderStatusPayment = (statusPayment, id, page, limit, countTicket) => async (dispatch) => {
+    try {
+        const response = await $authHost.put('api/flightOrder/setStatusPayment', { statusPayment, id, page, limit, countTicket });
+        if (response.data.status == 200) {
+            dispatch({ type: messageActionTypes.SET_SHOW_TRUE, payload: t("message.successfully_added") });
+            setTimeout(() => dispatch({ type: messageActionTypes.SET_SHOW_FALSE }), 3000);
+            dispatch({ type: flightOrdersActionTypes.FETCH_PUT_ORDER_STATUS_PAYMENT, payload: response.data.res })
+        } else {
+            dispatch({ type: messageActionTypes.SET_SHOW_TRUE, payload: "error" });
+            setTimeout(() => dispatch({ type: messageActionTypes.SET_SHOW_FALSE }), 3000);
+        }
+    } catch (err) {
+        console.log(err.message)
+    }
+}
+
+export const putFlightOrderStatusPrePayment = (statusPrePayment, id, page, limit, countTicket) => async (dispatch) => {
+    try {
+        const response = await $authHost.put('api/flightOrder/setStatusPrePayment', { statusPrePayment, id, page, limit, countTicket });
+        if (response.data.status == 200) {
+            dispatch({ type: messageActionTypes.SET_SHOW_TRUE, payload: t("message.successfully_added") });
+            setTimeout(() => dispatch({ type: messageActionTypes.SET_SHOW_FALSE }), 3000);
+            dispatch({ type: flightOrdersActionTypes.FETCH_PUT_ORDER_STATUS_PREPAYMENT, payload: response.data.res })
+        } else {
+            dispatch({ type: messageActionTypes.SET_SHOW_TRUE, payload: "error" });
+            setTimeout(() => dispatch({ type: messageActionTypes.SET_SHOW_FALSE }), 3000);
+        }
+    } catch (err) {
+        console.log(err.message)
+    }
+}
+
+export const putFlightOrderStatusSuccess = (statusSuccess, id, page, limit, countTicket) => async (dispatch) => {
+    try {
+        const response = await $authHost.put('api/flightOrder/setStatusSuccess', { statusSuccess, id, page, limit, countTicket });
+        if (response.data.status == 200) {
+            dispatch({ type: messageActionTypes.SET_SHOW_TRUE, payload: t("message.successfully_added") });
+            setTimeout(() => dispatch({ type: messageActionTypes.SET_SHOW_FALSE }), 3000);
+            dispatch({ type: flightOrdersActionTypes.FETCH_PUT_ORDER_STATUS_SUCCESS, payload: response.data.res })
+        } else {
+            dispatch({ type: messageActionTypes.SET_SHOW_TRUE, payload: "error" });
+            setTimeout(() => dispatch({ type: messageActionTypes.SET_SHOW_FALSE }), 3000);
+        }
+    } catch (err) {
+        console.log(err.message)
+    }
+}
+
 export const deleteFlightOrder = (id) => async (dispatch) => {
     try {
         const response = await $authHost.delete(`api/flightOrder/${id}`)

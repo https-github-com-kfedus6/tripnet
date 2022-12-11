@@ -300,6 +300,69 @@
     cursor: default;
 }
 
+.flight-cart-account-status-is-success {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 12px 30px;
+    gap: 8px;
+    width: 100%;
+    height: 48px;
+    background: #F0F0F0;
+    border-bottom: 1px solid #DBDBDB;
+    border-top-left-radius: 20px;
+    border-top-right-radius:20px;
+}
+
+.flight-cart-account-status-is-success img {
+    width: 16px;
+    height: 16px;
+}
+
+.flight-cart-account-status-is-success span {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 150%;
+    color: #4C4C4C;
+    opacity: 0.8;
+    cursor: default;
+}
+
+
+.flight-cart-account-status-payment {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 12px 30px;
+    gap: 8px;
+    width: 100%;
+    height: 48px;
+    background: #E1F6EA;
+    border-bottom: 1px solid #DBDBDB;
+    border-top-left-radius: 20px;
+    border-top-right-radius:20px;
+}
+
+.flight-cart-account-status-payment img {
+    width: 16px;
+    height: 16px;
+}
+
+.flight-cart-account-status-payment span {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 150%;
+    color: #0C4623;
+    opacity: 0.8;
+    cursor: default;
+}
+
 .item-start-finish-position-account {
     display: flex;
     flex-direction: row;

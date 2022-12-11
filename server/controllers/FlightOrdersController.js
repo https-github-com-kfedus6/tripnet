@@ -37,7 +37,6 @@ class FlightOrdersController {
     static SetStatus = async (req, resp, next) => {
         try {
             let { status, id, page, limit, countTicket } = req.body;
-            console.log(status, id)
             page = page | 1;
             limit = limit | 5;
             await FlightOrder.update({ status: status, countTicket }, { where: { id } });
@@ -51,6 +50,51 @@ class FlightOrdersController {
                 const countFreePlace = parseInt(flight.countFreePlace) + parseInt(countTicket);
                 await Flight.update({ countFreePlace }, { where: { id: flight.id } });
             }
+            const offset = page * limit - limit
+
+            const res = await FlightOrder.findAndCountAll({ limit: Number(limit), offset: Number(offset) });
+
+            return resp.json({ status: 200, res });
+        } catch (err) {
+            return next(ErrorApi.badRequest(err));
+        }
+    }
+    static setStatusPayment = async (req, resp, next) => {
+        try {
+            let { statusPayment, id, page, limit, countTicket } = req.body;
+            page = page | 1;
+            limit = limit | 5;
+            await FlightOrder.update({ statusPayment: statusPayment }, { where: { id } });
+            const offset = page * limit - limit
+
+            const res = await FlightOrder.findAndCountAll({ limit: Number(limit), offset: Number(offset) });
+
+            return resp.json({ status: 200, res });
+        } catch (err) {
+            return next(ErrorApi.badRequest(err));
+        }
+    }
+    static setStatusPrePayment = async (req, resp, next) => {
+        try {
+            let { statusPrePayment, id, page, limit, countTicket } = req.body;
+            page = page | 1;
+            limit = limit | 5;
+            await FlightOrder.update({ statusPrepayment: statusPrePayment }, { where: { id } });
+            const offset = page * limit - limit
+
+            const res = await FlightOrder.findAndCountAll({ limit: Number(limit), offset: Number(offset) });
+
+            return resp.json({ status: 200, res });
+        } catch (err) {
+            return next(ErrorApi.badRequest(err));
+        }
+    }
+    static setStatusSuccess = async (req, resp, next) => {
+        try {
+            let { statusSuccess, id, page, limit, countTicket } = req.body;
+            page = page | 1;
+            limit = limit | 5;
+            await FlightOrder.update({ statusSuccess: statusSuccess }, { where: { id } });
             const offset = page * limit - limit
 
             const res = await FlightOrder.findAndCountAll({ limit: Number(limit), offset: Number(offset) });
