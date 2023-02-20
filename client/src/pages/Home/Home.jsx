@@ -8,6 +8,7 @@ import HomeListBlog from './HomeListBlog';
 import ReserveFlightHome from './ReserveFlightHome';
 import Responce from './Responce';
 import ServicesHome from './ServicesHome';
+import Novetly from './Novetly';
 
 const Home = () => {
     const { language } = useSelector(state => state.language);
@@ -25,7 +26,7 @@ const Home = () => {
     const { SetFlightParams } = useAction();
 
     useEffect(() => {
-
+        
     }, [language])
 
     const navigate = useNavigate();
@@ -53,6 +54,7 @@ const Home = () => {
                 </div>
             </div>
             <div />
+            <Novetly/>
             <div className='form-fligths-home'>
                 <div className='form-flights-container'>
                     <FlightsFormSort

@@ -3298,3 +3298,118 @@ footer{
         flex-direction: column;
     }
 }
+@media screen and (min-width:1024px) {
+    .home__novetly__main_{
+        margin: 100px auto;
+        margin-bottom: 50px;
+        width: 70%;
+    }
+    .home__novetly_{
+        width: 30%;
+    }
+}
+@media screen and (min-width:480px) and (max-width:1024px) {
+    .home__novetly__main_{
+        margin: 130px auto;
+        margin-bottom: 50px;
+        width: 90%;
+    }
+    .home__novetly_{
+        width: 48%;
+        margin-top: 50px;
+    }
+}
+@media screen and (max-width:480px) {
+    .home__novetly__main_{
+        margin: 300px auto;
+        margin-bottom: 50px;
+        width: 98%;
+    }
+    .home__novetly_{
+        margin: auto;
+        width: 90%;
+        margin-top: 30px;
+    }
+    .home__novetly__main_{
+        display: flex;
+        justify-content: center;
+    }   
+}
+.home__novetly_{
+    border: 1px solid #b5b5b5;
+    border-top-right-radius: 18px;
+    border-top-left-radius: 18px;
+}
+.home__novetly__main_{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+.home__novetly__img img{
+    border-bottom: 2px solid #fff8f882;
+    width: 100%;
+    border-top-right-radius: 15px;
+    border-top-left-radius: 15px;
+}
+.home__novetly__img {
+    overflow: hidden;
+}
+.home__novetly__img :hover {
+    bottom: -36px;
+    opacity: 1;
+}
+.home__novetly__img img {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+    -webkit-transition: .3s ease-in-out;
+    transition: .3s ease-in-out;
+    border-bottom: 2px solid #fff8f882;
+    border-top-right-radius: 15px;
+    border-top-left-radius: 15px;
+}
+.home__novetly__img:hover img {
+    -webkit-transform: scale(1.2);
+    transform: scale(1.2);
+    border-bottom: 2px solid #fff8f882;
+    border-top-right-radius: 15px;
+    border-top-left-radius: 15px;
+}
+.info__for__img{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 15px;
+    background-color: #FFFFFF;
+}
+.home__novetly__description{
+    margin-top: 15px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 150%;
+    color: #6A6A6A;
+    
+}
+.home__novetly__description img{
+    height: 100%;
+    width: auto;
+}
+.home__novetly__title{
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 21px;
+    line-height: 120%;
+    color: #111111;
+}
+.home__novetly__price{
+    color: #2F82FF;
+}
+.no__bron{
+    font-size: 25px;
+}

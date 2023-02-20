@@ -62,7 +62,7 @@ const Account = () => {
                             <div className='account-main-title'>
                                 <b>{t("account.my_booking")}</b>
                             </div>
-                            {flightAccountOrders.map((item, i) => {
+                            {flightAccountOrders.length==0 ?  <div className='no__bron'>{t("account.no_bron")}</div> :  flightAccountOrders.map((item, i) => {
 
                                 let itemUserHistory = userHistoty.filter(user => user.flightId === item.id)
                                 let objUserHistory = itemUserHistory.reduce((target, key) => {
@@ -231,44 +231,6 @@ const Account = () => {
                             </div>
                         </div>
                     </div>
-                    и                    <GooglePayButton
-                        environment="PRODUCTION"
-                        buttonColor='white'
-                        paymentRequest={{
-                            apiVersion: 2,
-                            apiVersionMinor: 0,
-                            allowedPaymentMethods: [
-                                {
-                                    type: 'CARD',
-                                    parameters: {
-                                        allowedAuthMethods: ['PAN_ONLY', 'CRYPTOGRAM_3DS'],
-                                        allowedCardNetworks: ['MASTERCARD', 'VISA'],
-                                    },
-                                    tokenizationSpecification: {
-                                        type: 'PAYMENT_GATEWAY',
-                                        parameters: {
-                                            gateway: 'example',
-                                            gatewayMerchantId: 'exampleGatewayMerchantId',
-                                        },
-                                    },
-                                },
-                            ],
-                            merchantInfo: {
-                                merchantId: '12345678901234567890',
-                                merchantName: 'Demo Merchant',
-                            },
-                            transactionInfo: {
-                                totalPriceStatus: 'FINAL',
-                                totalPriceLabel: 'Total',
-                                totalPrice: '100.00',
-                                currencyCode: 'GBP',
-                                countryCode: 'UA',
-                            },
-                        }}
-                        onLoadPaymentData={paymentRequest => {
-                            console.log('load payment data', paymentRequest);
-                        }}
-                    />
                 </div>
             </div>
         </div >

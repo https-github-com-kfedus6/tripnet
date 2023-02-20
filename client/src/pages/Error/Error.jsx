@@ -19,9 +19,11 @@ const Error = () => {
                     <h2>{t("error.error_code_404")}</h2>
                     <div>
                         <p>{t("error.here_are_some_useful_links")}</p>
-                        <p className='item-error-navigate' onClick={() => navigate('/')}>Головна</p>
-                        <p className='item-error-navigate' onClick={() => navigate('/flightsCategory')}>Категорія рейсів</p>
-                        <p className='item-error-navigate' onClick={() => navigate('/aboutUs')}>Про нас</p>
+                        <p className='item-error-navigate' onClick={() => navigate('/')}>{t("header.first_link")}</p>
+                        <p className='item-error-navigate' onClick={() => navigate('/flightsCategory')}>{t("header.third_link")}</p>
+                        <p className='item-error-navigate' onClick={() => navigate('/services')}>{t("header.six_link")}</p>
+                        <p className='item-error-navigate' onClick={() => navigate('/blog')}>{t("header.five_link")}</p>
+                        <p className='item-error-navigate' onClick={() => navigate('/contacts')}>{t("header.fourth_link")}</p>
                     </div>
                 </div>
             </div>
