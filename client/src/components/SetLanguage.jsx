@@ -13,7 +13,6 @@ const SetLanguage = () => {
     const { t, i18n } = useTranslation()
     const { setLanguage } = useAction();
     const language1=useSelector(state=>state.language.language);
-    console.log(language1)
 
     useEffect(()=>{
         if(localStorage.getItem("i18nextLng")==null){
@@ -21,7 +20,12 @@ const SetLanguage = () => {
             localStorage.setItem("i18nextLng","UA");
         }
         if(localStorage.getItem("i18nextLng")=="RU"){
+            i18n.changeLanguage("RU")
             setLanguage("RU");
+        }
+        else {
+            i18n.changeLanguage("UA");
+            setLanguage("UA");
         }
     },[])
     useEffect(()=>{},[language1])
