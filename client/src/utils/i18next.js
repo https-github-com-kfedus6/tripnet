@@ -35,7 +35,7 @@ i18n
   .use(initReactI18next)
   .init({
     resources: {
-      ua: {
+      UA: {
         translation: {
             "header": {
                 "first_link": "Головна",
@@ -371,7 +371,7 @@ i18n
             }
         }
       },
-      ru: {
+      RU: {
         translation: {
             "header": {
                 "first_link": "Главная",
@@ -690,8 +690,8 @@ i18n
         }
       }
     },
-    lng: "ua",
-    fallbackLng: "ua",
+    lng: "UA",
+    fallbackLng: "UA",
     interpolation: {
       escapeValue: false
     }

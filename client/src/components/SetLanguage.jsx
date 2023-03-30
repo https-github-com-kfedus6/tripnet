@@ -4,24 +4,32 @@ import { useAction } from '../hooks/useAction'
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
+import { useSelector } from 'react-redux';
+import i18next from 'i18next';
 
 const SetLanguage = () => {
     const [dropdownCheck, setDropdowbCheck] = useState(false)
 
     const { t, i18n } = useTranslation()
     const { setLanguage } = useAction();
+    const language1=useSelector(state=>state.language.language);
+    console.log(language1)
+
+    useEffect(()=>{
+        if(localStorage.getItem("i18nextLng")==null){
+            setLanguage("UA");
+            localStorage.setItem("i18nextLng","UA");
+        }
+        if(localStorage.getItem("i18nextLng")=="RU"){
+            setLanguage("RU");
+        }
+    },[])
+    useEffect(()=>{},[language1])
 
     const changeLanguage = (lang) => {
         setLanguage(lang);
-        i18n.changeLanguage(lang)
-    }
-
-    const language = () => {
-        const languageLetters = localStorage.getItem('i18nextLng');
-        if (languageLetters) {
-            return languageLetters
-        }
-        return 'UA'
+        i18n.changeLanguage(lang);
+        localStorage.setItem("i18nextLng",lang);
     }
 
     const changeBoolenLang = () => {
@@ -52,14 +60,14 @@ const SetLanguage = () => {
             </FormControl> */}
             <div className='dropdown-lang'>
                 <div className='dropdown-select-block' onClick={changeBoolenLang}>
-                    {language() === 'UA'
+                    {language1 === 0
                         ?
                         <img className="icon-lang" src={process.env.REACT_APP_API_URL + 'UA.png'} alt="UK"></img>
                         :
                         <img className="icon-lang" src={process.env.REACT_APP_API_URL + 'RU.png'} alt="RU"></img>
                     }
                     <div className='title-up-down'>
-                        {language() === 'UA'
+                        {language1 === 0
                             ?
                             <>
                                 <a className='title-lang'>{t('lang.uk')}</a>
@@ -94,5 +102,6 @@ const SetLanguage = () => {
         </>
     )
 }
+
 
 export default SetLanguage
